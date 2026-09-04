@@ -16,9 +16,9 @@ itself is not distributed here.
 | Path | Contents |
 |---|---|
 | `data/` | The element library: misrepresentation family (17 sub-tests × 4 jurisdictions), a 14-module typed registry of causes of action, weighted-factor modules, the drift/maintenance ledger, and a 745-document Hong Kong land-law case-note corpus. CC BY 4.0. |
-| `server/` | The connector itself — Netlify serverless functions implementing the REST API and a 10-tool MCP server, plus the browser UI. MIT. |
+| `server/` | The connector itself — Netlify serverless functions implementing the REST API and a 13-tool MCP server, plus the browser UI. MIT. |
 | `experiments/exp1-lab/` | In-benchmark pilot: 6 arbitration tasks, 2 conditions, blind paired judging over 59 legal-standard criteria. Null result. |
-| `experiments/exp2-probe/` | Jurisdiction-specific probe: 21 items, 2 conditions, blind judging against a pre-registered key. 16/21 → 21/21. |
+| `experiments/exp2-probe/` | Jurisdiction-specific probe: 21 items, 2 conditions, blind judging against a pre-registered key. 16/21 → 21/21 as originally scored; **15/21 → 19/21 re-scored against the law** after two keys were found wrong (`rescore.py`, `probe_results_rescored.json`). |
 | `experiments/exp3-hk-matter/` | The Hong Kong matter-file eval set the paper identified as missing: 5 tasks, 31 criteria, 6 drift-sensitive, with an as_of pair either side of *Chang Pui Yin*. **Unrun** — a task set with answer keys, no results claimed. |
 | `scripts/` | Builders that regenerate every artefact in `data/` from source. |
 
@@ -72,11 +72,22 @@ curl -X POST https://doctrine-drift-atlas.netlify.app/api/score \
 
 ### MCP
 
-Endpoint `POST /api/mcp`, JSON-RPC 2.0. Ten tools:
+Endpoint `POST /api/mcp`, JSON-RPC 2.0. Thirteen tools:
 
+`resolve_jurisdiction` · `pleading_checklist` · `verify_citation` ·
 `list_causes_of_action` · `get_elements` · `get_element_test` · `get_timeline`
 · `check_staleness` · `score_factors` · `list_scored_tests` · `search_corpus`
 · `lookup_case` · `propose_amendment`
+
+The first three exist because of what the experiments found. `resolve_jurisdiction`
+answers the Experiment 1 defect (doctrine injected without deciding whose law
+applied). `verify_citation` answers the one hallucination in Experiment 2 (a
+garbled neutral citation) and refuses to confuse *Long v Lloyd* with *Long Year
+Development*. `pleading_checklist` is the lawyer-facing output: every element,
+what to plead, local authority with pin cite and verification level, and an
+explicit gap wherever the library has no local authority so the drafter does
+not infer the Hong Kong position from English law. `GET /api/verify?cite=` adds
+a live HKLII existence check for Hong Kong neutral citations.
 
 ```bash
 curl -X POST https://doctrine-drift-atlas.netlify.app/api/mcp \

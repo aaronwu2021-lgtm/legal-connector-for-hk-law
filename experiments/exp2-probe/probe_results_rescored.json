@@ -1,0 +1,405 @@
+{
+ "summary": {
+  "note": "Re-scored against the law rather than the library for HK-07 and SG-01; HK-03 verdicts unchanged but key annotated. All other items carried over verbatim.",
+  "blind_key": {
+   "SET-A": "bare",
+   "SET-B": "conn"
+  },
+  "original": {
+   "bare": 16,
+   "conn": 21,
+   "n": 21,
+   "discordant_gains": 5,
+   "discordant_losses": 0,
+   "mcnemar_exact_p": 0.0625
+  },
+  "rescored": {
+   "bare": 15,
+   "conn": 19,
+   "n": 21,
+   "discordant_gains": 4,
+   "discordant_losses": 0,
+   "mcnemar_exact_p": 0.125
+  },
+  "items_changed": [
+   "HK-07",
+   "SG-01"
+  ]
+ },
+ "per_item": {
+  "HK-01": {
+   "bare": {
+    "id": "HK-01",
+    "correct": "correct",
+    "hallucinated": false,
+    "cites_authority": true,
+    "note": "States s.3(1) Cap.284 and the one-ahead numbering mapping; matches key exactly."
+   },
+   "conn": {
+    "id": "HK-01",
+    "correct": "correct",
+    "hallucinated": false,
+    "cites_authority": true,
+    "note": "s.3(1) Cap. 284 given; section mapping to English Act stated accurately; avoids the s.2(1) analogy error."
+   }
+  },
+  "HK-02": {
+   "bare": {
+    "id": "HK-02",
+    "correct": "correct",
+    "hallucinated": false,
+    "cites_authority": true,
+    "note": "Cap.284 s.4 gateway importing CECO Cap.71 s.3 reasonableness; UCTA mentioned only as English comparator, not applied."
+   },
+   "conn": {
+    "id": "HK-02",
+    "correct": "correct",
+    "hallucinated": false,
+    "cites_authority": true,
+    "note": "CECO Cap. 71 s.3(1) via Cap. 284 s.4, exactly as key; correctly declines UCTA route."
+   }
+  },
+  "HK-03": {
+   "bare": {
+    "id": "HK-03",
+    "correct": "partial",
+    "hallucinated": false,
+    "cites_authority": true,
+    "note": "Right on adoption and absence of CFA authority, but places adoption at CA level; key says CFI.",
+    "correct_original": "partial",
+    "rescore_note": "unchanged — see note on key"
+   },
+   "conn": {
+    "id": "HK-03",
+    "correct": "correct",
+    "hallucinated": false,
+    "cites_authority": true,
+    "note": "CFI-level adoption, both DBS cases, no CFA authority, CA qualification. SFO s.108 extension detail plausible.",
+    "correct_original": "correct",
+    "rescore_note": "unchanged — see note on key"
+   },
+   "_key_correction": {
+    "original_key": "Adopted at CFI level; no CFA authority; CA has qualified it.",
+    "corrected_key": "CFI adoption (San-Hot [2013] HKCFI 387; Sit Pan Jit [2015] HKCFI 530) and CA qualification (Chang Pui Yin [2017] HKCA 290) stand. 'No CFA authority' is overstated: Ng Lai Ling Winnie v Ng Yuk Pui Kelly [2021] HKCFA 40 at [24]-[27] (Appeal Committee, refusing leave) states the doctrine's limits and treats Peekay as the leading case, though it is not a substantive CFA ruling.",
+    "sources_read": [
+     "[2021] HKCFA 40 [24]-[27]",
+     "[2017] HKCA 290 [57], [92], [110]-[113]"
+    ]
+   }
+  },
+  "HK-04": {
+   "bare": {
+    "id": "HK-04",
+    "correct": "partial",
+    "hallucinated": false,
+    "cites_authority": true,
+    "note": "Correct case; gives CECO unreasonableness but substitutes characterisation for the key's second basis, unconscionability under UCO."
+   },
+   "conn": {
+    "id": "HK-04",
+    "correct": "correct",
+    "hallucinated": false,
+    "cites_authority": true,
+    "note": "Chang Pui Yin (CA), unconscionability plus CECO unreasonableness. Hedges the UCO attribution but names Cap. 458 correctly."
+   }
+  },
+  "HK-05": {
+   "bare": {
+    "id": "HK-05",
+    "correct": "correct",
+    "hallucinated": false,
+    "cites_authority": true,
+    "note": "Heavily hedged but states the key substance: clause failed s.4 Cap.284 / CECO reasonableness. Remedy detail omitted."
+   },
+   "conn": {
+    "id": "HK-05",
+    "correct": "correct",
+    "hallucinated": false,
+    "cites_authority": true,
+    "note": "Clause of no effect under Cap. 284 s.4 for failing CECO s.3(1); rescission and expenses recovered."
+   }
+  },
+  "HK-06": {
+   "bare": {
+    "id": "HK-06",
+    "correct": "correct",
+    "hallucinated": false,
+    "cites_authority": true,
+    "note": "Both persuasive only, PC-appeal nuance captured; names A Solicitor (24/07) (2008) 11 HKCFAR 117."
+   },
+   "conn": {
+    "id": "HK-06",
+    "correct": "correct",
+    "hallucinated": false,
+    "cites_authority": true,
+    "note": "Both persuasive only; pre-1997 Privy Council carve-out noted; A Solicitor (2008) 11 HKCFAR 117 named."
+   }
+  },
+  "HK-07": {
+   "bare": {
+    "id": "HK-07",
+    "correct": "partial",
+    "hallucinated": false,
+    "cites_authority": true,
+    "note": "Key's answer is no HK authority; response so states, flags assumption as assumption, cites Royscot only.",
+    "correct_original": "correct",
+    "rescore_note": "Says no HK decision squarely decides it and 'I cannot name a case' — wrong, Long Year does. But correctly states the Royscot reading is assumed to apply in HK practice, which is the substantive position. Right rule, missing authority."
+   },
+   "conn": {
+    "id": "HK-07",
+    "correct": "partial",
+    "hallucinated": false,
+    "cites_authority": true,
+    "note": "Correctly reports absence of HK authority (key's own answer). Slip: calls Royscot post-1997 despite citing 1991.",
+    "correct_original": "correct",
+    "rescore_note": "Says 'the point appears open in Hong Kong' — wrong as a statement of law; it has been settled at first instance since 1991. Credit for attributing the absence to the library rather than to the law, and for hedging. The library's gap was reported faithfully; the legal conclusion drawn from it was false."
+   },
+   "_key_correction": {
+    "original_key": "No Hong Kong authority is on file on this point — the HK branch is empty.",
+    "corrected_key": "Settled at first instance, and never doubted: Long Year Development v Tse Fuk Man Norman [1991] 2 HKC 393 at 407D-408D (DHCJ Andrew Li QC) held the Cap. 284 s.3(1) measure is the deceit measure, following Royscot because the provisions are identical; applied as ratio in Joytex v Super Homes [2018] HKCFI 2286 at §142, §144; affirmed in Wong Yuk Lan v Car's City [2024] HKDC 804 at [89]-[91]; restated in Alireza v Elman [2026] HKCFI 4060 at [199]. No CA or CFA ruling.",
+    "sources_read": [
+     "[2024] HKDC 804 [90] (quotes Long Year 407D-408D verbatim)",
+     "[2018] HKCFI 2286 §142",
+     "[2026] HKCFI 4060 [199]"
+    ]
+   }
+  },
+  "HK-08": {
+   "bare": {
+    "id": "HK-08",
+    "correct": "correct",
+    "hallucinated": false,
+    "cites_authority": true,
+    "note": "Hedged but identifies the key ground: experienced controlling mind decided independently, so no inducement."
+   },
+   "conn": {
+    "id": "HK-08",
+    "correct": "correct",
+    "hallucinated": false,
+    "cites_authority": true,
+    "note": "Experienced independent trader would have traded regardless; inducement not established. Matches key ground exactly."
+   }
+  },
+  "ASOF-01": {
+   "bare": {
+    "id": "ASOF-01",
+    "correct": "correct",
+    "hallucinated": false,
+    "cites_authority": true,
+    "note": "As-of-2012 framing correct: basis clauses escape s.3 post Peekay/Springwell; First Tower correctly placed later."
+   },
+   "conn": {
+    "id": "ASOF-01",
+    "correct": "correct",
+    "hallucinated": true,
+    "cites_authority": true,
+    "note": "Correct 2012 position via Peekay/Springwell, but cites First Tower Trustees as [2018] EWCA Civ 998; actual is 1396."
+   }
+  },
+  "ASOF-02": {
+   "bare": {
+    "id": "ASOF-02",
+    "correct": "correct",
+    "hallucinated": false,
+    "cites_authority": true,
+    "note": "2014 position given as unsettled; Hayward UKSC 2016 correctly identified as the change. No anachronism."
+   },
+   "conn": {
+    "id": "ASOF-02",
+    "correct": "correct",
+    "hallucinated": false,
+    "cites_authority": true,
+    "note": "2014 unsettled, belief-in-truth framing; Hayward [2016] UKSC 48 as the change. Redgrave and Edgington cited accurately."
+   }
+  },
+  "ASOF-03": {
+   "bare": {
+    "id": "ASOF-03",
+    "correct": "correct",
+    "hallucinated": false,
+    "cites_authority": true,
+    "note": "Fraud-strengthened presumption, near-irrebuttable; names Rembrandt [2019] EWCA Civ 596."
+   },
+   "conn": {
+    "id": "ASOF-03",
+    "correct": "correct",
+    "hallucinated": false,
+    "cites_authority": true,
+    "note": "Very difficult to rebut in fraud; 'a' cause test; Rembrandt [2019] EWCA Civ 596 correctly cited."
+   }
+  },
+  "ASOF-04": {
+   "bare": {
+    "id": "ASOF-04",
+    "correct": "correct",
+    "hallucinated": false,
+    "cites_authority": true,
+    "note": "Formally good law but correctness reserved in Smith New Court; accurate added qualification on contributory negligence."
+   },
+   "conn": {
+    "id": "ASOF-04",
+    "correct": "correct",
+    "hallucinated": false,
+    "cites_authority": true,
+    "note": "Formally good law but doubted; Smith New Court left correctness open. Neither overstates nor claims overruling."
+   }
+  },
+  "ASOF-05": {
+   "bare": {
+    "id": "ASOF-05",
+    "correct": "correct",
+    "hallucinated": false,
+    "cites_authority": true,
+    "note": "Order and directions match key; flags Chang Pui Yin as the Hong Kong CA decision."
+   },
+   "conn": {
+    "id": "ASOF-05",
+    "correct": "correct",
+    "hallucinated": false,
+    "cites_authority": true,
+    "note": "Order and directions match key exactly; identifies Chang Pui Yin as the Hong Kong narrowing decision."
+   }
+  },
+  "SG-01": {
+   "bare": {
+    "id": "SG-01",
+    "correct": "partial",
+    "hallucinated": false,
+    "cites_authority": true,
+    "note": "Characterisation right (inference of fact, burden on representee) but names Broadley, not the key's Wee Chiaw Sek Anna.",
+    "correct_original": "partial",
+    "rescore_note": "Right on the Singapore characterisation and on the burden. Wrong that the English articulation casts the burden onto the representor (BV Nederlandse [43] says it does not). Cites Broadley Construction [2018] SGCA 25 rather than Wee Chiaw Sek Anna; not verified here, verdict does not turn on it."
+   },
+   "conn": {
+    "id": "SG-01",
+    "correct": "partial",
+    "hallucinated": false,
+    "cites_authority": true,
+    "note": "Inference of fact, legal burden stays on representee, weaker than England; Wee Chiaw Sek Anna named.",
+    "correct_original": "correct",
+    "rescore_note": "Right authority (Wee Chiaw Sek Anna) and right characterisation. Wrong that this is 'weaker than the English articulation, where the presumption operates as a genuine evidential shift' — that is the library's withdrawn divergence, repeated. Was marked correct for matching a key that was itself wrong."
+   },
+   "_key_correction": {
+    "original_key": "Singapore treats it as a fair inference of fact, not law, burden on the representee — subtly weaker than the English rebuttable-presumption formulation.",
+    "corrected_key": "Singapore's characterisation is right (Wee Chiaw Sek Anna [2013] SGCA 36 at [45], [91]) but it is NOT a divergence: England says the same. Hayward v Zurich [2016] UKSC 48 at [34]: 'not a presumption of law but an inference of fact'; BV Nederlandse [2019] EWCA Civ 596 at [43]: evidential presumption of fact, legal burden not reversed. Both cite the same Chitty passage. The only surviving EN/SG gap is whether belief is required (Hayward [23], [25]).",
+    "sources_read": [
+     "[2016] UKSC 48 [23], [25], [34]",
+     "[2019] EWCA Civ 596 [41]-[43]",
+     "[2013] SGCA 36 [45], [91]"
+    ]
+   }
+  },
+  "SG-02": {
+   "bare": {
+    "id": "SG-02",
+    "correct": "correct",
+    "hallucinated": false,
+    "cites_authority": true,
+    "note": "Open, not adopted; RBC Properties [2014] SGCA 62 correctly named and its reservation described."
+   },
+   "conn": {
+    "id": "SG-02",
+    "correct": "correct",
+    "hallucinated": false,
+    "cites_authority": true,
+    "note": "Opens with 'No' but immediately states the point was expressly left undecided in RBC Properties; position open."
+   }
+  },
+  "SG-03": {
+   "bare": {
+    "id": "SG-03",
+    "correct": "partial",
+    "hallucinated": false,
+    "cites_authority": true,
+    "note": "AELA 1993 First Schedule mechanism right; misses the added 12 November 1993 transitional provision, denying any Singapore-only content."
+   },
+   "conn": {
+    "id": "SG-03",
+    "correct": "correct",
+    "hallucinated": false,
+    "cites_authority": true,
+    "note": "AELA 1993 First Schedule reception, Singapore-only 12 November 1993 transitional, no CRA 2015 amendment."
+   }
+  },
+  "SG-04": {
+   "bare": {
+    "id": "SG-04",
+    "correct": "correct",
+    "hallucinated": false,
+    "cites_authority": true,
+    "note": "Open question; Als Memasa [2012] SGCA 43 named as the flag. Orient Centre omitted but not asked."
+   },
+   "conn": {
+    "id": "SG-04",
+    "correct": "correct",
+    "hallucinated": false,
+    "cites_authority": true,
+    "note": "Open question; Orient Centre effect for sophisticated parties; Als Memasa obiter flagged it and left UCTA open."
+   }
+  },
+  "CTRL-01": {
+   "bare": {
+    "id": "CTRL-01",
+    "correct": "correct",
+    "hallucinated": false,
+    "cites_authority": true,
+    "note": "Declines the posited distinction, cites only general English half-truth authority; no Hong Kong case confabulated."
+   },
+   "conn": {
+    "id": "CTRL-01",
+    "correct": "correct",
+    "hallucinated": false,
+    "cites_authority": false,
+    "note": "Correctly reports no authority (the key's answer); confabulates no HK case; names no case or statute."
+   }
+  },
+  "CTRL-02": {
+   "bare": {
+    "id": "CTRL-02",
+    "correct": "partial",
+    "hallucinated": false,
+    "cites_authority": true,
+    "note": "Gives With v O'Flanagan and ACL s.18 as key does, but asserts Australian authority (genuine cases) instead of flagging the gap."
+   },
+   "conn": {
+    "id": "CTRL-02",
+    "correct": "correct",
+    "hallucinated": false,
+    "cites_authority": true,
+    "note": "States library gap, gives With v O'Flanagan and ACL s.18. Australian cases named are real and hedged."
+   }
+  },
+  "CTRL-03": {
+   "bare": {
+    "id": "CTRL-03",
+    "correct": "correct",
+    "hallucinated": false,
+    "cites_authority": true,
+    "note": "No general equivalent; correctly limits TDO Cap.362 and SFO Cap.571 as sector-specific. Cap.284 identified as the model."
+   },
+   "conn": {
+    "id": "CTRL-03",
+    "correct": "correct",
+    "hallucinated": false,
+    "cites_authority": true,
+    "note": "No HK equivalent; Australia the outlier; Cap. 284 model. TDO Cap. 362 and SFO s.108 accurately narrowed."
+   }
+  },
+  "CTRL-04": {
+   "bare": {
+    "id": "CTRL-04",
+    "correct": "correct",
+    "hallucinated": false,
+    "cites_authority": true,
+    "note": "Rejects the premise, names SPH v SA and Spiliada, states no numerical weighting exists."
+   },
+   "conn": {
+    "id": "CTRL-04",
+    "correct": "correct",
+    "hallucinated": false,
+    "cites_authority": true,
+    "note": "Rejects false premise; SPH v SA adopting Spiliada, multi-factor balance, no numerical weights supplied."
+   }
+  }
+ }
+}

@@ -13,3 +13,6 @@ doctrine-connector/
 
 # the paper is kept out of this repository
 paper/
+
+# exp3 run artefacts: prompts are regenerable, answers must not be committed before judging
+experiments/exp3-hk-matter/runs/
