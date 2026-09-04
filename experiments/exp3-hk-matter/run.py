@@ -14,10 +14,10 @@ things and deliberately not a fourth:
   blind   shuffle the outputs under opaque labels and write the key to a
           separate file, so the judge never sees the condition.
 
-It does NOT judge. Judging is a separate, pre-registered step: the rubric in
-tasks.json is the key, each criterion is pass/fail, and the judge sees only the
-blinded output and the criterion text. judge.py is the place for that once a
-judge protocol is agreed. Do not collapse the two into one script.
+It does NOT judge. Judging is judge.py, a separate step that sees one blinded
+output and one criterion per call and never reads the key; scoring and
+unblinding are score.py, run only after every verdict is on disk. Do not
+collapse the three into one script.
 
     python run.py build
     MODEL_CMD='...' python run.py run
@@ -138,7 +138,9 @@ def blind():
         task, cond = fn.split(".")[0], fn.split(".")[1]
         key[lbl] = {"task": task, "condition": cond}
         with open(os.path.join(bd, f"{lbl}.md"), "w", encoding="utf-8", newline="\n") as f:
-            f.write(open(os.path.join(OUT, fn), encoding="utf-8").read())
+            # task id on line 1 so judge.py can select the rubric; the CONDITION
+            # is deliberately not here — it lives only in blind_key.json
+            f.write(f"<!-- task:{task} -->\n" + open(os.path.join(OUT, fn), encoding="utf-8").read())
     with open(os.path.join(OUT, "blind_key.json"), "w", encoding="utf-8") as f:
         json.dump(key, f, indent=1)
     print(f"blinded {len(answers)} outputs into {bd}/; key in runs/blind_key.json — "

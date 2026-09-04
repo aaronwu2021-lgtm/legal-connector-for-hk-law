@@ -101,11 +101,15 @@ curl -X POST https://doctrine-drift-atlas.netlify.app/api/mcp \
 items with pre-registered answer keys, the connector payload, both answer sets,
 the blinding key and the per-item verdicts.
 
-**Experiment 3** is self-contained and unrun: `cd experiments/exp3-hk-matter &&
-python build_tasks.py && python validate_tasks.py` regenerates the tasks and the
-synthetic matter files, and checks every rubric criterion against the element
-library. Running the tasks against a model still needs a judge protocol and a
-blinding key, which are not in the directory yet.
+**Experiment 3** is self-contained and unrun. `build_tasks.py` and
+`validate_tasks.py` regenerate the tasks and check every criterion against the
+library. The full protocol is four scripts, deliberately separate: `run.py build`
+assembles one prompt per (task, condition) from the running local API; `run.py
+run` completes them through a vendor-neutral `MODEL_CMD`; `run.py blind`
+shuffles the outputs under opaque labels; `judge.py` grades one blinded output
+against one criterion per call and never reads the key; `score.py` unblinds and
+reports criteria, all-pass, and the drift-sensitive subset with McNemar's exact
+test. No result is reported because none has been run.
 
 **Experiment 1** references [harveyai/harvey-labs](https://github.com/harveyai/harvey-labs)
 (MIT). Its rubric text and matter documents are **not** redistributed here.

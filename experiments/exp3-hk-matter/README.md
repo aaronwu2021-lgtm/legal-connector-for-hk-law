@@ -80,9 +80,9 @@ rather than recall, and it is the claim the connector's `as_of` queries make.
 - **The rubrics inherit the library's coverage.** They test the parts of Hong
   Kong misrepresentation law that have been read; they say nothing about the
   parts that have not.
-- **No result may be reported from this file alone.** Running it requires a
-  judge protocol, blinding, and a pre-registered scoring key, none of which is
-  in this directory yet.
+- **No result may be reported from this file alone.** The protocol now exists
+  (`run.py` → `judge.py` → `score.py`, see the README at the repository root)
+  but has not been run; the rubric in `tasks.json` is the pre-registered key.
 - **The matter files are synthetic** and marked as such in an HTML comment at
   the head of each. Parties, sums and dates are invented. They are drafted to be
   closed-universe: everything needed to apply the law is in the file, and
