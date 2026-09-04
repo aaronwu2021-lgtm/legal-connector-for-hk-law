@@ -26,10 +26,21 @@ Live: https://doctrine-drift-atlas.netlify.app
 ## Working rules
 
 **Verification levels are load-bearing.** Every authority carries `verified`:
-`unverified` → `web` (checked against accessible sources) → `primary` (pin-cited
-to a judgment paragraph). Nothing is at `primary` yet. Never upgrade a level
-without actually reading the source, and never add an authority at `web` that
-you have not checked.
+`unverified` → `web` (checked against accessible sources) → `quoted` (the
+operative passage read verbatim in a later judgment that pin-cites it, the
+report itself unseen) → `primary` (the judgment text itself read, with a pin
+cite). Never upgrade a level without actually reading the source, and never add
+an authority at `web` that you have not checked. `verified-quoted` exists so
+that "a later court quoted it at length" does not get laundered into "I read
+it" — do not collapse the two to save a level. `A()` refuses `primary` or
+`quoted` without a pin, and `quoted` without the quoting judgment.
+
+**BAILII and AustLII are off limits to automation.** AustLII returns 403;
+BAILII now serves a proof-of-work anti-bot challenge. Do not attempt to defeat
+either — use Find Case Law (`caselaw.nationalarchives.gov.uk/<court>/<year>/<num>/data.xml`,
+Akoma Ntoso with paragraph numbers, English judgments from ~2003) and
+eLitigation (`elitigation.sg/gd/s/<year>_SGCA_<num>`), both of which serve
+plain requests.
 
 **Weights are `doctrinal-tier`, not law.** Tiers map to bands (heavy 20–30% …
 marginal 1–4%). No court assigns numbers. If a factor gets an empirical weight

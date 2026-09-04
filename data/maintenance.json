@@ -1792,16 +1792,16 @@
      "y": 2016,
      "f": 0.7,
      "case": "Hayward v Zurich (UKSC)",
-     "treat": "broadens",
-     "eff": "Belief in truth not required; suspicion does not defeat reliance"
+     "treat": "broadens · confines",
+     "eff": "Belief in truth not required and suspicion does not defeat reliance ([23], [25]) — but the presumption is expressly 'not a presumption of law but an inference of fact' ([34])"
     },
     {
      "j": "EN",
      "y": 2019,
-     "f": 0.9,
+     "f": 0.6,
      "case": "BV Nederlandse v Rembrandt",
-     "treat": "clarifies",
-     "eff": "In fraud the presumption is very difficult to rebut; 'a' cause suffices"
+     "treat": "confines",
+     "eff": "An evidential presumption of fact, not law; the legal burden is not reversed; very difficult to rebut and 'a' cause suffices ([41]-[43])"
     },
     {
      "j": "SG",
@@ -1814,10 +1814,10 @@
     {
      "j": "SG",
      "y": 2013,
-     "f": 0.1,
+     "f": 0.3,
      "case": "Wee Chiaw Sek Anna (SGCA)",
-     "treat": "narrows",
-     "eff": "Inference of fact, not law; burden of proving reliance stays on the representee"
+     "treat": "anticipates",
+     "eff": "'A fair inference of fact (although not an inference of law)', strongest in fraud, burden on the representee ([45], [91]) — the same position England reached in 2016, from the same Chitty passage, three years earlier"
     },
     {
      "j": "HK",

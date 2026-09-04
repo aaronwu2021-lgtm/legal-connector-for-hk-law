@@ -3,19 +3,24 @@ import json
 from _paths import emit
 
 W = "verified-web"
+Q = "verified-quoted"
 P = "verified-primary"
 
 def A(case, cite, court=None, note=None, v=W, pin=None, src=None):
     # pin: the paragraph or page carrying the proposition. Required at
-    # verified-primary — that level means the judgment text was read, not that
-    # the citation was matched against a secondary source.
+    # verified-quoted and verified-primary. verified-primary means the judgment
+    # text itself was read; verified-quoted means the operative passage was read
+    # verbatim in a later judgment that pin-cites it, the report itself unseen.
+    # The distinction is load-bearing: do not collapse it to save a level.
     d = {"case": case, "cite": cite, "verified": v}
     if court: d["court"] = court
     if pin: d["pin"] = pin
     if src: d["source"] = src
     if note: d["note"] = note
-    if v == P and not pin:
-        raise ValueError(f"verified-primary requires a pin cite: {case}")
+    if v in (P, Q) and not pin:
+        raise ValueError(f"{v} requires a pin cite: {case}")
+    if v == Q and not src:
+        raise ValueError(f"verified-quoted requires the quoting judgment: {case}")
     return d
 
 DATA = {
@@ -27,13 +32,16 @@ DATA = {
  "verification_levels": {
    "unverified": "drafted from doctrine, not checked",
    "verified-web": "checked against accessible primary/reputable secondary sources (2026-08-24)",
-   "verified-primary": "checked against full judgment/statute text with paragraph pin cite (target state)"
+   "verified-quoted": "the operative passage was read verbatim in a later judgment that pin-cites it; the law report itself has not been seen. Used where no free full text exists (pre-1997 HK first instance, pre-2001 English reports)",
+   "verified-primary": "the judgment text itself was read, with a paragraph or page pin cite"
  },
  "elements": [
   {"id":"E1","zh":"虚假事实陈述","en":"False statement of existing fact","sub_tests":[
     {"id":"E1a","zh":"事实 vs 意见","en":"Fact vs opinion",
      "test":"Opinion or intention is not actionable UNLESS not honestly held (state of mind is itself a fact), or the opinion is given by a party with superior knowledge so as to imply facts justifying it; pure opinion where both parties know there is no factual basis is not actionable.",
-     "auth":[A("Edgington v Fitzmaurice","(1885) 29 Ch D 459","EWCA"),
+     "auth":[A("Edgington v Fitzmaurice","(1885) 29 Ch D 459","EWCA",v=Q,pin="483 per Bowen LJ",
+               src="pin-cited and quoted in Tan Chin Seng v Raffles Town Club [2003] SGCA 27 at [12]",
+               note="'a misstatement of the state of a man's mind is a misrepresentation of fact'"),
              A("Smith v Land and House Property Corp","(1884) 28 Ch D 7","EWCA"),
              A("Bisset v Wilkinson","[1927] AC 177","PC (NZ)")]},
     {"id":"E1b","zh":"半真陈述","en":"Half-truth",
@@ -60,10 +68,16 @@ DATA = {
     {"id":"E3c","zh":"诱导推定","en":"Presumption of inducement","drift":"T2",
      "test":"A material representation calculated to induce raises an inference/presumption of inducement; in fraud the presumption is very difficult to rebut and the test is whether the representation was 'a' cause, not 'the' cause. Jurisdictions diverge — see timeline T2.",
      "auth":[A("Redgrave v Hurd","(1881) 20 Ch D 1","EWCA"),
-             A("BV Nederlandse Industrie van Eiprodukten v Rembrandt Enterprises","[2019] EWCA Civ 596","EWCA")]},
+             A("BV Nederlandse Industrie van Eiprodukten v Rembrandt Enterprises","[2019] EWCA Civ 596; [2020] QB 551","EWCA",v=P,
+               pin="[41]-[43] per Longmore LJ",
+               src="caselaw.nationalarchives.gov.uk/ewca/civ/2019/596",
+               note="[43] is the operative holding and it cuts AGAINST reading the presumption as one of law: 'an evidential presumption of fact (not law)', and Barton v Armstrong did not reverse the legal burden of proof")]},
     {"id":"E3d","zh":"存疑仍信赖","en":"Doubt does not defeat reliance",
-     "test":"Belief in the truth of the statement is not required: reliance survives suspicion of falsity where the statement materially influenced the decision (settlement context).",
-     "auth":[A("Hayward v Zurich Insurance","[2016] UKSC 48; [2017] AC 142","UKSC")]},
+     "test":"Belief in the truth of the statement is not required: reliance survives suspicion of falsity where the statement materially influenced the decision (settlement context). This is the point on which the English line genuinely went further than the rest of the family — not the character of the presumption, on which England agrees it is an inference of fact.",
+     "auth":[A("Hayward v Zurich Insurance","[2016] UKSC 48; [2017] AC 142","UKSC",v=P,
+               pin="[23], [25] (belief not required); [34] (inference of fact); [37] (very difficult to rebut); [49]",
+               src="caselaw.nationalarchives.gov.uk/uksc/2016/48",
+               note="Lord Clarke at [25]: 'belief is not required as an independent ingredient of the tort'")]},
     {"id":"E3e","zh":"无调查义务","en":"No duty to investigate",
      "test":"An opportunity to discover the truth is no defence; sole reliance on the representee's own independent investigation is.",
      "auth":[A("Redgrave v Hurd","(1881) 20 Ch D 1","EWCA"),
@@ -88,7 +102,7 @@ DATA = {
     {"id":"E5c","zh":"法定赔偿标准","en":"Statutory measure","drift":"T3",
      "test":"s.2(1)-type damages assessed on the deceit measure via the 'fiction of fraud' — formally good law in England but doubted (left open in Smith New Court); ADOPTED and undoubted in Hong Kong since 1991; open in Singapore with SGCA obiter against.",
      "auth":[A("Royscot Trust v Rogerson","[1991] 2 QB 297","EWCA",note="criticised; correctness left open in Smith New Court"),
-             A("Long Year Development v Tse Fuk Man Norman","[1991] 2 HKC 393","HK High Court",v=P,pin="407D-408D (measure); 408B-C",
+             A("Long Year Development v Tse Fuk Man Norman","[1991] 2 HKC 393","HK High Court",v=Q,pin="407D-408D (measure); 408B-C",
                src="quoted verbatim in Wong Yuk Lan v Car's City [2024] HKDC 804 at [90] and pin-cited in Joytex [2018] HKCFI 2286 at §142 and Alireza v Elman [2026] HKCFI 4060 at [199]",
                note="DHCJ Andrew Li QC (later CJ): 'the measure of damages for s 3(1) of the Ordinance is the same as that for deceit' — Royscot followed as 'highly persuasive as the legislative provisions are identical'"),
              A("Joytex Development v Super Homes","[2018] HKCFI 2286","HKCFI",v=P,pin="§142, §144",
@@ -101,9 +115,17 @@ DATA = {
  "defences": [
   {"id":"D1","zh":"Non-reliance / 整体协议条款","en":"Non-reliance / entire agreement clause","drift":"T1",
    "test":"Contractual estoppel: parties may agree that no representations were made or relied on, barring non-fraudulent claims. Exceptions: fraud can never be excluded; statutory reasonableness control applies where the jurisdiction provides it. Sharpest cross-jurisdiction divergence — see timeline T1.",
-   "auth":[A("Peekay Intermark v ANZ","[2006] EWCA Civ 386","EWCA"),
-           A("Springwell Navigation v JP Morgan Chase","[2010] EWCA Civ 1221","EWCA"),
-           A("First Tower Trustees v CDS (Superstores)","[2018] EWCA Civ 1396","EWCA")]},
+   "auth":[A("Peekay Intermark v ANZ","[2006] EWCA Civ 386","EWCA",v=P,pin="[56] per Moore-Bick LJ",
+             src="caselaw.nationalarchives.gov.uk/ewca/civ/2006/386",
+             note="the founding passage: parties may agree that a state of affairs forms the basis of the transaction 'whether it be the case or not' — but expressly only 'so far as concerns those aspects of their relationship to which the agreement was directed'"),
+           A("Springwell Navigation v JP Morgan Chase","[2010] EWCA Civ 1221","EWCA",v=P,
+             pin="[143]-[144] (estoppel in principle); [181]-[183] (s.3 and reasonableness) per Aikens LJ",
+             src="caselaw.nationalarchives.gov.uk/ewca/civ/2010/1221",
+             note="often read as the high-water mark, but Aikens LJ held at [181]-[182] that parts of the clauses WERE exemption clauses within s.3 — First Tower Trustees at [49]-[50] relies on Springwell for exactly that point"),
+           A("First Tower Trustees v CDS (Superstores)","[2018] EWCA Civ 1396","EWCA",v=P,
+             pin="[47], [49]-[51] per Lewison LJ; [111] per Leggatt LJ",
+             src="caselaw.nationalarchives.gov.uk/ewca/civ/2018/1396",
+             note="Leggatt LJ at [111]: whenever a party relies on contractual estoppel to prevent the other asserting a fact necessary to establish liability for a pre-contractual misrepresentation, the term falls within s.3. Lewison LJ [47] is the passage the HK CFA quoted in Ng Lai Ling Winnie [2021] HKCFA 40 [27]")]},
   {"id":"D2","zh":"自行调查","en":"Own investigation",
    "test":"The representee relied solely on their own independent investigation rather than the statement.",
    "auth":[A("Attwood v Small","(1838) 6 Cl & F 232","HL")]}
@@ -141,7 +163,7 @@ DATA = {
        "note":"date corrected: HKLII metadata records 29 July 2018, the judgment itself is dated 30 July 2018"},
       {"name":"Long Year Development Ltd v Tse Fuk Man Norman","cite":"[1991] 2 HKC 393","court":"High Court","year":1991,
        "holding":"The measure of damages under Cap. 284 s.3(1) is the same as for deceit. Royscot followed within months of it being decided, on the express ground that it was 'highly persuasive as the legislative provisions are identical'. But the deceit measure is the TORTIOUS measure: the plaintiff is put in the position he would have been in had the representation not been made, not the position had it been true. Loss-of-a-chance claim on a putative alternative purchase rejected for want of evidence (409F-410D).",
-       "maps_to":["E5","E5c"],"verified":P,"pin":"407D-408D; 408B-C; 409F-410D",
+       "maps_to":["E5","E5c"],"verified":Q,"pin":"407D-408D; 408B-C; 409F-410D",
        "note":"DHCJ Andrew Li QC, later the first Chief Justice of the CFA. Judgment text not on HKLII (pre-1997); verified from verbatim quotation in Wong Yuk Lan [2024] HKDC 804 at [90] plus pin cites in Joytex [2018] HKCFI 2286 §142 and Alireza [2026] HKCFI 4060 [199]"},
       {"name":"Joytex Development Ltd v Super Homes Ltd","cite":"[2018] HKCFI 2286","court":"CFI","year":2018,
        "holding":"s.3(1) damages awarded on the deceit measure; damages under s.3(1) may be claimed together with rescission. Objective construction of representations from the perspective of a reasonable person in the representee's position, taking the representee's sophistication into account (§77(2)); cumulative effect of multiple representations (§80); no defence that the representee could have discovered the truth (§116).",
@@ -183,17 +205,19 @@ DATA = {
       {"name":"Panatron v Lee Cheow Lee","cite":"[2001] SGCA 49; [2001] 2 SLR(R) 435","court":"SGCA","year":2001,
        "holding":"Deceit elements per Derry v Peek; inducement requires a 'real and substantial part', not sole causation; failure to verify is no defence.","maps_to":["E4","E3"],"verified":W},
       {"name":"Tan Chin Seng v Raffles Town Club (No 2)","cite":"[2003] SGCA 27","court":"SGCA","year":2003,
-       "holding":"A statement of intention is actionable only if the intention is not honestly held.","maps_to":["E1"],"verified":W},
+       "holding":"A statement as to a man's intention or state of mind is itself a statement of fact, and a misstatement of it is a misrepresentation of fact (Edgington v Fitzmaurice at 483 per Bowen LJ applied). Promotional statements about a club yet to be built were not mere puff.","maps_to":["E1","E1a"],"verified":P,"pin":"[12]-[13], [19], [29]"},
       {"name":"Orient Centre Investments v Societe Generale","cite":"[2007] SGCA 24","court":"SGCA","year":2007,
        "holding":"Non-reliance and acknowledgment clauses defeated misrepresentation claims between sophisticated parties.","maps_to":["D1"],"verified":W},
       {"name":"Als Memasa v UBS AG","cite":"[2012] SGCA 43","court":"SGCA","year":2012,
        "holding":"Obiter: courts may need to reconsider full immunity via non-reliance clauses for unsophisticated customers; UCTA applicability expressly left open.","maps_to":["D1"],"verified":W},
       {"name":"Wee Chiaw Sek Anna v Ng Li-Ann Genevieve","cite":"[2013] SGCA 36; [2013] 3 SLR 801","court":"SGCA","year":2013,
-       "holding":"The inducement 'presumption' is a fair inference of fact, not of law; the burden of proving reliance stays on the representee — weaker than the English articulation.","maps_to":["E3"],"verified":W},
+       "holding":"The inducement 'presumption' is 'a fair inference of fact (although not an inference of law)', particularly strong where the misrepresentation was fraudulent (Chitty, 31st ed, para 6-039 adopted); the burden of proving inducement lies on the representee.","maps_to":["E3","E3c"],"verified":P,"pin":"[45], [91]",
+       "note":"previously recorded as a divergence weaker than England. It is not: Hayward [2016] UKSC 48 [34] adopted the same Chitty formulation three years later, and BV Nederlandse [2019] EWCA Civ 596 [43] confirmed the legal burden is not reversed in England either"},
       {"name":"RBC Properties v Defu Furniture","cite":"[2014] SGCA 62; [2015] 1 SLR 997","court":"SGCA","year":2014,
-       "holding":"s.2(1) imposes a dual burden (objective reasonable ground plus subjective belief to contract time), demanding and fact-centric; Royscot's fiction of fraud doubted obiter and left open.","maps_to":["E4","E5"],"verified":W}],
+       "holding":"s.2(1) imposes a dual burden (objective reasonable ground plus subjective belief to contract time), demanding and fact-centric. On the measure: 'The decision in Royscot Trust ought not to be followed' ([84]) — but expressly reserved, since the issue was not argued and the result did not turn on it ([85]).","maps_to":["E4","E4b","E5","E5c"],"verified":P,"pin":"[83]-[85]",
+       "note":"[85] is why this stays 'doubts · obiter' and not 'rejects': 'we will express a conclusive view only when it is next directly in issue before us'"}],
     "divergences":[
-      "Inducement presumption downgraded to an inference of fact (Wee Chiaw Sek Anna)",
+      "NOT a divergence, withdrawn on reading the sources: the inducement presumption as 'an inference of fact, not of law' is the ENGLISH position too (Hayward [2016] UKSC 48 at [34]; BV Nederlandse [2019] EWCA Civ 596 at [43], neither reversing the legal burden). Wee Chiaw Sek Anna [2013] SGCA 36 at [45], [91] reached it first, from the same Chitty passage. The surviving England/Singapore gap on E3c is narrow: whether the representee must believe the representation — England says no (Hayward [23], [25]), Singapore has not decided",
       "s.2(1) measure: Royscot not adopted; SGCA lean is the negligence measure (RBC, obiter)",
       "s.3 references the pre-2015 UCTA text — no CRA 2015 consumer carve-out"]},
   "AU": {"name":"Australia","zh":"澳大利亚","regime":"conduct prohibition, no fault (sui generis) + retained common law deceit/rescission",
@@ -244,14 +268,14 @@ DATA = {
     {"j":"AU","y":1988,"f":0.9,"case":"Henjo; Clark Equipment (FCA)","treat":"excludes exclusion","eff":"s.52/s.18 liability cannot be excluded by contract at all"},
     {"j":"AU","y":2009,"f":0.5,"case":"Campbell v Backoffice (HCA)","treat":"channels","eff":"Clauses operate on causation only, not as exclusions"}]},
   "T2": {"title":"诱导推定 Inducement presumption","title_en":"Presumption of inducement","sub_test":"E3c",
-   "note":"英国线一路加强(2016 起连信其为真都不要求);新加坡 2013 反向降格为「事实推断」,举证责任留在主张方;香港 2026 年上诉法庭明确站到新加坡一侧——把 Hayward 读成「事实推断而非法律推定」,而同期原讼庭(2025)仍在陈述较强版本,故香港内部上下级口径尚未统一。",
+   "note":"更正(读原文后):此前把「事实推断 vs 法律推定」当作英星分歧,是错的。Hayward [34] 明言 'not a presumption of law but an inference of fact',BV Nederlandse [43] 再确认为 'evidential presumption of fact (not law)' 且法律举证责任不倒置——与新加坡 Wee Chiaw Sek Anna [45]、[91] 完全一致,双方且都引 Chitty 同一段。新加坡 2013 年不是背离英国,而是提前三年说了英国 2016 年才说的话。真正的分歧只有一处:representee 是否须相信陈述为真——英国 2016 年答「否」(Hayward [23]、[25]),新加坡未决。香港 2026 年上诉法庭(Koo Ming Kown [67])跟随的正是这条共同主线,而非站队新加坡。",
    "events":[
     {"j":"EN","y":1881,"f":0.3,"case":"Redgrave v Hurd","treat":"establishes","eff":"An opportunity to discover the truth is no defence"},
     {"j":"EN","y":1885,"f":0.4,"case":"Edgington v Fitzmaurice","treat":"establishes","eff":"Material representation plus contracting supports an inference of inducement; sole cause not required"},
-    {"j":"EN","y":2016,"f":0.7,"case":"Hayward v Zurich (UKSC)","treat":"broadens","eff":"Belief in truth not required; suspicion does not defeat reliance"},
-    {"j":"EN","y":2019,"f":0.9,"case":"BV Nederlandse v Rembrandt","treat":"clarifies","eff":"In fraud the presumption is very difficult to rebut; 'a' cause suffices"},
+    {"j":"EN","y":2016,"f":0.7,"case":"Hayward v Zurich (UKSC)","treat":"broadens · confines","eff":"Belief in truth not required and suspicion does not defeat reliance ([23], [25]) — but the presumption is expressly 'not a presumption of law but an inference of fact' ([34])"},
+    {"j":"EN","y":2019,"f":0.6,"case":"BV Nederlandse v Rembrandt","treat":"confines","eff":"An evidential presumption of fact, not law; the legal burden is not reversed; very difficult to rebut and 'a' cause suffices ([41]-[43])"},
     {"j":"SG","y":2001,"f":0.4,"case":"Panatron v Lee Cheow Lee (SGCA)","treat":"follows","eff":"Real and substantial part; not the sole inducement"},
-    {"j":"SG","y":2013,"f":0.1,"case":"Wee Chiaw Sek Anna (SGCA)","treat":"narrows","eff":"Inference of fact, not law; burden of proving reliance stays on the representee"},
+    {"j":"SG","y":2013,"f":0.3,"case":"Wee Chiaw Sek Anna (SGCA)","treat":"anticipates","eff":"'A fair inference of fact (although not an inference of law)', strongest in fraud, burden on the representee ([45], [91]) — the same position England reached in 2016, from the same Chitty passage, three years earlier"},
     {"j":"HK","y":2018,"f":-0.2,"case":"Shine Grace v Citibank (CFI)","treat":"applies","eff":"No inducement where the representee would have acted anyway"},
     {"j":"HK","y":2025,"f":0.7,"case":"Li Yuhong v OOO Securities (CFI)","treat":"follows","eff":"Hayward §§33-35 adopted: representation need not be the sole inducement; presumption arises on proof of falsity plus entry, strongest in fraud"},
     {"j":"HK","y":2026,"f":0.1,"case":"Koo Ming Kown v Baptist Convention (CA)","treat":"narrows","eff":"The 'presumption' is an inference of fact, not of law, rebuttable on all the evidence including the claimant's own testimony — HK CA lands where SGCA did in Wee Chiaw Sek Anna"}]},

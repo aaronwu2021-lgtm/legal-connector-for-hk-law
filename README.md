@@ -94,12 +94,25 @@ Model outputs, blinding key and verdicts are included.
 
 ## Limitations — please read before relying on any of this
 
-- **Authorities are mostly web-verified, not pin-cited.** The Hong Kong branch
-  is the exception: eight HK authorities are at `verified-primary`, read from
-  the judgment text and cited to a paragraph. Everything else was checked
-  against accessible primary or reputable secondary sources and carries no
-  paragraph pin cite. Each record carries its own level and the API reports it.
-  Several primary repositories block automated retrieval.
+- **Verification is now three levels, and most records are still at the
+  weakest.** 16 records are `verified-primary` — the judgment text was read and
+  the proposition is cited to a paragraph. 3 are `verified-quoted`, a level
+  added because it is the honest description of the evidence: the operative
+  passage was read verbatim in a later judgment that pin-cites it, but the law
+  report itself has not been seen (pre-1997 HK first instance and pre-2001
+  English reports have no free full text). The remaining 32 are `verified-web`,
+  with no paragraph pin cite. Each record carries its own level and the API
+  reports it. AustLII and BAILII both refuse automated retrieval — BAILII now
+  sits behind a proof-of-work anti-scraping challenge — so the Australian
+  authorities and the older English ones could not be upgraded.
+
+- **Reading the sources changed the doctrine, not just the citations.** The
+  dataset previously recorded Singapore as diverging from England by treating
+  the inducement presumption as an inference of fact rather than of law. Reading
+  Hayward at [34] and BV Nederlandse at [43] showed that is the English position
+  too, from the same Chitty passage; Singapore reached it three years earlier.
+  That divergence has been withdrawn. Treat the remaining `verified-web`
+  characterisations as unaudited.
 - **Weights are compiler judgement.** Tiers are labelled `doctrinal-tier`. They
   are not evidence about how courts decide, and no court assigns percentages to
   these factors.
