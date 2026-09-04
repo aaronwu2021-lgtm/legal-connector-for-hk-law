@@ -56,7 +56,10 @@ of it.
 ## Quick start
 
 ```bash
-# serve locally
+# serve locally -- no dependencies, just Node
+node server/devserver.mjs        # http://localhost:8899
+
+# or via the Netlify CLI, matching the deployed environment
 cd server && npm install && npx netlify dev
 
 # or query the live deployment
@@ -102,12 +105,12 @@ Model outputs, blinding key and verdicts are included.
 ## Limitations — please read before relying on any of this
 
 - **Verification is now three levels, and most records are still at the
-  weakest.** 16 records are `verified-primary` — the judgment text was read and
+  weakest.** 19 records are `verified-primary` — the judgment text was read and
   the proposition is cited to a paragraph. 3 are `verified-quoted`, a level
   added because it is the honest description of the evidence: the operative
   passage was read verbatim in a later judgment that pin-cites it, but the law
   report itself has not been seen (pre-1997 HK first instance and pre-2001
-  English reports have no free full text). The remaining 32 are `verified-web`,
+  English reports have no free full text). The remaining 36 are `verified-web`,
   with no paragraph pin cite. Each record carries its own level and the API
   reports it. AustLII and BAILII both refuse automated retrieval — BAILII now
   sits behind a proof-of-work anti-scraping challenge — so the Australian

@@ -320,6 +320,24 @@ DATA = {
 }
 
 emit('elements', DATA)
+
+# Verification tally. Printed rather than hand-maintained: the README and the
+# paper both quote these counts, and a hand-kept number silently goes stale the
+# first time an authority is upgraded.
+_levels = {}
+def _tally(o):
+    if isinstance(o, dict):
+        for a in o.get("auth", []) or []:
+            _levels[a.get("verified")] = _levels.get(a.get("verified"), 0) + 1
+        if ("holding" in o or "ref" in o) and "verified" in o:
+            _levels[o["verified"]] = _levels.get(o["verified"], 0) + 1
+        for v in o.values(): _tally(v)
+    elif isinstance(o, list):
+        for v in o: _tally(v)
+_tally(DATA)
+print("verification:", " ".join(f"{k.replace('verified-','')}={_levels[k]}"
+                                for k in sorted(_levels)),
+      f"total={sum(_levels.values())}")
 print("elements:", len(DATA["elements"]), "sub-tests:", sum(len(e["sub_tests"]) for e in DATA["elements"]),
       "defences:", len(DATA["defences"]),
       "jurisdiction cases:", sum(len(j.get("cases",[])) for j in DATA["jurisdictions"].values()),

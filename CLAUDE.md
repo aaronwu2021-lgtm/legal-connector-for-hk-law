@@ -75,8 +75,11 @@ never be recorded as one. HKLII carries no pre-1997 first-instance judgments.
 # rebuild everything after editing a builder
 cd scripts && for f in build_elements build_registry build_scored apply_tiers build_maintenance; do python3 $f.py; done
 
-# run locally
+# run locally -- needs the Netlify CLI
 cd server && npx netlify dev
+
+# run locally with nothing but Node (same handler, current data/)
+node server/devserver.mjs        # http://localhost:8899
 
 # deploy (needs Netlify auth)
 cd server && npx netlify deploy --prod
