@@ -19,14 +19,13 @@ Live: https://doctrine-drift-atlas.netlify.app
 - `server/` — Netlify functions. `api.mjs` is the whole API surface (REST + MCP);
   `_*.mjs` are generated data modules. `public/index.html` is the entire UI,
   single file, no build step.
-- `experiments/` — exp1 and exp2 are the two studies in the paper. exp2 is
-  self-contained; exp1 needs a local clone of harveyai/harvey-labs (not vendored
-  here). exp3 is the HK matter-file eval set and is **unrun** — do not report a
+- `experiments/` — exp1 and exp2 are the two studies written up in the paper,
+  which is kept outside this repository. exp2 is self-contained; exp1 needs a
+  local clone of harveyai/harvey-labs (not vendored here). exp3 is the HK matter-file eval set and is **unrun** — do not report a
   result from it. Its rubrics are build outputs too: edit `build_tasks.py`, then
   run `validate_tasks.py`, which fails on a criterion that is ungrounded,
   anachronistic for its `as_of`, or names no wrong answer to discriminate
   against.
-- `paper/` — JURIX 2026 short paper.
 
 ## Working rules
 

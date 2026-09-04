@@ -10,3 +10,6 @@ experiments/exp1-lab/tasks/
 _repo.tar.gz
 doctrine-connector-repo.tar.gz
 doctrine-connector/
+
+# the paper is kept out of this repository
+paper/

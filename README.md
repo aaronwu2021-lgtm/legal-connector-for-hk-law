@@ -6,7 +6,8 @@ the Model Context Protocol.
 
 Live: **https://doctrine-drift-atlas.netlify.app** — REST at `/api/*`, MCP at `/api/mcp`.
 
-This repository accompanies the JURIX 2026 short-paper submission in `paper/`.
+This repository accompanies a JURIX 2026 short-paper submission. The paper
+itself is not distributed here.
 
 ---
 
@@ -18,9 +19,8 @@ This repository accompanies the JURIX 2026 short-paper submission in `paper/`.
 | `server/` | The connector itself — Netlify serverless functions implementing the REST API and a 10-tool MCP server, plus the browser UI. MIT. |
 | `experiments/exp1-lab/` | In-benchmark pilot: 6 arbitration tasks, 2 conditions, blind paired judging over 59 legal-standard criteria. Null result. |
 | `experiments/exp2-probe/` | Jurisdiction-specific probe: 21 items, 2 conditions, blind judging against a pre-registered key. 16/21 → 21/21. |
-| `experiments/exp3-hk-matter/` | The Hong Kong matter-file eval set the paper says is missing: 5 tasks, 31 criteria, 6 drift-sensitive, with an as_of pair either side of *Chang Pui Yin*. **Unrun** — a task set with answer keys, no results claimed. |
+| `experiments/exp3-hk-matter/` | The Hong Kong matter-file eval set the paper identified as missing: 5 tasks, 31 criteria, 6 drift-sensitive, with an as_of pair either side of *Chang Pui Yin*. **Unrun** — a task set with answer keys, no results claimed. |
 | `scripts/` | Builders that regenerate every artefact in `data/` from source. |
-| `paper/` | Short paper (LaTeX + PDF). |
 
 ## Three design commitments
 
