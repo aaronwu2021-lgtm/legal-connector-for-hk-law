@@ -18,6 +18,7 @@ This repository accompanies the JURIX 2026 short-paper submission in `paper/`.
 | `server/` | The connector itself — Netlify serverless functions implementing the REST API and a 10-tool MCP server, plus the browser UI. MIT. |
 | `experiments/exp1-lab/` | In-benchmark pilot: 6 arbitration tasks, 2 conditions, blind paired judging over 59 legal-standard criteria. Null result. |
 | `experiments/exp2-probe/` | Jurisdiction-specific probe: 21 items, 2 conditions, blind judging against a pre-registered key. 16/21 → 21/21. |
+| `experiments/exp3-hk-matter/` | The Hong Kong matter-file eval set the paper says is missing: 5 tasks, 31 criteria, 6 drift-sensitive, with an as_of pair either side of *Chang Pui Yin*. **Unrun** — a task set with answer keys, no results claimed. |
 | `scripts/` | Builders that regenerate every artefact in `data/` from source. |
 | `paper/` | Short paper (LaTeX + PDF). |
 
@@ -85,6 +86,12 @@ curl -X POST https://doctrine-drift-atlas.netlify.app/api/mcp \
 **Experiment 2** is self-contained: `experiments/exp2-probe/` holds the probe
 items with pre-registered answer keys, the connector payload, both answer sets,
 the blinding key and the per-item verdicts.
+
+**Experiment 3** is self-contained and unrun: `cd experiments/exp3-hk-matter &&
+python build_tasks.py && python validate_tasks.py` regenerates the tasks and the
+synthetic matter files, and checks every rubric criterion against the element
+library. Running the tasks against a model still needs a judge protocol and a
+blinding key, which are not in the directory yet.
 
 **Experiment 1** references [harveyai/harvey-labs](https://github.com/harveyai/harvey-labs)
 (MIT). Its rubric text and matter documents are **not** redistributed here.

@@ -19,8 +19,13 @@ Live: https://doctrine-drift-atlas.netlify.app
 - `server/` — Netlify functions. `api.mjs` is the whole API surface (REST + MCP);
   `_*.mjs` are generated data modules. `public/index.html` is the entire UI,
   single file, no build step.
-- `experiments/` — the two studies in the paper. exp2 is self-contained; exp1
-  needs a local clone of harveyai/harvey-labs (not vendored here).
+- `experiments/` — exp1 and exp2 are the two studies in the paper. exp2 is
+  self-contained; exp1 needs a local clone of harveyai/harvey-labs (not vendored
+  here). exp3 is the HK matter-file eval set and is **unrun** — do not report a
+  result from it. Its rubrics are build outputs too: edit `build_tasks.py`, then
+  run `validate_tasks.py`, which fails on a criterion that is ungrounded,
+  anachronistic for its `as_of`, or names no wrong answer to discriminate
+  against.
 - `paper/` — JURIX 2026 short paper.
 
 ## Working rules
@@ -91,4 +96,11 @@ cd server && npx netlify deploy --prod
    estoppel, but through an Appeal Committee determination refusing leave.
 3. Replace tier bands with regression weights, starting with lease-vs-licence
    (352 corpus cases, the cheapest to calibrate).
-4. Build the HK matter-file eval set the paper argues is missing.
+4. ~~Build the HK matter-file eval set~~ — built, in `experiments/exp3-hk-matter`
+   (5 tasks, 31 criteria). What it still needs before it can produce a result: a
+   judge protocol, a blinding key, and a pre-registered scoring key.
+5. `propose_amendment` in `server/netlify/functions/api.mjs` declares
+   `verified: enum ['unverified','web','primary']`, but the dataset writes
+   `verified-web` / `verified-primary` / `verified-quoted`. The tool's input
+   vocabulary and the data's do not match. Changing it alters a published MCP
+   tool schema, so it has been left alone — decide deliberately.
