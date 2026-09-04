@@ -56,6 +56,17 @@ disjunctive-gateway, threshold–discretion, or presumption–rebuttal. Weights 
 meaningless for anything but balancing; the scorer refuses to score the others.
 Getting the type wrong is worse than getting a weight wrong.
 
+**Three hierarchies, kept apart.** Doctrinal (claim -> element -> sub-test),
+institutional (`court_rank` on every timeline event: 4 apex, 3 intermediate
+appellate incl. a CFA Appeal Committee determination, 2 superior first
+instance, 1 lower), and temporal (`as_of`). `timelineAsOf` returns
+`standing_rules` (highest rank, then most recent) AND `latest_rules` (most
+recent regardless), plus `latest_is_not_governing` and `subordinate_conflicts`
+where they disagree. Never collapse these back to one field: recency alone lets
+a CFI decision override the CA; rank alone hides twenty years of lower-court
+development under a 2001 CFA ruling. Events without a parenthetical court on
+their case name need an explicit `court` key or the build raises.
+
 **Coverage gaps are reported, not filled.** 58 of 68 nodes have no authority on
 file. The API says so. Do not let a model infer across a gap.
 

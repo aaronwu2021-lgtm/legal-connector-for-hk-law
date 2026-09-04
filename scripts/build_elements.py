@@ -267,9 +267,9 @@ DATA = {
   "T1": {"title":"Non-reliance / entire agreement 条款的效力","title_en":"Effect of non-reliance / entire agreement clauses","sub_test":"D1",
    "note":"同一条抗辩,四个法域四种走向:英国以成文法收窄;香港 CFI 采纳、CA 反向限缩(CFA 层面真空);新加坡挂起未决;澳大利亚从头不允许排除。",
    "events":[
-    {"j":"EN","y":2006,"f":-0.6,"case":"Peekay v ANZ","treat":"establishes","eff":"Contractual estoppel: parties may agree that no representations were made or relied on"},
-    {"j":"EN","y":2010,"f":-0.8,"case":"Springwell v JP Morgan","treat":"affirms · broadens","eff":"Estoppel effective between sophisticated commercial parties"},
-    {"j":"EN","y":2018,"f":0.4,"case":"First Tower Trustees v CDS","treat":"narrows","eff":"Basis clauses are exclusions in substance → must pass MA s.3 / UCTA s.11(1) reasonableness"},
+    {"j":"EN","y":2006,"f":-0.6,"case":"Peekay v ANZ","court":"EWCA","treat":"establishes","eff":"Contractual estoppel: parties may agree that no representations were made or relied on"},
+    {"j":"EN","y":2010,"f":-0.8,"case":"Springwell v JP Morgan","court":"EWCA","treat":"affirms · broadens","eff":"Estoppel effective between sophisticated commercial parties"},
+    {"j":"EN","y":2018,"f":0.4,"case":"First Tower Trustees v CDS","court":"EWCA","treat":"narrows","eff":"Basis clauses are exclusions in substance → must pass MA s.3 / UCTA s.11(1) reasonableness"},
     {"j":"HK","y":2001,"f":0.5,"case":"Green Park Properties v Dorku (CFA)","treat":"pre-figures","eff":"Entire agreement clause of no effect under MO s.4 — failed CECO s.3(1) reasonableness"},
     {"j":"HK","y":2013,"f":-0.6,"case":"DBS v San-Hot (CFI)","treat":"adopts","eff":"Peekay/Springwell contractual estoppel 'also applies in Hong Kong'"},
     {"j":"HK","y":2015,"f":-0.7,"case":"DBS v Sit Pan Jit (CFI)","treat":"affirms","eff":"Non-reliance clauses upheld; extended to SFO statutory claims"},
@@ -282,10 +282,10 @@ DATA = {
   "T2": {"title":"诱导推定 Inducement presumption","title_en":"Presumption of inducement","sub_test":"E3c",
    "note":"更正(读原文后):此前把「事实推断 vs 法律推定」当作英星分歧,是错的。Hayward [34] 明言 'not a presumption of law but an inference of fact',BV Nederlandse [43] 再确认为 'evidential presumption of fact (not law)' 且法律举证责任不倒置——与新加坡 Wee Chiaw Sek Anna [45]、[91] 完全一致,双方且都引 Chitty 同一段。新加坡 2013 年不是背离英国,而是提前三年说了英国 2016 年才说的话。真正的分歧只有一处:representee 是否须相信陈述为真——英国 2016 年答「否」(Hayward [23]、[25]),新加坡未决。香港 2026 年上诉法庭(Koo Ming Kown [67])跟随的正是这条共同主线,而非站队新加坡。",
    "events":[
-    {"j":"EN","y":1881,"f":0.3,"case":"Redgrave v Hurd","treat":"establishes","eff":"An opportunity to discover the truth is no defence"},
-    {"j":"EN","y":1885,"f":0.4,"case":"Edgington v Fitzmaurice","treat":"establishes","eff":"Material representation plus contracting supports an inference of inducement; sole cause not required"},
+    {"j":"EN","y":1881,"f":0.3,"case":"Redgrave v Hurd","court":"EWCA","treat":"establishes","eff":"An opportunity to discover the truth is no defence"},
+    {"j":"EN","y":1885,"f":0.4,"case":"Edgington v Fitzmaurice","court":"EWCA","treat":"establishes","eff":"Material representation plus contracting supports an inference of inducement; sole cause not required"},
     {"j":"EN","y":2016,"f":0.7,"case":"Hayward v Zurich (UKSC)","treat":"broadens · confines","eff":"Belief in truth not required and suspicion does not defeat reliance ([23], [25]) — but the presumption is expressly 'not a presumption of law but an inference of fact' ([34])"},
-    {"j":"EN","y":2019,"f":0.6,"case":"BV Nederlandse v Rembrandt","treat":"confines","eff":"An evidential presumption of fact, not law; the legal burden is not reversed; very difficult to rebut and 'a' cause suffices ([41]-[43])"},
+    {"j":"EN","y":2019,"f":0.6,"case":"BV Nederlandse v Rembrandt","court":"EWCA","treat":"confines","eff":"An evidential presumption of fact, not law; the legal burden is not reversed; very difficult to rebut and 'a' cause suffices ([41]-[43])"},
     {"j":"SG","y":2001,"f":0.4,"case":"Panatron v Lee Cheow Lee (SGCA)","treat":"follows","eff":"Real and substantial part; not the sole inducement"},
     {"j":"SG","y":2013,"f":0.3,"case":"Wee Chiaw Sek Anna (SGCA)","treat":"anticipates","eff":"'A fair inference of fact (although not an inference of law)', strongest in fraud, burden on the representee ([45], [91]) — the same position England reached in 2016, from the same Chitty passage, three years earlier"},
     {"j":"HK","y":2018,"f":-0.2,"case":"Shine Grace v Citibank (CFI)","treat":"applies","eff":"No inducement where the representee would have acted anyway"},
@@ -294,7 +294,7 @@ DATA = {
   "T3": {"title":"法定赔偿标准(fiction of fraud)","title_en":"Statutory damages measure","sub_test":"E5c",
    "note":"Royscot 把 s.2(1) 赔偿拉到欺诈标准;上议院 1996 存疑搁置;新加坡 2014 obiter 反对、悬而未决;澳洲无对应条文。香港是全家族中立场最稳的:1991 年即采纳,三十余年无一判决动摇,反而是英国本土存疑、新加坡倾向拒绝——即「祖宗法域已生疑,继受法域仍笃守」的倒置。",
    "events":[
-    {"j":"EN","y":1991,"f":0.8,"case":"Royscot Trust v Rogerson","treat":"establishes","eff":"s.2(1) damages on the deceit measure — the fiction of fraud"},
+    {"j":"EN","y":1991,"f":0.8,"case":"Royscot Trust v Rogerson","court":"EWCA","treat":"establishes","eff":"s.2(1) damages on the deceit measure — the fiction of fraud"},
     {"j":"EN","y":1996,"f":0.4,"case":"Smith New Court (HL)","treat":"doubts","eff":"Correctness expressly left open"},
     {"j":"HK","y":1991,"f":0.8,"case":"Long Year Development v Tse Fuk Man Norman (HC)","treat":"adopts","eff":"Cap. 284 s.3(1) damages are on the deceit measure; Royscot followed the same year as 'highly persuasive as the legislative provisions are identical' (DHCJ Andrew Li QC, later CJ)"},
     {"j":"HK","y":2018,"f":0.8,"case":"Joytex v Super Homes (CFI)","treat":"applies","eff":"s.3(1) damages awarded on the deceit measure as ratio; Long Year pin-cited at 407D-408D"},
@@ -318,6 +318,38 @@ DATA = {
   "Add a remedies drift line for AU s.236 causation case law",
   "Next modules by LAB rubric demand: privilege (366 criteria / 42 tasks), discovery scope (119/32), NY Convention enforcement (32/5)"]
 }
+
+# ── court level as a modelled layer ──────────────────────────────────────
+# The parenthetical on each event's case name names the court. Make it a field,
+# and rank it, so the API can resolve the standing rule institutionally rather
+# than by date alone. Ranks are within-jurisdiction: 4 apex, 3 intermediate
+# appellate, 2 superior first instance, 1 lower first instance. A CFA Appeal
+# Committee determination refusing leave is ranked 3: apex-level and reasoned,
+# but not a substantive ruling of the court.
+COURT_RANK = {
+  "CFA": 4, "UKSC": 4, "HL": 4, "HCA": 4, "SGCA": 4, "PC": 4,
+  "CFA App Ctte": 3, "CA": 3, "EWCA": 3, "FCAFC": 3, "FCA": 3,
+  "CFI": 2, "HC": 2, "EWHC": 2, "SGHC": 2, "Exchequer": 2,
+  "DC": 1,
+}
+import re as _re
+_missing = []
+for _tid, _tl in DATA["timelines"].items():
+    for _e in _tl["events"]:
+        _m = _re.search(r"\(([^()]+)\)\s*$", _e["case"])
+        _court = _e.get("court") or (_m.group(1).strip() if _m else None)
+        if _court is None:
+            # English backbone events are written without a parenthetical;
+            # infer from the well-known citation form in the effect text or
+            # default the jurisdiction's usual court for that era.
+            _court = {"EN": "EWCA", "SG": "SGCA", "AU": "HCA", "HK": "CFI"}[_e["j"]]
+        _e["court"] = _court
+        if _court not in COURT_RANK:
+            _missing.append((_tid, _e["case"], _court))
+        _e["court_rank"] = COURT_RANK.get(_court, 2)
+if _missing:
+    raise ValueError(f"unranked court(s) on timeline events: {_missing}")
+DATA["court_rank"] = COURT_RANK
 
 emit('elements', DATA)
 

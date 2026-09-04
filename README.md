@@ -47,6 +47,17 @@ rate shrunk toward a one-per-decade prior. Fitted over the misrepresentation
 family this gives 1.02 events per year for one claim family across four
 jurisdictions. `as_of` queries return the standard as it stood at a stated year.
 
+**Court level is its own layer.** Every timeline event carries a `court` and a
+`court_rank`, and an `as_of` query returns two things: the *governing*
+statement (highest court among in-force events, then most recent) and the
+*latest* statement (most recent, whatever the court), with a flag where they
+differ and a list of any lower-court decision that has since pointed the other
+way. The first implementation returned only the latest, so a later
+first-instance decision would have silently displaced the Court of Appeal.
+Rank-first alone is also wrong — for Hong Kong non-reliance clauses the highest
+in-force statement is a 2001 CFA decision that pre-dates the contractual
+estoppel doctrine entirely — which is why both are returned.
+
 The rate is sensitive to coverage, which is the honest reading of it rather than
 a caveat about it: filling a single node (the Hong Kong branch of timeline T3)
 moved the aggregate from 0.82 to 1.02. A drift rate fitted over a library with
