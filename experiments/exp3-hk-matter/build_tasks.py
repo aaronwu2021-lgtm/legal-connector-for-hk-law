@@ -10,10 +10,12 @@ stated date.
 
 Design rules, and the reason for each:
 
-1.  EVERY criterion cites a pin-cited authority in data/elements.json. If a
-    criterion cannot be grounded in a `verified-primary` or `verified-quoted`
-    record, it does not go in the rubric. A rubric built on `verified-web`
-    characterisations would test the compiler's guesses, not the law.
+1.  EVERY criterion cites authority in data/elements.json. The bar is a pin
+    cite (`verified-primary` or `verified-quoted`): a rubric built on
+    `verified-web` characterisations would test the compiler's guesses, not
+    the law. The two criteria that cannot yet meet the bar are named in the
+    output provenance string and reported by validate_tasks.py on every run,
+    not silently kept.
 
 2.  EVERY criterion names the wrong answer it discriminates against, in
     `discriminates_against`. A criterion that a model passes by writing
@@ -392,9 +394,15 @@ def main():
       "grading": "all-pass per task, matching the benchmark this set is modelled on",
       "status": "UNRUN. This is a task set with answer keys. No model has been "
                 "scored against it and no results are claimed.",
-      "provenance": "Every criterion is grounded in a verified-primary or "
-                    "verified-quoted record in data/elements.json. Criteria "
-                    "resting on verified-web characterisations were not written.",
+      "provenance": "29 of 31 criteria rest on verified-primary or "
+                    "verified-quoted records in data/elements.json. The two "
+                    "exceptions (HKM-02-b, HKM-03-b) rest on DBS Bank (HK) v "
+                    "San-Hot and DBS v Sit Pan Jit, still at verified-web with "
+                    "no pin cite; validate_tasks.py reports them on every run. "
+                    "HKM-01-d names Royscot (verified-web) but the tested "
+                    "proposition is carried by Long Year Development at its "
+                    "quoted pin. No criterion tests a web-only "
+                    "characterisation alone.",
       "counts": {"tasks": len(TASKS), "criteria": n_crit,
                  "drift_sensitive_criteria": n_drift,
                  "as_of_pairs": sum(1 for t in TASKS if t.get("pairs_with"))},

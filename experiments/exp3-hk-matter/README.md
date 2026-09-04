@@ -23,6 +23,8 @@ set that tests it.
 |---|---|
 | `build_tasks.py` | The task definitions and the synthetic matter files. Run it to regenerate `tasks.json` and `matter/`. |
 | `validate_tasks.py` | Checks the rubrics against `data/elements.json`. Exits non-zero on an ungrounded, anachronistic or non-discriminating criterion. |
+| `build_reader_checklist.py` | Joins `tasks.json` against `data/elements.json` and regenerates `reader_checklist.md`. |
+| `reader_checklist.md` | The independent-reader queue: P0 items block any run. Build output — edit the builder, not this. |
 | `tasks.json` | 5 tasks, 31 criteria, 6 drift-sensitive. Build output — edit the builder, not this. |
 | `matter/` | 13 synthetic matter files. Build output. |
 
@@ -48,10 +50,13 @@ Grading is all-pass per task, matching the benchmark this set is modelled on.
 A criterion resting on a `verified-web` characterisation would test the
 compiler's guesses rather than the law, so `validate_tasks.py` resolves each
 criterion's authority against `data/elements.json` and fails the build if it
-does not exist or post-dates the task's `as_of`. Three criteria rest on
-authorities still at `verified-web` (Royscot itself, DBS v San-Hot); the
-validator reports them rather than hiding them, because in each the proposition
-tested is carried by a pinned Hong Kong case cited alongside.
+does not exist or post-dates the task's `as_of`. 29 of 31 criteria meet the
+pin-cite bar; the two that do not (HKM-02-b, HKM-03-b, both on the DBS
+first-instance contractual-estoppel line, still at `verified-web` with no pin)
+are reported by the validator on every run rather than hidden. HKM-01-d names
+Royscot, also `verified-web`, but the proposition it tests is carried by Long
+Year Development at its quoted pin, so no criterion tests a web-only
+characterisation alone.
 
 Writing the validator was not ceremony. It caught a criterion on the damages
 measure that had silently been grounded on *Long v Lloyd*, a rescission case,

@@ -3,7 +3,7 @@
  "version": "v1",
  "grading": "all-pass per task, matching the benchmark this set is modelled on",
  "status": "UNRUN. This is a task set with answer keys. No model has been scored against it and no results are claimed.",
- "provenance": "Every criterion is grounded in a verified-primary or verified-quoted record in data/elements.json. Criteria resting on verified-web characterisations were not written.",
+ "provenance": "29 of 31 criteria rest on verified-primary or verified-quoted records in data/elements.json. The two exceptions (HKM-02-b, HKM-03-b) rest on DBS Bank (HK) v San-Hot and DBS v Sit Pan Jit, still at verified-web with no pin cite; validate_tasks.py reports them on every run. HKM-01-d names Royscot (verified-web) but the tested proposition is carried by Long Year Development at its quoted pin. No criterion tests a web-only characterisation alone.",
  "counts": {
   "tasks": 5,
   "criteria": 31,
