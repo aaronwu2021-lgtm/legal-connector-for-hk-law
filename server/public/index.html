@@ -399,8 +399,16 @@ async function renderTimeline(container, id){
     for(const r of data.standing_rules){
       if(!jActive[r.jurisdiction]) continue;
       const d = el('div','stand'); d.style.borderLeftColor = jColor(r.jurisdiction);
-      d.innerHTML = '<div class="jt"><span style="width:8px;height:8px;border-radius:50%;background:'+jColor(r.jurisdiction)+'"></span>'
-        + r.jurisdiction+' '+JZH[r.jurisdiction]+' · '+r.since+'</div>'+esc(r.effect)+'<div class="cs">'+esc(r.case)+' · '+esc(r.treatment)+'</div>';
+      // Three hierarchies, kept apart: the governing statement (highest court, then
+      // most recent) is the card; where the latest decision is a lower court, or a
+      // lower court has since pointed the other way, say so rather than hide it.
+      const jj = r.jurisdiction;
+      const ln = data.latest_is_not_governing && data.latest_is_not_governing[jj];
+      const cf = data.subordinate_conflicts && data.subordinate_conflicts[jj];
+      d.innerHTML = '<div class="jt"><span style="width:8px;height:8px;border-radius:50%;background:'+jColor(jj)+'"></span>'
+        + jj+' '+JZH[jj]+' · '+r.since+(r.court?' · '+esc(r.court):'')+'</div>'+esc(r.effect)+'<div class="cs">'+esc(r.case)+' · '+esc(r.treatment)+'</div>'
+        + (ln ? '<div class="cs" style="margin-top:6px;opacity:.85">最新裁决非最高层级 · latest: '+esc(ln.latest_event.case)+' ('+esc(ln.latest_event.court)+', '+ln.latest_event.year+')<br>上级法院的表述具约束力；最新裁决反映当前如何适用</div>' : '')
+        + (cf ? '<div class="cs" style="margin-top:4px;opacity:.85">下级法院此后有相反表述 · '+cf.map(function(c){return esc(c.case)+' ('+c.year+')';}).join('; ')+'<br>上级法院优先，但二者或可调和——先核对是否针对同一问题</div>' : '');
       standing.appendChild(d);
     }
     for(const j of data.jurisdictions_with_no_authority_at_as_of){
