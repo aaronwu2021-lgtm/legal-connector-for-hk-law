@@ -41,8 +41,18 @@ disjunctive-gateway, threshold–discretion, or presumption–rebuttal. Weights 
 meaningless for anything but balancing; the scorer refuses to score the others.
 Getting the type wrong is worse than getting a weight wrong.
 
-**Coverage gaps are reported, not filled.** 59 of 68 nodes have no authority on
+**Coverage gaps are reported, not filled.** 58 of 68 nodes have no authority on
 file. The API says so. Do not let a model infer across a gap.
+
+**HKLII is the working route into HK primary sources**, and it is two APIs, not
+the search box (which is reCAPTCHA-gated in the UI):
+`/api/simplesearch?searchstring=...&disablefuzzy=true` for full text,
+`/api/getjudgment?lang=en|tc&abbr=hkcfi&year=&num=` for a judgment,
+`/api/getcasenoteup?abbr=&year=&num=` for what cites it, and
+`/api/getcasefiles?caseDb=hkcfa&lang=EN&itemsPerPage=500&page=1` for the index.
+Search coverage is uneven — a "Derry v Peek" search returns 12 hits, all
+post-2021 — so a nil result is not evidence that no authority exists, and must
+never be recorded as one. HKLII carries no pre-1997 first-instance judgments.
 
 ## Common tasks
 
@@ -59,10 +69,15 @@ cd server && npx netlify deploy --prod
 
 ## Open work
 
-1. Upgrade the 22 backbone authorities from `web` to `primary` (needs judgment PDFs;
-   several repositories block automated fetch).
-2. Fill the HK branch of timeline T3 (Royscot measure under Cap. 284 s.3(1)) and
-   hunt for CFA-level non-reliance authority — see `data/maintenance.json` queue.
+1. Upgrade the remaining EN / SG / AU authorities from `web` to `primary`. The HK
+   branch is done (8 authorities, read from judgment text via the HKLII API).
+   BAILII / AustLII / e-Legislation still block automated fetch.
+2. ~~Fill the HK branch of timeline T3~~ — done: Long Year Development v Tse Fuk
+   Man Norman [1991] 2 HKC 393, 407D-408D adopted Royscot within months of it
+   being decided, and nothing has doubted it since. HK is now the family's most
+   settled pro-Royscot jurisdiction while England doubts it and Singapore leans
+   against. Q-001 is only partially answered: the apex has spoken on contractual
+   estoppel, but through an Appeal Committee determination refusing leave.
 3. Replace tier bands with regression weights, starting with lease-vs-licence
    (352 corpus cases, the cheapest to calibrate).
 4. Build the HK matter-file eval set the paper argues is missing.

@@ -3,11 +3,19 @@ import json
 from _paths import emit
 
 W = "verified-web"
+P = "verified-primary"
 
-def A(case, cite, court=None, note=None, v=W):
+def A(case, cite, court=None, note=None, v=W, pin=None, src=None):
+    # pin: the paragraph or page carrying the proposition. Required at
+    # verified-primary — that level means the judgment text was read, not that
+    # the citation was matched against a secondary source.
     d = {"case": case, "cite": cite, "verified": v}
     if court: d["court"] = court
+    if pin: d["pin"] = pin
+    if src: d["source"] = src
     if note: d["note"] = note
+    if v == P and not pin:
+        raise ValueError(f"verified-primary requires a pin cite: {case}")
     return d
 
 DATA = {
@@ -78,8 +86,17 @@ DATA = {
      "auth":[A("Doyle v Olby (Ironmongers)","[1969] 2 QB 158","EWCA"),
              A("Smith New Court v Scrimgeour Vickers","[1996] UKHL 3; [1997] AC 254","HL")]},
     {"id":"E5c","zh":"法定赔偿标准","en":"Statutory measure","drift":"T3",
-     "test":"s.2(1)-type damages assessed on the deceit measure via the 'fiction of fraud' — formally good law in England but doubted (left open in Smith New Court); open in Singapore with SGCA obiter against.",
-     "auth":[A("Royscot Trust v Rogerson","[1991] 2 QB 297","EWCA",note="criticised; correctness left open in Smith New Court")]}]}
+     "test":"s.2(1)-type damages assessed on the deceit measure via the 'fiction of fraud' — formally good law in England but doubted (left open in Smith New Court); ADOPTED and undoubted in Hong Kong since 1991; open in Singapore with SGCA obiter against.",
+     "auth":[A("Royscot Trust v Rogerson","[1991] 2 QB 297","EWCA",note="criticised; correctness left open in Smith New Court"),
+             A("Long Year Development v Tse Fuk Man Norman","[1991] 2 HKC 393","HK High Court",v=P,pin="407D-408D (measure); 408B-C",
+               src="quoted verbatim in Wong Yuk Lan v Car's City [2024] HKDC 804 at [90] and pin-cited in Joytex [2018] HKCFI 2286 at §142 and Alireza v Elman [2026] HKCFI 4060 at [199]",
+               note="DHCJ Andrew Li QC (later CJ): 'the measure of damages for s 3(1) of the Ordinance is the same as that for deceit' — Royscot followed as 'highly persuasive as the legislative provisions are identical'"),
+             A("Joytex Development v Super Homes","[2018] HKCFI 2286","HKCFI",v=P,pin="§142, §144",
+               src="hklii.hk/api/getjudgment hkcfi/2018/2286",
+               note="applies the deceit measure under Cap. 284 s.3(1) as ratio; DHCJ Alexander Stock SC"),
+             A("Wong Yuk Lan v Car's City Co Ltd","[2024] HKDC 804","HKDC",v=P,pin="[89]-[91]",
+               src="hklii.hk/api/getjudgment hkdc/2024/804 (Chinese judgment)",
+               note="quotes Long Year at 407D-408D in full; awards s.3(1) damages on the tortious/deceit measure")]}]}
  ],
  "defences": [
   {"id":"D1","zh":"Non-reliance / 整体协议条款","en":"Non-reliance / entire agreement clause","drift":"T1",
@@ -111,15 +128,43 @@ DATA = {
     "cases":[
       {"name":"Green Park Properties Ltd v Dorku Ltd","cite":"(2001) 4 HKCFAR 448","court":"CFA","year":2001,
        "holding":"Misrepresentation about a rear yard in a property sale induced the purchase; rescission plus expenses. The entire agreement clause was of no effect under MO s.4 for failing CECO s.3(1) reasonableness.","maps_to":["E3","D1"],"verified":W},
-      {"name":"DBS Bank (HK) v San-Hot HK Industrial","cite":"HCA 2279/2008; [2013] HKEC 352","court":"CFI","year":2013,
-       "holding":"Contractual estoppel following Peekay/Springwell 'also applies in Hong Kong'; non-reliance terms defeated mis-selling claims.","maps_to":["D1"],"verified":W},
+      {"name":"DBS Bank (HK) v San-Hot HK Industrial","cite":"HCA 2279/2008; [2013] 4 HKC 1; [2013] HKEC 352","court":"CFI","year":2013,
+       "holding":"Contractual estoppel following Peekay/Springwell 'also applies in Hong Kong'; non-reliance terms defeated mis-selling claims.","maps_to":["D1"],"verified":W,
+       "note":"[2013] 4 HKC 1 parallel citation and the SFO s.108 analysis at §16 per DHCJ Pow SC confirmed from Li Yuhong v OOO Securities [2025] HKCFI 5270 at [111]"},
       {"name":"DBS Bank (HK) v Sit Pan Jit","cite":"HCA 382/2009; [2015] HKEC 548","court":"CFI","year":2015,
        "holding":"Non-reliance clauses upheld via contractual estoppel, extending to statutory claims under SFO s.108.","maps_to":["D1"],"verified":W},
       {"name":"Chang Pui Yin v Bank of Singapore","cite":"[2017] 4 HKLRD 458","court":"CA","year":2017,
        "holding":"Counter-limit: non-reliance and non-advisory clauses unenforceable on the facts as unconscionable and as unreasonable exclusions under CECO, for unsophisticated customers.","maps_to":["D1"],"verified":W},
       {"name":"Shine Grace Investment v Citibank NA","cite":"[2018] HKCFI 1737","court":"CFI","year":2018,
-       "holding":"No inducement where the claimant's principal was an experienced independent trader who would have traded anyway.","maps_to":["E3"],"verified":W}],
-    "gaps":["No CFA-level contractual-estoppel authority located: D1 adoption rests at CFI with CA-level qualification."]},
+       "holding":"No inducement where the claimant's principal was an experienced independent trader who would have traded anyway.","maps_to":["E3"],"verified":P,
+       "pin":"HCCL 28/2008, judgment of Ng J dated 30 July 2018 (corrigenda 7 August 2018)",
+       "note":"date corrected: HKLII metadata records 29 July 2018, the judgment itself is dated 30 July 2018"},
+      {"name":"Long Year Development Ltd v Tse Fuk Man Norman","cite":"[1991] 2 HKC 393","court":"High Court","year":1991,
+       "holding":"The measure of damages under Cap. 284 s.3(1) is the same as for deceit. Royscot followed within months of it being decided, on the express ground that it was 'highly persuasive as the legislative provisions are identical'. But the deceit measure is the TORTIOUS measure: the plaintiff is put in the position he would have been in had the representation not been made, not the position had it been true. Loss-of-a-chance claim on a putative alternative purchase rejected for want of evidence (409F-410D).",
+       "maps_to":["E5","E5c"],"verified":P,"pin":"407D-408D; 408B-C; 409F-410D",
+       "note":"DHCJ Andrew Li QC, later the first Chief Justice of the CFA. Judgment text not on HKLII (pre-1997); verified from verbatim quotation in Wong Yuk Lan [2024] HKDC 804 at [90] plus pin cites in Joytex [2018] HKCFI 2286 §142 and Alireza [2026] HKCFI 4060 [199]"},
+      {"name":"Joytex Development Ltd v Super Homes Ltd","cite":"[2018] HKCFI 2286","court":"CFI","year":2018,
+       "holding":"s.3(1) damages awarded on the deceit measure; damages under s.3(1) may be claimed together with rescission. Objective construction of representations from the perspective of a reasonable person in the representee's position, taking the representee's sophistication into account (§77(2)); cumulative effect of multiple representations (§80); no defence that the representee could have discovered the truth (§116).",
+       "maps_to":["E1","E3","E5c"],"verified":P,"pin":"§77(2), §80, §116, §127(2), §142, §144, §152",
+       "note":"DHCJ Alexander Stock SC"},
+      {"name":"Ng Lai Ling Winnie v Ng Yuk Pui Kelly","cite":"[2021] HKCFA 40; FAMV 345/2021","court":"CFA (Appeal Committee)","year":2021,
+       "holding":"Contractual estoppel arises ONLY between parties to a contract and only on the basis of their mutual agreement, and only so far as concerns those aspects of their relationship to which the agreement was directed. A stranger to the contract containing the acknowledgment cannot raise it; as against him the transaction is res inter alios acta. Peekay treated as 'the leading case'; First Tower Trustees quoted.",
+       "maps_to":["D1"],"verified":P,"pin":"[24]-[27], [29]-[30]",
+       "note":"Ribeiro PJ, Fok PJ, Chan NPJ; reasons given on refusing leave to appeal. A reasoned Appeal Committee determination, NOT a substantive CFA appeal judgment — persuasive at apex level but it does not settle contractual estoppel in the mis-selling context"},
+      {"name":"Li Yuhong v OOO Securities (HK) Group Ltd","cite":"[2025] HKCFI 5270","court":"CFI","year":2025,
+       "holding":"Consolidated statement of the HK misrepresentation elements. Adopts Hayward v Zurich §§33-35 on inducement (need not be the sole inducement; presumption on proof of falsity plus entry, strongest in fraud) and restates the Cap. 284 s.3(1) deceit measure.",
+       "maps_to":["E1","E3","E3c","E5c"],"verified":P,"pin":"[106]-[111]"},
+      {"name":"Koo Ming Kown v The Baptist Convention of Hong Kong","cite":"[2026] HKCA 372; CACV 481/2024","court":"CA","year":2026,
+       "holding":"The inducement 'presumption' is an inference of FACT, not a presumption of law, and is rebuttable on all the relevant evidence including the claimant's own testimony (Zurich [34]; BV Nederlandse [2020] QB 551 at [25], [32] per Longmore LJ). Appeal on inducement dismissed.",
+       "maps_to":["E3c"],"verified":P,"pin":"[66]-[68]",
+       "note":"Au, Chow and Anthony Chan JJA; judgment of the Court by Anthony Chan JA. Places the HK CA alongside SGCA (Wee Chiaw Sek Anna) and against the stronger English reading — and against the HK CFI's own restatement in Li Yuhong [2025] HKCFI 5270 [109] months earlier"},
+      {"name":"Alireza v Elman","cite":"[2026] HKCFI 4060","court":"CFI","year":2026,
+       "holding":"Obiter: a claimant pleading the CONTRACTUAL measure ('as if the representations had been true') for a s.3(1)/tortious misrepresentation claim fails to prove damage; the tortious counterfactual must be pleaded and evidenced.",
+       "maps_to":["E5c"],"verified":P,"pin":"[199](b)",
+       "note":"misrepresentation claim not engaged on the findings; observations expressly made only 'if necessary'"}],
+    "gaps":["D1: no SUBSTANTIVE CFA appeal judgment on contractual estoppel. The apex has spoken only through a reasoned Appeal Committee determination refusing leave (Ng Lai Ling Winnie [2021] HKCFA 40 at [24]-[27]), which confines the doctrine to the contracting parties but does not address non-reliance clauses in the mis-selling setting; adoption there still rests at CFI (San-Hot, Sit Pan Jit) with CA-level qualification (Chang Pui Yin).",
+            "E3c: HK is internally inconsistent — the CA reads the inducement presumption as an inference of fact (Koo Ming Kown [2026] HKCA 372 [67]) while the CFI had restated the stronger English version months earlier (Li Yuhong [2025] HKCFI 5270 [109]). Unresolved above CA level.",
+            "E5c: the HK line adopting Royscot has never been tested above first instance. Long Year (1991), Joytex (2018) and Alireza (2026) are all CFI/HC; Wong Yuk Lan (2024) is DC. No CA or CFA ruling on the Cap. 284 s.3(1) measure was located."]},
   "SG": {"name":"Singapore","zh":"新加坡","regime":"received remedial statute + received common law (AELA 1993)",
     "apex":"SGCA (Privy Council appeals abolished 1994)",
     "authority_rule":"English precedent persuasive only; Practice Statement (Judicial Precedent) [1994] — SGCA departs where adherence causes injustice or constrains development",
@@ -193,12 +238,13 @@ DATA = {
     {"j":"HK","y":2013,"f":-0.6,"case":"DBS v San-Hot (CFI)","treat":"adopts","eff":"Peekay/Springwell contractual estoppel 'also applies in Hong Kong'"},
     {"j":"HK","y":2015,"f":-0.7,"case":"DBS v Sit Pan Jit (CFI)","treat":"affirms","eff":"Non-reliance clauses upheld; extended to SFO statutory claims"},
     {"j":"HK","y":2017,"f":0.4,"case":"Chang Pui Yin v Bank of Singapore (CA)","treat":"narrows","eff":"Unconscionability + CECO defeat the clauses for unsophisticated customers"},
+    {"j":"HK","y":2021,"f":0.2,"case":"Ng Lai Ling Winnie v Ng Yuk Pui Kelly (CFA App Ctte)","treat":"confines","eff":"Apex-level statement of the doctrine's outer limit: a contractual estoppel arises only between parties to the contract on the basis of their mutual agreement, and only as to those aspects of their relationship the agreement was directed at; Peekay treated as the leading case"},
     {"j":"SG","y":2007,"f":-0.6,"case":"Orient Centre v Société Générale (SGCA)","treat":"effective","eff":"Non-reliance clauses defeat claims between sophisticated parties"},
     {"j":"SG","y":2012,"f":-0.1,"case":"Als Memasa v UBS (SGCA)","treat":"doubts · obiter","eff":"Full immunity for unsophisticated customers questioned; UCTA control left open"},
     {"j":"AU","y":1988,"f":0.9,"case":"Henjo; Clark Equipment (FCA)","treat":"excludes exclusion","eff":"s.52/s.18 liability cannot be excluded by contract at all"},
     {"j":"AU","y":2009,"f":0.5,"case":"Campbell v Backoffice (HCA)","treat":"channels","eff":"Clauses operate on causation only, not as exclusions"}]},
   "T2": {"title":"诱导推定 Inducement presumption","title_en":"Presumption of inducement","sub_test":"E3c",
-   "note":"英国线一路加强(2016 起连信其为真都不要求);新加坡 2013 反向降格为「事实推断」,举证责任留在主张方。",
+   "note":"英国线一路加强(2016 起连信其为真都不要求);新加坡 2013 反向降格为「事实推断」,举证责任留在主张方;香港 2026 年上诉法庭明确站到新加坡一侧——把 Hayward 读成「事实推断而非法律推定」,而同期原讼庭(2025)仍在陈述较强版本,故香港内部上下级口径尚未统一。",
    "events":[
     {"j":"EN","y":1881,"f":0.3,"case":"Redgrave v Hurd","treat":"establishes","eff":"An opportunity to discover the truth is no defence"},
     {"j":"EN","y":1885,"f":0.4,"case":"Edgington v Fitzmaurice","treat":"establishes","eff":"Material representation plus contracting supports an inference of inducement; sole cause not required"},
@@ -206,12 +252,18 @@ DATA = {
     {"j":"EN","y":2019,"f":0.9,"case":"BV Nederlandse v Rembrandt","treat":"clarifies","eff":"In fraud the presumption is very difficult to rebut; 'a' cause suffices"},
     {"j":"SG","y":2001,"f":0.4,"case":"Panatron v Lee Cheow Lee (SGCA)","treat":"follows","eff":"Real and substantial part; not the sole inducement"},
     {"j":"SG","y":2013,"f":0.1,"case":"Wee Chiaw Sek Anna (SGCA)","treat":"narrows","eff":"Inference of fact, not law; burden of proving reliance stays on the representee"},
-    {"j":"HK","y":2018,"f":-0.2,"case":"Shine Grace v Citibank (CFI)","treat":"applies","eff":"No inducement where the representee would have acted anyway"}]},
+    {"j":"HK","y":2018,"f":-0.2,"case":"Shine Grace v Citibank (CFI)","treat":"applies","eff":"No inducement where the representee would have acted anyway"},
+    {"j":"HK","y":2025,"f":0.7,"case":"Li Yuhong v OOO Securities (CFI)","treat":"follows","eff":"Hayward §§33-35 adopted: representation need not be the sole inducement; presumption arises on proof of falsity plus entry, strongest in fraud"},
+    {"j":"HK","y":2026,"f":0.1,"case":"Koo Ming Kown v Baptist Convention (CA)","treat":"narrows","eff":"The 'presumption' is an inference of fact, not of law, rebuttable on all the evidence including the claimant's own testimony — HK CA lands where SGCA did in Wee Chiaw Sek Anna"}]},
   "T3": {"title":"法定赔偿标准(fiction of fraud)","title_en":"Statutory damages measure","sub_test":"E5c",
-   "note":"Royscot 把 s.2(1) 赔偿拉到欺诈标准;上议院 1996 存疑搁置;新加坡 2014 obiter 反对、悬而未决;澳洲无对应条文。",
+   "note":"Royscot 把 s.2(1) 赔偿拉到欺诈标准;上议院 1996 存疑搁置;新加坡 2014 obiter 反对、悬而未决;澳洲无对应条文。香港是全家族中立场最稳的:1991 年即采纳,三十余年无一判决动摇,反而是英国本土存疑、新加坡倾向拒绝——即「祖宗法域已生疑,继受法域仍笃守」的倒置。",
    "events":[
     {"j":"EN","y":1991,"f":0.8,"case":"Royscot Trust v Rogerson","treat":"establishes","eff":"s.2(1) damages on the deceit measure — the fiction of fraud"},
     {"j":"EN","y":1996,"f":0.4,"case":"Smith New Court (HL)","treat":"doubts","eff":"Correctness expressly left open"},
+    {"j":"HK","y":1991,"f":0.8,"case":"Long Year Development v Tse Fuk Man Norman (HC)","treat":"adopts","eff":"Cap. 284 s.3(1) damages are on the deceit measure; Royscot followed the same year as 'highly persuasive as the legislative provisions are identical' (DHCJ Andrew Li QC, later CJ)"},
+    {"j":"HK","y":2018,"f":0.8,"case":"Joytex v Super Homes (CFI)","treat":"applies","eff":"s.3(1) damages awarded on the deceit measure as ratio; Long Year pin-cited at 407D-408D"},
+    {"j":"HK","y":2024,"f":0.8,"case":"Wong Yuk Lan v Car's City (DC)","treat":"affirms","eff":"Long Year quoted in full; s.3(1) tortious measure applied alongside s.3(2)"},
+    {"j":"HK","y":2026,"f":0.8,"case":"Alireza v Elman (CFI)","treat":"restates · obiter","eff":"Contractual measure unavailable for a s.3(1) claim; tortious counterfactual must be pleaded"},
     {"j":"SG","y":2014,"f":-0.2,"case":"RBC Properties v Defu (SGCA)","treat":"doubts · obiter","eff":"No reason in logic or principle for the deceit measure; undecided"}]}
  },
  "flagged_unverified":[
@@ -219,10 +271,14 @@ DATA = {
   "CCA s.137B (contributory negligence) section number; ACT CLW Act s.174 substantive detail",
   "Cook v Cook joint-judgment attribution",
   "Tan Chin Seng and Orient Centre SLR(R) parallel citations",
-  "Cap. 284 official consolidated text (e-Legislation robots-blocked; verified via mirror plus CFA quotation)"],
+  "Cap. 284 official consolidated text (e-Legislation robots-blocked; verified via mirror plus CFA quotation)",
+  "Long Year [1991] 2 HKC 393 read through three later courts' quotation and pin cites, not from the report itself — HKLII does not carry pre-1997 first-instance judgments",
+  "Cai Yi Rui v Chateau Cellar (unrep., HCA 1583/2014, 20 Sept 2016) at §26 is cited in Li Yuhong for the s.3(1) measure but was not retrievable; left off the record",
+  "HKLII full-text search coverage is uneven (a 'Derry v Peek' search returns 12 hits, all post-2021), so absence of a hit is NOT evidence of absence of authority"],
  "todo":[
-  "Upgrade key authorities from verified-web to verified-primary with paragraph pin cites",
-  "HK: fill the T3 branch; hunt for CFA-level non-reliance authority",
+  "Upgrade the remaining verified-web authorities to verified-primary with paragraph pin cites (the HK branch is done; EN/SG/AU are not)",
+  "T3 HK branch: DONE (Long Year 1991 → Joytex 2018 → Wong Yuk Lan 2024 → Alireza 2026). Q-001 partially answered: apex authority exists but only as an Appeal Committee determination",
+  "Test whether the HK CA's inference-of-fact reading of the inducement presumption (Koo Ming Kown 2026) is followed or distinguished at first instance",
   "Add a remedies drift line for AU s.236 causation case law",
   "Next modules by LAB rubric demand: privilege (366 criteria / 42 tasks), discovery scope (119/32), NY Convention enforcement (32/5)"]
 }

@@ -43,8 +43,14 @@ decide and names the unresolved factor with the largest band.
 **Standards drift, and the drift is measurable.** Each (sub-test × jurisdiction)
 node is modelled as receiving test-changing decisions as a Poisson process, the
 rate shrunk toward a one-per-decade prior. Fitted over the misrepresentation
-family this gives 0.82 events per year for one claim family across four
+family this gives 1.02 events per year for one claim family across four
 jurisdictions. `as_of` queries return the standard as it stood at a stated year.
+
+The rate is sensitive to coverage, which is the honest reading of it rather than
+a caveat about it: filling a single node (the Hong Kong branch of timeline T3)
+moved the aggregate from 0.82 to 1.02. A drift rate fitted over a library with
+58 coverage gaps is a lower bound on the drift of the doctrine, not an estimate
+of it.
 
 ## Quick start
 
@@ -88,15 +94,17 @@ Model outputs, blinding key and verdicts are included.
 
 ## Limitations — please read before relying on any of this
 
-- **Authorities are web-verified, not pin-cited.** Every authority was checked
-  against accessible primary or reputable secondary sources; none is yet cited
-  to a judgment paragraph. Each record carries its verification level and the
-  API reports it. Several primary repositories block automated retrieval.
+- **Authorities are mostly web-verified, not pin-cited.** The Hong Kong branch
+  is the exception: eight HK authorities are at `verified-primary`, read from
+  the judgment text and cited to a paragraph. Everything else was checked
+  against accessible primary or reputable secondary sources and carries no
+  paragraph pin cite. Each record carries its own level and the API reports it.
+  Several primary repositories block automated retrieval.
 - **Weights are compiler judgement.** Tiers are labelled `doctrinal-tier`. They
   are not evidence about how courts decide, and no court assigns percentages to
   these factors.
-- **Coverage is thin and uneven.** The misrepresentation family has 9 attested
-  nodes and 59 coverage gaps out of 68. A gap is reported as a gap, not
+- **Coverage is thin and uneven.** The misrepresentation family has 10 attested
+  nodes and 58 coverage gaps out of 68. A gap is reported as a gap, not
   silently filled.
 - **Experiments are small and single-run.** n=59 criteria and n=21 items;
   Experiment 2's McNemar exact p=0.0625 is not conventionally significant.

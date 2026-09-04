@@ -669,18 +669,18 @@
    "en": "Presumption of inducement",
    "zh": "诱导推定",
    "timeline": "T2",
-   "events_observed": 1,
+   "events_observed": 3,
    "span_years": 8.7,
-   "rate_per_year": 0.1047,
-   "expected_interval_years": 9.6,
-   "last_event_year": 2018,
+   "rate_per_year": 0.1745,
+   "expected_interval_years": 5.7,
+   "last_event_year": 2026,
    "last_reviewed": 2026.65,
    "years_since_review": 0.0,
    "p_missed_change": 0.0,
    "status": "attested",
    "work_type": "staleness",
    "priority": 0.0,
-   "review_due_year": 2030.8
+   "review_due_year": 2029.1
   },
   {
    "node": "E3c@SG",
@@ -1285,18 +1285,18 @@
    "en": "Statutory measure",
    "zh": "法定赔偿标准",
    "timeline": "T3",
-   "events_observed": 0,
-   "span_years": 40.0,
-   "rate_per_year": 0.0333,
-   "expected_interval_years": 30.0,
-   "last_event_year": null,
-   "last_reviewed": null,
-   "years_since_review": 20.65,
-   "p_missed_change": null,
-   "status": "no-authority-on-file",
-   "work_type": "coverage-gap",
-   "priority": 1.0,
-   "review_due_year": null
+   "events_observed": 4,
+   "span_years": 35.7,
+   "rate_per_year": 0.1078,
+   "expected_interval_years": 9.3,
+   "last_event_year": 2026,
+   "last_reviewed": 2026.65,
+   "years_since_review": 0.0,
+   "p_missed_change": 0.0,
+   "status": "attested",
+   "work_type": "staleness",
+   "priority": 0.0,
+   "review_due_year": 2030.6
   },
   {
    "node": "E5c@SG",
@@ -1373,18 +1373,18 @@
    "en": "Non-reliance / entire agreement clause",
    "zh": "Non-reliance / 整体协议条款",
    "timeline": "T1",
-   "events_observed": 4,
+   "events_observed": 5,
    "span_years": 25.7,
-   "rate_per_year": 0.1314,
-   "expected_interval_years": 7.6,
-   "last_event_year": 2017,
+   "rate_per_year": 0.1533,
+   "expected_interval_years": 6.5,
+   "last_event_year": 2021,
    "last_reviewed": 2026.65,
    "years_since_review": 0.0,
    "p_missed_change": 0.0,
    "status": "attested",
    "work_type": "staleness",
    "priority": 0.0,
-   "review_due_year": 2029.9
+   "review_due_year": 2029.5
   },
   {
    "node": "D1@SG",
@@ -1605,28 +1605,43 @@
    "id": "Q-001",
    "sub_test": "D1",
    "jurisdiction": "HK",
-   "state": "open",
+   "state": "partially-answered",
    "question": "Is there CFA-level authority on contractual estoppel / non-reliance clauses?",
    "why": "adoption currently rests at CFI (San-Hot 2013, Sit Pan Jit 2015) with CA-level qualification (Chang Pui Yin 2017); the apex is a hole in the timeline",
-   "action": "HKLII full-text search: 'contractual estoppel' + CFA; check any CFA leave decisions"
+   "action": "HKLII full-text search: 'contractual estoppel' + CFA; check any CFA leave decisions",
+   "found": "Ng Lai Ling Winnie v Ng Yuk Pui Kelly [2021] HKCFA 40 at [24]-[27] (Appeal Committee: Ribeiro PJ, Fok PJ, Chan NPJ) states the doctrine's outer limit — it binds only parties to the contract, on their mutual agreement, as to what the agreement was directed at — and treats Peekay as the leading case",
+   "residual": "a reasoned determination refusing leave is not a substantive CFA appeal judgment, and it says nothing about non-reliance clauses in mis-selling. The hole is narrower, not closed."
   },
   {
    "id": "Q-002",
    "sub_test": "E5c",
    "jurisdiction": "HK",
-   "state": "open",
+   "state": "answered",
    "question": "Has any HK court adopted or rejected the Royscot fiction-of-fraud measure under Cap 284 s.3(1)?",
    "why": "T3 has no HK branch at all; SG has doubted it obiter (RBC 2014), EN left it open (Smith New Court 1996)",
-   "action": "HKLII: 'section 3(1)' + damages measure; check HK textbook commentary"
+   "action": "HKLII: 'section 3(1)' + damages measure; check HK textbook commentary",
+   "found": "ADOPTED, and never doubted since. Long Year Development v Tse Fuk Man Norman [1991] 2 HKC 393 at 407D-408D (DHCJ Andrew Li QC) followed Royscot within months of it being decided; applied as ratio in Joytex [2018] HKCFI 2286 §142/§144, affirmed in Wong Yuk Lan [2024] HKDC 804 [89]-[91], restated obiter in Alireza [2026] HKCFI 4060 [199]",
+   "residual": "the whole HK line is CFI/HC/DC — no CA or CFA ruling on the s.3(1) measure. HK is now the family's most settled pro-Royscot jurisdiction while England doubts it and Singapore leans against: the receiving jurisdiction is more committed than the source."
   },
   {
    "id": "Q-003",
    "sub_test": "E3c",
    "jurisdiction": "HK",
-   "state": "open",
+   "state": "answered",
    "question": "Does HK follow the strengthened English inducement presumption (Hayward 2016 / BV Nederlandse 2019)?",
    "why": "only CFI-level application on file (Shine Grace 2018); post-1997 English authority is persuasive only, so adoption must be shown",
-   "action": "HKLII: 'presumption of inducement'; cross-check CA decisions 2019–2026"
+   "action": "HKLII: 'presumption of inducement'; cross-check CA decisions 2019–2026",
+   "found": "Split. Li Yuhong v OOO Securities [2025] HKCFI 5270 [109] adopts Hayward §§33-35 in its strong form; but the CA in Koo Ming Kown v Baptist Convention [2026] HKCA 372 [67] reads the presumption as an inference of FACT, not of law, rebuttable on all the evidence — the Singapore position",
+   "residual": "CA outranks CFI, so the inference-of-fact reading governs, but the CFI restatement is months older and unaddressed. Watch for the next CFI decision to see which line it takes."
+  },
+  {
+   "id": "Q-006",
+   "sub_test": "*",
+   "jurisdiction": "*",
+   "state": "open",
+   "question": "Which HK authorities on this family have been tested above first instance?",
+   "why": "every HK node upgraded to verified-primary in this pass sits at CFI, DC or the CFA Appeal Committee; the CA appears once (Koo Ming Kown) and contradicts the CFI",
+   "action": "noteup each HK authority via hklii.hk/api/getcasenoteup and record appellate treatment"
   },
   {
    "id": "Q-004",
@@ -1708,6 +1723,14 @@
      "case": "Chang Pui Yin v Bank of Singapore (CA)",
      "treat": "narrows",
      "eff": "Unconscionability + CECO defeat the clauses for unsophisticated customers"
+    },
+    {
+     "j": "HK",
+     "y": 2021,
+     "f": 0.2,
+     "case": "Ng Lai Ling Winnie v Ng Yuk Pui Kelly (CFA App Ctte)",
+     "treat": "confines",
+     "eff": "Apex-level statement of the doctrine's outer limit: a contractual estoppel arises only between parties to the contract on the basis of their mutual agreement, and only as to those aspects of their relationship the agreement was directed at; Peekay treated as the leading case"
     },
     {
      "j": "SG",
@@ -1803,6 +1826,22 @@
      "case": "Shine Grace v Citibank (CFI)",
      "treat": "applies",
      "eff": "No inducement where the representee would have acted anyway"
+    },
+    {
+     "j": "HK",
+     "y": 2025,
+     "f": 0.7,
+     "case": "Li Yuhong v OOO Securities (CFI)",
+     "treat": "follows",
+     "eff": "Hayward §§33-35 adopted: representation need not be the sole inducement; presumption arises on proof of falsity plus entry, strongest in fraud"
+    },
+    {
+     "j": "HK",
+     "y": 2026,
+     "f": 0.1,
+     "case": "Koo Ming Kown v Baptist Convention (CA)",
+     "treat": "narrows",
+     "eff": "The 'presumption' is an inference of fact, not of law, rebuttable on all the evidence including the claimant's own testimony — HK CA lands where SGCA did in Wee Chiaw Sek Anna"
     }
    ]
   },
@@ -1826,6 +1865,38 @@
      "case": "Smith New Court (HL)",
      "treat": "doubts",
      "eff": "Correctness expressly left open"
+    },
+    {
+     "j": "HK",
+     "y": 1991,
+     "f": 0.8,
+     "case": "Long Year Development v Tse Fuk Man Norman (HC)",
+     "treat": "adopts",
+     "eff": "Cap. 284 s.3(1) damages are on the deceit measure; Royscot followed the same year as 'highly persuasive as the legislative provisions are identical' (DHCJ Andrew Li QC, later CJ)"
+    },
+    {
+     "j": "HK",
+     "y": 2018,
+     "f": 0.8,
+     "case": "Joytex v Super Homes (CFI)",
+     "treat": "applies",
+     "eff": "s.3(1) damages awarded on the deceit measure as ratio; Long Year pin-cited at 407D-408D"
+    },
+    {
+     "j": "HK",
+     "y": 2024,
+     "f": 0.8,
+     "case": "Wong Yuk Lan v Car's City (DC)",
+     "treat": "affirms",
+     "eff": "Long Year quoted in full; s.3(1) tortious measure applied alongside s.3(2)"
+    },
+    {
+     "j": "HK",
+     "y": 2026,
+     "f": 0.8,
+     "case": "Alireza v Elman (CFI)",
+     "treat": "restates · obiter",
+     "eff": "Contractual measure unavailable for a s.3(1) claim; tortious counterfactual must be pleaded"
     },
     {
      "j": "SG",
