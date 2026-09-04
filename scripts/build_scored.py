@@ -1,5 +1,7 @@
 import json
 
+from _paths import emit
+
 W = {
  "generated":"2026-08-25","version":"0.1",
  "test_types":{
@@ -100,8 +102,7 @@ W = {
   }
  ]
 }
-json.dump(W, open('scored.json','w'), ensure_ascii=False, indent=1)
-open('netlify/functions/_scored.mjs','w').write('export default '+json.dumps(W,ensure_ascii=False)+';\n')
+emit('scored', W, indent=1)
 m=W['modules'][0]
 s1=[st for st in m['stages'] if st['id']=='HKJUR-2'][0]
 print("module:", m['id'], "| stages:", len(m['stages']))

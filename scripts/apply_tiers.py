@@ -4,6 +4,8 @@ Tiers come from how courts speak about relative importance, not from arithmetic.
 Each tier maps to a percentage BAND, never a point estimate."""
 import json
 
+from _paths import emit, load
+
 TIERS = {
  "decisive":    {"lo":None,"hi":None,"zh":"决定性","en":"Dispositive","note":"不是权重——单独成立即定案"},
  "heavy":       {"lo":0.20,"hi":0.30,"zh":"重","en":"Heavy","note":"判词常以此为核心理由"},
@@ -65,8 +67,8 @@ NOTES = {
 def band(tier):
     t=TIERS[tier]; return t["lo"], t["hi"]
 
-def apply(path, key):
-    d=json.load(open(path))
+def apply(key):
+    d=load(key)
     mods = d["modules"]
     n=0; miss=[]
     for m in mods:
@@ -89,11 +91,10 @@ def apply(path, key):
             st["weight_source"]="doctrinal-tier"
             st["weight_note"]="档位由判词对相对份量的表述归纳,区间非点估计;经验权重须由判决结果回归得出。"
     d["tiers"]=TIERS
-    json.dump(d, open(path,'w'), ensure_ascii=False, indent=1)
-    open(f'netlify/functions/_{key}.mjs','w').write('export default '+json.dumps(d,ensure_ascii=False)+';\n')
+    emit(key, d, indent=1)
     return n, miss
 
-a,ma = apply('scored.json','scored')
-b,mb = apply('registry.json','registry')
+a,ma = apply('scored')
+b,mb = apply('registry')
 print(f"tiered factors: scored={a} registry={b} total={a+b}")
 if ma+mb: print("NO TIER (check):", sorted(set(ma+mb)))

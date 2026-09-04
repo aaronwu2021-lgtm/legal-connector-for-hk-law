@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 import json
 
+from _paths import emit
+
 E = "editorial-prior"; U = "unassigned"
 def F(i,zh,en,w=None,ev=None,note=None):
     d={"id":i,"zh":zh,"en":en,"weight":w,"evidence":ev}
@@ -262,7 +264,7 @@ M.append({"id":"VEIL","area":"公司 Company","zh":"揭开公司面纱","en":"Pi
 REG={"generated":"2026-08-25","version":"0.2",
  "principle":"分类(test_type)由学理支持,可核验;权重是编者先验,须回归校准。未赋权重的因素自动进入维护队列。",
  "modules":M}
-json.dump(REG,open('registry.json','w'),ensure_ascii=False,indent=1)
+emit('registry', REG, indent=1)
 n_f=sum(len(s.get('factors',[]))+len(s.get('counter_factors',[])) for m in M for s in m['stages'])
 n_w=sum(1 for m in M for s in m['stages'] for f in s.get('factors',[])+s.get('counter_factors',[]) if f.get('weight') is not None)
 print(f"modules: {len(M)}  stages: {sum(len(m['stages']) for m in M)}  factors: {n_f}")

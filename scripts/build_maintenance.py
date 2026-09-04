@@ -1,6 +1,8 @@
 import json, datetime, math, collections
 
-E = json.load(open('elements.json'))
+from _paths import emit, load
+
+E = load('elements')
 TODAY = "2026-08-25"; NOW = 2026.65
 
 # ── inventory every reviewable node: (sub_test x jurisdiction) ────────────
@@ -123,7 +125,7 @@ out = {"generated": TODAY, "dataset_version": E['version'], "policy": POLICY,
        "jurisdiction_labels": JZH, "nodes": nodes, "watchlist": WATCH, "queue": QUEUE,
        "history": [{"timeline": tid, "sub_test": tl['sub_test'], "title_en": tl.get('title_en', tl['title']),
                     "events": tl['events']} for tid, tl in E['timelines'].items()]}
-json.dump(out, open('maintenance.json','w'), ensure_ascii=False, indent=1)
+emit('maintenance', out, indent=1)
 
 att = [n for n in nodes if n['status']=='attested']
 gap = [n for n in nodes if n['work_type']=='coverage-gap']

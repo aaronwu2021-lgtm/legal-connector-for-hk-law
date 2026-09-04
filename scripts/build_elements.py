@@ -1,5 +1,7 @@
 import json
 
+from _paths import emit
+
 W = "verified-web"
 
 def A(case, cite, court=None, note=None, v=W):
@@ -225,8 +227,7 @@ DATA = {
   "Next modules by LAB rubric demand: privilege (366 criteria / 42 tasks), discovery scope (119/32), NY Convention enforcement (32/5)"]
 }
 
-with open('/home/claude/site/elements.json','w') as f:
-    json.dump(DATA, f, ensure_ascii=False)
+emit('elements', DATA)
 print("elements:", len(DATA["elements"]), "sub-tests:", sum(len(e["sub_tests"]) for e in DATA["elements"]),
       "defences:", len(DATA["defences"]),
       "jurisdiction cases:", sum(len(j.get("cases",[])) for j in DATA["jurisdictions"].values()),
