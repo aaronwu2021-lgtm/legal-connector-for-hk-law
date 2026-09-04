@@ -1,0 +1,40 @@
+{
+  "label": "OUT07",
+  "verdicts": [
+    {
+      "id": "C-005",
+      "verdict": "pass",
+      "reason": "Issue 7: art. 6.2 gives effect to party agreement; flags art. 6.5 SAI Court override and Kuiper application risk."
+    },
+    {
+      "id": "C-010",
+      "verdict": "pass",
+      "reason": "Issue 4 quotes art. 12.2(c) 'which language shall be used for the award' and notes clause is silent, transferring it to Tribunal."
+    },
+    {
+      "id": "C-015",
+      "verdict": "pass",
+      "reason": "Issue 1: 'arithmetically unachievable' for $13.3m dispute; arbitrator may decline mandate; annulment challenge risk."
+    },
+    {
+      "id": "C-016",
+      "verdict": "pass",
+      "reason": "Issue 2(b): art. 34.1(a) 'would otherwise place consequential damages squarely within the tribunal's remedial power. The clause removes them.'"
+    },
+    {
+      "id": "C-020",
+      "verdict": "pass",
+      "reason": "Issue 5 lists all five art. 20.2 carve-outs, notes clause has 'none', flags award enforcement and FDA regulatory disclosure impossibilities."
+    },
+    {
+      "id": "C-023",
+      "verdict": "pass",
+      "reason": "Issue 11(a): Singapore IAA/Model Law supervisory jurisdiction 'cannot be contracted away'; waiver 'ineffective' as to setting aside."
+    },
+    {
+      "id": "C-024",
+      "verdict": "pass",
+      "reason": "Names Model Law art. 34(2)(a)(iii) excess of mandate and 34(2)(a)(iv) procedure defect; plus natural-justice/due-process ground (Soh Beng Tee)."
+    }
+  ]
+}

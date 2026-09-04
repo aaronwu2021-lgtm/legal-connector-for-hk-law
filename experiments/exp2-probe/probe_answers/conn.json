@@ -1,0 +1,89 @@
+{
+ "condition": "conn",
+ "answers": [
+  {
+   "id": "HK-01",
+   "answer": "The analogue of s.2(1) of the English Misrepresentation Act 1967 is section 3(1) of the Misrepresentation Ordinance (Cap. 284). It is the damages provision for non-fraudulent misrepresentation and reverses the burden onto the representor, who must prove that he had reasonable ground to believe, and did believe up to the time the contract was made, that the facts represented were true. The Ordinance tracks the English Act with a one-section offset: Cap. 284 s.2 corresponds to English s.1 (removal of bars to rescission), s.3(1) to English s.2(1), s.3(2) to English s.2(2), and s.4 to English s.3."
+  },
+  {
+   "id": "HK-02",
+   "answer": "The clause is controlled by section 4 of the Misrepresentation Ordinance (Cap. 284), which renders a term excluding or restricting liability for misrepresentation of no effect except in so far as it satisfies the requirement of reasonableness; and s.4 imports that test from section 3(1) of the Control of Exemption Clauses Ordinance (Cap. 71). So the answer is CECO (Cap. 71) s.3(1), applied via Cap. 284 s.4. That is exactly the route taken in Green Park Properties Ltd v Dorku Ltd (2001) 4 HKCFAR 448, where the CFA held the entire agreement clause of no effect for failing the CECO s.3(1) reasonableness requirement."
+  },
+  {
+   "id": "HK-03",
+   "answer": "Yes, but the adoption sits at first-instance level. DBS Bank (HK) Ltd v San-Hot HK Industrial Co Ltd (HCA 2279/2008; [2013] HKEC 352) (CFI) held that the Peekay/Springwell doctrine of contractual estoppel \"also applies in Hong Kong\", and DBS Bank (HK) Ltd v Sit Pan Jit (HCA 382/2009; [2015] HKEC 548) (CFI) affirmed it and extended it to statutory claims under SFO s.108. The doctrine has since been qualified at Court of Appeal level by Chang Pui Yin v Bank of Singapore Ltd [2017] 4 HKLRD 458. No Court of Final Appeal authority on contractual estoppel is recorded in my source material, so the doctrine's HK footing is CFI adoption with a CA-level counter-limit and a gap at the apex."
+  },
+  {
+   "id": "HK-04",
+   "answer": "Chang Pui Yin v Bank of Singapore Ltd [2017] 4 HKLRD 458 (Court of Appeal). The Court held the non-reliance and non-advisory clauses unenforceable on the facts on two bases: (i) they were unconscionable as against these unsophisticated customers, and (ii) they were exclusions of liability which failed the reasonableness requirement under the Control of Exemption Clauses Ordinance (Cap. 71). The decision is the principal Hong Kong counter-limit to the DBS line of contractual-estoppel cases, and it turns heavily on the customers' lack of sophistication. (My source records the first basis simply as unconscionability; my own recollection that the Unconscionable Contracts Ordinance (Cap. 458) also featured is not confirmed by it.)"
+  },
+  {
+   "id": "HK-05",
+   "answer": "The contract's entire agreement / exclusion clause was held to be of no effect. It was struck down under section 4 of the Misrepresentation Ordinance (Cap. 284) because it failed the requirement of reasonableness in section 3(1) of the Control of Exemption Clauses Ordinance (Cap. 71). The underlying misrepresentation concerned a rear yard in a sale of property; the CFA found it had induced the purchase and allowed rescission together with expenses. Green Park is therefore the leading Hong Kong apex illustration that statutory reasonableness control, not contractual estoppel, governs such clauses in the misrepresentation context."
+  },
+  {
+   "id": "HK-06",
+   "answer": "(a) A pre-1997 House of Lords decision is persuasive only, though it carries great weight; it is not binding. (Distinguish pre-1997 Privy Council decisions on Hong Kong appeals, which do bind courts below the Court of Final Appeal.) (b) A post-1997 UK Supreme Court decision is likewise persuasive only, as is all other overseas authority. This follows from Basic Law arts. 8 and 84 and is stated by the CFA in A Solicitor v Law Society of Hong Kong (2008) 11 HKCFAR 117, the leading authority on the point."
+  },
+  {
+   "id": "HK-07",
+   "answer": "I have found no Hong Kong authority on this. My source library's timeline on the statutory damages measure records only English events (Royscot Trust Ltd v Rogerson [1991] 2 QB 297 establishing the fiction of fraud; Smith New Court (HL) [1997] AC 254 expressly leaving its correctness open) and one Singapore event (RBC Properties v Defu Furniture [2014] SGCA 62, doubting Royscot obiter); it records no Hong Kong case on the measure at all. So the point appears open in Hong Kong: Cap. 284 s.3(1) is drafted in the same terms as the English s.2(1), but Royscot is a post-1997 English Court of Appeal decision and therefore persuasive only in Hong Kong (A Solicitor v Law Society (2008) 11 HKCFAR 117). I state this as an absence of located authority rather than a positive holding that none exists."
+  },
+  {
+   "id": "HK-08",
+   "answer": "The claim failed on inducement because the representation did not in fact operate on the representee's mind. The claimant's principal was an experienced, independent trader who, on the court's finding, would have entered into the transactions anyway, so the alleged misrepresentation was not a real and substantial cause of the decision to contract. Shine Grace Investment Ltd v Citibank NA [2018] HKCFI 1737 is thus an application of the ordinary counterfactual test to defeat the inference of inducement, and it is the standing Hong Kong illustration on that element."
+  },
+  {
+   "id": "ASOF-01",
+   "answer": "As at 2012 the governing English authorities were Peekay Intermark Ltd v ANZ Banking Group Ltd [2006] EWCA Civ 386 and Springwell Navigation Corp v JP Morgan Chase Bank [2010] EWCA Civ 1221. On that line a properly drafted non-reliance clause took effect by contractual estoppel: the parties were treated as having agreed the basis on which they dealt (that no representations were made or relied on), so the clause was characterised as basis-defining rather than as an exclusion of liability, and therefore did not engage the s.3 reasonableness control at all. Springwell had recently broadened this in favour of enforcement between sophisticated commercial parties. The advice in 2012 would accordingly have been that such a clause was generally outside s.3 — a position later reversed by First Tower Trustees Ltd v CDS (Superstores International) Ltd [2018] EWCA Civ 998, which held that basis clauses are exclusions in substance and must pass MA s.3 / UCTA s.11(1). I should note the characterisation question was contested at the time rather than wholly settled."
+  },
+  {
+   "id": "ASOF-02",
+   "answer": "In 2014 the point was not settled at apex level. The established propositions were those of Redgrave v Hurd (1881) 20 Ch D 1 (an opportunity to discover the truth is no defence) and Edgington v Fitzmaurice (1885) 29 Ch D 459 (a material representation supports the inference of inducement; it need not be the sole cause), but a representee who positively suspected the statement was false faced a real risk of failing on inducement, since reliance was commonly framed as requiring belief in the representation's truth. What changed is Hayward v Zurich Insurance Co plc [2016] UKSC 48: belief in the truth of the statement is not required, and reliance survives suspicion of falsity where the statement materially influenced the decision (there, a settlement). That is the current English rule."
+  },
+  {
+   "id": "ASOF-03",
+   "answer": "The presumption is a strong one in fraud: where the misrepresentation is fraudulent it is very difficult to rebut, and the test is whether the representation was \"a\" cause of the representee's entering the contract, not \"the\" cause. The decision stating this is BV Nederlandse Industrie van Eiprodukten v Rembrandt Enterprises Inc [2019] EWCA Civ 596, which is the standing English rule on the point. It sits on top of Hayward v Zurich [2016] UKSC 48 (belief in truth not required, suspicion does not defeat reliance) and the older Edgington v Fitzmaurice line. England is at the strong end of the spectrum here: Singapore has moved the other way (Wee Chiaw Sek Anna [2013] SGCA 36)."
+  },
+  {
+   "id": "ASOF-04",
+   "answer": "Yes — formally. Royscot Trust Ltd v Rogerson [1991] 2 QB 297 remains a Court of Appeal decision holding that damages under s.2(1) are assessed on the deceit measure via the \"fiction of fraud\", so all loss directly flowing from the misrepresentation is recoverable without a foreseeability limit. The qualification is that its correctness was expressly left open and doubted by the House of Lords in Smith New Court Securities Ltd v Citibank NA [1997] AC 254, which is the standing English position on the question, and it has attracted further criticism abroad (RBC Properties Pte Ltd v Defu Furniture Pte Ltd [2014] SGCA 62, obiter: no reason in logic or principle for the deceit measure). So it binds courts below the Supreme Court but should be advised on as vulnerable."
+  },
+  {
+   "id": "ASOF-05",
+   "answer": "Chronological order and direction: (1) Peekay Intermark v ANZ (2006, EWCA) — establishes contractual estoppel, so parties may agree no representations were made or relied on: strongly TOWARD enforcement. (2) Springwell v JP Morgan (2010, EWCA) — affirms and broadens Peekay, holding the estoppel effective between sophisticated commercial parties: further TOWARD enforcement. (3) Chang Pui Yin v Bank of Singapore (2017, HKCA) — narrows, holding the clauses unenforceable against unsophisticated customers as unconscionable and as unreasonable exclusions under CECO: AWAY from enforcement. (4) First Tower Trustees v CDS (2018, EWCA) — narrows, holding that basis clauses are exclusions in substance and must pass Misrepresentation Act s.3 / UCTA s.11(1) reasonableness: AWAY from enforcement. The arc is two English decisions building the doctrine, then a Hong Kong and an English decision cutting it back."
+  },
+  {
+   "id": "SG-01",
+   "answer": "Singapore treats the \"presumption\" of inducement as an inference of fact, not a presumption of law, so the legal burden of proving reliance stays on the representee throughout — the representor does not bear a formal onus of rebuttal. The authority is Wee Chiaw Sek Anna v Ng Li-Ann Genevieve [2013] SGCA 36; [2013] 3 SLR 801. That is weaker than the English articulation, where the presumption operates as a genuine evidential shift and, in fraud, is very difficult to rebut with \"a\" cause sufficing (BV Nederlandse Industrie van Eiprodukten v Rembrandt Enterprises [2019] EWCA Civ 596). Singapore nonetheless retains the substantive causation standard of Panatron Pte Ltd v Lee Cheow Lee [2001] SGCA 49; [2001] 2 SLR(R) 435 — the representation need only play a real and substantial part, not be the sole inducement."
+  },
+  {
+   "id": "SG-02",
+   "answer": "No. In RBC Properties Pte Ltd v Defu Furniture Pte Ltd [2014] SGCA 62; [2015] 1 SLR 997 the Court of Appeal doubted Royscot obiter, observing that there is no reason in logic or principle to apply the deceit measure to a statutory claim that does not require fraud, but expressly left the question undecided. The position in Singapore is therefore open, with the Court of Appeal's lean being toward the negligence (foreseeability) measure rather than the fiction of fraud. The same case also held that s.2(1) imposes a demanding dual burden on the representor: objectively reasonable ground for belief plus actual subjective belief held up to the time of contracting."
+  },
+  {
+   "id": "SG-03",
+   "answer": "By the Application of English Law Act 1993: s.3 continues English common law as at 12 November 1993 so far as applicable to the circumstances of Singapore, and the First Schedule Part II item 8 declares the whole of the English Misrepresentation Act 1967 to be part of Singapore law (now the Misrepresentation Act 1967 (2020 Rev Ed), formerly Cap 390). Yes, the Singapore version has an extra provision the English Act lacks: s.4, a Singapore-only transitional section providing that the Act does not apply to anything done before 12 November 1993. A further practical difference is that the Singapore s.3 routes exclusion clauses to the pre-2015 UCTA text (received via First Schedule Part II item 9, UCTA Part I except ss.1(1)(c) and 1(3)(b), and Part III), so there is no CRA 2015 consumer carve-out as in England."
+  },
+  {
+   "id": "SG-04",
+   "answer": "It is unresolved — expressly left open. Orient Centre Investments Ltd v Societe Generale [2007] SGCA 24 gave full effect to non-reliance and acknowledgment clauses between sophisticated parties without deciding the control question. The decision that flagged it is Als Memasa v UBS AG [2012] SGCA 43, where the Court of Appeal said obiter that courts may need to reconsider whether such clauses can confer full immunity on banks dealing with unsophisticated customers, and expressly left open whether UCTA (and hence s.3 of the Misrepresentation Act) applies to them. That obiter remains the standing Singapore position; unlike England after First Tower Trustees (2018) and Hong Kong after Chang Pui Yin (2017), Singapore has not yet resolved the point."
+  },
+  {
+   "id": "CTRL-01",
+   "answer": "I am aware of no such authority, and my source library holds none. The half-truth rule (a literally true but misleading partial statement is a misrepresentation) is stated in the library as a general sub-test of the \"false statement of fact\" element with no transaction-specific qualification, and the Hong Kong authorities recorded there all concern inducement and non-reliance clauses, not half-truths. Nor is there any doctrinal reason to expect such a split: the rule turns on the impression conveyed by the statement in its context, and the difference between share sales and land sales is a matter of what context supplies, not of a different legal test. I therefore answer that no Hong Kong appellate authority establishes a differential half-truth rule for share purchase agreements as against land sales; if some unreported decision says otherwise, I have not located it."
+  },
+  {
+   "id": "CTRL-02",
+   "answer": "My source library states the continuing-representation rule generally — a statement true when made but falsified by a change of circumstances before contracting must be corrected, and silence is then actionable — but records no Australian authority for it, so on the library alone the answer is that it holds none. From my own knowledge (outside the library, and stated with lower confidence), the usual Australian citation is Jones v Dumbrell [1981] VR 199 (Full Court of the Supreme Court of Victoria), which adopts the English rule in With v O'Flanagan [1936] Ch 575; Fraser Edmiston Pty Ltd v AGT (Qld) Pty Ltd [1988] 2 Qd R 1 is to similar effect. Under the statutory limb the same ground is covered by ACL s.18, where silence and half-truths can amount to misleading conduct (Henjo Investments Pty Ltd v Collins Marrickville Pty Ltd (1988) 39 FCR 546) and no fault element is required. I am not aware of a High Court decision squarely on the continuing-representation rule."
+  },
+  {
+   "id": "CTRL-03",
+   "answer": "No. Hong Kong has no general statutory prohibition on misleading or deceptive conduct in trade or commerce equivalent to ACL s.18 (Sch 2, Competition and Consumer Act 2010 (Cth)); Australia is the structural outlier in this family, its regime being a no-fault conduct prohibition rather than a remedial misrepresentation statute. Hong Kong's statutory layer is the Misrepresentation Ordinance (Cap. 284) — a remedial statute mirroring the English Act — supplemented by the Control of Exemption Clauses Ordinance (Cap. 71) s.3(1), sitting on top of common-law deceit and rescission. Beyond my source library, and stated as my own knowledge, Hong Kong does have narrower sector-specific provisions — the Trade Descriptions Ordinance (Cap. 362), which since the 2012/2013 amendments prohibits certain unfair trade practices but only in consumer transactions, and Securities and Futures Ordinance s.108 for misrepresentations inducing investment transactions — but none of these is a general commercial prohibition of the ACL s.18 kind."
+  },
+  {
+   "id": "CTRL-04",
+   "answer": "No such authority exists, and the question rests on a false premise. Hong Kong courts do not assign numerical weights or tiers to individual connecting factors in forum non conveniens; the test is the multi-factor evaluative inquiry of Spiliada Maritime Corp v Cansulex Ltd [1987] AC 460, adopted in Hong Kong and restated by the Court of Final Appeal in SPH v SA (2014) 17 HKCFAR 364, under which governing law and a party's residence are simply among the connecting factors weighed holistically. My source library is in any event confined to the misrepresentation family and holds no authority on forum non conveniens, so I answer this from general knowledge and flag it accordingly. I am confident there is no case establishing a numerical weighting between the governing-law and plaintiff's-residence factors."
+  }
+ ]
+}

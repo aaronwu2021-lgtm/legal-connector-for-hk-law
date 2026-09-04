@@ -1,0 +1,35 @@
+{
+  "label": "OUT06",
+  "verdicts": [
+    {
+      "id": "C-010",
+      "verdict": "pass",
+      "reason": "Issue 3 cites R-17, Canon II(D), Commonwealth Coatings, Monster Energy; Part II.D puts repeat appointments on IBA Orange List."
+    },
+    {
+      "id": "C-020",
+      "verdict": "pass",
+      "reason": "Issue 8 (Lakeview) analysis cites Monster Energy and Rule R-16's objective test; Part II states Canon II standards."
+    },
+    {
+      "id": "C-023",
+      "verdict": "pass",
+      "reason": "Issue 7 invokes R-17(a)(iv) on 'expressed views on legal or factual issues relevant to the dispute'; Part II.D cites Orange List."
+    },
+    {
+      "id": "C-024",
+      "verdict": "pass",
+      "reason": "Header 'ACTION DEADLINE: June 24, 2024 (Rule R-18(a))'; Issue 10 and Part VIII urge service by June 21."
+    },
+    {
+      "id": "C-032",
+      "verdict": "pass",
+      "reason": "Part II.A quotes R-17(a)(i)-(iv), R-17(b), R-17(d) as governing disclosure obligations throughout."
+    },
+    {
+      "id": "C-033",
+      "verdict": "pass",
+      "reason": "Part II.D devoted to IBA Guidelines (2014), General Standards 3 and 7, Orange List and Red List."
+    }
+  ]
+}

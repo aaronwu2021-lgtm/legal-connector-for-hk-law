@@ -1,0 +1,74 @@
+[
+ {
+  "label": "OUT00",
+  "condition": "base",
+  "slug": "draft-challenge-to-arbitrator-appointment",
+  "words": 7933
+ },
+ {
+  "label": "OUT01",
+  "condition": "conn",
+  "slug": "analyze-arbitration-award-for-new-york-convention-enforcement-defenses",
+  "words": 15083
+ },
+ {
+  "label": "OUT02",
+  "condition": "conn",
+  "slug": "identify-deficiencies-and-vulnerabilities-in-counterpartys-statement-of-claim",
+  "words": 19542
+ },
+ {
+  "label": "OUT03",
+  "condition": "base",
+  "slug": "identify-deficiencies-and-vulnerabilities-in-counterpartys-statement-of-claim",
+  "words": 18802
+ },
+ {
+  "label": "OUT04",
+  "condition": "conn",
+  "slug": "identify-issues-in-arbitrator-disclosure-statement",
+  "words": 10211
+ },
+ {
+  "label": "OUT05",
+  "condition": "base",
+  "slug": "draft-application-to-set-aside-arbitration-award",
+  "words": 14278
+ },
+ {
+  "label": "OUT06",
+  "condition": "base",
+  "slug": "identify-issues-in-arbitrator-disclosure-statement",
+  "words": 12405
+ },
+ {
+  "label": "OUT07",
+  "condition": "base",
+  "slug": "compare-arbitration-clause-vs-institutional-rules-compliance-audit",
+  "words": 26342
+ },
+ {
+  "label": "OUT08",
+  "condition": "base",
+  "slug": "analyze-arbitration-award-for-new-york-convention-enforcement-defenses",
+  "words": 22345
+ },
+ {
+  "label": "OUT09",
+  "condition": "conn",
+  "slug": "draft-challenge-to-arbitrator-appointment",
+  "words": 10105
+ },
+ {
+  "label": "OUT10",
+  "condition": "conn",
+  "slug": "draft-application-to-set-aside-arbitration-award",
+  "words": 14519
+ },
+ {
+  "label": "OUT11",
+  "condition": "conn",
+  "slug": "compare-arbitration-clause-vs-institutional-rules-compliance-audit",
+  "words": 19232
+ }
+]

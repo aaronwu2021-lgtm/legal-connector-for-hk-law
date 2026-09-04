@@ -1,0 +1,16 @@
+{
+  "label": "OUT09",
+  "verdicts": [
+    {"id": "C-003", "verdict": "pass", "reason": "Heading and para 1 challenge 'Dr. Marcus Helvétius' as presiding arbitrator under Art. 14(1)."},
+    {"id": "C-019", "verdict": "pass", "reason": "Para 53 cites 'Orange List item 3.3.7' plus the same-counsel three-year appointment category."},
+    {"id": "C-026", "verdict": "pass", "reason": "Paras 4, 26(a), 75-77 weigh Northvale, repeat appointments, keynote, AutoBuild cumulatively."},
+    {"id": "C-027", "verdict": "fail", "reason": "Orange and Green Lists discussed; Red List never mentioned anywhere in the submission."},
+    {"id": "C-028", "verdict": "pass", "reason": "Para 46 places Northvale advisory service within Orange List professional-association and financial-interest categories."},
+    {"id": "C-029", "verdict": "pass", "reason": "Para 66: keynote/counsel interaction 'engages the Orange List categories concerned with professional relationships'."},
+    {"id": "C-035", "verdict": "pass", "reason": "Para 26 objective 'reasonable and informed third party'; prayer (2) ties justifiable doubts to Art. 14(1)."},
+    {"id": "C-036", "verdict": "pass", "reason": "Paras 5 and 80: no actual bias alleged; 'The standard is one of appearance, deliberately so'."},
+    {"id": "C-037", "verdict": "pass", "reason": "Section IX Ground 4 advances non-disclosure as a distinct ground undermining confidence (paras 69, 73)."},
+    {"id": "C-038", "verdict": "pass", "reason": "Para 18: 'Article 11(3) makes that duty a continuing one throughout the arbitration'; also paras 73, 84."},
+    {"id": "C-049", "verdict": "pass", "reason": "Para 27 names 'IBA Guidelines on Conflicts of Interest in International Arbitration (2014, as revised 2024)'."}
+  ]
+}

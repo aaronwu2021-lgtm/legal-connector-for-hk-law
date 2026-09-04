@@ -1,0 +1,30 @@
+{
+  "label": "OUT05",
+  "verdicts": [
+    {
+      "id": "C-020",
+      "verdict": "pass",
+      "reason": "Section VIII, 'Ground One — Evident Partiality under 9 U.S.C. § 10(a)(2),' argues undisclosed son-at-counsel's-firm relationship."
+    },
+    {
+      "id": "C-024",
+      "verdict": "pass",
+      "reason": "Paras 40-46, 90 quote the August 22, 2023 PAS Disclosure Statement and note 'She did not disclose her own son's employment at opposing counsel's firm.'"
+    },
+    {
+      "id": "C-025",
+      "verdict": "pass",
+      "reason": "Paras 77, 80 cite Commonwealth Coatings, 393 U.S. 145 (1968); also Health Servs. Mgmt. v. Hughes, Morelite, Merit Insurance."
+    },
+    {
+      "id": "C-044",
+      "verdict": "pass",
+      "reason": "Section XII (paras 158-163) combines all four grounds for full vacatur; para 2 'each independently sufficient and together overwhelming'; para 77 overarching fairness."
+    },
+    {
+      "id": "C-065",
+      "verdict": "pass",
+      "reason": "Para 92 cites PAS Rule 12(a)/(d) and IBA Guidelines Red List for close family relationship with party's counsel."
+    }
+  ]
+}

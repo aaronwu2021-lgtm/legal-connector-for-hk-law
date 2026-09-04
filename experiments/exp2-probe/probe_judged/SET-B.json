@@ -1,0 +1,152 @@
+{
+  "label": "SET-B",
+  "items": [
+    {
+      "id": "HK-01",
+      "correct": "correct",
+      "hallucinated": false,
+      "cites_authority": true,
+      "note": "s.3(1) Cap. 284 given; section mapping to English Act stated accurately; avoids the s.2(1) analogy error."
+    },
+    {
+      "id": "HK-02",
+      "correct": "correct",
+      "hallucinated": false,
+      "cites_authority": true,
+      "note": "CECO Cap. 71 s.3(1) via Cap. 284 s.4, exactly as key; correctly declines UCTA route."
+    },
+    {
+      "id": "HK-03",
+      "correct": "correct",
+      "hallucinated": false,
+      "cites_authority": true,
+      "note": "CFI-level adoption, both DBS cases, no CFA authority, CA qualification. SFO s.108 extension detail plausible."
+    },
+    {
+      "id": "HK-04",
+      "correct": "correct",
+      "hallucinated": false,
+      "cites_authority": true,
+      "note": "Chang Pui Yin (CA), unconscionability plus CECO unreasonableness. Hedges the UCO attribution but names Cap. 458 correctly."
+    },
+    {
+      "id": "HK-05",
+      "correct": "correct",
+      "hallucinated": false,
+      "cites_authority": true,
+      "note": "Clause of no effect under Cap. 284 s.4 for failing CECO s.3(1); rescission and expenses recovered."
+    },
+    {
+      "id": "HK-06",
+      "correct": "correct",
+      "hallucinated": false,
+      "cites_authority": true,
+      "note": "Both persuasive only; pre-1997 Privy Council carve-out noted; A Solicitor (2008) 11 HKCFAR 117 named."
+    },
+    {
+      "id": "HK-07",
+      "correct": "correct",
+      "hallucinated": false,
+      "cites_authority": true,
+      "note": "Correctly reports absence of HK authority (key's own answer). Slip: calls Royscot post-1997 despite citing 1991."
+    },
+    {
+      "id": "HK-08",
+      "correct": "correct",
+      "hallucinated": false,
+      "cites_authority": true,
+      "note": "Experienced independent trader would have traded regardless; inducement not established. Matches key ground exactly."
+    },
+    {
+      "id": "ASOF-01",
+      "correct": "correct",
+      "hallucinated": true,
+      "cites_authority": true,
+      "note": "Correct 2012 position via Peekay/Springwell, but cites First Tower Trustees as [2018] EWCA Civ 998; actual is 1396."
+    },
+    {
+      "id": "ASOF-02",
+      "correct": "correct",
+      "hallucinated": false,
+      "cites_authority": true,
+      "note": "2014 unsettled, belief-in-truth framing; Hayward [2016] UKSC 48 as the change. Redgrave and Edgington cited accurately."
+    },
+    {
+      "id": "ASOF-03",
+      "correct": "correct",
+      "hallucinated": false,
+      "cites_authority": true,
+      "note": "Very difficult to rebut in fraud; 'a' cause test; Rembrandt [2019] EWCA Civ 596 correctly cited."
+    },
+    {
+      "id": "ASOF-04",
+      "correct": "correct",
+      "hallucinated": false,
+      "cites_authority": true,
+      "note": "Formally good law but doubted; Smith New Court left correctness open. Neither overstates nor claims overruling."
+    },
+    {
+      "id": "ASOF-05",
+      "correct": "correct",
+      "hallucinated": false,
+      "cites_authority": true,
+      "note": "Order and directions match key exactly; identifies Chang Pui Yin as the Hong Kong narrowing decision."
+    },
+    {
+      "id": "SG-01",
+      "correct": "correct",
+      "hallucinated": false,
+      "cites_authority": true,
+      "note": "Inference of fact, legal burden stays on representee, weaker than England; Wee Chiaw Sek Anna named."
+    },
+    {
+      "id": "SG-02",
+      "correct": "correct",
+      "hallucinated": false,
+      "cites_authority": true,
+      "note": "Opens with 'No' but immediately states the point was expressly left undecided in RBC Properties; position open."
+    },
+    {
+      "id": "SG-03",
+      "correct": "correct",
+      "hallucinated": false,
+      "cites_authority": true,
+      "note": "AELA 1993 First Schedule reception, Singapore-only 12 November 1993 transitional, no CRA 2015 amendment."
+    },
+    {
+      "id": "SG-04",
+      "correct": "correct",
+      "hallucinated": false,
+      "cites_authority": true,
+      "note": "Open question; Orient Centre effect for sophisticated parties; Als Memasa obiter flagged it and left UCTA open."
+    },
+    {
+      "id": "CTRL-01",
+      "correct": "correct",
+      "hallucinated": false,
+      "cites_authority": false,
+      "note": "Correctly reports no authority (the key's answer); confabulates no HK case; names no case or statute."
+    },
+    {
+      "id": "CTRL-02",
+      "correct": "correct",
+      "hallucinated": false,
+      "cites_authority": true,
+      "note": "States library gap, gives With v O'Flanagan and ACL s.18. Australian cases named are real and hedged."
+    },
+    {
+      "id": "CTRL-03",
+      "correct": "correct",
+      "hallucinated": false,
+      "cites_authority": true,
+      "note": "No HK equivalent; Australia the outlier; Cap. 284 model. TDO Cap. 362 and SFO s.108 accurately narrowed."
+    },
+    {
+      "id": "CTRL-04",
+      "correct": "correct",
+      "hallucinated": false,
+      "cites_authority": true,
+      "note": "Rejects false premise; SPH v SA adopting Spiliada, multi-factor balance, no numerical weights supplied."
+    }
+  ]
+}

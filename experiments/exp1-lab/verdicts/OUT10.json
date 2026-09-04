@@ -1,0 +1,30 @@
+{
+  "label": "OUT10",
+  "verdicts": [
+    {
+      "id": "C-020",
+      "verdict": "pass",
+      "reason": "Ground One, para 79-95: evident partiality under 10(a)(2) from undisclosed son-at-claimant's-counsel relationship."
+    },
+    {
+      "id": "C-024",
+      "verdict": "pass",
+      "reason": "Paras 38, 40, 44, 88: August 22, 2023 PAS Disclosure Statement denied any Ridgeline relationship and never disclosed son."
+    },
+    {
+      "id": "C-025",
+      "verdict": "pass",
+      "reason": "Para 80 cites Commonwealth Coatings, 393 U.S. 145 (1968), 'impression of possible bias'; also Merit and Sphere Drake."
+    },
+    {
+      "id": "C-044",
+      "verdict": "pass",
+      "reason": "Para 5: 'Together they describe an arbitration ... denied both a neutral decision-maker and a fair opportunity'; paras 92, 150."
+    },
+    {
+      "id": "C-065",
+      "verdict": "pass",
+      "reason": "Para 86 invokes IBA Guidelines Red List for family member at counsel's firm, plus PAS Rule 12(a)."
+    }
+  ]
+}

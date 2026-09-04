@@ -1,0 +1,326 @@
+# misrepresentation-elements — v0.2
+# English-common-law FAMILY model: shared English backbone + per-jurisdiction overlays.
+# Jurisdictions: england | hong-kong | singapore | australia
+#
+# VERIFICATION LEVELS
+#   unverified — drafted from doctrine, not checked
+#   web        — verified this session against accessible primary/reputable secondary sources (URLs kept)
+#   primary    — verified against full judgment/statute text with pin cite (target state; none yet)
+# All backbone English cases below: verified web, 2026-08-24. UNVERIFIED items explicitly flagged.
+
+dataset: misrepresentation-elements-family
+version: 0.2
+family: english-common-law
+claim: misrepresentation
+variants: [fraudulent-deceit, negligent-statutory, innocent]
+
+# ────────────────────────────────────────────────────────────────────
+# SHARED BACKBONE (English common law; each jurisdiction weights it per its authority_profile)
+# ────────────────────────────────────────────────────────────────────
+elements:
+  - id: E1-false-statement
+    element: Unambiguous false statement of existing fact
+    sub_tests:
+      - id: E1a-fact-vs-opinion
+        test: Opinion/intention not actionable UNLESS not honestly held (state of mind is a fact),
+          or opinion by party with superior knowledge implies facts justifying it; pure opinion
+          where both parties know there is no factual basis is not actionable
+        authorities:
+          - {case: Edgington v Fitzmaurice, cite: (1885) 29 Ch D 459, court: EWCA, verified: web}
+          - {case: Smith v Land and House Property Corp, cite: (1884) 28 Ch D 7, court: EWCA, verified: web}
+          - {case: Bisset v Wilkinson, cite: "[1927] AC 177", court: PC (NZ), verified: web}
+      - id: E1b-half-truth
+        test: Literally true but misleading partial statement is a misrepresentation
+        authorities:
+          - {case: Dimmock v Hallett, cite: (1866) LR 2 Ch App 21, court: CA in Chancery, verified: web}
+      - id: E1c-continuing-representation
+        test: Statement true when made but falsified by change of circumstances before contract
+          must be corrected; silence then actionable
+        authorities:
+          - {case: With v O'Flanagan, cite: "[1936] Ch 575", court: EWCA, verified: web}
+      - id: E1d-conduct
+        test: Conduct can constitute a representation (incl. participation with undisclosed
+          knowledge); mere silence generally cannot — no general duty of disclosure
+        authorities:
+          - {case: Spice Girls Ltd v Aprilia World Service, cite: "[2002] EWCA Civ 15", court: EWCA, verified: web}
+          - {case: Peek v Gurney, cite: (1873) LR 6 HL 377, court: HL, note: non-disclosure alone insufficient, verified: web}
+
+  - id: E2-addressed
+    element: Made to the representee or intended to reach them
+    sub_tests:
+      - id: E2a-channel
+        test: Must be addressed to claimant or intended to reach them; prospectus exhausted on
+          original allottees does not extend to market purchasers
+        authorities:
+          - {case: Peek v Gurney, cite: (1873) LR 6 HL 377, court: HL, verified: web}
+
+  - id: E3-inducement
+    element: Inducement / reliance
+    sub_tests:
+      - id: E3a-awareness
+        test: Representee must have been aware of the representation; unseen concealment cannot
+          operate on the mind
+        authorities:
+          - {case: Horsfall v Thomas, cite: (1862) 1 H & C 90; 158 ER 813, court: Exchequer, verified: web}
+      - id: E3b-actual-reliance
+        test: Must be a real and substantial cause; need not be sole inducement
+        authorities:
+          - {case: Edgington v Fitzmaurice, cite: (1885) 29 Ch D 459, court: EWCA, verified: web}
+      - id: E3c-inducement-presumption   # DRIFT POINT → timeline T2 (diverges by jurisdiction)
+        test: Material representation calculated to induce raises inference/presumption of
+          inducement; in fraud, presumption "very difficult to rebut"; test is "a" cause not
+          "the" cause
+        authorities:
+          - {case: Redgrave v Hurd, cite: (1881) 20 Ch D 1, court: EWCA, verified: web}
+          - {case: BV Nederlandse Industrie van Eiprodukten v Rembrandt Enterprises, cite: "[2019] EWCA Civ 596", court: EWCA, verified: web}
+      - id: E3d-doubt-no-defeat
+        test: Belief in truth not required — reliance survives suspicion of falsity if the
+          statement materially influenced the decision (settlement context)
+        authorities:
+          - {case: Hayward v Zurich Insurance, cite: "[2016] UKSC 48; [2017] AC 142", court: UKSC, verified: web}
+      - id: E3e-no-duty-to-investigate
+        test: Opportunity to discover truth is no defence; actual sole reliance on own independent
+          investigation is
+        authorities:
+          - {case: Redgrave v Hurd, cite: (1881) 20 Ch D 1, court: EWCA, verified: web}
+          - {case: Attwood v Small, cite: (1838) 6 Cl & F 232; 7 ER 684, court: HL, verified: web}
+
+  - id: E4-state-of-mind    # variant selector
+    element: Representor's state of mind
+    sub_tests:
+      - id: E4a-fraud
+        variant: fraudulent-deceit
+        test: Knowingly false, without belief in truth, or reckless whether true or false
+          (Lord Herschell); honest but negligent belief INSUFFICIENT — "ought to have known" fails
+        authorities:
+          - {case: Derry v Peek, cite: (1889) 14 App Cas 337; [1889] UKHL 1, court: HL, verified: web}
+      - id: E4b-negligent-statutory
+        variant: negligent-statutory
+        test: Statutory claim; REVERSED BURDEN — representor must prove objectively reasonable
+          ground to believe AND actual belief up to time of contract (majority, Denning MR
+          dissenting)
+        authorities:
+          - {case: Howard Marine v A Ogden & Sons, cite: "[1978] QB 574; [1977] EWCA Civ 3", court: EWCA, verified: web}
+        statute_by_jurisdiction: {england: MA1967 s.2(1), hong-kong: Cap284 s.3(1), singapore: MA1967(2020RevEd) s.2(1), australia: NONE — see AU overlay}
+
+  - id: E5-remedies
+    element: Remedies / damage
+    sub_tests:
+      - id: E5a-rescission-bars
+        test: Rescission subject to bars — affirmation after knowledge; lapse of time; restitution
+          impossible; third-party rights
+        authorities:
+          - {case: Long v Lloyd, cite: "[1958] 1 WLR 753", court: EWCA, verified: web}
+          - {case: Leaf v International Galleries, cite: "[1950] 2 KB 86", court: EWCA, verified: web}
+      - id: E5b-deceit-measure
+        test: All loss directly flowing from the fraud, not limited by foreseeability;
+          date-of-transaction rule applied flexibly where fraud continues to operate
+        authorities:
+          - {case: Doyle v Olby (Ironmongers), cite: "[1969] 2 QB 158", court: EWCA, verified: web}
+          - {case: Smith New Court v Scrimgeour Vickers, cite: "[1996] UKHL 3; [1997] AC 254", court: HL, verified: web}
+      - id: E5c-statutory-measure   # DRIFT POINT → timeline T3
+        test: s.2(1)-type damages on the deceit measure via "fiction of fraud" — formally good law
+          in England but doubted (left open in Smith New Court); OPEN in SG with SGCA obiter contra
+        authorities:
+          - {case: Royscot Trust v Rogerson, cite: "[1991] 2 QB 297", court: EWCA, verified: web}
+
+defences:
+  - id: D1-non-reliance-clause   # DRIFT POINT → timeline T1 (sharpest cross-jurisdiction divergence)
+    defence: Entire agreement / non-reliance clause — contractual estoppel bars non-fraudulent
+      misrepresentation claims
+    exceptions: [fraud never excludable, statutory reasonableness control where applicable]
+    authorities:
+      - {case: Peekay Intermark v ANZ, cite: "[2006] EWCA Civ 386", court: EWCA, verified: web}
+      - {case: Springwell Navigation v JP Morgan Chase, cite: "[2010] EWCA Civ 1221", court: EWCA, verified: web}
+      - {case: First Tower Trustees v CDS (Superstores), cite: "[2018] EWCA Civ 1396", court: EWCA, verified: web}
+  - id: D2-own-investigation
+    defence: Sole reliance on representee's own independent investigation
+    authorities:
+      - {case: Attwood v Small, cite: (1838) 6 Cl & F 232, court: HL, verified: web}
+
+# ────────────────────────────────────────────────────────────────────
+# JURISDICTION OVERLAYS
+# ────────────────────────────────────────────────────────────────────
+jurisdictions:
+
+  england:
+    regime_type: misrepresentation_remedial_statute + common law
+    statutes:
+      - {ref: Misrepresentation Act 1967 (c.7), sections: {s1: bars removed, s2(1): damages
+          reversed burden, s2(2): damages in lieu, s3: exclusion clauses subject to UCTA 1977
+          s.11(1) reasonableness (as substituted; consumer contracts carved out by CRA 2015)},
+          verified: web, source: legislation.gov.uk/ukpga/1967/7}
+    authority_profile: {apex: UKSC, english_backbone: binding-per-hierarchy}
+
+  hong-kong:
+    regime_type: misrepresentation_remedial_statute + common law (mirrors England)
+    statutes:
+      - {ref: Misrepresentation Ordinance (Cap. 284), sections: {s2: bars removed, s3(1): damages
+          reversed burden, s3(2): damages in lieu, s4: exclusion clauses subject to reasonableness
+          per Control of Exemption Clauses Ordinance (Cap. 71) s.3(1)},
+          verified: web (mirror + CFA quotation; official e-Legislation text not fetched), source: lawhero.io + Green Park CFA}
+    authority_profile:
+      apex: Court of Final Appeal (Basic Law art. 82)
+      rules: pre-1997 PC-on-HK-appeal decisions binding below CFA; pre-1997 HL persuasive
+        (great weight); post-1997 English and all overseas persuasive only; BL arts. 8, 84
+      leading_case: {case: A Solicitor v Law Society of Hong Kong, cite: (2008) 11 HKCFAR 117, verified: web}
+    local_authorities:
+      - {case: Green Park Properties Ltd v Dorku Ltd, cite: (2001) 4 HKCFAR 448, court: CFA,
+         holding: misrep re yard in property sale induced purchase; rescission + expenses; entire
+           agreement clause of NO EFFECT under MO s.4 — failed CECO s.3(1) reasonableness,
+         maps_to: [E3-inducement, D1, s4], verified: web}
+      - {case: DBS Bank (HK) v San-Hot HK Industrial, cite: HCA 2279/2008, [2013] HKEC 352, court: CFI,
+         holding: contractual estoppel (Peekay/Springwell) "also applies in Hong Kong";
+           non-reliance terms defeated mis-selling claims, maps_to: [D1], verified: web}
+      - {case: DBS Bank (HK) v Sit Pan Jit, cite: HCA 382/2009, [2015] HKEC 548, court: CFI,
+         holding: non-reliance clauses upheld via contractual estoppel, maps_to: [D1], verified: web}
+      - {case: Chang Pui Yin v Bank of Singapore, cite: "[2017] 4 HKLRD 458", court: CA,
+         holding: COUNTER-LIMIT — non-reliance/non-advisory clauses unenforceable on facts
+           (unconscionability + CECO unreasonableness) for unsophisticated customers,
+         maps_to: [D1], verified: web}
+      - {case: Shine Grace Investment v Citibank NA, cite: "[2018] HKCFI 1737", court: CFI,
+         holding: no inducement — experienced independent trader would have traded anyway,
+         maps_to: [E3b], verified: web}
+    gaps: [no CFA-level contractual-estoppel authority located — D1 adoption rests at CFI with CA qualification]
+
+  singapore:
+    regime_type: misrepresentation_remedial_statute (received) + common law (received via AELA)
+    statutes:
+      - {ref: Misrepresentation Act 1967 (2020 Rev Ed) (ex Cap 390), sections: same structure as
+          UK incl. s2(1) reversed burden and s3→UCTA s.11(1); PLUS SG-only s4 transitional
+          (no application before 12 Nov 1993); NOT amended by UK CRA 2015,
+          verified: web, source: sso.agc.gov.sg/Act/MA1967}
+      - {ref: Application of English Law Act 1993, effect: English common law continues as at
+          12.11.1993 "so far as applicable to the circumstances of Singapore"; First Sched Pt II
+          item 8 = MA 1967 whole; item 9 = UCTA Part I (except ss.1(1)(c),1(3)(b)) + Part III,
+          verified: web, source: sso.agc.gov.sg/Act/AELA1993}
+    authority_profile:
+      apex: SGCA; Privy Council appeals abolished 1994
+      rules: English precedent persuasive only; Practice Statement (Judicial Precedent) [1994] —
+        SGCA departs where adherence causes injustice or constrains development
+    local_authorities:
+      - {case: Panatron v Lee Cheow Lee, cite: "[2001] SGCA 49; [2001] 2 SLR(R) 435", court: SGCA,
+         holding: deceit elements per Derry v Peek; inducement = "real and substantial part",
+           not sole; failure to verify no defence, maps_to: [E4a, E3b, E3e], verified: web}
+      - {case: Tan Chin Seng v Raffles Town Club (No 2), cite: "[2003] SGCA 27", court: SGCA,
+         holding: statement of intention actionable only if intention not honestly held,
+         maps_to: [E1a], verified: web}
+      - {case: Orient Centre Investments v Societe Generale, cite: "[2007] SGCA 24", court: SGCA,
+         holding: non-reliance/acknowledgment clauses defeated claims between sophisticated
+           parties, maps_to: [D1], verified: web}
+      - {case: Als Memasa v UBS AG, cite: "[2012] SGCA 43", court: SGCA,
+         holding: OBITER — reconsider full immunity via non-reliance clauses for unsophisticated
+           customers; UCTA applicability left OPEN, maps_to: [D1], verified: web}
+      - {case: Wee Chiaw Sek Anna v Ng Li-Ann Genevieve, cite: "[2013] SGCA 36; [2013] 3 SLR 801",
+         court: SGCA, holding: inducement "presumption" is a fair inference of FACT not law;
+           burden of proving reliance stays on representee — WEAKER than English articulation,
+         maps_to: [E3c], verified: web}
+      - {case: RBC Properties v Defu Furniture, cite: "[2014] SGCA 62; [2015] 1 SLR 997", court: SGCA,
+         holding: s.2(1) dual burden (objective ground + subjective belief to contract time),
+           demanding and fact-centric; Royscot fiction-of-fraud DOUBTED obiter, left open,
+         maps_to: [E4b, E5c], verified: web}
+    divergences:
+      - inducement presumption downgraded to inference of fact (Wee Chiaw Sek Anna)
+      - s.2(1) measure: Royscot not adopted; SGCA lean = negligence measure (RBC, obiter)
+      - s.3 references pre-2015 UCTA text (no CRA 2015 consumer carve-out)
+
+  australia:   # STRUCTURAL OUTLIER — statutory overlay REPLACES the English statutory layer
+    regime_type: conduct_prohibition_no_fault (sui generis) + retained common law deceit/rescission
+    statutes:
+      - {ref: Australian Consumer Law s.18 (Sch 2, Competition and Consumer Act 2010 (Cth));
+          successor of TPA 1974 s.52,
+          text: person must not, in trade or commerce, engage in conduct that is misleading or
+            deceptive or likely to mislead or deceive,
+          fault_element: NONE (no state-of-mind requirement),
+          scope_gate: in trade or commerce (Concrete Constructions v Nelson (1990) 169 CLR 594),
+          remedies: {s236: damages 6yr, s237: compensation orders, s243: order menu incl. void ab
+            initio/variation/refund, s232: injunctions},
+          exclusion_by_contract: NOT PERMITTED — judge-made policy (Henjo Investments (1988) 39
+            FCR 546; Clark Equipment (1987) 71 ALR 367 "terms of the contract are irrelevant"),
+          non_reliance_clauses: relevant to CAUSATION only, not exclusion (Campbell v Backoffice
+            [2009] HCA 25 per French CJ at [31]),
+          parallel: state ACL applications; ASIC Act 2001 s.12DA (financial services),
+          verified: web, source: legislation.gov.au + hcourt.gov.au PDFs}
+      - {ref: state relics (footnote tier), items: [Misrepresentation Act 1972 (SA),
+          Civil Law (Wrongs) Act 2002 (ACT) ss.172-175], verified: web (ACT detail partial)}
+    acl_s18_elements:   # replaces E1-E5 for the statutory claim
+      - conduct (act, omission, silence, half-truth)
+      - in trade or commerce
+      - misleading/deceptive or likely to mislead (objective; ordinary-reasonable-member test for
+        mass conduct — Campomar v Nike [2000] HCA 12; whole-context assessment for identified
+        persons — Butcher v Lachlan Elder [2004] HCA 60; conduit principle — Google v ACCC
+        [2013] HCA 1)
+      - (for damages) loss "because of" conduct — reliance as usual causal route; "a" cause suffices
+    retained_common_law:
+      - {case: Magill v Magill, cite: "[2006] HCA 51", holding: deceit elements follow Derry v
+         Peek — English backbone E1-E5 applies to the deceit claim, verified: web}
+    authority_profile:
+      apex: High Court of Australia; PC appeals ended (1968/1975 Acts; Australia Acts 1986)
+      rules: English precedent persuasive only — Cook v Cook (1986) 162 CLR 376, 390 (dictum
+        standard; case overruled on substance by Imbree v McNeilly [2008] HCA 40 — flag)
+
+# ────────────────────────────────────────────────────────────────────
+# DRIFT TIMELINES — now with per-jurisdiction branches (the paper's core exhibit)
+# ────────────────────────────────────────────────────────────────────
+drift_timelines:
+  - id: T1-non-reliance-clauses
+    sub_test: D1
+    branches:
+      england:
+        - {date: 2006, case: Peekay, treatment: establishes, effect: contractual estoppel}
+        - {date: 2010, case: Springwell, treatment: affirms-broadens, effect: sophisticated parties}
+        - {date: 2018, case: First Tower Trustees, treatment: narrows, effect: basis clauses are
+           exclusions in substance → MA s.3/UCTA s.11(1) reasonableness; Thornbridge disapproved}
+      hong-kong:
+        - {date: 2001, case: Green Park Properties (CFA), treatment: pre-figures, effect: entire
+           agreement clause struck under MO s.4 + CECO reasonableness}
+        - {date: 2013, case: San-Hot (CFI), treatment: adopts-Peekay/Springwell, effect: estoppel applies in HK}
+        - {date: 2015, case: Sit Pan Jit (CFI), treatment: affirms, effect: extends to SFO claims}
+        - {date: 2017, case: Chang Pui Yin (CA), treatment: narrows, effect: unconscionability +
+           CECO defeat clauses vs unsophisticated customers}
+      singapore:
+        - {date: 2007, case: Orient Centre (SGCA), treatment: effective, effect: sophisticated parties}
+        - {date: 2012, case: Als Memasa (SGCA), treatment: doubts-obiter, effect: UCTA control left open}
+      australia:
+        - {date: 1987-88, case: Clark Equipment; Henjo, treatment: excludes-exclusion, effect: cannot
+           contract out of s.52/s.18 at all}
+        - {date: 2009, case: Campbell v Backoffice (HCA), treatment: channels, effect: clauses go to
+           causation only}
+  - id: T2-inducement-presumption
+    sub_test: E3c
+    branches:
+      england:
+        - {date: 1881-85, case: Redgrave; Edgington, treatment: establishes, effect: inference from materiality}
+        - {date: 2016, case: Hayward v Zurich (UKSC), treatment: broadens, effect: belief in truth not required}
+        - {date: 2019, case: BV Nederlandse, treatment: clarifies, effect: fraud presumption very
+           difficult to rebut; "a" cause}
+      singapore:
+        - {date: 2001, case: Panatron (SGCA), treatment: follows, effect: real and substantial part}
+        - {date: 2013, case: Wee Chiaw Sek Anna (SGCA), treatment: narrows, effect: inference of
+           fact not law; burden stays on representee}
+      hong-kong:
+        - {date: 2018, case: Shine Grace (CFI), treatment: applies, effect: no inducement where
+           representee would have acted anyway}
+  - id: T3-statutory-damages-measure
+    sub_test: E5c
+    branches:
+      england:
+        - {date: 1991, case: Royscot (CA), treatment: establishes, effect: fiction of fraud — deceit measure}
+        - {date: 1996, case: Smith New Court (HL), treatment: doubts, effect: correctness expressly left open}
+      singapore:
+        - {date: 2014, case: RBC Properties (SGCA), treatment: doubts-obiter, effect: no reason in
+           logic or principle for deceit measure; undecided}
+      hong-kong:
+        - {date: null, case: TODO, treatment: tbd, effect: tbd}
+      australia: [not applicable — no s.2(1) analogue; ACL s.236 causation measure]
+
+flagged_unverified:
+  - Henjo exact Lockhart J wording; Campbell v Backoffice joint-reasons paragraph number
+  - CCA s.137B (contributory negligence) section number; ACT CLW Act s.174 substantive detail
+  - Cook v Cook joint-judgment attribution
+  - Tan Chin Seng SLR(R) parallel citation; Orient Centre SLR(R) parallel citation
+  - Cap 284 official consolidated text (e-Legislation robots-blocked; verified via mirror + CFA quotation)
+todo:
+  - upgrade key authorities web → primary with paragraph pin-cites (needs judgment PDFs)
+  - HK: fill T3 branch; hunt CFA-level non-reliance authority
+  - add remedies drift for AU s.236 causation case law

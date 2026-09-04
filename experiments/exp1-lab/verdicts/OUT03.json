@@ -1,0 +1,35 @@
+{
+  "label": "OUT03",
+  "verdicts": [
+    {
+      "id": "C-009",
+      "verdict": "pass",
+      "reason": "D-25: deceit requires knowing falsity, no belief in truth, or recklessness; carelessness 'is not fraud'."
+    },
+    {
+      "id": "C-010",
+      "verdict": "pass",
+      "reason": "Cites 'Derry v Peek (1889) 14 App Cas 337' in D-25 and again in D-27 against 'ought to have known'."
+    },
+    {
+      "id": "C-020",
+      "verdict": "pass",
+      "reason": "D-14 identifies cl. 11.3.2 non-reliance/entire agreement barring 'no claim for innocent or negligent misrepresentation'."
+    },
+    {
+      "id": "C-021",
+      "verdict": "pass",
+      "reason": "D-14 and D-R7: clauses 'carve out fraud and nothing else'; cites s.3 MA 1967, UCTA, S. Pearson, HIH."
+    },
+    {
+      "id": "C-022",
+      "verdict": "pass",
+      "reason": "D-46 points 4-5 challenge USD 12.3m head on Hadley v Baxendale/Achilleas remoteness and Addis reputational non-recoverability."
+    },
+    {
+      "id": "C-023",
+      "verdict": "pass",
+      "reason": "D-46 point 2: 'Causation is asserted, not proved'; point 3 geography inconsistency; non-renewal 'not a loss caused by any breach'."
+    }
+  ]
+}

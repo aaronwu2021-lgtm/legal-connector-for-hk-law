@@ -1,0 +1,470 @@
+{
+ "connector_version": "0.3",
+ "modules": [
+  {
+   "claim": "misrepresentation (English common-law family)",
+   "test_type": "conjunctive",
+   "variants": [
+    "fraudulent-deceit",
+    "negligent-statutory",
+    "innocent"
+   ],
+   "elements": [
+    {
+     "id": "E1",
+     "element": "False statement of existing fact",
+     "sub_tests": [
+      {
+       "id": "E1a",
+       "test": "Fact vs opinion",
+       "statement": "Opinion or intention is not actionable UNLESS not honestly held (state of mind is itself a fact), or the opinion is given by a party with superior knowledge so as to imply facts justifying it; pure opinion where both parties know there is no factual basis is not actionable.",
+       "authorities": [],
+       "drift": null
+      },
+      {
+       "id": "E1b",
+       "test": "Half-truth",
+       "statement": "A literally true but misleading partial statement is a misrepresentation.",
+       "authorities": [],
+       "drift": null
+      },
+      {
+       "id": "E1c",
+       "test": "Continuing representation",
+       "statement": "A statement true when made but falsified by a change of circumstances before contracting must be corrected; silence is then actionable.",
+       "authorities": [],
+       "drift": null
+      },
+      {
+       "id": "E1d",
+       "test": "Representation by conduct",
+       "statement": "Conduct can constitute a representation (including participation with undisclosed knowledge); mere silence generally cannot — there is no general duty of disclosure.",
+       "authorities": [],
+       "drift": null
+      }
+     ]
+    },
+    {
+     "id": "E2",
+     "element": "Addressed to the representee",
+     "sub_tests": [
+      {
+       "id": "E2a",
+       "test": "Channel",
+       "statement": "The representation must be addressed to the claimant or intended to reach them; a prospectus is exhausted on the original allottees and does not extend to market purchasers.",
+       "authorities": [],
+       "drift": null
+      }
+     ]
+    },
+    {
+     "id": "E3",
+     "element": "Inducement / reliance",
+     "sub_tests": [
+      {
+       "id": "E3a",
+       "test": "Awareness of the statement",
+       "statement": "The representee must have been aware of the representation; a concealment never seen cannot have operated on the mind.",
+       "authorities": [],
+       "drift": null
+      },
+      {
+       "id": "E3b",
+       "test": "Actual reliance",
+       "statement": "The representation must be a real and substantial cause of entering the contract; it need not be the sole inducement.",
+       "authorities": [],
+       "drift": null
+      },
+      {
+       "id": "E3c",
+       "test": "Presumption of inducement",
+       "statement": "A material representation calculated to induce raises an inference/presumption of inducement; in fraud the presumption is very difficult to rebut and the test is whether the representation was 'a' cause, not 'the' cause. Jurisdictions diverge — see timeline T2.",
+       "authorities": [],
+       "drift": "T2"
+      },
+      {
+       "id": "E3d",
+       "test": "Doubt does not defeat reliance",
+       "statement": "Belief in the truth of the statement is not required: reliance survives suspicion of falsity where the statement materially influenced the decision (settlement context).",
+       "authorities": [],
+       "drift": null
+      },
+      {
+       "id": "E3e",
+       "test": "No duty to investigate",
+       "statement": "An opportunity to discover the truth is no defence; sole reliance on the representee's own independent investigation is.",
+       "authorities": [],
+       "drift": null
+      }
+     ]
+    },
+    {
+     "id": "E4",
+     "element": "State of mind — variant selector",
+     "sub_tests": [
+      {
+       "id": "E4a",
+       "test": "Fraudulent",
+       "statement": "Knowingly false, without belief in its truth, or reckless whether true or false (Lord Herschell). An honest but negligent belief is insufficient — 'ought to have known' does not establish fraud.",
+       "authorities": [],
+       "drift": null
+      },
+      {
+       "id": "E4b",
+       "test": "Negligent (statutory)",
+       "statement": "No proof of fraud needed; the burden is REVERSED — the representor must prove objectively reasonable ground to believe AND actual belief up to the time of contract (majority; Denning MR dissenting).",
+       "authorities": [],
+       "drift": null
+      }
+     ]
+    },
+    {
+     "id": "E5",
+     "element": "Remedies",
+     "sub_tests": [
+      {
+       "id": "E5a",
+       "test": "Rescission and its bars",
+       "statement": "Rescission is available for all variants subject to bars: affirmation after knowledge, lapse of time, impossibility of restitution, third-party rights.",
+       "authorities": [],
+       "drift": null
+      },
+      {
+       "id": "E5b",
+       "test": "Deceit measure",
+       "statement": "All loss directly flowing from the fraud, not limited by foreseeability; the date-of-transaction rule is applied flexibly where the fraud continues to operate.",
+       "authorities": [],
+       "drift": null
+      },
+      {
+       "id": "E5c",
+       "test": "Statutory measure",
+       "statement": "s.2(1)-type damages assessed on the deceit measure via the 'fiction of fraud' — formally good law in England but doubted (left open in Smith New Court); open in Singapore with SGCA obiter against.",
+       "authorities": [],
+       "drift": "T3"
+      }
+     ]
+    }
+   ],
+   "defences": [
+    {
+     "id": "D1",
+     "defence": "Non-reliance / entire agreement clause",
+     "statement": "Contractual estoppel: parties may agree that no representations were made or relied on, barring non-fraudulent claims. Exceptions: fraud can never be excluded; statutory reasonableness control applies where the jurisdiction provides it. Sharpest cross-jurisdiction divergence — see timeline T1.",
+     "authorities": [],
+     "drift": "T1"
+    },
+    {
+     "id": "D2",
+     "defence": "Own investigation",
+     "statement": "The representee relied solely on their own independent investigation rather than the statement.",
+     "authorities": [],
+     "drift": null
+    }
+   ],
+   "jurisdiction_overlay": {},
+   "drift_timelines": [
+    {
+     "id": "T1",
+     "title": "Non-reliance / entire agreement 条款的效力",
+     "title_en": "Effect of non-reliance / entire agreement clauses",
+     "sub_test": "D1",
+     "note": "同一条抗辩,四个法域四种走向:英国以成文法收窄;香港 CFI 采纳、CA 反向限缩(CFA 层面真空);新加坡挂起未决;澳大利亚从头不允许排除。",
+     "as_of": null,
+     "events": [
+      {
+       "j": "AU",
+       "y": 1988,
+       "f": 0.9,
+       "case": "Henjo; Clark Equipment (FCA)",
+       "treat": "excludes exclusion",
+       "eff": "s.52/s.18 liability cannot be excluded by contract at all",
+       "in_force_at_as_of": true
+      },
+      {
+       "j": "HK",
+       "y": 2001,
+       "f": 0.5,
+       "case": "Green Park Properties v Dorku (CFA)",
+       "treat": "pre-figures",
+       "eff": "Entire agreement clause of no effect under MO s.4 — failed CECO s.3(1) reasonableness",
+       "in_force_at_as_of": true
+      },
+      {
+       "j": "EN",
+       "y": 2006,
+       "f": -0.6,
+       "case": "Peekay v ANZ",
+       "treat": "establishes",
+       "eff": "Contractual estoppel: parties may agree that no representations were made or relied on",
+       "in_force_at_as_of": true
+      },
+      {
+       "j": "SG",
+       "y": 2007,
+       "f": -0.6,
+       "case": "Orient Centre v Société Générale (SGCA)",
+       "treat": "effective",
+       "eff": "Non-reliance clauses defeat claims between sophisticated parties",
+       "in_force_at_as_of": true
+      },
+      {
+       "j": "AU",
+       "y": 2009,
+       "f": 0.5,
+       "case": "Campbell v Backoffice (HCA)",
+       "treat": "channels",
+       "eff": "Clauses operate on causation only, not as exclusions",
+       "in_force_at_as_of": true
+      },
+      {
+       "j": "EN",
+       "y": 2010,
+       "f": -0.8,
+       "case": "Springwell v JP Morgan",
+       "treat": "affirms · broadens",
+       "eff": "Estoppel effective between sophisticated commercial parties",
+       "in_force_at_as_of": true
+      },
+      {
+       "j": "SG",
+       "y": 2012,
+       "f": -0.1,
+       "case": "Als Memasa v UBS (SGCA)",
+       "treat": "doubts · obiter",
+       "eff": "Full immunity for unsophisticated customers questioned; UCTA control left open",
+       "in_force_at_as_of": true
+      },
+      {
+       "j": "HK",
+       "y": 2013,
+       "f": -0.6,
+       "case": "DBS v San-Hot (CFI)",
+       "treat": "adopts",
+       "eff": "Peekay/Springwell contractual estoppel 'also applies in Hong Kong'",
+       "in_force_at_as_of": true
+      },
+      {
+       "j": "HK",
+       "y": 2015,
+       "f": -0.7,
+       "case": "DBS v Sit Pan Jit (CFI)",
+       "treat": "affirms",
+       "eff": "Non-reliance clauses upheld; extended to SFO statutory claims",
+       "in_force_at_as_of": true
+      },
+      {
+       "j": "HK",
+       "y": 2017,
+       "f": 0.4,
+       "case": "Chang Pui Yin v Bank of Singapore (CA)",
+       "treat": "narrows",
+       "eff": "Unconscionability + CECO defeat the clauses for unsophisticated customers",
+       "in_force_at_as_of": true
+      },
+      {
+       "j": "EN",
+       "y": 2018,
+       "f": 0.4,
+       "case": "First Tower Trustees v CDS",
+       "treat": "narrows",
+       "eff": "Basis clauses are exclusions in substance → must pass MA s.3 / UCTA s.11(1) reasonableness",
+       "in_force_at_as_of": true
+      }
+     ],
+     "standing_rules": [
+      {
+       "jurisdiction": "AU",
+       "since": 2009,
+       "case": "Campbell v Backoffice (HCA)",
+       "treatment": "channels",
+       "effect": "Clauses operate on causation only, not as exclusions",
+       "favour": 0.5
+      },
+      {
+       "jurisdiction": "HK",
+       "since": 2017,
+       "case": "Chang Pui Yin v Bank of Singapore (CA)",
+       "treatment": "narrows",
+       "effect": "Unconscionability + CECO defeat the clauses for unsophisticated customers",
+       "favour": 0.4
+      },
+      {
+       "jurisdiction": "EN",
+       "since": 2018,
+       "case": "First Tower Trustees v CDS",
+       "treatment": "narrows",
+       "effect": "Basis clauses are exclusions in substance → must pass MA s.3 / UCTA s.11(1) reasonableness",
+       "favour": 0.4
+      },
+      {
+       "jurisdiction": "SG",
+       "since": 2012,
+       "case": "Als Memasa v UBS (SGCA)",
+       "treatment": "doubts · obiter",
+       "effect": "Full immunity for unsophisticated customers questioned; UCTA control left open",
+       "favour": -0.1
+      }
+     ],
+     "jurisdictions_with_no_authority_at_as_of": []
+    },
+    {
+     "id": "T2",
+     "title": "诱导推定 Inducement presumption",
+     "title_en": "Presumption of inducement",
+     "sub_test": "E3c",
+     "note": "英国线一路加强(2016 起连信其为真都不要求);新加坡 2013 反向降格为「事实推断」,举证责任留在主张方。",
+     "as_of": null,
+     "events": [
+      {
+       "j": "EN",
+       "y": 1881,
+       "f": 0.3,
+       "case": "Redgrave v Hurd",
+       "treat": "establishes",
+       "eff": "An opportunity to discover the truth is no defence",
+       "in_force_at_as_of": true
+      },
+      {
+       "j": "EN",
+       "y": 1885,
+       "f": 0.4,
+       "case": "Edgington v Fitzmaurice",
+       "treat": "establishes",
+       "eff": "Material representation plus contracting supports an inference of inducement; sole cause not required",
+       "in_force_at_as_of": true
+      },
+      {
+       "j": "SG",
+       "y": 2001,
+       "f": 0.4,
+       "case": "Panatron v Lee Cheow Lee (SGCA)",
+       "treat": "follows",
+       "eff": "Real and substantial part; not the sole inducement",
+       "in_force_at_as_of": true
+      },
+      {
+       "j": "SG",
+       "y": 2013,
+       "f": 0.1,
+       "case": "Wee Chiaw Sek Anna (SGCA)",
+       "treat": "narrows",
+       "eff": "Inference of fact, not law; burden of proving reliance stays on the representee",
+       "in_force_at_as_of": true
+      },
+      {
+       "j": "EN",
+       "y": 2016,
+       "f": 0.7,
+       "case": "Hayward v Zurich (UKSC)",
+       "treat": "broadens",
+       "eff": "Belief in truth not required; suspicion does not defeat reliance",
+       "in_force_at_as_of": true
+      },
+      {
+       "j": "HK",
+       "y": 2018,
+       "f": -0.2,
+       "case": "Shine Grace v Citibank (CFI)",
+       "treat": "applies",
+       "eff": "No inducement where the representee would have acted anyway",
+       "in_force_at_as_of": true
+      },
+      {
+       "j": "EN",
+       "y": 2019,
+       "f": 0.9,
+       "case": "BV Nederlandse v Rembrandt",
+       "treat": "clarifies",
+       "eff": "In fraud the presumption is very difficult to rebut; 'a' cause suffices",
+       "in_force_at_as_of": true
+      }
+     ],
+     "standing_rules": [
+      {
+       "jurisdiction": "EN",
+       "since": 2019,
+       "case": "BV Nederlandse v Rembrandt",
+       "treatment": "clarifies",
+       "effect": "In fraud the presumption is very difficult to rebut; 'a' cause suffices",
+       "favour": 0.9
+      },
+      {
+       "jurisdiction": "SG",
+       "since": 2013,
+       "case": "Wee Chiaw Sek Anna (SGCA)",
+       "treatment": "narrows",
+       "effect": "Inference of fact, not law; burden of proving reliance stays on the representee",
+       "favour": 0.1
+      },
+      {
+       "jurisdiction": "HK",
+       "since": 2018,
+       "case": "Shine Grace v Citibank (CFI)",
+       "treatment": "applies",
+       "effect": "No inducement where the representee would have acted anyway",
+       "favour": -0.2
+      }
+     ],
+     "jurisdictions_with_no_authority_at_as_of": []
+    },
+    {
+     "id": "T3",
+     "title": "法定赔偿标准(fiction of fraud)",
+     "title_en": "Statutory damages measure",
+     "sub_test": "E5c",
+     "note": "Royscot 把 s.2(1) 赔偿拉到欺诈标准;上议院 1996 存疑搁置;新加坡 2014 obiter 反对、悬而未决;澳洲无对应条文。",
+     "as_of": null,
+     "events": [
+      {
+       "j": "EN",
+       "y": 1991,
+       "f": 0.8,
+       "case": "Royscot Trust v Rogerson",
+       "treat": "establishes",
+       "eff": "s.2(1) damages on the deceit measure — the fiction of fraud",
+       "in_force_at_as_of": true
+      },
+      {
+       "j": "EN",
+       "y": 1996,
+       "f": 0.4,
+       "case": "Smith New Court (HL)",
+       "treat": "doubts",
+       "eff": "Correctness expressly left open",
+       "in_force_at_as_of": true
+      },
+      {
+       "j": "SG",
+       "y": 2014,
+       "f": -0.2,
+       "case": "RBC Properties v Defu (SGCA)",
+       "treat": "doubts · obiter",
+       "eff": "No reason in logic or principle for the deceit measure; undecided",
+       "in_force_at_as_of": true
+      }
+     ],
+     "standing_rules": [
+      {
+       "jurisdiction": "EN",
+       "since": 1996,
+       "case": "Smith New Court (HL)",
+       "treatment": "doubts",
+       "effect": "Correctness expressly left open",
+       "favour": 0.4
+      },
+      {
+       "jurisdiction": "SG",
+       "since": 2014,
+       "case": "RBC Properties v Defu (SGCA)",
+       "treatment": "doubts · obiter",
+       "effect": "No reason in logic or principle for the deceit measure; undecided",
+       "favour": -0.2
+      }
+     ],
+     "jurisdictions_with_no_authority_at_as_of": []
+    }
+   ]
+  }
+ ]
+}

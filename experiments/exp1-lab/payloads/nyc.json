@@ -1,0 +1,152 @@
+{
+ "connector_version": "0.3",
+ "modules": [
+  {
+   "module": "NYC",
+   "name": "Enforcement — NY Convention Art V",
+   "jurisdiction": "HK/SG/EN",
+   "note": "全法律里最天然的机器可读要件表:封闭清单,任一项成立即可拒绝执行,举证责任在被申请人(V(2) 除外)。",
+   "authorities": [
+    {
+     "case": "New York Convention 1958 Art V",
+     "cite": "—",
+     "court": "—",
+     "role": "封闭的拒绝执行事由清单",
+     "verified": "unverified"
+    },
+    {
+     "case": "Hebei Import & Export v Polytek Engineering",
+     "cite": "(1999) 2 HKCFAR 111",
+     "court": "CFA",
+     "role": "香港公共政策标准",
+     "verified": "unverified"
+    }
+   ],
+   "stages": [
+    {
+     "id": "NY-1",
+     "name": "Grounds the respondent must prove",
+     "test_type": "disjunctive-gateway",
+     "rule": "任一项成立即可拒绝执行。",
+     "factors": [
+      {
+       "id": "NY-incapacity",
+       "factor": "Incapacity / invalid agreement",
+       "tier": null,
+       "band": [
+        null,
+        null
+       ],
+       "evidence": null,
+       "note": null
+      },
+      {
+       "id": "NY-notice",
+       "factor": "Improper notice / unable to present case",
+       "tier": null,
+       "band": [
+        null,
+        null
+       ],
+       "evidence": null,
+       "note": null
+      },
+      {
+       "id": "NY-scope",
+       "factor": "Beyond the scope of submission",
+       "tier": null,
+       "band": [
+        null,
+        null
+       ],
+       "evidence": null,
+       "note": null
+      },
+      {
+       "id": "NY-composition",
+       "factor": "Composition or procedure not in accordance",
+       "tier": null,
+       "band": [
+        null,
+        null
+       ],
+       "evidence": null,
+       "note": null
+      },
+      {
+       "id": "NY-not-binding",
+       "factor": "Not yet binding / set aside / suspended",
+       "tier": null,
+       "band": [
+        null,
+        null
+       ],
+       "evidence": null,
+       "note": null
+      }
+     ]
+    },
+    {
+     "id": "NY-2",
+     "name": "Grounds the court may raise itself",
+     "test_type": "disjunctive-gateway",
+     "rule": "可仲裁性与公共政策,法院可主动认定。",
+     "factors": [
+      {
+       "id": "NY-arbitrability",
+       "factor": "Not arbitrable",
+       "tier": null,
+       "band": [
+        null,
+        null
+       ],
+       "evidence": null,
+       "note": null
+      },
+      {
+       "id": "NY-public-policy",
+       "factor": "Contrary to public policy",
+       "tier": null,
+       "band": [
+        null,
+        null
+       ],
+       "evidence": null,
+       "note": null
+      }
+     ]
+    },
+    {
+     "id": "NY-3",
+     "name": "Residual discretion",
+     "test_type": "threshold-discretion",
+     "rule": "即使事由成立,法院仍保留是否拒绝执行的裁量。",
+     "factors": [
+      {
+       "id": "NY-ground-made-out",
+       "factor": "A ground is made out",
+       "tier": null,
+       "band": [
+        null,
+        null
+       ],
+       "evidence": null,
+       "note": null
+      },
+      {
+       "id": "NY-discretion-enforce",
+       "factor": "Discretion nonetheless to enforce",
+       "tier": null,
+       "band": [
+        null,
+        null
+       ],
+       "evidence": null,
+       "note": null
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

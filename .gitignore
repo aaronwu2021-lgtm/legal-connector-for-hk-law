@@ -1,0 +1,12 @@
+node_modules/
+.netlify/
+*.log
+__pycache__/
+.DS_Store
+harvey-labs/
+experiments/exp1-lab/tasks/
+
+# extraction leftovers (mount does not permit deletion)
+_repo.tar.gz
+doctrine-connector-repo.tar.gz
+doctrine-connector/

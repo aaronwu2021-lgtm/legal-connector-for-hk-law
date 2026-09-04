@@ -1,0 +1,29 @@
+{
+  "label": "OUT08",
+  "verdicts": [
+    {"id": "C-003", "verdict": "pass", "reason": "§12.3 analyses dispositif discrepancy as V(2)(b) failure of motivación, 'THE PRINCIPAL RISK'"},
+    {"id": "C-004", "verdict": "pass", "reason": "§8.2 'The $5,169,139 excess' analysed under Article V(1)(c); table item 9"},
+    {"id": "C-005", "verdict": "pass", "reason": "§1.2 and §15.1 recommend seeking enforcement of USD $9,530,861, not $14.7M"},
+    {"id": "C-007", "verdict": "pass", "reason": "§9.3 places Rule 22.4 28-vs-30-day notice breach squarely under Article V(1)(d)"},
+    {"id": "C-011", "verdict": "pass", "reason": "§7.2 Component 2 treats decommissioned admin@ address under Article V(1)(b); table item 6"},
+    {"id": "C-014", "verdict": "pass", "reason": "§8.3 addresses legal/expert fee award under Article V(1)(c); table item 10"},
+    {"id": "C-016", "verdict": "pass", "reason": "§12.2 analyses BC law applied instead of Mexican leyes de orden público under V(2)(b)"},
+    {"id": "C-017", "verdict": "pass", "reason": "§12.1(a) distinguishes orden público interno from internacional; Parsons/RAKTA 'most basic notions'"},
+    {"id": "C-019", "verdict": "pass", "reason": "§9.4 analyses joinder of jurisdictional objection under V(1)(d), answered by Rule 18.4"},
+    {"id": "C-021", "verdict": "pass", "reason": "§6.3: §14.1 designates BC law; §14.2 'contains no separate designation' for the clause"},
+    {"id": "C-022", "verdict": "pass", "reason": "§6.3 sits inside §6 'Article V(1)(a)'; table item 3 maps it to V(1)(a)"},
+    {"id": "C-023", "verdict": "pass", "reason": "§6.3 explains two-stage cascade defaulting to Alberta, rejects Pacífico's closest-connection Mexican-law argument"},
+    {"id": "C-024", "verdict": "pass", "reason": "§10.3: Sept 20 letter of intent only, no application filed, deadline expired; V(1)(e) negligible"},
+    {"id": "C-026", "verdict": "pass", "reason": "§14.1 quotes PAC Rule 26.3: dissent 'shall not affect the validity or enforceability of the majority decision'"},
+    {"id": "C-027", "verdict": "pass", "reason": "§14.2 lists three quantum points Velázquez Ibarra will place before the Guadalajara judge"},
+    {"id": "C-028", "verdict": "pass", "reason": "§7.3 'Language and interpretation' analysed as a potential V(1)(b) defence; table item 7"},
+    {"id": "C-030", "verdict": "pass", "reason": "§12.4 V(2)(b) excessive-damages analysis of full-commitment Years 4–5 vs $1.8M actual; §14.2 dissent quote"},
+    {"id": "C-031", "verdict": "pass", "reason": "'No hay revisión del fondo' at §3.3(d) applied to Years 4–5 projection; §12.4 excessive damages moderate under V(2)(b)"},
+    {"id": "C-032", "verdict": "pass", "reason": "§3.1: Mexico acceded April 14, 1971 'without the reciprocity reservation and without the commercial reservation'"},
+    {"id": "C-033", "verdict": "pass", "reason": "§3.2 cites Código de Comercio Book Five, Title Four, Articles 1457, 1461, 1462, 1463"},
+    {"id": "C-039", "verdict": "pass", "reason": "§3.3(c): grounds 'construed narrowly, in favour of enforcement'; exhaustive closed list at (a)"},
+    {"id": "C-040", "verdict": "pass", "reason": "§6.4 addresses unconscionability (English/Canada forum) and assesses it as a V(1)(a) enforcement defence"},
+    {"id": "C-042", "verdict": "pass", "reason": "Each moderate/strong ground (§8.2, §9.3, §9.5, §12.2, §12.3, §12.4) carries enumerated Greenleaf counter-arguments"},
+    {"id": "C-043", "verdict": "pass", "reason": "Strength ratings throughout (negligible/weak/moderate/strong) plus consolidated 27-row table at §13"}
+  ]
+}

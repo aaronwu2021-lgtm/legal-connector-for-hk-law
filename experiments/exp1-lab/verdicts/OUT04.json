@@ -1,0 +1,35 @@
+{
+  "label": "OUT04",
+  "verdicts": [
+    {
+      "id": "C-010",
+      "verdict": "pass",
+      "reason": "Issue 2 cites R-17(a)(i),(ii),(iv) for B&T economic concentration; Part III.D notes IBA repeat-appointment provisions."
+    },
+    {
+      "id": "C-020",
+      "verdict": "pass",
+      "reason": "Issue 7 Lakeview row cites R-17(a)(i),(ii) and R-16; Part III.D names AAA/ABA Code Canon II (disclosure)."
+    },
+    {
+      "id": "C-023",
+      "verdict": "pass",
+      "reason": "Issue 6(b) quotes R-17(a)(iv) on 'prior publications, public statements, or expressed views on legal or factual issues'."
+    },
+    {
+      "id": "C-024",
+      "verdict": "pass",
+      "reason": "Header deadline block and Part VI: seven calendar days from June 17; 'Act by June 24, 2024 for everything.'"
+    },
+    {
+      "id": "C-032",
+      "verdict": "pass",
+      "reason": "Part III.A sets out Rule R-17(a)(i)-(iv), R-17(b), R-17(d) as governing disclosure obligations throughout."
+    },
+    {
+      "id": "C-033",
+      "verdict": "pass",
+      "reason": "Part III.D cites 'IBA Guidelines on Conflicts of Interest in International Arbitration (2014)' and its Orange List."
+    }
+  ]
+}

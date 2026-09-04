@@ -1,0 +1,35 @@
+{
+  "label": "OUT02",
+  "verdicts": [
+    {
+      "id": "C-009",
+      "verdict": "pass",
+      "reason": "Issue 18: fraud requires statement made 'knowingly, without belief in its truth, or recklessly'; negligent belief insufficient."
+    },
+    {
+      "id": "C-010",
+      "verdict": "pass",
+      "reason": "Derry v Peek cited at E4a table row and Issue 18 Standard; also Three Rivers DC (No 3) on pleading fraud."
+    },
+    {
+      "id": "C-020",
+      "verdict": "pass",
+      "reason": "Issue 22 quotes cll. 11.3.1/11.3.2 supersession and non-reliance; 'no claim for innocent or negligent misrepresentation' outside SPA."
+    },
+    {
+      "id": "C-021",
+      "verdict": "pass",
+      "reason": "D1: 'Fraud can never be excluded'; s.3 Misrep Act 1967 / UCTA s.11 reasonableness; clauses defeat every limb other than fraud."
+    },
+    {
+      "id": "C-022",
+      "verdict": "pass",
+      "reason": "Issue 37: 'Damages for injury to commercial reputation are not generally recoverable in contract'; separate Remoteness heading rebuts reasonable contemplation."
+    },
+    {
+      "id": "C-023",
+      "verdict": "pass",
+      "reason": "Issue 37: Charter A a lost tender or terminated for Horizon's own default (novus actus); Charter B lost chance, unproven."
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+[
+ {
+  "slug": "identify-deficiencies-and-vulnerabilities-in-counterpartys-statement-of-claim",
+  "family": "misrep-en",
+  "docs": 6,
+  "doc_chars": 238014,
+  "n_criteria": 46,
+  "n_covered": 6
+ },
+ {
+  "slug": "analyze-arbitration-award-for-new-york-convention-enforcement-defenses",
+  "family": "nyc",
+  "docs": 6,
+  "doc_chars": 234425,
+  "n_criteria": 43,
+  "n_covered": 24
+ },
+ {
+  "slug": "draft-challenge-to-arbitrator-appointment",
+  "family": "arbch",
+  "docs": 8,
+  "doc_chars": 173642,
+  "n_criteria": 57,
+  "n_covered": 11
+ },
+ {
+  "slug": "identify-issues-in-arbitrator-disclosure-statement",
+  "family": "arbch",
+  "docs": 5,
+  "doc_chars": 144916,
+  "n_criteria": 38,
+  "n_covered": 6
+ },
+ {
+  "slug": "draft-application-to-set-aside-arbitration-award",
+  "family": "nyc",
+  "docs": 8,
+  "doc_chars": 226540,
+  "n_criteria": 67,
+  "n_covered": 5
+ },
+ {
+  "slug": "compare-arbitration-clause-vs-institutional-rules-compliance-audit",
+  "family": "model-law",
+  "docs": 4,
+  "doc_chars": 73968,
+  "n_criteria": 42,
+  "n_covered": 7
+ }
+]

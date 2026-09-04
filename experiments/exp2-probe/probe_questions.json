@@ -1,0 +1,88 @@
+{
+ "items": [
+  {
+   "id": "HK-01",
+   "question": "Under Hong Kong law, which provision of the Misrepresentation Ordinance (Cap. 284) is the analogue of section 2(1) of the English Misrepresentation Act 1967 — the damages provision that reverses the burden onto the representor? Give the section number."
+  },
+  {
+   "id": "HK-02",
+   "question": "A Hong Kong contract contains a clause excluding liability for misrepresentation. Which ordinance and section supplies the reasonableness test that clause must satisfy, and via which provision of Cap. 284?"
+  },
+  {
+   "id": "HK-03",
+   "question": "Has the Peekay/Springwell doctrine of contractual estoppel (non-reliance clauses) been adopted in Hong Kong, and at what level of the court hierarchy does that adoption currently rest?"
+  },
+  {
+   "id": "HK-04",
+   "question": "Which Hong Kong appellate decision limits the effectiveness of non-reliance / non-advisory clauses against unsophisticated bank customers, and on what two bases?"
+  },
+  {
+   "id": "HK-05",
+   "question": "In Green Park Properties Ltd v Dorku Ltd (2001) 4 HKCFAR 448, what happened to the contract's entire agreement / exclusion clause, and why?"
+  },
+  {
+   "id": "HK-06",
+   "question": "What is the status in Hong Kong courts of (a) a pre-1997 House of Lords decision and (b) a post-1997 UK Supreme Court decision? Name the leading Court of Final Appeal authority on the point."
+  },
+  {
+   "id": "HK-07",
+   "question": "Is there Hong Kong authority on whether damages under Cap. 284 s.3(1) are measured on the deceit (fiction of fraud) basis, as Royscot held for the English provision?"
+  },
+  {
+   "id": "HK-08",
+   "question": "In Shine Grace Investment Ltd v Citibank NA [2018] HKCFI 1737, why did the misrepresentation claim fail on the inducement element?"
+  },
+  {
+   "id": "ASOF-01",
+   "question": "A commercial contract governed by English law was entered into in 2012 and contains a non-reliance clause. Advising in 2012, what was the then-current English position on whether such a clause was subject to the statutory reasonableness control in s.3 of the Misrepresentation Act 1967?"
+  },
+  {
+   "id": "ASOF-02",
+   "question": "Under English law as it stood in 2014, could a representee who suspected the representation was false still establish inducement in deceit? What changed afterwards?"
+  },
+  {
+   "id": "ASOF-03",
+   "question": "What is the current English position on the strength of the presumption of inducement where the misrepresentation is fraudulent, and which decision states it?"
+  },
+  {
+   "id": "ASOF-04",
+   "question": "Is Royscot Trust v Rogerson still good law in England on the measure of damages under s.2(1), and what qualification attaches?"
+  },
+  {
+   "id": "ASOF-05",
+   "question": "Order the following four decisions on non-reliance clauses chronologically and state the direction each moved the law (toward or away from enforcing such clauses): Chang Pui Yin; First Tower Trustees; Peekay; Springwell."
+  },
+  {
+   "id": "SG-01",
+   "question": "How does Singapore characterise the 'presumption of inducement' in misrepresentation, and how does that differ from the English articulation? Name the Court of Appeal authority."
+  },
+  {
+   "id": "SG-02",
+   "question": "Has Singapore adopted the Royscot 'fiction of fraud' measure for damages under s.2(1) of its Misrepresentation Act? What did the Court of Appeal say?"
+  },
+  {
+   "id": "SG-03",
+   "question": "By what statutory mechanism did the English Misrepresentation Act 1967 become part of Singapore law, and does Singapore's version contain anything the English Act does not?"
+  },
+  {
+   "id": "SG-04",
+   "question": "What is the status in Singapore of the question whether non-reliance clauses are subject to statutory reasonableness control, and which decision flagged it?"
+  },
+  {
+   "id": "CTRL-01",
+   "question": "Is there Hong Kong appellate authority on whether the 'half-truth' rule (a literally true but misleading partial statement) applies differently to pre-contractual disclosure in share purchase agreements than in land sales?"
+  },
+  {
+   "id": "CTRL-02",
+   "question": "What is the Australian authority on the continuing-representation rule (a statement true when made but falsified before contracting)?"
+  },
+  {
+   "id": "CTRL-03",
+   "question": "Does Hong Kong have a statutory equivalent of Australia's ACL s.18 (misleading or deceptive conduct in trade or commerce) applying generally to commercial dealings?"
+  },
+  {
+   "id": "CTRL-04",
+   "question": "Which Hong Kong case establishes the tier weighting between the 'governing law' factor and the 'plaintiff's residence' factor in a forum non conveniens application — i.e. the numerical weight the court assigns each?"
+  }
+ ]
+}

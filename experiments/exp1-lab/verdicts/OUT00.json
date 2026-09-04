@@ -1,0 +1,16 @@
+{
+  "label": "OUT00",
+  "verdicts": [
+    {"id": "C-003", "verdict": "pass", "reason": "Heading 'CHALLENGE TO THE PRESIDING ARBITRATOR, DR. MARCUS HELVETIUS'; para 1 names him as challenged presiding arbitrator."},
+    {"id": "C-019", "verdict": "pass", "reason": "Para 47 quotes Orange List item 3.3.7 on more than three appointments by same counsel/law firm within three years."},
+    {"id": "C-026", "verdict": "pass", "reason": "Section X Ground 4 aggregates Northvale, repeat appointments, keynote, Gruber co-shareholding and denial as cumulative pattern."},
+    {"id": "C-027", "verdict": "pass", "reason": "Applies Orange List 3.4.2/3.3.7/3.1.3, Waivable Red List 2.3.8 (para 40) and Green List 4.1.1 (paras 55-56, 64)."},
+    {"id": "C-028", "verdict": "pass", "reason": "Para 40 analyses Northvale service against Orange List 3.4.2 and Red List 2.3.8, holding 'the analogy is close'."},
+    {"id": "C-029", "verdict": "fail", "reason": "Section IX only argues Green List 4.1.1 does not reach the fee; no Orange List item or analogy asserted for the keynote."},
+    {"id": "C-035", "verdict": "pass", "reason": "Para 5 states objective test: reasonable third person with knowledge would entertain justifiable doubts; Article 14(1) invoked and quoted (paras 1, 7, 17)."},
+    {"id": "C-036", "verdict": "pass", "reason": "Para 5: 'The Claimant makes no allegation of actual bias, and none is required'; repeated at para 66."},
+    {"id": "C-037", "verdict": "pass", "reason": "Ground 4 (paras 4(d), 49, Section X) advances the non-disclosure pattern plus affirmative misstatement as an independent ground."},
+    {"id": "C-038", "verdict": "pass", "reason": "Para 16: 'Article 11(3) makes the duty a continuing one'; para 15 notes continuing requirements."},
+    {"id": "C-049", "verdict": "pass", "reason": "Para 21 names the 'IBA Guidelines on Conflicts of Interest in International Arbitration' (2014, rev. 2024)."}
+  ]
+}

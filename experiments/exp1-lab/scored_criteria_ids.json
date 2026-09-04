@@ -1,0 +1,398 @@
+{
+ "note": "Criterion IDs only. Rubric text and matter documents belong to harveyai/harvey-labs (MIT) and are not redistributed here — regenerate with prep_from_lab_clone.py against your own clone.",
+ "benchmark": "https://github.com/harveyai/harvey-labs",
+ "tasks": {
+  "identify-issues-in-arbitrator-disclosure-statement": {
+   "family": "arbch",
+   "n_criteria_total": 38,
+   "scored_criteria": [
+    {
+     "id": "C-010",
+     "families": [
+      "model-law"
+     ]
+    },
+    {
+     "id": "C-020",
+     "families": [
+      "model-law"
+     ]
+    },
+    {
+     "id": "C-023",
+     "families": [
+      "model-law"
+     ]
+    },
+    {
+     "id": "C-024",
+     "families": [
+      "model-law"
+     ]
+    },
+    {
+     "id": "C-032",
+     "families": [
+      "model-law"
+     ]
+    },
+    {
+     "id": "C-033",
+     "families": [
+      "model-law"
+     ]
+    }
+   ]
+  },
+  "compare-arbitration-clause-vs-institutional-rules-compliance-audit": {
+   "family": "model-law",
+   "n_criteria_total": 42,
+   "scored_criteria": [
+    {
+     "id": "C-005",
+     "families": [
+      "model-law"
+     ]
+    },
+    {
+     "id": "C-010",
+     "families": [
+      "model-law"
+     ]
+    },
+    {
+     "id": "C-015",
+     "families": [
+      "model-law"
+     ]
+    },
+    {
+     "id": "C-016",
+     "families": [
+      "nyc-enforce"
+     ]
+    },
+    {
+     "id": "C-020",
+     "families": [
+      "nyc-enforce"
+     ]
+    },
+    {
+     "id": "C-023",
+     "families": [
+      "model-law",
+      "nyc-enforce"
+     ]
+    },
+    {
+     "id": "C-024",
+     "families": [
+      "model-law",
+      "nyc-enforce"
+     ]
+    }
+   ]
+  },
+  "draft-application-to-set-aside-arbitration-award": {
+   "family": "nyc",
+   "n_criteria_total": 67,
+   "scored_criteria": [
+    {
+     "id": "C-020",
+     "families": [
+      "model-law"
+     ]
+    },
+    {
+     "id": "C-024",
+     "families": [
+      "model-law"
+     ]
+    },
+    {
+     "id": "C-025",
+     "families": [
+      "model-law"
+     ]
+    },
+    {
+     "id": "C-044",
+     "families": [
+      "model-law"
+     ]
+    },
+    {
+     "id": "C-065",
+     "families": [
+      "model-law"
+     ]
+    }
+   ]
+  },
+  "draft-challenge-to-arbitrator-appointment": {
+   "family": "arbch",
+   "n_criteria_total": 57,
+   "scored_criteria": [
+    {
+     "id": "C-003",
+     "families": [
+      "model-law"
+     ]
+    },
+    {
+     "id": "C-019",
+     "families": [
+      "model-law"
+     ]
+    },
+    {
+     "id": "C-026",
+     "families": [
+      "model-law"
+     ]
+    },
+    {
+     "id": "C-027",
+     "families": [
+      "model-law"
+     ]
+    },
+    {
+     "id": "C-028",
+     "families": [
+      "model-law"
+     ]
+    },
+    {
+     "id": "C-029",
+     "families": [
+      "model-law"
+     ]
+    },
+    {
+     "id": "C-035",
+     "families": [
+      "model-law"
+     ]
+    },
+    {
+     "id": "C-036",
+     "families": [
+      "model-law"
+     ]
+    },
+    {
+     "id": "C-037",
+     "families": [
+      "model-law"
+     ]
+    },
+    {
+     "id": "C-038",
+     "families": [
+      "model-law"
+     ]
+    },
+    {
+     "id": "C-049",
+     "families": [
+      "model-law"
+     ]
+    }
+   ]
+  },
+  "identify-deficiencies-and-vulnerabilities-in-counterpartys-statement-of-claim": {
+   "family": "misrep-en",
+   "n_criteria_total": 46,
+   "scored_criteria": [
+    {
+     "id": "C-009",
+     "families": [
+      "misrep-deceit"
+     ]
+    },
+    {
+     "id": "C-010",
+     "families": [
+      "misrep-deceit"
+     ]
+    },
+    {
+     "id": "C-020",
+     "families": [
+      "misrep-deceit"
+     ]
+    },
+    {
+     "id": "C-021",
+     "families": [
+      "misrep-deceit"
+     ]
+    },
+    {
+     "id": "C-022",
+     "families": [
+      "misrep-deceit"
+     ]
+    },
+    {
+     "id": "C-023",
+     "families": [
+      "misrep-deceit"
+     ]
+    }
+   ]
+  },
+  "analyze-arbitration-award-for-new-york-convention-enforcement-defenses": {
+   "family": "nyc",
+   "n_criteria_total": 43,
+   "scored_criteria": [
+    {
+     "id": "C-003",
+     "families": [
+      "nyc-enforce"
+     ]
+    },
+    {
+     "id": "C-004",
+     "families": [
+      "nyc-enforce"
+     ]
+    },
+    {
+     "id": "C-005",
+     "families": [
+      "nyc-enforce"
+     ]
+    },
+    {
+     "id": "C-007",
+     "families": [
+      "nyc-enforce"
+     ]
+    },
+    {
+     "id": "C-011",
+     "families": [
+      "nyc-enforce"
+     ]
+    },
+    {
+     "id": "C-014",
+     "families": [
+      "nyc-enforce"
+     ]
+    },
+    {
+     "id": "C-016",
+     "families": [
+      "nyc-enforce"
+     ]
+    },
+    {
+     "id": "C-017",
+     "families": [
+      "nyc-enforce"
+     ]
+    },
+    {
+     "id": "C-019",
+     "families": [
+      "nyc-enforce"
+     ]
+    },
+    {
+     "id": "C-021",
+     "families": [
+      "nyc-enforce"
+     ]
+    },
+    {
+     "id": "C-022",
+     "families": [
+      "nyc-enforce"
+     ]
+    },
+    {
+     "id": "C-023",
+     "families": [
+      "nyc-enforce"
+     ]
+    },
+    {
+     "id": "C-024",
+     "families": [
+      "nyc-enforce"
+     ]
+    },
+    {
+     "id": "C-026",
+     "families": [
+      "nyc-enforce"
+     ]
+    },
+    {
+     "id": "C-027",
+     "families": [
+      "nyc-enforce"
+     ]
+    },
+    {
+     "id": "C-028",
+     "families": [
+      "nyc-enforce"
+     ]
+    },
+    {
+     "id": "C-030",
+     "families": [
+      "nyc-enforce"
+     ]
+    },
+    {
+     "id": "C-031",
+     "families": [
+      "nyc-enforce"
+     ]
+    },
+    {
+     "id": "C-032",
+     "families": [
+      "nyc-enforce"
+     ]
+    },
+    {
+     "id": "C-033",
+     "families": [
+      "nyc-enforce"
+     ]
+    },
+    {
+     "id": "C-039",
+     "families": [
+      "nyc-enforce"
+     ]
+    },
+    {
+     "id": "C-040",
+     "families": [
+      "nyc-enforce"
+     ]
+    },
+    {
+     "id": "C-042",
+     "families": [
+      "nyc-enforce"
+     ]
+    },
+    {
+     "id": "C-043",
+     "families": [
+      "nyc-enforce"
+     ]
+    }
+   ]
+  }
+ }
+}

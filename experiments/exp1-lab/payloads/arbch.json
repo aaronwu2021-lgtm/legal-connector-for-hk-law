@@ -1,0 +1,110 @@
+{
+ "connector_version": "0.3",
+ "modules": [
+  {
+   "module": "ARBCH",
+   "name": "Arbitrator challenge",
+   "jurisdiction": "HK/SG/EN",
+   "note": "示范法 art 12 的「正当怀疑」是客观旁观者标准,典型的权重衡量。",
+   "authorities": [
+    {
+     "case": "UNCITRAL Model Law art 12",
+     "cite": "—",
+     "court": "—",
+     "role": "正当怀疑标准",
+     "verified": "unverified"
+    },
+    {
+     "case": "Halliburton v Chubb",
+     "cite": "[2020] UKSC 48",
+     "court": "UKSC",
+     "role": "多重委任与披露义务",
+     "verified": "unverified"
+    },
+    {
+     "case": "Arbitration Ordinance",
+     "cite": "Cap 609",
+     "court": "—",
+     "role": "香港采纳示范法",
+     "verified": "unverified"
+    }
+   ],
+   "stages": [
+    {
+     "id": "AC-1",
+     "name": "Justifiable doubts",
+     "test_type": "balancing",
+     "rule": "客观、知情的旁观者是否会认为存在对公正性的真实可能怀疑。",
+     "factors": [
+      {
+       "id": "AC-multiple-appointments",
+       "factor": "Overlapping appointments",
+       "tier": "substantial",
+       "band": [
+        0.13,
+        0.2
+       ],
+       "evidence": null,
+       "note": null
+      },
+      {
+       "id": "AC-nondisclosure",
+       "factor": "Failure to disclose",
+       "tier": "heavy",
+       "band": [
+        0.2,
+        0.3
+       ],
+       "evidence": null,
+       "note": null
+      },
+      {
+       "id": "AC-financial",
+       "factor": "Financial interest",
+       "tier": "heavy",
+       "band": [
+        0.2,
+        0.3
+       ],
+       "evidence": null,
+       "note": null
+      },
+      {
+       "id": "AC-relationship",
+       "factor": "Relationship with a party or counsel",
+       "tier": "substantial",
+       "band": [
+        0.13,
+        0.2
+       ],
+       "evidence": null,
+       "note": null
+      },
+      {
+       "id": "AC-prior-views",
+       "factor": "Previously expressed views",
+       "tier": "moderate",
+       "band": [
+        0.08,
+        0.13
+       ],
+       "evidence": null,
+       "note": null
+      },
+      {
+       "id": "AC-market-practice",
+       "factor": "Custom of the particular field",
+       "tier": "light",
+       "band": [
+        0.04,
+        0.08
+       ],
+       "evidence": null,
+       "note": "该领域惯常做法通常是减弱因素,而非加强。"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

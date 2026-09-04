@@ -1,0 +1,40 @@
+{
+  "label": "OUT11",
+  "verdicts": [
+    {
+      "id": "C-005",
+      "verdict": "pass",
+      "reason": "Issue 5: art. 6.2 agreement 'shall be given effect'; flags art. 6.5 SAI Court override on Kuiper's reasoned request."
+    },
+    {
+      "id": "C-010",
+      "verdict": "pass",
+      "reason": "Issue 7: 'award language unaddressed'; quotes art. 12.2(c) committing award language to tribunal's determination."
+    },
+    {
+      "id": "C-015",
+      "verdict": "pass",
+      "reason": "Issue 3: 90 days for '$13.3m technical dispute ... is not realistic'; arbitrator may decline; V(1)(d)/(b) challenge risk."
+    },
+    {
+      "id": "C-016",
+      "verdict": "pass",
+      "reason": "Issue 4 quotes clause excluding consequential damages against art. 34.1 permitting 'consequential' damages; registered as Critical deviation."
+    },
+    {
+      "id": "C-020",
+      "verdict": "pass",
+      "reason": "Issue 8: 'no exceptions of any kind'; lists art. 20.2(a)-(e); flags blocked FDA/regulatory disclosure and award enforcement."
+    },
+    {
+      "id": "C-023",
+      "verdict": "pass",
+      "reason": "Issue 11: waiver 'ineffective' as to non-waivable set-aside rights; seat Singapore, IAA (Cap. 143A), art. 1.4(b)/29.3."
+    },
+    {
+      "id": "C-024",
+      "verdict": "fail",
+      "reason": "Issue 11 expressly declines: 'this report does not opine on it'; defers content of non-waivable grounds to Singapore counsel."
+    }
+  ]
+}
