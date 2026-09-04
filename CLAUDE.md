@@ -109,11 +109,15 @@ cd server && npx netlify deploy --prod
    estoppel, but through an Appeal Committee determination refusing leave.
 3. Replace tier bands with regression weights, starting with lease-vs-licence
    (352 corpus cases, the cheapest to calibrate).
-4. ~~Build the HK matter-file eval set~~ — built, in `experiments/exp3-hk-matter`
-   (5 tasks, 31 criteria). What it still needs before it can produce a result: a
-   judge protocol, a blinding key, and a pre-registered scoring key.
-5. `propose_amendment` in `server/netlify/functions/api.mjs` declares
-   `verified: enum ['unverified','web','primary']`, but the dataset writes
-   `verified-web` / `verified-primary` / `verified-quoted`. The tool's input
-   vocabulary and the data's do not match. Changing it alters a published MCP
-   tool schema, so it has been left alone — decide deliberately.
+4. ~~Build the HK matter-file eval set~~ — built AND the protocol is complete
+   (`run.py build|run|blind` → `judge.py` → `score.py`, the rubric is the
+   pre-registered key). What it still needs is to be RUN: a model choice
+   (`MODEL_CMD`, `JUDGE_CMD`) and an independent reader to check the keys
+   against the pin cites first, given what Experiment 2's re-score found.
+5. ~~`propose_amendment` enum mismatch~~ — fixed; the tool now takes the data's
+   vocabulary and refuses `quoted`/`primary` without a pin, like the builder.
+6. Experiment 2 was re-scored against the law (`exp2-probe/rescore.py`):
+   16/21→21/21 became 15/21→19/21 after HK-07 and SG-01 were found to key the
+   library's own errors. The original verdicts are untouched beside it. Any
+   future key must be checked against pin cites by someone who did not write
+   the library.
