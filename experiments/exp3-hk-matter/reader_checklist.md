@@ -2,29 +2,43 @@
 
 # Experiment 3 — independent-reader checklist
 
-Status of the keys: **UNRUN, UNREVIEWED**. No model output has been judged against `tasks.json`, and no independent reader has signed off the keys. Do not run `run.py run` until the P0 queue below is cleared.
+Status of the keys: **UNRUN, UNREVIEWED**. No model output has been judged against `tasks.json`, and no independent reader has signed off the keys. Do not run `run.py run` as a formal experiment until all 31 criteria have valid external legal sign-off and the other formal-study gates are complete.
+
+This frozen file is a blank, read-only template. Save completed findings in a separate review-response file that identifies this pack's manifest and hashes; do not fill or sign this file in place.
 
 ## Why this exists
 
 Experiment 2's keys came from the library under test, so two of them keyed the library's own errors (HK-07's phantom gap, SG-01's phantom divergence) and the connector was scored correct for repeating them. Re-scored against the law, 16/21 to 21/21 became 15/21 to 19/21. This set has the same conflict — its criteria were written by the library's author — so every criterion below must be checked against its pin cite by someone who did not write the library.
 
+## Reviewer declaration
+
+Name: ____________________  Institution: ____________________
+
+Contact details: ____________________
+
+Hong Kong law qualification / relevant academic qualification: ____________________
+
+Qualification checked by / method / UTC time: ____________________
+
+Relevant subject experience and working language(s): ____________________
+
+Prior involvement in this library, builders, answer keys or experiments: ____________________
+
+Relationship to the project, funder, cited proceedings or model supplier: ____________________
+
+Model answers or experimental conditions seen: ____________________
+
+AI or research-assistance tools used in this review: ____________________
+
+Conflict status: [ ] pending assessment  [ ] no known conflict  [ ] disclosed and managed  [ ] recused
+
+Conflict assessor / decision / safeguards / UTC time: ____________________
+
 ## P0 — must clear before any run
 
-### P0-a. Criteria resting on `verified-web` (no pin cite read)
+### P0-a. No `verified-web` criteria. (Queue clear.)
 
-- **HKM-02-b** (as_of 2026): Recognises that contractual estoppel has been adopted in Hong Kong, and locates that adoption at first instance.
-  Library level: verified-web. Read the judgment (HKLII should carry both, 2013/2015 CFI) and either upgrade the library record to `verified-primary` or rewrite the criterion.
-
-- **HKM-03-b** (as_of 2015): Relies on San-Hot (2013) and Sit Pan Jit (2015), both of which had been decided.
-  Library level: verified-web. Read the judgment (HKLII should carry both, 2013/2015 CFI) and either upgrade the library record to `verified-primary` or rewrite the criterion.
-
-### P0-b. Pins not among the library's recorded pins
-
-- **HKM-04-d**: criterion pin `[33]; [109](1)` is not covered by recorded pins ['[106]-[111]', '[23], [25] (belief not required); [34] (inference of fact); [37] (very difficult to rebut); [49]']. Confirm the passage supports the criterion or correct the pin.
-
-### Note. Approximate case matches (pins gathered for the reader; the validator does not rely on them)
-
-- BV Nederlandse [2019] EWCA Civ 596 ~ BV Nederlandse Industrie van Eiprodukten v Rembrandt Enterprises
+### P0-b. All pins covered. (Queue clear.)
 
 ## P1 — check during the same pass
 
@@ -44,8 +58,6 @@ Experiment 2's keys came from the library under test, so two of them keyed the l
 
 - **HKM-03-a**: `HK statutes`. Verify against the primary source (e-Legislation / Basic Law).
 
-- **HKM-03-e**: `T1 HK branch as at 2015`. Verify against the timeline/gap register and read every passage named in the pin; for tension criteria confirm both sides.
-
 - **HKM-03-f**: `HK authority_rule`. Verify against the primary source (e-Legislation / Basic Law).
 
 - **HKM-04-f**: `HK gaps: E3c`. Verify against the timeline/gap register and read every passage named in the pin; for tension criteria confirm both sides.
@@ -62,13 +74,15 @@ Experiment 2's keys came from the library under test, so two of them keyed the l
 
 - **HKM-01-e**: `Alireza v Elman [2026] HKCFI 4060` at `[199](b)`. Confirm the passage text has not moved on appeal.
 
-- **HKM-04-a**: `Koo Ming Kown v Baptist Convention [2026] HKCA 372` at `[67]`. Confirm the passage text has not moved on appeal.
+- **HKM-04-a**: `Koo Ming Kown v The Baptist Convention of Hong Kong [2026] HKCA 372` at `[67]`. Confirm the passage text has not moved on appeal.
 
-- **HKM-04-b**: `Koo Ming Kown [2026] HKCA 372; BV Nederlandse [2019] EWCA Civ 596` at `[67]; [43]`. Confirm the passage text has not moved on appeal.
+- **HKM-04-b**: `Koo Ming Kown v The Baptist Convention of Hong Kong [2026] HKCA 372; BV Nederlandse Industrie van Ei` at `[67]; [43]`. Confirm the passage text has not moved on appeal.
 
-- **HKM-04-c**: `Koo Ming Kown [2026] HKCA 372` at `[67]`. Confirm the passage text has not moved on appeal.
+- **HKM-04-c**: `Koo Ming Kown v The Baptist Convention of Hong Kong [2026] HKCA 372` at `[67]`. Confirm the passage text has not moved on appeal.
 
-### P2. Routine confirm (10 criteria)
+- **HKM-04-d**: `Hayward v Zurich Insurance [2016] UKSC 48; Li Yuhong v OOO Securities (HK) Group Ltd [2025] HKCFI 52` at `[33]; [109](1)`. Confirm the passage text has not moved on appeal.
+
+### P2. Routine confirm (13 criteria)
 
 Pin-cited, pinned, validator-clean. Read the pin, confirm the proposition, tick the box.
 
@@ -80,13 +94,19 @@ Pin-cited, pinned, validator-clean. Read the pin, confirm the proposition, tick 
 
 - HKM-01-g
 
+- HKM-02-b
+
 - HKM-02-c
 
 - HKM-02-e
 
+- HKM-03-b
+
 - HKM-03-c
 
 - HKM-03-d
+
+- HKM-03-e
 
 - HKM-04-e
 
@@ -98,71 +118,1197 @@ Pin-cited, pinned, validator-clean. Read the pin, confirm the proposition, tick 
 
 |---|---|---|---|---|---|
 
-| HKM-01-a | 2026 | HK statutes: Cap. 284 s.3(1) | Cap. 284 s.3(1) | n/a (structural) | STRUCTURAL |
+| HKM-01-a | 2026-09-06 | HK statutes: Cap. 284 s.3(1) | Cap. 284 s.3(1) | n/a (structural) | STRUCTURAL |
 
-| HKM-01-b | 2026 | Cap. 284 s.3(1) (statutory text) | Cap. 284 s.3(1) | n/a (structural) | STRUCTURAL |
+| HKM-01-b | 2026-09-06 | Cap. 284 s.3(1) (statutory text) | Cap. 284 s.3(1) | n/a (structural) | STRUCTURAL |
 
-| HKM-01-c | 2026 | Long Year Development v Tse Fuk Man Norman [1991] 2 HKC 393 | 407D-408D | verified-quoted | PINNED |
+| HKM-01-c | 2026-09-06 | Long Year Development v Tse Fuk Man Norman [1991] 2 HKC 393 | 407D-408D | verified-quoted | PINNED |
 
-| HKM-01-d | 2026 | Long Year Development v Tse Fuk Man Norman [1991] 2 HKC 393 (applying  | 407D-408D | verified-quoted | PINNED |
+| HKM-01-d | 2026-09-06 | Long Year Development v Tse Fuk Man Norman [1991] 2 HKC 393 | 407D-408D (applying Royscot Trust v Roge | verified-quoted | PINNED |
 
-| HKM-01-e | 2026 | Alireza v Elman [2026] HKCFI 4060 | [199](b) | verified-primary | PINNED |
+| HKM-01-e | 2026-09-06 | Alireza v Elman [2026] HKCFI 4060 | [199](b) | verified-primary | PINNED |
 
-| HKM-01-f | 2026 | RBC Properties v Defu Furniture [2014] SGCA 62 | [83]-[85] | verified-primary | PINNED |
+| HKM-01-f | 2026-09-06 | RBC Properties v Defu Furniture [2014] SGCA 62 | [83]-[85] | verified-primary | PINNED |
 
-| HKM-01-g | 2026 | Joytex Development v Super Homes [2018] HKCFI 2286 | §142, §144 | verified-primary | PINNED |
+| HKM-01-g | 2026-09-06 | Joytex Development v Super Homes [2018] HKCFI 2286 | §142, §144 | verified-primary | PINNED |
 
-| HKM-02-a | 2026 | HK statutes: Cap. 284 s.4; Cap. 71 s.3(1) | Cap. 284 s.4 | n/a (structural) | STRUCTURAL |
+| HKM-02-a | 2026-09-06 | HK statutes: Cap. 284 s.4; Cap. 71 s.3(1) | Cap. 284 s.4 | n/a (structural) | STRUCTURAL |
 
-| HKM-02-b | 2026 | DBS Bank (HK) v San-Hot HK Industrial [2013] 4 HKC 1 | San-Hot; DBS v Sit Pan Jit | verified-web | WEB-ONLY |
+| HKM-02-b | 2026-09-06 | DBS Bank (HK) v San-Hot HK Industrial [2013] HKCFI 387; DBS Bank (HK)  | San-Hot [193], [203], [206]; Sit Pan Jit | verified-primary | PINNED |
 
-| HKM-02-c | 2026 | Chang Pui Yin v Bank of Singapore [2017] HKCA 290 | [57], [92], [110]-[113] | verified-primary | PINNED |
+| HKM-02-c | 2026-09-06 | Chang Pui Yin v Bank of Singapore [2017] HKCA 290 | [57], [92], [110]-[113] | verified-primary | PINNED · staleness |
 
-| HKM-02-d | 2026 | HK authority_rule; A Solicitor v Law Society (2008) 11 HKCFAR 117 | Basic Law arts. 8, 84 | n/a (structural) | STRUCTURAL |
+| HKM-02-d | 2026-09-06 | HK authority_rule; A Solicitor v Law Society (2008) 11 HKCFAR 117 | Basic Law arts. 8, 84 | n/a (structural) | STRUCTURAL |
 
-| HKM-02-e | 2026 | Ng Lai Ling Winnie v Ng Yuk Pui Kelly [2021] HKCFA 40 | [24]-[27] | verified-primary | PINNED |
+| HKM-02-e | 2026-09-06 | Ng Lai Ling Winnie v Ng Yuk Pui Kelly [2021] HKCFA 40 | [24]-[27] | verified-primary | PINNED |
 
-| HKM-02-f | 2026 | HK gaps: D1 | [2021] HKCFA 40 is an Appeal Committee d | n/a (structural) | STRUCTURAL |
+| HKM-02-f | 2026-09-06 | HK gaps: D1 | [2021] HKCFA 40 is an Appeal Committee d | n/a (structural) | STRUCTURAL |
 
-| HKM-02-g | 2026 | D1 test | D1 | n/a (structural) | STRUCTURAL |
+| HKM-02-g | 2026-09-06 | D1 test | D1 | n/a (structural) | STRUCTURAL |
 
-| HKM-03-a | 2015 | HK statutes | Cap. 284 s.4 | n/a (structural) | STRUCTURAL |
+| HKM-03-a | 2015-12-01 | HK statutes | Cap. 284 s.4 | n/a (structural) | STRUCTURAL |
 
-| HKM-03-b | 2015 | DBS Bank (HK) v San-Hot HK Industrial | 2013; DBS v Sit Pan Jit 2015 | verified-web | WEB-ONLY |
+| HKM-03-b | 2015-12-01 | DBS Bank (HK) v San-Hot HK Industrial [2013] HKCFI 387; DBS Bank (HK)  | San-Hot [193], [203], [206]; Sit Pan Jit | verified-primary | PINNED |
 
-| HKM-03-c | 2015 | Chang Pui Yin v Bank of Singapore [2017] HKCA 290 | decided 20 July 2017 | verified-primary | PINNED |
+| HKM-03-c | 2015-12-01 | Chang Pui Yin v Bank of Singapore [2017] HKCA 290 | decided 20 July 2017 | verified-primary | PINNED · recency-bias |
 
-| HKM-03-d | 2015 | First Tower Trustees v CDS (Superstores) [2018] EWCA Civ 1396 | 2018; Ng Lai Ling Winnie [2021] HKCFA 40 | verified-primary | PINNED |
+| HKM-03-d | 2015-12-01 | First Tower Trustees v CDS (Superstores) [2018] EWCA Civ 1396; Ng Lai  | 2018; 2021 | verified-primary | PINNED · recency-bias |
 
-| HKM-03-e | 2015 | T1 HK branch as at 2015 | T1 | n/a (structural) | STRUCTURAL |
+| HKM-03-e | 2015-12-01 | DBS Bank (HK) v San-Hot HK Industrial [2013] HKCFI 387; DBS Bank (HK)  | San-Hot [232]-[237]; Sit Pan Jit [407]-[ | verified-primary | PINNED · historical-application |
 
-| HKM-03-f | 2015 | HK authority_rule | Basic Law arts. 8, 84 | n/a (structural) | STRUCTURAL |
+| HKM-03-f | 2015-12-01 | HK authority_rule | Basic Law arts. 8, 84 | n/a (structural) | STRUCTURAL |
 
-| HKM-04-a | 2026 | Koo Ming Kown v Baptist Convention [2026] HKCA 372 | [67] | verified-primary | PINNED |
+| HKM-04-a | 2026-09-06 | Koo Ming Kown v The Baptist Convention of Hong Kong [2026] HKCA 372 | [67] | verified-primary | PINNED · recent-movement |
 
-| HKM-04-b | 2026 | Koo Ming Kown [2026] HKCA 372; BV Nederlandse [2019] EWCA Civ 596 | [67]; [43] | verified-primary | PINNED |
+| HKM-04-b | 2026-09-06 | Koo Ming Kown v The Baptist Convention of Hong Kong [2026] HKCA 372; B | [67]; [43] | verified-primary | PINNED |
 
-| HKM-04-c | 2026 | Koo Ming Kown [2026] HKCA 372 | [67] | verified-primary | PINNED |
+| HKM-04-c | 2026-09-06 | Koo Ming Kown v The Baptist Convention of Hong Kong [2026] HKCA 372 | [67] | verified-primary | PINNED |
 
-| HKM-04-d | 2026 | Hayward v Zurich [2016] UKSC 48; Li Yuhong [2025] HKCFI 5270 | [33]; [109](1) | verified-primary | PIN-GAP |
+| HKM-04-d | 2026-09-06 | Hayward v Zurich Insurance [2016] UKSC 48; Li Yuhong v OOO Securities  | [33]; [109](1) | verified-primary | PINNED |
 
-| HKM-04-e | 2026 | Hayward v Zurich [2016] UKSC 48 | [23], [25] | verified-primary | PINNED |
+| HKM-04-e | 2026-09-06 | Hayward v Zurich Insurance [2016] UKSC 48 | [23], [25] | verified-primary | PINNED |
 
-| HKM-04-f | 2026 | HK gaps: E3c | [2026] HKCA 372 [67] vs [2025] HKCFI 527 | n/a (structural) | STRUCTURAL |
+| HKM-04-f | 2026-09-06 | HK gaps: E3c | [2026] HKCA 372 [67] vs [2025] HKCFI 527 | n/a (structural) | STRUCTURAL · recent-movement |
 
-| HKM-05-a | 2026 | HK authority_rule | Basic Law arts. 8, 84 | n/a (structural) | STRUCTURAL |
+| HKM-05-a | 2026-09-06 | HK authority_rule | Basic Law arts. 8, 84 | n/a (structural) | STRUCTURAL |
 
-| HKM-05-b | 2026 | HK authority_rule | authority_rule | n/a (structural) | STRUCTURAL |
+| HKM-05-b | 2026-09-06 | HK authority_rule | authority_rule | n/a (structural) | STRUCTURAL |
 
-| HKM-05-c | 2026 | HK authority_rule; A Solicitor v Law Society (2008) 11 HKCFAR 117 | (2008) 11 HKCFAR 117 | n/a (structural) | STRUCTURAL |
+| HKM-05-c | 2026-09-06 | HK authority_rule; A Solicitor v Law Society (2008) 11 HKCFAR 117 | (2008) 11 HKCFAR 117 | n/a (structural) | STRUCTURAL |
 
-| HKM-05-d | 2026 | Ng Lai Ling Winnie [2021] HKCFA 40 | Appeal Committee | verified-primary | PINNED |
+| HKM-05-d | 2026-09-06 | Ng Lai Ling Winnie v Ng Yuk Pui Kelly [2021] HKCFA 40 | Appeal Committee | verified-primary | PINNED |
 
-| HKM-05-e | 2026 | SG / AU authority_rule | authority_rule | n/a (structural) | STRUCTURAL |
+| HKM-05-e | 2026-09-06 | SG / AU authority_rule | authority_rule | n/a (structural) | STRUCTURAL |
+
+## Per-criterion sign-off cards
+
+### HKM-01-a
+
+As-of: `2026-09-06`
+
+Criterion: Identifies section 3(1) of the Misrepresentation Ordinance (Cap. 284) as the damages provision, not section 2(1) of the English Misrepresentation Act 1967.
+
+Authority: HK statutes: Cap. 284 s.3(1)
+
+Pin: Cap. 284 s.3(1)
+
+Discriminates against: Citing MA 1967 s.2(1), or 'section 2(1) of the Misrepresentation Ordinance', by analogy to English numbering.
+
+Authority polarity: positive
+
+- [ ] Full source identity, court level, decision date and procedural nature checked
+
+- [ ] Original passage and sufficient surrounding context read
+
+- [ ] Ratio / obiter status, conditions, exceptions and factual limits checked
+
+- [ ] Contrary authority, later treatment and cutoff availability checked
+
+- [ ] Passage supports the complete criterion and discriminator
+
+Source reading: [ ] official original  [ ] local extract  [ ] later decision quoting it  [ ] unavailable
+
+Outcome: [ ] supports current text  [ ] rewrite and re-review required  [ ] unsupported  [ ] insufficient evidence  [ ] recused  [ ] not reviewed
+
+Criterion conflict / recusal decision: ____________________
+
+Reader: ____________________  Actual UTC time: ____________________
+
+Signature or traceable approval record: ____________________
+
+Finding / correction / withdrawal reason: ____________________
+
+### HKM-01-b
+
+As-of: `2026-09-06`
+
+Criterion: States that the burden is reversed: the representor must prove reasonable grounds for belief AND actual belief up to the time of contract.
+
+Authority: Cap. 284 s.3(1) (statutory text)
+
+Pin: Cap. 284 s.3(1)
+
+Discriminates against: Stating that the claimant must prove negligence.
+
+Authority polarity: positive
+
+- [ ] Full source identity, court level, decision date and procedural nature checked
+
+- [ ] Original passage and sufficient surrounding context read
+
+- [ ] Ratio / obiter status, conditions, exceptions and factual limits checked
+
+- [ ] Contrary authority, later treatment and cutoff availability checked
+
+- [ ] Passage supports the complete criterion and discriminator
+
+Source reading: [ ] official original  [ ] local extract  [ ] later decision quoting it  [ ] unavailable
+
+Outcome: [ ] supports current text  [ ] rewrite and re-review required  [ ] unsupported  [ ] insufficient evidence  [ ] recused  [ ] not reviewed
+
+Criterion conflict / recusal decision: ____________________
+
+Reader: ____________________  Actual UTC time: ____________________
+
+Signature or traceable approval record: ____________________
+
+Finding / correction / withdrawal reason: ____________________
+
+### HKM-01-c
+
+As-of: `2026-09-06`
+
+Criterion: Applies the DECEIT measure to the s.3(1) claim, not the negligence/foreseeability measure.
+
+Authority: Long Year Development v Tse Fuk Man Norman [1991] 2 HKC 393
+
+Pin: 407D-408D
+
+Discriminates against: Applying a foreseeability cap, or treating the measure as open in Hong Kong because Smith New Court left it open in England.
+
+Authority polarity: positive
+
+- [ ] Full source identity, court level, decision date and procedural nature checked
+
+- [ ] Original passage and sufficient surrounding context read
+
+- [ ] Ratio / obiter status, conditions, exceptions and factual limits checked
+
+- [ ] Contrary authority, later treatment and cutoff availability checked
+
+- [ ] Passage supports the complete criterion and discriminator
+
+Source reading: [ ] official original  [ ] local extract  [ ] later decision quoting it  [ ] unavailable
+
+Outcome: [ ] supports current text  [ ] rewrite and re-review required  [ ] unsupported  [ ] insufficient evidence  [ ] recused  [ ] not reviewed
+
+Criterion conflict / recusal decision: ____________________
+
+Reader: ____________________  Actual UTC time: ____________________
+
+Signature or traceable approval record: ____________________
+
+Finding / correction / withdrawal reason: ____________________
+
+### HKM-01-d
+
+As-of: `2026-09-06`
+
+Criterion: Concludes that losses unforeseeable at the time of contract are recoverable, provided they are not otherwise too remote.
+
+Authority: Long Year Development v Tse Fuk Man Norman [1991] 2 HKC 393
+
+Pin: 407D-408D (applying Royscot Trust v Rogerson [1991] 2 QB 297)
+
+Discriminates against: Excluding the post-completion market fall as unforeseeable.
+
+Authority polarity: positive
+
+- [ ] Full source identity, court level, decision date and procedural nature checked
+
+- [ ] Original passage and sufficient surrounding context read
+
+- [ ] Ratio / obiter status, conditions, exceptions and factual limits checked
+
+- [ ] Contrary authority, later treatment and cutoff availability checked
+
+- [ ] Passage supports the complete criterion and discriminator
+
+Source reading: [ ] official original  [ ] local extract  [ ] later decision quoting it  [ ] unavailable
+
+Outcome: [ ] supports current text  [ ] rewrite and re-review required  [ ] unsupported  [ ] insufficient evidence  [ ] recused  [ ] not reviewed
+
+Criterion conflict / recusal decision: ____________________
+
+Reader: ____________________  Actual UTC time: ____________________
+
+Signature or traceable approval record: ____________________
+
+Finding / correction / withdrawal reason: ____________________
+
+### HKM-01-e
+
+As-of: `2026-09-06`
+
+Criterion: Frames the counterfactual as tortious — the position the client would have been in had the representation NOT been made — and not as the position had it been true.
+
+Authority: Alireza v Elman [2026] HKCFI 4060
+
+Pin: [199](b)
+
+Discriminates against: Pleading or advising the contractual measure, i.e. the value the property would have had if the representation were true.
+
+Authority polarity: positive
+
+- [ ] Full source identity, court level, decision date and procedural nature checked
+
+- [ ] Original passage and sufficient surrounding context read
+
+- [ ] Ratio / obiter status, conditions, exceptions and factual limits checked
+
+- [ ] Contrary authority, later treatment and cutoff availability checked
+
+- [ ] Passage supports the complete criterion and discriminator
+
+Source reading: [ ] official original  [ ] local extract  [ ] later decision quoting it  [ ] unavailable
+
+Outcome: [ ] supports current text  [ ] rewrite and re-review required  [ ] unsupported  [ ] insufficient evidence  [ ] recused  [ ] not reviewed
+
+Criterion conflict / recusal decision: ____________________
+
+Reader: ____________________  Actual UTC time: ____________________
+
+Signature or traceable approval record: ____________________
+
+Finding / correction / withdrawal reason: ____________________
+
+### HKM-01-f
+
+As-of: `2026-09-06`
+
+Criterion: Does not treat the Singapore position (RBC Properties, that Royscot ought not to be followed) as governing or as unsettling the Hong Kong position.
+
+Authority: RBC Properties v Defu Furniture [2014] SGCA 62
+
+Pin: [83]-[85]
+
+Discriminates against: Advising that the measure is unsettled because the SGCA has doubted Royscot.
+
+Authority polarity: positive
+
+- [ ] Full source identity, court level, decision date and procedural nature checked
+
+- [ ] Original passage and sufficient surrounding context read
+
+- [ ] Ratio / obiter status, conditions, exceptions and factual limits checked
+
+- [ ] Contrary authority, later treatment and cutoff availability checked
+
+- [ ] Passage supports the complete criterion and discriminator
+
+Source reading: [ ] official original  [ ] local extract  [ ] later decision quoting it  [ ] unavailable
+
+Outcome: [ ] supports current text  [ ] rewrite and re-review required  [ ] unsupported  [ ] insufficient evidence  [ ] recused  [ ] not reviewed
+
+Criterion conflict / recusal decision: ____________________
+
+Reader: ____________________  Actual UTC time: ____________________
+
+Signature or traceable approval record: ____________________
+
+Finding / correction / withdrawal reason: ____________________
+
+### HKM-01-g
+
+As-of: `2026-09-06`
+
+Criterion: Cites at least one Hong Kong authority for the measure rather than relying solely on English authority.
+
+Authority: Joytex Development v Super Homes [2018] HKCFI 2286
+
+Pin: §142, §144
+
+Discriminates against: Citing only Royscot and Doyle v Olby.
+
+Authority polarity: positive
+
+- [ ] Full source identity, court level, decision date and procedural nature checked
+
+- [ ] Original passage and sufficient surrounding context read
+
+- [ ] Ratio / obiter status, conditions, exceptions and factual limits checked
+
+- [ ] Contrary authority, later treatment and cutoff availability checked
+
+- [ ] Passage supports the complete criterion and discriminator
+
+Source reading: [ ] official original  [ ] local extract  [ ] later decision quoting it  [ ] unavailable
+
+Outcome: [ ] supports current text  [ ] rewrite and re-review required  [ ] unsupported  [ ] insufficient evidence  [ ] recused  [ ] not reviewed
+
+Criterion conflict / recusal decision: ____________________
+
+Reader: ____________________  Actual UTC time: ____________________
+
+Signature or traceable approval record: ____________________
+
+Finding / correction / withdrawal reason: ____________________
+
+### HKM-02-a
+
+As-of: `2026-09-06`
+
+Criterion: Identifies that the reasonableness control runs through Cap. 284 s.4 to section 3(1) of the Control of Exemption Clauses Ordinance (Cap. 71).
+
+Authority: HK statutes: Cap. 284 s.4; Cap. 71 s.3(1)
+
+Pin: Cap. 284 s.4
+
+Discriminates against: Citing UCTA 1977 s.11(1), which is the English route and does not apply in Hong Kong.
+
+Authority polarity: positive
+
+- [ ] Full source identity, court level, decision date and procedural nature checked
+
+- [ ] Original passage and sufficient surrounding context read
+
+- [ ] Ratio / obiter status, conditions, exceptions and factual limits checked
+
+- [ ] Contrary authority, later treatment and cutoff availability checked
+
+- [ ] Passage supports the complete criterion and discriminator
+
+Source reading: [ ] official original  [ ] local extract  [ ] later decision quoting it  [ ] unavailable
+
+Outcome: [ ] supports current text  [ ] rewrite and re-review required  [ ] unsupported  [ ] insufficient evidence  [ ] recused  [ ] not reviewed
+
+Criterion conflict / recusal decision: ____________________
+
+Reader: ____________________  Actual UTC time: ____________________
+
+Signature or traceable approval record: ____________________
+
+Finding / correction / withdrawal reason: ____________________
+
+### HKM-02-b
+
+As-of: `2026-09-06`
+
+Criterion: Recognises the Hong Kong first-instance adoption of contractual estoppel, while noting that San-Hot endorsed the doctrine after holding it unnecessary on the facts and Sit Pan Jit later applied it to the parties' contract.
+
+Authority: DBS Bank (HK) v San-Hot HK Industrial [2013] HKCFI 387; DBS Bank (HK) v Sit Pan Jit [2015] HKCFI 529
+
+Pin: San-Hot [193], [203], [206]; Sit Pan Jit [345]-[346], [352]
+
+Discriminates against: Treating the first-instance decisions as a substantive Court of Final Appeal ruling, or presenting San-Hot's contractual-estoppel discussion as the sole ratio.
+
+Authority polarity: positive
+
+- [ ] Full source identity, court level, decision date and procedural nature checked
+
+- [ ] Original passage and sufficient surrounding context read
+
+- [ ] Ratio / obiter status, conditions, exceptions and factual limits checked
+
+- [ ] Contrary authority, later treatment and cutoff availability checked
+
+- [ ] Passage supports the complete criterion and discriminator
+
+Source reading: [ ] official original  [ ] local extract  [ ] later decision quoting it  [ ] unavailable
+
+Outcome: [ ] supports current text  [ ] rewrite and re-review required  [ ] unsupported  [ ] insufficient evidence  [ ] recused  [ ] not reviewed
+
+Criterion conflict / recusal decision: ____________________
+
+Reader: ____________________  Actual UTC time: ____________________
+
+Signature or traceable approval record: ____________________
+
+Finding / correction / withdrawal reason: ____________________
+
+### HKM-02-c
+
+As-of: `2026-09-06`
+
+Criterion: Relies on Chang Pui Yin v Bank of Singapore for the counter-limit applicable to an unsophisticated customer, rather than on First Tower Trustees.
+
+Authority: Chang Pui Yin v Bank of Singapore [2017] HKCA 290
+
+Pin: [57], [92], [110]-[113]
+
+Discriminates against: Reasoning through First Tower Trustees and MA 1967 s.3, which is the English statutory route.
+
+Authority polarity: positive
+
+- [ ] Full source identity, court level, decision date and procedural nature checked
+
+- [ ] Original passage and sufficient surrounding context read
+
+- [ ] Ratio / obiter status, conditions, exceptions and factual limits checked
+
+- [ ] Contrary authority, later treatment and cutoff availability checked
+
+- [ ] Passage supports the complete criterion and discriminator
+
+Source reading: [ ] official original  [ ] local extract  [ ] later decision quoting it  [ ] unavailable
+
+Outcome: [ ] supports current text  [ ] rewrite and re-review required  [ ] unsupported  [ ] insufficient evidence  [ ] recused  [ ] not reviewed
+
+Criterion conflict / recusal decision: ____________________
+
+Reader: ____________________  Actual UTC time: ____________________
+
+Signature or traceable approval record: ____________________
+
+Finding / correction / withdrawal reason: ____________________
+
+### HKM-02-d
+
+As-of: `2026-09-06`
+
+Criterion: Treats post-1997 English decisions as persuasive only, and says so expressly.
+
+Authority: HK authority_rule; A Solicitor v Law Society (2008) 11 HKCFAR 117
+
+Pin: Basic Law arts. 8, 84
+
+Discriminates against: Treating First Tower Trustees or Springwell as binding in Hong Kong.
+
+Authority polarity: positive
+
+- [ ] Full source identity, court level, decision date and procedural nature checked
+
+- [ ] Original passage and sufficient surrounding context read
+
+- [ ] Ratio / obiter status, conditions, exceptions and factual limits checked
+
+- [ ] Contrary authority, later treatment and cutoff availability checked
+
+- [ ] Passage supports the complete criterion and discriminator
+
+Source reading: [ ] official original  [ ] local extract  [ ] later decision quoting it  [ ] unavailable
+
+Outcome: [ ] supports current text  [ ] rewrite and re-review required  [ ] unsupported  [ ] insufficient evidence  [ ] recused  [ ] not reviewed
+
+Criterion conflict / recusal decision: ____________________
+
+Reader: ____________________  Actual UTC time: ____________________
+
+Signature or traceable approval record: ____________________
+
+Finding / correction / withdrawal reason: ____________________
+
+### HKM-02-e
+
+As-of: `2026-09-06`
+
+Criterion: Notes that a contractual estoppel binds only the parties to the contract containing the acknowledgement, and only as to what that agreement was directed at.
+
+Authority: Ng Lai Ling Winnie v Ng Yuk Pui Kelly [2021] HKCFA 40
+
+Pin: [24]-[27]
+
+Discriminates against: Treating the acknowledgement as good against the third-party introducing agent.
+
+Authority polarity: positive
+
+- [ ] Full source identity, court level, decision date and procedural nature checked
+
+- [ ] Original passage and sufficient surrounding context read
+
+- [ ] Ratio / obiter status, conditions, exceptions and factual limits checked
+
+- [ ] Contrary authority, later treatment and cutoff availability checked
+
+- [ ] Passage supports the complete criterion and discriminator
+
+Source reading: [ ] official original  [ ] local extract  [ ] later decision quoting it  [ ] unavailable
+
+Outcome: [ ] supports current text  [ ] rewrite and re-review required  [ ] unsupported  [ ] insufficient evidence  [ ] recused  [ ] not reviewed
+
+Criterion conflict / recusal decision: ____________________
+
+Reader: ____________________  Actual UTC time: ____________________
+
+Signature or traceable approval record: ____________________
+
+Finding / correction / withdrawal reason: ____________________
+
+### HKM-02-f
+
+As-of: `2026-09-06`
+
+Criterion: Does not claim the Court of Final Appeal has settled contractual estoppel in the mis-selling context.
+
+Authority: HK gaps: D1
+
+Pin: [2021] HKCFA 40 is an Appeal Committee determination refusing leave
+
+Discriminates against: Citing Ng Lai Ling Winnie as a substantive CFA ruling adopting contractual estoppel for non-reliance clauses.
+
+Authority polarity: positive
+
+- [ ] Full source identity, court level, decision date and procedural nature checked
+
+- [ ] Original passage and sufficient surrounding context read
+
+- [ ] Ratio / obiter status, conditions, exceptions and factual limits checked
+
+- [ ] Contrary authority, later treatment and cutoff availability checked
+
+- [ ] Passage supports the complete criterion and discriminator
+
+Source reading: [ ] official original  [ ] local extract  [ ] later decision quoting it  [ ] unavailable
+
+Outcome: [ ] supports current text  [ ] rewrite and re-review required  [ ] unsupported  [ ] insufficient evidence  [ ] recused  [ ] not reviewed
+
+Criterion conflict / recusal decision: ____________________
+
+Reader: ____________________  Actual UTC time: ____________________
+
+Signature or traceable approval record: ____________________
+
+Finding / correction / withdrawal reason: ____________________
+
+### HKM-02-g
+
+As-of: `2026-09-06`
+
+Criterion: Identifies that fraud can never be excluded by such a clause.
+
+Authority: D1 test
+
+Pin: D1
+
+Discriminates against: Advising that the clauses bar the claim without qualification.
+
+Authority polarity: positive
+
+- [ ] Full source identity, court level, decision date and procedural nature checked
+
+- [ ] Original passage and sufficient surrounding context read
+
+- [ ] Ratio / obiter status, conditions, exceptions and factual limits checked
+
+- [ ] Contrary authority, later treatment and cutoff availability checked
+
+- [ ] Passage supports the complete criterion and discriminator
+
+Source reading: [ ] official original  [ ] local extract  [ ] later decision quoting it  [ ] unavailable
+
+Outcome: [ ] supports current text  [ ] rewrite and re-review required  [ ] unsupported  [ ] insufficient evidence  [ ] recused  [ ] not reviewed
+
+Criterion conflict / recusal decision: ____________________
+
+Reader: ____________________  Actual UTC time: ____________________
+
+Signature or traceable approval record: ____________________
+
+Finding / correction / withdrawal reason: ____________________
+
+### HKM-03-a
+
+As-of: `2015-12-01`
+
+Criterion: Identifies the Cap. 284 s.4 / Cap. 71 s.3(1) route, which was in force throughout.
+
+Authority: HK statutes
+
+Pin: Cap. 284 s.4
+
+Discriminates against: Citing UCTA 1977 s.11(1).
+
+Authority polarity: positive
+
+- [ ] Full source identity, court level, decision date and procedural nature checked
+
+- [ ] Original passage and sufficient surrounding context read
+
+- [ ] Ratio / obiter status, conditions, exceptions and factual limits checked
+
+- [ ] Contrary authority, later treatment and cutoff availability checked
+
+- [ ] Passage supports the complete criterion and discriminator
+
+Source reading: [ ] official original  [ ] local extract  [ ] later decision quoting it  [ ] unavailable
+
+Outcome: [ ] supports current text  [ ] rewrite and re-review required  [ ] unsupported  [ ] insufficient evidence  [ ] recused  [ ] not reviewed
+
+Criterion conflict / recusal decision: ____________________
+
+Reader: ____________________  Actual UTC time: ____________________
+
+Signature or traceable approval record: ____________________
+
+Finding / correction / withdrawal reason: ____________________
+
+### HKM-03-b
+
+As-of: `2015-12-01`
+
+Criterion: Relies on the first-instance decisions in San-Hot (2013) and Sit Pan Jit (2015), while preserving San-Hot's statement that contractual estoppel was unnecessary on its factual findings.
+
+Authority: DBS Bank (HK) v San-Hot HK Industrial [2013] HKCFI 387; DBS Bank (HK) v Sit Pan Jit [2015] HKCFI 529
+
+Pin: San-Hot [193], [203], [206]; Sit Pan Jit [345]-[346], [352]
+
+Discriminates against: Omitting the Hong Kong first-instance line or treating San-Hot's endorsement as its only ratio.
+
+Authority polarity: positive
+
+- [ ] Full source identity, court level, decision date and procedural nature checked
+
+- [ ] Original passage and sufficient surrounding context read
+
+- [ ] Ratio / obiter status, conditions, exceptions and factual limits checked
+
+- [ ] Contrary authority, later treatment and cutoff availability checked
+
+- [ ] Passage supports the complete criterion and discriminator
+
+Source reading: [ ] official original  [ ] local extract  [ ] later decision quoting it  [ ] unavailable
+
+Outcome: [ ] supports current text  [ ] rewrite and re-review required  [ ] unsupported  [ ] insufficient evidence  [ ] recused  [ ] not reviewed
+
+Criterion conflict / recusal decision: ____________________
+
+Reader: ____________________  Actual UTC time: ____________________
+
+Signature or traceable approval record: ____________________
+
+Finding / correction / withdrawal reason: ____________________
+
+### HKM-03-c
+
+As-of: `2015-12-01`
+
+Criterion: Does NOT rely on Chang Pui Yin, which was not decided until 2017.
+
+Authority: Chang Pui Yin v Bank of Singapore [2017] HKCA 290
+
+Pin: decided 20 July 2017
+
+Discriminates against: Citing Chang Pui Yin as available in 2015 — the single clearest anachronism test in this set.
+
+Authority polarity: negative
+
+- [ ] Full source identity, court level, decision date and procedural nature checked
+
+- [ ] Original passage and sufficient surrounding context read
+
+- [ ] Ratio / obiter status, conditions, exceptions and factual limits checked
+
+- [ ] Contrary authority, later treatment and cutoff availability checked
+
+- [ ] Passage supports the complete criterion and discriminator
+
+Source reading: [ ] official original  [ ] local extract  [ ] later decision quoting it  [ ] unavailable
+
+Outcome: [ ] supports current text  [ ] rewrite and re-review required  [ ] unsupported  [ ] insufficient evidence  [ ] recused  [ ] not reviewed
+
+Criterion conflict / recusal decision: ____________________
+
+Reader: ____________________  Actual UTC time: ____________________
+
+Signature or traceable approval record: ____________________
+
+Finding / correction / withdrawal reason: ____________________
+
+### HKM-03-d
+
+As-of: `2015-12-01`
+
+Criterion: Does NOT rely on First Tower Trustees (2018) or on Ng Lai Ling Winnie (2021).
+
+Authority: First Tower Trustees v CDS (Superstores) [2018] EWCA Civ 1396; Ng Lai Ling Winnie v Ng Yuk Pui Kelly [2021] HKCFA 40
+
+Pin: 2018; 2021
+
+Discriminates against: Citing authority that post-dates the as_of date.
+
+Authority polarity: negative
+
+- [ ] Full source identity, court level, decision date and procedural nature checked
+
+- [ ] Original passage and sufficient surrounding context read
+
+- [ ] Ratio / obiter status, conditions, exceptions and factual limits checked
+
+- [ ] Contrary authority, later treatment and cutoff availability checked
+
+- [ ] Passage supports the complete criterion and discriminator
+
+Source reading: [ ] official original  [ ] local extract  [ ] later decision quoting it  [ ] unavailable
+
+Outcome: [ ] supports current text  [ ] rewrite and re-review required  [ ] unsupported  [ ] insufficient evidence  [ ] recused  [ ] not reviewed
+
+Criterion conflict / recusal decision: ____________________
+
+Reader: ____________________  Actual UTC time: ____________________
+
+Signature or traceable approval record: ____________________
+
+Finding / correction / withdrawal reason: ____________________
+
+### HKM-03-e
+
+As-of: `2015-12-01`
+
+Criterion: Applies the 2015 first-instance contractual-estoppel cases together with the statutory reasonableness controls then in force to the actual clauses and customer facts, states the resulting uncertainty, and excludes later decisions from the analysis.
+
+Authority: DBS Bank (HK) v San-Hot HK Industrial [2013] HKCFI 387; DBS Bank (HK) v Sit Pan Jit [2015] HKCFI 529
+
+Pin: San-Hot [232]-[237]; Sit Pan Jit [407]-[409], [445]
+
+Discriminates against: Assuming that the clauses must be effective merely because Chang Pui Yin had not yet been decided, or using post-cutoff judgments as authority for the 2015 advice.
+
+Authority polarity: positive
+
+- [ ] Full source identity, court level, decision date and procedural nature checked
+
+- [ ] Original passage and sufficient surrounding context read
+
+- [ ] Ratio / obiter status, conditions, exceptions and factual limits checked
+
+- [ ] Contrary authority, later treatment and cutoff availability checked
+
+- [ ] Passage supports the complete criterion and discriminator
+
+Source reading: [ ] official original  [ ] local extract  [ ] later decision quoting it  [ ] unavailable
+
+Outcome: [ ] supports current text  [ ] rewrite and re-review required  [ ] unsupported  [ ] insufficient evidence  [ ] recused  [ ] not reviewed
+
+Criterion conflict / recusal decision: ____________________
+
+Reader: ____________________  Actual UTC time: ____________________
+
+Signature or traceable approval record: ____________________
+
+Finding / correction / withdrawal reason: ____________________
+
+### HKM-03-f
+
+As-of: `2015-12-01`
+
+Criterion: Treats Springwell (2010) as persuasive only, not binding.
+
+Authority: HK authority_rule
+
+Pin: Basic Law arts. 8, 84
+
+Discriminates against: Treating English Court of Appeal authority as binding.
+
+Authority polarity: positive
+
+- [ ] Full source identity, court level, decision date and procedural nature checked
+
+- [ ] Original passage and sufficient surrounding context read
+
+- [ ] Ratio / obiter status, conditions, exceptions and factual limits checked
+
+- [ ] Contrary authority, later treatment and cutoff availability checked
+
+- [ ] Passage supports the complete criterion and discriminator
+
+Source reading: [ ] official original  [ ] local extract  [ ] later decision quoting it  [ ] unavailable
+
+Outcome: [ ] supports current text  [ ] rewrite and re-review required  [ ] unsupported  [ ] insufficient evidence  [ ] recused  [ ] not reviewed
+
+Criterion conflict / recusal decision: ____________________
+
+Reader: ____________________  Actual UTC time: ____________________
+
+Signature or traceable approval record: ____________________
+
+Finding / correction / withdrawal reason: ____________________
+
+### HKM-04-a
+
+As-of: `2026-09-06`
+
+Criterion: States that the presumption of inducement is an inference of FACT, not a presumption of law.
+
+Authority: Koo Ming Kown v The Baptist Convention of Hong Kong [2026] HKCA 372
+
+Pin: [67]
+
+Discriminates against: Describing it as a presumption of law that reverses the legal burden.
+
+Authority polarity: positive
+
+- [ ] Full source identity, court level, decision date and procedural nature checked
+
+- [ ] Original passage and sufficient surrounding context read
+
+- [ ] Ratio / obiter status, conditions, exceptions and factual limits checked
+
+- [ ] Contrary authority, later treatment and cutoff availability checked
+
+- [ ] Passage supports the complete criterion and discriminator
+
+Source reading: [ ] official original  [ ] local extract  [ ] later decision quoting it  [ ] unavailable
+
+Outcome: [ ] supports current text  [ ] rewrite and re-review required  [ ] unsupported  [ ] insufficient evidence  [ ] recused  [ ] not reviewed
+
+Criterion conflict / recusal decision: ____________________
+
+Reader: ____________________  Actual UTC time: ____________________
+
+Signature or traceable approval record: ____________________
+
+Finding / correction / withdrawal reason: ____________________
+
+### HKM-04-b
+
+As-of: `2026-09-06`
+
+Criterion: States that the legal burden of proving inducement remains on the representee.
+
+Authority: Koo Ming Kown v The Baptist Convention of Hong Kong [2026] HKCA 372; BV Nederlandse Industrie van Eiprodukten v Rembrandt Enterprises [2019] EWCA Civ 596
+
+Pin: [67]; [43]
+
+Discriminates against: Asserting the burden shifts to the representor once falsity and entry are shown.
+
+Authority polarity: positive
+
+- [ ] Full source identity, court level, decision date and procedural nature checked
+
+- [ ] Original passage and sufficient surrounding context read
+
+- [ ] Ratio / obiter status, conditions, exceptions and factual limits checked
+
+- [ ] Contrary authority, later treatment and cutoff availability checked
+
+- [ ] Passage supports the complete criterion and discriminator
+
+Source reading: [ ] official original  [ ] local extract  [ ] later decision quoting it  [ ] unavailable
+
+Outcome: [ ] supports current text  [ ] rewrite and re-review required  [ ] unsupported  [ ] insufficient evidence  [ ] recused  [ ] not reviewed
+
+Criterion conflict / recusal decision: ____________________
+
+Reader: ____________________  Actual UTC time: ____________________
+
+Signature or traceable approval record: ____________________
+
+Finding / correction / withdrawal reason: ____________________
+
+### HKM-04-c
+
+As-of: `2026-09-06`
+
+Criterion: Recognises that the inference is rebuttable on all the relevant evidence, INCLUDING the claimant's own testimony, so calling no defence evidence does not concede the point.
+
+Authority: Koo Ming Kown v The Baptist Convention of Hong Kong [2026] HKCA 372
+
+Pin: [67]
+
+Discriminates against: Advising that the presumption is unrebutted because the defendant called no evidence.
+
+Authority polarity: positive
+
+- [ ] Full source identity, court level, decision date and procedural nature checked
+
+- [ ] Original passage and sufficient surrounding context read
+
+- [ ] Ratio / obiter status, conditions, exceptions and factual limits checked
+
+- [ ] Contrary authority, later treatment and cutoff availability checked
+
+- [ ] Passage supports the complete criterion and discriminator
+
+Source reading: [ ] official original  [ ] local extract  [ ] later decision quoting it  [ ] unavailable
+
+Outcome: [ ] supports current text  [ ] rewrite and re-review required  [ ] unsupported  [ ] insufficient evidence  [ ] recused  [ ] not reviewed
+
+Criterion conflict / recusal decision: ____________________
+
+Reader: ____________________  Actual UTC time: ____________________
+
+Signature or traceable approval record: ____________________
+
+Finding / correction / withdrawal reason: ____________________
+
+### HKM-04-d
+
+As-of: `2026-09-06`
+
+Criterion: States that the representation need not be the sole inducement.
+
+Authority: Hayward v Zurich Insurance [2016] UKSC 48; Li Yuhong v OOO Securities (HK) Group Ltd [2025] HKCFI 5270
+
+Pin: [33]; [109](1)
+
+Discriminates against: Requiring the representation to be the sole inducing cause.
+
+Authority polarity: positive
+
+- [ ] Full source identity, court level, decision date and procedural nature checked
+
+- [ ] Original passage and sufficient surrounding context read
+
+- [ ] Ratio / obiter status, conditions, exceptions and factual limits checked
+
+- [ ] Contrary authority, later treatment and cutoff availability checked
+
+- [ ] Passage supports the complete criterion and discriminator
+
+Source reading: [ ] official original  [ ] local extract  [ ] later decision quoting it  [ ] unavailable
+
+Outcome: [ ] supports current text  [ ] rewrite and re-review required  [ ] unsupported  [ ] insufficient evidence  [ ] recused  [ ] not reviewed
+
+Criterion conflict / recusal decision: ____________________
+
+Reader: ____________________  Actual UTC time: ____________________
+
+Signature or traceable approval record: ____________________
+
+Finding / correction / withdrawal reason: ____________________
+
+### HKM-04-e
+
+As-of: `2026-09-06`
+
+Criterion: States that the client need not have believed the representation to have relied on it.
+
+Authority: Hayward v Zurich Insurance [2016] UKSC 48
+
+Pin: [23], [25]
+
+Discriminates against: Advising that the client's recorded scepticism defeats reliance.
+
+Authority polarity: positive
+
+- [ ] Full source identity, court level, decision date and procedural nature checked
+
+- [ ] Original passage and sufficient surrounding context read
+
+- [ ] Ratio / obiter status, conditions, exceptions and factual limits checked
+
+- [ ] Contrary authority, later treatment and cutoff availability checked
+
+- [ ] Passage supports the complete criterion and discriminator
+
+Source reading: [ ] official original  [ ] local extract  [ ] later decision quoting it  [ ] unavailable
+
+Outcome: [ ] supports current text  [ ] rewrite and re-review required  [ ] unsupported  [ ] insufficient evidence  [ ] recused  [ ] not reviewed
+
+Criterion conflict / recusal decision: ____________________
+
+Reader: ____________________  Actual UTC time: ____________________
+
+Signature or traceable approval record: ____________________
+
+Finding / correction / withdrawal reason: ____________________
+
+### HKM-04-f
+
+As-of: `2026-09-06`
+
+Criterion: Identifies the tension between the Court of Appeal in Koo Ming Kown and the Court of First Instance in Li Yuhong, and prefers the Court of Appeal.
+
+Authority: HK gaps: E3c
+
+Pin: [2026] HKCA 372 [67] vs [2025] HKCFI 5270 [109]
+
+Discriminates against: Presenting Hong Kong law on the presumption as settled.
+
+Authority polarity: positive
+
+- [ ] Full source identity, court level, decision date and procedural nature checked
+
+- [ ] Original passage and sufficient surrounding context read
+
+- [ ] Ratio / obiter status, conditions, exceptions and factual limits checked
+
+- [ ] Contrary authority, later treatment and cutoff availability checked
+
+- [ ] Passage supports the complete criterion and discriminator
+
+Source reading: [ ] official original  [ ] local extract  [ ] later decision quoting it  [ ] unavailable
+
+Outcome: [ ] supports current text  [ ] rewrite and re-review required  [ ] unsupported  [ ] insufficient evidence  [ ] recused  [ ] not reviewed
+
+Criterion conflict / recusal decision: ____________________
+
+Reader: ____________________  Actual UTC time: ____________________
+
+Signature or traceable approval record: ____________________
+
+Finding / correction / withdrawal reason: ____________________
+
+### HKM-05-a
+
+As-of: `2026-09-06`
+
+Criterion: States that a post-1997 English Court of Appeal decision is persuasive only.
+
+Authority: HK authority_rule
+
+Pin: Basic Law arts. 8, 84
+
+Discriminates against: Treating First Tower Trustees (2018) as binding.
+
+Authority polarity: positive
+
+- [ ] Full source identity, court level, decision date and procedural nature checked
+
+- [ ] Original passage and sufficient surrounding context read
+
+- [ ] Ratio / obiter status, conditions, exceptions and factual limits checked
+
+- [ ] Contrary authority, later treatment and cutoff availability checked
+
+- [ ] Passage supports the complete criterion and discriminator
+
+Source reading: [ ] official original  [ ] local extract  [ ] later decision quoting it  [ ] unavailable
+
+Outcome: [ ] supports current text  [ ] rewrite and re-review required  [ ] unsupported  [ ] insufficient evidence  [ ] recused  [ ] not reviewed
+
+Criterion conflict / recusal decision: ____________________
+
+Reader: ____________________  Actual UTC time: ____________________
+
+Signature or traceable approval record: ____________________
+
+Finding / correction / withdrawal reason: ____________________
+
+### HKM-05-b
+
+As-of: `2026-09-06`
+
+Criterion: States that a pre-1997 Privy Council decision on a Hong Kong appeal binds courts below the CFA.
+
+Authority: HK authority_rule
+
+Pin: authority_rule
+
+Discriminates against: Treating all Privy Council authority alike regardless of whether the appeal came from Hong Kong.
+
+Authority polarity: positive
+
+- [ ] Full source identity, court level, decision date and procedural nature checked
+
+- [ ] Original passage and sufficient surrounding context read
+
+- [ ] Ratio / obiter status, conditions, exceptions and factual limits checked
+
+- [ ] Contrary authority, later treatment and cutoff availability checked
+
+- [ ] Passage supports the complete criterion and discriminator
+
+Source reading: [ ] official original  [ ] local extract  [ ] later decision quoting it  [ ] unavailable
+
+Outcome: [ ] supports current text  [ ] rewrite and re-review required  [ ] unsupported  [ ] insufficient evidence  [ ] recused  [ ] not reviewed
+
+Criterion conflict / recusal decision: ____________________
+
+Reader: ____________________  Actual UTC time: ____________________
+
+Signature or traceable approval record: ____________________
+
+Finding / correction / withdrawal reason: ____________________
+
+### HKM-05-c
+
+As-of: `2026-09-06`
+
+Criterion: States that pre-1997 House of Lords decisions are persuasive, though of great weight, and not binding.
+
+Authority: HK authority_rule; A Solicitor v Law Society (2008) 11 HKCFAR 117
+
+Pin: (2008) 11 HKCFAR 117
+
+Discriminates against: Treating Derry v Peek as binding in Hong Kong by virtue of its status in England.
+
+Authority polarity: positive
+
+- [ ] Full source identity, court level, decision date and procedural nature checked
+
+- [ ] Original passage and sufficient surrounding context read
+
+- [ ] Ratio / obiter status, conditions, exceptions and factual limits checked
+
+- [ ] Contrary authority, later treatment and cutoff availability checked
+
+- [ ] Passage supports the complete criterion and discriminator
+
+Source reading: [ ] official original  [ ] local extract  [ ] later decision quoting it  [ ] unavailable
+
+Outcome: [ ] supports current text  [ ] rewrite and re-review required  [ ] unsupported  [ ] insufficient evidence  [ ] recused  [ ] not reviewed
+
+Criterion conflict / recusal decision: ____________________
+
+Reader: ____________________  Actual UTC time: ____________________
+
+Signature or traceable approval record: ____________________
+
+Finding / correction / withdrawal reason: ____________________
+
+### HKM-05-d
+
+As-of: `2026-09-06`
+
+Criterion: Distinguishes a CFA Appeal Committee determination refusing leave from a substantive CFA judgment.
+
+Authority: Ng Lai Ling Winnie v Ng Yuk Pui Kelly [2021] HKCFA 40
+
+Pin: Appeal Committee
+
+Discriminates against: Treating the determination as a binding CFA ruling on the merits.
+
+Authority polarity: positive
+
+- [ ] Full source identity, court level, decision date and procedural nature checked
+
+- [ ] Original passage and sufficient surrounding context read
+
+- [ ] Ratio / obiter status, conditions, exceptions and factual limits checked
+
+- [ ] Contrary authority, later treatment and cutoff availability checked
+
+- [ ] Passage supports the complete criterion and discriminator
+
+Source reading: [ ] official original  [ ] local extract  [ ] later decision quoting it  [ ] unavailable
+
+Outcome: [ ] supports current text  [ ] rewrite and re-review required  [ ] unsupported  [ ] insufficient evidence  [ ] recused  [ ] not reviewed
+
+Criterion conflict / recusal decision: ____________________
+
+Reader: ____________________  Actual UTC time: ____________________
+
+Signature or traceable approval record: ____________________
+
+Finding / correction / withdrawal reason: ____________________
+
+### HKM-05-e
+
+As-of: `2026-09-06`
+
+Criterion: Does not treat Singapore or Australian authority as binding anywhere in the analysis.
+
+Authority: SG / AU authority_rule
+
+Pin: authority_rule
+
+Discriminates against: Relying on SGCA or HCA authority as governing.
+
+Authority polarity: positive
+
+- [ ] Full source identity, court level, decision date and procedural nature checked
+
+- [ ] Original passage and sufficient surrounding context read
+
+- [ ] Ratio / obiter status, conditions, exceptions and factual limits checked
+
+- [ ] Contrary authority, later treatment and cutoff availability checked
+
+- [ ] Passage supports the complete criterion and discriminator
+
+Source reading: [ ] official original  [ ] local extract  [ ] later decision quoting it  [ ] unavailable
+
+Outcome: [ ] supports current text  [ ] rewrite and re-review required  [ ] unsupported  [ ] insufficient evidence  [ ] recused  [ ] not reviewed
+
+Criterion conflict / recusal decision: ____________________
+
+Reader: ____________________  Actual UTC time: ____________________
+
+Signature or traceable approval record: ____________________
+
+Finding / correction / withdrawal reason: ____________________
 
 ## Sign-off
 
-Reader (name, no prior library authorship): ____________________  Date: __________
+Reader (did not write this library, matter files, builders or answer keys): ____________________
+
+Qualification verification completed by / method / UTC time: ____________________
+
+Final conflict status and safeguards: ____________________
+
+- [ ] Every one of the 31 criteria was checked independently against the official original source
+
+- [ ] Only `supports current text` outcomes are counted as passes
 
 - [ ] P0-a cleared (each item: upgraded, rewritten, or withdrawn with reason)
 
@@ -171,3 +1317,15 @@ Reader (name, no prior library authorship): ____________________  Date: ________
 - [ ] P1 items checked; findings recorded beside each line above
 
 - [ ] After any key change: `python build_tasks.py && python validate_tasks.py && python build_reader_checklist.py`
+
+Accepted criterion IDs: ____________________
+
+Rewritten / unsupported / excluded IDs: ____________________
+
+Open questions, owner and due date: ____________________
+
+Frozen review-pack SHA-256 / manifest reference: ____________________
+
+Completed response file / SHA-256: ____________________
+
+Reviewer signature: ____________________  Signed at (UTC): ____________________

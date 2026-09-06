@@ -1,0 +1,16 @@
+SOURCE-CHECK EXTRACTS — not the complete legislation.
+Official source: Department of Justice current-legislation XML dataset,
+https://resource.data.one.gov.hk/doj/data/hkel_c_leg_cap_601_cap_end_en.zip
+File: cap_609_en_c/cap_609_20221216000000_en_c.xml
+Version date: 2022-12-16.
+Read: 2026-09-06.
+
+INSTRUMENT: Arbitration Ordinance Cap. 609 ss. 34, 81
+Publisher: Hong Kong Department of Justice.
+Source type: current-legislation XML.
+
+Section 34 gives effect to UNCITRAL Model Law Article 16. Article 16(3) states that the tribunal may decide the relevant plea "either as a preliminary question or in an award on the merits". A party may request a court decision within 30 days if the tribunal rules as a preliminary question that it has jurisdiction.
+
+Section 81 gives effect to UNCITRAL Model Law Article 34. Article 34(1) states: "Recourse to a court against an arbitral award may be made only by an application for setting aside" in accordance with Article 34(2) and (3). Article 34(2)(a)(iii) applies where "the award deals with a dispute not contemplated by or not falling within the terms of the submission to arbitration", or contains decisions outside the scope of that submission, subject to severability.
+
+The external reader must check sections 34 and 81 in the official version, including section 13(5), the complete incorporated Model Law text, and any version relevant to the task cutoff.

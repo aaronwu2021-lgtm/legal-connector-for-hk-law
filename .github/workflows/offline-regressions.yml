@@ -1,0 +1,100 @@
+name: Offline software regressions and separate data audit
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  PYTHONDONTWRITEBYTECODE: '1'
+  PYTHONUTF8: '1'
+
+defaults:
+  run:
+    shell: pwsh
+
+jobs:
+  software-regressions:
+    name: Software regressions (offline; no research-readiness claim)
+    runs-on: windows-2025
+    timeout-minutes: 20
+    steps:
+      - name: Preserve committed bytes when checking out on Windows
+        run: git config --global core.autocrlf false
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: '24'
+          package-manager-cache: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.13'
+      # All tests use built-in runtimes; no npm/pip install or model command.
+      - name: Server, UI and local preview recovery tests
+        working-directory: server
+        run: node --test "test/**/*.test.mjs"
+      - name: Independent offline API acceptance
+        run: node scripts/audit_api_contract.mjs
+      - name: Builder import and CLI safety (temporary copies)
+        run: python -B -m unittest discover -s scripts/tests -p "test_builder_entrypoints.py" -v
+      - name: Isolated build and failure-reporting regressions
+        run: python -B -m unittest discover -s scripts/tests -p "test_build_reproducibility.py" -v
+      - name: Experiment 4 schema and blank reader sign-offs
+        run: python -B -m unittest discover -s experiments/exp4-cfa -p "test_review_tools.py" -v
+      - name: Frozen run identity and blinding regressions (synthetic only)
+        run: python -B -m unittest discover -s scripts/tests -p "test_run_integrity.py" -v
+      - name: Bound judging and descriptive reporting regressions (synthetic only)
+        run: python -B -m unittest discover -s scripts/tests -p "test_review_results.py" -v
+      - name: Explain the software-check boundary
+        if: always()
+        run: |
+          @'
+          ## Software regression checks
+          These checks exercise API/UI behavior, safe builder entrypoints, disposable-copy builds, and synthetic experiment identity/reporting cases.
+          Passing these tests does not verify legal propositions, sources, reader sign-offs, calibration, model identity, or formal experiment readiness.
+          The independent Data/source readiness job retains the actual audit result and report; its failure is not suppressed.
+          '@ | Add-Content -LiteralPath $env:GITHUB_STEP_SUMMARY -Encoding utf8
+
+  data-readiness:
+    name: Data/source readiness (actual audit; unresolved gaps fail)
+    runs-on: windows-2025
+    timeout-minutes: 20
+    steps:
+      - name: Preserve committed bytes when checking out on Windows
+        run: git config --global core.autocrlf false
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.13'
+      - name: Audit data and archived experiment builds in disposable copies
+        run: |
+          $PSNativeCommandUseErrorActionPreference = $false
+          $ciReportPath = Join-Path $env:RUNNER_TEMP 'data-readiness.json'
+          python -B scripts/check_build.py --experiments --json > $ciReportPath
+          $ciAuditExit = $LASTEXITCODE
+          $ciAudit = Get-Content -LiteralPath $ciReportPath -Raw | ConvertFrom-Json
+          @(
+            '## Data/source readiness audit',
+            ('Actual checker exit code: ' + $ciAuditExit),
+            ('overall_ok: ' + ($ciAudit.overall_ok | ConvertTo-Json -Compress)),
+            ('Original artefacts unchanged: ' + ($ciAudit.original_unchanged | ConvertTo-Json -Compress)),
+            'The attached JSON contains actual provenance gaps, baseline drift, and archived experiment validation results.',
+            'Software regression success does not clear this audit. This audit itself does not provide legal or independent-reader verification.'
+          ) | Add-Content -LiteralPath $env:GITHUB_STEP_SUMMARY -Encoding utf8
+          if ($ciAuditExit -ne 0) { exit $ciAuditExit }
+          if ($ciAudit.overall_ok -ne $true) { exit 1 }
+      - name: Retain the actual data audit, including failures
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: data-source-readiness
+          path: ${{ runner.temp }}/data-readiness.json
+          if-no-files-found: error
+          retention-days: 14

@@ -1,0 +1,19 @@
+SOURCE-CHECK EXTRACTS — not a complete judgment.
+Official source:
+https://www.hklii.hk/api/getjudgment?lang=en&abbr=hkcfa&year=2026&num=30
+Read: 2026-09-06.
+
+CASE NAME: Eton Properties Limited and Eton Properties (Holdings) Limited v 廈門新景地集團有限公司 formerly known as 廈門巿鑫新景地房地產有限公司 [2026] HKCFA 30
+Court: Court of Final Appeal Appeal Committee.
+Decision date: 2026-08-26.
+Available date for reasons: 2026-09-01.
+Source type: reasons for determination refusing leave to appeal.
+
+Header: Hearing and determination 26 August 2026; reasons for determination 1 September 2026.
+[1]: the application was "dismissed at the hearing".
+[11]: the earlier appeal upheld a "valid fresh cause of action" and the claimant was "required to elect" between common-law damages and the statutory judgment.
+[12] and footnote [7]: "That argument was rejected" in the earlier 2020 CFA merits appeal, reported at (2020) 23 HKCFAR 348 ([2020] HKCFA 32). This is a procedural recap, not a new 2026 merits holding.
+[14] and footnotes [11]-[13]: the damages-measure proposition comes from [2024] HKCFI 1291 [18], while the "full range of remedies" and appropriate-remedy passages quote [2020] HKCFA 32 [122] and [126].
+[26], [29]: the proposed questions were described as opaque. The counterfactual was an "entirely new case" that was "neither pleaded nor supported by evidence below" and faced "insurmountable hurdles". The 18-year reference in [29] describes the completed quantum-assessment process, not when the new case was first raised.
+
+The external reader must follow the official link and read the full passages in context.

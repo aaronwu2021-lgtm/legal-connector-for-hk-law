@@ -1,0 +1,23 @@
+SOURCE-CHECK EXTRACTS — not a complete judgment.
+Official source:
+https://www.hklii.hk/api/getjudgment?lang=en&abbr=hkcfa&year=2020&num=32
+Read: 2026-09-06.
+
+CASE NAME: Eton Properties Limited and Another v 廈門新景地集團有限公司 formerly known as 廈門市鑫新景地房地產有限公司 [2020] HKCFA 32
+Court: Hong Kong Court of Final Appeal.
+Decision date: 2020-10-09.
+Source type: merits judgment; FACV Nos. 3 and 5 of 2019 were heard together.
+Parallel citations: (2020) 23 HKCFAR 348; [2020] 6 HKC 451.
+
+[65]-[68]: an action on an award relies on the implied promise to honour it; breach is a "fresh cause of action separate and independent" from breach of the underlying contract.
+[69]-[70]: entry of the statutory judgment was not an informed irrevocable election. The inconsistent remedies "could not stand together", and an informed claimant was "required to make an election".
+[122]: for an unperformed non-monetary award, the enforcing court may choose an apt remedy from the "full range of remedies available in an ordinary common law action".
+[126]: the remedy remains part of enforcement and must be fashioned as an "appropriate remedy to give effect to the award".
+[127]-[128]: the Court held that the "premise of that argument is untenable" on these facts because the tribunal had fully adjudicated the case and "the First Award was final".
+[141]: after the statutory judgment, the claimant began the common law action and "sought damages as an alternative remedy" before making its election.
+[141]-[143]: the Court preserved the qualification that a remedy may be refused if the limited scope of an award does not warrant it.
+[146]: an existing statutory judgment did not itself prevent the alternative claim. Once the claimant elected damages, the Court of Appeal "set aside the statutory judgment" and entered judgment for damages.
+[149]: a claimant may seek inconsistent remedies in the alternative but must elect before judgment; they cannot both stand as final relief.
+[148]-[150]: after election, the damages relief "falls within the enforcement jurisdiction"; the extant award was no obstacle on these facts.
+
+The external reader must read the full reasons, including the two consolidated appeals and the award-scope limits, before signing any proposition.

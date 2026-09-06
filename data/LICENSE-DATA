@@ -9,3 +9,11 @@ short summaries derived from publicly accessible case notes at
 hklandlaw.wordpress.com. Source URLs are retained on every record; no source
 text is reproduced. Follow the source's own terms for any use of the
 underlying posts.
+
+The persuasive index in data/persuasive.json (built by
+scripts/build_persuasive.py from data/sources/uklr/) consists of structured
+metadata, links and original classifications derived from the machine-readable
+splits and case pages at uklawreference.com. Source page URLs are retained on
+every record; no source prose is reproduced. Every record is marked
+verified="unverified" and hk_status="persuasive-only" by construction. Follow
+the source's own terms for any use beyond this index.

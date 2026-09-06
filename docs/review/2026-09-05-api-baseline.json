@@ -1,0 +1,287 @@
+{
+  "audit": "offline-api-contract",
+  "recorded_at": "2026-09-05T21:40:50.458Z",
+  "network": {
+    "allowed": false,
+    "attempts": 0
+  },
+  "total": 5,
+  "passed": 0,
+  "failed": 5,
+  "cases": [
+    {
+      "id": "A01-amendment-validation",
+      "request": [
+        {
+          "label": "primary_without_pin",
+          "method": "POST",
+          "path": "/api/maintenance/propose",
+          "body": {
+            "sub_test": "E3c",
+            "jurisdiction": "HK",
+            "case": "Offline audit fixture",
+            "citation": "[2026] HKCFA 1",
+            "court": "CFA",
+            "year": 2026,
+            "treatment": "clarifies",
+            "effect": "Synthetic validation fixture; no legal proposition.",
+            "verified": "verified-primary"
+          }
+        },
+        {
+          "label": "quoted_without_quoting_source",
+          "method": "POST",
+          "path": "/api/maintenance/propose",
+          "body": {
+            "sub_test": "E3c",
+            "jurisdiction": "HK",
+            "case": "Offline audit fixture",
+            "citation": "[2026] HKCFA 1",
+            "court": "CFA",
+            "year": 2026,
+            "treatment": "clarifies",
+            "effect": "Synthetic validation fixture; no legal proposition.",
+            "verified": "verified-quoted",
+            "pin": "[1]"
+          }
+        },
+        {
+          "label": "invalid_verification_level",
+          "method": "POST",
+          "path": "/api/maintenance/propose",
+          "body": {
+            "sub_test": "E3c",
+            "jurisdiction": "HK",
+            "case": "Offline audit fixture",
+            "citation": "[2026] HKCFA 1",
+            "court": "CFA",
+            "year": 2026,
+            "treatment": "clarifies",
+            "effect": "Synthetic validation fixture; no legal proposition.",
+            "verified": "invented-level"
+          }
+        },
+        {
+          "label": "nonnumeric_year",
+          "method": "POST",
+          "path": "/api/maintenance/propose",
+          "body": {
+            "sub_test": "E3c",
+            "jurisdiction": "HK",
+            "case": "Offline audit fixture",
+            "citation": "[2026] HKCFA 1",
+            "court": "CFA",
+            "year": "not-a-year",
+            "treatment": "clarifies",
+            "effect": "Synthetic validation fixture; no legal proposition.",
+            "verified": "unverified"
+          }
+        },
+        {
+          "label": "treatment_substring",
+          "method": "POST",
+          "path": "/api/maintenance/propose",
+          "body": {
+            "sub_test": "E3c",
+            "jurisdiction": "HK",
+            "case": "Offline audit fixture",
+            "citation": "[2026] HKCFA 1",
+            "court": "CFA",
+            "year": 2026,
+            "treatment": "does not overrules",
+            "effect": "Synthetic validation fixture; no legal proposition.",
+            "verified": "unverified"
+          }
+        }
+      ],
+      "desired_invariant": "Every structurally invalid proposal is rejected with an error and no patch; selecting a verification level alone must not certify the evidence gates.",
+      "observed": [
+        {
+          "label": "primary_without_pin",
+          "status": 200,
+          "accepted": true,
+          "errors": [],
+          "patch_returned": true,
+          "gates_claimed_satisfied": 5
+        },
+        {
+          "label": "quoted_without_quoting_source",
+          "status": 200,
+          "accepted": true,
+          "errors": [],
+          "patch_returned": true,
+          "gates_claimed_satisfied": 0
+        },
+        {
+          "label": "invalid_verification_level",
+          "status": 200,
+          "accepted": true,
+          "errors": [],
+          "patch_returned": true,
+          "gates_claimed_satisfied": 0
+        },
+        {
+          "label": "nonnumeric_year",
+          "status": 200,
+          "accepted": true,
+          "errors": [],
+          "patch_returned": true,
+          "gates_claimed_satisfied": 0
+        },
+        {
+          "label": "treatment_substring",
+          "status": 200,
+          "accepted": true,
+          "errors": [],
+          "patch_returned": true,
+          "gates_claimed_satisfied": 0
+        }
+      ],
+      "pass": false
+    },
+    {
+      "id": "A02-unknown-evidence",
+      "request": {
+        "method": "POST",
+        "path": "/api/score",
+        "body": {
+          "module": "HKJUR",
+          "facts": {}
+        }
+      },
+      "desired_invariant": "With every fact unknown, scoring must remain undetermined: no decisive zero-width balance and no assertion that an unknown clause is absent.",
+      "observed": {
+        "status": 200,
+        "overall": "finely balanced (net 0 … 0)",
+        "balancing_stages": [
+          {
+            "stage": "HKJUR-2",
+            "score_low": 0,
+            "score_high": 0,
+            "evidence_resolved": 0,
+            "interval_decides": true,
+            "band": "finely balanced"
+          },
+          {
+            "stage": "HKJUR-3",
+            "score_low": 0,
+            "score_high": 0,
+            "evidence_resolved": 0,
+            "interval_decides": true,
+            "band": "finely balanced"
+          }
+        ],
+        "clause_stage": {
+          "engaged": false,
+          "result": "not-engaged"
+        }
+      },
+      "pass": false
+    },
+    {
+      "id": "A03-conjunctive-type",
+      "request": {
+        "method": "POST",
+        "path": "/api/score",
+        "body": {
+          "module": "CONTRACT",
+          "facts": {}
+        }
+      },
+      "desired_invariant": "The CT-1 conjunctive stage returns its unresolved elements without numeric scoring or describing its weights as awaiting calibration.",
+      "observed": {
+        "status": 200,
+        "stage": "CT-1",
+        "test_type": "conjunctive",
+        "weights": "unassigned",
+        "reason": "This balancing test has no calibrated weights yet. Returning the factor checklist instead of a fabricated number.",
+        "caveat": "Weights unassigned — this node is queued for outcome-regression calibration. Do not report a percentage for it.",
+        "unresolved_count": 5
+      },
+      "pass": false
+    },
+    {
+      "id": "A04-historical-authorities",
+      "request": {
+        "method": "GET",
+        "path": "/api/checklist?jurisdiction=HK&as_of=1990"
+      },
+      "desired_invariant": "A checklist dated 1990 must omit authorities from later years or explicitly mark each as unavailable at that date, including backbone, local, related, and defence authorities.",
+      "observed": {
+        "status": 200,
+        "as_of": 1990,
+        "future_authority_count": 46,
+        "unflagged_future_authority_count": 46,
+        "examples": [
+          {
+            "location": "$.elements.0.related_local_authority.0",
+            "case": "Joytex Development Ltd v Super Homes Ltd",
+            "year": 2018,
+            "explicitly_flagged": false
+          },
+          {
+            "location": "$.elements.0.related_local_authority.1",
+            "case": "Li Yuhong v OOO Securities (HK) Group Ltd",
+            "year": 2025,
+            "explicitly_flagged": false
+          },
+          {
+            "location": "$.elements.1.related_local_authority.0",
+            "case": "Joytex Development Ltd v Super Homes Ltd",
+            "year": 2018,
+            "explicitly_flagged": false
+          },
+          {
+            "location": "$.elements.1.related_local_authority.1",
+            "case": "Li Yuhong v OOO Securities (HK) Group Ltd",
+            "year": 2025,
+            "explicitly_flagged": false
+          },
+          {
+            "location": "$.elements.2.related_local_authority.0",
+            "case": "Joytex Development Ltd v Super Homes Ltd",
+            "year": 2018,
+            "explicitly_flagged": false
+          },
+          {
+            "location": "$.elements.2.related_local_authority.1",
+            "case": "Li Yuhong v OOO Securities (HK) Group Ltd",
+            "year": 2025,
+            "explicitly_flagged": false
+          },
+          {
+            "location": "$.elements.3.backbone_authority.0",
+            "case": "Spice Girls Ltd v Aprilia World Service",
+            "year": 2002,
+            "explicitly_flagged": false
+          },
+          {
+            "location": "$.elements.3.related_local_authority.0",
+            "case": "Joytex Development Ltd v Super Homes Ltd",
+            "year": 2018,
+            "explicitly_flagged": false
+          }
+        ]
+      },
+      "pass": false
+    },
+    {
+      "id": "A05-citation-conflict",
+      "request": {
+        "method": "GET",
+        "path": "/api/verify?live=0&cite=Hayward%20v%20Zurich%20Insurance%20Co%20plc%20%5B2099%5D%20UKSC%20999"
+      },
+      "desired_invariant": "A known party name with an explicitly conflicting neutral citation must be rejected or labelled as a citation mismatch; a name match alone cannot verify the supplied citation.",
+      "observed": {
+        "status": 200,
+        "found": true,
+        "matched_by": "party name",
+        "returned_citation": "[2016] UKSC 48; [2017] AC 142",
+        "verification_level": "verified-primary",
+        "explicit_mismatch": false,
+        "warnings": null
+      },
+      "pass": false
+    }
+  ]
+}

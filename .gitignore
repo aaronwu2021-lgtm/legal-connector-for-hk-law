@@ -16,3 +16,9 @@ paper/
 
 # exp3 run artefacts: prompts are regenerable, answers must not be committed before judging
 experiments/exp3-hk-matter/runs/
+# exp4 run artefacts: same rule (prompts regenerable via run.py build; answers/verdicts/keys stay local)
+experiments/exp4-cfa/runs/
+experiments/exp4-cfa/runs_inv/
+
+# Local preview process logs and status; never experiment data.
+server/.preview/

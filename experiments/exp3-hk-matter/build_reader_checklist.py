@@ -13,6 +13,7 @@ hand-edit:
 
     python build_reader_checklist.py
 """
+import argparse
 import json
 import os
 import re
@@ -134,7 +135,9 @@ def check_pin(crit_pin, recorded_pins):
     return missing
 
 
-def main():
+def main(argv=None):
+    parser = argparse.ArgumentParser(description='Build the Experiment 3 independent-reader checklist.')
+    parser.parse_args(argv)
     seen = case_index()
     with open(os.path.join(HERE, "tasks.json"), encoding="utf-8") as f:
         ts = json.load(f)["tasks"]
@@ -184,7 +187,11 @@ def main():
     A("# Experiment 3 — independent-reader checklist\n")
     A("Status of the keys: **UNRUN, UNREVIEWED**. No model output has been judged "
       "against `tasks.json`, and no independent reader has signed off the keys. "
-      "Do not run `run.py run` until the P0 queue below is cleared.\n")
+      "Do not run `run.py run` as a formal experiment until all 31 criteria have "
+      "valid external legal sign-off and the other formal-study gates are complete.\n")
+    A("This frozen file is a blank, read-only template. Save completed findings "
+      "in a separate review-response file that identifies this pack's manifest "
+      "and hashes; do not fill or sign this file in place.\n")
     A("## Why this exists\n")
     A("Experiment 2's keys came from the library under test, so two of them keyed "
       "the library's own errors (HK-07's phantom gap, SG-01's phantom divergence) "
@@ -193,6 +200,18 @@ def main():
       "conflict — its criteria were written by the library's author — so every "
       "criterion below must be checked against its pin cite by someone who did "
       "not write the library.\n")
+    A("## Reviewer declaration\n")
+    A("Name: ____________________  Institution: ____________________\n")
+    A("Contact details: ____________________\n")
+    A("Hong Kong law qualification / relevant academic qualification: ____________________\n")
+    A("Qualification checked by / method / UTC time: ____________________\n")
+    A("Relevant subject experience and working language(s): ____________________\n")
+    A("Prior involvement in this library, builders, answer keys or experiments: ____________________\n")
+    A("Relationship to the project, funder, cited proceedings or model supplier: ____________________\n")
+    A("Model answers or experimental conditions seen: ____________________\n")
+    A("AI or research-assistance tools used in this review: ____________________\n")
+    A("Conflict status: [ ] pending assessment  [ ] no known conflict  [ ] disclosed and managed  [ ] recused\n")
+    A("Conflict assessor / decision / safeguards / UTC time: ____________________\n")
     A("## P0 — must clear before any run\n")
     if p0_web:
         A("### P0-a. Criteria resting on `verified-web` (no pin cite read)\n")
@@ -252,15 +271,49 @@ def main():
                else "PIN-GAP" if r["missing_pins"]
                else "STRUCTURAL" if r["structural"] and not r["matched"]
                else "STRUCTURAL+MIXED" if r["structural"] else "PINNED")
+        mode = r["cr"].get("temporal_failure_mode")
+        if mode:
+            cls += " · " + mode
         A("| %s | %s | %s | %s | %s | %s |\n"
           % (r["cr"]["id"], r["as_of"], r["cr"]["authority"][:70], r["cr"].get("pin", "")[:40],
              ", ".join(lvls) if lvls else "n/a (structural)", cls))
+    A("## Per-criterion sign-off cards\n")
+    for r in rows:
+        cr = r["cr"]
+        A("### %s\n" % cr["id"])
+        A("As-of: `%s`\n" % r["as_of"])
+        A("Criterion: %s\n" % cr["criterion"])
+        A("Authority: %s\n" % cr["authority"])
+        A("Pin: %s\n" % cr.get("pin", ""))
+        A("Discriminates against: %s\n" % cr["discriminates_against"])
+        A("Authority polarity: %s\n" % cr.get("authority_polarity", "not recorded"))
+        A("- [ ] Full source identity, court level, decision date and procedural nature checked\n")
+        A("- [ ] Original passage and sufficient surrounding context read\n")
+        A("- [ ] Ratio / obiter status, conditions, exceptions and factual limits checked\n")
+        A("- [ ] Contrary authority, later treatment and cutoff availability checked\n")
+        A("- [ ] Passage supports the complete criterion and discriminator\n")
+        A("Source reading: [ ] official original  [ ] local extract  [ ] later decision quoting it  [ ] unavailable\n")
+        A("Outcome: [ ] supports current text  [ ] rewrite and re-review required  [ ] unsupported  [ ] insufficient evidence  [ ] recused  [ ] not reviewed\n")
+        A("Criterion conflict / recusal decision: ____________________\n")
+        A("Reader: ____________________  Actual UTC time: ____________________\n")
+        A("Signature or traceable approval record: ____________________\n")
+        A("Finding / correction / withdrawal reason: ____________________\n")
     A("## Sign-off\n")
-    A("Reader (name, no prior library authorship): ____________________  Date: __________\n")
+    A("Reader (did not write this library, matter files, builders or answer keys): ____________________\n")
+    A("Qualification verification completed by / method / UTC time: ____________________\n")
+    A("Final conflict status and safeguards: ____________________\n")
+    A("- [ ] Every one of the 31 criteria was checked independently against the official original source\n")
+    A("- [ ] Only `supports current text` outcomes are counted as passes\n")
     A("- [ ] P0-a cleared (each item: upgraded, rewritten, or withdrawn with reason)\n")
     A("- [ ] P0-b cleared (each pin confirmed or corrected in the builder)\n")
     A("- [ ] P1 items checked; findings recorded beside each line above\n")
     A("- [ ] After any key change: `python build_tasks.py && python validate_tasks.py && python build_reader_checklist.py`\n")
+    A("Accepted criterion IDs: ____________________\n")
+    A("Rewritten / unsupported / excluded IDs: ____________________\n")
+    A("Open questions, owner and due date: ____________________\n")
+    A("Frozen review-pack SHA-256 / manifest reference: ____________________\n")
+    A("Completed response file / SHA-256: ____________________\n")
+    A("Reviewer signature: ____________________  Signed at (UTC): ____________________\n")
 
     with open(os.path.join(HERE, "reader_checklist.md"), "w", encoding="utf-8", newline="\n") as f:
         f.write("\n".join(L))
@@ -270,4 +323,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

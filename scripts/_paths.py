@@ -23,10 +23,26 @@ def load(name):
         return json.load(f)
 
 
-def emit(name, obj, indent=None):
-    """Write data/<name>.json and server/netlify/functions/_<name>.mjs."""
-    with open(data_path(name), "w", encoding="utf-8", newline="\n") as f:
-        json.dump(obj, f, ensure_ascii=False, indent=indent)
+def serialize(obj, indent=None):
+    """Finish JSON serialization and UTF-8 encoding before opening any output."""
+    data = json.dumps(obj, ensure_ascii=False, indent=indent, allow_nan=False).encode("utf-8")
+    module = ("export default " + json.dumps(obj, ensure_ascii=False, allow_nan=False) + ";\n").encode("utf-8")
+    return data, module
+
+
+def publish(name, representations):
+    """Publish prepared bytes. The two writes are not a cross-file transaction.
+
+    An I/O failure propagates to the caller; check_build detects incomplete pairs.
+    """
+    data, module = representations
+    with open(data_path(name), "wb") as f:
+        f.write(data)
     mjs = os.path.join(FUNC_DIR, "_" + name + ".mjs")
-    with open(mjs, "w", encoding="utf-8", newline="\n") as f:
-        f.write("export default " + json.dumps(obj, ensure_ascii=False) + ";\n")
+    with open(mjs, "wb") as f:
+        f.write(module)
+
+
+def emit(name, obj, indent=None):
+    """Write both representations, with no truncation on serialization failure."""
+    publish(name, serialize(obj, indent=indent))

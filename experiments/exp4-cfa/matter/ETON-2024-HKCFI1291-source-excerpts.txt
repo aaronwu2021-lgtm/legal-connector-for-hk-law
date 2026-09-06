@@ -1,0 +1,13 @@
+SOURCE-CHECK EXTRACTS — not a complete judgment.
+Official source:
+https://www.hklii.hk/api/getjudgment?lang=en&abbr=hkcfi&year=2024&num=1291
+Read: 2026-09-06.
+
+CASE NAME: 廈門新景地集團有限公司 formerly known as 廈門市鑫新景地房地產有限公司 v Eton Properties Ltd and Others [2024] HKCFI 1291
+Court: Hong Kong Court of First Instance (Mimmie Chan J).
+Decision date: 2024-05-14.
+Source type: damages assessment judgment in HCCL 13/2011.
+
+[18]: damages for breach of the implied promise are assessed by putting the claimant in the same position "as if the Award had been complied with". The implied promise is separate from the obligations in the underlying agreement.
+
+The official API also carries a corrigendum dated 2024-05-21; its listed corrections do not concern [18]. The external reader must read the complete judgment and later appellate history before signing any proposition.

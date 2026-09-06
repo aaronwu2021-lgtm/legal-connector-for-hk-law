@@ -16,6 +16,7 @@ import http from 'node:http';
 import { readFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
+import { previewId } from './preview-identity.mjs';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const PUBLIC = path.join(HERE, 'public');
@@ -35,6 +36,9 @@ const TYPES = {
 };
 
 http.createServer(async (req, res) => {
+  res.setHeader('x-doctrine-preview-id', previewId);
+  res.setHeader('x-doctrine-preview-pid', String(process.pid));
+  res.setHeader('cache-control', 'no-store');
   try {
     const url = new URL(req.url, 'http://localhost');
 

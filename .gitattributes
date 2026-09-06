@@ -1,2 +1,4 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+# Keep repository text byte-stable across platforms so generated-data and
+# legal-review hashes remain reproducible.
+* text=auto eol=lf
+*.cmd text eol=crlf

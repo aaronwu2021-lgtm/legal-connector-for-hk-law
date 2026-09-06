@@ -1,0 +1,15 @@
+SOURCE-CHECK EXTRACTS — not a complete judgment.
+Official source: https://www.hklii.hk/api/getjudgment?lang=en&abbr=hkca&year=2022&num=729
+Read: 2026-09-06.
+
+CASE NAME: C v D [2022] HKCA 729
+Court: Hong Kong Court of Appeal.
+Decision date: 2022-06-07.
+Source type: merits judgment.
+
+[18]: the tribunal dealt with the objection "on jurisdiction and the issue of liability together".
+[19]: C sought an order that the "Partial Award be set aside under s 81" / Article 34.
+[57]: calling every condition-precedent decision jurisdictional is an "over-simplification"; the answer is a "matter of true construction" of the agreement.
+[60]-[64]: on the agreement in issue, the "Partial Award is not subject to review by the court" under Article 34(2)(a)(iii).
+
+The external reader must follow the official link and read the full passages in context.

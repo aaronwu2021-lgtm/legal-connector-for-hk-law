@@ -42,6 +42,7 @@ body{background:var(--bg);color:var(--ink);
   font:15px/1.6 "IBM Plex Sans","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",sans-serif;}
 a{color:var(--accent)}
 button{font:inherit;cursor:pointer}
+[hidden]{display:none!important}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .mono{font-family:"IBM Plex Mono",ui-monospace,monospace}
 
@@ -61,22 +62,17 @@ button{font:inherit;cursor:pointer}
 .modes button[aria-current="true"]{color:var(--ink);border-bottom-color:var(--accent);font-weight:600}
 .modes button:hover{color:var(--ink)}
 .apihint{margin-left:auto;font:400 11px/1 "IBM Plex Mono",monospace;color:var(--ink3)}
-.apihint b{color:var(--good);font-weight:500}
+.apihint b{color:var(--ink3);font-weight:500}
+.apihint b[data-state="online"]{color:var(--good)}
+.apihint b[data-state="offline"],.apihint b[data-state="error"]{color:var(--warn)}
+.apihint button{margin-left:8px}
 
-.wrap{max-width:1340px;margin:0 auto;padding:20px 16px 90px}
-.layout{display:grid;grid-template-columns:250px 1fr;gap:26px;align-items:start}
-.rail{position:sticky;top:64px;max-height:calc(100vh - 84px);overflow:auto}
-.rail h3{font:500 10.5px/1 "IBM Plex Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);
-  margin:16px 0 6px;padding-bottom:5px;border-bottom:1px solid var(--line)}
-.rail h3:first-child{margin-top:0}
-.leaf{display:flex;align-items:baseline;gap:7px;width:100%;text-align:left;background:none;border:0;
-  border-left:2px solid transparent;padding:5px 8px;font-size:13px;color:var(--ink2);border-radius:0 6px 6px 0}
-.leaf:hover{color:var(--ink);background:var(--line2)}
-.leaf[aria-current="true"]{border-left-color:var(--accent);color:var(--ink);font-weight:600;background:var(--line2)}
-.leaf .en{color:var(--ink3);font-size:11px}
-.leaf .tag{margin-left:auto;font:500 9px/1 "IBM Plex Mono",monospace;color:var(--stub);background:var(--stub-bg);
-  border-radius:4px;padding:3px 5px;white-space:nowrap}
-.leaf .tag.ok{color:var(--good);background:var(--good-bg)}
+.wrap{max-width:1020px;margin:0 auto;padding:20px 16px 90px}
+#context{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:2px 0 16px}
+select.pick{padding:7px 10px;border:1px solid var(--line);border-radius:7px;background:var(--surface);color:var(--ink);font:inherit;font-size:13.5px;max-width:min(440px,100%)}
+.statline{font:400 11.5px/1.6 "IBM Plex Mono",monospace;color:var(--ink3)}
+.slicrow{display:flex;gap:6px;flex-wrap:wrap}
+
 
 h1.page{font:600 30px/1.15 Spectral,"Songti SC",serif;margin:0 0 6px;text-wrap:balance}
 .crumb{font:500 10.5px/1 "IBM Plex Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);margin:0 0 6px}
@@ -101,17 +97,37 @@ h1.page{font:600 30px/1.15 Spectral,"Songti SC",serif;margin:0 0 6px;text-wrap:b
 .badge.n{color:var(--note);background:var(--note-bg)}
 .badge.j{color:var(--ink2);background:var(--line2)}
 .badge.drift{color:var(--accent);background:var(--accent-soft)}
+.jtag{display:inline-flex;align-items:center;gap:5px;font:500 11px/1 "IBM Plex Mono",monospace;color:var(--ink2);white-space:nowrap}
+.jtag i{width:8px;height:8px;border-radius:50%}
+.cnt{font:400 11px/1 "IBM Plex Mono",monospace;color:var(--ink3);white-space:nowrap}
+.tile.clickable{cursor:pointer}
+.tile.clickable{text-align:left;color:var(--ink)}
+.rgroup{margin:0 0 12px}
+.rlab{font:600 13.5px/1.6 "IBM Plex Sans",sans-serif;margin-right:8px}
+.rgroup .jbar{margin-top:5px}
+.tile.clickable:hover{border-color:var(--accent)}
+.tiles .tile .sub{font-size:11px;color:var(--ink3);margin-top:2px}
+details.au{margin-top:9px}
+details.au summary{cursor:pointer;font-size:12.5px;color:var(--ink2)}
+details.au summary:hover{color:var(--accent)}
+details.au summary b{color:var(--ink);font-weight:600}
 
 /* doctrine */
 .sid{font:500 11px/1 "IBM Plex Mono",monospace;color:var(--accent)}
 .test{color:var(--ink2);font-size:13.5px;margin:7px 0 9px;max-width:78ch}
 .auth{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;font-size:12.5px;margin-bottom:3px}
 .auth .cite{font:400 11.5px/1.5 "IBM Plex Mono",monospace;color:var(--ink2)}
-.jgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:10px;margin:0 0 22px}
+.jgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:0 0 22px;align-items:start}
+@media(max-width:620px){.jgrid{grid-template-columns:1fr}}
 .jcard{background:var(--surface);border:1px solid var(--line);border-left-width:3px;border-radius:9px;padding:12px 14px;box-shadow:var(--shadow)}
 .jcard .jt{display:flex;align-items:center;gap:7px;font:600 13px/1 "IBM Plex Sans",sans-serif;margin-bottom:6px}
 .jcard p{margin:0 0 5px;font-size:12.5px;color:var(--ink2)}
 .jcard .rule{font-size:11.5px;color:var(--ink3)}
+.jcard>summary{cursor:pointer;font-size:13px;line-height:1.6;font-weight:600}
+.jcard>summary::marker{color:var(--accent)}
+.jcard[open]>summary{margin-bottom:12px}
+.evidence{flex-basis:100%;font-size:12px;line-height:1.55;color:var(--ink2);overflow-wrap:anywhere}
+.evidence .missing{color:var(--warn)}
 .kv{font-size:12px;color:var(--ink2);margin:3px 0}
 .kv b{font:500 11px/1 "IBM Plex Mono",monospace;color:var(--ink)}
 
@@ -151,6 +167,17 @@ figure.tl{margin:12px 0 4px;padding:0}
 .post .meta{font:400 11px/1.5 "IBM Plex Mono",monospace;color:var(--ink3);display:flex;gap:9px;flex-wrap:wrap}
 .post .sum{font-size:13px;color:var(--ink2);margin:5px 0 5px;max-width:82ch}
 .post .cs{font-size:11.5px;color:var(--ink3)}
+.moref{flex-basis:100%}
+.moref summary{cursor:pointer;font-size:11.5px;color:var(--ink3);list-style:none}
+.moref summary:hover{color:var(--accent)}
+.moref summary::before{content:"+ "}
+.moref[open] summary::before{content:"\2013 "}
+.vbtn{background:none;border:1px solid var(--line);border-radius:4px;color:var(--ink3);font-size:10px;line-height:1.5;padding:0 5px;margin-left:5px;vertical-align:1px}
+.vbtn:hover{color:var(--accent);border-color:var(--accent)}
+.morec{display:inline}
+.morec summary{display:inline;cursor:pointer;font-size:11px;color:var(--ink3)}
+.morec summary:hover{color:var(--accent)}
+.morec>div{margin:4px 0 2px}
 .post .cs b{color:var(--ink2);font-weight:500}
 table.data{width:100%;border-collapse:collapse;font-size:13px}
 table.data th{text-align:left;font:500 10.5px/1 "IBM Plex Mono",monospace;letter-spacing:.08em;text-transform:uppercase;
@@ -176,9 +203,6 @@ pre.code b{color:var(--accent);font-weight:500}
 .loading{color:var(--ink3);font-size:13px;padding:20px 0}
 footer.site{margin-top:40px;border-top:1px solid var(--line);padding-top:14px;color:var(--ink3);font-size:11.5px;max-width:90ch}
 @media (max-width:900px){
-  .layout{grid-template-columns:1fr}
-  .rail{position:static;max-height:none;display:flex;gap:16px;overflow-x:auto;border-bottom:1px solid var(--line);padding-bottom:8px}
-  .rail>div{min-width:190px;flex:0 0 auto}
   .bar{grid-template-columns:120px 1fr 44px}
 }
 .mini{height:6px;background:var(--line2);border-radius:3px;overflow:hidden;min-width:54px;display:inline-block;vertical-align:middle;width:70px}
@@ -227,27 +251,68 @@ details.card[open]>summary::before{content:'▾ '}
   <div class="brand"><b>要件漂移图谱</b><span>Doctrine Drift Atlas</span></div>
   <div class="gsearch"><span class="ic mono">⌕</span><input id="gq" type="search" placeholder="搜索语料 · 判例 · 学说标签  (745 posts / 870 cases)" autocomplete="off"></div>
   <nav class="modes" id="modes"></nav>
-  <div class="apihint mono">API <b id="apistat">…</b></div>
+  <div class="apihint mono">API <b id="apistat" data-state="connecting" role="status" aria-live="polite">正在连接…</b><button id="connectionRetry" class="chip sm" type="button" hidden>检查连接</button></div>
 </div>
 
 <div class="wrap">
-  <div class="layout">
-    <nav class="rail" id="rail" aria-label="navigation"></nav>
-    <main id="main"><div class="loading">Loading…</div></main>
-  </div>
+  <div id="context" aria-label="context navigation"></div>
+  <main id="main"><div class="loading">Loading…</div></main>
   <footer class="site">
-    要件数据集 v0.3(英/港/新/澳),判例引用为 web 级核验;favor 轴为编者标定。语料为 hklandlaw.wordpress.com 745 篇公开文章的<strong>元数据与自动生成的简短摘要</strong>(标题、日期、判例名与引证、学说标签),每条均回链原文,不复制原文内容;版权归原作者所有。本页为研究工具,不构成法律意见。
+    要件数据集 v0.3（英/港/新/澳）。核验等级以每条来源记录为准；名称或引证匹配不证明法律命题。favor 轴为编者标定。语料为 hklandlaw.wordpress.com 745 篇公开文章的<strong>元数据与自动生成的简短摘要</strong>（标题、日期、判例名与引证、学说标签），每条均回链原文，不复制原文内容；版权归原作者所有。本页为研究工具，不构成法律意见。
   </footer>
 </div>
 
 <script type="module">
+import {createScoreUpdater} from './scoring-results.js';
+import {createApiClient,createBootstrap} from './connection.js';
 const API = '/api';
 const $ = (s, r=document) => r.querySelector(s);
 const el = (t, c, h) => { const e=document.createElement(t); if(c)e.className=c; if(h!=null)e.innerHTML=h; return e; };
-const esc = s => String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+const esc = s => String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
 const jColor = j => getComputedStyle(document.documentElement).getPropertyValue('--j'+j).trim() || 'var(--ink2)';
 const fmt = n => n==null?'—':n.toLocaleString('en-US');
-async function api(p){ const r = await fetch(API+p); if(!r.ok) throw new Error(p+' → '+r.status); return r.json(); }
+function appendEvidence(target,record){
+  const box=el('div','evidence');
+  const level=String(record.verified||'unverified');
+  if(record.pin) box.appendChild(el('div',null,'引注位置：'+esc(record.pin)));
+  else if(['primary','quoted','verified-primary','verified-quoted'].includes(level)) box.appendChild(el('div','missing','该记录尚缺引注位置，请核对原文。'));
+  const source=record.source ?? record.src;
+  if(source){
+    const text=typeof source==='string'?source:JSON.stringify(source);
+    const row=el('div'); row.appendChild(document.createTextNode('来源记录：'));
+    let url;
+    if(typeof source==='string' && !/\s/.test(source)){
+      try {const parsed=new URL(/^https?:\/\//i.test(source)?source:'https://'+source);
+        if(['http:','https:'].includes(parsed.protocol) && parsed.hostname.includes('.')) url=parsed.href;
+      } catch {}
+    }
+    if(url){const link=el('a');link.textContent=text;link.href=url;link.target='_blank';link.rel='noopener noreferrer';row.appendChild(link);}
+    else row.appendChild(document.createTextNode(text));
+    box.appendChild(row);
+  } else if(['quoted','verified-quoted'].includes(level)) box.appendChild(el('div','missing','该转引记录尚缺引用来源，请核对。'));
+  if(box.childNodes.length) target.appendChild(box);
+}
+function offerRetry(container,message,retry){
+  container.replaceChildren(el('p','test',esc(message)));
+  const button=el('button','chip sm','重试');
+  button.type='button';button.onclick=retry;container.appendChild(button);
+}
+function connectionStatus(status){
+  const indicator=$('#apistat'), retry=$('#connectionRetry');
+  indicator.dataset.state=status.state;
+  const labels={connecting:'正在连接…',online:'最近请求成功',offline:'连接已中断',error:'服务响应异常'};
+  indicator.textContent=labels[status.state]||'尚未连接';
+  retry.hidden=!['offline','error'].includes(status.state);
+}
+const request=createApiClient({base:API,onStatus:connectionStatus});
+async function api(p,options){
+  const r=await request(p,options);
+  if(!r.ok){
+    const detail=Array.isArray(r.data?.errors)?r.data.errors.join('；'):r.data?.error;
+    throw new Error(typeof detail==='string'?detail:'数据服务暂时无法完成请求（'+r.status+'），请重试。');
+  }
+  return r.data;
+}
 
 const state = { mode:'doctrine', claim:'misrepresentation', q:'', filters:{}, tax:null, elements:null, stats:null };
 
@@ -262,55 +327,49 @@ function renderModes(){
   for(const [k,label] of MODES){
     const b = el('button',null,label);
     b.setAttribute('aria-current', String(state.mode===k));
-    b.onclick = () => { state.mode=k; route(); };
+    b.onclick = () => { state.mode=k; if(state.tax && state.elements && state.stats) route(); else init(); };
     n.appendChild(b);
   }
 }
 
-/* ── rail ────────────────────────────────────────────── */
-function renderRail(){
-  const r = $('#rail'); r.innerHTML='';
+/* ── context bar (single-column shell: claim select / slice chips / stats) ── */
+const SLICES = [['','全部 745 篇'],['proprietary-estoppel','proprietary estoppel'],['adverse-possession','adverse possession'],
+  ['common-intention-constructive-trust','CI constructive trust'],['easements','easements'],['deed-of-mutual-covenant','DMC'],
+  ['land-registration','land registration'],['formalities','formalities']];
+function renderContext(){
+  const c = $('#context'); c.innerHTML='';
   if(state.mode==='doctrine' && state.tax){
+    c.appendChild(el('span','cnt','诉因'));
+    const sel = el('select','pick'); sel.setAttribute('aria-label','选择诉因');
     for(const area of state.tax.areas){
-      const d = el('div');
-      d.appendChild(el('h3', null, esc(area.zh)+' <span style="letter-spacing:.05em">'+esc(area.en)+'</span>'));
-      for(const c of area.claims){
-        const b = el('button','leaf');
-        b.setAttribute('aria-current', String(state.claim===c.id));
-        const tag = c.status==='full' ? '<span class="tag ok">已建模</span>'
-          : c.status==='planned' ? '<span class="tag">规划中</span>'
-          : c.status==='xref' ? '<span class="tag">参见</span>'
-          : '<span class="tag">语料</span>';
-        b.innerHTML = '<span>'+esc(c.zh)+'</span><span class="en">'+esc(c.en)+'</span>'+tag;
-        b.onclick = () => { state.claim=c.id; route(); window.scrollTo(0,0); };
-        d.appendChild(b);
+      const g = document.createElement('optgroup'); g.label = area.zh+' '+area.en;
+      for(const cl of area.claims){
+        const o = document.createElement('option');
+        o.value = cl.id; o.textContent = (cl.status==='full'?'● ':'○ ')+cl.zh;
+        if(state.claim===cl.id) o.selected = true;
+        g.appendChild(o);
       }
-      r.appendChild(d);
+      sel.appendChild(g);
     }
+    sel.onchange = () => { state.claim = sel.value; route(); window.scrollTo(0,0); };
+    c.appendChild(sel);
   } else if(state.mode==='corpus' && (state.sub||'corpus')==='corpus'){
-    const d = el('div'); d.appendChild(el('h3',null,'常用切片 Slices'));
-    for(const [q,label] of [['','全部 745 篇'],['proprietary-estoppel','proprietary estoppel'],['adverse-possession','adverse possession'],
-      ['common-intention-constructive-trust','CI constructive trust'],['easements','easements'],['deed-of-mutual-covenant','DMC'],
-      ['land-registration','land registration'],['formalities','formalities']]){
-      const b = el('button','leaf');
-      b.setAttribute('aria-current', String((state.filters.topic||'')===q));
-      b.innerHTML = '<span>'+esc(label)+'</span>';
+    const row = el('div','slicrow');
+    for(const [q,label] of SLICES){
+      const b = el('button','chip sm', esc(label));
+      b.setAttribute('aria-pressed', String((state.filters.topic||'')===q));
       b.onclick = () => { state.filters = q?{topic:q}:{}; route(); };
-      d.appendChild(b);
+      row.appendChild(b);
     }
-    r.appendChild(d);
+    c.appendChild(row);
   } else {
-    const d = el('div'); d.appendChild(el('h3',null,'数据集 Dataset'));
     const s = state.stats||{};
-    d.appendChild(el('div','kv','<b>posts</b> '+fmt(s.posts)));
-    d.appendChild(el('div','kv','<b>cases</b> '+fmt(s.uniqueCases)));
-    d.appendChild(el('div','kv','<b>topics</b> '+fmt(s.topics)));
-    d.appendChild(el('div','kv','<b>statutes</b> '+fmt(s.statutes)));
-    d.appendChild(el('div','kv','<b>sub-tests</b> '+fmt(s.elementSubTests)));
-    d.appendChild(el('div','kv','<b>drift events</b> '+fmt(s.timelineEvents)));
-    r.appendChild(d);
+    c.appendChild(el('span','statline',
+      fmt(s.posts)+' 篇文章 · '+fmt(s.uniqueCases)+' 判例 · '+fmt(s.topics)+' 标签 · '+fmt(s.statutes)+' 条文 · '+fmt(s.elementSubTests)+' 子测试 · '+fmt(s.timelineEvents)+' 漂移事件'));
   }
 }
+
+
 
 /* ── timeline chart ──────────────────────────────────── */
 const JUR = ['EN','HK','SG','AU'];
@@ -335,7 +394,7 @@ async function renderTimeline(container, id){
   const base = await api('/timeline/'+id);
   head.innerHTML = '<div class="t">'+esc(base.id)+' · '+esc(base.title)+'</div>'+
     '<div class="axisnote">纵轴:标准倾向 ↑利于主张方 / ↓利于抗辩方(编者标定)</div>';
-  foot.textContent = base.note;
+  foot.textContent = base.note ? '当前编者说明（未按所选年份回溯）：'+base.note : '';
 
   const evs = base.events.slice().sort((a,b)=>a.y-b.y);
   const minY = Math.min(...evs.map(e=>e.y));
@@ -386,40 +445,47 @@ async function renderTimeline(container, id){
     }
   }
 
-  asofRow.innerHTML = '<label>as-of 查询(服务端解算)</label>';
+  asofRow.innerHTML = '<label>查询截至年份（判例记录）</label>';
   const range = el('input'); range.type='range'; range.min=String(minY); range.max=String(hi); range.value=String(hi);
   range.setAttribute('aria-label','as-of year');
   const out = el('span','yr',String(hi));
   asofRow.appendChild(range); asofRow.appendChild(out);
 
-  let timer=null;
+  let timer=null, standingRequest=0;
   async function refreshStanding(){
-    const data = await api('/timeline/'+id+'?as_of='+asOf);
+    const request=++standingRequest, requestedYear=asOf;
+    let data;
+    try { data=await api('/timeline/'+id+'?as_of='+requestedYear); }
+    catch(error) {
+      if(request===standingRequest && requestedYear===asOf && standing.isConnected) offerRetry(standing,'该日期的资料暂时加载失败，可以保持年份重试。',refreshStanding);
+      return;
+    }
+    if(request!==standingRequest || requestedYear!==asOf || !standing.isConnected) return;
     standing.innerHTML='';
     for(const r of data.standing_rules){
       if(!jActive[r.jurisdiction]) continue;
       const d = el('div','stand'); d.style.borderLeftColor = jColor(r.jurisdiction);
-      // Three hierarchies, kept apart: the governing statement (highest court, then
-      // most recent) is the card; where the latest decision is a lower court, or a
-      // lower court has since pointed the other way, say so rather than hide it.
+      // Show rank and date metadata without inferring an unversioned legal rule.
       const jj = r.jurisdiction;
       const ln = data.latest_is_not_governing && data.latest_is_not_governing[jj];
       const cf = data.subordinate_conflicts && data.subordinate_conflicts[jj];
       d.innerHTML = '<div class="jt"><span style="width:8px;height:8px;border-radius:50%;background:'+jColor(jj)+'"></span>'
-        + jj+' '+JZH[jj]+' · '+r.since+(r.court&&!/\)\s*$/.test(r.case)?' · '+esc(r.court):'')+'</div>'+esc(r.effect)+'<div class="cs">'+esc(r.case)+' · '+esc(r.treatment)+'</div>'
-        + (ln ? '<div class="cs" style="margin-top:6px;opacity:.85">最新裁决非最高层级 · latest: '+esc(ln.latest_event.case)+(/\)\s*$/.test(ln.latest_event.case)?' ('+ln.latest_event.year+')':' ('+esc(ln.latest_event.court)+', '+ln.latest_event.year+')')+'<br>上级法院的表述具约束力；最新裁决反映当前如何适用</div>' : '')
+        + jj+' '+JZH[jj]+' · '+r.since+(r.court&&!/\)\s*$/.test(r.case)?' · '+esc(r.court):'')+'</div>'+esc(r.historical_rule_status==='historical-rule-not-modelled'?'历史规则正文尚未建立，请核对判决原文。':r.effect)+'<div class="cs">'+esc(r.case)+(r.treatment?' · '+esc(r.treatment):'')+'</div>'
+        + (ln ? '<div class="cs" style="margin-top:6px;opacity:.85">最新裁决非最高层级 · latest: '+esc(ln.latest_event.case)+(/\)\s*$/.test(ln.latest_event.case)?' ('+ln.latest_event.year+')':' ('+esc(ln.latest_event.court)+', '+ln.latest_event.year+')')+'<br>'+(data.historical_mode==='strict'?'法院层级与时间顺序不同，具体规则须核对原文。':'上级法院的表述具约束力；最新裁决反映当前如何适用')+'</div>' : '')
         + (cf ? '<div class="cs" style="margin-top:4px;opacity:.85">下级法院此后有相反表述 · '+cf.map(function(c){return esc(c.case)+' ('+c.year+')';}).join('; ')+'<br>上级法院优先，但二者或可调和——先核对是否针对同一问题</div>' : '');
+      if(r.recency_status==='recency-unresolved') d.appendChild(el('div','cs','日期精度不足，相关记录并列；无法确认先后。'));
       standing.appendChild(d);
     }
     for(const j of data.jurisdictions_with_no_authority_at_as_of){
       if(!jActive[j]) continue;
       const d = el('div','stand'); d.style.borderLeftColor = jColor(j);
-      d.innerHTML = '<div class="jt"><span style="width:8px;height:8px;border-radius:50%;background:'+jColor(j)+'"></span>'+j+' '+JZH[j]+'</div><span class="cs">该时点本法域尚无认定</span>';
+      d.innerHTML = '<div class="jt"><span style="width:8px;height:8px;border-radius:50%;background:'+jColor(j)+'"></span>'+j+' '+JZH[j]+'</div><span class="cs">没有符合该截止日期的本法域记录；这不表示当时不存在相关判例。</span>';
       standing.appendChild(d);
     }
   }
   range.addEventListener('input',()=>{
     asOf=+range.value; out.textContent=String(asOf); draw();
+    standing.textContent='正在读取截至 '+asOf+' 年的判例记录…';
     clearTimeout(timer); timer=setTimeout(refreshStanding,140);
   });
   draw(); refreshStanding();
@@ -435,9 +501,9 @@ async function viewDoctrine(main){
 
   if(claim.status!=='full'){
     const c = el('div','card');
-    const b = claim.status==='planned' ? '<span class="badge n">规划中 planned module</span>'
-            : claim.status==='xref' ? '<span class="badge j">交叉引用 cross-reference</span>'
-            : '<span class="badge j">语料已覆盖 corpus-only</span>';
+    const b = claim.status==='planned' ? '<span class="badge n">规划中</span>'
+            : claim.status==='xref' ? '<span class="badge j">交叉引用</span>'
+            : '<span class="badge j">语料已覆盖</span>';
     c.innerHTML = b + '<p class="test" style="margin-top:9px">'+esc(claim.note||'')+'</p>'
       + (claim.lab?'<p class="mono" style="font-size:11.5px;color:var(--ink3);margin:0">'+esc(claim.lab)+'</p>':'');
     main.appendChild(c);
@@ -461,7 +527,18 @@ async function viewDoctrine(main){
   }
 
   const E = state.elements;
+  const [ST, REG] = await Promise.all([api('/stats'), api('/registry')]);
+  const MODTL = REG.modules.reduce((n,m)=>n+Object.keys(m.timelines||{}).length,0);
   main.appendChild(el('p','lede','英式普通法家族模型:共享英国骨架 + 四个法域 overlay。变体 '+E.variants.join(' / ')+'。每条判例带核验级别;drift 标记的子测试挂着可 as-of 查询的时间线。'));
+  const tiles = el('div','tiles');
+  const tile = (n,l,sub,go)=>{ const d = el('button','tile clickable'); d.type='button';
+    d.innerHTML = '<div class="n">'+n+'</div><div class="l">'+l+'</div><div class="sub">'+sub+'</div>';
+    d.onclick = go; tiles.appendChild(d); };
+  tile(REG.total_modules,'诉因模块','spear \u00b7 shield \u00b7 \u7a0b序 \u00b7 管辖',()=>{ state.mode='scored'; route(); window.scrollTo(0,0); });
+  tile(ST.timelines+MODTL,'漂移时间线','as-of 查询',()=>{ const f = main.querySelector('figure.tl'); if(f) f.scrollIntoView({behavior:'smooth',block:'start'}); });
+  tile(ST.posts,'语料文章','hklandlaw 索引',()=>{ state.mode='corpus'; state.sub='corpus'; route(); window.scrollTo(0,0); });
+  tile(ST.uniqueCases,'判例','语料被讨论次序',()=>{ state.mode='corpus'; state.sub='cases'; route(); window.scrollTo(0,0); });
+  main.appendChild(tiles);
 
   const chips = el('div','chips');
   for(const j of JUR){
@@ -472,32 +549,35 @@ async function viewDoctrine(main){
     chips.appendChild(b);
   }
   main.appendChild(chips);
+  main.appendChild(el('p','tiny','选择参与比较的法域，展开卡片查看条文、判例与来源。核验标签沿用库中记录；法律命题仍需核对原文。'));
 
   const jg = el('div','jgrid');
   for(const j of JUR){
     if(!jActive[j]) continue;
     const J = E.jurisdictions[j];
-    const d = el('div','jcard'); d.style.borderLeftColor = jColor(j);
-    let h = '<div class="jt"><span style="width:9px;height:9px;border-radius:50%;background:'+jColor(j)+'"></span>'+j+' '+esc(J.name)+'</div>';
+    const d = el('details','jcard'); d.style.borderLeftColor = jColor(j);
+    let h = '<summary>'+j+' '+esc(J.name)+' · '+((J.cases||[]).length?(J.cases.length+' 条补充判例'):'骨架来源见要件')+' · '+(J.statutes||[]).length+' 项条文</summary>';
     h += '<p>'+esc(J.regime)+'</p>';
     for(const st of J.statutes||[]){
-      h += '<div class="kv"><b>'+esc(st.ref)+'</b></div>';
+      h += '<div class="kv jurisdiction-statute"><b>'+esc(st.ref)+'</b> <span class="badge v">'+esc(st.verified||'unverified')+'</span></div>';
       for(const [k,v] of Object.entries(st.sections||{})) h += '<div class="kv" style="padding-left:8px">'+esc(k)+' — '+esc(v)+'</div>';
     }
     h += '<p class="rule" style="margin-top:6px">'+esc(J.authority_rule)+'</p>';
     if(J.structural_outlier) h += '<span class="badge n">REPLACES — 结构性异类</span>';
     if((J.cases||[]).length) h += '<div class="kv" style="margin-top:7px"><b>本法域判例 '+J.cases.length+'</b></div>';
-    for(const c of J.cases||[]) h += '<div class="kv" style="padding-left:8px">'+esc(c.name)+' <span class="mono" style="color:var(--ink3)">'+esc(c.cite)+'</span></div>';
+    for(const c of J.cases||[]) h += '<div class="kv jurisdiction-authority" style="padding-left:8px">'+esc(c.name||c.case)+' <span class="mono" style="color:var(--ink3)">'+esc(c.cite)+'</span> <span class="badge v">'+esc(c.verified||'unverified')+'</span></div>';
     if(J.gaps) for(const g of J.gaps) h += '<div class="kv" style="color:var(--note)">⚠ '+esc(g)+'</div>';
     if(J.divergences) for(const g of J.divergences) h += '<div class="kv" style="color:var(--ink3)">↯ '+esc(g)+'</div>';
-    d.innerHTML = h; jg.appendChild(d);
+    d.innerHTML = h;
+    d.querySelectorAll('.jurisdiction-statute').forEach((row,i)=>appendEvidence(row,J.statutes[i]));
+    d.querySelectorAll('.jurisdiction-authority').forEach((row,i)=>appendEvidence(row,J.cases[i]));
+    jg.appendChild(d);
   }
   main.appendChild(jg);
 
   const groups = [...E.elements.map(e=>({...e,kind:'element'})), {id:'D',zh:'抗辩层',en:'Defences',kind:'def',sub_tests:E.defences}];
   for(const g of groups){
     const sec = el('section');
-    sec.appendChild(el('h3',null,'')).outerHTML;
     const h3 = el('h3',null, esc(g.id)+' · '+esc(g.en));
     h3.style.cssText='font:600 18px/1.3 Spectral,serif;margin:16px 0 2px;padding-top:12px;border-top:1px solid var(--line)';
     sec.appendChild(h3);
@@ -508,20 +588,27 @@ async function viewDoctrine(main){
       let head = '<div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap">'
         + '<span class="sid">'+esc(st.id)+'</span><b style="font-size:14.5px">'+esc(st.en)+'</b>'
         + '<span style="color:var(--ink3);font-size:12px">'+esc(st.zh)+'</span>';
-      if(st.variant) head += '<span class="badge j">'+esc(st.variant)+'</span>';
+      if(st.variant) head += '<span class="cnt">'+esc(st.variant)+'</span>';
       if(st.drift) head += '<span class="badge drift">⇅ drift · '+esc(st.drift)+'</span>';
       head += '</div>';
       card.innerHTML = head + '<p class="test">'+esc(st.test)+'</p>';
-      const au = el('div');
+      const au = el('details','au');
+      const lv = {primary:0, quoted:0, web:0, unverified:0};
       for(const a of st.auth||[]){
+        const v = String(a.verified||'unverified');
+        const k = v.includes('primary')?'primary':v.includes('quoted')?'quoted':v.includes('web')?'web':'unverified';
+        lv[k]++;
         const r = el('div','auth');
         r.innerHTML = '<span style="font-weight:500">'+esc(a.case)+'</span><span class="cite">'+esc(a.cite)+'</span>'
-          + (a.court?'<span class="badge j">'+esc(a.court)+'</span>':'')
+          + (a.court?'<span class="cite">'+esc(a.court)+'</span>':'')
           + '<span class="badge v">'+esc(a.verified)+'</span>'
           + (a.note?'<span style="color:var(--ink3);font-size:11.5px">'+esc(a.note)+'</span>':'');
+        appendEvidence(r,a);
         au.appendChild(r);
       }
-      card.appendChild(au);
+      const sum = el('summary');
+      sum.innerHTML = '<b>\u6743\u5a01 '+(st.auth||[]).length+'</b> \u00b7 primary '+lv.primary+' \u00b7 quoted '+lv.quoted+' \u00b7 web '+lv.web;
+      au.prepend(sum); card.appendChild(au);
       if(st.statute_by_jurisdiction){
         const sj = el('div','kv'); sj.style.marginTop='7px';
         sj.innerHTML = '<b>条文对应</b> ' + Object.entries(st.statute_by_jurisdiction).map(([k,v])=>k+': '+esc(v)).join(' · ');
@@ -533,8 +620,8 @@ async function viewDoctrine(main){
     main.appendChild(sec);
   }
 
-  const flags = el('div','card');
-  flags.innerHTML = '<h4>核验状态与待办</h4><p class="test">下列细节 agent 明确标注为未能核实,进论文前需对原文:</p>'
+  const flags = el('details','card');
+  flags.innerHTML = '<summary class="stt">\u6838\u9a8c\u72b6\u6001\u4e0e\u5f85\u529e</summary><p class="test">下列细节 agent 明确标注为未能核实,进论文前需对原文:</p>'
     + '<ul style="margin:0;padding-left:18px;color:var(--ink2);font-size:12.5px">'
     + E.flagged_unverified.map(x=>'<li>'+esc(x)+'</li>').join('') + '</ul>'
     + '<p class="test" style="margin-top:10px"><b>下一批模块</b></p><ul style="margin:0;padding-left:18px;color:var(--ink2);font-size:12.5px">'
@@ -550,6 +637,8 @@ async function viewCorpus(main){
   const row = el('div','searchrow');
   const inp = el('input'); inp.type='search'; inp.placeholder='关键词(支持前缀匹配,如 estopp / 信托 / Peekay)'; inp.value = state.q;
   const selY = el('select'); const selC = el('select'); const selJ = el('select'); const selT = el('select');
+  inp.setAttribute('aria-label','语料关键词');
+  [selY,selC,selJ,selT].forEach((select,i)=>select.setAttribute('aria-label',['筛选年份','筛选法院','筛选法域','筛选类型'][i]));
   row.append(inp, selY, selC, selJ, selT);
   main.appendChild(row);
   const facets = el('div','facets'); main.appendChild(facets);
@@ -562,9 +651,14 @@ async function viewCorpus(main){
     p.set('limit','40');
     return p.toString();
   }
+  let searchRequest=0;
   async function run(){
+    const request=++searchRequest,query=qs();
     results.innerHTML='<div class="loading">Searching…</div>';
-    const d = await api('/search?'+qs());
+    let d;
+    try {d=await api('/search?'+query);}
+    catch(error){if(request===searchRequest && results.isConnected && query===qs()) offerRetry(results,'检索暂时失败，可以保持当前条件重试。',run);return;}
+    if(request!==searchRequest || !results.isConnected || query!==qs()) return;
     const fill = (sel, key, label, list) => {
       sel.innerHTML = '<option value="">'+label+'(全部)</option>' + list.map(f=>'<option value="'+esc(f.key)+'">'+esc(f.key)+' ('+f.count+')</option>').join('');
       sel.value = state.filters[key]||'';
@@ -577,11 +671,20 @@ async function viewCorpus(main){
 
     facets.innerHTML='';
     facets.appendChild(el('span','fchip','命中 <b>'+fmt(d.total)+'</b> 篇'));
-    for(const f of d.facets.topics.slice(0,16)){
-      const b = el('button','fchip', esc(f.topic)+' <b>'+f.count+'</b>');
-      b.dataset.on = state.filters.topic===f.topic?'1':'0';
-      b.onclick = () => { state.filters.topic = state.filters.topic===f.topic?undefined:f.topic; run(); };
-      facets.appendChild(b);
+    const chipFor = (f) => {
+      const k = f.topic||f.key;
+      const b = el('button','fchip', esc(k)+' <b>'+f.count+'</b>');
+      b.dataset.on = state.filters.topic===k?'1':'0';
+      b.onclick = () => { state.filters.topic = state.filters.topic===k?undefined:k; run(); };
+      return b;
+    };
+    for(const f of d.facets.topics.slice(0,8)) facets.appendChild(chipFor(f));
+    if(d.facets.topics.length>8){
+      const more = el('details','moref');
+      more.innerHTML = '<summary>更多话题 ('+(d.facets.topics.length-8)+')</summary>';
+      const mrow = el('div','facets'); mrow.style.marginBottom = '0';
+      for(const f of d.facets.topics.slice(8,20)) mrow.appendChild(chipFor(f));
+      more.appendChild(mrow); facets.appendChild(more);
     }
     if(Object.values(state.filters).some(Boolean)){
       const c = el('button','fchip','✕ 清除筛选');
@@ -592,21 +695,53 @@ async function viewCorpus(main){
     results.innerHTML='';
     for(const p of d.results){
       const post = el('article','post');
-      let h = '<h4><a href="'+esc(p.url)+'" target="_blank" rel="noopener">'+esc(p.title)+'</a></h4>';
+      let h = '<h4>'+esc(p.title)+' <a href="'+esc(p.url)+'" target="_blank" rel="noopener" style="font-size:11px;font-weight:400">\u539f\u6587 \u2197</a></h4>';
       h += '<div class="meta"><span>'+esc(p.date||'—')+'</span><span>'+esc(p.type)+'</span><span>'+(p.topics||[]).map(esc).join(' · ')+'</span></div>';
       h += '<p class="sum">'+esc(p.summary)+'</p>';
       if((p.cases||[]).length){
-        h += '<div class="cs"><b>判例:</b> ' + p.cases.slice(0,6).map(c=>esc(c.name)+(c.citation?' <span class="mono">'+esc(c.citation)+'</span>':'')).join(' ; ')
-          + (p.cases.length>6?' …(+'+(p.cases.length-6)+')':'') + '</div>';
+        const cHtml = (c)=>'<button class="linkbtn" data-case="'+esc(c.name)+'">'+esc(c.name)+'</button>'+(c.citation?' <span class="mono">'+esc(c.citation)+'</span> <button class="vbtn" data-verify="'+esc(c.citation)+'" title="核验引证">验</button>':'');
+        h += '<div class="cs"><b>判例:</b> ' + p.cases.slice(0,3).map(cHtml).join(' ; ');
+        if(p.cases.length>3) h += ' <details class="morec"><summary>等 '+(p.cases.length-3)+' 个</summary><div>' + p.cases.slice(3).map(cHtml).join(' ; ') + '</div></details>';
+        h += '</div>';
       }
       if((p.statutes||[]).length) h += '<div class="cs"><b>条文:</b> '+p.statutes.slice(0,5).map(esc).join(' ; ')+'</div>';
+      h += '<div class="vout" style="display:none"></div>';
       post.innerHTML = h;
       results.appendChild(post);
     }
+    results.onclick = async (ev) => {
+      const t = ev.target.closest('button'); if(!t) return;
+      if(t.dataset.case){ state.sub='cases'; state.caseQ=t.dataset.case; route(); window.scrollTo(0,0); return; }
+      if(t.dataset.verify){
+        const box = t.closest('article').querySelector('.vout');
+        const request=String(Number(box.dataset.request||0)+1); box.dataset.request=request;
+        box.setAttribute('role','status'); box.style.display='block'; box.textContent='正在核对引证…';
+        try{
+          const v = await api('/verify?cite='+encodeURIComponent(t.dataset.verify));
+          if(!box.isConnected || box.dataset.request!==request) return;
+          const a = v.authority||{};
+          box.innerHTML = '<span class="mono">'+esc(a.cite||t.dataset.verify)+'</span><br>'
+            + (v.found ? '库内身份匹配；未验证法律命题。' : v.citation_mismatch || v.status==='citation-mismatch' ? '姓名与引证未能一致对应，请核对。' : '本库未匹配；这不表示判例不存在。');
+          for(const record of v.evidence_records||[]){
+            const row=el('div','auth');
+            row.innerHTML=esc(record.case||record.name||'')+' <span class="badge v">'+esc(record.verified||'unverified')+'</span>'+(record.where?' <span class="tiny">'+esc(record.where)+'</span>':'');
+            appendEvidence(row,record);box.appendChild(row);
+          }
+          if(v.hklii){
+            const online=v.hklii;
+            const message=online.exists===true ? 'HKLII 返回的中性引证匹配（'+(online.date||'')+'）；未核查当事人名称、引注段落或法律命题。'
+              : online.status==='english-version-unavailable' ? '英文入口未返回判决；其他语言版本及判例是否存在仍待核对。'
+              : online.status?.startsWith('not-requested') ? '本次未进行在线核查；请先解决日期或身份匹配问题。'
+              : '在线核查未能确认，请稍后重试；不能据此认定判例不存在。';
+            box.appendChild(el('div',null,esc(message)));
+          }
+        }catch(e){ if(box.isConnected && box.dataset.request===request) box.textContent='引证核查暂时失败，请重试。'; }
+      }
+    };
     if(!d.results.length) results.innerHTML='<div class="loading">无命中。</div>';
   }
   let t=null;
-  inp.oninput = () => { state.q=inp.value; clearTimeout(t); t=setTimeout(run,220); };
+  inp.oninput = () => { state.q=inp.value; searchRequest++; results.textContent='正在检索…'; clearTimeout(t); t=setTimeout(run,220); };
   run();
 }
 
@@ -616,45 +751,60 @@ async function viewCases(main){
   main.appendChild(el('p','lede','语料中出现的全部判例,按被讨论次数排序。点击行展开引用该判例的文章。'));
   const row = el('div','searchrow');
   const inp = el('input'); inp.type='search'; inp.placeholder='判例名(如 Thorner / Pye / Luo Xing Juan)';
+  inp.setAttribute('aria-label','判例名称');
   const selJ = el('select'); selJ.innerHTML = '<option value="">法域(全部)</option>'+['HK','EN','AU','SG','other'].map(j=>'<option>'+j+'</option>').join('');
+  selJ.setAttribute('aria-label','判例法域');
+  if(state.caseQ){ inp.value=state.caseQ; state.caseQ=undefined; }
   row.append(inp, selJ); main.appendChild(row);
   const box = el('div','tblwrap'); main.appendChild(box);
 
+  let caseRequest=0;
   async function run(){
+    const request=++caseRequest;
     box.innerHTML='<div class="loading" style="padding:16px">Loading…</div>';
     const p = new URLSearchParams({limit:'120'});
     if(inp.value) p.set('q',inp.value);
     if(selJ.value) p.set('juris',selJ.value);
-    const d = await api('/cases?'+p);
+    let d;
+    try {d=await api('/cases?'+p);}
+    catch(error){if(request===caseRequest && box.isConnected) offerRetry(box,'判例列表暂时加载失败，可以保持当前条件重试。',run);return;}
+    if(request!==caseRequest || !box.isConnected) return;
     const t = el('table','data');
-    t.innerHTML = '<thead><tr><th>判例 Case</th><th>引证 Citation</th><th>法院</th><th>法域</th><th style="text-align:right">被讨论</th></tr></thead>';
+    t.innerHTML = '<thead><tr><th>判例</th><th>引证</th><th>法院 / 法域</th><th style="text-align:right">被讨论</th></tr></thead>';
     const tb = el('tbody');
     for(const c of d.results){
       const tr = el('tr');
       tr.innerHTML = '<td><button class="linkbtn">'+esc(c.name)+'</button></td>'
         + '<td class="mono" style="font-size:11.5px;color:var(--ink2)">'+c.citations.slice(0,2).map(esc).join('<br>')+'</td>'
-        + '<td style="font-size:12px;color:var(--ink2)">'+c.courts.map(esc).join(', ')+'</td>'
-        + '<td style="font-size:12px;color:var(--ink2)">'+c.jurisdictions.map(esc).join(', ')+'</td>'
+        + '<td style="font-size:12px;color:var(--ink2)">'+c.courts.map(esc).join(', ')
+        + ' <span class="cnt">'+c.jurisdictions.map(esc).join(' \u00b7 ')+'</span></td>'
         + '<td class="num">'+c.count+'</td>';
       tr.querySelector('.linkbtn').onclick = async () => {
         const nx = tr.nextElementSibling;
         if(nx && nx.dataset.detail){ nx.remove(); return; }
-        const det = await api('/case?name='+encodeURIComponent(c.name));
+        const button=tr.querySelector('.linkbtn');button.disabled=true;
+        let det;
+        try {det=await api('/case?name='+encodeURIComponent(c.name));}
+        catch(error){det={message:'关联资料暂时加载失败，请重新展开重试。'};}
+        finally {button.disabled=false;}
+        if(!tr.isConnected) return;
         const dr = el('tr'); dr.dataset.detail='1';
-        dr.innerHTML = '<td colspan="5" style="background:var(--surface2)">'
-          + det.posts.map(p=>'<div style="margin:5px 0"><a href="'+esc(p.url)+'" target="_blank" rel="noopener">'+esc(p.title)+'</a>'
+        dr.innerHTML = '<td colspan="4" style="background:var(--surface2)">'
+          + (Array.isArray(det.posts) ? det.posts.map(p=>'<div style="margin:5px 0"><span>'+esc(p.title)+'</span>'
+      + ' <a href="'+esc(p.url)+'" target="_blank" rel="noopener" style="font-size:11px">\u539f\u6587 \u2197</a>'
             + ' <span class="mono" style="color:var(--ink3);font-size:11px">'+esc(p.date||'')+'</span>'
             + '<div style="font-size:12.5px;color:var(--ink2)">'+esc(p.summary)+'</div></div>').join('')
-          + '</td>';
+          : esc(det.message||'该名称未能唯一对应记录，请补充完整引证。')) + '</td>';
         tr.after(dr);
       };
       tb.appendChild(tr);
     }
     t.appendChild(tb); box.innerHTML=''; box.appendChild(t);
+    if(!d.results.length) box.appendChild(el('p','loading','未找到匹配的判例，请调整关键词或法域。'));
     main.querySelector('.lede').textContent = '语料中共 '+fmt(d.total)+' 个判例(当前筛选),按被讨论次数排序。点击判例名展开引用它的文章。';
   }
   let t2=null;
-  inp.oninput = () => { clearTimeout(t2); t2=setTimeout(run,220); };
+  inp.oninput = () => { caseRequest++; box.textContent='正在检索…'; clearTimeout(t2); t2=setTimeout(run,220); };
   selJ.onchange = run;
   run();
 }
@@ -714,7 +864,8 @@ async function viewGraph(main){
 
   cv.onpointerdown = e => drag={x:e.clientX,y:e.clientY,ox,oy};
   cv.onpointermove = e => { if(drag){ ox=drag.ox+(e.clientX-drag.x); oy=drag.oy+(e.clientY-drag.y); } };
-  window.addEventListener('pointerup',()=>drag=null);
+  const endDrag = () => drag=null;
+  window.addEventListener('pointerup',endDrag);
 
   function step(){
     for(let i=0;i<N.length;i++){
@@ -756,7 +907,10 @@ async function viewGraph(main){
     ctx.restore();
   }
   let frames=0;
-  (function loop(){ if(frames++<420) step(); draw(); requestAnimationFrame(loop); })();
+  (function loop(){
+    if(!cv.isConnected){ window.removeEventListener('pointerup',endDrag); return; }
+    if(frames++<420) step(); draw(); requestAnimationFrame(loop);
+  })();
 }
 
 async function viewApi(main){
@@ -771,9 +925,13 @@ async function viewApi(main){
     ['GET /api/taxonomy','大类 → 诉因 → 要件 → 子测试的分类树'],
     ['GET /api/elements','完整要件数据集(含四法域 overlay)'],
     ['GET /api/element/{id}','单个要件/子测试/抗辩 + 其漂移时间线'],
-    ['GET /api/timeline/{id}?as_of=YYYY','漂移时间线,服务端解算该时点各法域现行标准'],
+    ['GET /api/timeline/{id}?as_of=YYYY','截至该年的判例记录；历史规则正文未建模时明确标出缺口'],
     ['GET /api/search?q=&topic=&year=&court=&juris=','语料全文检索(倒排索引 + facet)'],
     ['GET /api/cases / /api/case?name=','判例索引 / 单个判例及引用它的文章'],
+    ['GET /api/persuasive?q=&area=&signal=', '\u0045\u0026\u0057\u0020\u8bf4\u670d\u6027\u5224\u4f8b\u7d22\u5f15\uff08\u68c0\u7d22\u002f\u8fc7\u6ee4\uff09'],
+    ['GET /api/persuasive/{slug}', '\u5355\u6848\u8bb0\u5f55\u0020\u002b\u0020\u540e\u7eed\u5bf9\u5f85'],
+    ['GET /api/persuasive/graph', '\u5224\u4f8b\u5f15\u7528\u5173\u7cfb\u8fb9'],
+    ['GET /api/persuasive/queue', '\u5f85\u4eba\u5de5\u6838\u9a8c\u961f\u5217\uff08\u5148\u91cd\u540e\u8f7b\uff09'],
     ['GET /api/topics · /api/statutes · /api/graph','标签、条文、共现图'],
     ['POST /api/mcp','MCP JSON-RPC:initialize / tools/list / tools/call'],
   ];
@@ -781,13 +939,19 @@ async function viewApi(main){
     const r = el('div','ep');
     r.innerHTML = '<code>'+esc(a)+'</code><span class="d">'+esc(b)+'</span>';
     const btn = el('button','chip sm','试一下');
+    let output;
     btn.onclick = async () => {
-      const path = a.split(' ')[1].replace('/api','').replace('{id}','T1').split('?')[0];
-      const out = a.startsWith('POST')
-        ? await (await fetch(API+'/mcp',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({jsonrpc:'2.0',id:1,method:'tools/list'})})).json()
-        : await api(path + (a.includes('as_of')?'?as_of=2015':''));
-      const pre = el('pre','code', esc(JSON.stringify(out,null,1).slice(0,2600)));
-      r.after(pre);
+      btn.disabled=true;
+      if(!output){ output=el('pre','code'); r.after(output); }
+      output.textContent='正在请求…';
+      try{
+        const path = a.split(' ')[1].replace('/api','').replace('{id}',a.includes('/element/')?'E3c':'T1').replace('{slug}','carlill-v-carbolic-smoke-ball').split('?')[0];
+        const out = a.startsWith('POST')
+          ? await api('/mcp',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({jsonrpc:'2.0',id:1,method:'tools/list'})})
+          : await api(path + (a.includes('as_of')?'?as_of=2015':''));
+        if(output.isConnected) output.textContent=JSON.stringify(out,null,1).slice(0,2600);
+      }catch(error){ if(output.isConnected) output.textContent='请求失败，请稍后重试。'; }
+      finally{ btn.disabled=false; }
     };
     r.appendChild(btn);
     c1.appendChild(r);
@@ -795,7 +959,7 @@ async function viewApi(main){
   main.appendChild(c1);
 
   const c2 = el('div','card');
-  const tools = await (await fetch(API+'/mcp',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({jsonrpc:'2.0',id:1,method:'tools/list'})})).json();
+  const tools = await api('/mcp',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({jsonrpc:'2.0',id:1,method:'tools/list'})});
   c2.innerHTML = '<h4>MCP tools</h4><p class="test">connector 只供给测试与权威,不做判断——判断留给模型,这样数据层在论文里是干净的。</p>';
   for(const t of tools.result.tools){
     const r = el('div','ep');
@@ -839,26 +1003,26 @@ async function viewMaint(main){
 
   // calendar
   const sec1 = el('section','elem');
-  sec1.appendChild(el('h3',null,'复审日历 Review calendar'));
+  sec1.appendChild(el('h3',null,'复审日历'));
   sec1.appendChild(el('p','ezh','触发阈值 P(已错过变化) ≥ '+cal.trigger_probability+'。到期年 = 若不复审,该节点风险跨过阈值的时点。'));
   const tw = el('div','tblwrap');
   let h = '<table><thead><tr><th>到期</th><th>节点</th><th>子测试</th><th>已观测</th><th>预期间隔</th><th>最近事件</th><th>2036 风险</th></tr></thead><tbody>';
   for(const r of cal.rows){
     const risk = r.p_missed_at_horizon;
     const bar = '<div class="mini"><div style="width:'+Math.round(risk*100)+'%;background:'+(risk>0.6?'var(--warn)':'var(--accent)')+'"></div></div>';
-    h += '<tr><td class="n">'+r.review_due_year+'</td><td><span class="pill" style="border-color:'+jColor(r.jurisdiction)+';color:'+jColor(r.jurisdiction)+'">'+esc(r.jurisdiction)+'</span> <code>'+esc(r.sub_test)+'</code></td><td>'+esc(r.en)+'</td><td class="n">'+r.events_observed+'</td><td class="n">'+r.expected_interval_years+'y</td><td class="n">'+(r.last_event_year||'—')+'</td><td>'+bar+'<span class="tiny">'+(risk*100).toFixed(0)+'%</span></td></tr>';
+    h += '<tr><td class="n">'+r.review_due_year+'</td><td><span class="jtag"><i style="background:'+jColor(r.jurisdiction)+'"></i>'+esc(r.jurisdiction)+'</span> <code>'+esc(r.sub_test)+'</code></td><td>'+esc(r.en)+'</td><td class="n">'+r.events_observed+'</td><td class="n">'+r.expected_interval_years+'y</td><td class="n">'+(r.last_event_year||'—')+'</td><td>'+bar+'<span class="tiny">'+(risk*100).toFixed(0)+'%</span></td></tr>';
   }
   h += '</tbody></table>';
   tw.innerHTML = h; sec1.appendChild(tw); main.appendChild(sec1);
 
   // queue
   const sec2 = el('section','elem');
-  sec2.appendChild(el('h3',null,'待办队列 Review queue <span class="tag">'+queue.total+'</span>'));
+  sec2.appendChild(el('h3',null,'待办队列 <span class="cnt">'+queue.total+'</span>'));
   sec2.appendChild(el('p','ezh','每条是一个具体的检索任务,不是提醒。'));
   for(const it of queue.results){
     const c = el('div','card');
     c.innerHTML = '<div class="head"><span class="sid">'+esc(it.id)+'</span><span class="stt">'+esc(it.question)+'</span>'
-      + '<span class="pill">'+esc(it.sub_test)+'@'+esc(it.jurisdiction)+'</span></div>'
+      + '<code>'+esc(it.sub_test)+'@'+esc(it.jurisdiction)+'</code></div>'
       + '<p class="test"><strong>为什么:</strong> '+esc(it.why)+'</p>'
       + '<p class="test"><strong>怎么查:</strong> <code>'+esc(it.action)+'</code></p>';
     sec2.appendChild(c);
@@ -867,24 +1031,24 @@ async function viewMaint(main){
 
   // gaps
   const sec3 = el('section','elem');
-  sec3.appendChild(el('h3',null,'覆盖缺口 Coverage gaps <span class="tag">'+gaps.total+'</span>'));
+  sec3.appendChild(el('h3',null,'覆盖缺口 <span class="cnt">'+gaps.total+'</span>'));
   sec3.appendChild(el('p','ezh',esc(gaps.note)));
   const gj = el('div','tiles');
   for(const b of gaps.by_jurisdiction) gj.appendChild(T(b.key+' 缺口', b.count, ''));
   sec3.appendChild(gj);
   const gw = el('div','tblwrap');
   let gh = '<table><thead><tr><th>节点</th><th>层</th><th>子测试</th></tr></thead><tbody>';
-  for(const r of gaps.rows.slice(0,40)) gh += '<tr><td><span class="pill" style="border-color:'+jColor(r.jurisdiction)+';color:'+jColor(r.jurisdiction)+'">'+esc(r.jurisdiction)+'</span> <code>'+esc(r.sub_test)+'</code></td><td>'+esc(r.kind)+'</td><td>'+esc(r.en)+'</td></tr>';
+  for(const r of gaps.rows.slice(0,40)) gh += '<tr><td><span class="jtag"><i style="background:'+jColor(r.jurisdiction)+'"></i>'+esc(r.jurisdiction)+'</span> <code>'+esc(r.sub_test)+'</code></td><td>'+esc(r.kind)+'</td><td>'+esc(r.en)+'</td></tr>';
   gh += '</tbody></table>'; gw.innerHTML = gh; sec3.appendChild(gw);
   if(gaps.rows.length>40) sec3.appendChild(el('p','tiny','… 另有 '+(gaps.rows.length-40)+' 条,见 <code>/api/maintenance/gaps</code>'));
   main.appendChild(sec3);
 
   // watchlist
   const sec4 = el('section','elem');
-  sec4.appendChild(el('h3',null,'监测源 Watchlist'));
+  sec4.appendChild(el('h3',null,'监测源'));
   const cw = el('div','tblwrap');
   let ch = '<table><thead><tr><th>法域</th><th>法院</th><th>数据源</th><th>年产量</th></tr></thead><tbody>';
-  for(const c of watch.courts) ch += '<tr><td><span class="pill" style="border-color:'+jColor(c.j)+';color:'+jColor(c.j)+'">'+esc(c.j)+'</span></td><td><strong>'+esc(c.court)+'</strong></td><td><code>'+esc(c.feed)+'</code></td><td>'+esc(c.approx_per_year)+'</td></tr>';
+  for(const c of watch.courts) ch += '<tr><td><span class="jtag"><i style="background:'+jColor(c.j)+'"></i>'+esc(c.j)+'</span></td><td><strong>'+esc(c.court)+'</strong></td><td><code>'+esc(c.feed)+'</code></td><td>'+esc(c.approx_per_year)+'</td></tr>';
   ch += '</tbody></table>'; cw.innerHTML=ch; sec4.appendChild(cw);
 
   const mk = el('div','card');
@@ -920,15 +1084,17 @@ async function viewMaint(main){
     + '<button class="btn" id="pa_go">校验并生成 patch</button></div>'
     + '<pre id="pa_out" class="out">—</pre>';
   sec5.appendChild(form); main.appendChild(sec5);
-  $('#pa_go').onclick = async () => {
+  const proposeButton=main.querySelector('#pa_go'), proposeOutput=main.querySelector('#pa_out');
+  proposeButton.onclick = async () => {
     const body = { sub_test:$('#pa_st').value, jurisdiction:$('#pa_j').value, case:$('#pa_case').value,
       citation:$('#pa_cite').value, court:$('#pa_court').value, year:+$('#pa_year').value,
       treatment:$('#pa_treat').value, effect:$('#pa_eff').value };
-    $('#pa_out').textContent='…';
+    proposeButton.disabled=true;proposeOutput.textContent='正在校验…';
     try{
-      const r = await fetch(API+'/maintenance/propose',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(body)});
-      $('#pa_out').textContent = JSON.stringify(await r.json(), null, 1);
-    }catch(e){ $('#pa_out').textContent = String(e); }
+      const r = await request('/maintenance/propose',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(body)});
+      if(proposeOutput.isConnected) proposeOutput.textContent = JSON.stringify(r.data, null, 1);
+    }catch(e){ if(proposeOutput.isConnected) proposeOutput.textContent = e.message+' 本次未取得校验结果；如需再次提交，请手动点击校验按钮。'; }
+    finally{proposeButton.disabled=false;}
   };
 }
 
@@ -936,27 +1102,45 @@ async function viewMaint(main){
 /* ── scored / weighted tests ─────────────────────────── */
 const SF = {};   // factor id -> true | false | undefined
 let SCMOD = 'HKJUR';
+let SCVIEW = 0;
 async function viewScored(main){
-  const idx = await api('/scored');
-  const reg = await api('/registry');
-  const cq  = await api('/calibration-queue');
-  const mod = await api('/scored/'+SCMOD);
+  const view = ++SCVIEW, moduleId = SCMOD;
+  let idx,reg,cq,mod;
+  try {
+    idx = await api('/scored');
+    reg = await api('/registry');
+    cq = await api('/calibration-queue');
+    mod = await api('/scored/'+moduleId);
+  } catch(error) {
+    if(view!==SCVIEW || state.mode!=='scored' || SCMOD!==moduleId) return;
+    throw error;
+  }
+  if(view!==SCVIEW || state.mode!=='scored' || SCMOD!==moduleId) return;
   for(const k of Object.keys(SF)) delete SF[k];
   main.innerHTML='';
-  main.appendChild(el('p','crumb','诉因登记表 Registry v'+esc(reg.version)+' · '+reg.total_modules+' 个诉因 · '+cq.total_factors+' 个因素待校准'));
-  // module picker
-  const pick = el('div','jbar');
-  pick.appendChild(el('span','lbl','诉因'));
-  for(const m of reg.modules){
-    const b = el('button','jchip'+(m.id===SCMOD?' on':''));
-    b.setAttribute('aria-pressed', String(m.id===SCMOD));
-    const needsW = m.stages.some(s2=>s2.test_type==='balancing' && !s2.weighted);
-    const noBal  = !m.stages.some(s2=>s2.test_type==='balancing');
-    const wt = needsW ? ' <span class="tag">待校准</span>'
-            : noBal  ? ' <span class="tag ok">无需权重</span>' : '';
-    b.innerHTML = esc(m.zh)+(m.corpus_hits?' <span class="tiny">'+m.corpus_hits+'</span>':'')+wt;
-    b.onclick = () => { SCMOD = m.id; route(); window.scrollTo(0,0); };
-    pick.appendChild(b);
+  main.appendChild(el('p','crumb','诉因登记表 Registry v'+esc(reg.version)+' · '+reg.total_modules+' 个诉因 · '+cq.total_factors+' 个因素尚未赋权'));
+  // module picker, grouped by litigation role
+  const pick = el('div');
+  const GLOSS = {spear:'主动主张 \u00b7 起诉用', shield:'抗辩 \u00b7 被诉时挡',
+    jurisdiction:'法院管不管 \u00b7 去哪打', procedure:'执行与仲裁程序'};
+  for(const g of ['spear','shield','jurisdiction','procedure']){
+    const ms = reg.modules.filter(m=>(m.role||'spear')===g);
+    if(!ms.length) continue;
+    const sec = el('div','rgroup');
+    sec.innerHTML = '<span class="rlab">'+esc(ms[0].role_zh||g)+'</span><span class="cnt">'+g+'</span> <span class="tiny">'+GLOSS[g]+'</span>';
+    const row = el('div','jbar');
+    for(const m of ms){
+      const b = el('button','jchip'+(m.id===SCMOD?' on':''));
+      b.setAttribute('aria-pressed', String(m.id===SCMOD));
+      const needsW = m.stages.some(s2=>s2.test_type==='balancing' && !s2.weighted);
+      const noBal  = !m.stages.some(s2=>s2.test_type==='balancing');
+      const wt = needsW ? ' <span class="tag">待赋权</span>'
+              : noBal  ? ' <span class="tag ok">无需权重</span>' : '';
+      b.innerHTML = esc(m.zh)+(m.corpus_hits?' <span class="tiny">'+m.corpus_hits+'</span>':'')+wt;
+      b.onclick = () => { SCMOD = m.id; route(); window.scrollTo(0,0); };
+      row.appendChild(b);
+    }
+    sec.appendChild(row); pick.appendChild(sec);
   }
   main.appendChild(pick);
   main.appendChild(el('p','tiny','⚠ '+esc(reg.principle)));
@@ -985,12 +1169,13 @@ async function viewScored(main){
   const au = auWrap;
   au.innerHTML = '<summary class="stt">权威 Authorities</summary>' +
     mod.authorities.map(a=>'<div class="auth"><span class="case">'+esc(a.case)+'</span><span class="cite">'+esc(a.cite)+'</span><span class="badge '+(a.verified==='web'?'v':'n')+'">'+esc(a.verified)+'</span> <span class="tiny">'+esc(a.role)+'</span></div>').join('');
+  au.querySelectorAll('.auth').forEach((row,i)=>appendEvidence(row,mod.authorities[i]));
   main.appendChild(au);
 
   const out = el('div'); out.id='sc_out';
   for(const st of mod.stages){
     const sec = el('section','elem');
-    sec.appendChild(el('h3',null,esc(st.zh)+' <span class="tag">'+esc(st.test_type)+'</span>'));
+    sec.appendChild(el('h3',null,esc(st.zh)+' <span class="cnt">'+esc(st.test_type)+'</span>'));
     sec.appendChild(el('p','ezh',esc(st.rule||st.en)));
     if(st.weight_note) sec.appendChild(el('p','tiny','⚠ '+esc(st.weight_note)));
     const all = (st.factors||[]).concat(st.counter_factors||[]);
@@ -998,10 +1183,11 @@ async function viewScored(main){
     let h='<table><thead><tr><th>因素</th><th>权重</th><th>取证</th><th>判定</th></tr></thead><tbody>';
     for(const f of all){
       let w, bar='';
-      if(f.weight_low!=null){
-        const lo=Math.abs(f.weight_low)*100, hi=Math.abs(f.weight_high)*100, neg=f.weight_high<0;
-        w = (neg?'−':'')+lo.toFixed(0)+'–'+hi.toFixed(0)+'%';
-        bar = '<div class="rng"><div class="rngbar" style="left:'+(lo/30*100).toFixed(0)+'%;width:'+((hi-lo)/30*100).toFixed(0)+'%;background:'+(neg?'var(--warn)':'var(--accent)')+'"></div></div>'
+      if(Number.isFinite(f.weight_low) && Number.isFinite(f.weight_high)){
+        const [lo,hi]=[Math.abs(f.weight_low)*100,Math.abs(f.weight_high)*100].sort((a,b)=>a-b);
+        const neg=(st.counter_factors||[]).some(c=>c.id===f.id), scale=Math.max(30,hi);
+        w = (neg?'反向 ':'')+lo.toFixed(0)+'–'+hi.toFixed(0)+'%';
+        bar = '<div class="rng"><div class="rngbar" style="left:'+(lo/scale*100).toFixed(0)+'%;width:'+((hi-lo)/scale*100).toFixed(0)+'%;background:'+(neg?'var(--warn)':'var(--accent)')+'"></div></div>'
             + '<span class="tierchip" data-t="'+esc(f.tier||'')+'">'+esc(f.tier||'')+'</span>';
       } else {
         w = f.dispositive?'决定性':(f.gate?'门槛':(f.override?'覆盖':'—'));
@@ -1018,83 +1204,65 @@ async function viewScored(main){
   main.appendChild(out);
 
   const res = el('section','elem'); res.id='sc_res';
-  res.innerHTML = '<h3>评分结果 <span class="tag">live</span></h3><p class="ezh">切换上面的因素,结果与"下一步该找什么证据"实时重算。</p><div id="sc_body"><p class="tiny">选择任一因素以开始。</p></div>';
+  res.innerHTML = '<h3>证据与评分结果</h3><p class="ezh">切换因素后更新。数值仅反映当前设定的权重与事实范围，不是胜诉概率。</p><div id="sc_body" aria-live="polite"><p class="tiny">正在检查证据状态…</p></div>';
   main.appendChild(res);
 
   const cal = el('section','elem');
-  cal.appendChild(el('h3',null,'校准队列 Calibration queue <span class="tag">'+cq.total_factors+' 因素</span>'));
-  cal.appendChild(el('p','ezh',esc(cq.note)));
+  cal.appendChild(el('h3',null,'数值权重缺口 <span class="cnt">'+cq.total_factors+' 因素</span>'));
+  cal.appendChild(el('p','ezh','本表统计尚未赋予数值权重的因素。已有学说档位不代表已完成经验校准。'));
   const cwr = el('div','tblwrap');
   let cch='<table><thead><tr><th>诉因</th><th>阶段</th><th>待赋权重</th><th>语料判例数</th></tr></thead><tbody>';
   for(const r of cq.rows) cch+='<tr><td><strong>'+esc(r.zh)+'</strong></td><td>'+esc(r.stage_zh)+'</td><td class="n">'+r.factors_unassigned+' / '+r.factors_total+'</td><td class="n">'+(r.corpus_hits||'—')+'</td></tr>';
   cch+='</tbody></table>'; cwr.innerHTML=cch; cal.appendChild(cwr);
-  cal.appendChild(el('p','tiny','校准方法:对已判案件编码因素在场与否及结果,拟合 logistic 回归,系数即经验权重。语料判例数高者最省力。'));
+  cal.appendChild(el('p','tiny','经验校准需要另行设计研究、核验案件编码并验证模型；已有语料数量不能证明校准质量。'));
   main.appendChild(cal);
 
+  const resultBody = res.querySelector('#sc_body');
+  const updateScore = createScoreUpdater({
+    isCurrent:()=>res.isConnected && view===SCVIEW && state.mode==='scored' && SCMOD===moduleId,
+    onLoading:()=>{resultBody.textContent='正在更新证据状态…';resultBody.setAttribute('aria-busy','true');},
+    onResult:html=>{resultBody.innerHTML=html;resultBody.setAttribute('aria-busy','false');},
+    onError:message=>{
+      resultBody.replaceChildren(el('p','test','评分暂未完成，请重试。'),el('p','tiny',esc(message)));
+      const retry=el('button','jchip','重试评分');
+      retry.onclick=()=>updateScore(SF);
+      resultBody.appendChild(retry);resultBody.setAttribute('aria-busy','false');
+    },
+    fetchScore:async(facts,signal)=>{
+      const r=await request('/score',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({module:moduleId,facts}),signal});
+      const data=r.data;
+      if(!r.ok || data.error) throw new Error(Array.isArray(data.errors)?data.errors.join('；'):(data.error||'评分服务暂不可用'));
+      return data;
+    },
+  });
   main.querySelectorAll('.tri').forEach(g=>{
+    const factor = mod.stages.flatMap(s=>(s.factors||[]).concat(s.counter_factors||[])).find(f=>f.id===g.dataset.f);
+    g.setAttribute('role','group');
+    g.setAttribute('aria-label',factor?.zh||g.dataset.f);
     g.querySelectorAll('button').forEach(b=>{
+      b.setAttribute('aria-pressed',String(b.classList.contains('on')));
       b.onclick = () => {
-        g.querySelectorAll('button').forEach(x=>x.classList.remove('on'));
+        g.querySelectorAll('button').forEach(x=>{x.classList.remove('on');x.setAttribute('aria-pressed','false');});
         b.classList.add('on');
+        b.setAttribute('aria-pressed','true');
         const v=b.dataset.v, id=g.dataset.f;
         if(v==='?') delete SF[id]; else SF[id] = v==='1';
-        recompute();
+        updateScore(SF);
       };
     });
   });
 
-  async function recompute(){
-    const body = { module:SCMOD, facts:SF };
-    const r = await fetch(API+'/score',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(body)});
-    const d = await r.json();
-    const b = $('#sc_body'); b.innerHTML='';
-    const head = el('div','card');
-    head.innerHTML = '<div class="head"><span class="stt">总体:'+esc(d.overall)+'</span></div>';
-    b.appendChild(head);
-    for(const st of d.stages){
-      const c = el('div','card');
-      let h = '<div class="head"><span class="sid">'+esc(st.stage)+'</span><span class="stt">'+esc(st.zh)+'</span></div>';
-      if(st.test_type==='balancing' && st.weights==='unassigned'){
-        h += '<p class="test"><strong>权重未赋值</strong> — '+esc(st.reason)+'</p>';
-        if(st.factors_present.length) h += '<p class="test"><strong>已具备:</strong> '+st.factors_present.map(f=>esc(f.zh)).join(' · ')+'</p>';
-        if(st.unresolved.length) h += '<p class="test"><strong>待查:</strong></p><ol class="ev">'+st.unresolved.slice(0,6).map(f=>'<li>'+esc(f.zh)+(f.look_for?' <span class="tiny">找:'+esc(f.look_for)+'</span>':'')+'</li>').join('')+'</ol>';
-        h += '<p class="tiny">'+esc(st.caveat)+'</p>';
-      } else if(st.test_type==='balancing'){
-        const L=(st.score_low+1)/2*100, H=(st.score_high+1)/2*100;
-        h += '<p class="test">净分区间 <strong>'+st.score_low+' … '+st.score_high+'</strong> · '+esc(st.band)
-          + ' · 证据已解析 '+Math.round(st.evidence_resolved*100)+'%'
-          + (st.interval_decides?' <span class="tag ok">区间可定论</span>':' <span class="tag warn">区间跨档</span>')+'</p>'
-          + '<div class="rng2"><div class="rngmid" style="left:50%"></div><div class="rngspan" style="left:'+L.toFixed(1)+'%;width:'+Math.max(1.5,H-L).toFixed(1)+'%;background:'+(st.score_high>=0?'var(--accent)':'var(--warn)')+'"></div></div>';
-        const fmtf = f => esc(f.zh)+' <span class="tiny">'+(f.range&&f.range[0]!=null?(Math.abs(f.range[0])*100).toFixed(0)+'–'+(Math.abs(f.range[1])*100).toFixed(0)+'%':'')+'</span>';
-        if(st.factors_present.length) h += '<p class="test"><strong>支持:</strong> '+st.factors_present.map(fmtf).join(' · ')+'</p>';
-        if(st.factors_against.length) h += '<p class="test"><strong>不利:</strong> '+st.factors_against.map(fmtf).join(' · ')+'</p>';
-        if(st.next_evidence.length){
-          h += '<p class="test"><strong>下一步取证(按最大摆幅排序):</strong></p><ol class="ev">'
-            + st.next_evidence.map(f=>'<li>'+esc(f.zh)+' <span class="tiny">摆幅 '+(Math.abs(f.swing[0])*100).toFixed(0)+'–'+(Math.abs(f.swing[1])*100).toFixed(0)+'% · 找:'+esc(f.look_for||'—')+'</span></li>').join('')+'</ol>';
-        }
-        h += '<p class="tiny">'+esc(st.caveat)+'</p>';
-      } else if(st.test_type==='disjunctive-gateway'){
-        h += '<p class="test">门槛:<strong>'+esc(st.result)+'</strong> — '+esc(st.note)+'</p>';
-        if(st.gateways_open.length) h += '<p class="test"><strong>已开门槛:</strong> '+st.gateways_open.map(g=>esc(g.zh)+(g.dispositive?' <span class="tag ok">决定性</span>':'')).join(' · ')+'</p>';
-      } else {
-        h += '<p class="test"><strong>'+esc(st.result)+'</strong> — '+esc(st.effect)+'</p>';
-      }
-      c.innerHTML=h; b.appendChild(c);
-    }
-    if(d.priority_evidence && d.priority_evidence.length){
-      const pe = el('div','card');
-      pe.innerHTML = '<div class="head"><span class="stt">全模块取证优先级</span></div><ol class="ev">'
-        + d.priority_evidence.map(f=>'<li>'+esc(f.zh)+' <span class="tiny">摆幅 '+(Math.abs(f.swing[0])*100).toFixed(0)+'–'+(Math.abs(f.swing[1])*100).toFixed(0)+'%</span></li>').join('')+'</ol>';
-      b.appendChild(pe);
-    }
-    const cav = el('p','tiny'); cav.textContent = d.stages.find(s=>s.caveat)?.caveat || '';
-    b.appendChild(cav);
-  }
+  updateScore(SF);
 }
 
+let navigationRequest=0;
 async function route(){
-  renderModes(); renderRail();
-  const main = $('#main');
+  const request=++navigationRequest;
+  renderModes(); renderContext();
+  // Each navigation owns its container. A late response can only alter the
+  // detached previous view, never the page the user has since opened.
+  const main = document.createElement('div');
+  $('#main').replaceChildren(main);
   main.innerHTML = '<div class="loading">Loading…</div>';
   try{
     if(state.mode==='doctrine') await viewDoctrine(main);
@@ -1118,29 +1286,44 @@ async function route(){
     else if(state.mode==='scored') await viewScored(main);
     else await viewApi(main);
   }catch(e){
-    main.innerHTML = '<div class="card"><h4>加载失败</h4><p class="test">'+esc(e.message)+'</p></div>';
+    if(request===navigationRequest){
+      main.innerHTML = '<div class="card" role="alert"><h4>加载失败</h4><p class="test">'+esc(e.message)+'</p><button class="chip sm" type="button" data-page-retry>重试加载</button></div>';
+      const retry=main.querySelector?.('[data-page-retry]');
+      if(retry) retry.onclick=()=>route();
+    }
   }
-  renderRail();
+  if(request===navigationRequest) renderContext();
 }
 
 $('#gq').addEventListener('input', e => {
   state.q = e.target.value;
   if(state.mode!=='corpus'){ state.mode='corpus'; state.filters={}; } state.sub='corpus';
-  clearTimeout(window.__gt); window.__gt = setTimeout(route, 260);
+  clearTimeout(window.__gt); window.__gt = setTimeout(()=>state.tax && state.elements && state.stats ? route() : init(), 260);
 });
 
-(async function init(){
+const init=createBootstrap({
+  load:signal=>Promise.all([api('/taxonomy',{signal}),api('/elements',{signal}),api('/stats',{signal})]),
+  commit:([tax,els,stats])=>{state.tax=tax;state.elements=els;state.stats=stats;},
+  onLoading:()=>{
+    renderModes();renderContext();
+    $('#main').innerHTML='<div class="loading" role="status">正在连接并读取资料…</div>';
+  },
+  onError:error=>{
+    const main=$('#main');
+    main.innerHTML='<div class="card" role="alert"><h4>暂时无法读取资料</h4><p class="test">'+esc(error.message)+'</p><button class="chip sm" type="button" data-startup-retry>重试连接并加载</button></div>';
+    main.querySelector('[data-startup-retry]').onclick=()=>init();
+  },
+  onReady:()=>route(),
+});
+$('#connectionRetry').onclick=async()=>{
+  const button=$('#connectionRetry');button.disabled=true;
   try{
-    const [tax, els, stats] = await Promise.all([api('/taxonomy'), api('/elements'), api('/stats')]);
-    state.tax=tax; state.elements=els; state.stats=stats;
-    $('#apistat').textContent = 'live · '+fmt(stats.posts)+' posts';
-    const tiles = el('div','tiles');
-    route();
-  }catch(e){
-    $('#apistat').textContent='error';
-    $('#main').innerHTML = '<div class="card"><h4>API 未就绪</h4><p class="test">'+esc(e.message)+'</p></div>';
-  }
-})();
+    if(!state.tax || !state.elements || !state.stats) await init();
+    else await api('/health'); // Check only; do not replay scoring or proposal POSTs.
+  }catch{} // The request helper already displays the actual connection failure.
+  finally{button.disabled=false;}
+};
+init();
 </script>
 </body>
 </html>

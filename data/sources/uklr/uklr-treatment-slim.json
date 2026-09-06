@@ -1,0 +1,6199 @@
+{
+ "nodes": [
+  {
+   "slug": "kleinwort-benson-v-lincoln",
+   "title": "Kleinwort Benson Ltd v Lincoln City Council [1999] 2 AC 349",
+   "status": [
+    "Foundational"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "barr-v-biffa-waste",
+   "title": "Barr v Biffa Waste Services Ltd [2012] EWCA Civ 312",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "uk-climate-litigation",
+   "title": "R (Friends of the Earth) v Secretary of State for BEIS (Net Zero Strategy) [2022] EWHC 1841 (Admin)",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "faraday-development",
+   "title": "Faraday Development Ltd v West Berkshire Council [2018] EWCA Civ 2532",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "rendlesham-v-barratt",
+   "title": "Rendlesham Estates plc v Barr Ltd [2014] EWHC 3968 (TCC)",
+   "status": [
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "knowsley-v-white",
+   "title": "Knowsley Housing Trust v White [2008] UKHL 70",
+   "status": [
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "spread-trustee-v-hutcheson",
+   "title": "Spread Trustee Company Ltd v Hutcheson [2011] UKPC 13",
+   "status": [
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "al-jedda-v-sshd",
+   "title": "Al-Jedda v Secretary of State for the Home Department [2013] UKSC 62",
+   "status": [
+    "Leading Authority"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "raymond-v-honey",
+   "title": "Raymond v Honey [1983] 1 AC 1",
+   "status": [
+    "Leading Authority"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "mosley-v-news-group",
+   "title": "Mosley v News Group Newspapers Ltd [2008] EWHC 1777 (QB)",
+   "status": [
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "daniel-thwaites-v-wirral",
+   "title": "R (Daniel Thwaites plc) v Wirral Magistrates' Court [2008] EWHC 838 (Admin)",
+   "status": [
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-hope-and-glory-v-westminster-magistrates",
+   "title": "R (Hope and Glory Public House Ltd) v City of Westminster Magistrates' Court [2011] EWCA Civ 31",
+   "status": [
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "re-bcci-no-8",
+   "title": "Re BCCI (No 8) [1998] AC 214",
+   "status": [
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "sugar-v-bbc-foi",
+   "title": "Sugar v BBC [2012] UKSC 4",
+   "status": [
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "kennedy-v-charity-commission-foi",
+   "title": "Kennedy v Charity Commission [2014] UKSC 20",
+   "status": [
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "jones-v-saudi-arabia",
+   "title": "Jones v Ministry of the Interior of Saudi Arabia [2006] UKHL 26",
+   "status": [
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "al-adsani-v-uk",
+   "title": "Al-Adsani v United Kingdom (2001) 34 EHRR 11",
+   "status": [
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-weaver-v-london-quadrant",
+   "title": "R (Weaver) v London & Quadrant Housing Trust [2009] EWCA Civ 587",
+   "status": [
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "marcic-v-thames-water",
+   "title": "Marcic v Thames Water Utilities Ltd [2003] UKHL 66",
+   "status": [
+    "Leading Authority"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "zakrzewski-v-poland",
+   "title": "Zakrzewski v Regional Court in Lodz, Poland [2013] UKSC 2",
+   "status": [
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "ali-v-lord-grey-school",
+   "title": "Ali v Headteacher and Governors of Lord Grey School [2006] UKHL 14",
+   "status": [
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "halsey-v-milton-keynes",
+   "title": "Halsey v Milton Keynes General NHS Trust [2004] EWCA Civ 576",
+   "status": [
+    "Reconsidered"
+   ],
+   "signal": "qualified"
+  },
+  {
+   "slug": "norris-v-usa",
+   "title": "Norris v Government of the United States of America [2010] UKSC 9",
+   "status": [
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "assange-v-sweden",
+   "title": "Assange v Swedish Prosecution Authority [2012] UKSC 22",
+   "status": [
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "re-h-minors",
+   "title": "Re H (Minors) (Sexual Abuse: Standard of Proof) [1996] AC 563",
+   "status": [
+    "Qualified"
+   ],
+   "signal": "qualified"
+  },
+  {
+   "slug": "versloot-dredging-v-hdi-gerling",
+   "title": "Versloot Dredging BV v HDI Gerling Industrie Versicherung AG (The DC Merwestone) [2016] UKSC 45",
+   "status": [
+    "Leading Authority"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "henia-investments-v-beck-interiors",
+   "title": "Henia Investments Inc v Beck Interiors Ltd [2015] EWHC 2433 (TCC)",
+   "status": [
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "ramsay-v-irc-tax",
+   "title": "W T Ramsay Ltd v IRC [1982] AC 300",
+   "status": [
+    "Leading Authority"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-goldstein-rimmington",
+   "title": "R v Goldstein; R v Rimmington [2005] UKHL 63",
+   "status": [
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "edwards-v-ncb",
+   "title": "Edwards v National Coal Board [1949] 1 KB 704",
+   "status": [
+    "Followed",
+    "Applied",
+    "Cited"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "pan-atlantic-v-pine-top",
+   "title": "Pan Atlantic Insurance Co Ltd v Pine Top Insurance Co Ltd [1995] 1 AC 501",
+   "status": [
+    "Followed",
+    "Developed",
+    "Cited"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "pacific-associates-v-baxter",
+   "title": "Pacific Associates Inc v Baxter [1990] 1 QB 993",
+   "status": [
+    "Considered",
+    "Applied",
+    "Cited"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-marriott",
+   "title": "R v Marriott [1971] 1 WLR 187",
+   "status": [
+    "Cited",
+    "Considered",
+    "Statutory development"
+   ],
+   "signal": "context"
+  },
+  {
+   "slug": "r-v-gosney",
+   "title": "R v Gosney [1971] 2 QB 674",
+   "status": [
+    "Cited",
+    "Superseded by statute"
+   ],
+   "signal": "context"
+  },
+  {
+   "slug": "mccrone-v-riding",
+   "title": "McCrone v Riding [1938] 1 All ER 157",
+   "status": [
+    "Applied",
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "cps-v-piper",
+   "title": "Crown Prosecution Service v Piper [2011] EWHC 3570 (Admin)",
+   "status": [
+    "Cited"
+   ],
+   "signal": "context"
+  },
+  {
+   "slug": "dallah-v-pakistan",
+   "title": "Dallah Real Estate and Tourism Holding Company v Ministry of Religious Affairs, Government of Pakistan [2010] UKSC 46",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "lesotho-highlands",
+   "title": "Lesotho Highlands Development Authority v Impregilo SpA [2005] UKHL 43; [2006] 1 AC 221",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "south-bucks-v-porter",
+   "title": "South Bucks District Council v Porter (No 2) [2004] UKHL 33; [2004] 1 WLR 1953",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "hopkins-developments-v-sshclg",
+   "title": "Hopkins Developments Ltd v Secretary of State for Communities and Local Government [2014] EWCA Civ 470",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-dill-v-sshclg",
+   "title": "Dill v Secretary of State for Housing, Communities and Local Government [2020] UKSC 20",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "samuel-smith-v-north-yorkshire",
+   "title": "R (Samuel Smith Old Brewery (Tadcaster)) v North Yorkshire County Council [2020] UKSC 3",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-hughes",
+   "title": "R v Hughes [2013] UKSC 56",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "baker-v-quantum-clothing",
+   "title": "Baker v Quantum Clothing Group Ltd [2011] UKSC 17",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "munjaz-v-mersey-care",
+   "title": "R (Munjaz) v Mersey Care NHS Trust [2005] UKHL 58",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-htme",
+   "title": "R v HTM Ltd [2006] EWCA Crim 1156",
+   "status": [
+    "Approved"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-betts-and-hall",
+   "title": "R v Betts and Hall [2001] EWCA Crim 224",
+   "status": [
+    "Qualified"
+   ],
+   "signal": "qualified"
+  },
+  {
+   "slug": "re-b-s-children",
+   "title": "Re B-S (Children) [2013] EWCA Civ 1146",
+   "status": [
+    "Explained",
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "amin-v-brown",
+   "title": "Amin v Brown [2005] EWHC 1670 (Ch)",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "the-star-sea",
+   "title": "Manifest Shipping Co Ltd v Uni-Polaris Insurance Co Ltd (The Star Sea) [2001] UKHL 1",
+   "status": [
+    "Followed",
+    "Modified by statute"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "impact-funding-v-barrington",
+   "title": "Impact Funding Solutions Ltd v Barrington Support Services Ltd [2016] UKSC 57",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "jivraj-v-hashwani",
+   "title": "Jivraj v Hashwani [2011] UKSC 40",
+   "status": [
+    "Considered",
+    "Noted"
+   ],
+   "signal": "context"
+  },
+  {
+   "slug": "r-v-saunders-2013",
+   "title": "R v Saunders and Others [2013] EWCA Crim 1027",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-lyons-court-martial",
+   "title": "R v Lyons [2011] EWCA Crim 2808",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-electoral-commission",
+   "title": "R (Good Law Project) v Electoral Commission [2018] EWHC 2414 (Admin)",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "ocean-outdoor-v-hammersmith",
+   "title": "Ocean Outdoor UK Ltd v Hammersmith and Fulham LBC [2019] EWCA Civ 1642",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-dougall",
+   "title": "R v Dougall [2010] EWCA Crim 1048",
+   "status": [
+    "Leading Authority"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "haile-v-waltham-forest",
+   "title": "Haile v London Borough of Waltham Forest [2015] UKSC 34",
+   "status": [
+    "Leading Authority"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "poshteh-v-kensington",
+   "title": "Poshteh v Royal Borough of Kensington and Chelsea [2017] UKSC 36",
+   "status": [
+    "Leading Authority"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "barclays-v-unicredit",
+   "title": "Barclays Bank plc v UniCredit Bank AG [2014] EWCA Civ 302",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-k-modern-slavery",
+   "title": "R v K (Modern Slavery) [2018] EWCA Crim 1432",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "dpp-v-wright",
+   "title": "DPP v Wright [2009] EWHC 105 (Admin)",
+   "status": [
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "stott-v-thomas-cook",
+   "title": "Stott v Thomas Cook Tour Operators Ltd [2014] UKSC 15",
+   "status": [
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "brent-v-risk-management",
+   "title": "Brent LBC v Risk Management Partners Ltd [2011] UKSC 7",
+   "status": [
+    "Leading Authority"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "carter-v-boehm",
+   "title": "Carter v Boehm (1766) 3 Burr 1905; 97 ER 1162",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "dpp-v-newbury",
+   "title": "DPP v Newbury and Jones [1977] AC 500; [1976] UKHL 3",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "kennedy-v-cordia",
+   "title": "Kennedy v Cordia (Services) LLP [2016] UKSC 6",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "tesco-v-dundee",
+   "title": "Tesco Stores Ltd v Dundee City Council [2012] UKSC 13",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "re-sigma-finance-corp",
+   "title": "Re Sigma Finance Corporation [2009] UKSC 2",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-registrar-of-companies-ex-p-attorney-general",
+   "title": "R v Registrar of Companies, ex parte Attorney General [1991] BCLC 476",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "iceland-frozen-foods-v-jones",
+   "title": "Iceland Frozen Foods Ltd v Jones [1983] ICR 17",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "malik-v-bcci",
+   "title": "Malik v Bank of Credit and Commerce International SA [1998] AC 20",
+   "status": [
+    "Foundational"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "miller-v-miller-mcfarlane",
+   "title": "Miller v Miller; McFarlane v McFarlane [2006] UKHL 24",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "re-b-children-care-order",
+   "title": "Re B (Children) (Care Order: Proportionality) [2013] UKSC 33",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-turnbull",
+   "title": "R v Turnbull [1977] QB 224",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-makanjuola",
+   "title": "R v Makanjuola [1995] 1 WLR 1348",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-andrews",
+   "title": "R v Andrews [1987] AC 281",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-horncastle",
+   "title": "R v Horncastle [2009] UKSC 14",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "designers-guild-v-russell-williams",
+   "title": "Designers Guild Ltd v Russell Williams (Textiles) Ltd [2000] 1 WLR 2416",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "kirin-amgen-v-hoechst-marion-roussel",
+   "title": "Kirin-Amgen Inc v Hoechst Marion Roussel Ltd [2004] UKHL 46",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "baker-v-willoughby",
+   "title": "Baker v Willoughby [1970] AC 467",
+   "status": [
+    "Distinguished"
+   ],
+   "signal": "qualified"
+  },
+  {
+   "slug": "jobling-v-associated-dairies",
+   "title": "Jobling v Associated Dairies Ltd [1982] AC 794",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "page-v-smith",
+   "title": "Page v Smith [1996] AC 155",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "chadwick-v-british-railways",
+   "title": "Chadwick v British Railways Board [1967] 1 WLR 912",
+   "status": [
+    "Qualified"
+   ],
+   "signal": "qualified"
+  },
+  {
+   "slug": "fowler-v-lanning",
+   "title": "Fowler v Lanning [1959] 1 QB 426",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "letang-v-cooper",
+   "title": "Letang v Cooper [1965] 1 QB 232",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-pagett",
+   "title": "R v Pagett (1983) 76 Cr App R 279",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-lloyd",
+   "title": "R v Lloyd [1985] QB 829",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-graham",
+   "title": "R v Graham [1982] 1 WLR 294",
+   "status": [
+    "Approved"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-hasan",
+   "title": "R v Hasan [2005] UKHL 22",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-lamb",
+   "title": "R v Lamb [1967] 2 QB 981",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-caldwell",
+   "title": "R v Caldwell [1982] AC 341",
+   "status": [
+    "Overruled"
+   ],
+   "signal": "negative"
+  },
+  {
+   "slug": "r-v-latimer",
+   "title": "R v Latimer (1886) 17 QBD 359",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-pembliton",
+   "title": "R v Pembliton (1874) LR 2 CCR 119",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-white",
+   "title": "R v White [1910] 2 KB 124",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-roberts",
+   "title": "R v Roberts (1971) 56 Cr App R 95",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-jordan",
+   "title": "R v Jordan (1956) 40 Cr App R 152",
+   "status": [
+    "Narrowly confined"
+   ],
+   "signal": "qualified"
+  },
+  {
+   "slug": "r-v-blaue",
+   "title": "R v Blaue [1975] 1 WLR 1411",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-kennedy-no-2",
+   "title": "R v Kennedy (No 2) [2007] UKHL 38",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-martin-self-defence",
+   "title": "R v Martin (Anthony) [2001] EWCA Crim 2245",
+   "status": [
+    "Developed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-gnango",
+   "title": "R v Gnango [2011] UKSC 59",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "re-rose",
+   "title": "Re Rose [1952] Ch 499",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "pennington-v-waine",
+   "title": "Pennington v Waine [2002] EWCA Civ 227",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "mcphail-v-doulton",
+   "title": "McPhail v Doulton (Re Baden's Deed Trusts No 1) [1971] AC 424",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "pilcher-v-rawlins",
+   "title": "Pilcher v Rawlins (1872) LR 7 Ch App 259",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "rochefoucauld-v-boustead",
+   "title": "Rochefoucauld v Boustead [1897] 1 Ch 196",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "re-diplock",
+   "title": "Re Diplock [1948] Ch 465",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "foskett-v-mckeown",
+   "title": "Foskett v McKeown [2001] 1 AC 102",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "cobbe-v-yeomans-row",
+   "title": "Cobbe v Yeoman's Row Management Ltd [2008] UKHL 55",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "thorner-v-major",
+   "title": "Thorner v Major [2009] UKHL 18",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "re-ellenborough-park",
+   "title": "Re Ellenborough Park [1956] Ch 131",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-secretary-of-state-ex-p-fire-brigades-union",
+   "title": "R v Secretary of State for the Home Department, ex parte Fire Brigades Union [1995] 2 AC 513",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-somerset-county-council-ex-p-fewings",
+   "title": "R v Somerset County Council, ex parte Fewings [1995] 1 All ER 513",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-begum-v-denbigh-high-school",
+   "title": "R (Begum) v Headteacher and Governors of Denbigh High School [2006] UKHL 15",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-adams-v-secretary-of-state",
+   "title": "R (Adams) v Secretary of State for Justice [2011] UKSC 18",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "huang-v-secretary-of-state",
+   "title": "Huang v Secretary of State for the Home Department [2007] UKHL 11",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "re-barings-plc-no-5",
+   "title": "Re Barings plc (No 5) [2000] 1 BCLC 523",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "west-mercia-safetywear-v-dodd",
+   "title": "West Mercia Safetywear Ltd v Dodd [1988] BCLC 250",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "investors-compensation-scheme-v-west-bromwich",
+   "title": "Investors Compensation Scheme Ltd v West Bromwich Building Society [1998] 1 WLR 896",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "the-moorcock",
+   "title": "The Moorcock (1889) 14 PD 64",
+   "status": [
+    "Foundational"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "bunge-corporation-v-tradax",
+   "title": "Bunge Corporation v Tradax Export SA [1981] 1 WLR 711",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "shogun-finance-v-hudson",
+   "title": "Shogun Finance Ltd v Hudson [2003] UKHL 62",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "chapelton-v-barry-udc",
+   "title": "Chapelton v Barry Urban District Council [1940] 1 KB 532",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "olley-v-marlborough-court",
+   "title": "Olley v Marlborough Court Hotel Ltd [1949] 1 KB 532",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "spurling-v-bradshaw",
+   "title": "J Spurling Ltd v Bradshaw [1956] 1 WLR 461",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "interfoto-v-stiletto",
+   "title": "Interfoto Picture Library Ltd v Stiletto Visual Programmes Ltd [1989] QB 433",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "poussard-v-spiers",
+   "title": "Poussard v Spiers and Pond (1876) 1 QBD 410",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "bettini-v-gye",
+   "title": "Bettini v Gye (1876) 1 QBD 183",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "krell-v-henry",
+   "title": "Krell v Henry [1903] 2 KB 740",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "taylor-v-caldwell",
+   "title": "Taylor v Caldwell (1863) 3 B & S 826",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "wagon-mound-no-2",
+   "title": "Overseas Tankship (UK) Ltd v The Miller Steamship Co (The Wagon Mound No 2) [1967] 1 AC 617",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "smith-v-leech-brain",
+   "title": "Smith v Leech Brain & Co Ltd [1962] 2 QB 405",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "sturges-v-bridgman",
+   "title": "Sturges v Bridgman (1879) 11 Ch D 852",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "watt-v-hertfordshire-cc",
+   "title": "Watt v Hertfordshire County Council [1954] 1 WLR 835",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "bonnington-castings-v-wardlaw",
+   "title": "Bonnington Castings Ltd v Wardlaw [1956] AC 613",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "re-polemis",
+   "title": "Re Polemis & Furness, Withy & Co Ltd [1921] 3 KB 560",
+   "status": [
+    "Overruled"
+   ],
+   "signal": "negative"
+  },
+  {
+   "slug": "wheat-v-lacon",
+   "title": "Wheat v E Lacon & Co Ltd [1966] AC 552",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "scott-v-london-st-katherine-docks",
+   "title": "Scott v London and St Katherine Docks Co (1865) 3 H & C 596",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "adams-v-lindsell",
+   "title": "Adams v Lindsell (1818) 1 B & Ald 681",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "felthouse-v-bindley",
+   "title": "Felthouse v Bindley (1862) 11 CB (NS) 869",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "partridge-v-crittenden",
+   "title": "Partridge v Crittenden [1968] 1 WLR 1204",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "currie-v-misa",
+   "title": "Currie v Misa (1875) LR 10 Ex 153",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "harvey-v-facey",
+   "title": "Harvey v Facey [1893] AC 552",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "knight-v-knight",
+   "title": "Knight v Knight (1840) 3 Beav 148",
+   "status": [
+    "Good law",
+    "Refined"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "saunders-v-vautier",
+   "title": "Saunders v Vautier (1841) 4 Beav 115",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "boardman-v-phipps",
+   "title": "Boardman v Phipps [1967] 2 AC 46",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "dhn-food-v-tower-hamlets",
+   "title": "DHN Food Distributors Ltd v Tower Hamlets London Borough Council [1976] 1 WLR 852",
+   "status": [
+    "Doubted"
+   ],
+   "signal": "negative"
+  },
+  {
+   "slug": "gilford-motor-v-horne",
+   "title": "Gilford Motor Co Ltd v Horne [1933] Ch 935",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "wilson-v-racher",
+   "title": "Wilson v Racher [1974] ICR 428",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "owens-v-owens",
+   "title": "Owens v Owens [2018] UKSC 41",
+   "status": [
+    "Historic importance"
+   ],
+   "signal": "historic"
+  },
+  {
+   "slug": "eves-v-eves",
+   "title": "Eves v Eves [1975] 1 WLR 1338",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "burns-v-burns",
+   "title": "Burns v Burns [1984] Ch 317",
+   "status": [
+    "Good law (narrowed)"
+   ],
+   "signal": "qualified"
+  },
+  {
+   "slug": "osman-v-uk",
+   "title": "Osman v United Kingdom (1998) 29 EHRR 245",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "z-v-uk",
+   "title": "Z v United Kingdom (2001) 34 EHRR 97",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "city-of-london-v-fell",
+   "title": "City of London Corporation v Fell [1994] 1 AC 458",
+   "status": [
+    "Good law (modified by statute)"
+   ],
+   "signal": "qualified"
+  },
+  {
+   "slug": "r-v-lambert",
+   "title": "R v Lambert [2001] UKHL 37",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "photo-production-v-securicor",
+   "title": "Photo Production Ltd v Securicor Transport Ltd [1980] AC 827",
+   "status": [
+    "Followed",
+    "Applied",
+    "Distinguished"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-dudley-stephens",
+   "title": "R v Dudley and Stephens (1884) 14 QBD 273",
+   "status": [
+    "Followed",
+    "Distinguished",
+    "Considered"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-jogee",
+   "title": "R v Jogee; Ruddock v The Queen [2016] UKSC 8; [2016] UKPC 7",
+   "status": [
+    "Applied",
+    "Considered",
+    "Limited"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "entick-v-carrington",
+   "title": "Entick v Carrington (1765) 19 St Tr 1029; 2 Wils KB 275",
+   "status": [
+    "Good law",
+    "Applied",
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "gchq-case",
+   "title": "Council of Civil Service Unions v Minister for the Civil Service [1985] AC 374",
+   "status": [
+    "Good law",
+    "Developed",
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "a-v-secretary-of-state-belmarsh",
+   "title": "A v Secretary of State for the Home Department (Belmarsh) [2004] UKHL 56",
+   "status": [
+    "Followed",
+    "Applied",
+    "Considered"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "foss-v-harbottle",
+   "title": "Foss v Harbottle (1843) 2 Hare 461; 67 ER 189",
+   "status": [
+    "Modified",
+    "Superseded by statute",
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "royal-brunei-v-tan",
+   "title": "Royal Brunei Airlines v Tan [1995] 2 AC 378",
+   "status": [
+    "Followed",
+    "Refined",
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "anns-v-merton",
+   "title": "Anns v Merton London Borough Council [1978] AC 728",
+   "status": [
+    "Overruled",
+    "Developed",
+    "Distinguished"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "robinson-v-chief-constable",
+   "title": "Robinson v Chief Constable of West Yorkshire Police [2018] UKSC 4",
+   "status": [
+    "Applied",
+    "Applied",
+    "Distinguished"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "polkey-v-ae-dayton",
+   "title": "Polkey v AE Dayton Services Ltd [1988] AC 344",
+   "status": [
+    "Followed",
+    "Applied",
+    "Distinguished"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "autoclenz-v-belcher",
+   "title": "Autoclenz Ltd v Belcher [2011] UKSC 41",
+   "status": [
+    "Applied",
+    "Applied",
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "re-b-children",
+   "title": "Re B (Children) (Care Proceedings: Standard of Proof) [2008] UKHL 35",
+   "status": [
+    "Followed",
+    "Applied",
+    "Considered"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "macaura-v-northern-assurance",
+   "title": "Macaura v Northern Assurance Co Ltd [1925] AC 619",
+   "status": [
+    "Followed",
+    "Distinguished",
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "pinnels-case",
+   "title": "Pinnel's Case (1602) 5 Co Rep 117a; 77 ER 237",
+   "status": [
+    "Affirmed",
+    "Qualified",
+    "Considered"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-unison-v-lord-chancellor",
+   "title": "R (UNISON) v Lord Chancellor [2017] UKSC 51",
+   "status": [
+    "Good law",
+    "Applied",
+    "Considered"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "tweddle-v-atkinson",
+   "title": "Tweddle v Atkinson (1861) 1 B&S 393; 121 ER 762",
+   "status": [
+    "Affirmed",
+    "Modified by statute",
+    "Considered"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "hochster-v-de-la-tour",
+   "title": "Hochster v De La Tour (1853) 2 E&B 678; 118 ER 922",
+   "status": [
+    "Good law",
+    "Developed",
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "ruxley-electronics-v-forsyth",
+   "title": "Ruxley Electronics and Construction Ltd v Forsyth [1996] AC 344",
+   "status": [
+    "Good law",
+    "Applied",
+    "Distinguished"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "dunlop-pneumatic-v-new-garage",
+   "title": "Dunlop Pneumatic Tyre Co Ltd v New Garage & Motor Co Ltd [1915] AC 79",
+   "status": [
+    "Good law (reformulated)",
+    "Applied",
+    "Distinguished"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "murphy-v-brentwood",
+   "title": "Murphy v Brentwood District Council [1991] 1 AC 398",
+   "status": [
+    "Good law",
+    "Applied",
+    "Distinguished"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-ghosh",
+   "title": "R v Ghosh [1982] QB 1053",
+   "status": [
+    "Overruled",
+    "Applied",
+    "Considered"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "coventry-v-lawrence",
+   "title": "Coventry v Lawrence [2014] UKSC 13",
+   "status": [
+    "Good law",
+    "Applied",
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "antaios-compania-v-salen",
+   "title": "Antaios Compania Naviera SA v Salen Rederierna AB (The Antaios) [1985] AC 191",
+   "status": [
+    "Good law",
+    "Applied",
+    "Developed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-g-and-another",
+   "title": "R v G and Another [2003] UKHL 50",
+   "status": [
+    "Good law",
+    "Applied",
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "jones-v-kernott",
+   "title": "Jones v Kernott [2011] UKSC 53",
+   "status": [
+    "Followed",
+    "Applied",
+    "Distinguished"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "manchester-building-society-v-grant-thornton",
+   "title": "Manchester Building Society v Grant Thornton UK LLP [2021] UKSC 20",
+   "status": [
+    "Followed",
+    "Applied",
+    "Reformulated"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "barton-v-armstrong",
+   "title": "Barton v Armstrong [1976] AC 104",
+   "status": [
+    "Followed",
+    "Distinguished",
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "woodward-v-hutchins",
+   "title": "Woodward v Hutchins [1977] 1 WLR 760",
+   "status": [
+    "Applied",
+    "Qualified",
+    "Distinguished"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "dunlop-v-selfridge",
+   "title": "Dunlop Pneumatic Tyre Co Ltd v Selfridge & Co Ltd [1915] AC 847",
+   "status": [
+    "Followed",
+    "Applied",
+    "Limited"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "ramsgate-hotel-v-montefiore",
+   "title": "Ramsgate Victoria Hotel Co v Montefiore (1866) LR 1 Ex 109",
+   "status": [
+    "Followed",
+    "Applied",
+    "Considered"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "wagon-mound-no1",
+   "title": "Overseas Tankship (UK) Ltd v Morts Dock & Engineering Co Ltd (The Wagon Mound No 1) [1961] AC 388",
+   "status": [
+    "Followed",
+    "Applied",
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "paris-v-stepney-bc",
+   "title": "Paris v Stepney Borough Council [1951] AC 367",
+   "status": [
+    "Followed",
+    "Applied",
+    "Considered"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "latimer-v-aec",
+   "title": "Latimer v AEC Ltd [1953] AC 643",
+   "status": [
+    "Followed",
+    "Applied",
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "jolley-v-sutton-lbc",
+   "title": "Jolley v Sutton London Borough Council [2000] 1 WLR 1082",
+   "status": [
+    "Followed",
+    "Distinguished",
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "smith-v-littlewoods",
+   "title": "Smith v Littlewoods Organisation Ltd [1987] AC 241",
+   "status": [
+    "Followed",
+    "Applied",
+    "Considered"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "hunter-v-canary-wharf",
+   "title": "Hunter v Canary Wharf Ltd [1997] AC 655",
+   "status": [
+    "Followed",
+    "Qualified",
+    "Distinguished"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-gotts",
+   "title": "R v Gotts [1992] 2 AC 412",
+   "status": [
+    "Followed",
+    "Considered",
+    "Distinguished"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-nedrick",
+   "title": "R v Nedrick [1986] 1 WLR 1025",
+   "status": [
+    "Reformulated",
+    "Applied",
+    "Distinguished"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-church",
+   "title": "R v Church [1966] 1 QB 59",
+   "status": [
+    "Followed",
+    "Applied",
+    "Considered"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-mohan",
+   "title": "R v Mohan [1976] QB 1",
+   "status": [
+    "Followed",
+    "Applied",
+    "Considered"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-smith-thomas-joseph",
+   "title": "R v Smith (Thomas Joseph) [1959] 2 QB 35",
+   "status": [
+    "Followed",
+    "Applied",
+    "Distinguished"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "factortame-no2",
+   "title": "R v Secretary of State for Transport, ex parte Factortame Ltd (No 2) [1991] 1 AC 603",
+   "status": [
+    "Applied",
+    "Considered",
+    "Distinguished"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "tulk-v-moxhay",
+   "title": "Tulk v Moxhay (1848) 2 Ph 774",
+   "status": [
+    "Followed",
+    "Limited",
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "lloyds-bank-v-rosset",
+   "title": "Lloyds Bank plc v Rosset [1991] 1 AC 107",
+   "status": [
+    "Followed",
+    "Distinguished",
+    "Criticised"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "walsh-v-lonsdale",
+   "title": "Walsh v Lonsdale (1882) 21 Ch D 9",
+   "status": [
+    "Followed",
+    "Applied",
+    "Distinguished"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "milroy-v-lord",
+   "title": "Milroy v Lord (1862) 4 De GF & J 264",
+   "status": [
+    "Followed",
+    "Distinguished",
+    "Qualified"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "paul-v-constance",
+   "title": "Paul v Constance [1977] 1 WLR 527",
+   "status": [
+    "Followed",
+    "Applied",
+    "Considered"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "hadley-v-baxendale",
+   "title": "Hadley v Baxendale (1854) 9 Ex 341; 156 ER 145",
+   "status": [
+    "Followed",
+    "Refined",
+    "Reformulated",
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "caparo-v-dickman",
+   "title": "Caparo Industries plc v Dickman [1990] UKHL 2; [1990] 2 AC 605",
+   "status": [
+    "Followed",
+    "Reformulated",
+    "Applied",
+    "Limited"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-adomako",
+   "title": "R v Adomako [1994] UKHL 6; [1995] 1 AC 171",
+   "status": [
+    "Followed",
+    "Applied",
+    "Refined",
+    "Applied",
+    "Considered"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "pepper-v-hart",
+   "title": "Pepper (Inspector of Taxes) v Hart [1992] UKHL 3; [1993] AC 593",
+   "status": [
+    "Followed",
+    "Qualified",
+    "Restricted",
+    "Considered"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "padfield-v-minister",
+   "title": "Padfield v Minister of Agriculture, Fisheries and Food [1968] AC 997",
+   "status": [
+    "Followed",
+    "Extended",
+    "Cited"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "anisminic-v-foreign-compensation-commission",
+   "title": "Anisminic Ltd v Foreign Compensation Commission [1969] 2 AC 147",
+   "status": [
+    "Foundational",
+    "Confirmed",
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "carlill-v-carbolic-smoke-ball",
+   "title": "Carlill v Carbolic Smoke Ball Co [1893] 1 QB 256",
+   "status": [
+    "Followed",
+    "Applied",
+    "Distinguished"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "donoghue-v-stevenson",
+   "title": "Donoghue v Stevenson [1932] AC 562",
+   "status": [
+    "Followed",
+    "Developed",
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-woollin",
+   "title": "R v Woollin [1999] 1 AC 82",
+   "status": [
+    "Followed",
+    "Discussed",
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "salomon-v-salomon",
+   "title": "Salomon v A Salomon & Co Ltd [1897] AC 22",
+   "status": [
+    "Followed",
+    "Distinguished",
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "hyde-v-wrench",
+   "title": "Hyde v Wrench (1840) 3 Beav 334",
+   "status": [
+    "Followed",
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "balfour-v-balfour",
+   "title": "Balfour v Balfour [1919] 2 KB 571",
+   "status": [
+    "Followed",
+    "Distinguished"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "williams-v-roffey",
+   "title": "Williams v Roffey Bros & Nicholls (Contractors) Ltd [1991] 1 QB 1",
+   "status": [
+    "Followed",
+    "Discussed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "stilk-v-myrick",
+   "title": "Stilk v Myrick (1809) 2 Camp 317",
+   "status": [
+    "Followed",
+    "Modified"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "rylands-v-fletcher",
+   "title": "Rylands v Fletcher (1868) LR 3 HL 330",
+   "status": [
+    "Followed",
+    "Restricted"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "nettleship-v-weston",
+   "title": "Nettleship v Weston [1971] 2 QB 691",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "cambridge-water-v-eastern-counties",
+   "title": "Cambridge Water Co v Eastern Counties Leather plc [1994] 2 AC 264",
+   "status": [
+    "Followed",
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-cunningham",
+   "title": "R v Cunningham [1957] 2 QB 396",
+   "status": [
+    "Followed",
+    "Distinguished"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-brown",
+   "title": "R v Brown [1994] 1 AC 212",
+   "status": [
+    "Followed",
+    "Challenged"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "dpp-v-smith",
+   "title": "DPP v Smith [1961] AC 290",
+   "status": [
+    "Reversed",
+    "Superseded"
+   ],
+   "signal": "negative"
+  },
+  {
+   "slug": "associated-provincial-picture-houses-v-wednesbury",
+   "title": "Associated Provincial Picture Houses Ltd v Wednesbury Corporation [1948] 1 KB 223",
+   "status": [
+    "Followed",
+    "Developed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-miller-v-secretary-of-state",
+   "title": "R (Miller) v Secretary of State for Exiting the European Union [2017] UKSC 5",
+   "status": [
+    "Applied",
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "keech-v-sandford",
+   "title": "Keech v Sandford (1726) Sel Cas Ch 61",
+   "status": [
+    "Followed",
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "stack-v-dowden",
+   "title": "Stack v Dowden [2007] UKHL 17",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "prest-v-petrodel",
+   "title": "Prest v Petrodel Resources Ltd [2013] UKSC 34",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "lee-v-lees-air-farming",
+   "title": "Lee v Lee's Air Farming Ltd [1961] AC 12",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "gillick-v-west-norfolk",
+   "title": "Gillick v West Norfolk and Wisbech Area Health Authority [1986] AC 112",
+   "status": [
+    "Followed",
+    "Qualified"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "western-excavating-v-sharp",
+   "title": "Western Excavating (ECC) Ltd v Sharp [1978] QB 761",
+   "status": [
+    "Followed",
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "british-home-stores-v-burchell",
+   "title": "British Home Stores Ltd v Burchell [1980] ICR 303",
+   "status": [
+    "Followed",
+    "Developed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "white-v-white",
+   "title": "White v White [2001] 1 AC 596",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "radmacher-v-granatino",
+   "title": "Radmacher v Granatino [2010] UKSC 42",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "street-v-mountford",
+   "title": "Street v Mountford [1985] AC 809",
+   "status": [
+    "Followed",
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "williams-glyns-bank-v-boland",
+   "title": "Williams & Glyn's Bank v Boland [1981] AC 487",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-miller-v-prime-minister",
+   "title": "R (Miller) v The Prime Minister (Cherry/Miller No 2) [2019] UKSC 41",
+   "status": [
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "arsenal-v-reed",
+   "title": "Arsenal Football Club plc v Reed [2003] EWCA Civ 696",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "montgomery-v-lanarkshire",
+   "title": "Montgomery v Lanarkshire Health Board [2015] UKSC 11",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "bolam-v-friern-hospital",
+   "title": "Bolam v Friern Hospital Management Committee [1957] 1 WLR 582",
+   "status": [
+    "Followed",
+    "Overruled (in part)"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "adams-v-cape-industries",
+   "title": "Adams v Cape Industries plc [1990] Ch 433",
+   "status": [
+    "Followed",
+    "Developed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "hedley-byrne-v-heller",
+   "title": "Hedley Byrne & Co Ltd v Heller & Partners Ltd [1964] AC 465",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "fairchild-v-glenhaven",
+   "title": "Fairchild v Glenhaven Funeral Services Ltd [2002] UKHL 22",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "ivey-v-genting-casinos",
+   "title": "Ivey v Genting Casinos (UK) Ltd [2017] UKSC 67",
+   "status": [
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "beswick-v-beswick",
+   "title": "Beswick v Beswick [1968] AC 58",
+   "status": [
+    "Partially superseded"
+   ],
+   "signal": "negative"
+  },
+  {
+   "slug": "ghaidan-v-godin-mendoza",
+   "title": "Ghaidan v Godin-Mendoza [2004] UKHL 30",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "foakes-v-beer",
+   "title": "Foakes v Beer [1884] UKHL 1, (1884) 9 App Cas 605",
+   "status": [
+    "Followed",
+    "Qualified"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "bolton-v-stone",
+   "title": "Bolton v Stone [1951] AC 850",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "lister-v-hesley-hall",
+   "title": "Lister v Hesley Hall Ltd [2001] UKHL 22",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "fagan-v-mpc",
+   "title": "Fagan v Metropolitan Police Commissioner [1969] 1 QB 439",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "airedale-nhs-trust-v-bland",
+   "title": "Airedale NHS Trust v Bland [1993] AC 789",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "campbell-v-mgn",
+   "title": "Campbell v MGN Ltd [2004] UKHL 22",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "uber-v-aslam",
+   "title": "Uber BV v Aslam [2021] UKSC 5",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "spiliada-maritime-v-cansulex",
+   "title": "Spiliada Maritime Corp v Cansulex Ltd [1987] AC 460",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "chappell-v-nestle",
+   "title": "Chappell & Co Ltd v Nestlé Co Ltd [1960] AC 87",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "hong-kong-fir-v-kawasaki",
+   "title": "Hong Kong Fir Shipping Co Ltd v Kawasaki Kisen Kaisha Ltd [1962] 2 QB 26",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "henderson-v-merrett",
+   "title": "Henderson v Merrett Syndicates Ltd [1995] 2 AC 145",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "white-v-jones",
+   "title": "White v Jones [1995] 2 AC 207",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "wilsher-v-essex-aha",
+   "title": "Wilsher v Essex Area Health Authority [1988] AC 1074",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "woolmington-v-dpp",
+   "title": "Woolmington v DPP [1935] AC 462",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-cheshire",
+   "title": "R v Cheshire [1991] 1 WLR 844",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-howe",
+   "title": "R v Howe [1987] AC 417",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "barlow-clowes-v-eurotrust",
+   "title": "Barlow Clowes International Ltd v Eurotrust International Ltd [2005] UKPC 37",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "parkingeye-v-beavis",
+   "title": "ParkingEye Ltd v Beavis [2015] UKSC 67",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-chargot",
+   "title": "R v Chargot Ltd (t/a Contract Services) [2008] UKHL 73",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "herne-bay-v-hutton",
+   "title": "Herne Bay Steam Boat Co v Hutton [1903] 2 KB 683",
+   "status": [
+    "Distinguished"
+   ],
+   "signal": "qualified"
+  },
+  {
+   "slug": "smith-v-hughes",
+   "title": "Smith v Hughes (1871) LR 6 QB 597",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "pharmaceutical-society-v-boots",
+   "title": "Pharmaceutical Society of Great Britain v Boots Cash Chemists [1953] 1 QB 401",
+   "status": [
+    "Followed",
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "re-spectrum-plus",
+   "title": "Re Spectrum Plus Ltd (in liquidation) [2005] UKHL 41",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "derry-v-peek",
+   "title": "Derry v Peek (1889) 14 App Cas 337",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "barnett-v-chelsea",
+   "title": "Barnett v Chelsea & Kensington Hospital Management Committee [1969] 1 QB 428",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "entores-v-miles-far-east",
+   "title": "Entores Ltd v Miles Far East Corporation [1955] 2 QB 327",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "banks-v-goodfellow",
+   "title": "Banks v Goodfellow (1870) LR 5 QB 549",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "ilott-v-blue-cross",
+   "title": "Ilott v The Blue Cross [2017] UKSC 17",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "bruton-v-london-quadrant",
+   "title": "Bruton v London & Quadrant Housing Trust [2000] 1 AC 406",
+   "status": [
+    "Followed",
+    "Discussed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-gul",
+   "title": "R v Gul [2013] UKSC 64",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "begum-v-secretary-of-state",
+   "title": "Begum v Secretary of State for the Home Department [2021] UKSC 7",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-hurst-v-london-northern-coroner",
+   "title": "R (Hurst) v London Northern District Coroner [2007] UKHL 13",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "rspca-v-johnson",
+   "title": "RSPCA v Johnson [2009] EWHC 2702 (Admin)",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-mackinlay",
+   "title": "R v Mackinlay [2018] UKSC 42",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "re-a-conjoined-twins",
+   "title": "Re A (Children) (Conjoined Twins: Surgical Separation) [2001] Fam 147",
+   "status": [
+    "Noted"
+   ],
+   "signal": "context"
+  },
+  {
+   "slug": "fisher-v-bell",
+   "title": "Fisher v Bell [1961] 1 QB 394",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-kingston",
+   "title": "R v Kingston [1995] 2 AC 355",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "sturgeon-v-condor",
+   "title": "Sturgeon v Condor Flugdienst GmbH Joined Cases C-402/07 and C-432/07 [2009]",
+   "status": [
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-dica",
+   "title": "R v Dica [2004] EWCA Crim 1103",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "mandla-v-dowell-lee",
+   "title": "Mandla v Dowell Lee [1983] 2 AC 548",
+   "status": [
+    "Followed",
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-maughan-v-hm-senior-coroner",
+   "title": "R (on the application of Maughan) v HM Senior Coroner for Oxfordshire [2020] UKSC 46",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "dpp-v-majewski",
+   "title": "DPP v Majewski [1977] AC 443",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "smith-v-eric-s-bush",
+   "title": "Smith v Eric S Bush [1990] 1 AC 831",
+   "status": [
+    "Followed",
+    "Distinguished"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "attorney-general-v-blake",
+   "title": "Attorney General v Blake [2001] 1 AC 268",
+   "status": [
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "rabone-v-pennine-care",
+   "title": "Rabone v Pennine Care NHS Foundation Trust [2012] UKSC 2",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-g-and-another-sexual-offences",
+   "title": "R v G [2008] UKHL 37",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-gold-schifreen",
+   "title": "R v Gold; R v Schifreen [1988] AC 1063",
+   "status": [
+    "Superseded by statute"
+   ],
+   "signal": "superseded"
+  },
+  {
+   "slug": "chambers-v-dpp",
+   "title": "Chambers v DPP [2012] EWHC 2157 (Admin)",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "re-st-stephens-walbrook",
+   "title": "Re St Stephen Walbrook [1987] Fam 146",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "grobbelaar-v-news-group",
+   "title": "Grobbelaar v News Group Newspapers Ltd [2002] UKHL 40",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "re-atlantic-computers",
+   "title": "Re Atlantic Computer Systems plc [1992] Ch 505",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "the-achilleas",
+   "title": "Transfield Shipping Inc v Mercator Shipping Inc (The Achilleas) [2008] UKHL 48",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-oao-clientearth-v-secretary-of-state",
+   "title": "R (on the application of ClientEarth) v Secretary of State for the Environment [2015] UKSC 28",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "vidal-hall-v-google",
+   "title": "Vidal-Hall v Google Inc [2015] EWCA Civ 311",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "reynolds-v-times-newspapers",
+   "title": "Reynolds v Times Newspapers Ltd [2001] 2 AC 127",
+   "status": [
+    "Superseded by statute"
+   ],
+   "signal": "superseded"
+  },
+  {
+   "slug": "malone-v-met-police",
+   "title": "Malone v Metropolitan Police Commissioner [1979] Ch 344",
+   "status": [
+    "Historic importance"
+   ],
+   "signal": "historic"
+  },
+  {
+   "slug": "ridge-v-baldwin",
+   "title": "Ridge v Baldwin [1964] AC 40",
+   "status": [
+    "Followed",
+    "Extended",
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "hj-iran-v-sshd",
+   "title": "HJ (Iran) v Secretary of State for the Home Department [2010] UKSC 31",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "central-london-property-trust-v-high-trees",
+   "title": "Central London Property Trust Ltd v High Trees House Ltd [1947] KB 130",
+   "status": [
+    "Followed",
+    "Limited"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "combe-v-combe",
+   "title": "Combe v Combe [1951] 2 KB 215",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "victoria-laundry-v-newman",
+   "title": "Victoria Laundry (Windsor) Ltd v Newman Industries Ltd [1949] 2 KB 528",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "tomlinson-v-congleton",
+   "title": "Tomlinson v Congleton Borough Council [2003] UKHL 47",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "alcock-v-chief-constable",
+   "title": "Alcock v Chief Constable of South Yorkshire Police [1992] 1 AC 310",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "white-v-chief-constable",
+   "title": "White v Chief Constable of South Yorkshire Police [1999] 2 AC 455",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "mullin-v-richards",
+   "title": "Mullin v Richards [1998] 1 WLR 1304",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "actavis-v-eli-lilly",
+   "title": "Actavis UK Ltd v Eli Lilly & Co [2017] UKSC 48",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "bolitho-v-city-and-hackney",
+   "title": "Bolitho v City and Hackney Health Authority [1998] AC 232",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "gregg-v-scott",
+   "title": "Gregg v Scott [2005] UKHL 2",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "lipkin-gorman-v-karpnale",
+   "title": "Lipkin Gorman v Karpnale Ltd [1991] 2 AC 548",
+   "status": [
+    "Foundational"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "banque-financiere-v-parc",
+   "title": "Banque Financière de la Cité v Parc (Battersea) Ltd [1999] 1 AC 221",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "sempra-metals-v-irc",
+   "title": "Sempra Metals Ltd v Inland Revenue Commissioners [2007] UKHL 34",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "transco-v-stockport-mbc",
+   "title": "Transco plc v Stockport Metropolitan Borough Council [2003] UKHL 61",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "owens-bank-v-bracco",
+   "title": "Owens Bank Ltd v Bracco [1992] 2 AC 443",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-offen",
+   "title": "R v Offen [2001] 1 WLR 253",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "cheshire-west-v-p",
+   "title": "P v Cheshire West and Chester Council; P and Q v Surrey County Council [2014] UKSC 19",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-golds",
+   "title": "R v Golds [2016] UKSC 61",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "spring-v-guardian-assurance",
+   "title": "Spring v Guardian Assurance plc [1995] 2 AC 296",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "scammell-v-ouston",
+   "title": "Scammell v Ouston [1941] AC 251",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "british-westinghouse-v-underground-electric",
+   "title": "British Westinghouse Electric v Underground Electric Railways [1912] AC 673",
+   "status": [
+    "Foundational"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "re-selectmove",
+   "title": "Re Selectmove Ltd [1995] 1 WLR 474",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "pitt-v-holt",
+   "title": "Pitt v Holt; Futter v Futter [2013] UKSC 26",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "re-kayford",
+   "title": "Re Kayford Ltd [1975] 1 WLR 279",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "british-eagle-v-compagnie-nationale",
+   "title": "British Eagle International Airlines Ltd v Compagnie Nationale Air France [1975] 1 WLR 758",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "belmont-finance-v-williams",
+   "title": "Belmont Finance Corporation v Williams Furniture Ltd (No 2) [1980] 1 All ER 393",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "ise-v-charity-commission",
+   "title": "Independent Schools Council v Charity Commission [2011] UKUT 421 (TCC)",
+   "status": [
+    "Good law"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "argos-littlewoods-ors-v-oft",
+   "title": "Argos Ltd & Littlewoods Ltd v Office of Fair Trading [2006] EWCA Civ 1318",
+   "status": [
+    "Followed",
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "competition-commission-v-baa",
+   "title": "BAA Ltd v Competition Commission [2012] EWCA Civ 1077",
+   "status": [
+    "Followed",
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "tesco-v-oft-tobacco",
+   "title": "Tesco Stores Ltd v Office of Fair Trading [2012] CAT 31",
+   "status": [
+    "Followed",
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "streetmap-v-google",
+   "title": "Streetmap.eu Ltd v Google Inc [2016] EWHC 253 (Ch)",
+   "status": [
+    "Followed",
+    "Noted"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "paroxetine-cma",
+   "title": "Competition and Markets Authority v GlaxoSmithKline plc (Paroxetine) [2018] CAT 4",
+   "status": [
+    "Followed",
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "pinnock-v-manchester",
+   "title": "Manchester City Council v Pinnock [2010] UKSC 45",
+   "status": [
+    "Followed",
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "superstrike-v-rodrigues",
+   "title": "Superstrike Ltd v Rodrigues [2013] EWCA Civ 669",
+   "status": [
+    "Followed",
+    "Legislated"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "mcdonald-v-mcdonald",
+   "title": "McDonald v McDonald [2016] UKSC 28",
+   "status": [
+    "Followed",
+    "Discussed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "barber-v-guardian-royal-exchange",
+   "title": "Barber v Guardian Royal Exchange Assurance Group [1990] ICR 616 (CJEU Case C-262/88)",
+   "status": [
+    "Followed",
+    "Legislated"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "beckmann-v-dynamco-whicheloe",
+   "title": "Beckmann v Dynamco Whicheloe Macfarlane Ltd [2002] IRLR 578 (CJEU Case C-164/00)",
+   "status": [
+    "Followed",
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "independent-trustee-services-v-hope",
+   "title": "Independent Trustee Services Ltd v Hope [2009] EWHC 2810 (Ch)",
+   "status": [
+    "Followed",
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "ibm-v-dalgleish",
+   "title": "IBM United Kingdom Ltd v Dalgleish [2017] EWCA Civ 1212",
+   "status": [
+    "Followed",
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-carmichael-v-sswp",
+   "title": "R (Carmichael and Rourke) v Secretary of State for Work and Pensions [2016] UKSC 58",
+   "status": [
+    "Followed",
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-da-v-sswp",
+   "title": "R (DA and DS) v Secretary of State for Work and Pensions [2019] UKSC 21",
+   "status": [
+    "Followed",
+    "Discussed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-sc-v-sswp-two-child-limit",
+   "title": "R (SC, CB and 8 children) v Secretary of State for Work and Pensions [2021] UKSC 26",
+   "status": [
+    "Followed",
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-joint-council-welfare-v-sswp",
+   "title": "R (Joint Council for the Welfare of Immigrants) v Secretary of State for the Home Department [1997] 1 WLR 275",
+   "status": [
+    "Followed",
+    "Legislated"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "mathieson-v-sswp",
+   "title": "Mathieson v Secretary of State for Work and Pensions [2015] UKSC 47",
+   "status": [
+    "Followed",
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "the-popi-m",
+   "title": "Rhesa Shipping Co SA v Edmunds (The Popi M) [1985] 1 WLR 948",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "the-torenia",
+   "title": "Aktieselskabet de Danske Sukkerfabrikker v Bajamar Compania Naviera SA (The Torenia) [1983] 2 Lloyd's Rep 210",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "the-hague-rules-interpretation",
+   "title": "Jindal Iron & Steel Co Ltd v Islamic Solidarity Shipping Co Jordan Inc (The Jordan II) [2004] UKHL 49",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "elder-dempster-v-paterson-zochonis",
+   "title": "Elder Dempster & Co Ltd v Paterson Zochonis & Co Ltd [1924] AC 522",
+   "status": [
+    "Distinguished",
+    "Developed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "smith-v-mod",
+   "title": "Smith v Ministry of Defence [2013] UKSC 41",
+   "status": [
+    "Followed",
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-blackman",
+   "title": "R v Sergeant Alexander Blackman (Marine A) [2017] EWCA Crim 190",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-smith-v-secretary-of-state-defence",
+   "title": "R (on the application of Smith) v Secretary of State for Defence [2010] UKSC 29",
+   "status": [
+    "Developed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "al-skeini",
+   "title": "Al-Skeini v United Kingdom (2011) 53 EHRR 18",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "bosman",
+   "title": "Union Royale Belge des Sociétés de Football Association ASBL v Bosman Case C-415/93 [1995] ECR I-4921",
+   "status": [
+    "Followed",
+    "Extended"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "bradley-v-jockey-club",
+   "title": "Bradley v Jockey Club [2005] EWCA Civ 1056",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "modahl-v-baf",
+   "title": "Modahl v British Athletic Federation Ltd [2001] EWCA Civ 1447",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "watson-v-bbbc",
+   "title": "Watson v British Boxing Board of Control [2001] QB 1134",
+   "status": [
+    "Followed",
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-barnes",
+   "title": "R v Barnes [2004] EWCA Crim 3246",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "oppenheim-v-tobacco",
+   "title": "Oppenheim v Tobacco Securities Trust Co Ltd [1951] AC 297",
+   "status": [
+    "Followed",
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "re-resch-will-trusts",
+   "title": "Re Resch's Will Trusts [1969] 1 AC 514",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "dingle-v-turner",
+   "title": "Dingle v Turner [1972] AC 601",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "national-anti-vivisection-society-v-irc",
+   "title": "National Anti-Vivisection Society v IRC [1948] AC 31",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "aston-cantlow",
+   "title": "Aston Cantlow PCC v Wallbank [2003] UKHL 37",
+   "status": [
+    "Followed",
+    "Legislated"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "shergill-v-khaira",
+   "title": "Shergill v Khaira [2014] UKSC 33",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "re-st-marys-banbury",
+   "title": "Re St Mary the Virgin, Banbury [2016] ECC Oxf 2",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "re-st-alkmund",
+   "title": "Re St Alkmund, Duffield [2013] Fam 158",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "rev-williamson",
+   "title": "Williamson v Bishop of London [2020] EWHC 3518 (Admin)",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-ofgem-ex-parte-sse",
+   "title": "R (SSE Generation Ltd) v Gas and Electricity Markets Authority [2022] EWCA Civ 1472",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-sshclg-heathrow",
+   "title": "R (Friends of the Earth) v Secretary of State for Transport (Heathrow Third Runway) [2020] UKSC 52",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "spread-betting",
+   "title": "City Index Ltd v Leslie [1992] QB 98",
+   "status": [
+    "Superseded",
+    "Historical"
+   ],
+   "signal": "historic"
+  },
+  {
+   "slug": "gambling-commission-penalty",
+   "title": "R (Entain Group) v Gambling Commission [2022] EWHC 1012 (Admin)",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-tronoh-mines",
+   "title": "R v Tronoh Mines Ltd [1952] 1 All ER 697",
+   "status": [
+    "Modified"
+   ],
+   "signal": "qualified"
+  },
+  {
+   "slug": "r-woolas",
+   "title": "R (Woolas) v Parliamentary Election Court [2010] EWHC 3169 (Admin)",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-harmon-v-hoc",
+   "title": "Harmon CFEM Facades (UK) Ltd v Corporate Officer of the House of Commons [1999] 67 Con LR 1",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "alstom-v-eurostar",
+   "title": "Alstom Transport v Eurostar International Ltd [2010] EWHC 2747 (Ch)",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "winterwerp-v-netherlands",
+   "title": "Winterwerp v Netherlands (1979) 2 EHRR 387",
+   "status": [
+    "Followed",
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-bournewood",
+   "title": "R v Bournewood Community and Mental Health NHS Trust, ex parte L [1999] 1 AC 458",
+   "status": [
+    "Reversed"
+   ],
+   "signal": "negative"
+  },
+  {
+   "slug": "savage-v-south-essex",
+   "title": "Savage v South Essex Partnership NHS Foundation Trust [2009] 1 AC 681",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "essop-v-home-office",
+   "title": "Essop v Home Office [2017] UKSC 27",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "preddy-v-bull",
+   "title": "Bull v Hall [2013] UKSC 73",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "lee-v-ashers",
+   "title": "Lee v Ashers Baking Company [2018] UKSC 49",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "homer-v-west-yorkshire",
+   "title": "Homer v Chief Constable of West Yorkshire Police [2012] UKSC 15",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "vento-v-west-yorkshire",
+   "title": "Vento v Chief Constable of West Yorkshire Police [2003] ICR 318",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "rice-v-connolly",
+   "title": "Rice v Connolly [1966] 2 QB 414",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "osman-v-dpp",
+   "title": "Osman v DPP [1999] 163 JP 725",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-samuel",
+   "title": "R v Samuel [1988] QB 615",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-aspinall",
+   "title": "R v Aspinall [1999] 2 Cr App R 115",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-laporte-v-chief-constable-gloucestershire",
+   "title": "R (on the application of Laporte) v Chief Constable of Gloucestershire [2007] 2 AC 105",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-preddy",
+   "title": "R v Preddy [1996] AC 815",
+   "status": [
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-hinks",
+   "title": "R v Hinks [2001] 2 AC 241",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-povey",
+   "title": "R v Povey [2009] 1 Cr App R (S) 42",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-brewster",
+   "title": "R v Brewster [1998] 1 Cr App R 220",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-blackshaw",
+   "title": "R v Blackshaw (Riots Cases) [2011] EWCA Crim 2312",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-raza",
+   "title": "R v Raza [2010] 1 Cr App R (S) 56",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "lachaux-v-independent-print",
+   "title": "Lachaux v Independent Print Ltd [2019] UKSC 27",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "pjs-v-news-group",
+   "title": "PJS v News Group Newspapers Ltd [2016] UKSC 26",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "jameel-v-dow-jones",
+   "title": "Jameel v Dow Jones & Co Inc [2005] QB 946",
+   "status": [
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "lancashire-v-b",
+   "title": "Lancashire County Council v B [2000] 2 AC 147",
+   "status": [
+    "Followed"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "grenfell-tower-inquiry",
+   "title": "Grenfell Tower Inquiry Public Inquiry (2017–2024)",
+   "status": [
+    "Led to Legislation"
+   ],
+   "signal": "superseded"
+  },
+  {
+   "slug": "batty-v-metropolitan-properties",
+   "title": "Batty v Metropolitan Property Realisations Ltd [1978] QB 554",
+   "status": [
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "abbey-developments-v-pp-brickwork",
+   "title": "Abbey Developments Ltd v PP Brickwork Ltd [2003] EWHC 1987 (TCC)",
+   "status": [
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "nzolameso-v-westminster",
+   "title": "Nzolameso v Westminster City Council [2015] UKSC 22",
+   "status": [
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "fca-v-arch-insurance",
+   "title": "FCA v Arch Insurance (UK) Ltd [2021] UKSC 1",
+   "status": [
+    "Leading Authority"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "plevin-v-paragon",
+   "title": "Plevin v Paragon Personal Finance Ltd [2014] UKSC 61",
+   "status": [
+    "Leading Authority"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "patel-v-mirza",
+   "title": "Patel v Mirza [2016] UKSC 42",
+   "status": [
+    "Leading Authority"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-connors",
+   "title": "R v Connors [2013] EWCA Crim 324",
+   "status": [
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "siliadin-v-france",
+   "title": "Siliadin v France (2005) 43 EHRR 16",
+   "status": [
+    "Leading Authority"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "chowdury-v-greece",
+   "title": "Chowdury v Greece (2017) ECHR 300",
+   "status": [
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-corner-house-v-sfo",
+   "title": "R (Corner House Research) v Director of the Serious Fraud Office [2008] UKHL 60",
+   "status": [
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-pham-v-sshd",
+   "title": "R (Pham) v Secretary of State for the Home Department [2015] UKSC 19",
+   "status": [
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "johnson-v-sshd",
+   "title": "Johnson v Secretary of State for the Home Department [2016] UKSC 56",
+   "status": [
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-agyarko-v-sshd",
+   "title": "R (Agyarko) v Secretary of State for the Home Department [2017] UKSC 11",
+   "status": [
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-osborn-v-parole-board",
+   "title": "R (Osborn) v Parole Board [2013] UKSC 61",
+   "status": [
+    "Leading Authority"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-haney-v-sshd",
+   "title": "R (Haney) v Secretary of State for Justice [2014] UKSC 66",
+   "status": [
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-james-v-sshd",
+   "title": "R (James) v Secretary of State for Justice [2009] UKHL 22",
+   "status": [
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-daly-v-sshd",
+   "title": "R (Daly) v Secretary of State for the Home Department [2001] UKHL 26",
+   "status": [
+    "Leading Authority"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "att-gen-v-bbc-contempt",
+   "title": "Attorney General v BBC [1981] AC 303",
+   "status": [
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "amin-rasheed-v-kuwait-insurance",
+   "title": "Amin Rasheed Shipping Corp v Kuwait Insurance Co [1984] AC 50",
+   "status": [
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "boys-v-chaplin",
+   "title": "Boys v Chaplin [1971] AC 356",
+   "status": [
+    "Superseded"
+   ],
+   "signal": "negative"
+  },
+  {
+   "slug": "r-middleton-v-coroner",
+   "title": "R (Middleton) v West Somerset Coroner [2004] UKHL 10",
+   "status": [
+    "Leading Authority"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-jamieson-v-coroner",
+   "title": "R v Coroner for North Humberside, ex parte Jamieson [1995] QB 1",
+   "status": [
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "sshd-v-af-no3",
+   "title": "Secretary of State for the Home Department v AF (No 3) [2009] UKHL 28",
+   "status": [
+    "Leading Authority"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "huzar-v-jet2",
+   "title": "Huzar v Jet2.com Ltd [2014] EWCA Civ 791",
+   "status": [
+    "Leading Authority"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "barnwell-manor-heritage",
+   "title": "Barnwell Manor Wind Energy Ltd v East Northamptonshire DC [2014] EWCA Civ 137",
+   "status": [
+    "Leading Authority"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "empress-car-v-ea",
+   "title": "Empress Car Company (Abertillery) Ltd v National Rivers Authority [1999] 2 AC 22",
+   "status": [
+    "Leading Authority"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "tesco-v-nattrass-food",
+   "title": "Tesco Supermarkets Ltd v Nattrass [1972] AC 153",
+   "status": [
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "smedleys-v-breed",
+   "title": "Smedleys Ltd v Breed [1974] AC 839",
+   "status": [
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "love-v-usa-extradition",
+   "title": "Love v Government of the United States of America [2018] EWHC 172 (Admin)",
+   "status": [
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "horvath-v-sshd",
+   "title": "Horvath v Secretary of State for the Home Department [2001] 1 AC 489",
+   "status": [
+    "Leading Authority"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-marriott-drugs",
+   "title": "R v Marriott [1971] 1 WLR 187",
+   "status": [
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "ctil-v-compton-beauchamp",
+   "title": "Cornerstone Telecommunications Infrastructure Ltd v Compton Beauchamp Estates Ltd [2022] UKSC 18",
+   "status": [
+    "Leading Authority"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-zezev-telecoms",
+   "title": "R v Zezev [2002] Crim LR 648",
+   "status": [
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "cowan-v-scargill",
+   "title": "Cowan v Scargill [1985] Ch 270",
+   "status": [
+    "Leading Authority"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "imperial-group-pension-trust",
+   "title": "Imperial Group Pension Trust Ltd v Imperial Tobacco Ltd [1991] 1 WLR 589",
+   "status": [
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "enka-v-chubb",
+   "title": "Enka Insaat Ve Sanayi AS v OOO Insurance Company Chubb [2020] UKSC 38",
+   "status": [
+    "Leading Authority"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "eastham-v-newcastle",
+   "title": "Eastham v Newcastle United FC [1964] Ch 413",
+   "status": [
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-caird",
+   "title": "R v Caird [1970] 54 Cr App R 499",
+   "status": [
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "hl-v-united-kingdom",
+   "title": "HL v United Kingdom (Bournewood) (2004) 40 EHRR 32",
+   "status": [
+    "Leading Authority"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "buchanan-v-milton",
+   "title": "Buchanan v Milton [1999] 2 FLR 844",
+   "status": [
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "office-of-fair-trading-v-abbey",
+   "title": "Office of Fair Trading v Abbey National plc [2009] UKSC 6",
+   "status": [
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "tesco-v-sos-planning",
+   "title": "Tesco Stores Ltd v Secretary of State for the Environment [1995] 1 WLR 759",
+   "status": [
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "watkins-v-woolas",
+   "title": "Watkins v Woolas [2010] EWHC 2702 (QB)",
+   "status": [
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "clientearth-v-ssbeis",
+   "title": "R (ClientEarth) v Secretary of State for Business, Energy and Industrial Strategy [2021] EWCA Civ 43",
+   "status": [
+    "Leading Authority"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "r-v-sk",
+   "title": "R v SK [2011] EWCA Crim 1691",
+   "status": [
+    "Applied"
+   ],
+   "signal": "good-law"
+  },
+  {
+   "slug": "lloyd-v-google",
+   "title": "Lloyd v Google LLC [2021] UKSC 50",
+   "status": [
+    "Leading Authority",
+    "Discussed"
+   ],
+   "signal": "good-law"
+  }
+ ],
+ "edges": [
+  {
+   "from_slug": null,
+   "from_name": "Germany v Italy",
+   "from_year": null,
+   "to_slug": "jones-v-saudi-arabia",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Churchill v Merthyr Tydfil CBC",
+   "from_year": "2023",
+   "to_slug": "halsey-v-milton-keynes",
+   "type": "Reconsidered",
+   "signal": "qualified"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Supreme Court in Baker v Quantum Clothing Group",
+   "from_year": "2011",
+   "to_slug": "edwards-v-ncb",
+   "type": "Followed",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Lord Goff in Austin Rover Group Ltd v HM Inspector",
+   "from_year": null,
+   "to_slug": "edwards-v-ncb",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "r-v-htme",
+   "from_name": "R v HTM Ltd",
+   "from_year": "2006",
+   "to_slug": "edwards-v-ncb",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Langley v Coal Authority",
+   "from_year": "2003",
+   "to_slug": "edwards-v-ncb",
+   "type": "Cited",
+   "signal": "context"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Involnert Management Inc v Aprilgrange Ltd",
+   "from_year": "2015",
+   "to_slug": "pan-atlantic-v-pine-top",
+   "type": "Followed",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Assicurazioni Generali SpA v Arab Insurance Group",
+   "from_year": "2002",
+   "to_slug": "pan-atlantic-v-pine-top",
+   "type": "Developed",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "carter-v-boehm",
+   "from_name": "Carter v Boehm",
+   "from_year": null,
+   "to_slug": "pan-atlantic-v-pine-top",
+   "type": "Cited",
+   "signal": "context"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Marine Insurance Act 1906 in Manifest Shipping Co Ltd v Uni-Polaris Insurance Co Ltd",
+   "from_year": null,
+   "to_slug": "pan-atlantic-v-pine-top",
+   "type": "Cited",
+   "signal": "context"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Galliford Try Infrastructure Ltd v Mott MacDonald Ltd",
+   "from_year": "2008",
+   "to_slug": "pacific-associates-v-baxter",
+   "type": "Considered",
+   "signal": "context"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Ltd v GB Building Solutions Ltd",
+   "from_year": "2022",
+   "to_slug": "pacific-associates-v-baxter",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Plc v William M Mercer Ltd",
+   "from_year": null,
+   "to_slug": "pacific-associates-v-baxter",
+   "type": "Cited",
+   "signal": "context"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Warner v Metropolitan Police Commissioner",
+   "from_year": "1969",
+   "to_slug": "r-v-marriott",
+   "type": "Cited",
+   "signal": "context"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Marriott in Lennon v Immigration",
+   "from_year": null,
+   "to_slug": "r-v-marriott",
+   "type": "Considered",
+   "signal": "context"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Supreme Court in R v Jogee",
+   "from_year": "2016",
+   "to_slug": "r-v-gosney",
+   "type": "Cited",
+   "signal": "context"
+  },
+  {
+   "from_slug": null,
+   "from_name": "R v Johnson",
+   "from_year": "2016",
+   "to_slug": "r-v-gosney",
+   "type": "Cited",
+   "signal": "context"
+  },
+  {
+   "from_slug": "nettleship-v-weston",
+   "from_name": "Nettleship v Weston",
+   "from_year": "1971",
+   "to_slug": "mccrone-v-riding",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Kabab-Ji SAL v Kout Food Group",
+   "from_year": "2021",
+   "to_slug": "dallah-v-pakistan",
+   "type": "Good law",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Privy Council in RAV Bahamas Ltd v Therapy Beach Club Inc",
+   "from_year": "2021",
+   "to_slug": "lesotho-highlands",
+   "type": "Good law",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Supreme Court in Dover District Council v CPRE Kent",
+   "from_year": "2017",
+   "to_slug": "south-bucks-v-porter",
+   "type": "Good law",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Turner v Secretary",
+   "from_year": null,
+   "to_slug": "samuel-smith-v-north-yorkshire",
+   "type": "Good law",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Timmins v Gedling Borough Council",
+   "from_year": "2014",
+   "to_slug": "samuel-smith-v-north-yorkshire",
+   "type": "Good law",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Supreme Court in R v Taylor",
+   "from_year": "2016",
+   "to_slug": "r-v-hughes",
+   "type": "Good law",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Kennedy v Cordia",
+   "from_year": null,
+   "to_slug": "baker-v-quantum-clothing",
+   "type": "Good law",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Stokes v Guest",
+   "from_year": null,
+   "to_slug": "baker-v-quantum-clothing",
+   "type": "Good law",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "R v Tangerine Confectionery Ltd",
+   "from_year": "2011",
+   "to_slug": "baker-v-quantum-clothing",
+   "type": "Good law",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Munjaz v United Kingdom",
+   "from_year": null,
+   "to_slug": "munjaz-v-mersey-care",
+   "type": "Good law",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "In R v Tangerine Confectionery Ltd",
+   "from_year": "2011",
+   "to_slug": "r-v-htme",
+   "type": "Approved",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "r-v-htme",
+   "from_name": "R v HTM Ltd",
+   "from_year": "2006",
+   "to_slug": "r-v-htme",
+   "type": "Approved",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Baker v Quantum'",
+   "from_year": "2011",
+   "to_slug": "r-v-htme",
+   "type": "Approved",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "In R v Hoare",
+   "from_year": null,
+   "to_slug": "r-v-betts-and-hall",
+   "type": "Qualified",
+   "signal": "qualified"
+  },
+  {
+   "from_slug": null,
+   "from_name": "R v Beckles",
+   "from_year": "2004",
+   "to_slug": "r-v-betts-and-hall",
+   "type": "Qualified",
+   "signal": "qualified"
+  },
+  {
+   "from_slug": null,
+   "from_name": "In Versloot Dredging BV v HDI Gerling Industrie Versicherung AG",
+   "from_year": "2016",
+   "to_slug": "the-star-sea",
+   "type": "Followed",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Grant v International Insurance Co",
+   "from_year": null,
+   "to_slug": "impact-funding-v-barrington",
+   "type": "Followed",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Co LLP v Bates",
+   "from_year": null,
+   "to_slug": "jivraj-v-hashwani",
+   "type": "Considered",
+   "signal": "context"
+  },
+  {
+   "from_slug": null,
+   "from_name": "R v Innospec Ltd",
+   "from_year": null,
+   "to_slug": "r-v-dougall",
+   "type": "Leading Authority",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Din v Wandsworth",
+   "from_year": null,
+   "to_slug": "haile-v-waltham-forest",
+   "type": "Leading Authority",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "ali-v-lord-grey-school",
+   "from_name": "Ali v Birmingham City Council",
+   "from_year": null,
+   "to_slug": "poshteh-v-kensington",
+   "type": "Leading Authority",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Socimer v Standard Bank",
+   "from_year": null,
+   "to_slug": "barclays-v-unicredit",
+   "type": "Good law",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Bates v Hewitt",
+   "from_year": null,
+   "to_slug": "carter-v-boehm",
+   "type": "Good law",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "R v Larkin",
+   "from_year": null,
+   "to_slug": "dpp-v-newbury",
+   "type": "Good law",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "r-v-church",
+   "from_name": "R v Church",
+   "from_year": null,
+   "to_slug": "dpp-v-newbury",
+   "type": "Good law",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Supreme Court in Hopkins Homes Ltd v Secretary",
+   "from_year": null,
+   "to_slug": "tesco-v-dundee",
+   "type": "Good law",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Court of Appeal in Foley v Post Office",
+   "from_year": "2000",
+   "to_slug": "iceland-frozen-foods-v-jones",
+   "type": "Good law",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Al-Khawaja and Tahery v UK",
+   "from_year": null,
+   "to_slug": "r-v-horncastle",
+   "type": "Good law",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "actavis-v-eli-lilly",
+   "from_name": "Actavis v Eli Lilly",
+   "from_year": "2017",
+   "to_slug": "kirin-amgen-v-hoechst-marion-roussel",
+   "type": "Good law",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "jobling-v-associated-dairies",
+   "from_name": "Jobling v Associated Dairies",
+   "from_year": "1982",
+   "to_slug": "baker-v-willoughby",
+   "type": "Distinguished",
+   "signal": "qualified"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Distinguishes Baker v Willoughby",
+   "from_year": null,
+   "to_slug": "jobling-v-associated-dairies",
+   "type": "Good law",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "In White v Chief Constable",
+   "from_year": "1999",
+   "to_slug": "chadwick-v-british-railways",
+   "type": "Qualified",
+   "signal": "qualified"
+  },
+  {
+   "from_slug": "letang-v-cooper",
+   "from_name": "Letang v Cooper",
+   "from_year": "1965",
+   "to_slug": "fowler-v-lanning",
+   "type": "Good law",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "House of Lords in R v Howe",
+   "from_year": "1987",
+   "to_slug": "r-v-graham",
+   "type": "Approved",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "r-v-hasan",
+   "from_name": "R v Hasan",
+   "from_year": "2005",
+   "to_slug": "r-v-graham",
+   "type": "Approved",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "r-v-g-and-another-sexual-offences",
+   "from_name": "R v G",
+   "from_year": "2003",
+   "to_slug": "r-v-caldwell",
+   "type": "Overruled",
+   "signal": "negative"
+  },
+  {
+   "from_slug": null,
+   "from_name": "R v Williams",
+   "from_year": null,
+   "to_slug": "r-v-roberts",
+   "type": "Good law",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "R v Smith",
+   "from_year": "1959",
+   "to_slug": "r-v-jordan",
+   "type": "Narrowly confined",
+   "signal": "qualified"
+  },
+  {
+   "from_slug": "r-v-cheshire",
+   "from_name": "R v Cheshire",
+   "from_year": "1991",
+   "to_slug": "r-v-jordan",
+   "type": "Narrowly confined",
+   "signal": "qualified"
+  },
+  {
+   "from_slug": "pennington-v-waine",
+   "from_name": "Pennington v Waine",
+   "from_year": null,
+   "to_slug": "re-rose",
+   "type": "Good law",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Mascall v Mascall",
+   "from_year": null,
+   "to_slug": "re-rose",
+   "type": "Good law",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "thorner-v-major",
+   "from_name": "Thorner v Major",
+   "from_year": null,
+   "to_slug": "cobbe-v-yeomans-row",
+   "type": "Good law",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Regency Villas Title Ltd v Diamond Resorts",
+   "from_year": "2018",
+   "to_slug": "re-ellenborough-park",
+   "type": "Good law",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Rainy Sky v Kookmin Bank",
+   "from_year": null,
+   "to_slug": "investors-compensation-scheme-v-west-bromwich",
+   "type": "Good law",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Arnold v Britton",
+   "from_year": null,
+   "to_slug": "investors-compensation-scheme-v-west-bromwich",
+   "type": "Good law",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Shirley v Whitworth",
+   "from_year": null,
+   "to_slug": "the-moorcock",
+   "type": "Foundational",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Parker v South Eastern Railway",
+   "from_year": "1877",
+   "to_slug": "chapelton-v-barry-udc",
+   "type": "Good law",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "interfoto-v-stiletto",
+   "from_name": "Interfoto Picture Library v Stiletto",
+   "from_year": "1989",
+   "to_slug": "spurling-v-bradshaw",
+   "type": "Good law",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "O'Brien v MGN",
+   "from_year": "1995",
+   "to_slug": "interfoto-v-stiletto",
+   "type": "Good law",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "bettini-v-gye",
+   "from_name": "Bettini v Gye",
+   "from_year": null,
+   "to_slug": "poussard-v-spiers",
+   "type": "Good law",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "poussard-v-spiers",
+   "from_name": "Poussard v Spiers",
+   "from_year": null,
+   "to_slug": "bettini-v-gye",
+   "type": "Good law",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "herne-bay-v-hutton",
+   "from_name": "Herne Bay Steam Boat v Hutton",
+   "from_year": "1903",
+   "to_slug": "krell-v-henry",
+   "type": "Good law",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Davis Contractors v Fareham UDC",
+   "from_year": "1956",
+   "to_slug": "taylor-v-caldwell",
+   "type": "Good law",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "bolton-v-stone",
+   "from_name": "Bolton v Stone",
+   "from_year": null,
+   "to_slug": "wagon-mound-no-2",
+   "type": "Good law",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "coventry-v-lawrence",
+   "from_name": "Coventry v Lawrence",
+   "from_year": "2014",
+   "to_slug": "sturges-v-bridgman",
+   "type": "Good law",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "fairchild-v-glenhaven",
+   "from_name": "Fairchild v Glenhaven",
+   "from_year": "2002",
+   "to_slug": "bonnington-castings-v-wardlaw",
+   "type": "Good law",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "House of Lords in Lloyde v West Midlands Gas Board",
+   "from_year": "1971",
+   "to_slug": "scott-v-london-st-katherine-docks",
+   "type": "Good law",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Holwell Securities v Hughes",
+   "from_year": "1974",
+   "to_slug": "adams-v-lindsell",
+   "type": "Good law",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Disapproved in Woolfson v Strathclyde",
+   "from_year": "1978",
+   "to_slug": "dhn-food-v-tower-hamlets",
+   "type": "Doubted",
+   "signal": "negative"
+  },
+  {
+   "from_slug": "adams-v-cape-industries",
+   "from_name": "Adams v Cape Industries",
+   "from_year": "1990",
+   "to_slug": "dhn-food-v-tower-hamlets",
+   "type": "Doubted",
+   "signal": "negative"
+  },
+  {
+   "from_slug": "prest-v-petrodel",
+   "from_name": "Prest v Petrodel",
+   "from_year": "2013",
+   "to_slug": "gilford-motor-v-horne",
+   "type": "Good law",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Grant v Edwards",
+   "from_year": "1986",
+   "to_slug": "eves-v-eves",
+   "type": "Good law",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "stack-v-dowden",
+   "from_name": "Stack v Dowden",
+   "from_year": null,
+   "to_slug": "eves-v-eves",
+   "type": "Good law",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "jones-v-kernott",
+   "from_name": "Jones v Kernott",
+   "from_year": null,
+   "to_slug": "eves-v-eves",
+   "type": "Good law",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "stack-v-dowden",
+   "from_name": "Stack v Dowden",
+   "from_year": null,
+   "to_slug": "burns-v-burns",
+   "type": "Good law (narrowed)",
+   "signal": "qualified"
+  },
+  {
+   "from_slug": "jones-v-kernott",
+   "from_name": "Jones v Kernott",
+   "from_year": null,
+   "to_slug": "burns-v-burns",
+   "type": "Good law (narrowed)",
+   "signal": "qualified"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Ltd v Finney Lock Seeds",
+   "from_year": "1983",
+   "to_slug": "photo-production-v-securicor",
+   "type": "Followed",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Ailsa Craig Fishing Co Ltd v Malvern Fishing Co",
+   "from_year": "1983",
+   "to_slug": "photo-production-v-securicor",
+   "type": "Followed",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "smith-v-eric-s-bush",
+   "from_name": "Smith v Eric S Bush",
+   "from_year": "1990",
+   "to_slug": "photo-production-v-securicor",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "House of Lords in R v Howe",
+   "from_year": "1987",
+   "to_slug": "r-v-dudley-stephens",
+   "type": "Followed",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "r-v-hasan",
+   "from_name": "R v Hasan",
+   "from_year": "2005",
+   "to_slug": "r-v-dudley-stephens",
+   "type": "Considered",
+   "signal": "context"
+  },
+  {
+   "from_slug": null,
+   "from_name": "R v Johnson",
+   "from_year": "2016",
+   "to_slug": "r-v-jogee",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "In R v Anwar",
+   "from_year": "2016",
+   "to_slug": "r-v-jogee",
+   "type": "Considered",
+   "signal": "context"
+  },
+  {
+   "from_slug": "gchq-case",
+   "from_name": "Council of Civil Service Unions v Minister",
+   "from_year": null,
+   "to_slug": "entick-v-carrington",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "entick-v-carrington",
+   "from_name": "Entick v Carrington",
+   "from_year": null,
+   "to_slug": "entick-v-carrington",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "R v Secretary",
+   "from_year": null,
+   "to_slug": "gchq-case",
+   "type": "Good law",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "sshd-v-af-no3",
+   "from_name": "Secretary of State for the Home Department v AF",
+   "from_year": null,
+   "to_slug": "a-v-secretary-of-state-belmarsh",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Bank Mellat v HM Treasury",
+   "from_year": "2013",
+   "to_slug": "a-v-secretary-of-state-belmarsh",
+   "type": "Considered",
+   "signal": "context"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Daniels v Daniels",
+   "from_year": "1978",
+   "to_slug": "foss-v-harbottle",
+   "type": "Modified",
+   "signal": "qualified"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Iesini v Westrip Holdings Ltd",
+   "from_year": "2009",
+   "to_slug": "foss-v-harbottle",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Refined in Barlow Clowes International Ltd v Eurotrust International Ltd",
+   "from_year": "2005",
+   "to_slug": "royal-brunei-v-tan",
+   "type": "Refined",
+   "signal": "qualified"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Abou-Rahmah v Abacha",
+   "from_year": "2006",
+   "to_slug": "royal-brunei-v-tan",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "EWCA Civ 1492 and Starglade Properties Ltd v Nash",
+   "from_year": "2010",
+   "to_slug": "royal-brunei-v-tan",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "royal-brunei-v-tan",
+   "from_name": "Royal Brunei v Tan",
+   "from_year": null,
+   "to_slug": "royal-brunei-v-tan",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "ivey-v-genting-casinos",
+   "from_name": "Ivey v Genting Casinos",
+   "from_year": "2017",
+   "to_slug": "royal-brunei-v-tan",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "House of Lords in Murphy v Brentwood District Council",
+   "from_year": "1991",
+   "to_slug": "anns-v-merton",
+   "type": "Overruled",
+   "signal": "negative"
+  },
+  {
+   "from_slug": null,
+   "from_name": "D&F Estates Ltd v Church Commissioners",
+   "from_year": "1989",
+   "to_slug": "anns-v-merton",
+   "type": "Distinguished",
+   "signal": "qualified"
+  },
+  {
+   "from_slug": null,
+   "from_name": "HXA v Surrey County Council",
+   "from_year": "2023",
+   "to_slug": "robinson-v-chief-constable",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "CN v Poole Borough Council",
+   "from_year": "2019",
+   "to_slug": "robinson-v-chief-constable",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Michael v Chief Constable",
+   "from_year": null,
+   "to_slug": "robinson-v-chief-constable",
+   "type": "Distinguished",
+   "signal": "qualified"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Ltd v Andrews",
+   "from_year": "2007",
+   "to_slug": "polkey-v-ae-dayton",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Supreme Court in Uber BV v Aslam",
+   "from_year": "2021",
+   "to_slug": "autoclenz-v-belcher",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Pimlico Plumbers Ltd v Smith",
+   "from_year": "2018",
+   "to_slug": "autoclenz-v-belcher",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Covacich v Riordan",
+   "from_year": "1994",
+   "to_slug": "macaura-v-northern-assurance",
+   "type": "Followed",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "prest-v-petrodel",
+   "from_name": "Prest v Petrodel Resources Ltd",
+   "from_year": "2013",
+   "to_slug": "macaura-v-northern-assurance",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "House of Lords in Foakes v Beer",
+   "from_year": null,
+   "to_slug": "pinnels-case",
+   "type": "Affirmed",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "central-london-property-trust-v-high-trees",
+   "from_name": "Central London Property Trust Ltd v High Trees House Ltd",
+   "from_year": "1947",
+   "to_slug": "pinnels-case",
+   "type": "Qualified",
+   "signal": "qualified"
+  },
+  {
+   "from_slug": null,
+   "from_name": "House of Lords in Dunlop Pneumatic Tyre Co Ltd v Selfridge",
+   "from_year": null,
+   "to_slug": "tweddle-v-atkinson",
+   "type": "Affirmed",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "beswick-v-beswick",
+   "from_name": "Beswick v Beswick",
+   "from_year": "1968",
+   "to_slug": "tweddle-v-atkinson",
+   "type": "Considered",
+   "signal": "context"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Ltd v McGregor",
+   "from_year": "1962",
+   "to_slug": "hochster-v-de-la-tour",
+   "type": "Good law",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Frost v Knight",
+   "from_year": null,
+   "to_slug": "hochster-v-de-la-tour",
+   "type": "Developed",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Vitol SA v Norelf Ltd",
+   "from_year": null,
+   "to_slug": "hochster-v-de-la-tour",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Farley v Skinner",
+   "from_year": "2001",
+   "to_slug": "ruxley-electronics-v-forsyth",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "In Cavendish Square Holding BV v Makdessi",
+   "from_year": null,
+   "to_slug": "dunlop-pneumatic-v-new-garage",
+   "type": "Good law (reformulated)",
+   "signal": "qualified"
+  },
+  {
+   "from_slug": "parkingeye-v-beavis",
+   "from_name": "ParkingEye Ltd v Beavis",
+   "from_year": "2015",
+   "to_slug": "dunlop-pneumatic-v-new-garage",
+   "type": "Good law (reformulated)",
+   "signal": "qualified"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Jeancharm Ltd v Barnet Football Club Ltd",
+   "from_year": "2003",
+   "to_slug": "dunlop-pneumatic-v-new-garage",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Cavendish Square Holding v Makdessi",
+   "from_year": "2015",
+   "to_slug": "dunlop-pneumatic-v-new-garage",
+   "type": "Distinguished",
+   "signal": "qualified"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Bellefield Computer Services Ltd v E Turner",
+   "from_year": null,
+   "to_slug": "murphy-v-brentwood",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Supreme Court in Ivey v Genting Casinos",
+   "from_year": null,
+   "to_slug": "r-v-ghosh",
+   "type": "Overruled",
+   "signal": "negative"
+  },
+  {
+   "from_slug": null,
+   "from_name": "R v Small",
+   "from_year": "1987",
+   "to_slug": "r-v-ghosh",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "In R v Barton",
+   "from_year": null,
+   "to_slug": "r-v-ghosh",
+   "type": "Considered",
+   "signal": "context"
+  },
+  {
+   "from_slug": "watson-v-bbbc",
+   "from_name": "Watson v Croft Promo-Sport Ltd",
+   "from_year": "2009",
+   "to_slug": "coventry-v-lawrence",
+   "type": "Good law",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Lawrence v Fen Tigers Ltd",
+   "from_year": null,
+   "to_slug": "coventry-v-lawrence",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Fearn v Board",
+   "from_year": null,
+   "to_slug": "coventry-v-lawrence",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Rainy Sky SA v Kookmin Bank",
+   "from_year": "2011",
+   "to_slug": "antaios-compania-v-salen",
+   "type": "Good law",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Arnold v Britton",
+   "from_year": "2015",
+   "to_slug": "antaios-compania-v-salen",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "investors-compensation-scheme-v-west-bromwich",
+   "from_name": "Investors Compensation Scheme Ltd v West Bromwich Building Society",
+   "from_year": "1998",
+   "to_slug": "antaios-compania-v-salen",
+   "type": "Developed",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "R v Brady",
+   "from_year": "2006",
+   "to_slug": "r-v-g-and-another",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "r-v-g-and-another-sexual-offences",
+   "from_name": "R v G",
+   "from_year": null,
+   "to_slug": "r-v-g-and-another",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "R v Parker",
+   "from_year": "1977",
+   "to_slug": "r-v-g-and-another",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "r-v-g-and-another-sexual-offences",
+   "from_name": "R v G",
+   "from_year": null,
+   "to_slug": "r-v-g-and-another",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "jones-v-kernott",
+   "from_name": "Jones v Kernott",
+   "from_year": null,
+   "to_slug": "jones-v-kernott",
+   "type": "Followed",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Barnes v Phillips",
+   "from_year": "2015",
+   "to_slug": "jones-v-kernott",
+   "type": "Followed",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Graham-York v York",
+   "from_year": "2015",
+   "to_slug": "jones-v-kernott",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "lloyds-bank-v-rosset",
+   "from_name": "Lloyds Bank v Rosset",
+   "from_year": "1991",
+   "to_slug": "jones-v-kernott",
+   "type": "Distinguished",
+   "signal": "qualified"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Khan v Meadows",
+   "from_year": "2021",
+   "to_slug": "manchester-building-society-v-grant-thornton",
+   "type": "Followed",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Freehold Commercial v BNP Paribas",
+   "from_year": "2023",
+   "to_slug": "manchester-building-society-v-grant-thornton",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "In DSND Subsea Ltd v Petroleum Geo-Services ASA",
+   "from_year": "2000",
+   "to_slug": "barton-v-armstrong",
+   "type": "Distinguished",
+   "signal": "qualified"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Pao On v Lau Yiu Long",
+   "from_year": "1980",
+   "to_slug": "barton-v-armstrong",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "barton-v-armstrong",
+   "from_name": "Barton v Armstrong",
+   "from_year": null,
+   "to_slug": "barton-v-armstrong",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Lennon v News Group Newspapers Ltd",
+   "from_year": "1978",
+   "to_slug": "woodward-v-hutchins",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "ECHR. In Campbell v MGN Ltd",
+   "from_year": "2004",
+   "to_slug": "woodward-v-hutchins",
+   "type": "Qualified",
+   "signal": "qualified"
+  },
+  {
+   "from_slug": null,
+   "from_name": "McKennitt v Ash",
+   "from_year": "2006",
+   "to_slug": "woodward-v-hutchins",
+   "type": "Distinguished",
+   "signal": "qualified"
+  },
+  {
+   "from_slug": "beswick-v-beswick",
+   "from_name": "Beswick v Beswick",
+   "from_year": "1968",
+   "to_slug": "dunlop-v-selfridge",
+   "type": "Followed",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Scruttons Ltd v Midland Silicones Ltd",
+   "from_year": "1962",
+   "to_slug": "dunlop-v-selfridge",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Dunlop v Selfridge",
+   "from_year": null,
+   "to_slug": "dunlop-v-selfridge",
+   "type": "Limited",
+   "signal": "qualified"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Manchester Diocesan Council for Education v Commercial",
+   "from_year": null,
+   "to_slug": "ramsgate-hotel-v-montefiore",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Financings Ltd v Stimson",
+   "from_year": "1962",
+   "to_slug": "ramsgate-hotel-v-montefiore",
+   "type": "Considered",
+   "signal": "context"
+  },
+  {
+   "from_slug": null,
+   "from_name": "House of Lords in Hughes v Lord Advocate",
+   "from_year": "1963",
+   "to_slug": "wagon-mound-no1",
+   "type": "Followed",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Doughty v Turner Manufacturing Co Ltd",
+   "from_year": "1964",
+   "to_slug": "wagon-mound-no1",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "latimer-v-aec",
+   "from_name": "Latimer v AEC Ltd",
+   "from_year": "1953",
+   "to_slug": "paris-v-stepney-bc",
+   "type": "Followed",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "baker-v-quantum-clothing",
+   "from_name": "Baker v Quantum Clothing Group Ltd",
+   "from_year": "2011",
+   "to_slug": "paris-v-stepney-bc",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Haley v London Electricity Board",
+   "from_year": "1965",
+   "to_slug": "paris-v-stepney-bc",
+   "type": "Considered",
+   "signal": "context"
+  },
+  {
+   "from_slug": "tomlinson-v-congleton",
+   "from_name": "Tomlinson v Congleton BC",
+   "from_year": "2003",
+   "to_slug": "latimer-v-aec",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Poppleton v Trustees",
+   "from_year": null,
+   "to_slug": "latimer-v-aec",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "tomlinson-v-congleton",
+   "from_name": "Tomlinson v Congleton BC",
+   "from_year": "2003",
+   "to_slug": "jolley-v-sutton-lbc",
+   "type": "Distinguished",
+   "signal": "qualified"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Poppleton v Trustees",
+   "from_year": null,
+   "to_slug": "jolley-v-sutton-lbc",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Mitchell v Glasgow City Council",
+   "from_year": "2009",
+   "to_slug": "smith-v-littlewoods",
+   "type": "Followed",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Stansbie v Troman",
+   "from_year": "1948",
+   "to_slug": "smith-v-littlewoods",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Home Office v Dorset Yacht Co Ltd",
+   "from_year": "1970",
+   "to_slug": "smith-v-littlewoods",
+   "type": "Considered",
+   "signal": "context"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Pemberton v Southwark LBC",
+   "from_year": "2000",
+   "to_slug": "hunter-v-canary-wharf",
+   "type": "Followed",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "The House of Lords in Lawrence v Fen Tigers Ltd",
+   "from_year": "2014",
+   "to_slug": "hunter-v-canary-wharf",
+   "type": "Qualified",
+   "signal": "qualified"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Devenport v Salford City Council",
+   "from_year": null,
+   "to_slug": "hunter-v-canary-wharf",
+   "type": "Distinguished",
+   "signal": "qualified"
+  },
+  {
+   "from_slug": "r-v-howe",
+   "from_name": "R v Howe",
+   "from_year": "1987",
+   "to_slug": "r-v-gotts",
+   "type": "Followed",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "House of Lords in R v Woollin",
+   "from_year": "1998",
+   "to_slug": "r-v-nedrick",
+   "type": "Reformulated",
+   "signal": "qualified"
+  },
+  {
+   "from_slug": null,
+   "from_name": "R v Matthews",
+   "from_year": null,
+   "to_slug": "r-v-nedrick",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "House of Lords in DPP v Newbury",
+   "from_year": null,
+   "to_slug": "r-v-church",
+   "type": "Followed",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "R v Dawson",
+   "from_year": null,
+   "to_slug": "r-v-church",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "R v Watson",
+   "from_year": "1989",
+   "to_slug": "r-v-church",
+   "type": "Considered",
+   "signal": "context"
+  },
+  {
+   "from_slug": null,
+   "from_name": "R v Whybrow",
+   "from_year": null,
+   "to_slug": "r-v-mohan",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "R v Khan",
+   "from_year": "1990",
+   "to_slug": "r-v-mohan",
+   "type": "Considered",
+   "signal": "context"
+  },
+  {
+   "from_slug": null,
+   "from_name": "R v Malcherek",
+   "from_year": null,
+   "to_slug": "r-v-smith-thomas-joseph",
+   "type": "Followed",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "R v Steel",
+   "from_year": "1981",
+   "to_slug": "r-v-smith-thomas-joseph",
+   "type": "Followed",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "r-v-cheshire",
+   "from_name": "R v Cheshire",
+   "from_year": "1991",
+   "to_slug": "r-v-smith-thomas-joseph",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "r-v-jordan",
+   "from_name": "R v Jordan",
+   "from_year": null,
+   "to_slug": "r-v-smith-thomas-joseph",
+   "type": "Distinguished",
+   "signal": "qualified"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Factortame Ltd v Secretary",
+   "from_year": null,
+   "to_slug": "factortame-no2",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Halsall v Brizell",
+   "from_year": "1957",
+   "to_slug": "tulk-v-moxhay",
+   "type": "Limited",
+   "signal": "qualified"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Rhone v Stephens",
+   "from_year": "1994",
+   "to_slug": "tulk-v-moxhay",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "tulk-v-moxhay",
+   "from_name": "Tulk v Moxhay",
+   "from_year": null,
+   "to_slug": "tulk-v-moxhay",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "stack-v-dowden",
+   "from_name": "Stack v Dowden",
+   "from_year": "2007",
+   "to_slug": "lloyds-bank-v-rosset",
+   "type": "Distinguished",
+   "signal": "qualified"
+  },
+  {
+   "from_slug": "jones-v-kernott",
+   "from_name": "Jones v Kernott",
+   "from_year": "2011",
+   "to_slug": "lloyds-bank-v-rosset",
+   "type": "Distinguished",
+   "signal": "qualified"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Jones v Lock",
+   "from_year": null,
+   "to_slug": "milroy-v-lord",
+   "type": "Followed",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "pennington-v-waine",
+   "from_name": "Pennington v Waine",
+   "from_year": "2002",
+   "to_slug": "milroy-v-lord",
+   "type": "Qualified",
+   "signal": "qualified"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Rowe v Prance",
+   "from_year": "1999",
+   "to_slug": "paul-v-constance",
+   "type": "Followed",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Goodman v Gallant",
+   "from_year": "1986",
+   "to_slug": "paul-v-constance",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "paul-v-constance",
+   "from_name": "Paul v Constance",
+   "from_year": null,
+   "to_slug": "paul-v-constance",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "paul-v-constance",
+   "from_name": "Paul v Constance's",
+   "from_year": null,
+   "to_slug": "paul-v-constance",
+   "type": "Considered",
+   "signal": "context"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Ltd v Newman Industries Ltd",
+   "from_year": "1949",
+   "to_slug": "hadley-v-baxendale",
+   "type": "Refined",
+   "signal": "qualified"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Czarnikow Ltd v Koufos",
+   "from_year": null,
+   "to_slug": "hadley-v-baxendale",
+   "type": "Refined",
+   "signal": "qualified"
+  },
+  {
+   "from_slug": null,
+   "from_name": "In Transfield Shipping Inc v Mercator Shipping Inc",
+   "from_year": null,
+   "to_slug": "hadley-v-baxendale",
+   "type": "Reformulated",
+   "signal": "qualified"
+  },
+  {
+   "from_slug": "hadley-v-baxendale",
+   "from_name": "Hadley v Baxendale",
+   "from_year": null,
+   "to_slug": "hadley-v-baxendale",
+   "type": "Reformulated",
+   "signal": "qualified"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Supershield Ltd v Siemens Building Technologies",
+   "from_year": "2010",
+   "to_slug": "hadley-v-baxendale",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Sylvia Shipping Co Ltd v Progress Bulk Carriers Ltd",
+   "from_year": "2010",
+   "to_slug": "hadley-v-baxendale",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "In Robinson v Chief Constable",
+   "from_year": null,
+   "to_slug": "caparo-v-dickman",
+   "type": "Reformulated",
+   "signal": "qualified"
+  },
+  {
+   "from_slug": null,
+   "from_name": "NHS Trust Development Authority v Foster",
+   "from_year": "2017",
+   "to_slug": "caparo-v-dickman",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "JCP Solicitors Ltd v Aslam",
+   "from_year": "2024",
+   "to_slug": "caparo-v-dickman",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Mitchell v Glasgow City Council",
+   "from_year": "2009",
+   "to_slug": "caparo-v-dickman",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Co Ltd v Heller",
+   "from_year": null,
+   "to_slug": "caparo-v-dickman",
+   "type": "Limited",
+   "signal": "qualified"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Lord Goff in Henderson v Merrett Syndicates",
+   "from_year": "1994",
+   "to_slug": "caparo-v-dickman",
+   "type": "Limited",
+   "signal": "qualified"
+  },
+  {
+   "from_slug": null,
+   "from_name": "In R v Misra",
+   "from_year": null,
+   "to_slug": "r-v-adomako",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "In R v Rudling",
+   "from_year": "2016",
+   "to_slug": "r-v-adomako",
+   "type": "Refined",
+   "signal": "qualified"
+  },
+  {
+   "from_slug": null,
+   "from_name": "R v Sellu",
+   "from_year": "2016",
+   "to_slug": "r-v-adomako",
+   "type": "Refined",
+   "signal": "qualified"
+  },
+  {
+   "from_slug": null,
+   "from_name": "In R v Broughton",
+   "from_year": "2020",
+   "to_slug": "r-v-adomako",
+   "type": "Considered",
+   "signal": "context"
+  },
+  {
+   "from_slug": "pepper-v-hart",
+   "from_name": "Pepper v Hart",
+   "from_year": null,
+   "to_slug": "pepper-v-hart",
+   "type": "Followed",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "In Wilson v Secretary",
+   "from_year": null,
+   "to_slug": "pepper-v-hart",
+   "type": "Qualified",
+   "signal": "qualified"
+  },
+  {
+   "from_slug": "pepper-v-hart",
+   "from_name": "Pepper v Hart",
+   "from_year": null,
+   "to_slug": "pepper-v-hart",
+   "type": "Qualified",
+   "signal": "qualified"
+  },
+  {
+   "from_slug": null,
+   "from_name": "R v Secretary",
+   "from_year": null,
+   "to_slug": "pepper-v-hart",
+   "type": "Restricted",
+   "signal": "qualified"
+  },
+  {
+   "from_slug": "pepper-v-hart",
+   "from_name": "Pepper v Hart",
+   "from_year": null,
+   "to_slug": "pepper-v-hart",
+   "type": "Restricted",
+   "signal": "qualified"
+  },
+  {
+   "from_slug": null,
+   "from_name": "In Robinson v Secretary",
+   "from_year": null,
+   "to_slug": "pepper-v-hart",
+   "type": "Considered",
+   "signal": "context"
+  },
+  {
+   "from_slug": "pepper-v-hart",
+   "from_name": "Pepper v Hart",
+   "from_year": null,
+   "to_slug": "pepper-v-hart",
+   "type": "Considered",
+   "signal": "context"
+  },
+  {
+   "from_slug": null,
+   "from_name": "R v Secretary",
+   "from_year": null,
+   "to_slug": "padfield-v-minister",
+   "type": "Extended",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Lord Diplock in O'Reilly v Mackman",
+   "from_year": "1983",
+   "to_slug": "anisminic-v-foreign-compensation-commission",
+   "type": "Confirmed",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Bowerman v Association",
+   "from_year": null,
+   "to_slug": "carlill-v-carbolic-smoke-ball",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "partridge-v-crittenden",
+   "from_name": "Partridge v Crittenden",
+   "from_year": "1968",
+   "to_slug": "carlill-v-carbolic-smoke-ball",
+   "type": "Distinguished",
+   "signal": "qualified"
+  },
+  {
+   "from_slug": "caparo-v-dickman",
+   "from_name": "Caparo Industries v Dickman",
+   "from_year": "1990",
+   "to_slug": "donoghue-v-stevenson",
+   "type": "Developed",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "murphy-v-brentwood",
+   "from_name": "Murphy v Brentwood DC",
+   "from_year": "1991",
+   "to_slug": "donoghue-v-stevenson",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "R v Matthews",
+   "from_year": null,
+   "to_slug": "r-v-woollin",
+   "type": "Discussed",
+   "signal": "context"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Jones v Lipman",
+   "from_year": "1962",
+   "to_slug": "salomon-v-salomon",
+   "type": "Distinguished",
+   "signal": "qualified"
+  },
+  {
+   "from_slug": "prest-v-petrodel",
+   "from_name": "Prest v Petrodel Resources",
+   "from_year": "2013",
+   "to_slug": "salomon-v-salomon",
+   "type": "Distinguished",
+   "signal": "qualified"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Co v McLean",
+   "from_year": null,
+   "to_slug": "hyde-v-wrench",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Merritt v Merritt",
+   "from_year": "1970",
+   "to_slug": "balfour-v-balfour",
+   "type": "Distinguished",
+   "signal": "qualified"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Williams v Roffey",
+   "from_year": null,
+   "to_slug": "williams-v-roffey",
+   "type": "Discussed",
+   "signal": "context"
+  },
+  {
+   "from_slug": "stilk-v-myrick",
+   "from_name": "Stilk v Myrick",
+   "from_year": null,
+   "to_slug": "williams-v-roffey",
+   "type": "Discussed",
+   "signal": "context"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Williams v Roffey Bros",
+   "from_year": "1991",
+   "to_slug": "stilk-v-myrick",
+   "type": "Modified",
+   "signal": "qualified"
+  },
+  {
+   "from_slug": "stilk-v-myrick",
+   "from_name": "Stilk v Myrick",
+   "from_year": null,
+   "to_slug": "stilk-v-myrick",
+   "type": "Modified",
+   "signal": "qualified"
+  },
+  {
+   "from_slug": "cambridge-water-v-eastern-counties",
+   "from_name": "Cambridge Water Co v Eastern Counties Leather",
+   "from_year": "1994",
+   "to_slug": "rylands-v-fletcher",
+   "type": "Restricted",
+   "signal": "qualified"
+  },
+  {
+   "from_slug": "rylands-v-fletcher",
+   "from_name": "Rylands v Fletcher",
+   "from_year": null,
+   "to_slug": "cambridge-water-v-eastern-counties",
+   "type": "Followed",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "rylands-v-fletcher",
+   "from_name": "Rylands v Fletcher",
+   "from_year": null,
+   "to_slug": "cambridge-water-v-eastern-counties",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "r-v-caldwell",
+   "from_name": "R v Caldwell",
+   "from_year": "1982",
+   "to_slug": "r-v-cunningham",
+   "type": "Distinguished",
+   "signal": "qualified"
+  },
+  {
+   "from_slug": "r-v-g-and-another-sexual-offences",
+   "from_name": "R v G",
+   "from_year": "2003",
+   "to_slug": "r-v-cunningham",
+   "type": "Distinguished",
+   "signal": "qualified"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Jaggard and Brown v UK",
+   "from_year": "1997",
+   "to_slug": "r-v-brown",
+   "type": "Challenged",
+   "signal": "negative"
+  },
+  {
+   "from_slug": "r-v-woollin",
+   "from_name": "R v Woollin",
+   "from_year": "1999",
+   "to_slug": "dpp-v-smith",
+   "type": "Superseded",
+   "signal": "negative"
+  },
+  {
+   "from_slug": null,
+   "from_name": "In Council of Civil Service Unions v Minister",
+   "from_year": null,
+   "to_slug": "associated-provincial-picture-houses-v-wednesbury",
+   "type": "Developed",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "boardman-v-phipps",
+   "from_name": "Boardman v Phipps",
+   "from_year": "1967",
+   "to_slug": "keech-v-sandford",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "jones-v-kernott",
+   "from_name": "Jones v Kernott",
+   "from_year": "2011",
+   "to_slug": "stack-v-dowden",
+   "type": "Followed",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "malik-v-bcci",
+   "from_name": "Malik v BCCI",
+   "from_year": "1998",
+   "to_slug": "western-excavating-v-sharp",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "iceland-frozen-foods-v-jones",
+   "from_name": "Iceland Frozen Foods v Jones",
+   "from_year": "1983",
+   "to_slug": "british-home-stores-v-burchell",
+   "type": "Developed",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "miller-v-miller-mcfarlane",
+   "from_name": "Miller v Miller",
+   "from_year": null,
+   "to_slug": "white-v-white",
+   "type": "Followed",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "McFarlane v McFarlane",
+   "from_year": "2006",
+   "to_slug": "white-v-white",
+   "type": "Followed",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "AG Securities v Vaughan",
+   "from_year": "1990",
+   "to_slug": "street-v-mountford",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Antoniades v Villiers",
+   "from_year": "1990",
+   "to_slug": "street-v-mountford",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "bolitho-v-city-and-hackney",
+   "from_name": "Bolitho v City",
+   "from_year": null,
+   "to_slug": "bolam-v-friern-hospital",
+   "type": "Followed",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "montgomery-v-lanarkshire",
+   "from_name": "Montgomery v Lanarkshire",
+   "from_year": "2015",
+   "to_slug": "bolam-v-friern-hospital",
+   "type": "Overruled (in part)",
+   "signal": "negative"
+  },
+  {
+   "from_slug": null,
+   "from_name": "The Supreme Court in Prest v Petrodel Resources",
+   "from_year": "2013",
+   "to_slug": "adams-v-cape-industries",
+   "type": "Developed",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "caparo-v-dickman",
+   "from_name": "Caparo v Dickman",
+   "from_year": "1990",
+   "to_slug": "hedley-byrne-v-heller",
+   "type": "Good law",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "henderson-v-merrett",
+   "from_name": "Henderson v Merrett Syndicates",
+   "from_year": "1995",
+   "to_slug": "hedley-byrne-v-heller",
+   "type": "Good law",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Barker v Corus",
+   "from_year": null,
+   "to_slug": "fairchild-v-glenhaven",
+   "type": "Followed",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "r-v-ghosh",
+   "from_name": "R v Ghosh",
+   "from_year": "1982",
+   "to_slug": "ivey-v-genting-casinos",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "central-london-property-trust-v-high-trees",
+   "from_name": "Central London Property Trust v High Trees House",
+   "from_year": "1947",
+   "to_slug": "foakes-v-beer",
+   "type": "Qualified",
+   "signal": "qualified"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Various Claimants v Catholic Child Welfare Society",
+   "from_year": "2012",
+   "to_slug": "lister-v-hesley-hall",
+   "type": "Followed",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Cox v Ministry",
+   "from_year": null,
+   "to_slug": "lister-v-hesley-hall",
+   "type": "Followed",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Murray v Express Newspapers",
+   "from_year": "2008",
+   "to_slug": "campbell-v-mgn",
+   "type": "Followed",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Google v Vidal-Hall",
+   "from_year": "2015",
+   "to_slug": "campbell-v-mgn",
+   "type": "Followed",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "fairchild-v-glenhaven",
+   "from_name": "Fairchild v Glenhaven",
+   "from_year": null,
+   "to_slug": "wilsher-v-essex-aha",
+   "type": "Good law",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "r-v-gotts",
+   "from_name": "R v Gotts",
+   "from_year": "1992",
+   "to_slug": "r-v-howe",
+   "type": "Good law",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Cavendish Square Holding v Makdessi. The",
+   "from_year": null,
+   "to_slug": "parkingeye-v-beavis",
+   "type": "Good law",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Dunlop v New Garage",
+   "from_year": null,
+   "to_slug": "parkingeye-v-beavis",
+   "type": "Good law",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "krell-v-henry",
+   "from_name": "Krell v Henry",
+   "from_year": "1903",
+   "to_slug": "herne-bay-v-hutton",
+   "type": "Distinguished",
+   "signal": "qualified"
+  },
+  {
+   "from_slug": "fisher-v-bell",
+   "from_name": "Fisher v Bell",
+   "from_year": "1961",
+   "to_slug": "pharmaceutical-society-v-boots",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Brinkibon Ltd v Stahag Stahl",
+   "from_year": "1983",
+   "to_slug": "entores-v-miles-far-east",
+   "type": "Good law",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Key v Key",
+   "from_year": "2010",
+   "to_slug": "banks-v-goodfellow",
+   "type": "Good law",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Burgess v Hawes",
+   "from_year": "2013",
+   "to_slug": "banks-v-goodfellow",
+   "type": "Good law",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Walker v Badmin",
+   "from_year": "2015",
+   "to_slug": "banks-v-goodfellow",
+   "type": "Good law",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Kay v Lambeth LBC",
+   "from_year": "2006",
+   "to_slug": "bruton-v-london-quadrant",
+   "type": "Discussed",
+   "signal": "context"
+  },
+  {
+   "from_slug": "pharmaceutical-society-v-boots",
+   "from_name": "Pharmaceutical Society v Boots",
+   "from_year": "1953",
+   "to_slug": "fisher-v-bell",
+   "type": "Followed",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "R v Konzani",
+   "from_year": "2005",
+   "to_slug": "r-v-dica",
+   "type": "Followed",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Dawkins v Department",
+   "from_year": null,
+   "to_slug": "mandla-v-dowell-lee",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "In Experience Hendrix LLC v PPX Enterprises",
+   "from_year": "2003",
+   "to_slug": "attorney-general-v-blake",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "hadley-v-baxendale",
+   "from_name": "Hadley v Baxendale",
+   "from_year": null,
+   "to_slug": "the-achilleas",
+   "type": "Good law",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "malone-v-met-police",
+   "from_name": "Malone v UK",
+   "from_year": null,
+   "to_slug": "malone-v-met-police",
+   "type": "Historic importance",
+   "signal": "historic"
+  },
+  {
+   "from_slug": null,
+   "from_name": "McInnes v Onslow-Fane",
+   "from_year": "1978",
+   "to_slug": "ridge-v-baldwin",
+   "type": "Extended",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "gchq-case",
+   "from_name": "Council of Civil Service Unions v Minister",
+   "from_year": null,
+   "to_slug": "ridge-v-baldwin",
+   "type": "Extended",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "R v Home Secretary",
+   "from_year": null,
+   "to_slug": "ridge-v-baldwin",
+   "type": "Extended",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Tool Metal Manufacturing v Tungsten Electric",
+   "from_year": "1955",
+   "to_slug": "central-london-property-trust-v-high-trees",
+   "type": "Followed",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "C Builders v Rees",
+   "from_year": "1966",
+   "to_slug": "central-london-property-trust-v-high-trees",
+   "type": "Followed",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "combe-v-combe",
+   "from_name": "Combe v Combe",
+   "from_year": "1951",
+   "to_slug": "central-london-property-trust-v-high-trees",
+   "type": "Limited",
+   "signal": "qualified"
+  },
+  {
+   "from_slug": "hadley-v-baxendale",
+   "from_name": "Hadley v Baxendale",
+   "from_year": null,
+   "to_slug": "victoria-laundry-v-newman",
+   "type": "Good law",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "the-achilleas",
+   "from_name": "Transfield Shipping v Mercator Shipping",
+   "from_year": "2008",
+   "to_slug": "victoria-laundry-v-newman",
+   "type": "Good law",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Prudential Assurance v HMRC",
+   "from_year": null,
+   "to_slug": "sempra-metals-v-irc",
+   "type": "Good law",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "rylands-v-fletcher",
+   "from_name": "Rylands v Fletcher",
+   "from_year": null,
+   "to_slug": "transco-v-stockport-mbc",
+   "type": "Good law",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "BCCI v Akindele",
+   "from_year": null,
+   "to_slug": "belmont-finance-v-williams",
+   "type": "Good law",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Hounslow LBC v Powell",
+   "from_year": "2011",
+   "to_slug": "pinnock-v-manchester",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Martin v South Bank University",
+   "from_year": null,
+   "to_slug": "beckmann-v-dynamco-whicheloe",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "ibm-v-dalgleish",
+   "from_name": "IBM United Kingdom Ltd v Dalgleish",
+   "from_year": "2017",
+   "to_slug": "independent-trustee-services-v-hope",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Smith v MOD",
+   "from_year": "2013",
+   "to_slug": "r-smith-v-secretary-of-state-defence",
+   "type": "Developed",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "dingle-v-turner",
+   "from_name": "Dingle v Turner",
+   "from_year": null,
+   "to_slug": "oppenheim-v-tobacco",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Supreme Court in MM v Secretary",
+   "from_year": null,
+   "to_slug": "winterwerp-v-netherlands",
+   "type": "Applied",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "hl-v-united-kingdom",
+   "from_name": "HL v United Kingdom",
+   "from_year": null,
+   "to_slug": "r-v-bournewood",
+   "type": "Reversed",
+   "signal": "negative"
+  },
+  {
+   "from_slug": "rabone-v-pennine-care",
+   "from_name": "Rabone v Pennine Care",
+   "from_year": "2012",
+   "to_slug": "savage-v-south-essex",
+   "type": "Followed",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "lee-v-ashers",
+   "from_name": "Lee v Ashers Baking Company",
+   "from_year": "2018",
+   "to_slug": "preddy-v-bull",
+   "type": "Followed",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": null,
+   "from_name": "Austin v Commissioner",
+   "from_year": null,
+   "to_slug": "r-laporte-v-chief-constable-gloucestershire",
+   "type": "Followed",
+   "signal": "good-law"
+  },
+  {
+   "from_slug": "murphy-v-brentwood",
+   "from_name": "Murphy v Brentwood",
+   "from_year": null,
+   "to_slug": "batty-v-metropolitan-properties",
+   "type": "Applied",
+   "signal": "good-law"
+  }
+ ],
+ "stats": {
+  "nodes": 449,
+  "edges": 300,
+  "resolved_edges": 105,
+  "unresolved_names": 187,
+  "signals": {
+   "qualified": 10,
+   "historic": 3,
+   "negative": 7,
+   "superseded": 3,
+   "context": 5,
+   "good-law": 421
+  }
+ }
+}

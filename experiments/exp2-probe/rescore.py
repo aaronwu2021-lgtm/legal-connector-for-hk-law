@@ -3,11 +3,12 @@
 
 The original answer keys were derived from misrepresentation-elements-family
 v0.2, whose authorities were at verification level `web`. Reading the judgments
-for the v0.3 upgrade showed that three keys were wrong or overstated, and that
-the connector condition had been marked "correct" on all three for agreeing
-with the library. This pass re-judges ONLY those three items, against the
-corrected law, with the pin cites that ground each correction. Every other
-verdict is carried over unchanged from probe_judged/.
+for the v0.3 upgrade showed that two keys were wrong and a third overstated,
+and that the connector condition had been marked "correct" on the two wrong
+ones for agreeing with the library. This pass re-judges ONLY those two items,
+against the corrected law, with the pin cites that ground each correction,
+and annotates the overstated third (HK-03) without changing its verdicts.
+Every other verdict is carried over unchanged from probe_judged/.
 
 It writes probe_results_rescored.json alongside the original, which is left
 untouched. Run it and quote the output; do not edit the numbers by hand.

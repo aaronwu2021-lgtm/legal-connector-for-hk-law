@@ -8,7 +8,11 @@ Item classes:
   SG   Singapore divergence from the English line
   CTRL control — the connector holds NO authority here; it must not induce confidence
 """
+import argparse
 import json
+from pathlib import Path
+
+HERE = Path(__file__).resolve().parent
 
 P=[]
 def item(i,cls,q,key,traps,src,covered=True):
@@ -128,15 +132,26 @@ item('CTRL-04','CTRL',
  "Supplying numerical weights as if they came from a case.",
  "v0.2 scored module HKJUR — weights labelled editorial-prior", covered=False)
 
-json.dump({'version':'probe-v1','generated':'2026-08-26',
- 'note':'Answer keys derive from misrepresentation-elements-family v0.2, whose authorities were web-verified before this probe was designed. All authorities carry verification level "web" (not paragraph pin-cited).',
- 'items':P}, open('probe.json','w'), ensure_ascii=False, indent=1)
 
-import collections
-c=collections.Counter(x['class'] for x in P)
-print('probe items:',len(P),dict(c))
-print('connector-covered:',sum(1 for x in P if x['connector_covers']),'| control (uncovered):',sum(1 for x in P if not x['connector_covers']))
-# questions-only file for the answering agents
-json.dump({'items':[{'id':x['id'],'question':x['question']} for x in P]},
-          open('probe_questions.json','w'), ensure_ascii=False, indent=1)
-print('wrote probe.json + probe_questions.json')
+def main(argv=None):
+    parser = argparse.ArgumentParser(description='Build the Experiment 2 probe files in the current directory.')
+    parser.parse_args(argv)
+    with (HERE / 'probe.json').open('w', encoding='utf-8', newline='\n') as f:
+        json.dump({'version':'probe-v1','generated':'2026-08-26',
+         'note':'Answer keys derive from misrepresentation-elements-family v0.2, whose authorities were web-verified before this probe was designed. All authorities carry verification level "web" (not paragraph pin-cited).',
+         'items':P}, f, ensure_ascii=False, indent=1)
+
+    import collections
+    c=collections.Counter(x['class'] for x in P)
+    print('probe items:',len(P),dict(c))
+    print('connector-covered:',sum(1 for x in P if x['connector_covers']),'| control (uncovered):',sum(1 for x in P if not x['connector_covers']))
+    # questions-only file for the answering agents
+    with (HERE / 'probe_questions.json').open('w', encoding='utf-8', newline='\n') as f:
+        json.dump({'items':[{'id':x['id'],'question':x['question']} for x in P]},
+                  f, ensure_ascii=False, indent=1)
+    print('wrote probe.json + probe_questions.json')
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

@@ -3,5 +3,8 @@
   "version": "0.3.0",
   "private": true,
   "type": "module",
-  "description": "English-common-law element tests with per-jurisdiction overlays, case-law drift timelines, and a Hong Kong land law corpus, served over REST + MCP."
+  "description": "English-common-law element tests with per-jurisdiction overlays, case-law drift timelines, and a Hong Kong land law corpus, served over REST + MCP.",
+  "scripts": {
+    "test": "node --test \"test/**/*.test.mjs\""
+  }
 }

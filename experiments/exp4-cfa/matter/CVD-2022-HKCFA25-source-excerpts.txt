@@ -1,0 +1,12 @@
+SOURCE-CHECK EXTRACTS — not a complete determination.
+Official source: https://www.hklii.hk/api/getjudgment?lang=en&abbr=hkcfa&year=2022&num=25
+Read: 2026-09-06.
+
+CASE NAME: C v D [2022] HKCFA 25
+Court: Court of Final Appeal Appeal Committee.
+Decision date: 2022-12-12.
+Source type: determination granting leave to appeal.
+
+[1]-[2]: the Appeal Committee identified the reviewability question and did "grant leave to appeal confined thereto".
+
+The external reader must follow the official link and read the full determination in context.

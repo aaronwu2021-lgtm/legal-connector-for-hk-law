@@ -2,9 +2,10 @@
 """Assign a doctrinal weight TIER to every balancing factor.
 Tiers come from how courts speak about relative importance, not from arithmetic.
 Each tier maps to a percentage BAND, never a point estimate."""
+import argparse
 import json
 
-from _paths import emit, load
+from _paths import load, publish, serialize
 
 TIERS = {
  "decisive":    {"lo":None,"hi":None,"zh":"决定性","en":"Dispositive","note":"不是权重——单独成立即定案"},
@@ -67,17 +68,34 @@ NOTES = {
 def band(tier):
     t=TIERS[tier]; return t["lo"], t["hi"]
 
-def apply(key):
+def prepare(key):
     d=load(key)
     mods = d["modules"]
-    n=0; miss=[]
+    errors = []
+    def check_regression(o, path):
+        if isinstance(o, dict):
+            if o.get("weight_source") == "regression":
+                errors.append(path + ": regression weights cannot be replaced by doctrinal tiers")
+            for k, v in o.items():
+                check_regression(v, path + "." + k)
+        elif isinstance(o, list):
+            for i, v in enumerate(o):
+                check_regression(v, path + "[%d]" % i)
+    check_regression(d, key)
+    for m in mods:
+        for st in m["stages"]:
+            if st.get("test_type") != "balancing": continue
+            for f in st.get("factors", []) + st.get("counter_factors", []):
+                if T.get(f["id"]) not in TIERS:
+                    errors.append("%s/%s/%s/%s: missing tier" % (key, m["id"], st["id"], f["id"]))
+    if errors:
+        raise ValueError("Tier validation failed:\n" + "\n".join(errors))
+    n=0
     for m in mods:
         for st in m["stages"]:
             if st.get("test_type")!="balancing": continue
             for f in st.get("factors",[])+st.get("counter_factors",[]):
                 tier = T.get(f["id"])
-                if not tier:
-                    miss.append(f["id"]); continue
                 lo,hi = band(tier)
                 neg = (f.get("weight") or 0) < 0 or f in st.get("counter_factors",[])
                 f["tier"]=tier
@@ -91,10 +109,22 @@ def apply(key):
             st["weight_source"]="doctrinal-tier"
             st["weight_note"]="档位由判词对相对份量的表述归纳,区间非点估计;经验权重须由判决结果回归得出。"
     d["tiers"]=TIERS
-    emit(key, d, indent=1)
-    return n, miss
+    return d, n
 
-a,ma = apply('scored')
-b,mb = apply('registry')
-print(f"tiered factors: scored={a} registry={b} total={a+b}")
-if ma+mb: print("NO TIER (check):", sorted(set(ma+mb)))
+
+def main(argv=None):
+    parser = argparse.ArgumentParser(description='Apply the configured doctrinal weight tiers.')
+    parser.parse_args(argv)
+    # Validate and serialize both datasets before publishing either one.
+    scored, a = prepare('scored')
+    registry, b = prepare('registry')
+    outputs = [('scored', serialize(scored, indent=1)),
+               ('registry', serialize(registry, indent=1))]
+    for key, representations in outputs:
+        publish(key, representations)
+    print(f"tiered factors: scored={a} registry={b} total={a+b}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

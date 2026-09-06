@@ -1,94 +1,150 @@
-# Experiment 3 — Hong Kong matter-file eval set
+# Experiment 3 — Hong Kong matter-file evaluation
 
-**Status: UNRUN.** This is a task set with answer keys. No model has been scored
-against it and no result is claimed here. It exists because the paper's closing
-paragraph says this is the thing that is missing.
+This folder contains five synthetic matter tasks and 31 criteria. The current
+maintenance work has not run a new model experiment or produced validated new
+results. Answer keys still require independent source and proposition review.
 
-## Why the existing benchmark cannot test the claim
+The intended comparison concerns Hong Kong matter handling and the effect of a
+historical cutoff. The two dates applied to the same matter are a paired design
+feature, not independent experiments. The stored task definitions are the
+review targets; their inclusion here does not certify the legal answer keys.
 
-Experiment 1 used a public long-horizon legal agent benchmark and produced a
-null result. The reason is visible in the design, not the numbers: its matter
-files are US and English, and its rubric criteria are about structure, numeric
-accuracy, record citation and fact analysis. A criterion of the form "states the
-correct measure of damages" is passed by a model that answers with the English
-rule. Nothing in that benchmark can distinguish a model that knows Hong Kong law
-from a model that knows English law and is answering a Hong Kong question.
+| Task | Cutoff | Criteria |
+|---|---:|---:|
+| HKM-01 | 2026-09-06 | 7 |
+| HKM-02 | 2026-09-06 | 7 |
+| HKM-03 | 2015-12-01 | 6 |
+| HKM-04 | 2026-09-06 | 6 |
+| HKM-05 | 2026-09-06 | 5 |
 
-That is exactly the distinction this connector exists to serve, so it needed a
-set that tests it.
+`tasks.json`, `matter/` and `reader_checklist.md` are generated artifacts.
+`build_tasks.py`, `validate_tasks.py` and `build_reader_checklist.py` retain the
+source definitions and review tooling. Execute normal builds only in an
+isolated review copy; do not overwrite the historical task/checklist artifacts
+while assessing compatibility. A catalogue match or existing verification label
+is not independent confirmation of a rubric proposition.
 
-## What is here
+Held-out tasks require `CONNECTOR_INCLUDE_HELDOUT=1` to be selected. Selection,
+variant and exact task contents are frozen in the run manifest. For a deliberately
+chosen alternate task file/matter directory, `EXP_TASKS` and `EXP_MATTER_DIR`
+must be set before building and remain consistent for that run.
 
-| File | Contents |
-|---|---|
-| `build_tasks.py` | The task definitions and the synthetic matter files. Run it to regenerate `tasks.json` and `matter/`. |
-| `validate_tasks.py` | Checks the rubrics against `data/elements.json`. Exits non-zero on an ungrounded, anachronistic or non-discriminating criterion. |
-| `build_reader_checklist.py` | Joins `tasks.json` against `data/elements.json` and regenerates `reader_checklist.md`. |
-| `reader_checklist.md` | The independent-reader queue: P0 items block any run. Build output — edit the builder, not this. |
-| `tasks.json` | 5 tasks, 31 criteria, 6 drift-sensitive. Build output — edit the builder, not this. |
-| `matter/` | 13 synthetic matter files. Build output. |
+## Bound exploratory workflow
 
-```bash
-python build_tasks.py && python validate_tasks.py
+Run these commands from this experiment directory. Use a new output directory;
+old `runs/` files without a manifest are retained as legacy artifacts and are
+refused by the new tools. Do not edit old hashes or attach new metadata to old
+answers to make them look current.
+
+The examples use PowerShell. Set the generator ID and family before building;
+they must still match when running or blinding. Commands are never stored.
+IDs/families are operator declarations, not authenticated provider identities;
+unknown model parameters and token counts remain explicitly unrecorded.
+
+```powershell
+$env:EXP3_RUNS_DIR = 'runs_review_01'
+$env:MODEL_ID = '<actual generator and snapshot>'
+$env:MODEL_FAMILY = '<actual generator family>'
+python run.py build
 ```
 
-## The five tasks
+`build` uses the local API (default `http://localhost:8899/api`, configurable
+with `CONNECTOR_API`) and the task's `payload` specification. It freezes the
+task snapshot, prompts, local source hashes and captured strict API responses.
+It makes no model call. Integer `as_of` years mean December 31; exact ISO dates
+are preserved in both the prompt and API request. Unversioned historical rule
+text is withheld and gaps remain visible. The resulting intervention therefore
+differs from the legacy prompt bundles and must not be mixed with them.
 
-| ID | as_of | Criteria | What it tests |
-|---|---|---|---|
-| HKM-01 | 2026 | 7 | Damages measure under Cap. 284 s.3(1): the deceit measure, unforeseeable loss recoverable, tortious counterfactual |
-| HKM-02 | 2026 | 7 | Non-reliance clauses: the Cap. 284 s.4 → Cap. 71 route, Chang Pui Yin, the limits of contractual estoppel |
-| HKM-03 | **2015** | 6 | The same matter file as HKM-02, answered as at 1 December 2015 |
-| HKM-04 | 2026 | 6 | Inducement: inference of fact not law, where the burden lies, belief not required |
-| HKM-05 | 2026 | 5 | Which authorities bind a Hong Kong CFI, and why |
+After choosing and authorizing an actual model command:
 
-Grading is all-pass per task, matching the benchmark this set is modelled on.
+```powershell
+$env:MODEL_CMD = '<command reading a prompt on stdin and writing an answer>'
+python run.py run
+python run.py blind
+python judge.py --runs runs_review_01 --dry
+```
 
-## Three design commitments
+`run` reuses an answer only when the prompt, task, model declaration and answer
+metadata all agree. `blind` verifies the complete answer set and preserves an
+existing valid label order. The private `blind_key.json` contains conditions;
+`blind_manifest.json` does not. The judge loads only the latter, the frozen task
+snapshot and the blinded answers, then its own bound review artifacts.
 
-**Every criterion is grounded in a pin-cited record, and this is checked.**
-A criterion resting on a `verified-web` characterisation would test the
-compiler's guesses rather than the law, so `validate_tasks.py` resolves each
-criterion's authority against `data/elements.json` and fails the build if it
-does not exist or post-dates the task's `as_of`. 29 of 31 criteria meet the
-pin-cite bar; the two that do not (HKM-02-b, HKM-03-b, both on the DBS
-first-instance contractual-estoppel line, still at `verified-web` with no pin)
-are reported by the validator on every run rather than hidden. HKM-01-d names
-Royscot, also `verified-web`, but the proposition it tests is carried by Long
-Year Development at its quoted pin, so no criterion tests a web-only
-characterisation alone.
+```powershell
+$env:JUDGE_ID_A = '<actual judge A and snapshot>'
+$env:JUDGE_FAMILY_A = '<judge A family>'
+$env:JUDGE_CMD_A = '<judge A command>'
+$env:JUDGE_ID_B = '<actual judge B and snapshot>'
+$env:JUDGE_FAMILY_B = '<judge B family>'
+$env:JUDGE_CMD_B = '<judge B command>'
+python judge.py --runs runs_review_01
+python score.py --runs runs_review_01 --json
+python eval_card.py --runs runs_review_01 --output runs_review_01/eval_card_review_01.json
+```
 
-Writing the validator was not ceremony. It caught a criterion on the damages
-measure that had silently been grounded on *Long v Lloyd*, a rescission case,
-rather than *Long Year Development* — a matching bug in the first draft that no
-amount of reading the rubric would have surfaced.
+The two judge families must differ from each other and from the generator's
+family. A single exploratory judge is supported with `JUDGE_CMD`, `JUDGE_ID`
+and `JUDGE_FAMILY`; it supplies no independent dual-judge assurance. Every
+verdict binds the exact answer, criterion, rubric, blind snapshot, judge prompt
+and execution-time model declarations. Changing any of these cannot silently
+reuse a file just because its label still exists.
 
-**Every criterion names the wrong answer it discriminates against.** A rubric
-line that a model passes by writing competent general misrepresentation prose
-measures nothing. Each criterion carries `discriminates_against` naming the
-specific English default a good English lawyer would reach for: MA 1967 s.2(1)
-for Cap. 284 s.3(1), UCTA s.11(1) for CECO s.3(1), First Tower Trustees for
-Chang Pui Yin.
+## Reporting boundary
 
-**The as_of pair is the point.** HKM-02 and HKM-03 put the same matter file
-twice, three years either side of *Chang Pui Yin*. A model that has memorised
-current Hong Kong law passes HKM-02 and fails HKM-03, because HKM-03 requires
-knowing that the counter-limit for unsophisticated customers was not available
-in 2015. This is the only construction in the set that tests time-indexing
-rather than recall, and it is the claim the connector's `as_of` queries make.
+`score.py` reports paired descriptive counts and per-task/variant results.
+`SPLIT`, `UNPARSEABLE`, process `ERROR`, and entirely missing verdicts are
+separate unresolved states. They do not become `FAIL`. An existing verdict
+missing a criterion, a duplicate identity, or a changed hash is rejected.
+A complete descriptive report can exit successfully while
+`formal_readiness` remains `false`; an incomplete score returns nonzero.
 
-## Limits, before anyone runs it
+Criteria within one matter and repeated as-of variants are related observations.
+No criterion-level significance test, confidence interval treating criteria as
+independent samples, posterior comparison, or automatic calibration adjustment
+is emitted. Task-all-pass counts are descriptive too. Independent answer-key
+review, bound human calibration and approval of a formal analysis protocol
+remain separate outstanding requirements.
 
-- **Five tasks is small**, and the criteria were written by the same author as
-  the connector they test. That is the same conflict the paper already
-  acknowledges for Experiments 1 and 2, and it is not cured by this set.
-- **The rubrics inherit the library's coverage.** They test the parts of Hong
-  Kong misrepresentation law that have been read; they say nothing about the
-  parts that have not.
-- **No result may be reported from this file alone.** The protocol now exists
-  (`run.py` → `judge.py` → `score.py`, see the README at the repository root)
-  but has not been run; the rubric in `tasks.json` is the pre-registered key.
-- **The matter files are synthetic** and marked as such in an HTML comment at
-  the head of each. Parties, sums and dates are invented. They are drafted to be
-  closed-universe: everything needed to apply the law is in the file, and
-  nothing in the file resolves the legal question for the model.
+The evaluation card reads its task path/hash, generator/judge declarations and
+execution records from the bound artifacts. It does not reconstruct old model
+identities from today's environment variables. Costs use only validated answer
+metadata. Reports print JSON by default; `--output NEW_FILE` writes exclusively
+and refuses an existing output file.
+
+## Human calibration and invariance
+
+`calibrate.py --runs runs_review_01` accepts only a `human_gold.json` object with
+schema `doctrine-human-gold-v1`, the current `blind_manifest_sha256` and
+`judging_sha256`, and an `entries` array. Each entry records `label`, `criterion`,
+`answer_sha256`, `criterion_sha256`, `human` (`PASS` or `FAIL`), `reader`, and
+`reviewed_utc`. An independent person supplies those grades; the tools do not
+create or infer them. Legacy arrays with only labels and grades are rejected.
+The output describes agreement among supplied, bound, binary pairs; unresolved
+judge results are counted separately. It grants no automatic reporting gate.
+
+For an invariance round, use a separate new output directory and
+`CONNECTOR_VARIANT=inv`, then build/run/blind/judge that round with the same
+frozen task definitions and model declarations. Compare explicitly:
+
+```powershell
+python invariance.py runs_review_01 runs_inv_review_01
+```
+
+The comparison requires the same selected task/condition/criterion matrix and
+an explicit base-versus-invariance variant pairing. It refuses stale or partial
+joins. Binary changes are descriptive surface sensitivity; unresolved states
+are not counted as flips or failures.
+
+## Offline software checks
+
+From the repository root:
+
+```powershell
+python scripts/tests/test_review_results.py
+```
+
+These tests use temporary copies, synthetic answers and local callbacks. Passing
+them establishes software behavior only; it does not run or validate a formal
+legal experiment. Original task files, generated checklists and old run artifacts
+are not rewritten by this maintenance workflow.

@@ -107,8 +107,39 @@ items = load("experiments", "exp2-probe", "probe.json")["items"]
 cls = Counter(i["class"] for i in items)
 print(f"  exp2 probe items                          : {len(items)}  "
       + ", ".join(f"{k}={v}" for k, v in sorted(cls.items())))
+print(f"  exp2 controls flagged uncovered           : "
+      f"{sum(1 for i in items if i['class'] == 'CTRL' and not i.get('connector_covers'))}"
+      f"/{cls.get('CTRL', 0)}")
 
 t3 = load("experiments", "exp3-hk-matter", "tasks.json")["counts"]
 print(f"  exp3 tasks / criteria / drift-sensitive   : "
       f"{t3['tasks']} / {t3['criteria']} / {t3['drift_sensitive_criteria']}")
+
+print("\n" + "=" * 66)
+print("EXPERIMENT OUTCOMES (quote these, not hand counts)")
+print("=" * 66)
+e1r = load("experiments", "exp1-lab", "results.json")["rows"]
+ap, wb, wc = {}, 0, 0
+for r in e1r:
+    ap.setdefault(r["slug"], {})[r["condition"]] = (r["pass"] == r["n"])
+    if r["condition"] == "base":
+        wb += r.get("words", 0)
+    else:
+        wc += r.get("words", 0)
+un = sum(1 for v in ap.values()
+         if v.get("base") == v.get("conn") and "base" in v and "conn" in v)
+pb = sum(r["pass"] for r in e1r if r["condition"] == "base")
+nb = sum(r["n"] for r in e1r if r["condition"] == "base")
+pc = sum(r["pass"] for r in e1r if r["condition"] == "conn")
+nc = sum(r["n"] for r in e1r if r["condition"] == "conn")
+print(f"  exp1 base / conn                          : {pb}/{nb} vs {pc}/{nc}")
+print(f"  exp1 tasks unchanged (all-pass same)      : {un}/{len(ap)}")
+print(f"  exp1 output words base -> conn            : {wb} -> {wc} "
+      f"({100 * (wb - wc) / wb:.1f}% drop)")
+e2j = {c: load("experiments", "exp2-probe", "probe_judged", c + ".json")
+       for c in ("SET-A", "SET-B")}
+for c, lab in (("SET-A", "bare"), ("SET-B", "conn")):
+    items = e2j[c]["items"]
+    print(f"  exp2 {lab} hallucinations                : "
+          f"{sum(1 for i in items if i.get('hallucinated'))}/{len(items)}")
 print()

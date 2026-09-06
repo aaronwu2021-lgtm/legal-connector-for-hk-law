@@ -1,3 +1,4 @@
+import argparse
 import json
 
 from _paths import emit
@@ -28,12 +29,31 @@ W = {
   {
    "id":"HKJUR","zh":"香港法院管辖权","en":"Hong Kong jurisdiction over a civil claim",
    "jurisdiction":"HK",
+   "role":"jurisdiction","role_zh":"管辖权",
    "note":"三段结构:先看门槛(能否送达),再看方便法院衡量,最后管辖条款单独一条。只有中间那段是权重制。",
    "authorities":[
-     {"case":"SPH v SA","cite":"(2014) 17 HKCFAR 364","court":"CFA","role":"HK 方便法院原则的终审重述","verified":"web"},
-     {"case":"Spiliada Maritime Corp v Cansulex Ltd","cite":"[1987] AC 460","court":"HL","role":"被 SPH v SA 采纳的英国原则","verified":"web"},
-     {"case":"RHC Order 11 r.1(1)","cite":"Cap 4A","court":"—","role":"域外送达门槛清单","verified":"unverified"}
+     {"case":"SPH v SA","cite":"(2014) 17 HKCFAR 364","court":"CFA","role":"HK 方便法院原则的终审重述","verified":"primary","pin":"[51]-[52],[78]","src":"hklii.hk/api/getjudgment hkcfa/2014/56","note":"CFA joint reasons; matrimonial stay context; test formulation adopted from DGC v SLC"},
+     {"case":"Spiliada Maritime Corp v Cansulex Ltd","cite":"[1987] AC 460","court":"HL","role":"被 SPH v SA 采纳的英国原则","verified":"web","src":"reputable secondary consensus (Wikipedia/vLex/UOLLB/OUPLAW); pre-2003 report, no free full text"},
+     {"case":"RHC Order 11 r.1(1)","cite":"Cap 4A","court":"—","role":"域外送达门槛清单","verified":"unverified"},
+      {"case":"Donohue v Armco Inc and Others","cite":"[2001] UKHL 64","court":"HL","role":"强理由规则:原则上执行排他管辖条款","verified":"primary","pin":"[24]","src":"publications.parliament.uk HL judgment text read (decided 13 Dec 2001)","note":"Bingham主判;本案基于多方平行诉讼事实未予禁诉,上诉得直"},
+      {"case":"Shanghai Gopher v China Base","cite":"[2022] HKCA 1724","court":"HKCA","role":"确认第11.2条为有效排他管辖条款(浦东法院);暂缓获准","verified":"primary","pin":"[8]-[9],[24],[37]","src":"hklii.hk/api/getjudgment hkca/2022/1724","note":"leave决定(书面审理),先例分量窄"}
    ],
+
+   "timelines":{
+    "HKJUR-J23":{"title":"方便法院:Spiliada衡量在香港","title_en":"Forum conveniens in Hong Kong",
+     "sub_test":"HKJUR-2",
+     "note":"覆盖HKJUR-2与HKJUR-3的Spiliada衡量及第二阶段保留。f方向:+1朝向香港保留管辖。",
+     "events":[
+      {"j":"EN","y":1987,"f":0.0,"case":"Spiliada Maritime Corp v Cansulex Ltd","cite":"[1987] AC 460","court":"HL","court_rank":4,"treat":"establishes","eff":"两阶段方便法院检验。","verified":"web","pin":None,"source":"reputable secondary consensus (Wikipedia/vLex/UOLLB/OUPLAW); pre-2003 report, no free full text"},
+      {"j":"HK","y":2014,"f":0.7,"case":"SPH v SA","cite":"(2014) 17 HKCFAR 364","court":"CFA","court_rank":4,"treat":"adopts","eff":"继受Spiliada两阶段检验为香港法;德国非明显更适当,驳回暂缓申请,上诉驳回。","verified":"primary","pin":"[51]-[52],[78]","source":"hklii.hk/api/getjudgment hkcfa/2014/56 (judgment text read; joint CFA reasons)"}
+     ]},
+    "HKJUR-J4":{"title":"排他管辖条款:强理由测试在香港","title_en":"Exclusive jurisdiction clauses — strong cause in Hong Kong",
+     "sub_test":"HKJUR-4",
+     "note":"Donohue规则常被香港引用,记为EN事件。f方向:+1朝向执行条款(规则方向,非个案结果)。",
+     "events":[
+      {"j":"EN","y":2001,"f":0.6,"case":"Donohue v Armco Inc and Others","cite":"[2001] UKHL 64","court":"HL","court_rank":4,"treat":"establishes","eff":"排他管辖条款原则上执行,背离须证强理由;本案基于多方平行诉讼事实未予禁诉。","verified":"primary","pin":"[24]","source":"publications.parliament.uk HL judgment text read (decided 13 Dec 2001)"},
+      {"j":"HK","y":2022,"f":0.7,"case":"Shanghai Gopher v China Base","cite":"[2022] HKCA 1724","court":"HKCA","court_rank":3,"treat":"applies","eff":"确认第11.2条为有效排他管辖条款(浦东法院,依PRC CPL Art 34专家证据);暂缓获准;leave申请无合理胜诉前景,拒绝许可。注意:leave决定,先例分量窄。","verified":"primary","pin":"[8]-[9],[24],[37]","source":"hklii.hk/api/getjudgment hkca/2022/1724 (judgment text read)"}
+     ]}},
    "stages":[
     {"id":"HKJUR-1","zh":"门槛:能否送达","en":"Gateway — can the writ be served",
      "test_type":"disjunctive-gateway","rule":"域内送达当然有管辖;域外送达须落入 O.11 r.1(1) 任一项并获法院许可",
@@ -102,9 +122,19 @@ W = {
   }
  ]
 }
-emit('scored', W, indent=1)
-m=W['modules'][0]
-s1=[st for st in m['stages'] if st['id']=='HKJUR-2'][0]
-print("module:", m['id'], "| stages:", len(m['stages']))
-print("stage-1 factor weights sum:", round(sum(f['weight'] for f in s1['factors']),3))
-print("counter-factors:", len(s1['counter_factors']))
+
+
+def main(argv=None):
+    parser = argparse.ArgumentParser(description='Build the intermediate scored modules before applying tiers.')
+    parser.parse_args(argv)
+    emit('scored', W, indent=1)
+    m=W['modules'][0]
+    s1=[st for st in m['stages'] if st['id']=='HKJUR-2'][0]
+    print("module:", m['id'], "| stages:", len(m['stages']))
+    print("stage-1 factor weights sum:", round(sum(f['weight'] for f in s1['factors']),3))
+    print("counter-factors:", len(s1['counter_factors']))
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

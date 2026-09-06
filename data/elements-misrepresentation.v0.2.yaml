@@ -1,3 +1,8 @@
+# SUPERSEDED — retained for provenance only. Since v0.3 the dataset is built
+# from the inline DATA dict in scripts/build_elements.py; this file is not read
+# by any builder (verified 2026-09-04: no references in scripts/, paper code or
+# docs). Do not edit it back into authority — including its T3 Hong Kong TODO,
+# which was filled by Long Year Development and lives in data/elements.json.
 # misrepresentation-elements — v0.2
 # English-common-law FAMILY model: shared English backbone + per-jurisdiction overlays.
 # Jurisdictions: england | hong-kong | singapore | australia

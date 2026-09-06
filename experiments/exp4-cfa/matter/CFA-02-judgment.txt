@@ -1,0 +1,404 @@
+SOURCE: HKLII getjudgment API, abbr=hkcfa year=2026 num=17, retrieved 2026-09-04.
+Neutral citation: [2026] HKCFA 17. Decided 2026-04-17. Court of Final Appeal.
+Title: TO SZE ON (PR of TO CHEONG LAM, deceased) v YIM TIN FOOK (deceased) & ORS.
+Leading judgment: Lord Hoffmann NPJ ([22]-[42]); Lam PJ concurring on LRO s.3 ([4],[21]);
+Ribeiro PJ [1], Fok PJ [2], Cheung CJ [3] agreeing. Unanimous dismissal [43].
+Cleaning: tags/scripts/styles stripped, whitespace collapsed. Paragraph numbers kept.
+This file grounds the CFA-02 rubric: every pin_phrase is checked verbatim against it.
+
+FACV1/2026 TO SZE ON, the Personal Representative of the Estate of TO CHEONG LAM, deceased (Appellant) v. YIM TIN FOOK, since deceased (YIM LOK MAN WINNE, appointed by Order dated 10 May 2024 to represent the Estate of YIM TIN FOOK, deceased) AND OTHERS
+ Press Summary (English)
+ Press Summary (Chinese)
+ FACV No. 1 of 2026
+ [2026] HKCFA 17
+ IN THE COURT OF FINAL APPEAL OF THE
+ HONG KONG SPECIAL ADMINISTRATIVE REGION
+ FINAL APPEAL NO. 1 OF 2026 (CIVIL)
+ (ON APPEAL FROM CACV NO. 5 OF 2020)
+ ___________________________
+ BETWEEN
+ YIM TIN FOOK, since deceased
+ 1
+ st
+ Plaintiff
+ (YIM LOK MAN WINNE, appointed by Order dated 10 May 2024 to represent the Estate of YIM TIN FOOK, deceased)
+ (1
+ st
+ Respondent)
+ YIM TIN YAU
+ 2
+ nd
+ Plaintiff
+ (2
+ nd
+ Respondent)
+ and
+ YU CHOR LAI, KONG WAI HUNG and SOU KA LUN all trading as WANG CHEUNG INDUSTRIAL CHEMICALS CO.
+ 1
+ st
+ Defendant
+ TO SZE ON, the Personal Representative of the Estate of
+ 2
+ nd
+ Defendant
+ TO CHEONG LAM, deceased
+ (Appellant)
+ ___________________________
+ (By Original Action)
+ AND BETWEEN
+ TO SZE ON, the Personal Representative of the Estate of
+ Plaintiff
+ TO CHEONG LAM, deceased
+ (Appellant)
+ and
+ YIM TIN FOOK, since deceased
+ 1
+ st
+ Defendant
+ (YIM LOK MAN WINNE, appointed by Order dated 10 May 2024 to represent the Estate of YIM TIN FOOK, deceased)
+ (1
+ st
+ Respondent)
+ YIM TIN YAU
+ 2
+ nd
+ Defendant
+ (2
+ nd
+ Respondent)
+ CHAN HI
+ 3
+ rd
+ Defendant
+ (3
+ rd
+ Respondent)
+ YEUNG HON SANG
+ 4
+ th
+ Defendant
+ (4
+ th
+ Respondent)
+ CHAN WAI KIN AND PO YUEN KWAN SHIRLEY
+ 5
+ th
+ Defendant
+ (5
+ th
+ Respondent)
+ LEUNG KWAN POK KEN
+ 6
+ th
+ Defendant
+ (6
+ th
+ Respondent)
+ W.S. REALTY COMPANY LIMITED
+ 7
+ th
+ Defendant
+ (7
+ th
+ Respondent)
+ TO SHUI KI
+ 8
+ th
+ Defendant
+ WU CHUN WAI
+ 9
+ th
+ Defendant
+ (8
+ th
+ Respondent)
+ ___________________________
+ (By Counterclaim)
+ Before:
+ Chief Justice Cheung, Mr Justice Ribeiro PJ, Mr Justice Fok PJ, Mr Justice Lam PJ and Lord Hoffmann NPJ
+ Date of Hearing:
+ 10 March 2026
+ Date of Judgment:
+ 17 April 2026
+ ___________________________
+ JUDGMENT
+ ___________________________
+ Chief Justice Cheung:
+ 1.
+ I agree with the judgment of Lord Hoffmann NPJ. I also agree with the concurring judgment of Mr Justice Lam PJ on the true construction of section 3 (2) of the Land Registration Ordinance (
+ Cap 128
+ ).
+ Mr Justice Ribeiro PJ:
+ 2.
+ I agree with the judgment of Lord Hoffmann NPJ and with the concurring judgment of Mr Justice Lam PJ.
+ Mr Justice Fok PJ:
+ 3.
+ I agree with the judgment of Lord Hoffmann NPJ and with the concurring judgment of Mr Justice Lam PJ.
+ Mr Justice Lam PJ:
+ 4.
+ I agree with the judgment of Lord Hoffmann NPJ. In light of the great general or public importance of the construction of Section 3 of the Land Registration Ordinance
+ Cap 128
+ (“the LRO”), I would add a few words of my own on that question.
+ 5.
+ Section 3 of the LRO provides as follows,
+ Priority of registered instruments; effect of non-registration
+ (1) Subject to this Ordinance, all such deeds, conveyances, and other instruments in writing, and judgments, made, executed, or obtained, and registered in pursuance hereof, shall have priority one over the other according to the priority of their respective dates of registration, which dates shall be determined in accordance with regulations made under this Ordinance.
+ (2) All such deeds, conveyances, and other instruments in writing, and judgments, as last aforesaid, which are not registered shall, as against any subsequent bona fide purchaser or mortgagee for valuable consideration of the same parcels of ground, tenements, or premises, be absolutely null and void to all intents and purposes:
+ Provided that nothing herein contained shall extend to bona fide leases at rack rent for any term not exceeding 3 years, or to a regulated tenancy (as defined by section 120AA (1) of the Landlord and Tenant (Consolidation) Ordinance (
+ Cap. 7
+ ).
+ 6.
+ In the present case, the Deed of Gift in 1986, the assignment in favour of W.S. Realty Company Limited, the 1997 Deed Poll sub-dividing the lot, and the subsequent assignments in favour of the Plaintiffs were registered. The main thrust of Mr Chan SC’s submission on behalf of the appellant is that only a purchaser with a registrable instrument affecting land can rely on Section 3(2). If a vendor had already conveyed the title of the land to an earlier purchaser by an unregistered instrument, the subsequent instrument could not pass any title to the subsequent purchaser (“the
+ nemo dat
+ rule”). As a result, such a subsequent instrument could not affect land and the subsequent purchaser could not rely upon Section 3(2).
+ 7.
+ At the hearing before us, Mr Chan submitted that one should construe “purchaser” in Section 3(2) as someone purchasing from a vendor who has title to the property. Hence, if a vendor sells the property twice, the second purchaser cannot be regarded as a “purchaser”.
+ 8.
+ I cannot accept this submission. As accepted by Mr Chan, such a construction would render Section 3(2) inapplicable to the scenario where there are two successive sales by the same vendor. However, there is no sensible reason why the legislature would exclude this kind of transaction from the scope of Section 3(2). In setting up a workable and reliable registration system, albeit one concerned with the registration of instruments instead of titles, the need for protection against secret conveyances must encompass conveyances of the entire interest in a property.
+ 9.
+ Moreover, the adverse effect of such a construction is not confined to subsequent assignments. It would also affect mortgages or charges securing loans to finance the subsequent purchases. If the
+ nemo dat
+ rule is applicable despite Section 3(2), it should be applied equally in construing the word “mortgagee” as well as the word “purchaser” in that sub-section. In other words, if Mr Chan’s submission were correct, Section 3(2) would not be effective in most cases. Its application would be limited to scenarios where the unregistered earlier instruments created limited security or other limited interests in land. It would not serve much good to have a registration system which only affords protection against instruments creating secret security interests. In enacting the LRO, it could not have been the intention of the legislature to circumscribe the application of Section 3(2) in this manner.
+ 10.
+ In short, such a construction would substantially frustrate the legislative purpose of preventing secret conveyances and providing means whereby the title to land may be easily traced and ascertained. It would seriously undermine the effectiveness of the conveyancing regime which has been practised in Hong Kong for over a century.
+ 11.
+ It is a fallacy that Section 3 does not affect title. Since the common law title system is premised upon relativity of title, the LRO was enacted on the same premise. The concept of priority stems from this premise. The effect of Section 3 is to modify the common law rule that legal interests created first in time prevail and, subject to the exception of a
+ bona fide
+ purchaser for value without notice, the priority of equitable interests also depends on the time of creation.
+ 12.
+ Section 3(2) provides clearly that an unregistered instrument shall, vis-à-vis any subsequent
+ bona fide
+ purchaser for valuable consideration, be absolutely null and void to all intents and purposes. “Null and void to all intents and purposes” means that the earlier unregistered instrument is invalid as far as such a subsequent purchaser is concerned. Thus there is no basis for suggesting that Section 3(2) could not operate to confer a better title to the subsequent purchaser than his vendor. To that extent and to that extent only, the
+ nemo dat
+ rule is modified.
+ 13.
+ Of course, if the vendor himself never had any title to the land, Section 3(2) does not confer any title on a subsequent purchaser deriving interest from such a vendor. In that scenario, the invalidity of an earlier unregistered instrument could not fill the missing gap in the chain of title.
+ 14.
+ Likewise, Section 3(2) does not confer any title on a purchaser who derives title from a forged or otherwise ineffective document. The invalidity of his title is not because of the earlier disposal of interest to another purchaser under an unregistered instrument. Hence, the
+ nemo dat
+ rule would operate in full force without being affected by Section 3(2).
+ 15.
+ In
+ Chu Yam On v Li Tam Toi Hing
+ ,
+ [1]
+ Lord Somervell of Harrow had the following observations on the effect of Section 3(2),
+ “The written declaration of trust was unregistered and therefore as against the respondent, a
+ bona fide
+ purchaser, was to be
+ ‘
+ absolutely null and void to all intents and purposes.
+ ’
+ If the existence of the trust is to prevent the respondent obtaining the assignment to which she would otherwise be entitled, is this contrary to this section? The learned Chief Justice so regarded it. Under the Ordinance he held the trust must be completely disregarded. To use it to deprive the respondent of the right which apart from this point she would have is to have regard to it and this the Ordinance forbids.”
+ 16.
+ The same reasoning is applicable to the unregistered lease in favour of To Cheong Lam. Allowing the Defendants to use it to contend that the Plaintiffs did not acquire titles to the two pieces of land by reason of the
+ nemo dat
+ rule is to have regard to it. As Lord Somervell said, this is forbidden under Section 3(2).
+ 17.
+ Hence, as Lord Templemen said in
+ Markfaith Investment Ltd v Chiap Hua Flashlights Ltd
+ [2]
+ ,
+ “Section 3(2) of the Ordinance … puts the purchaser in a better position than his vendor.”
+ Such a statement is equally apposite in the present context.
+ 18.
+ Mr Chan also placed reliance on the judgment of Hunter J in
+ Financial and Investment Services for Asia Ltd v Baik Wha International Trading Co Ltd
+ [3]
+ to highlight that the LRO system is one for the registration of deeds as opposed to title and that there is a distinction between the concept of validity and the concept of priority. That case concerned an unwritten equity (stemming from the funding for the discharge of an earlier mortgage) and His Lordship’s focus was on Section 3(1). As explained above, Section 3(2) modifies the rule of
+ nemo dat
+ and to that extent it goes to the validity of the title of a subsequent purchaser falling within its scope vis-à-vis an earlier unregistered instrument.
+ 19.
+ In his printed case
+ [4]
+ , the appellant submitted that Section 3(2) can only be invoked if the subsequent instrument is duly registered. Since the Plaintiffs could not derive a valid title from Madam Tang after her disposal of interest in the land under the unregistered 1983 Lease, counsel submitted that the registrations of the assignments in favour of the Plaintiffs are invalid and liable to be set aside
+ [5]
+ .
+ 20.
+ As I have explained above, there is no basis for holding that the
+ nemo dat
+ rule could negate the operation of Section 3(2). Thus, it cannot be suggested that the registrations of the Plaintiffs’ assignments were invalid. Further, as G Lam JA said, there is nothing in Section 3(2) which suggests that it only applies if the subsequent instrument is registered, and the authorities are against such a proposition
+ [6]
+ .
+ 21.
+ For these reasons as well as the reasons set out in the judgment of Lord Hoffmann NPJ, I agree that the appeal should be dismissed.
+ Lord Hoffmann NPJ:
+ 22.
+ This is an appeal from orders of the Court of Appeal (Barma, G Lam and Chow JJA) affirming the decision of the High Court (Deputy High Court Judge Alexander Stock SC) on three questions of law which he had determined pursuant to Ord 14A of the Rules of the High Court .
+ 23.
+ The background to the three questions was a dispute over the title to land near the village of Nam Wai in the New Territories. In 1983 Madam Tang Yin (“Madam Tang”) held a Government lease of the land in question which, after extension by the New Territories (Renewable Crown Leases) Ordinance (
+ Cap 152
+ ), was due to expire on 27 June 1997. On 15 November 1983 Madam Tang granted a sub-lease of the land to Mr To Cheong Lam (“Mr C L To”) for a term expiring 14 November 1998, i.e. after the expiry of her Government lease. That transaction gave rise to the first question of law, namely whether by virtue of the principle applied by the English Court of Appeal in
+ Milmo v Carreras
+ [1946] KB 306, the purported grant of a sub-lease for a term exceeding that of the remainder of the Government lease took effect as an assignment of that lease. The judge held that it did and the Court of Appeal agreed.
+ 24.
+ The second question concerned the effect of the New Territories Leases (Extension) Ordinance (
+ Cap 150
+ ) enacted in 1988. It extended the term of Government leases in the New Territories until 2047. The question of law which that was said to raise was whether, if the answer to the first question was yes, the extension of the Government lease operated for the benefit of Madam Tang or Mr C L To. The judge said that in such case, Mr C L To, as holder of the Government lease by virtue of the deemed assignment in 1983, would have been entitled to the extension. It is no longer contested that if his decision on the first question was correct, the judge's decision on the second must also be correct.
+ 25.
+ The third question arises from the fact that Madam Tang, presumably in ignorance of the
+ Milmo
+ principle, continued to deal with the Government lease after she had been deemed to have assigned it to Mr C L To. On 25 January 1986 she executed a Deed of Gift by which she purported to assign the residue of the Government lease to her adopted son Mr To Shui Ki (“Mr S K To”) and herself as joint tenants. In 1990 Madam Tang died and in 1997 Mr S K To, on the basis that he had taken the Government lease by survivorship, sold the land to a property company. The company divided the land into a number of plots and sold them to individual purchasers. But the purchasers found that Mr C L To or his licencees remained in possession of the land. Two of them therefore started these proceedings for possession, claiming title derived from Mr S K To.
+ 26.
+ The 1983 lease to Mr C L To was registrable under section 2 (1) of the Land Registration Ordinance (
+ Cap 128
+ ) (“the Ordinance”), being an “instrument in writing...by which...parcels of ground...in Hong Kong may be affected”. It had however never been registered. Section 3(2) of the Ordinance provides that -
+ “All such deeds, conveyances and other instruments in writing...which are not registered shall, as against any subsequent bona fide purchaser or mortgagee for valuable consideration of the same parcels of ground, tenements or premises, be absolutely null and void to all intents and purposes.”
+ 27.
+ So the third question was whether, assuming the judge to have been right on the first two questions, Mr C L To’s claims to the land are, as against the property company and the purchasers of plots, who were
+ bona fide
+ purchasers, avoided by section 3(2). The judge decided that they were and that in consequence, as against them, Mr C L To had acquired no interest in the Government lease. That decision was also affirmed by the Court of Appeal.
+ 28.
+ I shall consider the two contested questions in turn.
+ Milmo v Carreras
+ 29.
+ In
+ Milmo
+ the English Court of Appeal, following authorities going back to the seventeenth century, held that a sub-lease granted for a term equal to or exceeding the term of the head lease takes effect as an assignment of the head lease. Apart from reliance upon ancient authority, the reasoning of the Court of Appeal was that a sub-lease is the grant of a proprietary interest and that a lessee is unable to grant a proprietary interest in respect of a period after the end of his term. That is true and might have justified saying that in respect of the period after the expiry of the head lease, the sub-lease failed to convey any proprietary interest in the land. But to say that it should therefore be construed as an assignment of the head lease was to impute to the parties an intention they were highly unlikely to have had. The last thing the prospective sub-tenant would have had in mind was that taking the sub-lease would not only impose upon him the head lessee’s obligations as to rent, repairs and so forth for the remainder of his term but might also deprive him of whatever statutory protection he might have had as sub-lessee. Nor is the head lessee likely to have realised that the grant of a sub-lease would immediately deprive him of his interest in the head lease.
+ 30.
+ The
+ Milmo
+ principle seems to me to have nothing but authority to recommend it. Its application is invariably the result of a mistake and it unnecessarily produces results which are not only unexpected but frequently unfair to one or the other parties. In
+ Milmo
+ itself, Captain Milmo sublet his flat in Kensington when he went off to the war, hoping to reoccupy it upon his safe return. The subletting was expressed to be for a term of one year from 1 November 1943 and thereafter terminable on at least 3 months notice. But his estate agent had not noticed that his own lease expired on 28 November 1944 and therefore before the sub-lease could be terminated. The Court of Appeal said that the sub-lease took effect as an assignment of his tenancy and he therefore was unable to regain possession of his flat.
+ 31.
+ In
+ Grosvenor Estates Belgravia v Diana Cochran
+ (1992) 24 H.L.R. 98
+ Miss Cochran took a tenancy of a basement flat in Belgravia from a company which held the fag end of a lease granted by the Duke of Westminster in 1925. She spent £35,000 on renovations and improvements. Her tenancy, which would have been protected by the Rent Acts, was expressed to be for a term of three years. But the head lease had only a couple of months to run. When it expired, the Grosvenor Estate brought proceedings for possession. The Court of Appeal, applying
+ Milmo
+ , held that she must be deemed to have taken an assignment of the head lease, which gave her no protection. She was evicted. If she had taken a weekly tenancy instead of a term of years, she would have been protected.
+ 32.
+ In
+ Parc Battersea Ltd, Mountwood Holding Ltd v Tom Hutchinson
+ [1999] L. &amp; T.R. 554 Mr Hutchinson in December 1997 took an oral monthly sub-tenancy of premises in Battersea for the purposes of his business. That, as a business tenancy, would ordinarily have been protected by Part II of the Landlord and Tenant Act 1954 but unfortunately Mr Hutchinson disclosed that his landlord, whose head lease expired on 31 March 1998, had agreed not to serve a notice to quit before 31 March 1999. Moore-Bick J held that his tenancy took effect as an assignment of the head lease, which had expired and was not protected. Mr Hutchinson was evicted.
+ 33.
+ Not only is the
+ Milmo
+ principle always the result of a mistake but its theoretical foundations have been undermined by developments in the law of landlord and tenant. The reasoning of Lord Greene MR was that a lease had to be a proprietary interest:
+ “[The] relationship [of landlord and tenant] must depend on privity of estate. I myself find it impossible to conceive of a relationship of landlord and tenant which has not got that essential element of tenure in it, and that implies that the tenant holds of his landlord, and he can only do that if the landlord has a reversion. You cannot have a purely contractual tenure. Tenure exists by reason of privity of estate.”
+ 34.
+ Since then, however, the House of Lords has recognised that a lease is both a conveyance and a contract. For its effect as a conveyance, Lord Greene MR was right. One cannot have a sub-lease conveying a proprietary interest unless there is a reversionary interest out of which it has been created and on which it depends for its proprietary effect. But that is no reason why it should not operate as a contract. In
+ Bruton v London &amp; Quadrant Housing Trust
+ [2000]
+ 1 AC 406
+ the question was whether the relationship between Mr Bruton and the Housing Trust was a “tenancy” within the meaning of section 11 of the Landlord and Tenant Act 1985. The agreement between them had all the characteristics of a tenancy as stated in
+ Street v Mountford
+ [1985] AC 809
+ : Mr Bruton had exclusive occupation, paid a rent and so on. But the Housing Trust had no proprietary interest in the property and therefore could not confer one upon Mr Bruton. However, in the opinion of the House of Lords, section 11 of the 1985 Act did not require a proprietary interest. If I may quote what I then said:
+ “The term ‘lease’ or ‘tenancy’ [in the 1985 Act] describes a relationship between two parties who are designated landlord and tenant. It is not concerned with the question of whether the agreement creates an estate or other proprietary interest which may be binding upon third parties. A lease may, and usually does, create a proprietary interest called a leasehold estate or, technically, a ‘term of years absolute.’ This will depend upon whether the landlord had an interest out of which he could grant it.
+ Nemo dat quod non habet
+ . But it is the fact that the agreement is a lease which creates the proprietary interest. It is putting the cart before the horse to say that whether the agreement is a lease depends upon whether it creates a proprietary interest.”
+ 35.
+ In my opinion therefore, a sub-tenancy for a term exceeding the residue of the head lease should be treated as a contract to grant such a tenancy for whatever is the term it purports to grant. As a conveyance, however, it will only be able to convey a leasehold proprietary interest for the rest of the term held by the head tenant. If she obtains a statutory extension of her head lease, as happened in this case, or a consensual extension (technically a surrender and regrant) for a period in excess of the sub-tenancy she has agreed to grant, the contract will be able to be performed in full and all will be well. Or the head lessor may choose to adopt the sub-lease and collect the rent from the sub-tenant, in which case too the contract will be performed. If the head lessor is able to evict the sub-tenant when the head lease expires, the latter may be able to sue the former tenant for breach of the implied covenant for quiet enjoyment. These are all foreseeable consequences and do not require attributing to the parties an intention to create a relationship which they are highly unlikely to have had.
+ 36.
+ A rational system of dealing with leasehold transactions is particularly important in Hong Kong, where there is no freehold and all titles to property derive from Government leases. I would therefore depart from the
+ Milmo
+ principle and hold that the 1983 sub-lease to Mr C L To created a contractual relationship which was fully performed by the creation of proprietary interests, first by virtue of the Government lease as it was at the time of the grant and then by its extension by the New Territories Leases (Extension) Ordinance of 1988. At the end of the term granted by the sub-lease, however, Mr C L To’s interest in the property came to an end.
+ 37.
+ It is, I accept, unusual to depart from an ancient rule of property law, however irrational, on which people may have relied for their titles to land. In most cases, however, it is unlikely that any of the immediate parties to the transaction, acting in good faith, would have relied upon the
+ Milmo
+ principle. It is only a trap of which they are likely to have been unaware.
+ Milmo
+ seems so far to have played little part in the law of Hong Kong. Recently in
+ Hopcraft v Close Brothers Ltd
+ [2025] 3 WLR 423
+ at para. 144 the UK Supreme Court said that the power to depart from “long-established law” would usually be exercised only when “the existing law has led to results which are unjust or contrary to public policy.” In my opinion the
+ Milmo
+ principle satisfies this requirement.
+ Section 3(2) of the Ordinance
+ 38.
+ If the Court agrees that Mr C L To’s interest in the property was confined to the sub-lease and expired at the end of its term, that is enough to require the appeal to be dismissed without consideration of section 3(2) of the Ordinance. But G Lam JA gave a full judgment on the point in the Court of Appeal which I would be content to adopt as my own and which I can do no more than briefly summarise.
+ 39.
+ The principal argument of Mr Edward Chan SC for the Personal Representative of the Estate of Mr C L To (who has died) was that the effect of the 1983 sub-lease, together with the
+ Milmo
+ principle, was to deprive Madam Tang of any interest in the Government lease. She therefore had nothing which she could convey by the Deed of Gift to Mr S K To and he had nothing which he could sell to the property company.
+ 40.
+ If the question was whether (assuming the
+ Milmo
+ principle to apply) the Deed of Gift to Mr S K To enable him, on surviving Madam Tang, to obtain title to the Government lease, Mr Chan SC would be right. Mr S K To was not a “purchaser...for valuable consideration” and therefore did not have the benefit of section 3(2). So the deemed assignment of the Government lease to Mr C L To would have been effective against him. Madam Tang had nothing to give him and he would therefore have taken nothing from her. In that case, says Mr Chan SC, how could the property company and the purchasers from them obtain title?
+ 41.
+ The answer, said G Lam JA, was that given by Deputy High Court Judge Alexander Stock SC in the court below, when he said that one should “examine title and priority as a relative matter, from the viewpoint of the competing claims.” Here the competing claims are those of Mr C L To and the plot purchasers. Apart from section 3(2), Mr C L To would have had a good title by virtue of the 1983 lease and the
+ Milmo
+ principle. But as against the plot purchasers, section 3(2) destroyed his title. It does not matter how many intervening purchasers there may have been.
+ 42.
+ Finally Mr Chan SC submitted that the plot purchasers did not purchase “the same parcels of ground” as had been comprised in the 1983 Lease. Each bought only part of it. But in my opinion it does not matter whether a plot has been demised separately or as part of a larger area. Every plot had been demised by the 1983 Lease and that Lease was the only basis of a claim to any of the plots which Mr C L To could assert. As the Lease was null and void, any such claim must fail.
+ Chief Justice Cheung:
+ 43.
+ Accordingly, the Court unanimously dismisses the appeal and makes an order
+ nisi
+ that the appellant pay the respondents the costs of the appeal. If any party seeks to vary the order
+ nisi
+ , written submissions shall be filed and served within 14 days of the date of this judgment. Any written submissions in response shall be filed and served within 14 days thereafter. The Court will determine the question of costs on the papers.
+ (Andrew Cheung)
+ Chief Justice
+ (R A V Ribeiro)
+ Permanent Judge
+ (Joseph Fok)
+ Permanent Judge
+ (M H Lam)
+ (Lord Hoffmann)
+ Permanent Judge
+ Non-Permanent Judge
+ Mr Edward Chan SC and Mr Abel Lam, instructed by Lui &amp; Law, for the 2
+ nd
+ Defendant (by Original Action) and the Plaintiff (by Counterclaim) (Appellant)
+ Ms Audrey Eu SC, Mr Wong Cho Lik and Mr Anson Wong Yu Yat, instructed by Cheung &amp; Co, for the 1
+ st
+ and 2
+ nd
+ Plaintiffs (by Original Action) and the 1
+ st
+ and 2
+ nd
+ Defendants (by Counterclaim) (1
+ st
+ and 2
+ nd
+ Respondents)
+ The 3
+ rd
+ , 5
+ th
+ , 7
+ th
+ and 9
+ th
+ Defendants (by Counterclaim) (3
+ rd,
+ 5
+ th
+ , 7
+ th
+ and 8
+ th
+ Respondents), unrepresented, absent
+ Lawrence K Y Lo &amp; Co, for the 4
+ th
+ and 6
+ th
+ Defendants (by Counterclaim) (4
+ th
+ and 6
+ th
+ Respondents), absent
+ [1]
+ (1956)
+ 40 HKLR 250
+ at 257.
+ [2]
+ [1990]
+ 2 HKLR 84
+ at 90A.
+ [3]
+ [1985] HKLR 103
+ at 112 to 113.
+ [4]
+ Appellant’s Printed Case, Sections E and F. He also prayed in aid that under Section 4 of the LRO (which displaced the common law doctrine of notice) the subsequent instrument has to be duly registered.
+ [5]
+ Citing
+ Anstalt Nybro v Hong Kong Resort Co Ltd
+ [1980] HKLR 76
+ at 81.
+ [6]
+ CA Judgment at [74] to [76].

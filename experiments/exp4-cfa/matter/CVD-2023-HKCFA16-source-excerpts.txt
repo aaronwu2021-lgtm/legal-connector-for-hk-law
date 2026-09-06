@@ -1,0 +1,19 @@
+SOURCE-CHECK EXTRACTS — not a complete judgment.
+Official source: https://www.hklii.hk/api/getjudgment?lang=en&abbr=hkcfa&year=2023&num=16
+Read: 2026-09-06.
+
+CASE NAME: C v D [2023] HKCFA 16
+Court: Hong Kong Court of Final Appeal.
+Decision date: 2023-06-30.
+Source type: merits judgment.
+
+[1], [13]-[14]: the judges agreed the "appeal should be dismissed".
+[10]-[11]: Cheung CJ said that, if parties clearly agree to make an admissibility question jurisdictional, "it is their prerogative"; the agreement must be sufficiently clearly worded and unequivocally expressed.
+[103]-[104]: because jurisdiction and liability were dealt with together in the Partial Award, "the procedure under Art 16(3)" for a further court request "was not applicable"; the route was an application under Article 34(2)(a)(iii).
+[47]-[50], [107]-[111]: pre-arbitration conditions are "presumptively non-jurisdictional" absent "unequivocally clear language".
+[55]-[66]: on these clauses, Article 34(2)(a)(iii) "does not provide a basis for judicial intervention".
+[128]-[129]: Gummow NPJ held that "mere errors of law" do not justify setting an award aside under Article 34(2)(a)(iii).
+
+Ribeiro PJ supplied the majority's admissibility analysis at [55]-[66]. Gummow NPJ agreed in the result at [128]-[139] but used distinct reasoning. The external reader must preserve that difference.
+
+The external reader must follow the official link and read the full reasons, including the separate judgments, in context.

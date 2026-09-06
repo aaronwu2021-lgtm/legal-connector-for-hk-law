@@ -1,0 +1,136 @@
+{
+ "candidates": [
+  {
+   "act": "FAMC35/2021",
+   "coram": "Appeal Committee: Mr Justice Ribeiro PJ, Mr Justice Fok PJ and Mr Justice Lam PJ",
+   "neutral": "[2022] HKCFA 6",
+   "parallel": "(2022) 25 HKCFAR 34",
+   "path": "/en/cases/hkcfa/2022/6",
+   "pub_date": "2022-03-11T00:00:00+08:00",
+   "queries": [
+    "section 81"
+   ],
+   "title": "HKSAR V. CHEN KEEN (ALIAS JACK CHEN) (\u9673\u514b\u6069)"
+  },
+  {
+   "act": "FACV4/2022",
+   "coram": "Before: Chief Justice Cheung, Mr Justice Ribeiro PJ,\nMr Justice Fok PJ, Mr Justice Lam PJ and\nLord Collins of Mapesbury NPJ",
+   "neutral": "[2022] HKCFA 11",
+   "parallel": " [2022] 5 HKC 318 ; (2022) 25 HKCFAR 98; [2022] HKCLC 787",
+   "path": "/en/cases/hkcfa/2022/11",
+   "pub_date": "2022-06-14T00:00:00+08:00",
+   "queries": [
+    "arbitration"
+   ],
+   "title": "SHANDONG CHENMING PAPER HOLDINGS LIMITED V. ARJOWIGGINS HKK 2 LIMITED"
+  },
+  {
+   "act": "FAMV474/2022",
+   "coram": "Appeal Committee: Mr Justice Ribeiro PJ, Mr Justice Fok PJ and Mr Justice Lam PJ",
+   "neutral": "[2022] HKCFA 25",
+   "parallel": "",
+   "path": "/en/cases/hkcfa/2022/25",
+   "pub_date": "2022-12-12T00:00:00+08:00",
+   "queries": [
+    "arbitration",
+    "Model Law",
+    "Cap 609"
+   ],
+   "title": "C V. D"
+  },
+  {
+   "act": "FACV13/2022",
+   "coram": "Before: Chief Justice Cheung, Mr Justice Ribeiro PJ, Mr Justice Fok PJ, Mr Justice Lam PJ and Mr Justice French NPJ",
+   "neutral": "[2023] HKCFA 9",
+   "parallel": "(2023) 26 HKCFAR 119; [2023] 4 HKC 93; [2023] HKCLC 371",
+   "path": "/en/cases/hkcfa/2023/9",
+   "pub_date": "2023-05-04T00:00:00+08:00",
+   "queries": [
+    "arbitration",
+    "Model Law",
+    "Cap 609"
+   ],
+   "title": "RE GUY KWOK-HUNG LAM (\u6797\u570b\u96c4)"
+  },
+  {
+   "act": "FACV1/2023",
+   "coram": "Before: Chief Justice Cheung, Mr Justice Ribeiro PJ, Mr Justice Fok PJ, Mr Justice Lam PJ and Mr Justice Gummow NPJ",
+   "neutral": "[2023] HKCFA 16",
+   "parallel": "[2023] 5 HKC 440; (2023) 26 HKCFAR 216",
+   "path": "/en/cases/hkcfa/2023/16",
+   "pub_date": "2023-06-30T00:00:00+08:00",
+   "queries": [
+    "arbitration",
+    "Model Law",
+    "Cap 609",
+    "New York Convention",
+    "section 81"
+   ],
+   "title": "C V. D"
+  },
+  {
+   "act": "FACC5/2024",
+   "coram": "Before: Chief Justice Cheung, Mr Justice Ribeiro PJ,\n                Mr Justice Fok PJ, Mr Justice Lam PJ and\n                Lord Neuberger of Abbotsbury NPJ",
+   "neutral": "[2024] HKCFA 24",
+   "parallel": "[2024] 6 HKC 136",
+   "path": "/en/cases/hkcfa/2024/24",
+   "pub_date": "2024-08-12T00:00:00+08:00",
+   "queries": [
+    "arbitration",
+    "Cap 609",
+    "section 81"
+   ],
+   "title": "HKSAR V. LEE CHEUK YAN (\u674e\u5353\u4eba) (D2), HO SAU LAN CYD (\u4f55\u79c0\u862d) (D5)"
+  },
+  {
+   "act": "FAMV68/2026",
+   "coram": "Appeal Committee: Mr Justice Ribeiro PJ, Mr Justice Lam PJ and\n                Mr Justice Tang NPJ",
+   "neutral": "[2026] HKCFA 30",
+   "parallel": "",
+   "path": "/en/cases/hkcfa/2026/30",
+   "pub_date": "2026-09-01T00:00:00+08:00",
+   "queries": [
+    "arbitration"
+   ],
+   "title": "ETON PROPERTIES LIMITED (\u88d5\u666f\u8208\u696d\u6709\u9650\u516c\u53f8) AND ETON PROPERTIES (HOLDINGS) LIMITED (\u88d5\u666f\u8208\u696d(\u96c6\u5718)\u6709\u9650\u516c\u53f8) V. \u5ec8\u9580\u65b0\u666f\u5730\u96c6\u5718\u6709\u9650\u516c\u53f8FORMERLY KNOWN AS \u5ec8\u9580\u5dff\u946b\u65b0\u666f\u5730\u623f\u5730\u7522\u6709\u9650\u516c\u53f8"
+  }
+ ],
+ "n_candidates": 7,
+ "per_query": {
+  "Cap 609": {
+   "n_results": 979
+  },
+  "Model Law": {
+   "n_results": 192
+  },
+  "New York Convention": {
+   "n_results": 46
+  },
+  "arbitration": {
+   "n_results": 1392
+  },
+  "arbitrator bias": {
+   "n_results": 0
+  },
+  "section 34 arbitration": {
+   "n_results": 2
+  },
+  "section 81": {
+   "n_results": 260
+  },
+  "stay in favour of arbitration": {
+   "n_results": 20
+  }
+ },
+ "queries": [
+  "arbitration",
+  "Model Law",
+  "Cap 609",
+  "New York Convention",
+  "stay in favour of arbitration",
+  "section 81",
+  "section 34 arbitration",
+  "arbitrator bias"
+ ],
+ "survey": "HKLII simplesearch survey, NOT a census. Nil results are nils, never evidence of absence. Queries run 2026-09-05."
+}

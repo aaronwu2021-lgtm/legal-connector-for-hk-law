@@ -8,13 +8,16 @@ Live: https://doctrine-drift-atlas.netlify.app
 
 - `data/` — the library. `elements.json` (misrepresentation family), `registry.json`
   (14 typed causes of action), `scored.json` (weighted modules), `maintenance.json`
-  (drift ledger), `corpus/` (745 HK land-law case notes).
+  (drift ledger), `persuasive.json` (449-case E&W index: metadata + treatment
+  edges only, all `unverified` / persuasive-only — never doctrine), `corpus/`
+  (745 HK land-law case notes).
   **Never hand-edit these** — they are build outputs. Edit the builders in `scripts/`
   and re-run, or the next build silently reverts your change.
 - `scripts/` — builders. Order matters:
   `build_elements.py` → `build_registry.py` → `build_scored.py` →
   `apply_tiers.py` (assigns weight bands to every balancing factor) →
   `build_maintenance.py` (derives the drift ledger from the timelines).
+  `build_persuasive.py` is order-independent (reads only `data/sources/uklr/`).
   Each writes both `data/*.json` and `server/netlify/functions/_*.mjs`.
 - `server/` — Netlify functions. `api.mjs` is the whole API surface (REST + MCP);
   `_*.mjs` are generated data modules. `public/index.html` is the entire UI,
@@ -102,10 +105,10 @@ cd server && npx netlify deploy --prod
    branch is done (8 authorities, read from judgment text via the HKLII API).
    BAILII / AustLII / e-Legislation still block automated fetch.
 2. ~~Fill the HK branch of timeline T3~~ — done: Long Year Development v Tse Fuk
-   Man Norman [1991] 2 HKC 393, 407D-408D adopted Royscot within months of it
-   being decided, and nothing has doubted it since. HK is now the family's most
-   settled pro-Royscot jurisdiction while England doubts it and Singapore leans
-   against. Q-001 is only partially answered: the apex has spoken on contractual
+   Man Norman [1991] 2 HKC 393, 407D-408D adopted Royscot. Later reviewed CFI
+   and DC decisions cite or apply it, but the current record contains no CA or
+   CFA ruling on the point and does not prove the absence of contrary authority.
+   Q-001 is only partially answered: the apex has spoken on contractual
    estoppel, but through an Appeal Committee determination refusing leave.
 3. Replace tier bands with regression weights, starting with lease-vs-licence
    (352 corpus cases, the cheapest to calibrate).
@@ -121,3 +124,7 @@ cd server && npx netlify deploy --prod
    library's own errors. The original verdicts are untouched beside it. Any
    future key must be checked against pin cites by someone who did not write
    the library.
+7. Persuasive E&W branch (`persuasive.json`, all 449 `unverified`) is an index,
+   not doctrine. Upgrade path is per-case human check via
+   `/api/persuasive/queue` (negative/superseded/qualified first) — re-scraping
+   upgrades nothing. Guarded by `scripts/check_persuasive.py`.

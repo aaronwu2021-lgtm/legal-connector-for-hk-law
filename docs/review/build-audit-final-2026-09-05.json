@@ -1,0 +1,316 @@
+{
+  "bands": {
+    "counts": {
+      "registry": 60,
+      "scored": 17
+    },
+    "issues": [],
+    "ok": true
+  },
+  "baseline": {
+    "pairs": {
+      "elements": {
+        "equal": true
+      },
+      "maintenance": {
+        "equal": true
+      },
+      "persuasive": {
+        "equal": true
+      },
+      "registry": {
+        "equal": true
+      },
+      "scored": {
+        "equal": true
+      }
+    },
+    "provenance": {
+      "counts": {
+        "elements": 58,
+        "maintenance": 0,
+        "persuasive": 449,
+        "registry": 42,
+        "scored": 9
+      },
+      "issues": [
+        {
+          "issue": "missing_pin",
+          "level": "primary",
+          "path": "elements:$.jurisdictions.HK.statutes[1].pin"
+        },
+        {
+          "issue": "missing_pin",
+          "level": "primary",
+          "path": "elements:$.jurisdictions.HK.statutes[2].pin"
+        },
+        {
+          "issue": "missing_quoting_source",
+          "level": "quoted",
+          "path": "elements:$.jurisdictions.HK.cases[5].source"
+        }
+      ],
+      "levels": {
+        "primary": 32,
+        "quoted": 3,
+        "unverified": 481,
+        "web": 42
+      },
+      "ok": false,
+      "scope": "all explicit verified occurrences, including statutes; no deduplication or inferred levels"
+    }
+  },
+  "comparison": {
+    "data/elements.json": {
+      "baseline_sha256": "1a45088549055fec88c5557cec4720695b3c3796d929123791c32d6604453102",
+      "built_sha256": "1a45088549055fec88c5557cec4720695b3c3796d929123791c32d6604453102",
+      "status": "unchanged"
+    },
+    "data/maintenance.json": {
+      "baseline_sha256": "8fc45407300bef839bd219cecaf4bc4dbe90c20e23bd0a14bf0c16cb69cd5e3e",
+      "built_sha256": "8fc45407300bef839bd219cecaf4bc4dbe90c20e23bd0a14bf0c16cb69cd5e3e",
+      "status": "unchanged"
+    },
+    "data/persuasive.json": {
+      "baseline_sha256": "021331b9e40f2f4a20214dbd3b4b443fe3e57c303b334b45a9393604c9513ac6",
+      "built_sha256": "aae100f0d040f5a6710b60b96c397e36df184e060e666f776a78120a7bb60184",
+      "status": "serialization_drift"
+    },
+    "data/registry.json": {
+      "baseline_sha256": "38f9b3d38c18a86373ff36625ce77aa2d1706d347e74bc984d253c2a5d159039",
+      "built_sha256": "38f9b3d38c18a86373ff36625ce77aa2d1706d347e74bc984d253c2a5d159039",
+      "status": "unchanged"
+    },
+    "data/scored.json": {
+      "baseline_sha256": "c52a73bed828ff1aa419ed329942c8cde681e6ce6722034d9affed91c74db435",
+      "built_sha256": "c52a73bed828ff1aa419ed329942c8cde681e6ce6722034d9affed91c74db435",
+      "status": "unchanged"
+    },
+    "server/netlify/functions/_elements.mjs": {
+      "baseline_sha256": "8617f388058b90cc9652ba6a51dd13133c906e48d88d127af1a820c7c078c7dc",
+      "built_sha256": "8617f388058b90cc9652ba6a51dd13133c906e48d88d127af1a820c7c078c7dc",
+      "status": "unchanged"
+    },
+    "server/netlify/functions/_maintenance.mjs": {
+      "baseline_sha256": "575877afd5a56e3da084c59d6f99c152b0a54880a3554293a214725dfb2b2a48",
+      "built_sha256": "575877afd5a56e3da084c59d6f99c152b0a54880a3554293a214725dfb2b2a48",
+      "status": "unchanged"
+    },
+    "server/netlify/functions/_persuasive.mjs": {
+      "baseline_sha256": "7af9f30930227758143d2be85b1bacf233b19971b035efff8177ea18f12b93c6",
+      "built_sha256": "977172da44989ff023cf3b3398ec8176303c84058cd3aceebcae6a7219a294f8",
+      "status": "serialization_drift"
+    },
+    "server/netlify/functions/_registry.mjs": {
+      "baseline_sha256": "e7724858bb88857b84765c6409f069ea593469202fb0d867e0fbfd9e503a2680",
+      "built_sha256": "e7724858bb88857b84765c6409f069ea593469202fb0d867e0fbfd9e503a2680",
+      "status": "unchanged"
+    },
+    "server/netlify/functions/_scored.mjs": {
+      "baseline_sha256": "33ca03f9a1cd295c0ac9dc34948578952975a9a6068ef2594dc6be7485893484",
+      "built_sha256": "33ca03f9a1cd295c0ac9dc34948578952975a9a6068ef2594dc6be7485893484",
+      "status": "unchanged"
+    }
+  },
+  "core_ok": true,
+  "deterministic": true,
+  "experiments": {
+    "exp2-probe": {
+      "comparison": {
+        "experiments/exp2-probe/probe.json": {
+          "baseline_sha256": "a3f2a1b81fad81df75cca86729189db939cb338788f13c717929c8567c21276b",
+          "built_sha256": "f40d25f46ddba8533b0114bdd4e0d2d05ce088b5346906b218e7cb841a43d105",
+          "status": "serialization_drift"
+        },
+        "experiments/exp2-probe/probe_questions.json": {
+          "baseline_sha256": "c26fe1f8e27dc579ca4419cc23c15e537860b2b8b0343771b603d9200d4eec9d",
+          "built_sha256": "e8f5c773089b5a5b7158011251ded85a8145b805ed199f6eb845f763a03cc9ec",
+          "status": "serialization_drift"
+        }
+      },
+      "failed_stages": [],
+      "ok": true
+    },
+    "exp3-hk-matter": {
+      "comparison": {
+        "experiments/exp3-hk-matter/matter/M01-agreement-extract.md": {
+          "baseline_sha256": "657cdde546a7bac83a0ae4fdbc94172b2978507bc9d2394e9693fd2504a1104c",
+          "built_sha256": "657cdde546a7bac83a0ae4fdbc94172b2978507bc9d2394e9693fd2504a1104c",
+          "status": "unchanged"
+        },
+        "experiments/exp3-hk-matter/matter/M01-correspondence.md": {
+          "baseline_sha256": "117d3e2fdca8bf9a2c0962b722e59c7c1c579a797c1f66203fa9e7af4f950c0e",
+          "built_sha256": "117d3e2fdca8bf9a2c0962b722e59c7c1c579a797c1f66203fa9e7af4f950c0e",
+          "status": "unchanged"
+        },
+        "experiments/exp3-hk-matter/matter/M01-instructions.md": {
+          "baseline_sha256": "711c581b30fcdec40e86f552fbd1f8c5d90c5c2aa291d19c1c8dd0c67f48c2cd",
+          "built_sha256": "711c581b30fcdec40e86f552fbd1f8c5d90c5c2aa291d19c1c8dd0c67f48c2cd",
+          "status": "unchanged"
+        },
+        "experiments/exp3-hk-matter/matter/M01-valuation.md": {
+          "baseline_sha256": "610fd969448b530a54ae7ede4ac6953a0d0479e62b5c11e9f89a6a2ee4a0d8c4",
+          "built_sha256": "610fd969448b530a54ae7ede4ac6953a0d0479e62b5c11e9f89a6a2ee4a0d8c4",
+          "status": "unchanged"
+        },
+        "experiments/exp3-hk-matter/matter/M02-attendance-notes.md": {
+          "baseline_sha256": "9f44839737ebcacea3e90b4f9d53641421c5dd1202bf2457b1a3b4fe47323bab",
+          "built_sha256": "9f44839737ebcacea3e90b4f9d53641421c5dd1202bf2457b1a3b4fe47323bab",
+          "status": "unchanged"
+        },
+        "experiments/exp3-hk-matter/matter/M02-client-agreement-extract.md": {
+          "baseline_sha256": "59fda81a22eeb68a964197bf14c1228046d556391e8fa72ddb3fe9689e91add3",
+          "built_sha256": "59fda81a22eeb68a964197bf14c1228046d556391e8fa72ddb3fe9689e91add3",
+          "status": "unchanged"
+        },
+        "experiments/exp3-hk-matter/matter/M02-client-profile.inv.md": {
+          "baseline_sha256": "21a7d7daa0122636018bfaca26d4f39481367a21863b2745b0f83348d32bec5b",
+          "built_sha256": "21a7d7daa0122636018bfaca26d4f39481367a21863b2745b0f83348d32bec5b",
+          "status": "unchanged"
+        },
+        "experiments/exp3-hk-matter/matter/M02-client-profile.md": {
+          "baseline_sha256": "3a757b98ec8c0325432a3259be9303841ddd8809ab27a34daf0edb7829cc0abb",
+          "built_sha256": "3a757b98ec8c0325432a3259be9303841ddd8809ab27a34daf0edb7829cc0abb",
+          "status": "unchanged"
+        },
+        "experiments/exp3-hk-matter/matter/M02-instructions.inv.md": {
+          "baseline_sha256": "4872c5a58b698760b032039644c2151198db4c00f346ed737ede2842ab4a3e3b",
+          "built_sha256": "4872c5a58b698760b032039644c2151198db4c00f346ed737ede2842ab4a3e3b",
+          "status": "unchanged"
+        },
+        "experiments/exp3-hk-matter/matter/M02-instructions.md": {
+          "baseline_sha256": "80f85e962fba743a60281daff8f724f1540dd3cab244dc0bc19ef78d41ec89b2",
+          "built_sha256": "80f85e962fba743a60281daff8f724f1540dd3cab244dc0bc19ef78d41ec89b2",
+          "status": "unchanged"
+        },
+        "experiments/exp3-hk-matter/matter/M04-instructions.md": {
+          "baseline_sha256": "5cec43f26a682a737b874afd30ec80d5b8baf030e7b60bb7714f54e188ee6aa0",
+          "built_sha256": "5cec43f26a682a737b874afd30ec80d5b8baf030e7b60bb7714f54e188ee6aa0",
+          "status": "unchanged"
+        },
+        "experiments/exp3-hk-matter/matter/M04-trial-note.md": {
+          "baseline_sha256": "f615b899dbd036ee36f56ddb5b2b11336cef031095f205e8d4c0bd33544cec13",
+          "built_sha256": "f615b899dbd036ee36f56ddb5b2b11336cef031095f205e8d4c0bd33544cec13",
+          "status": "unchanged"
+        },
+        "experiments/exp3-hk-matter/matter/M04-witness-statement.md": {
+          "baseline_sha256": "45aefd8f535c7597763c55c9475b3399bbb4672f349b4af377e05258049a5066",
+          "built_sha256": "45aefd8f535c7597763c55c9475b3399bbb4672f349b4af377e05258049a5066",
+          "status": "unchanged"
+        },
+        "experiments/exp3-hk-matter/matter/M05-counsel-note.md": {
+          "baseline_sha256": "07896117e40e555c3668e9890a3667329ab9a74adab3a5813ab46b7684aaee4b",
+          "built_sha256": "07896117e40e555c3668e9890a3667329ab9a74adab3a5813ab46b7684aaee4b",
+          "status": "unchanged"
+        },
+        "experiments/exp3-hk-matter/matter/M05-instructions.md": {
+          "baseline_sha256": "cbf7729f15a2eedc39aeeda36510169a3ff0b7e51eca859a30678a831b41bee3",
+          "built_sha256": "cbf7729f15a2eedc39aeeda36510169a3ff0b7e51eca859a30678a831b41bee3",
+          "status": "unchanged"
+        },
+        "experiments/exp3-hk-matter/reader_checklist.md": {
+          "baseline_sha256": "dbce9fa2853647b1dd5fe2c124cc5a323bf7a225813b33ed6d41c3ea18fdb926",
+          "built_sha256": "dbce9fa2853647b1dd5fe2c124cc5a323bf7a225813b33ed6d41c3ea18fdb926",
+          "status": "unchanged"
+        },
+        "experiments/exp3-hk-matter/tasks.json": {
+          "baseline_sha256": "9f35fa512024cd94d0c64ef564d8473ec75c314f97b15618e66833fa0b184d51",
+          "built_sha256": "9f35fa512024cd94d0c64ef564d8473ec75c314f97b15618e66833fa0b184d51",
+          "status": "unchanged"
+        }
+      },
+      "failed_stages": [],
+      "ok": true
+    },
+    "exp4-cfa": {
+      "comparison": {
+        "experiments/exp4-cfa/reader_checklist.md": {
+          "baseline_sha256": "0ccd31d7c8be394252f343d11d0f5181bbead9bbb809683ecb0df16722e38543",
+          "built_sha256": null,
+          "status": "missing_output"
+        },
+        "experiments/exp4-cfa/tasks.json": {
+          "baseline_sha256": "f29763465fdca0a84a3e8e9fdc9fdff4b12ba39b747cae2741db66c964d0463d",
+          "built_sha256": "f29763465fdca0a84a3e8e9fdc9fdff4b12ba39b747cae2741db66c964d0463d",
+          "status": "unchanged"
+        }
+      },
+      "failed_stages": [
+        {
+          "returncode": 1,
+          "script": "experiments/exp4-cfa/validate_tasks.py",
+          "stderr": "",
+          "stdout": "tasks 3  criteria 13\nStructure: valid\nSource verification: incomplete\n  missing-judgment-file: tasks[0].judgment_file: No judgment_file is recorded; original-text checks are incomplete.\n  missing-source-identity: tasks[0]: A full recorded case name and citation are needed to check source identity; no alias is inferred.\n  missing-pin-phrases: tasks[0].rubric[0].pin_phrases: No pin_phrases are recorded; verbatim original-text checking is incomplete.\n  missing-polarity: tasks[0].rubric[0].polarity: Polarity is not recorded; it is not inferred from criterion wording.\n  missing-pin-phrases: tasks[0].rubric[1].pin_phrases: No pin_phrases are recorded; verbatim original-text checking is incomplete.\n  missing-polarity: tasks[0].rubric[1].polarity: Polarity is not recorded; it is not inferred from criterion wording.\n  missing-pin-phrases: tasks[0].rubric[2].pin_phrases: No pin_phrases are recorded; verbatim original-text checking is incomplete.\n  missing-polarity: tasks[0].rubric[2].polarity: Polarity is not recorded; it is not inferred from criterion wording.\n  missing-judgment-file: tasks[1].judgment_file: No judgment_file is recorded; original-text checks are incomplete.\n  missing-source-identity: tasks[1]: A full recorded case name and citation are needed to check source identity; no alias is inferred.\n  missing-pin-phrases: tasks[1].rubric[0].pin_phrases: No pin_phrases are recorded; verbatim original-text checking is incomplete.\n  missing-polarity: tasks[1].rubric[0].polarity: Polarity is not recorded; it is not inferred from criterion wording.\n  missing-pin-phrases: tasks[1].rubric[1].pin_phrases: No pin_phrases are recorded; verbatim original-text checking is incomplete.\n  missing-polarity: tasks[1].rubric[1].polarity: Polarity is not recorded; it is not inferred from criterion wording.\n  missing-pin-phrases: tasks[1].rubric[2].pin_phrases: No pin_phrases are recorded; verbatim original-text checking is incomplete.\n  missing-polarity: tasks[1].rubric[2].polarity: Polarity is not recorded; it is not inferred from criterion wording.\n  missing-pin-phrases: tasks[1].rubric[3].pin_phrases: No pin_phrases are recorded; verbatim original-text checking is incomplete.\n  missing-polarity: tasks[1].rubric[3].polarity: Polarity is not recorded; it is not inferred from criterion wording.\n  missing-pin-phrases: tasks[1].rubric[4].pin_phrases: No pin_phrases are recorded; verbatim original-text checking is incomplete.\n  missing-polarity: tasks[1].rubric[4].polarity: Polarity is not recorded; it is not inferred from criterion wording.\n  missing-judgment-file: tasks[2].judgment_file: No judgment_file is recorded; original-text checks are incomplete.\n  missing-source-identity: tasks[2]: A full recorded case name and citation are needed to check source identity; no alias is inferred.\n  missing-pin-phrases: tasks[2].rubric[0].pin_phrases: No pin_phrases are recorded; verbatim original-text checking is incomplete.\n  missing-polarity: tasks[2].rubric[0].polarity: Polarity is not recorded; it is not inferred from criterion wording.\n  missing-pin-phrases: tasks[2].rubric[1].pin_phrases: No pin_phrases are recorded; verbatim original-text checking is incomplete.\n  missing-polarity: tasks[2].rubric[1].polarity: Polarity is not recorded; it is not inferred from criterion wording.\n  missing-pin-phrases: tasks[2].rubric[2].pin_phrases: No pin_phrases are recorded; verbatim original-text checking is incomplete.\n  missing-polarity: tasks[2].rubric[2].polarity: Polarity is not recorded; it is not inferred from criterion wording.\n  missing-pin-phrases: tasks[2].rubric[3].pin_phrases: No pin_phrases are recorded; verbatim original-text checking is incomplete.\n  missing-polarity: tasks[2].rubric[3].polarity: Polarity is not recorded; it is not inferred from criterion wording.\n  missing-pin-phrases: tasks[2].rubric[4].pin_phrases: No pin_phrases are recorded; verbatim original-text checking is incomplete.\n  missing-polarity: tasks[2].rubric[4].polarity: Polarity is not recorded; it is not inferred from criterion wording.\nIndependent reader sign-off: pending. Proposition support: not verified.\nExperiment readiness: incomplete; structure/phrase checks do not clear this gate.\n"
+        }
+      ],
+      "ok": false
+    }
+  },
+  "hash_seed_ok": {
+    "1": true,
+    "2": true
+  },
+  "input_sha256": {
+    "data/sources/uklr/llms-cases.txt": "996f1ee2b25e7bd3ce4b1ef51ace6b96f1c052b172d8b6f1a9ec5aa97150825a",
+    "data/sources/uklr/uklr-official-links.json": "cd114b959f484694b45317dae27f8201a83ced6e48c01b26b72f407c8e7f0111",
+    "data/sources/uklr/uklr-related-links.json": "b2443444b5b6ae30116f242612444a7741f6546c34d20056500b6afa1bf9a926",
+    "data/sources/uklr/uklr-treatment-slim.json": "656e89585640446f1d42a3c4ab99c5c8730ab95fd58ce353da00a64bd27b4e56",
+    "experiments/exp2-probe/build_probe.py": "73a3fdc3ce0fe20d4a3fb0f8fa2b3ef77a0ee08f0c49495795d700a09c2a0550",
+    "experiments/exp3-hk-matter/build_reader_checklist.py": "5a777b4a0b450c90762dfffbdd63ed7c3f01ca1b81caf919b5de5396e535cafc",
+    "experiments/exp3-hk-matter/build_tasks.py": "481dc0df3d0628fbffa99b09dbd220420b7508fc3730bc98efb7d7c926de84e9",
+    "experiments/exp3-hk-matter/validate_tasks.py": "5c1954c8c912b6f8786952f3a5b8eaa5dacddca265683be9b8c9d1bde18d6168",
+    "experiments/exp4-cfa/build_reader_checklist.py": "e08d20a2724a264705147971f416711948bfd3d9eaa058bd8269692516609c99",
+    "experiments/exp4-cfa/build_tasks.py": "0adfddf72bae35cecc6880ac95325bdfd60c113756184f1ca976c8d775713c01",
+    "experiments/exp4-cfa/matter/CFA-02-judgment.txt": "b91bb0228cbd4380695729353a3f521b72f6744c6b617896f1658f26f8630ce9",
+    "experiments/exp4-cfa/matter/CFA02-ca-summary.md": "23c457e2afb81ac4f7f6ee5940d504cca5414714b82e6ad65742788621d39225",
+    "experiments/exp4-cfa/matter/CFA02-chronology.md": "ceb8ef270a04a23b461531ef65a292696d0aa77edc56e10023f1214c27899879",
+    "experiments/exp4-cfa/matter/CFA02-instructions.md": "bf7c46d99ed9c1437ce1023433557db5b0dbee88629518f34a20fc065a156ea3",
+    "experiments/exp4-cfa/matter/CVD-matter.md": "1137081ace451f4edc0a266d0c35d22adb14de1d3d2e682414a33014441da308",
+    "experiments/exp4-cfa/matter/ETON-matter.md": "62f3398ff286c02cb07a3b22dfc72345d4e7f5dc61ab5ce6ee2e45b5f53a371e",
+    "experiments/exp4-cfa/validate_tasks.py": "26114f544c3510123a3d7140711f24b01b471caa0974789ca95e4f6a8c64a712",
+    "scripts/_paths.py": "288e1f07e6f7353f631536cfdc65ec422c6c159f99f09a60bc30a07072b33907",
+    "scripts/apply_tiers.py": "7118e796d7479788c3a268d66bd01691d37c4a0d174ad4933f257cd76abe0a80",
+    "scripts/build_elements.py": "3c0863b18e3140d951228bf146202238889e926f0234c53fa3bdaf97905aaf91",
+    "scripts/build_maintenance.py": "4da194e5b4c8cbfee93eb10087e7e56768f39a82424333517a49b4d0ad53af18",
+    "scripts/build_persuasive.py": "6268278051eefe8f0714e657d69a6e30ff79e064d5dc89c2f1caa1520e2ba144",
+    "scripts/build_registry.py": "9c87fbee08da1c28572d3bb4a037b860e19d9b72220c02a1cc486f757fff0fcb",
+    "scripts/build_scored.py": "16f3cd3f650c0c23cdcc6479b74aed391d62ab3b62ebb20086854b0f69f28e7e",
+    "scripts/check_persuasive.py": "eab4a66a8f781d47118b898f8ee13d096ea540b66c186156da07dd8792814d1c"
+  },
+  "original_unchanged": true,
+  "overall_ok": false,
+  "provenance": {
+    "counts": {
+      "elements": 58,
+      "maintenance": 0,
+      "persuasive": 449,
+      "registry": 42,
+      "scored": 9
+    },
+    "issues": [
+      {
+        "issue": "missing_pin",
+        "level": "primary",
+        "path": "elements:$.jurisdictions.HK.statutes[1].pin"
+      },
+      {
+        "issue": "missing_pin",
+        "level": "primary",
+        "path": "elements:$.jurisdictions.HK.statutes[2].pin"
+      },
+      {
+        "issue": "missing_quoting_source",
+        "level": "quoted",
+        "path": "elements:$.jurisdictions.HK.cases[5].source"
+      }
+    ],
+    "levels": {
+      "primary": 32,
+      "quoted": 3,
+      "unverified": 481,
+      "web": 42
+    },
+    "ok": false,
+    "scope": "all explicit verified occurrences, including statutes; no deduplication or inferred levels"
+  }
+}

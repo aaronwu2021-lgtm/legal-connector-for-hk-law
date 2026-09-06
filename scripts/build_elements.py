@@ -1,3 +1,4 @@
+import argparse
 import json
 
 from _paths import emit
@@ -75,7 +76,7 @@ DATA = {
     {"id":"E3d","zh":"存疑仍信赖","en":"Doubt does not defeat reliance",
      "test":"Belief in the truth of the statement is not required: reliance survives suspicion of falsity where the statement materially influenced the decision (settlement context). This is the point on which the English line genuinely went further than the rest of the family — not the character of the presumption, on which England agrees it is an inference of fact.",
      "auth":[A("Hayward v Zurich Insurance","[2016] UKSC 48; [2017] AC 142","UKSC",v=P,
-               pin="[23], [25] (belief not required); [34] (inference of fact); [37] (very difficult to rebut); [49]",
+               pin="[23], [25] (belief not required); [33] (need not be the sole inducement); [34] (inference of fact); [37] (very difficult to rebut); [49]",
                src="caselaw.nationalarchives.gov.uk/uksc/2016/48",
                note="Lord Clarke at [25]: 'belief is not required as an independent ingredient of the tort'")]},
     {"id":"E3e","zh":"无调查义务","en":"No duty to investigate",
@@ -100,17 +101,17 @@ DATA = {
      "auth":[A("Doyle v Olby (Ironmongers)","[1969] 2 QB 158","EWCA"),
              A("Smith New Court v Scrimgeour Vickers","[1996] UKHL 3; [1997] AC 254","HL")]},
     {"id":"E5c","zh":"法定赔偿标准","en":"Statutory measure","drift":"T3",
-     "test":"s.2(1)-type damages assessed on the deceit measure via the 'fiction of fraud' — formally good law in England but doubted (left open in Smith New Court); ADOPTED and undoubted in Hong Kong since 1991; open in Singapore with SGCA obiter against.",
+     "test":"s.2(1)-type damages assessed on the deceit measure via the 'fiction of fraud' — formally good law in England but doubted (left open in Smith New Court); adopted in the reviewed Hong Kong first-instance and District Court decisions, with no HKCA or CFA ruling on the point in the current record; open in Singapore with SGCA obiter against.",
      "auth":[A("Royscot Trust v Rogerson","[1991] 2 QB 297","EWCA",note="criticised; correctness left open in Smith New Court"),
              A("Long Year Development v Tse Fuk Man Norman","[1991] 2 HKC 393","HK High Court",v=Q,pin="407D-408D (measure); 408B-C",
-               src="quoted verbatim in Wong Yuk Lan v Car's City [2024] HKDC 804 at [90] and pin-cited in Joytex [2018] HKCFI 2286 at §142 and Alireza v Elman [2026] HKCFI 4060 at [199]",
+               src="https://www.hklii.hk/api/getjudgment?lang=tc&abbr=hkdc&year=2024&num=804 at [90] quotes the operative 407D-408D passage; https://www.hklii.hk/api/getjudgment?lang=en&abbr=hkcfi&year=2018&num=2286 at [152] quotes 409F-410D; original report not seen",
                note="DHCJ Andrew Li QC (later CJ): 'the measure of damages for s 3(1) of the Ordinance is the same as that for deceit' — Royscot followed as 'highly persuasive as the legislative provisions are identical'"),
              A("Joytex Development v Super Homes","[2018] HKCFI 2286","HKCFI",v=P,pin="§142, §144",
-               src="hklii.hk/api/getjudgment hkcfi/2018/2286",
+               src="https://www.hklii.hk/api/getjudgment?lang=en&abbr=hkcfi&year=2018&num=2286",
                note="applies the deceit measure under Cap. 284 s.3(1) as ratio; DHCJ Alexander Stock SC"),
              A("Wong Yuk Lan v Car's City Co Ltd","[2024] HKDC 804","HKDC",v=P,pin="[89]-[91]",
-               src="hklii.hk/api/getjudgment hkdc/2024/804 (Chinese judgment)",
-               note="quotes Long Year at 407D-408D in full; awards s.3(1) damages on the tortious/deceit measure")]}]}
+               src="https://www.hklii.hk/api/getjudgment?lang=tc&abbr=hkdc&year=2024&num=804 (Chinese judgment)",
+               note="quotes the operative Long Year passage at 407D-408D, with an ellipsis; applies the s.3(1) tortious/deceit measure")]}]}
  ],
  "defences": [
   {"id":"D1","zh":"Non-reliance / 整体协议条款","en":"Non-reliance / entire agreement clause","drift":"T1",
@@ -146,25 +147,35 @@ DATA = {
       "s.2":"removal of bars to rescission","s.3(1)":"damages, reversed burden",
       "s.3(2)":"damages in lieu of rescission",
       "s.4":"exclusion clauses of no effect unless reasonable per Control of Exemption Clauses Ordinance (Cap. 71) s.3(1)"},
-      "verified":W,"source":"mirror + CFA quotation in Green Park; official e-Legislation text not fetched"},
+      "verified":P,"pin":"ss. 2, 3(1)-(2), 4",
+      "source":"https://resource.data.one.gov.hk/doj/data/hkel_c_leg_cap_1_cap_300_en.zip :: cap_284_en_c/cap_284_20240818000000_en_c.xml (Department of Justice current-legislation XML, version 2024-08-18, read 2026-09-06)"},
      {"ref":"Control of Exemption Clauses Ordinance (Cap. 71)","sections":{
-       "s.3(1)":"the reasonableness test itself — fair and reasonable to be included having regard to circumstances known or in contemplation when the contract was made",
+       "s.3(1)":"the reasonableness test itself — fair and reasonable to be included having regard to circumstances known, or which ought reasonably to have been known, or in contemplation when the contract was made",
        "s.3(6)":"the BURDEN of proving reasonableness is on the party asserting it",
-       "s.7(2)":"a term excluding or restricting liability for negligence is ineffective unless reasonable — the route by which non-advisory and non-reliance clauses are caught where they are exclusions in substance"},
-      "verified":P,"source":"quoted in Chang Pui Yin v Bank of Singapore [2017] HKCA 290 at [110]-[111]"},
+       "s.7(1)":"liability for death or personal injury resulting from negligence cannot be excluded or restricted",
+       "s.7(2)":"for other loss or damage, negligence liability may be excluded or restricted only so far as the term or notice satisfies reasonableness"},
+      "verified":P,"pin":"ss. 3(1), 3(6), 7(1)-(2)",
+      "source":"https://www.elegislation.gov.hk/hk/cap71?xpid=ID_1438403562489_001 (official text, version selected 2018-12-13, read 2026-09-06); application to the bank clauses checked separately in https://www.hklii.hk/api/getjudgment?lang=en&abbr=hkca&year=2017&num=290 at [109]-[114]",
+      "note":"The conclusion that the clauses were exclusions in substance and therefore engaged s.7(2) is Chang Pui Yin's application, not statutory text."},
      {"ref":"Unconscionable Contracts Ordinance (Cap. 458)","sections":{
-       "s.3(1)":"when a party 'deals as consumer' — NOT determined by the wealth of the class of customers served, so private banking services qualify (Chang Pui Yin [57])",
-       "s.5(1)":"relief: enforce without the unconscionable part, or limit, revise or alter it to avoid an unconscionable result"},
-      "verified":P,"source":"Chang Pui Yin v Bank of Singapore [2017] HKCA 290 at [51]-[57], [92]",
-      "note":"a distinct HK control with no direct English counterpart in this form, and the ground on which Chang Pui Yin actually turned. Previously absent from this dataset — the HK overlay recorded only Cap. 284 and Cap. 71"}],
+       "s.3(1)(a)-(c)":"a party deals as consumer where that party neither contracts in the course of business nor holds itself out as doing so, the other party contracts in the course of business, and the goods or services are of a type ordinarily supplied for private use or consumption",
+       "s.5(1)(a)-(c)":"if a consumer contract or part was unconscionable when made, the court may refuse to enforce the contract, enforce the remainder without the unconscionable part, or limit, revise or alter that part to avoid an unconscionable result"},
+      "verified":P,"pin":"ss. 3(1)(a)-(c), 5(1)(a)-(c)",
+      "source":"https://www.elegislation.gov.hk/hk/cap458?xpid=ID_1438403217731_001 and https://www.elegislation.gov.hk/hk/cap458?xpid=ID_1438403217763_001 (official text, version selected 2022-01-06, read 2026-09-06); application checked separately in https://www.hklii.hk/api/getjudgment?lang=en&abbr=hkca&year=2017&num=290 at [51]-[57], [92]",
+      "note":"Chang Pui Yin held that the wealth of a private bank's customer class did not determine the statutory consumer question and applied s.5 relief. That is judicial application, not wording found in s.3 itself."}],
     "cases":[
       {"name":"Green Park Properties Ltd v Dorku Ltd","cite":"(2001) 4 HKCFAR 448","court":"CFA","year":2001,
        "holding":"Misrepresentation about a rear yard in a property sale induced the purchase; rescission plus expenses. The entire agreement clause was of no effect under MO s.4 for failing CECO s.3(1) reasonableness.","maps_to":["E3","D1"],"verified":W},
-      {"name":"DBS Bank (HK) v San-Hot HK Industrial","cite":"HCA 2279/2008; [2013] 4 HKC 1; [2013] HKEC 352","court":"CFI","year":2013,
-       "holding":"Contractual estoppel following Peekay/Springwell 'also applies in Hong Kong'; non-reliance terms defeated mis-selling claims.","maps_to":["D1"],"verified":W,
-       "note":"[2013] 4 HKC 1 parallel citation and the SFO s.108 analysis at §16 per DHCJ Pow SC confirmed from Li Yuhong v OOO Securities [2025] HKCFI 5270 at [111]"},
-      {"name":"DBS Bank (HK) v Sit Pan Jit","cite":"HCA 382/2009; [2015] HKEC 548","court":"CFI","year":2015,
-       "holding":"Non-reliance clauses upheld via contractual estoppel, extending to statutory claims under SFO s.108.","maps_to":["D1"],"verified":W},
+      {"name":"DBS Bank (HK) v San-Hot HK Industrial","cite":"[2013] HKCFI 387; HCA 2279/2008; [2013] 4 HKC 1; [2013] HKEC 352","court":"CFI","year":2013,"decision_date":"2013-03-12",
+       "holding":"The Court of First Instance endorsed contractual estoppel as applicable in Hong Kong, following Peekay and Springwell. The point did not determine the result because the court had already rejected the alleged representations on the facts.","maps_to":["D1"],"verified":P,
+       "pin":"[193], [203], [206]; statutory-control discussion [232]-[237]",
+       "source":"https://www.hklii.hk/api/getjudgment?lang=en&abbr=hkcfi&year=2013&num=387",
+       "note":"[193] states that it was unnecessary to rely on contractual estoppel on the findings; [203] and [206] endorse the principle. Do not present the doctrine as the sole ratio of the case."},
+      {"name":"DBS Bank (HK) v Sit Pan Jit","cite":"[2015] HKCFI 529; HCA 382/2009; [2015] HKEC 548","court":"CFI","year":2015,"decision_date":"2015-04-02",
+       "holding":"The Court of First Instance accepted the contractual-estoppel analysis and applied it in Hong Kong to the parties' contract, subject to separate statutory controls and the facts of the case.","maps_to":["D1"],"verified":P,
+       "pin":"[345]-[346], [352]; statutory-control discussion [407]-[409], [445]",
+       "source":"https://www.hklii.hk/api/getjudgment?lang=en&abbr=hkcfi&year=2015&num=529",
+       "note":"[2015] HKCFI 529 is the substantive judgment. [2015] HKCFI 530 and 531 are procedural rulings in the same litigation and are not substitutes for it."},
       {"name":"Chang Pui Yin v Bank of Singapore","cite":"[2017] HKCA 290; [2017] 4 HKLRD 458; CACV 194/2016","court":"CA","year":2017,
        "holding":"Two independent counter-limits. (1) Unconscionable Contracts Ordinance (Cap. 458): 'deals as consumer' is not decided by the wealth of the class served, so private banking services are within it — the judge erred in holding otherwise ([57]); unfair tactics were used to procure agreement to clauses buried among standard terms and not highlighted; giving them full effect would be unconscionable, and relief was granted under s.5 ([92]). (2) CECO (Cap. 71): the clauses were in substance exclusions of the Bank's duty, so s.7(2) required them to be reasonable ([110]); the test is s.3(1) with the burden on the Bank under s.3(6) ([111]); the Bank failed it ([113]).",
        "maps_to":["D1"],"verified":P,"pin":"[51]-[57], [92], [110]-[113]",
@@ -174,9 +185,10 @@ DATA = {
        "pin":"HCCL 28/2008, judgment of Ng J dated 30 July 2018 (corrigenda 7 August 2018)",
        "note":"date corrected: HKLII metadata records 29 July 2018, the judgment itself is dated 30 July 2018"},
       {"name":"Long Year Development Ltd v Tse Fuk Man Norman","cite":"[1991] 2 HKC 393","court":"High Court","year":1991,
-       "holding":"The measure of damages under Cap. 284 s.3(1) is the same as for deceit. Royscot followed within months of it being decided, on the express ground that it was 'highly persuasive as the legislative provisions are identical'. But the deceit measure is the TORTIOUS measure: the plaintiff is put in the position he would have been in had the representation not been made, not the position had it been true. Loss-of-a-chance claim on a putative alternative purchase rejected for want of evidence (409F-410D).",
+       "holding":"The measure of damages under Cap. 284 s.3(1) is the same as for deceit. Royscot was followed on the express ground that it was 'highly persuasive as the legislative provisions are identical'. But the deceit measure is the TORTIOUS measure: the plaintiff is put in the position he would have been in had the representation not been made, not the position had it been true. Loss-of-a-chance claim on a putative alternative purchase rejected for want of evidence (409F-410D).",
        "maps_to":["E5","E5c"],"verified":Q,"pin":"407D-408D; 408B-C; 409F-410D",
-       "note":"DHCJ Andrew Li QC, later the first Chief Justice of the CFA. Judgment text not on HKLII (pre-1997); verified from verbatim quotation in Wong Yuk Lan [2024] HKDC 804 at [90] plus pin cites in Joytex [2018] HKCFI 2286 §142 and Alireza [2026] HKCFI 4060 [199]"},
+       "source":"https://www.hklii.hk/api/getjudgment?lang=tc&abbr=hkdc&year=2024&num=804 at [90] quotes 407D-408D; https://www.hklii.hk/api/getjudgment?lang=en&abbr=hkcfi&year=2018&num=2286 at [152] quotes 409F-410D; original report not seen",
+       "note":"DHCJ Andrew Li QC, later the first Chief Justice of the CFA. The pre-1997 report itself was not reviewed; verification remains quoted rather than primary."},
       {"name":"Joytex Development Ltd v Super Homes Ltd","cite":"[2018] HKCFI 2286","court":"CFI","year":2018,
        "holding":"s.3(1) damages awarded on the deceit measure; damages under s.3(1) may be claimed together with rescission. Objective construction of representations from the perspective of a reasonable person in the representee's position, taking the representee's sophistication into account (§77(2)); cumulative effect of multiple representations (§80); no defence that the representee could have discovered the truth (§116).",
        "maps_to":["E1","E3","E5c"],"verified":P,"pin":"§77(2), §80, §116, §127(2), §142, §144, §152",
@@ -188,11 +200,11 @@ DATA = {
       {"name":"Li Yuhong v OOO Securities (HK) Group Ltd","cite":"[2025] HKCFI 5270","court":"CFI","year":2025,
        "holding":"Consolidated statement of the HK misrepresentation elements. Adopts Hayward v Zurich §§33-35 on inducement (need not be the sole inducement; presumption on proof of falsity plus entry, strongest in fraud) and restates the Cap. 284 s.3(1) deceit measure.",
        "maps_to":["E1","E3","E3c","E5c"],"verified":P,"pin":"[106]-[111]"},
-      {"name":"Koo Ming Kown v The Baptist Convention of Hong Kong","cite":"[2026] HKCA 372; CACV 481/2024","court":"CA","year":2026,
+      {"name":"Koo Ming Kown v The Baptist Convention of Hong Kong","cite":"[2026] HKCA 372; CACV 481/2024","court":"CA","year":2026,"decision_date":"2026-03-20",
        "holding":"The inducement 'presumption' is an inference of FACT, not a presumption of law, and is rebuttable on all the relevant evidence including the claimant's own testimony (Zurich [34]; BV Nederlandse [2020] QB 551 at [25], [32] per Longmore LJ). Appeal on inducement dismissed.",
        "maps_to":["E3c"],"verified":P,"pin":"[66]-[68]",
        "note":"Au, Chow and Anthony Chan JJA; judgment of the Court by Anthony Chan JA. Places the HK CA alongside SGCA (Wee Chiaw Sek Anna) and against the stronger English reading — and against the HK CFI's own restatement in Li Yuhong [2025] HKCFI 5270 [109] months earlier"},
-      {"name":"Alireza v Elman","cite":"[2026] HKCFI 4060","court":"CFI","year":2026,
+      {"name":"Alireza v Elman","cite":"[2026] HKCFI 4060","court":"CFI","year":2026,"decision_date":"2026-07-20",
        "holding":"Obiter: a claimant pleading the CONTRACTUAL measure ('as if the representations had been true') for a s.3(1)/tortious misrepresentation claim fails to prove damage; the tortious counterfactual must be pleaded and evidenced.",
        "maps_to":["E5c"],"verified":P,"pin":"[199](b)",
        "note":"misrepresentation claim not engaged on the findings; observations expressly made only 'if necessary'"}],
@@ -271,8 +283,8 @@ DATA = {
     {"j":"EN","y":2010,"f":-0.8,"case":"Springwell v JP Morgan","court":"EWCA","treat":"affirms · broadens","eff":"Estoppel effective between sophisticated commercial parties"},
     {"j":"EN","y":2018,"f":0.4,"case":"First Tower Trustees v CDS","court":"EWCA","treat":"narrows","eff":"Basis clauses are exclusions in substance → must pass MA s.3 / UCTA s.11(1) reasonableness"},
     {"j":"HK","y":2001,"f":0.5,"case":"Green Park Properties v Dorku (CFA)","treat":"pre-figures","eff":"Entire agreement clause of no effect under MO s.4 — failed CECO s.3(1) reasonableness"},
-    {"j":"HK","y":2013,"f":-0.6,"case":"DBS v San-Hot (CFI)","treat":"adopts","eff":"Peekay/Springwell contractual estoppel 'also applies in Hong Kong'"},
-    {"j":"HK","y":2015,"f":-0.7,"case":"DBS v Sit Pan Jit (CFI)","treat":"affirms","eff":"Non-reliance clauses upheld; extended to SFO statutory claims"},
+    {"j":"HK","y":2013,"decision_date":"2013-03-12","f":-0.6,"case":"DBS v San-Hot (CFI)","treat":"adopts","eff":"CFI endorsed contractual estoppel, although it was unnecessary on the factual findings; statutory controls were considered separately"},
+    {"j":"HK","y":2015,"decision_date":"2015-04-02","f":-0.7,"case":"DBS v Sit Pan Jit (CFI)","treat":"applies","eff":"CFI applied contractual estoppel to the parties' contract and separately considered statutory reasonableness on the facts"},
     {"j":"HK","y":2017,"f":0.4,"case":"Chang Pui Yin v Bank of Singapore (CA)","treat":"narrows","eff":"Two routes, either sufficient: UCO Cap. 458 unconscionability, private banking being within 'deals as consumer' ([57], [92]); and CECO s.7(2)/s.3(1) reasonableness with the burden on the bank ([110]-[113])"},
     {"j":"HK","y":2021,"f":0.2,"case":"Ng Lai Ling Winnie v Ng Yuk Pui Kelly (CFA App Ctte)","treat":"confines","eff":"Apex-level statement of the doctrine's outer limit: a contractual estoppel arises only between parties to the contract on the basis of their mutual agreement, and only as to those aspects of their relationship the agreement was directed at; Peekay treated as the leading case"},
     {"j":"SG","y":2007,"f":-0.6,"case":"Orient Centre v Société Générale (SGCA)","treat":"effective","eff":"Non-reliance clauses defeat claims between sophisticated parties"},
@@ -292,13 +304,13 @@ DATA = {
     {"j":"HK","y":2025,"f":0.7,"case":"Li Yuhong v OOO Securities (CFI)","treat":"follows","eff":"Hayward §§33-35 adopted: representation need not be the sole inducement; presumption arises on proof of falsity plus entry, strongest in fraud"},
     {"j":"HK","y":2026,"f":0.1,"case":"Koo Ming Kown v Baptist Convention (CA)","treat":"narrows","eff":"The 'presumption' is an inference of fact, not of law, rebuttable on all the evidence including the claimant's own testimony — HK CA lands where SGCA did in Wee Chiaw Sek Anna"}]},
   "T3": {"title":"法定赔偿标准(fiction of fraud)","title_en":"Statutory damages measure","sub_test":"E5c",
-   "note":"Royscot 把 s.2(1) 赔偿拉到欺诈标准;上议院 1996 存疑搁置;新加坡 2014 obiter 反对、悬而未决;澳洲无对应条文。香港是全家族中立场最稳的:1991 年即采纳,三十余年无一判决动摇,反而是英国本土存疑、新加坡倾向拒绝——即「祖宗法域已生疑,继受法域仍笃守」的倒置。",
+   "note":"Royscot 把 s.2(1) 赔偿拉到欺诈标准;上议院 1996 存疑搁置;新加坡 2014 obiter 反对、悬而未决;澳洲无对应条文。香港现有记录显示1991年高院采纳，随后由原讼法庭及区域法院援引或适用；但本数据尚无上诉法庭或终审法院就此赔偿标准的裁决。",
    "events":[
     {"j":"EN","y":1991,"f":0.8,"case":"Royscot Trust v Rogerson","court":"EWCA","treat":"establishes","eff":"s.2(1) damages on the deceit measure — the fiction of fraud"},
     {"j":"EN","y":1996,"f":0.4,"case":"Smith New Court (HL)","treat":"doubts","eff":"Correctness expressly left open"},
     {"j":"HK","y":1991,"f":0.8,"case":"Long Year Development v Tse Fuk Man Norman (HC)","treat":"adopts","eff":"Cap. 284 s.3(1) damages are on the deceit measure; Royscot followed the same year as 'highly persuasive as the legislative provisions are identical' (DHCJ Andrew Li QC, later CJ)"},
     {"j":"HK","y":2018,"f":0.8,"case":"Joytex v Super Homes (CFI)","treat":"applies","eff":"s.3(1) damages awarded on the deceit measure as ratio; Long Year pin-cited at 407D-408D"},
-    {"j":"HK","y":2024,"f":0.8,"case":"Wong Yuk Lan v Car's City (DC)","treat":"affirms","eff":"Long Year quoted in full; s.3(1) tortious measure applied alongside s.3(2)"},
+    {"j":"HK","y":2024,"f":0.8,"case":"Wong Yuk Lan v Car's City (DC)","treat":"applies","eff":"The operative Long Year passage is quoted with an ellipsis; the s.3(1) tortious measure is applied alongside s.3(2)"},
     {"j":"HK","y":2026,"f":0.8,"case":"Alireza v Elman (CFI)","treat":"restates · obiter","eff":"Contractual measure unavailable for a s.3(1) claim; tortious counterfactual must be pleaded"},
     {"j":"SG","y":2014,"f":-0.2,"case":"RBC Properties v Defu (SGCA)","treat":"doubts · obiter","eff":"No reason in logic or principle for the deceit measure; undecided"}]}
  },
@@ -333,45 +345,55 @@ COURT_RANK = {
   "DC": 1,
 }
 import re as _re
-_missing = []
-for _tid, _tl in DATA["timelines"].items():
-    for _e in _tl["events"]:
-        _m = _re.search(r"\(([^()]+)\)\s*$", _e["case"])
-        _court = _e.get("court") or (_m.group(1).strip() if _m else None)
-        if _court is None:
-            # English backbone events are written without a parenthetical;
-            # infer from the well-known citation form in the effect text or
-            # default the jurisdiction's usual court for that era.
-            _court = {"EN": "EWCA", "SG": "SGCA", "AU": "HCA", "HK": "CFI"}[_e["j"]]
-        _e["court"] = _court
-        if _court not in COURT_RANK:
-            _missing.append((_tid, _e["case"], _court))
-        _e["court_rank"] = COURT_RANK.get(_court, 2)
-if _missing:
-    raise ValueError(f"unranked court(s) on timeline events: {_missing}")
-DATA["court_rank"] = COURT_RANK
 
-emit('elements', DATA)
 
-# Verification tally. Printed rather than hand-maintained: the README and the
-# paper both quote these counts, and a hand-kept number silently goes stale the
-# first time an authority is upgraded.
-_levels = {}
-def _tally(o):
-    if isinstance(o, dict):
-        for a in o.get("auth", []) or []:
-            _levels[a.get("verified")] = _levels.get(a.get("verified"), 0) + 1
-        if ("holding" in o or "ref" in o) and "verified" in o:
-            _levels[o["verified"]] = _levels.get(o["verified"], 0) + 1
-        for v in o.values(): _tally(v)
-    elif isinstance(o, list):
-        for v in o: _tally(v)
-_tally(DATA)
-print("verification:", " ".join(f"{k.replace('verified-','')}={_levels[k]}"
-                                for k in sorted(_levels)),
-      f"total={sum(_levels.values())}")
-print("elements:", len(DATA["elements"]), "sub-tests:", sum(len(e["sub_tests"]) for e in DATA["elements"]),
-      "defences:", len(DATA["defences"]),
-      "jurisdiction cases:", sum(len(j.get("cases",[])) for j in DATA["jurisdictions"].values()),
-      "timelines:", len(DATA["timelines"]),
-      "timeline events:", sum(len(t["events"]) for t in DATA["timelines"].values()))
+def main(argv=None):
+    parser = argparse.ArgumentParser(description='Build the element library and its verification summary.')
+    parser.parse_args(argv)
+    _missing = []
+    for _tid, _tl in DATA["timelines"].items():
+        for _e in _tl["events"]:
+            _m = _re.search(r"\(([^()]+)\)\s*$", _e["case"])
+            _court = _e.get("court") or (_m.group(1).strip() if _m else None)
+            if _court is None:
+                # English backbone events are written without a parenthetical;
+                # infer from the well-known citation form in the effect text or
+                # default the jurisdiction's usual court for that era.
+                _court = {"EN": "EWCA", "SG": "SGCA", "AU": "HCA", "HK": "CFI"}[_e["j"]]
+            _e["court"] = _court
+            if _court not in COURT_RANK:
+                _missing.append((_tid, _e["case"], _court))
+            _e["court_rank"] = COURT_RANK.get(_court, 2)
+    if _missing:
+        raise ValueError(f"unranked court(s) on timeline events: {_missing}")
+    DATA["court_rank"] = COURT_RANK
+
+    emit('elements', DATA)
+
+    # Verification tally. Printed rather than hand-maintained: the README and the
+    # paper both quote these counts, and a hand-kept number silently goes stale the
+    # first time an authority is upgraded.
+    _levels = {}
+    def _tally(o):
+        if isinstance(o, dict):
+            for a in o.get("auth", []) or []:
+                _levels[a.get("verified")] = _levels.get(a.get("verified"), 0) + 1
+            if ("holding" in o or "ref" in o) and "verified" in o:
+                _levels[o["verified"]] = _levels.get(o["verified"], 0) + 1
+            for v in o.values(): _tally(v)
+        elif isinstance(o, list):
+            for v in o: _tally(v)
+    _tally(DATA)
+    print("verification:", " ".join(f"{k.replace('verified-','')}={_levels[k]}"
+                                    for k in sorted(_levels)),
+          f"total={sum(_levels.values())}")
+    print("elements:", len(DATA["elements"]), "sub-tests:", sum(len(e["sub_tests"]) for e in DATA["elements"]),
+          "defences:", len(DATA["defences"]),
+          "jurisdiction cases:", sum(len(j.get("cases",[])) for j in DATA["jurisdictions"].values()),
+          "timelines:", len(DATA["timelines"]),
+          "timeline events:", sum(len(t["events"]) for t in DATA["timelines"].values()))
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

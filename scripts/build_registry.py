@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import argparse
 import json
 
 from _paths import emit
@@ -15,11 +16,15 @@ def S(i,zh,en,tt,rule,factors,ws=None,cf=None,note=None):
     if cf: d["counter_factors"]=cf
     if note: d["weight_note"]=note
     return d
-def A(c,cite,court,role,v="unverified"): return {"case":c,"cite":cite,"court":court,"role":role,"verified":v}
+def A(c,cite,court,role,v="unverified",pin=None,src=None):
+ d={"case":c,"cite":cite,"court":court,"role":role,"verified":v}
+ if pin: d["pin"]=pin
+ if src: d["src"]=src
+ return d
 
 M=[]
 
-M.append({"id":"CONTRACT","area":"合同 Contract","zh":"违约","en":"Breach of contract","jurisdiction":"EN/HK/SG",
+M.append({"id":"CONTRACT","area":"合同 Contract","zh":"违约","en":"Breach of contract","jurisdiction":"EN/HK/SG","role":"spear","role_zh":"矛",
  "top_type":"conjunctive","corpus_hits":35,
  "note":"顶层是合取要件;真正需要权衡的在三个嵌套子测试里——条款分类、是否根本违约、损害远隔性。",
  "authorities":[A("Hongkong Fir Shipping v Kawasaki Kisen Kaisha","[1962] 2 QB 26","EWCA","无名条款分类"),
@@ -43,7 +48,7 @@ M.append({"id":"CONTRACT","area":"合同 Contract","zh":"违约","en":"Breach of
      F("CT-assumption","该类型损失属被告承担的责任范围","Defendant assumed responsibility for this type"),
      F("CT-market-usage","行业惯例反向指示","Market usage points the other way")])]})
 
-M.append({"id":"PE","area":"衡平 Equity","zh":"财产禁反言","en":"Proprietary estoppel","jurisdiction":"EN/HK/SG",
+M.append({"id":"PE","area":"衡平 Equity","zh":"财产禁反言","en":"Proprietary estoppel","jurisdiction":"EN/HK/SG","role":"shield","role_zh":"盾","role_note":"禁反言多以抗辩姿态出现；财产禁反言在英格兰亦可独立成诉(Guest/Thorner/Gillett)，“shield not sword”原指promissory estoppel。按典型诉答姿态归盾。",
  "top_type":"conjunctive+overlay","corpus_hits":104,
  "note":"三要件合取,但三者不是分格评估——法院整体看是否不合情理;救济阶段是独立裁量。",
  "authorities":[A("Thorner v Major","[2009] UKHL 18","HL","保证须足够明确"),
@@ -67,7 +72,7 @@ M.append({"id":"PE","area":"衡平 Equity","zh":"财产禁反言","en":"Propriet
     [F("PE-expectation","以期待为出发点","Expectation as starting point",None,None),
      F("PE-proportionality","比例调整","Proportionality adjustment")])]})
 
-M.append({"id":"CICT","area":"衡平 Equity","zh":"共同意图推定信托","en":"Common intention constructive trust","jurisdiction":"EN/HK/SG",
+M.append({"id":"CICT","area":"衡平 Equity","zh":"共同意图推定信托","en":"Common intention constructive trust","jurisdiction":"EN/HK/SG","role":"spear","role_zh":"矛",
  "top_type":"conjunctive+balancing","corpus_hits":134,
  "note":"成立是合取,量化是权重衡量(整体交易过程)。语料里出现频次第四。",
  "authorities":[A("Stack v Dowden","[2007] UKHL 17","HL","共有名义下的推定与整体交易过程",),
@@ -88,7 +93,7 @@ M.append({"id":"CICT","area":"衡平 Equity","zh":"共同意图推定信托","en
      F("CICT-children","子女照料与家庭分工","Childcare and division of labour"),
      F("CICT-separate-finances","财务完全分离(指向非均分)","Rigidly separate finances")])]})
 
-M.append({"id":"RT","area":"衡平 Equity","zh":"归复信托与预付推定","en":"Resulting trust / presumption of advancement","jurisdiction":"EN/HK/SG",
+M.append({"id":"RT","area":"衡平 Equity","zh":"归复信托与预付推定","en":"Resulting trust / presumption of advancement","jurisdiction":"EN/HK/SG","role":"spear","role_zh":"矛",
  "top_type":"presumption-rebuttal","corpus_hits":55,
  "note":"这是第五种结构:推定加反驳,举证责任在反驳方。不是合取也不是权衡。",
  "authorities":[A("Westdeutsche Landesbank v Islington LBC","[1996] AC 669","HL","归复信托的分类"),
@@ -106,7 +111,7 @@ M.append({"id":"RT","area":"衡平 Equity","zh":"归复信托与预付推定","e
      F("RT-contemporaneous","同期文件","Contemporaneous documents"),
      F("RT-subsequent-conduct","嗣后行为","Subsequent conduct")])]})
 
-M.append({"id":"AP","area":"土地 Land","zh":"逆权占有","en":"Adverse possession","jurisdiction":"HK/EN",
+M.append({"id":"AP","area":"土地 Land","zh":"逆权占有","en":"Adverse possession","jurisdiction":"HK/EN","role":"spear","role_zh":"矛",
  "top_type":"conjunctive","corpus_hits":81,
  "note":"合取要件,不宜赋权重;香港仍适用时效条例的旧制,与英国 2002 年注册制改革分道。",
  "authorities":[A("JA Pye (Oxford) v Graham","[2002] UKHL 30","HL","事实占有与占有意图"),
@@ -125,7 +130,7 @@ M.append({"id":"AP","area":"土地 Land","zh":"逆权占有","en":"Adverse posse
      F("AP-maintenance","维护修缮","Maintenance"),F("AP-exclusion","排除他人","Excluding others"),
      F("AP-land-nature","土地性质与通常用法","Nature of the land")])]})
 
-M.append({"id":"NUIS","area":"侵权 Tort","zh":"私人妨害","en":"Private nuisance","jurisdiction":"EN/HK/SG",
+M.append({"id":"NUIS","area":"侵权 Tort","zh":"私人妨害","en":"Private nuisance","jurisdiction":"EN/HK/SG","role":"spear","role_zh":"矛",
  "top_type":"balancing","corpus_hits":11,
  "note":"典型的权重衡量:是否合理使用,由多因素综合。此处给出编者先验。",
  "authorities":[A("Fearn v Tate Gallery","[2023] UKSC 4","UKSC","普通使用与视觉侵扰"),
@@ -144,7 +149,7 @@ M.append({"id":"NUIS","area":"侵权 Tort","zh":"私人妨害","en":"Private nui
               F("NU-common-use","被告属土地的普通使用","Ordinary use of land (Fearn)",-0.25,"同区可比用法")],
     note="先验依据学理常见排序,未经回归校准。")]})
 
-M.append({"id":"ILLEG","area":"合同 Contract","zh":"违法性抗辩","en":"Illegality (Patel v Mirza)","jurisdiction":"EN/HK/SG",
+M.append({"id":"ILLEG","area":"合同 Contract","zh":"违法性抗辩","en":"Illegality (Patel v Mirza)","jurisdiction":"EN/HK/SG","role":"shield","role_zh":"盾",
  "top_type":"balancing","corpus_hits":14,
  "note":"最高法院明确改为三项考量的权衡,是全法律里少数由判例本身指定为多因素权衡的测试。",
  "authorities":[A("Patel v Mirza","[2016] UKSC 42","UKSC","三项考量的权衡取代 Tinsley 依赖规则"),
@@ -157,7 +162,7 @@ M.append({"id":"ILLEG","area":"合同 Contract","zh":"违法性抗辩","en":"Ill
      F("IL-proportionality","拒绝救济与不法程度是否成比例","Proportionality of denying relief",0.35,"不法的严重性、故意程度、当事人地位对比")],
     ws=E, note="三项权重近似均分,反映判例把三者并列的表述。")]})
 
-M.append({"id":"UI","area":"衡平 Equity","zh":"不当影响","en":"Undue influence","jurisdiction":"EN/HK/SG",
+M.append({"id":"UI","area":"衡平 Equity","zh":"不当影响","en":"Undue influence","jurisdiction":"EN/HK/SG","role":"shield","role_zh":"盾","role_note":"通常以抗辩姿态抵抗执行，亦可作为撤销之诉的诉因；gateway结构兼顾两种用法。",
  "top_type":"presumption-rebuttal","corpus_hits":29,
  "authorities":[A("Royal Bank of Scotland v Etridge (No 2)","[2001] UKHL 44","HL","推定的构成与银行的查询义务"),
    A("Waller Edwards v One Savings Bank","[2025] UKSC","UKSC","混合交易与 Etridge 守则","unverified")],
@@ -176,7 +181,7 @@ M.append({"id":"UI","area":"衡平 Equity","zh":"不当影响","en":"Undue influ
      F("UI-full-disclosure","充分披露","Full disclosure"),
      F("UI-free-will","自主决定的其他证据","Other evidence of free will")])]})
 
-M.append({"id":"LEASE","area":"土地 Land","zh":"租赁抑或许可","en":"Lease or licence","jurisdiction":"HK/EN/SG",
+M.append({"id":"LEASE","area":"土地 Land","zh":"租赁抑或许可","en":"Lease or licence","jurisdiction":"HK/EN/SG","role":"spear","role_zh":"矛","role_note":"定性之争姿态中立，实践中多由占有人/主张租赁权一方提起，按主张方归矛。",
  "top_type":"conjunctive+override","corpus_hits":352,
  "note":"语料里出现频次第一。三要件合取,但实质重于形式——标签不决定性质。",
  "authorities":[A("Street v Mountford","[1985] AC 809","HL","排他占有为租赁的标志"),
@@ -192,12 +197,24 @@ M.append({"id":"LEASE","area":"土地 Land","zh":"租赁抑或许可","en":"Leas
      F("LS-provider-services","提供者保留服务与出入","Services and access retained"),
      F("LS-conduct","双方实际行为","Actual conduct of the parties")])]})
 
-M.append({"id":"NYC","area":"仲裁 Arbitration","zh":"纽约公约执行抗辩","en":"Enforcement — NY Convention Art V","jurisdiction":"HK/SG/EN",
+M.append({"id":"NYC","area":"仲裁 Arbitration","zh":"纽约公约执行抗辩","en":"Enforcement — NY Convention Art V","jurisdiction":"HK/SG/EN","role":"procedure","role_zh":"程序","role_note":"在执行程序内行被执行人之盾(V(1)/V(2)拒绝事由)；按程序类型归程序。",
  "top_type":"disjunctive-gateway","corpus_hits":0,
  "note":"全法律里最天然的机器可读要件表:封闭清单,任一项成立即可拒绝执行,举证责任在被申请人(V(2) 除外)。",
  "authorities":[A("New York Convention 1958 Art V","—","—","封闭的拒绝执行事由清单"),
-   A("Hebei Import & Export v Polytek Engineering","(1999) 2 HKCFAR 111","CFA","香港公共政策标准")],
- "stages":[
+   A("Hebei Import & Export v Polytek Engineering","(1999) 2 HKCFAR 111","CFA","香港公共政策标准"),
+    A("Dallah Real Estate v Government of Pakistan","[2010] UKSC 46","UKSC","执行法院重新独立判断管辖权;非签字方不执行","primary","[101],[104],[159]-[160],[162]","caselaw.nationalarchives.gov.uk/uksc/2010/46/data.xml"),
+    A("PT First Media v Astro Nusantara","[2013] SGCA 57","SGCA","选择救济与迟来管辖权异议的排除","web",None,"eLitigation down at survey; corroborated via headnote excerpt + Drew & Napier + Legal Wires + NY Convention Guide")],
+ "timelines":{
+  "NYC-V":{"title":"纽约公约执行:拒绝执行事由的形成","title_en":"NY Convention enforcement — refusal grounds as applied",
+   "sub_test":"NY-1",
+   "note":"覆盖V(1)被申请人举证事由与V(2)法院自认事由;NY-3剩余裁量是裁量不是漂移,不在内。f方向:+1亲执行,-1反执行;幅度coarse,仅看符号。",
+   "events":[
+    {"j":"HK","y":1999,"f":0.7,"case":"Hebei Import & Export v Polytek Engineering","cite":"(1999) 2 HKCFAR 111","court":"CFA","court_rank":4,"treat":"establishes","eff":"公共政策抗辩从严解释,亲执行偏倚。","verified":"unverified","pin":None,"source":"registry authority record as-is; absent from HKLII CFA index as surveyed 2026-09-05 (nil recorded, not evidence of absence)"},
+    {"j":"EN","y":2010,"f":-0.8,"case":"Dallah Real Estate v Government of Pakistan","cite":"[2010] UKSC 46","court":"UKSC","court_rank":4,"treat":"establishes","eff":"执行法院对仲裁庭管辖权决定重新独立判断,不予遵从;非签字方不受仲裁协议约束则拒绝执行;上诉驳回。","verified":"primary","pin":"[101],[104],[159]-[160],[162]","source":"caselaw.nationalarchives.gov.uk/uksc/2010/46/data.xml (judgment text read)"},
+    {"j":"SG","y":2013,"f":0.1,"case":"PT First Media v Astro Nusantara","cite":"[2013] SGCA 57","court":"SGCA","court_rank":4,"treat":"confines","eff":"不行使主动挑战的一方仍可在执行阶段援引抗辩(选择救济),无弃权问题;但绕过Art 16(3)的迟来管辖权异议在执行阶段被排除。","verified":"web","pin":None,"source":"eLitigation down at survey 2026-09-05; corroborated via eLitigation headnote excerpt + Drew & Napier (Lexology 2013-11-28) + Legal Wires + NY Convention Guide"},
+     {"j":"HK","y":2026,"f":0.8,"case":"Eton Properties v Xiamen Xin Jing Di","cite":"[2026] HKCFA 30","court":"CFA-AC","court_rank":3,"treat":"establishes","eff":"Leave refused; CA fresh-cause-of-action route intact: common-law damages on the implied promise to honour the award, electable against the statutory judgment; full common-law remedies available.","verified":"primary","pin":"[11] (fresh cause of action + election); determination (unnum.): Those questions are decidedly opaque / insurmountable hurdles","source":"HKLII getjudgment hkcfa/2026/30 (determination text read 2026-09-05)"}
+   ]}},
+  "stages":[
   S("NY-1","V(1) 被申请人须举证的事由","Grounds the respondent must prove","disjunctive-gateway",
     "任一项成立即可拒绝执行。",
     [F("NY-incapacity","当事人无行为能力或仲裁协议无效","Incapacity / invalid agreement"),
@@ -214,13 +231,22 @@ M.append({"id":"NYC","area":"仲裁 Arbitration","zh":"纽约公约执行抗辩"
     [F("NY-ground-made-out","已有一项事由成立","A ground is made out",),
      F("NY-discretion-enforce","仍应执行的裁量理由","Discretion nonetheless to enforce")])]})
 
-M.append({"id":"ARBCH","area":"仲裁 Arbitration","zh":"仲裁员回避","en":"Arbitrator challenge","jurisdiction":"HK/SG/EN",
+M.append({"id":"ARBCH","area":"仲裁 Arbitration","zh":"仲裁员回避","en":"Arbitrator challenge","jurisdiction":"HK/SG/EN","role":"procedure","role_zh":"程序",
  "top_type":"balancing","corpus_hits":0,
  "note":"示范法 art 12 的「正当怀疑」是客观旁观者标准,典型的权重衡量。",
  "authorities":[A("UNCITRAL Model Law art 12","—","—","正当怀疑标准"),
-   A("Halliburton v Chubb","[2020] UKSC 48","UKSC","多重委任与披露义务"),
+   A("Halliburton v Chubb","[2020] UKSC 48","UKSC","多重委任与披露义务","primary","[81],[150]-[158]","caselaw.nationalarchives.gov.uk/uksc/2020/48/data.xml"),
    A("Arbitration Ordinance","Cap 609","—","香港采纳示范法")],
- "stages":[
+ "timelines":{
+  "ARBCH-12":{"title":"仲裁员回避:披露义务的形成","title_en":"Arbitrator challenge — the disclosure duty",
+   "sub_test":"AC-1",
+   "note":"HK与SG分支暂无可核查权威,记为覆盖缺口(见维护队列),不虚构事件。f方向:+1朝向挑战方问责/透明。",
+   "events":[
+    {"j":"EN","y":2020,"f":0.8,"case":"Halliburton v Chubb","cite":"[2020] UKSC 48","court":"UKSC","court_rank":4,"treat":"establishes","eff":"英国法下仲裁员负有法定披露义务(1996年法s.33内含),含重叠委任;以公正旁观者检验偏见;本案挑战因事实不足被驳回,上诉驳回。","verified":"primary","pin":"[81],[150]-[158]","source":"caselaw.nationalarchives.gov.uk/uksc/2020/48/data.xml (judgment text read; leading judgment Lord Hodge, unanimous)"},
+     {"j":"HK","y":2022,"f":0.0,"case":"C v D","cite":"[2022] HKCFA 25","court":"CFA-AC","court_rank":3,"treat":"frames","eff":"Appeal Committee grants leave confined to the Art 34(2)(a)(iii) recourse question; first HK case on pre-arbitration conditions and set-aside review.","verified":"primary","pin":"Determination [1]-[3]","source":"HKLII getjudgment hkcfa/2022/25 (determination text read 2026-09-05)"},
+     {"j":"HK","y":2023,"f":-0.9,"case":"C v D","cite":"[2023] HKCFA 16","court":"CFA","court_rank":4,"treat":"confines","eff":"Pre-arbitration condition compliance goes to admissibility, decided finally by the tribunal; no s 81/Art 34(2)(a)(iii) review. Presumptively non-jurisdictional; elevation needs unequivocally clear language.","verified":"primary","pin":"Ribeiro PJ s D; Gummow NPJ [112]-[139]; CJ concurrence on elevation by agreement","source":"HKLII getjudgment hkcfa/2023/16 (judgment text read 2026-09-05)"}
+   ]}},
+  "stages":[
   S("AC-1","正当怀疑","Justifiable doubts","balancing",
     "客观、知情的旁观者是否会认为存在对公正性的真实可能怀疑。",
     [F("AC-multiple-appointments","重叠委任","Overlapping appointments"),
@@ -230,23 +256,24 @@ M.append({"id":"ARBCH","area":"仲裁 Arbitration","zh":"仲裁员回避","en":"
      F("AC-prior-views","就同一争点已表达立场","Previously expressed views"),
      F("AC-market-practice","该领域的惯常做法","Custom of the particular field")])]})
 
-M.append({"id":"CECO","area":"合同 Contract","zh":"免责条款合理性","en":"Reasonableness of an exemption clause","jurisdiction":"HK",
+M.append({"id":"CECO","area":"合同 Contract","zh":"免责条款合理性","en":"Reasonableness of an exemption clause","jurisdiction":"HK","role":"shield","role_zh":"盾","role_note":"破盾之矛：专用于打掉对方的免责条款之盾；归盾因其在合同争议中居防御位。",
  "top_type":"balancing","corpus_hits":0,
- "note":"直接接住失实陈述模块的 D1 抗辩:Cap 284 s.4 把 non-reliance 条款送进 Cap 71 s.3(1) 的合理性审查。",
- "authorities":[A("Control of Exemption Clauses Ordinance","Cap 71 s.3(1) & Sch 2","—","合理性要求与指引清单"),
+ "note":"直接接住失实陈述模块的 D1 抗辩:Cap 284 s.4 把 non-reliance 条款送进 Cap 71 s.3(1) 的合理性审查。Cap 71 s.3(2) 明定附表2指引用于ss.11及12；不得把该清单自动套用于Cap 284 s.4或Cap 71 s.7。",
+ "authorities":[A("Control of Exemption Clauses Ordinance","Cap 71 ss.3(1), 3(2), 3(6), 7(1)-(2)","—","一般合理性标准、证明责任及过失责任免责限制；附表2的法定适用范围限于ss.11及12"),
    A("Chang Pui Yin v Bank of Singapore","[2017] 4 HKLRD 458","HKCA","对非成熟客户条款不合理","web"),
    A("Green Park Properties v Dorku","(2001) 4 HKCFAR 448","CFA","整体协议条款未过合理性","web")],
  "stages":[
   S("CE-1","合理性","Reasonableness","balancing",
-    "订约时是否为公平合理的条款,参照双方议价能力、是否获诱因、是否知悉、履行可行性等。",
+    "订约时是否为公平合理的条款，须考虑订约时双方已知、应当合理知悉或预期的全部情况。下列附表2项目仅在s.3(2)所指的ss.11及12案件中属法定指引；其他案件不得自动套用。",
     [F("CE-bargaining","议价能力对比","Relative bargaining strength"),
      F("CE-inducement","是否因接受条款而获诱因","Inducement to agree"),
      F("CE-knowledge","是否知悉或应知条款存在","Knowledge of the term"),
      F("CE-practicable","履行条件是否实际可行","Practicability of compliance"),
      F("CE-bespoke","是否为特别订制的货品","Special order goods"),
-     F("CE-sophistication","客户成熟程度","Sophistication of the customer")])]})
+     F("CE-sophistication","客户成熟程度","Sophistication of the customer",note="并非附表2列项；只可在个案全部情况确有证据支持时考虑。")],
+    note="这些档位是编者对附表2/个案因素的先验整理，不表示所有因素适用于每一类免责条款。") ]})
 
-M.append({"id":"VEIL","area":"公司 Company","zh":"揭开公司面纱","en":"Piercing the corporate veil","jurisdiction":"EN/HK/SG",
+M.append({"id":"VEIL","area":"公司 Company","zh":"揭开公司面纱","en":"Piercing the corporate veil","jurisdiction":"EN/HK/SG","role":"spear","role_zh":"矛",
  "top_type":"threshold-discretion","corpus_hits":0,
  "note":"Prest 之后不再是多因素权衡,而是两个原则的门槛判断——这正是「分类比赋权重重要」的例子。",
  "authorities":[A("Prest v Petrodel Resources","[2013] UKSC 34","UKSC","隐匿原则与规避原则"),
@@ -264,10 +291,20 @@ M.append({"id":"VEIL","area":"公司 Company","zh":"揭开公司面纱","en":"Pi
 REG={"generated":"2026-08-25","version":"0.2",
  "principle":"分类(test_type)由学理支持,可核验;权重是编者先验,须回归校准。未赋权重的因素自动进入维护队列。",
  "modules":M}
-emit('registry', REG, indent=1)
-n_f=sum(len(s.get('factors',[]))+len(s.get('counter_factors',[])) for m in M for s in m['stages'])
-n_w=sum(1 for m in M for s in m['stages'] for f in s.get('factors',[])+s.get('counter_factors',[]) if f.get('weight') is not None)
-print(f"modules: {len(M)}  stages: {sum(len(m['stages']) for m in M)}  factors: {n_f}")
-print(f"weighted: {n_w}  unassigned: {n_f-n_w}  ({100*(n_f-n_w)//n_f}% 待校准)")
-import collections
-print("test_type 分布:", dict(collections.Counter(s['test_type'] for m in M for s in m['stages'])))
+
+
+def main(argv=None):
+    parser = argparse.ArgumentParser(description='Build the doctrine registry.')
+    parser.parse_args(argv)
+    emit('registry', REG, indent=1)
+    n_f=sum(len(s.get('factors',[]))+len(s.get('counter_factors',[])) for m in M for s in m['stages'])
+    n_w=sum(1 for m in M for s in m['stages'] for f in s.get('factors',[])+s.get('counter_factors',[]) if f.get('weight') is not None)
+    print(f"modules: {len(M)}  stages: {sum(len(m['stages']) for m in M)}  factors: {n_f}")
+    print(f"weighted: {n_w}  unassigned: {n_f-n_w}  ({100*(n_f-n_w)//n_f}% awaiting calibration)")
+    import collections
+    print("test_type distribution:", dict(collections.Counter(s['test_type'] for m in M for s in m['stages'])))
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
