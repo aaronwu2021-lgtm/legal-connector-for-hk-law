@@ -69,7 +69,7 @@ def protected_manifest(root):
 
 
 def capture_inputs(source, experiments=False):
-    paths = list(CORE) + ["scripts/_paths.py"] + list(SOURCES)
+    paths = list(CORE) + ["scripts/_paths.py", "scripts/logic_schema.py"] + list(SOURCES)
     if experiments:
         for group, scripts in EXPERIMENTS.items():
             paths.extend("experiments/" + group + "/" + script for script in scripts)

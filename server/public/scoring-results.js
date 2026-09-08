@@ -17,12 +17,12 @@ function evidenceList(factors) {
 }
 
 export function renderScoreResult(data) {
-  if (!data || !Array.isArray(data.stages) || data.stages.length === 0) throw new Error('评分服务没有返回有效阶段，请重新尝试。');
+  if (!data || !Array.isArray(data.stages) || data.stages.length === 0) throw new Error('判断服务没有返回有效阶段，请重新尝试。');
   let html = '<div class="card"><h4>总体仍需人工判断</h4>'
     +'<p class="test">以下结果用于整理证据和查看当前模型的情景范围，不能自动得出法律结论。</p>'
     +(data.overall_reason || data.reason ? '<p class="tiny">'+escapeHtml(data.overall_reason || data.reason)+'</p>' : '')+'</div>';
   for (const stage of data.stages) {
-    if (!stage || typeof stage !== 'object') throw new Error('评分服务返回的阶段格式不完整。');
+    if (!stage || typeof stage !== 'object') throw new Error('判断服务返回的阶段格式不完整。');
     html += '<div class="card"><div class="head"><span class="sid">'+escapeHtml(stage.stage)
       +'</span><span class="stt">'+escapeHtml(stage.zh || stage.en)+'</span></div>';
     const numeric = stage.test_type === 'balancing'
@@ -55,7 +55,7 @@ export function renderScoreResult(data) {
         'departure-permitted':'按该阶段已编码规则允许偏离；总体仍需判断',
       }[stage.result] || '需要人工判断：该阶段只提供已编码的事实与规则';
       html += '<p class="test"><strong>'+status+'</strong></p>'
-        +'<p class="tiny">清单中的“有／无”描述事实记录，不表示每一项都是法律上的必要条件。</p>';
+        +'<p class="tiny">清单中的“存在／不存在”描述事实记录，不表示每一项都是法律上的必要条件。</p>';
     }
     if (stage.reason || stage.note || stage.effect) html += '<p class="tiny">'+escapeHtml(stage.reason || stage.note || stage.effect)+'</p>';
     html += list('已记录存在',stage.factors_present || stage.gateways_open)
@@ -84,7 +84,7 @@ export function createScoreUpdater({fetchScore,isCurrent,onLoading,onResult,onEr
       const data = await fetchScore({...facts},controller.signal);
       if (current()) onResult(renderScoreResult(data));
     } catch (error) {
-      if (current()) onError(error instanceof Error ? error.message : '评分请求失败，请重试。');
+      if (current()) onError(error instanceof Error ? error.message : '判断请求失败，请重试。');
     }
   };
 }

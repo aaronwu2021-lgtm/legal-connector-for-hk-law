@@ -1,7 +1,68 @@
 {
- "generated": "2026-08-25",
- "version": "0.2",
- "principle": "分类(test_type)由学理支持,可核验;权重是编者先验,须回归校准。未赋权重的因素自动进入维护队列。",
+ "generated": "2026-09-08",
+ "version": "0.3",
+ "principle": "每个判断阶段先按 test_type 分类；只有多因素权衡使用数值份量区间。hklandlaw 计数只表示语料覆盖，不决定判断逻辑、权威等级或权重。",
+ "test_types": {
+  "conjunctive": {
+   "zh": "合取要件",
+   "en": "All required elements must be satisfied (AND)",
+   "scoring": "不计分；逐项确认必要要件",
+   "output": "缺失要件清单",
+   "examples": [
+    "misrepresentation E1–E5",
+    "deceit"
+   ]
+  },
+  "disjunctive-gateway": {
+   "zh": "择一门槛",
+   "en": "At least one item from a closed list (OR)",
+   "scoring": "记录成立项；最强项供后续裁量参考",
+   "output": "已打开的门槛",
+   "examples": [
+    "RHC O.11 r.1(1) service-out gateways",
+    "NY Convention Art V grounds"
+   ]
+  },
+  "balancing": {
+   "zh": "多因素权衡",
+   "en": "Multi-factor balance; no single factor is automatically decisive",
+   "scoring": "正向因素合计减反向因素合计，并传播事实与份量区间",
+   "output": "情景区间、关键摇摆因素、待补证据",
+   "examples": [
+    "forum non conveniens",
+    "lease vs licence",
+    "CECO s.3(1) reasonableness"
+   ]
+  },
+  "threshold-discretion": {
+   "zh": "门槛后裁量",
+   "en": "Threshold first, followed by a separate discretion",
+   "scoring": "门槛与裁量分成两个阶段判断",
+   "output": "门槛结果、裁量结果",
+   "examples": [
+    "exclusive jurisdiction clause — strong cause"
+   ]
+  },
+  "presumption-rebuttal": {
+   "zh": "推定与反驳",
+   "en": "Trigger a presumption, shift the evidential burden, then test rebuttal",
+   "scoring": "分别记录触发、责任转移与反驳；不把推定换算成权重",
+   "output": "推定状态、举证责任、反驳结果",
+   "examples": [
+    "presumed undue influence",
+    "resulting trust presumptions"
+   ]
+  }
+ },
+ "source_catalog": {
+  "hklandlaw": {
+   "label": "hklandlaw",
+   "domain": "hklandlaw.wordpress.com",
+   "unit": "article",
+   "unit_zh": "篇",
+   "description": "语料文章覆盖数；不是判断逻辑、权威等级或模型权重。"
+  }
+ },
  "modules": [
   {
    "id": "CONTRACT",
@@ -49,41 +110,31 @@
        "id": "CT-contract",
        "zh": "合同有效成立",
        "en": "Valid contract",
-       "weight": null,
-       "evidence": null,
-       "weight_status": "unassigned"
+       "evidence": null
       },
       {
        "id": "CT-term",
        "zh": "存在被违反的条款",
        "en": "Term relied on exists",
-       "weight": null,
-       "evidence": null,
-       "weight_status": "unassigned"
+       "evidence": null
       },
       {
        "id": "CT-breach",
        "zh": "违反该条款",
        "en": "Breach",
-       "weight": null,
-       "evidence": null,
-       "weight_status": "unassigned"
+       "evidence": null
       },
       {
        "id": "CT-causation",
        "zh": "因果关系",
        "en": "Causation",
-       "weight": null,
-       "evidence": null,
-       "weight_status": "unassigned"
+       "evidence": null
       },
       {
        "id": "CT-loss",
        "zh": "损失",
        "en": "Loss",
-       "weight": null,
-       "evidence": null,
-       "weight_status": "unassigned"
+       "evidence": null
       }
      ]
     },
@@ -197,7 +248,14 @@
      "weight_source": "doctrinal-tier",
      "weight_note": "档位由判词对相对份量的表述归纳,区间非点估计;经验权重须由判决结果回归得出。"
     }
-   ]
+   ],
+   "logic_types": [
+    "conjunctive",
+    "balancing"
+   ],
+   "source_counts": {
+    "hklandlaw": 35
+   }
   },
   {
    "id": "PE",
@@ -246,25 +304,19 @@
        "id": "PE-assurance",
        "zh": "足够明确的保证",
        "en": "Assurance clear enough",
-       "weight": null,
-       "evidence": null,
-       "weight_status": "unassigned"
+       "evidence": null
       },
       {
        "id": "PE-reliance",
        "zh": "基于该保证的信赖",
        "en": "Reliance on the assurance",
-       "weight": null,
-       "evidence": null,
-       "weight_status": "unassigned"
+       "evidence": null
       },
       {
        "id": "PE-detriment",
        "zh": "因信赖而受损",
        "en": "Detriment suffered",
-       "weight": null,
-       "evidence": null,
-       "weight_status": "unassigned"
+       "evidence": null
       }
      ]
     },
@@ -345,21 +397,25 @@
        "id": "PE-expectation",
        "zh": "以期待为出发点",
        "en": "Expectation as starting point",
-       "weight": null,
-       "evidence": null,
-       "weight_status": "unassigned"
+       "evidence": null
       },
       {
        "id": "PE-proportionality",
        "zh": "比例调整",
        "en": "Proportionality adjustment",
-       "weight": null,
-       "evidence": null,
-       "weight_status": "unassigned"
+       "evidence": null
       }
      ]
     }
-   ]
+   ],
+   "logic_types": [
+    "conjunctive",
+    "balancing",
+    "threshold-discretion"
+   ],
+   "source_counts": {
+    "hklandlaw": 104
+   }
   },
   {
    "id": "CICT",
@@ -371,7 +427,7 @@
    "role_zh": "矛",
    "top_type": "conjunctive+balancing",
    "corpus_hits": 134,
-   "note": "成立是合取,量化是权重衡量(整体交易过程)。语料里出现频次第四。",
+   "note": "成立采用合取要件；份额量化采用多因素权衡（整体交易过程）。语料里出现频次第四。",
    "authorities": [
     {
      "case": "Stack v Dowden",
@@ -407,17 +463,13 @@
        "id": "CICT-intention",
        "zh": "共同意图(明示或由行为推断)",
        "en": "Common intention",
-       "weight": null,
-       "evidence": null,
-       "weight_status": "unassigned"
+       "evidence": null
       },
       {
        "id": "CICT-reliance",
        "zh": "损害性信赖",
        "en": "Detrimental reliance",
-       "weight": null,
-       "evidence": null,
-       "weight_status": "unassigned"
+       "evidence": null
       }
      ]
     },
@@ -509,7 +561,14 @@
      "weight_source": "doctrinal-tier",
      "weight_note": "档位由判词对相对份量的表述归纳,区间非点估计;经验权重须由判决结果回归得出。"
     }
-   ]
+   ],
+   "logic_types": [
+    "conjunctive",
+    "balancing"
+   ],
+   "source_counts": {
+    "hklandlaw": 134
+   }
   },
   {
    "id": "RT",
@@ -550,25 +609,19 @@
        "id": "RT-purchase-money",
        "zh": "以自身资金购入他人名下",
        "en": "Purchase money in another's name",
-       "weight": null,
-       "evidence": null,
-       "weight_status": "unassigned"
+       "evidence": null
       },
       {
        "id": "RT-voluntary",
        "zh": "无偿转让",
        "en": "Voluntary transfer",
-       "weight": null,
-       "evidence": null,
-       "weight_status": "unassigned"
+       "evidence": null
       },
       {
        "id": "RT-advancement",
        "zh": "关系触发预付推定(父对子/夫对妻)",
        "en": "Advancement relationship",
-       "weight": null,
-       "evidence": null,
-       "weight_status": "unassigned"
+       "evidence": null
       }
      ]
     },
@@ -627,7 +680,15 @@
      "weight_source": "doctrinal-tier",
      "weight_note": "档位由判词对相对份量的表述归纳,区间非点估计;经验权重须由判决结果回归得出。"
     }
-   ]
+   ],
+   "logic_types": [
+    "presumption-rebuttal",
+    "disjunctive-gateway",
+    "balancing"
+   ],
+   "source_counts": {
+    "hklandlaw": 55
+   }
   },
   {
    "id": "AP",
@@ -675,33 +736,25 @@
        "id": "AP-factual",
        "zh": "事实占有(排他性实际控制)",
        "en": "Factual possession",
-       "weight": null,
-       "evidence": null,
-       "weight_status": "unassigned"
+       "evidence": null
       },
       {
        "id": "AP-intention",
        "zh": "占有意图",
        "en": "Intention to possess",
-       "weight": null,
-       "evidence": null,
-       "weight_status": "unassigned"
+       "evidence": null
       },
       {
        "id": "AP-without-consent",
        "zh": "未经纸面业主同意",
        "en": "Without the owner's consent",
-       "weight": null,
-       "evidence": null,
-       "weight_status": "unassigned"
+       "evidence": null
       },
       {
        "id": "AP-limitation",
        "zh": "时效期间届满",
        "en": "Limitation period expired",
-       "weight": null,
-       "evidence": null,
-       "weight_status": "unassigned"
+       "evidence": null
       }
      ]
     },
@@ -771,7 +824,14 @@
      "weight_source": "doctrinal-tier",
      "weight_note": "档位由判词对相对份量的表述归纳,区间非点估计;经验权重须由判决结果回归得出。"
     }
-   ]
+   ],
+   "logic_types": [
+    "conjunctive",
+    "balancing"
+   ],
+   "source_counts": {
+    "hklandlaw": 81
+   }
   },
   {
    "id": "NUIS",
@@ -783,7 +843,7 @@
    "role_zh": "矛",
    "top_type": "balancing",
    "corpus_hits": 11,
-   "note": "典型的权重衡量:是否合理使用,由多因素综合。此处给出编者先验。",
+   "note": "典型的多因素权衡：是否合理使用须综合全部相关因素。份量区间属于编者模型。",
    "authorities": [
     {
      "case": "Fearn v Tate Gallery",
@@ -903,7 +963,13 @@
      ],
      "weight_note": "档位由判词对相对份量的表述归纳,区间非点估计;经验权重须由判决结果回归得出。"
     }
-   ]
+   ],
+   "logic_types": [
+    "balancing"
+   ],
+   "source_counts": {
+    "hklandlaw": 11
+   }
   },
   {
    "id": "ILLEG",
@@ -978,7 +1044,13 @@
      "weight_source": "doctrinal-tier",
      "weight_note": "档位由判词对相对份量的表述归纳,区间非点估计;经验权重须由判决结果回归得出。"
     }
-   ]
+   ],
+   "logic_types": [
+    "balancing"
+   ],
+   "source_counts": {
+    "hklandlaw": 14
+   }
   },
   {
    "id": "UI",
@@ -1020,17 +1092,13 @@
        "id": "UI-actual",
        "zh": "实际不当影响(举证)",
        "en": "Actual undue influence",
-       "weight": null,
-       "evidence": null,
-       "weight_status": "unassigned"
+       "evidence": null
       },
       {
        "id": "UI-presumed",
        "zh": "推定不当影响",
        "en": "Presumed undue influence",
-       "weight": null,
-       "evidence": null,
-       "weight_status": "unassigned"
+       "evidence": null
       }
      ]
     },
@@ -1045,17 +1113,13 @@
        "id": "UI-relationship",
        "zh": "信任与信赖关系",
        "en": "Relationship of trust and confidence",
-       "weight": null,
-       "evidence": null,
-       "weight_status": "unassigned"
+       "evidence": null
       },
       {
        "id": "UI-calls-for-explanation",
        "zh": "交易需要解释",
        "en": "Transaction calls for explanation",
-       "weight": null,
-       "evidence": null,
-       "weight_status": "unassigned"
+       "evidence": null
       }
      ]
     },
@@ -1114,7 +1178,16 @@
      "weight_source": "doctrinal-tier",
      "weight_note": "档位由判词对相对份量的表述归纳,区间非点估计;经验权重须由判决结果回归得出。"
     }
-   ]
+   ],
+   "logic_types": [
+    "presumption-rebuttal",
+    "disjunctive-gateway",
+    "conjunctive",
+    "balancing"
+   ],
+   "source_counts": {
+    "hklandlaw": 29
+   }
   },
   {
    "id": "LEASE",
@@ -1156,25 +1229,19 @@
        "id": "LS-exclusive",
        "zh": "排他占有",
        "en": "Exclusive possession",
-       "weight": null,
-       "evidence": null,
-       "weight_status": "unassigned"
+       "evidence": null
       },
       {
        "id": "LS-term",
        "zh": "确定期限",
        "en": "Certain term",
-       "weight": null,
-       "evidence": null,
-       "weight_status": "unassigned"
+       "evidence": null
       },
       {
        "id": "LS-rent",
        "zh": "租金",
        "en": "Rent",
-       "weight": null,
-       "evidence": null,
-       "weight_status": "unassigned"
+       "evidence": null
       }
      ]
     },
@@ -1234,7 +1301,14 @@
      "weight_source": "doctrinal-tier",
      "weight_note": "档位由判词对相对份量的表述归纳,区间非点估计;经验权重须由判决结果回归得出。"
     }
-   ]
+   ],
+   "logic_types": [
+    "conjunctive",
+    "balancing"
+   ],
+   "source_counts": {
+    "hklandlaw": 352
+   }
   },
   {
    "id": "NYC",
@@ -1359,41 +1433,31 @@
        "id": "NY-incapacity",
        "zh": "当事人无行为能力或仲裁协议无效",
        "en": "Incapacity / invalid agreement",
-       "weight": null,
-       "evidence": null,
-       "weight_status": "unassigned"
+       "evidence": null
       },
       {
        "id": "NY-notice",
        "zh": "未获适当通知或无法陈述案情",
        "en": "Improper notice / unable to present case",
-       "weight": null,
-       "evidence": null,
-       "weight_status": "unassigned"
+       "evidence": null
       },
       {
        "id": "NY-scope",
        "zh": "超出提交仲裁的范围",
        "en": "Beyond the scope of submission",
-       "weight": null,
-       "evidence": null,
-       "weight_status": "unassigned"
+       "evidence": null
       },
       {
        "id": "NY-composition",
        "zh": "仲裁庭组成或程序不符约定",
        "en": "Composition or procedure not in accordance",
-       "weight": null,
-       "evidence": null,
-       "weight_status": "unassigned"
+       "evidence": null
       },
       {
        "id": "NY-not-binding",
        "zh": "裁决尚无约束力或已被撤销/中止",
        "en": "Not yet binding / set aside / suspended",
-       "weight": null,
-       "evidence": null,
-       "weight_status": "unassigned"
+       "evidence": null
       }
      ]
     },
@@ -1408,17 +1472,13 @@
        "id": "NY-arbitrability",
        "zh": "争议不可仲裁",
        "en": "Not arbitrable",
-       "weight": null,
-       "evidence": null,
-       "weight_status": "unassigned"
+       "evidence": null
       },
       {
        "id": "NY-public-policy",
        "zh": "违反执行地公共政策",
        "en": "Contrary to public policy",
-       "weight": null,
-       "evidence": null,
-       "weight_status": "unassigned"
+       "evidence": null
       }
      ]
     },
@@ -1433,21 +1493,24 @@
        "id": "NY-ground-made-out",
        "zh": "已有一项事由成立",
        "en": "A ground is made out",
-       "weight": null,
-       "evidence": null,
-       "weight_status": "unassigned"
+       "evidence": null
       },
       {
        "id": "NY-discretion-enforce",
        "zh": "仍应执行的裁量理由",
        "en": "Discretion nonetheless to enforce",
-       "weight": null,
-       "evidence": null,
-       "weight_status": "unassigned"
+       "evidence": null
       }
      ]
     }
-   ]
+   ],
+   "logic_types": [
+    "disjunctive-gateway",
+    "threshold-discretion"
+   ],
+   "source_counts": {
+    "hklandlaw": 0
+   }
   },
   {
    "id": "ARBCH",
@@ -1459,7 +1522,7 @@
    "role_zh": "程序",
    "top_type": "balancing",
    "corpus_hits": 0,
-   "note": "示范法 art 12 的「正当怀疑」是客观旁观者标准,典型的权重衡量。",
+   "note": "示范法 art 12 的「正当怀疑」是客观旁观者标准，采用多因素权衡。",
    "authorities": [
     {
      "case": "UNCITRAL Model Law art 12",
@@ -1616,7 +1679,13 @@
      "weight_source": "doctrinal-tier",
      "weight_note": "档位由判词对相对份量的表述归纳,区间非点估计;经验权重须由判决结果回归得出。"
     }
-   ]
+   ],
+   "logic_types": [
+    "balancing"
+   ],
+   "source_counts": {
+    "hklandlaw": 0
+   }
   },
   {
    "id": "CECO",
@@ -1732,7 +1801,13 @@
      "weight_note": "档位由判词对相对份量的表述归纳,区间非点估计;经验权重须由判决结果回归得出。",
      "weight_source": "doctrinal-tier"
     }
-   ]
+   ],
+   "logic_types": [
+    "balancing"
+   ],
+   "source_counts": {
+    "hklandlaw": 0
+   }
   },
   {
    "id": "VEIL",
@@ -1780,17 +1855,13 @@
        "id": "VL-concealment",
        "zh": "隐匿(查明幕后真实主体)",
        "en": "Concealment principle",
-       "weight": null,
-       "evidence": null,
-       "weight_status": "unassigned"
+       "evidence": null
       },
       {
        "id": "VL-evasion",
        "zh": "规避既存法律义务",
        "en": "Evasion principle",
-       "weight": null,
-       "evidence": null,
-       "weight_status": "unassigned"
+       "evidence": null
       }
      ]
     },
@@ -1805,13 +1876,18 @@
        "id": "VL-alternative",
        "zh": "存在常规替代救济",
        "en": "Conventional remedy available",
-       "weight": null,
-       "evidence": null,
-       "weight_status": "unassigned"
+       "evidence": null
       }
      ]
     }
-   ]
+   ],
+   "logic_types": [
+    "threshold-discretion",
+    "disjunctive-gateway"
+   ],
+   "source_counts": {
+    "hklandlaw": 0
+   }
   }
  ],
  "tiers": {

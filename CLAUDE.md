@@ -7,7 +7,7 @@ Live: https://doctrine-drift-atlas.netlify.app
 ## Layout
 
 - `data/` — the library. `elements.json` (misrepresentation family), `registry.json`
-  (14 typed causes of action), `scored.json` (weighted modules), `maintenance.json`
+  (14 typed causes of action), `scored.json` (legal-test catalogue plus the HKJUR module; numeric bands apply only to balancing stages), `maintenance.json`
   (drift ledger), `persuasive.json` (449-case E&W index: metadata + treatment
   edges only, all `unverified` / persuasive-only — never doctrine), `corpus/`
   (745 HK land-law case notes).

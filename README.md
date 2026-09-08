@@ -15,7 +15,7 @@ itself is not distributed here.
 
 | Path | Contents |
 |---|---|
-| `data/` | The element library: misrepresentation family (17 sub-tests × 4 jurisdictions), a 14-module typed registry of causes of action, weighted-factor modules, the drift/maintenance ledger, a 745-document Hong Kong land-law case-note corpus, and a 449-case England-and-Wales persuasive index (unverified, persuasive-only in HK). CC BY 4.0. |
+| `data/` | The element library: misrepresentation family (17 sub-tests × 4 jurisdictions), a 14-module typed registry of legal-test logic (numeric bands only inside multi-factor balancing stages), the drift/maintenance ledger, a 745-document Hong Kong land-law case-note corpus, and a 449-case England-and-Wales persuasive index (unverified, persuasive-only in HK). CC BY 4.0. |
 | `server/` | The connector itself — Netlify serverless functions implementing the REST API and a 13-tool MCP server, plus the browser UI. MIT. |
 | `experiments/exp1-lab/` | In-benchmark pilot: 6 arbitration tasks, 2 conditions, blind paired judging over 59 legal-standard criteria. Null result. |
 | `experiments/exp2-probe/` | Jurisdiction-specific probe: 21 items, 2 conditions, blind judging against a pre-registered key. 16/21 → 21/21 as originally scored; **15/21 → 19/21 re-scored against the law** after two keys were found wrong (`rescore.py`, `probe_results_rescored.json`). |

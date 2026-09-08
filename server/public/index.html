@@ -104,7 +104,18 @@ h1.page{font:600 30px/1.15 Spectral,"Songti SC",serif;margin:0 0 6px;text-wrap:b
 .tile.clickable{text-align:left;color:var(--ink)}
 .rgroup{margin:0 0 12px}
 .rlab{font:600 13.5px/1.6 "IBM Plex Sans",sans-serif;margin-right:8px}
-.rgroup .jbar{margin-top:5px}
+.rgroup .jbar{display:flex;align-items:stretch;gap:7px;flex-wrap:wrap;margin-top:5px}
+.jchip{display:flex;flex-direction:column;align-items:flex-start;gap:5px;max-width:100%;padding:7px 9px;
+  color:var(--ink2);background:var(--surface);border:1px solid var(--line);border-radius:8px;text-align:left}
+.jchip:hover,.jchip.on{color:var(--ink);border-color:var(--accent);background:var(--accent-soft)}
+.jchip .module-name{font-weight:600}
+.meta-tags{display:inline-flex;align-items:center;gap:4px;flex-wrap:wrap}
+.tag{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:999px;padding:2px 6px;
+  font:500 9.5px/1.25 "IBM Plex Mono",ui-monospace,monospace;white-space:nowrap;color:var(--ink2);background:var(--surface2)}
+.tag.logic{color:var(--accent);border-color:color-mix(in srgb,var(--accent) 45%,var(--line));background:var(--accent-soft)}
+.tag.source{color:var(--ok);border-color:color-mix(in srgb,var(--ok) 45%,var(--line));background:var(--ok-soft)}
+.tag.model{color:var(--note);border-color:color-mix(in srgb,var(--note) 45%,var(--line));background:var(--note-bg)}
+.logic-line{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:4px 0 12px}
 .tile.clickable:hover{border-color:var(--accent)}
 .tiles .tile .sub{font-size:11px;color:var(--ink3);margin-top:2px}
 details.au{margin-top:9px}
@@ -318,7 +329,7 @@ const state = { mode:'doctrine', claim:'misrepresentation', q:'', filters:{}, ta
 
 /* ── shell ───────────────────────────────────────────── */
 const MODES = [
-  ['doctrine','要件 Doctrine'], ['scored','权重 Scoring'], ['corpus','语料 Corpus'],
+  ['doctrine','要件 Doctrine'], ['scored','判断逻辑 Logic'], ['corpus','语料 Corpus'],
   ['maint','维护 Maintenance'], ['api','API / MCP'],
 ];
 const SUBS = [['corpus','文章'],['cases','判例'],['topics','标签'],['graph','图谱']];
@@ -1099,10 +1110,29 @@ async function viewMaint(main){
 }
 
 
-/* ── scored / weighted tests ─────────────────────────── */
+/* ── typed legal-test logic ──────────────────────────── */
 const SF = {};   // factor id -> true | false | undefined
 let SCMOD = 'HKJUR';
 let SCVIEW = 0;
+const LOGIC_FALLBACK = {
+  'conjunctive':{zh:'合取要件'},
+  'disjunctive-gateway':{zh:'择一门槛'},
+  'balancing':{zh:'多因素权衡'},
+  'threshold-discretion':{zh:'门槛后裁量'},
+  'presumption-rebuttal':{zh:'推定与反驳'},
+};
+const logicMeta = (index,type) => index?.test_types?.[type] || LOGIC_FALLBACK[type] || {zh:type};
+const moduleLogicTypes = module => {
+  const types = Array.isArray(module.logic_types) ? module.logic_types : (module.stages||[]).map(stage=>stage.test_type);
+  return [...new Set(types.filter(type=>LOGIC_FALLBACK[type]))];
+};
+const stageRole = (stage,factor) => {
+  if(stage.test_type==='conjunctive') return '合取项';
+  if(stage.test_type==='disjunctive-gateway') return factor.dispositive ? '独立门槛' : '择一候选';
+  if(stage.test_type==='threshold-discretion') return factor.gate ? '门槛' : factor.override ? '裁量／覆盖' : '待标注角色';
+  if(stage.test_type==='presumption-rebuttal') return factor.role==='trigger' ? '推定触发' : factor.role==='rebuttal' ? '反驳事项' : '待标注角色';
+  return '逻辑项';
+};
 async function viewScored(main){
   const view = ++SCVIEW, moduleId = SCMOD;
   let idx,reg,cq,mod;
@@ -1118,7 +1148,7 @@ async function viewScored(main){
   if(view!==SCVIEW || state.mode!=='scored' || SCMOD!==moduleId) return;
   for(const k of Object.keys(SF)) delete SF[k];
   main.innerHTML='';
-  main.appendChild(el('p','crumb','诉因登记表 Registry v'+esc(reg.version)+' · '+reg.total_modules+' 个诉因 · '+cq.total_factors+' 个因素尚未赋权'));
+  main.appendChild(el('p','crumb','判断逻辑登记表 Registry v'+esc(reg.version)+' · '+reg.total_modules+' 个模块 · '+Object.keys(idx.test_types||{}).length+' 类判断逻辑'));
   // module picker, grouped by litigation role
   const pick = el('div');
   const GLOSS = {spear:'主动主张 \u00b7 起诉用', shield:'抗辩 \u00b7 被诉时挡',
@@ -1132,11 +1162,17 @@ async function viewScored(main){
     for(const m of ms){
       const b = el('button','jchip'+(m.id===SCMOD?' on':''));
       b.setAttribute('aria-pressed', String(m.id===SCMOD));
-      const needsW = m.stages.some(s2=>s2.test_type==='balancing' && !s2.weighted);
-      const noBal  = !m.stages.some(s2=>s2.test_type==='balancing');
-      const wt = needsW ? ' <span class="tag">待赋权</span>'
-              : noBal  ? ' <span class="tag ok">无需权重</span>' : '';
-      b.innerHTML = esc(m.zh)+(m.corpus_hits?' <span class="tiny">'+m.corpus_hits+'</span>':'')+wt;
+      const types = moduleLogicTypes(m);
+      const logicTags = types.map(type=>'<span class="tag logic">'+esc(logicMeta(idx,type).zh)+'</span>').join('');
+      const sourceCounts = m.source_counts || (m.corpus_hits==null ? {} : {hklandlaw:m.corpus_hits});
+      const sourceTag = sourceCounts.hklandlaw==null ? ''
+        : '<span class="tag source">hklandlaw · '+esc(sourceCounts.hklandlaw)+'篇</span>';
+      const balancing = (m.stages||[]).filter(stage=>stage.test_type==='balancing');
+      const incomplete = balancing.some(stage=>['unassigned','partial'].includes(stage.weight_status));
+      const modelTag = balancing.length ? '<span class="tag model">模型 · '+(incomplete?'份量待补':'份量区间')+'</span>' : '';
+      b.innerHTML = '<span class="module-name">'+esc(m.zh)+'</span><span class="meta-tags">'+logicTags+sourceTag+modelTag+'</span>';
+      b.setAttribute('aria-label',m.zh+'；判断逻辑 '+types.map(type=>logicMeta(idx,type).zh).join('、')
+        +(sourceCounts.hklandlaw==null?'':'；hklandlaw '+sourceCounts.hklandlaw+'篇'));
       b.onclick = () => { SCMOD = m.id; route(); window.scrollTo(0,0); };
       row.appendChild(b);
     }
@@ -1146,12 +1182,17 @@ async function viewScored(main){
   main.appendChild(el('p','tiny','⚠ '+esc(reg.principle)));
   main.appendChild(el('h2','claim',esc(mod.zh)+' <span style="color:var(--ink3);font-size:.6em;font-weight:500">'+esc(mod.en)+'</span>'));
   main.appendChild(el('p','claimdesc',esc(mod.note)));
+  const selectedSummary = reg.modules.find(module=>module.id===moduleId) || mod;
+  const selectedTypes = moduleLogicTypes(selectedSummary);
+  const selectedSources = selectedSummary.source_counts || (selectedSummary.corpus_hits==null ? {} : {hklandlaw:selectedSummary.corpus_hits});
+  main.appendChild(el('div','logic-line',selectedTypes.map(type=>'<span class="tag logic">判断逻辑 · '+esc(logicMeta(idx,type).zh)+'</span>').join('')
+    +(selectedSources.hklandlaw==null?'':'<span class="tag source">语料来源 · hklandlaw · '+esc(selectedSources.hklandlaw)+'篇</span>')));
 
   // test-type explainer — the important conceptual bit
   const tt = el('details','card');
-  let th = '<summary class="stt">五种测试结构 — 为什么不是每个都能打分</summary>';
+  let th = '<summary class="stt">五类法律判断逻辑 — 只有多因素权衡使用权重</summary>';
   for(const [k,v] of Object.entries(idx.test_types)){
-    th += '<p class="test"><code>'+esc(k)+'</code> <strong>'+esc(v.zh)+'</strong> — '+esc(v.en)+'<br><span class="tiny">打分方式:'+esc(v.scoring)+' · 产出:'+esc(v.output)+'</span></p>';
+    th += '<p class="test"><code>'+esc(k)+'</code> <strong>'+esc(v.zh)+'</strong> — '+esc(v.en)+'<br><span class="tiny">处理方式：'+esc(v.scoring)+' · 输出：'+esc(v.output)+'</span></p>';
   }
   th += '<p class="test" style="border-top:1px solid var(--line2);padding-top:8px">'+esc(idx.conjunctive_note)+'</p>';
   if(idx.tiers){
@@ -1175,28 +1216,29 @@ async function viewScored(main){
   const out = el('div'); out.id='sc_out';
   for(const st of mod.stages){
     const sec = el('section','elem');
-    sec.appendChild(el('h3',null,esc(st.zh)+' <span class="cnt">'+esc(st.test_type)+'</span>'));
+    const isBalancing = st.test_type==='balancing';
+    sec.appendChild(el('h3',null,esc(st.zh)+' <span class="tag logic">判断逻辑 · '+esc(logicMeta(idx,st.test_type).zh)+'</span> <span class="cnt">'+esc(st.test_type)+'</span>'));
     sec.appendChild(el('p','ezh',esc(st.rule||st.en)));
     if(st.weight_note) sec.appendChild(el('p','tiny','⚠ '+esc(st.weight_note)));
     const all = (st.factors||[]).concat(st.counter_factors||[]);
     const tw = el('div','tblwrap');
-    let h='<table><thead><tr><th>因素</th><th>权重</th><th>取证</th><th>判定</th></tr></thead><tbody>';
+    let h='<table><thead><tr><th>因素</th><th>'+(isBalancing?'相对份量（编者档位）':'逻辑作用')+'</th><th>取证</th><th>事实状态</th></tr></thead><tbody>';
     for(const f of all){
       let w, bar='';
-      if(Number.isFinite(f.weight_low) && Number.isFinite(f.weight_high)){
+      if(isBalancing && Number.isFinite(f.weight_low) && Number.isFinite(f.weight_high)){
         const [lo,hi]=[Math.abs(f.weight_low)*100,Math.abs(f.weight_high)*100].sort((a,b)=>a-b);
         const neg=(st.counter_factors||[]).some(c=>c.id===f.id), scale=Math.max(30,hi);
         w = (neg?'反向 ':'')+lo.toFixed(0)+'–'+hi.toFixed(0)+'%';
         bar = '<div class="rng"><div class="rngbar" style="left:'+(lo/scale*100).toFixed(0)+'%;width:'+((hi-lo)/scale*100).toFixed(0)+'%;background:'+(neg?'var(--warn)':'var(--accent)')+'"></div></div>'
             + '<span class="tierchip" data-t="'+esc(f.tier||'')+'">'+esc(f.tier||'')+'</span>';
       } else {
-        w = f.dispositive?'决定性':(f.gate?'门槛':(f.override?'覆盖':'—'));
+        w = isBalancing ? '份量待补' : stageRole(st,f);
       }
       h += '<tr><td><strong>'+esc(f.zh)+'</strong><br><span class="tiny">'+esc(f.en)+'</span>'+(f.note?'<br><span class="tiny" style="color:var(--warn)">'+esc(f.note)+'</span>':'')+'</td>'
         + '<td class="n">'+w+' '+bar+'</td>'
         + '<td><span class="tiny">'+esc(f.evidence||'—')+'</span></td>'
         + '<td><div class="tri" data-f="'+esc(f.id)+'">'
-        +   '<button data-v="1">有</button><button data-v="0">无</button><button data-v="?" class="on">未知</button></div></td></tr>';
+        +   '<button data-v="1">存在</button><button data-v="0">不存在</button><button data-v="?" class="on">待确认</button></div></td></tr>';
     }
     h+='</tbody></table>'; tw.innerHTML=h; sec.appendChild(tw);
     out.appendChild(sec);
@@ -1204,17 +1246,17 @@ async function viewScored(main){
   main.appendChild(out);
 
   const res = el('section','elem'); res.id='sc_res';
-  res.innerHTML = '<h3>证据与评分结果</h3><p class="ezh">切换因素后更新。数值仅反映当前设定的权重与事实范围，不是胜诉概率。</p><div id="sc_body" aria-live="polite"><p class="tiny">正在检查证据状态…</p></div>';
+  res.innerHTML = '<h3>证据与阶段结果</h3><p class="ezh">切换事实状态后更新。只有多因素权衡阶段显示模型情景区间；它不是胜诉概率。</p><div id="sc_body" aria-live="polite"><p class="tiny">正在检查证据状态…</p></div>';
   main.appendChild(res);
 
   const cal = el('section','elem');
-  cal.appendChild(el('h3',null,'数值权重缺口 <span class="cnt">'+cq.total_factors+' 因素</span>'));
-  cal.appendChild(el('p','ezh','本表统计尚未赋予数值权重的因素。已有学说档位不代表已完成经验校准。'));
+  cal.appendChild(el('h3',null,'多因素权衡 · 数值份量缺口 <span class="cnt">'+cq.total_factors+' 因素</span>'));
+  cal.appendChild(el('p','ezh','本表只统计多因素权衡阶段中尚未设置份量区间的因素；合取、择一、门槛裁量和推定反驳不进入本表。'));
   const cwr = el('div','tblwrap');
-  let cch='<table><thead><tr><th>诉因</th><th>阶段</th><th>待赋权重</th><th>语料判例数</th></tr></thead><tbody>';
-  for(const r of cq.rows) cch+='<tr><td><strong>'+esc(r.zh)+'</strong></td><td>'+esc(r.stage_zh)+'</td><td class="n">'+r.factors_unassigned+' / '+r.factors_total+'</td><td class="n">'+(r.corpus_hits||'—')+'</td></tr>';
+  let cch='<table><thead><tr><th>模块</th><th>阶段</th><th>待补份量区间</th><th>hklandlaw 相关文章</th></tr></thead><tbody>';
+  for(const r of cq.rows) cch+='<tr><td><strong>'+esc(r.zh)+'</strong></td><td>'+esc(r.stage_zh)+'</td><td class="n">'+r.factors_unassigned+' / '+r.factors_total+'</td><td class="n">'+esc(r.source_counts?.hklandlaw??r.corpus_hits??'—')+'</td></tr>';
   cch+='</tbody></table>'; cwr.innerHTML=cch; cal.appendChild(cwr);
-  cal.appendChild(el('p','tiny','经验校准需要另行设计研究、核验案件编码并验证模型；已有语料数量不能证明校准质量。'));
+  cal.appendChild(el('p','tiny','份量区间完整也不等于经验校准完成；经验校准仍需另行编码判决结果并验证模型。hklandlaw 数字只是相关文章覆盖量。'));
   main.appendChild(cal);
 
   const resultBody = res.querySelector('#sc_body');
@@ -1223,8 +1265,8 @@ async function viewScored(main){
     onLoading:()=>{resultBody.textContent='正在更新证据状态…';resultBody.setAttribute('aria-busy','true');},
     onResult:html=>{resultBody.innerHTML=html;resultBody.setAttribute('aria-busy','false');},
     onError:message=>{
-      resultBody.replaceChildren(el('p','test','评分暂未完成，请重试。'),el('p','tiny',esc(message)));
-      const retry=el('button','jchip','重试评分');
+      resultBody.replaceChildren(el('p','test','阶段判断暂未完成，请重试。'),el('p','tiny',esc(message)));
+      const retry=el('button','jchip','重试判断');
       retry.onclick=()=>updateScore(SF);
       resultBody.appendChild(retry);resultBody.setAttribute('aria-busy','false');
     },

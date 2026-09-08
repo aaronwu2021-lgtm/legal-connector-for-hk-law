@@ -1,4 +1,4 @@
-"""Build the frozen content manifest for the 2026-09-06 legal review pack.
+"""Build the frozen content manifest for the current legal review pack.
 
 The manifest binds files and individual rubric records. It deliberately records
 external legal sign-off as pending; hashes prove content identity, not legal
@@ -11,7 +11,9 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_OUTPUT = ROOT / "docs" / "review" / "legal-reliability-review-manifest-2026-09-06.json"
+SNAPSHOT_DATE = "2026-09-08"
+DEFAULT_OUTPUT = ROOT / "docs" / "review" / f"legal-reliability-review-manifest-{SNAPSHOT_DATE}.json"
+SUPERSEDES = "docs/review/legal-reliability-review-manifest-2026-09-06.json"
 EXPERIMENTS = (
     ("exp3-hk-matter", ROOT / "experiments" / "exp3-hk-matter"),
     ("exp4-cfa", ROOT / "experiments" / "exp4-cfa"),
@@ -21,6 +23,7 @@ BASE_FILES = (
     "scripts/build_elements.py",
     "scripts/build_registry.py",
     "scripts/build_scored.py",
+    "scripts/logic_schema.py",
     "scripts/apply_tiers.py",
     "scripts/build_maintenance.py",
     "scripts/build_persuasive.py",
@@ -139,7 +142,8 @@ def build_manifest():
     source_records.sort(key=lambda item: (item["experiment"], item["task_id"], item["citation"]))
     return {
         "schema": "legal-reliability-review-manifest-v1",
-        "review_snapshot_date": "2026-09-06",
+        "review_snapshot_date": SNAPSHOT_DATE,
+        "supersedes": SUPERSEDES,
         "status": {
             "local_identity_date_phrase_checks": "see generated experiment checklists",
             "independent_legal_review": "pending external reviewer sign-off",

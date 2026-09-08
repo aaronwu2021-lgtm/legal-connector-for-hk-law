@@ -3,6 +3,7 @@ import argparse
 import json
 
 from _paths import emit
+from logic_schema import SOURCE_CATALOG, TEST_TYPES, enrich_module
 
 E = "editorial-prior"; U = "unassigned"
 def F(i,zh,en,w=None,ev=None,note=None):
@@ -11,6 +12,12 @@ def F(i,zh,en,w=None,ev=None,note=None):
     if w is None: d["weight_status"]=U
     return d
 def S(i,zh,en,tt,rule,factors,ws=None,cf=None,note=None):
+    # Absence of a weight outside a balancing test means "not applicable",
+    # never "awaiting assignment". Keep weight fields out of those records.
+    if tt != "balancing":
+        for factor in factors + (cf or []):
+            for key in ("weight", "weight_status", "weight_low", "weight_high", "weight_source", "tier"):
+                factor.pop(key, None)
     d={"id":i,"zh":zh,"en":en,"test_type":tt,"rule":rule,"factors":factors}
     if ws: d["weight_source"]=ws
     if cf: d["counter_factors"]=cf
@@ -74,7 +81,7 @@ M.append({"id":"PE","area":"衡平 Equity","zh":"财产禁反言","en":"Propriet
 
 M.append({"id":"CICT","area":"衡平 Equity","zh":"共同意图推定信托","en":"Common intention constructive trust","jurisdiction":"EN/HK/SG","role":"spear","role_zh":"矛",
  "top_type":"conjunctive+balancing","corpus_hits":134,
- "note":"成立是合取,量化是权重衡量(整体交易过程)。语料里出现频次第四。",
+ "note":"成立采用合取要件；份额量化采用多因素权衡（整体交易过程）。语料里出现频次第四。",
  "authorities":[A("Stack v Dowden","[2007] UKHL 17","HL","共有名义下的推定与整体交易过程",),
    A("Jones v Kernott","[2011] UKSC 53","UKSC","意图变更与推定意图"),
    A("Lloyds Bank v Rosset","[1991] 1 AC 107","HL","单一名义下的成立门槛")],
@@ -132,7 +139,7 @@ M.append({"id":"AP","area":"土地 Land","zh":"逆权占有","en":"Adverse posse
 
 M.append({"id":"NUIS","area":"侵权 Tort","zh":"私人妨害","en":"Private nuisance","jurisdiction":"EN/HK/SG","role":"spear","role_zh":"矛",
  "top_type":"balancing","corpus_hits":11,
- "note":"典型的权重衡量:是否合理使用,由多因素综合。此处给出编者先验。",
+ "note":"典型的多因素权衡：是否合理使用须综合全部相关因素。份量区间属于编者模型。",
  "authorities":[A("Fearn v Tate Gallery","[2023] UKSC 4","UKSC","普通使用与视觉侵扰"),
    A("Cambridge Water v Eastern Counties Leather","[1994] 2 AC 264","HL","可预见性")],
  "stages":[
@@ -233,7 +240,7 @@ M.append({"id":"NYC","area":"仲裁 Arbitration","zh":"纽约公约执行抗辩"
 
 M.append({"id":"ARBCH","area":"仲裁 Arbitration","zh":"仲裁员回避","en":"Arbitrator challenge","jurisdiction":"HK/SG/EN","role":"procedure","role_zh":"程序",
  "top_type":"balancing","corpus_hits":0,
- "note":"示范法 art 12 的「正当怀疑」是客观旁观者标准,典型的权重衡量。",
+ "note":"示范法 art 12 的「正当怀疑」是客观旁观者标准，采用多因素权衡。",
  "authorities":[A("UNCITRAL Model Law art 12","—","—","正当怀疑标准"),
    A("Halliburton v Chubb","[2020] UKSC 48","UKSC","多重委任与披露义务","primary","[81],[150]-[158]","caselaw.nationalarchives.gov.uk/uksc/2020/48/data.xml"),
    A("Arbitration Ordinance","Cap 609","—","香港采纳示范法")],
@@ -288,8 +295,13 @@ M.append({"id":"VEIL","area":"公司 Company","zh":"揭开公司面纱","en":"Pi
     "若可通过代理、信托、合同等常规途径得到相同结果,则不应揭开。",
     [F("VL-alternative","存在常规替代救济","Conventional remedy available")])]})
 
-REG={"generated":"2026-08-25","version":"0.2",
- "principle":"分类(test_type)由学理支持,可核验;权重是编者先验,须回归校准。未赋权重的因素自动进入维护队列。",
+for module in M:
+    enrich_module(module)
+
+REG={"generated":"2026-09-08","version":"0.3",
+ "principle":"每个判断阶段先按 test_type 分类；只有多因素权衡使用数值份量区间。hklandlaw 计数只表示语料覆盖，不决定判断逻辑、权威等级或权重。",
+ "test_types":TEST_TYPES,
+ "source_catalog":SOURCE_CATALOG,
  "modules":M}
 
 
@@ -298,9 +310,11 @@ def main(argv=None):
     parser.parse_args(argv)
     emit('registry', REG, indent=1)
     n_f=sum(len(s.get('factors',[]))+len(s.get('counter_factors',[])) for m in M for s in m['stages'])
-    n_w=sum(1 for m in M for s in m['stages'] for f in s.get('factors',[])+s.get('counter_factors',[]) if f.get('weight') is not None)
+    balancing=[f for m in M for s in m['stages'] if s['test_type']=='balancing'
+               for f in s.get('factors',[])+s.get('counter_factors',[])]
+    n_w=sum(1 for f in balancing if f.get('weight') is not None)
     print(f"modules: {len(M)}  stages: {sum(len(m['stages']) for m in M)}  factors: {n_f}")
-    print(f"weighted: {n_w}  unassigned: {n_f-n_w}  ({100*(n_f-n_w)//n_f}% awaiting calibration)")
+    print(f"balancing factors: {len(balancing)}  assigned: {n_w}  awaiting bands: {len(balancing)-n_w}")
     import collections
     print("test_type distribution:", dict(collections.Counter(s['test_type'] for m in M for s in m['stages'])))
     return 0

@@ -2,24 +2,12 @@ import argparse
 import json
 
 from _paths import emit
+from logic_schema import SOURCE_CATALOG, TEST_TYPES, enrich_module
 
 W = {
- "generated":"2026-08-25","version":"0.1",
- "test_types":{
-  "conjunctive":{"zh":"合取要件","en":"All elements must be satisfied",
-    "scoring":"none — a weight is meaningless here; 80% of falsity does not prove falsity",
-    "output":"gap list","examples":["misrepresentation E1–E5","deceit"]},
-  "disjunctive-gateway":{"zh":"择一门槛","en":"At least one item from a closed list",
-    "scoring":"count ≥ 1; strength of the strongest limb matters for discretion",
-    "output":"which gateway(s) are open","examples":["RHC O.11 r.1(1) service-out gateways","NY Convention Art V grounds"]},
-  "balancing":{"zh":"权重衡量","en":"Multi-factor balance, no single factor dispositive",
-    "scoring":"weighted sum of present factors, net of counter-factors",
-    "output":"score + swing factors + evidence still missing",
-    "examples":["forum non conveniens","lease vs licence","veil piercing","CECO s.3(1) reasonableness"]},
-  "threshold-discretion":{"zh":"门槛加裁量","en":"Threshold then discretionary override",
-    "scoring":"gate, then a separate discretionary limb",
-    "output":"gate result + discretion result","examples":["exclusive jurisdiction clause — strong cause"]},
- },
+ "generated":"2026-09-08","version":"0.2",
+ "test_types":TEST_TYPES,
+ "source_catalog":SOURCE_CATALOG,
  "provenance_levels":{
   "editorial-prior":"assigned by the compiler from doctrinal reading — NOT legal authority, NOT derived from outcomes",
   "frequency":"how often the factor is treated as decisive in a coded sample of judgments",
@@ -30,7 +18,7 @@ W = {
    "id":"HKJUR","zh":"香港法院管辖权","en":"Hong Kong jurisdiction over a civil claim",
    "jurisdiction":"HK",
    "role":"jurisdiction","role_zh":"管辖权",
-   "note":"三段结构:先看门槛(能否送达),再看方便法院衡量,最后管辖条款单独一条。只有中间那段是权重制。",
+   "note":"三段结构：先看门槛（能否送达），再作方便法院的多因素权衡，最后单独处理管辖条款。只有中间阶段使用模型份量区间。",
    "authorities":[
      {"case":"SPH v SA","cite":"(2014) 17 HKCFAR 364","court":"CFA","role":"HK 方便法院原则的终审重述","verified":"primary","pin":"[51]-[52],[78]","src":"hklii.hk/api/getjudgment hkcfa/2014/56","note":"CFA joint reasons; matrimonial stay context; test formulation adopted from DGC v SLC"},
      {"case":"Spiliada Maritime Corp v Cansulex Ltd","cite":"[1987] AC 460","court":"HL","role":"被 SPH v SA 采纳的英国原则","verified":"web","src":"reputable secondary consensus (Wikipedia/vLex/UOLLB/OUPLAW); pre-2003 report, no free full text"},
@@ -122,6 +110,9 @@ W = {
   }
  ]
 }
+
+for module in W["modules"]:
+    enrich_module(module)
 
 
 def main(argv=None):
