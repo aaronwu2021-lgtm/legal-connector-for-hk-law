@@ -1338,8 +1338,10 @@ async function viewScored(main){
     }
     sec.appendChild(row); pick.appendChild(sec);
   }
+  const moduleStageCount=(mod.stages||[]).length;
+  main.appendChild(el('p','crumb','法律测试模块 · '+esc(mod.id)+' · '+moduleStageCount+' 个判断阶段'));
   main.appendChild(el('h2','claim',esc(mod.zh)+' <span style="color:var(--ink3);font-size:.6em;font-weight:500">'+esc(mod.en)+'</span>'));
-  main.appendChild(el('p','claimdesc',esc(mod.note)));
+  main.appendChild(el('p','claimdesc','<strong>模块说明</strong> · '+esc(mod.note)));
   const selectedSummary = reg.modules.find(module=>module.id===moduleId) || mod;
   appendLitigationPosition(main,selectedSummary,reg);
   const selectedTypes = moduleLogicTypes(selectedSummary);
@@ -1391,11 +1393,13 @@ async function viewScored(main){
   main.appendChild(au);
 
   const out = el('div'); out.id='sc_out';
-  for(const st of mod.stages){
+  for(const [stageIndex,st] of mod.stages.entries()){
     const sec = el('section','elem');
     const isBalancing = st.test_type==='balancing';
+    const stageLabel=moduleStageCount===1?'唯一判断阶段':'判断阶段 '+(stageIndex+1)+'/'+moduleStageCount;
+    sec.appendChild(el('p','tiny stage-kicker',esc(stageLabel)+' · '+esc(st.id)));
     sec.appendChild(el('h3',null,esc(st.zh)+' <span class="tag logic">判断逻辑 · '+esc(logicMeta(idx,st.test_type).zh)+'</span> '+litigationTags(st)+' <span class="cnt">'+esc(st.test_type)+'</span>'));
-    sec.appendChild(el('p','ezh',esc(st.rule||st.en)));
+    sec.appendChild(el('p','ezh','<strong>阶段规则</strong> · '+esc(st.rule||st.en)));
     if(st.litigation_note) sec.appendChild(el('p','test stage-position-note',esc(st.litigation_note)));
     if(st.weight_note) sec.appendChild(el('p','tiny','⚠ '+esc(st.weight_note)));
     const all = (st.factors||[]).concat(st.counter_factors||[]);

@@ -517,8 +517,8 @@
       "sha256": "aae100f0d040f5a6710b60b96c397e36df184e060e666f776a78120a7bb60184"
     },
     "data/registry.json": {
-      "bytes": 69154,
-      "sha256": "054bc3e5cdf0a01ebacf31b77079a6ae30f88abece9d4749fa2b0c6036b4cb49"
+      "bytes": 69169,
+      "sha256": "592cef40b3c15dfc4897ef3d4c38c8e2e32dbbf2790f16a3cf075ae7d17c19cd"
     },
     "data/scored.json": {
       "bytes": 19475,
@@ -721,8 +721,8 @@
       "sha256": "6268278051eefe8f0714e657d69a6e30ff79e064d5dc89c2f1caa1520e2ba144"
     },
     "scripts/build_registry.py": {
-      "bytes": 28905,
-      "sha256": "9dc1a86b56e4fa195dc6252ca144d0f8a8cad614a3573bcc5354225e8282c5d0"
+      "bytes": 28920,
+      "sha256": "d59806640b2d61db84b1c9065ea1e8059321bc520470d85f0e357a9a31b82fe2"
     },
     "scripts/build_scored.py": {
       "bytes": 10907,
@@ -749,8 +749,8 @@
       "sha256": "977172da44989ff023cf3b3398ec8176303c84058cd3aceebcae6a7219a294f8"
     },
     "server/netlify/functions/_registry.mjs": {
-      "bytes": 56393,
-      "sha256": "43e7e67e7a4fba5fbbcc61eb7405ba12b854937c3ed953666ce27e8f0752d138"
+      "bytes": 56408,
+      "sha256": "4b2efabae3fde993d055cd896c16110651d586e2440db6ee29a1f8dbbf39a454"
     },
     "server/netlify/functions/_scored.mjs": {
       "bytes": 16161,

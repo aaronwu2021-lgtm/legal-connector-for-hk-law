@@ -145,7 +145,7 @@ M.append({"id":"AP","area":"土地 Land","zh":"逆权占有","en":"Adverse posse
 
 M.append({"id":"NUIS","area":"侵权 Tort","zh":"私人妨害","en":"Private nuisance","jurisdiction":"EN/HK/SG","role":"spear","role_zh":"矛",
  "top_type":"balancing","corpus_hits":11,
- "note":"典型的多因素权衡：是否合理使用须综合全部相关因素。份量区间属于编者模型。",
+ "note":"本模块处理一项土地侵权：被告对土地的使用是否对原告土地权益造成法律上不合理的干扰。",
  "authorities":[A("Fearn v Tate Gallery","[2023] UKSC 4","UKSC","普通使用与视觉侵扰"),
    A("Cambridge Water v Eastern Counties Leather","[1994] 2 AC 264","HL","可预见性")],
  "stages":[
