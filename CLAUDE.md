@@ -7,7 +7,7 @@ Live: https://doctrine-drift-atlas.netlify.app
 ## Layout
 
 - `data/` — the library. `elements.json` (misrepresentation family), `registry.json`
-  (14 typed causes of action), `scored.json` (legal-test catalogue plus the HKJUR module; numeric bands apply only to balancing stages), `maintenance.json`
+  (14 typed legal-test modules across registry + scored), `scored.json` (legal-test catalogue plus the HKJUR module; numeric bands apply only to balancing stages), `maintenance.json`
   (drift ledger), `persuasive.json` (449-case E&W index: metadata + treatment
   edges only, all `unverified` / persuasive-only — never doctrine), `corpus/`
   (745 HK land-law case notes).
@@ -58,6 +58,14 @@ silently overwrite a tier.
 disjunctive-gateway, threshold–discretion, or presumption–rebuttal. Weights are
 meaningless for anything but balancing; the scorer refuses to score the others.
 Getting the type wrong is worse than getting a weight wrong.
+
+**Litigation position uses two axes.** `litigation_postures` is a non-empty,
+possibly multi-valued list of `spear` / `shield`; `litigation_track` is one of
+`merits` / `procedure` / `jurisdiction`. Never put procedure or jurisdiction
+back into the posture axis. Keep the old `role` field only as a compatibility
+view. Every stage must have an entry in `STAGE_LITIGATION_POSITIONS`; an empty
+posture list is valid only for a `court_own_motion` stage. Update the profiles
+in `scripts/logic_schema.py`, then rebuild.
 
 **Three hierarchies, kept apart.** Doctrinal (claim -> element -> sub-test),
 institutional (`court_rank` on every timeline event: 4 apex, 3 intermediate

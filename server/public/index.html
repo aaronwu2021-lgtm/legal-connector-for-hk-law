@@ -115,6 +115,16 @@ h1.page{font:600 30px/1.15 Spectral,"Songti SC",serif;margin:0 0 6px;text-wrap:b
 .tag.logic{color:var(--accent);border-color:color-mix(in srgb,var(--accent) 45%,var(--line));background:var(--accent-soft)}
 .tag.source{color:var(--ok);border-color:color-mix(in srgb,var(--ok) 45%,var(--line));background:var(--ok-soft)}
 .tag.model{color:var(--note);border-color:color-mix(in srgb,var(--note) 45%,var(--line));background:var(--note-bg)}
+.tag.posture-spear{color:color-mix(in srgb,var(--accent) 78%,var(--ink));border-color:color-mix(in srgb,var(--accent) 55%,var(--line));background:var(--accent-soft)}
+.tag.posture-shield{color:var(--note);border-color:color-mix(in srgb,var(--warn) 55%,var(--line));background:var(--note-bg)}
+.tag.track{color:var(--ink2);border-color:var(--line);background:var(--surface2)}
+.position-panel{border-left:3px solid var(--accent);padding:10px 13px;margin:8px 0 16px}
+.position-panel .position-title{font:600 12.5px/1.4 "IBM Plex Sans",sans-serif;margin:0 0 7px}
+.position-panel .position-note{font-size:12px;line-height:1.55;color:var(--ink2);margin:7px 0 0;max-width:82ch}
+.position-overview{margin:0 0 18px}
+.position-overview .position-overview-title{font:600 17px/1.4 Spectral,"Songti SC",serif;margin:0 0 4px}
+.position-overview .axis{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-top:7px}
+.position-overview .axis-label{min-width:86px;font:500 10.5px/1 "IBM Plex Mono",monospace;color:var(--ink2);text-transform:uppercase;letter-spacing:.05em}
 .logic-line{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:4px 0 12px}
 .tile.clickable:hover{border-color:var(--accent)}
 .tiles .tile .sub{font-size:11px;color:var(--ink3);margin-top:2px}
@@ -129,7 +139,15 @@ details.au summary b{color:var(--ink);font-weight:600}
 .auth{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;font-size:12.5px;margin-bottom:3px}
 .auth .cite{font:400 11.5px/1.5 "IBM Plex Mono",monospace;color:var(--ink2)}
 .jgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:0 0 22px;align-items:start}
-@media(max-width:620px){.jgrid{grid-template-columns:1fr}}
+@media(max-width:620px){
+  .jgrid{grid-template-columns:1fr}
+  .topbar{position:static;gap:7px;padding:8px 12px}
+  .brand{width:100%}
+  .gsearch{flex:1 0 100%;max-width:none}
+  .modes{flex:1 0 100%;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin;padding-bottom:2px}
+  .modes button{flex:0 0 auto;padding:5px 8px}
+  .apihint{width:100%;margin-left:0;text-align:right;font-size:10px}
+}
 .jcard{background:var(--surface);border:1px solid var(--line);border-left-width:3px;border-radius:9px;padding:12px 14px;box-shadow:var(--shadow)}
 .jcard .jt{display:flex;align-items:center;gap:7px;font:600 13px/1 "IBM Plex Sans",sans-serif;margin-bottom:6px}
 .jcard p{margin:0 0 5px;font-size:12.5px;color:var(--ink2)}
@@ -260,16 +278,16 @@ details.card[open]>summary::before{content:'▾ '}
 
 <div class="topbar">
   <div class="brand"><b>要件漂移图谱</b><span>Doctrine Drift Atlas</span></div>
-  <div class="gsearch"><span class="ic mono">⌕</span><input id="gq" type="search" placeholder="搜索语料 · 判例 · 学说标签  (745 posts / 870 cases)" autocomplete="off"></div>
+  <div class="gsearch"><span class="ic mono">⌕</span><input id="gq" type="search" placeholder="搜索语料 · 判例 · 学说标签" autocomplete="off"></div>
   <nav class="modes" id="modes"></nav>
   <div class="apihint mono">API <b id="apistat" data-state="connecting" role="status" aria-live="polite">正在连接…</b><button id="connectionRetry" class="chip sm" type="button" hidden>检查连接</button></div>
 </div>
 
 <div class="wrap">
   <div id="context" aria-label="context navigation"></div>
-  <main id="main"><div class="loading">Loading…</div></main>
+  <main id="main"><div class="loading" role="status" aria-live="polite">正在加载…</div></main>
   <footer class="site">
-    要件数据集 v0.3（英/港/新/澳）。核验等级以每条来源记录为准；名称或引证匹配不证明法律命题。favor 轴为编者标定。语料为 hklandlaw.wordpress.com 745 篇公开文章的<strong>元数据与自动生成的简短摘要</strong>（标题、日期、判例名与引证、学说标签），每条均回链原文，不复制原文内容；版权归原作者所有。本页为研究工具，不构成法律意见。
+    要件数据集 v0.4（英/港/新/澳）。核验等级以每条来源记录为准；名称或引证匹配不证明法律命题。favor 轴为编者标定。语料为 hklandlaw.wordpress.com 745 篇公开文章的<strong>元数据与自动生成的简短摘要</strong>（标题、日期、判例名与引证、学说标签），每条均回链原文，不复制原文内容；版权归原作者所有。本页为研究工具，不构成法律意见。
   </footer>
 </div>
 
@@ -326,6 +344,8 @@ async function api(p,options){
 }
 
 const state = { mode:'doctrine', claim:'misrepresentation', q:'', filters:{}, tax:null, elements:null, stats:null };
+let SCFILTER = {posture:null,track:null};
+let SCCHOOSEROPEN = false;
 
 /* ── shell ───────────────────────────────────────────── */
 const MODES = [
@@ -338,7 +358,11 @@ function renderModes(){
   for(const [k,label] of MODES){
     const b = el('button',null,label);
     b.setAttribute('aria-current', String(state.mode===k));
-    b.onclick = () => { state.mode=k; if(state.tax && state.elements && state.stats) route(); else init(); };
+    b.onclick = () => {
+      state.mode=k;
+      if(k==='scored') SCFILTER={posture:null,track:null};
+      if(state.tax && state.elements && state.stats) route({focusTarget:'heading'}); else init();
+    };
     n.appendChild(b);
   }
 }
@@ -347,22 +371,109 @@ function renderModes(){
 const SLICES = [['','全部 745 篇'],['proprietary-estoppel','proprietary estoppel'],['adverse-possession','adverse possession'],
   ['common-intention-constructive-trust','CI constructive trust'],['easements','easements'],['deed-of-mutual-covenant','DMC'],
   ['land-registration','land registration'],['formalities','formalities']];
+const LITIGATION_POSTURES = {
+  spear:{label:'矛 Spear',description:'主动提出请求、反请求或申请'},
+  shield:{label:'盾 Shield',description:'回应、限制或阻却对方请求'},
+};
+const LITIGATION_TRACKS = {
+  merits:{label:'实体 Merits',description:'权利、责任、抗辩、定性与救济'},
+  procedure:{label:'程序 Procedure',description:'诉讼、仲裁、承认或执行步骤'},
+  jurisdiction:{label:'管辖 Jurisdiction',description:'法院能否及应否审理'},
+};
+const LITIGATION_TRACK_ORDER = ['merits','procedure','jurisdiction'];
+const claimLogicStatus = claim => claim?.logic_status
+  || (claim?.status==='logic-full'?'full':claim?.status==='logic-partial'?'partial':null);
+function claimStatusLabel(claim){
+  if(claim?.status==='full') return '完整要件';
+  const logicStatus=claimLogicStatus(claim);
+  if(logicStatus==='full') return '测试已建';
+  if(logicStatus==='partial') return '部分测试';
+  if(claim?.status==='xref') return '交叉引用';
+  if(claim?.status==='corpus-only') return '语料覆盖';
+  if(claim?.status==='planned') return '规划中';
+  return '状态待核';
+}
+function litigationTags(item){
+  let html = '';
+  for(const posture of item?.litigation_postures||[]){
+    const meta=LITIGATION_POSTURES[posture];
+    html += '<span class="tag posture-'+esc(posture)+'">诉讼姿态 · '+esc(meta?.label||posture)+'</span>';
+  }
+  const track=LITIGATION_TRACKS[item?.litigation_track];
+  if(track) html += '<span class="tag track">事项轨道 · '+esc(track.label)+'</span>';
+  if(item?.court_own_motion) html += '<span class="tag track">法院可依职权 Court own motion</span>';
+  else if(item?.court_own_motion_summary?.stage_count){
+    html += '<span class="tag track">含依职权阶段 · '+esc((item.court_own_motion_summary.stage_ids||[]).join(' / '))+'</span>';
+  }
+  return html;
+}
+function appendLitigationPosition(main,item,tax=state.tax){
+  if(!item?.litigation_postures?.length && !item?.litigation_track) return;
+  const box=el('section','card position-panel');
+  const title=el('h2','position-title','诉讼位置 Litigation position');
+  title.id='litigation-position-title';
+  box.setAttribute('aria-labelledby',title.id);
+  box.appendChild(title);
+  box.appendChild(el('div','meta-tags',litigationTags(item)));
+  box.appendChild(el('p','position-note',esc(item.litigation_note||item.role_note||tax?.litigation_position_note||'')));
+  main.appendChild(box);
+}
+function appendPositionOverview(main,tax=state.tax){
+  const modules=tax?.legal_test_modules||[];
+  if(!modules.length) return;
+  const box=el('section','position-overview');
+  const title=el('h2','position-overview-title','诉讼位置 Litigation position');
+  title.id='litigation-position-overview-title';
+  box.setAttribute('aria-labelledby',title.id);
+  box.appendChild(title);
+  box.appendChild(el('p','test',esc(tax.litigation_position_note||'')));
+  const addAxis=(label,catalog,field)=>{
+    const row=el('div','axis'); row.appendChild(el('span','axis-label',label));
+    for(const [id,meta] of Object.entries(catalog)){
+      const matching=modules.filter(module=>field==='litigation_postures'
+        ? (module[field]||[]).includes(id) : module[field]===id);
+      if(!matching.length) continue;
+      const button=el('button','chip sm',esc(meta.label)+' · '+matching.length);
+      button.type='button';
+      button.title=meta.description;
+      const filterKind=field==='litigation_postures'?'posture':'track';
+      button.setAttribute('aria-label','按'+label+'筛选判断逻辑：'+meta.label+'，'+matching.length+' 个模块');
+      button.onclick=()=>{
+        SCFILTER={posture:null,track:null,[filterKind]:id};
+        const first=matching.slice().sort((a,b)=>LITIGATION_TRACK_ORDER.indexOf(a.litigation_track)-LITIGATION_TRACK_ORDER.indexOf(b.litigation_track))[0];
+        SCMOD=first.id;
+        state.mode='scored';
+        route({focusTarget:'heading'});
+        window.scrollTo(0,0);
+      };
+      row.appendChild(button);
+    }
+    box.appendChild(row);
+  };
+  addAxis('诉讼姿态',LITIGATION_POSTURES,'litigation_postures');
+  addAxis('事项轨道',LITIGATION_TRACKS,'litigation_track');
+  main.appendChild(box);
+}
 function renderContext(){
   const c = $('#context'); c.innerHTML='';
   if(state.mode==='doctrine' && state.tax){
-    c.appendChild(el('span','cnt','诉因'));
-    const sel = el('select','pick'); sel.setAttribute('aria-label','选择诉因');
+    c.appendChild(el('span','cnt','法律事项'));
+    const sel = el('select','pick'); sel.setAttribute('aria-label','选择法律事项');
     for(const area of state.tax.areas){
       const g = document.createElement('optgroup'); g.label = area.zh+' '+area.en;
       for(const cl of area.claims){
         const o = document.createElement('option');
-        o.value = cl.id; o.textContent = (cl.status==='full'?'● ':'○ ')+cl.zh;
+        const posture=(cl.litigation_postures||[]).map(id=>LITIGATION_POSTURES[id]?.label.split(' ')[0]||id).join('+');
+        const track=cl.litigation_track&&cl.litigation_track!=='merits' ? LITIGATION_TRACKS[cl.litigation_track]?.label.split(' ')[0] : '';
+        const position=[posture,track].filter(Boolean).join(' · ');
+        o.value = cl.id;
+        o.textContent = '【'+claimStatusLabel(cl)+'】'+cl.zh+(position?'〔'+position+'〕':'');
         if(state.claim===cl.id) o.selected = true;
         g.appendChild(o);
       }
       sel.appendChild(g);
     }
-    sel.onchange = () => { state.claim = sel.value; route(); window.scrollTo(0,0); };
+    sel.onchange = () => { state.claim = sel.value; route({focusTarget:'claim-select'}); window.scrollTo(0,0); };
     c.appendChild(sel);
   } else if(state.mode==='corpus' && (state.sub||'corpus')==='corpus'){
     const row = el('div','slicrow');
@@ -509,10 +620,14 @@ async function viewDoctrine(main){
   main.innerHTML='';
   main.appendChild(el('p','crumb', esc(area.zh)+' '+esc(area.en)+' / '+esc(claim.en)));
   main.appendChild(el('h1','page', esc(claim.zh)+' <span style="color:var(--ink3);font-size:.6em;font-weight:500">'+esc(claim.en)+'</span>'));
+  appendLitigationPosition(main,claim);
 
   if(claim.status!=='full'){
     const c = el('div','card');
-    const b = claim.status==='planned' ? '<span class="badge n">规划中</span>'
+    const logicStatus=claimLogicStatus(claim);
+    const b = logicStatus==='full' ? '<span class="badge v">法律测试已建成</span>'
+            : logicStatus==='partial' ? '<span class="badge j">已有部分测试</span>'
+            : claim.status==='planned' ? '<span class="badge n">规划中</span>'
             : claim.status==='xref' ? '<span class="badge j">交叉引用</span>'
             : '<span class="badge j">语料已覆盖</span>';
     c.innerHTML = b + '<p class="test" style="margin-top:9px">'+esc(claim.note||'')+'</p>'
@@ -520,18 +635,29 @@ async function viewDoctrine(main){
     main.appendChild(c);
     if(claim.corpusTopics){
       const box = el('div','card');
-      box.innerHTML = '<h4>语料切片</h4><p class="test">该学说尚未建成要件模型,但语料里已有材料。</p>';
+      box.innerHTML = '<h4>语料切片</h4><p class="test">语料中的相关材料可与当前法律测试交叉核对。</p>';
       const row = el('div','chips');
       for(const t of claim.corpusTopics){
         const b2 = el('button','chip sm', esc(t));
-        b2.onclick = () => { state.mode='corpus'; state.filters={topic:t}; route(); };
+        b2.onclick = () => { state.mode='corpus'; state.filters={topic:t}; route({focusTarget:'heading'}); };
         row.appendChild(b2);
       }
       box.appendChild(row); main.appendChild(box);
     }
     if(claim.xref){
       const go = el('button','chip','→ 打开 '+claim.xref.split('#')[0]);
-      go.onclick = () => { state.claim = claim.xref.split('#')[0]; route(); };
+      go.onclick = () => { state.claim = claim.xref.split('#')[0]; route({focusTarget:'heading'}); };
+      main.appendChild(go);
+    }
+    if(claim.model_ref){
+      const go = el('button','chip','→ 打开法律测试 '+claim.model_ref.module_id);
+      go.onclick = () => {
+        SCFILTER={posture:null,track:null};
+        SCMOD=claim.model_ref.module_id;
+        state.mode='scored';
+        route({focusTarget:'heading'});
+        window.scrollTo(0,0);
+      };
       main.appendChild(go);
     }
     return;
@@ -545,11 +671,14 @@ async function viewDoctrine(main){
   const tile = (n,l,sub,go)=>{ const d = el('button','tile clickable'); d.type='button';
     d.innerHTML = '<div class="n">'+n+'</div><div class="l">'+l+'</div><div class="sub">'+sub+'</div>';
     d.onclick = go; tiles.appendChild(d); };
-  tile(REG.total_modules,'诉因模块','spear \u00b7 shield \u00b7 \u7a0b序 \u00b7 管辖',()=>{ state.mode='scored'; route(); window.scrollTo(0,0); });
+  tile(REG.total_modules,'法律测试模块','矛／盾姿态 · 实体／程序／管辖轨道',()=>{
+    SCFILTER={posture:null,track:null};state.mode='scored';route({focusTarget:'heading'});window.scrollTo(0,0);
+  });
   tile(ST.timelines+MODTL,'漂移时间线','as-of 查询',()=>{ const f = main.querySelector('figure.tl'); if(f) f.scrollIntoView({behavior:'smooth',block:'start'}); });
-  tile(ST.posts,'语料文章','hklandlaw 索引',()=>{ state.mode='corpus'; state.sub='corpus'; route(); window.scrollTo(0,0); });
-  tile(ST.uniqueCases,'判例','语料被讨论次序',()=>{ state.mode='corpus'; state.sub='cases'; route(); window.scrollTo(0,0); });
+  tile(ST.posts,'语料文章','hklandlaw 索引',()=>{ state.mode='corpus'; state.sub='corpus'; route({focusTarget:'heading'}); window.scrollTo(0,0); });
+  tile(ST.uniqueCases,'判例','语料被讨论次序',()=>{ state.mode='corpus'; state.sub='cases'; route({focusTarget:'heading'}); window.scrollTo(0,0); });
   main.appendChild(tiles);
+  appendPositionOverview(main);
 
   const chips = el('div','chips');
   for(const j of JUR){
@@ -586,10 +715,12 @@ async function viewDoctrine(main){
   }
   main.appendChild(jg);
 
-  const groups = [...E.elements.map(e=>({...e,kind:'element'})), {id:'D',zh:'抗辩层',en:'Defences',kind:'def',sub_tests:E.defences}];
+  const groups = [...E.elements.map(e=>({...e,kind:'element'})), {id:'D',zh:'抗辩',en:'Defences',kind:'def',
+    litigation_postures:['shield'],litigation_track:'merits',sub_tests:E.defences}];
   for(const g of groups){
     const sec = el('section');
-    const h3 = el('h3',null, esc(g.id)+' · '+esc(g.en));
+    const groupLabel=g.kind==='def'?'抗辩':'主张要件';
+    const h3 = el('h3',null, esc(g.id)+' · '+esc(g.en)+' <span class="tag '+(g.kind==='def'?'posture-shield':'posture-spear')+'">'+groupLabel+' · '+(g.kind==='def'?'盾 Shield':'矛 Spear')+'</span>');
     h3.style.cssText='font:600 18px/1.3 Spectral,serif;margin:16px 0 2px;padding-top:12px;border-top:1px solid var(--line)';
     sec.appendChild(h3);
     const zh = el('p',null,esc(g.zh)); zh.style.cssText='color:var(--ink3);font-size:12.5px;margin:0 0 10px';
@@ -601,6 +732,8 @@ async function viewDoctrine(main){
         + '<span style="color:var(--ink3);font-size:12px">'+esc(st.zh)+'</span>';
       if(st.variant) head += '<span class="cnt">'+esc(st.variant)+'</span>';
       if(st.drift) head += '<span class="badge drift">⇅ drift · '+esc(st.drift)+'</span>';
+      const subPosition=litigationTags(st);
+      if(subPosition) head += '<span class="meta-tags">'+subPosition+'</span>';
       head += '</div>';
       card.innerHTML = head + '<p class="test">'+esc(st.test)+'</p>';
       const au = el('details','au');
@@ -1126,6 +1259,8 @@ const moduleLogicTypes = module => {
   const types = Array.isArray(module.logic_types) ? module.logic_types : (module.stages||[]).map(stage=>stage.test_type);
   return [...new Set(types.filter(type=>LOGIC_FALLBACK[type]))];
 };
+const moduleMatchesFilter = (module,filter=SCFILTER) => (!filter.posture || (module.litigation_postures||[]).includes(filter.posture))
+  && (!filter.track || module.litigation_track===filter.track);
 const stageRole = (stage,factor) => {
   if(stage.test_type==='conjunctive') return '合取项';
   if(stage.test_type==='disjunctive-gateway') return factor.dispositive ? '独立门槛' : '择一候选';
@@ -1149,19 +1284,26 @@ async function viewScored(main){
   for(const k of Object.keys(SF)) delete SF[k];
   main.innerHTML='';
   main.appendChild(el('p','crumb','判断逻辑登记表 Registry v'+esc(reg.version)+' · '+reg.total_modules+' 个模块 · '+Object.keys(idx.test_types||{}).length+' 类判断逻辑'));
-  // module picker, grouped by litigation role
+  // Module picker: matter track is the grouping axis; spear/shield are
+  // non-exclusive posture tags on each module.
   const pick = el('div');
-  const GLOSS = {spear:'主动主张 \u00b7 起诉用', shield:'抗辩 \u00b7 被诉时挡',
-    jurisdiction:'法院管不管 \u00b7 去哪打', procedure:'执行与仲裁程序'};
-  for(const g of ['spear','shield','jurisdiction','procedure']){
-    const ms = reg.modules.filter(m=>(m.role||'spear')===g);
+  pick.setAttribute('role','radiogroup');
+  pick.setAttribute('aria-label','选择法律测试模块');
+  let visibleModules=reg.modules.filter(module=>moduleMatchesFilter(module));
+  if(!visibleModules.length){ SCFILTER={posture:null,track:null}; visibleModules=reg.modules; }
+  for(const g of LITIGATION_TRACK_ORDER){
+    const ms = visibleModules.filter(m=>m.litigation_track===g);
     if(!ms.length) continue;
     const sec = el('div','rgroup');
-    sec.innerHTML = '<span class="rlab">'+esc(ms[0].role_zh||g)+'</span><span class="cnt">'+g+'</span> <span class="tiny">'+GLOSS[g]+'</span>';
+    const track=LITIGATION_TRACKS[g];
+    sec.innerHTML = '<span class="rlab">'+esc(track?.label||g)+'</span><span class="cnt">事项轨道 · '+esc(g)+'</span> <span class="tiny">'+esc(track?.description||'')+'</span>';
     const row = el('div','jbar');
     for(const m of ms){
       const b = el('button','jchip'+(m.id===SCMOD?' on':''));
-      b.setAttribute('aria-pressed', String(m.id===SCMOD));
+      b.type='button';
+      b.setAttribute('role','radio');
+      b.setAttribute('aria-checked', String(m.id===SCMOD));
+      b.tabIndex=m.id===SCMOD?0:-1;
       const types = moduleLogicTypes(m);
       const logicTags = types.map(type=>'<span class="tag logic">'+esc(logicMeta(idx,type).zh)+'</span>').join('');
       const sourceCounts = m.source_counts || (m.corpus_hits==null ? {} : {hklandlaw:m.corpus_hits});
@@ -1170,23 +1312,58 @@ async function viewScored(main){
       const balancing = (m.stages||[]).filter(stage=>stage.test_type==='balancing');
       const incomplete = balancing.some(stage=>['unassigned','partial'].includes(stage.weight_status));
       const modelTag = balancing.length ? '<span class="tag model">模型 · '+(incomplete?'份量待补':'份量区间')+'</span>' : '';
-      b.innerHTML = '<span class="module-name">'+esc(m.zh)+'</span><span class="meta-tags">'+logicTags+sourceTag+modelTag+'</span>';
-      b.setAttribute('aria-label',m.zh+'；判断逻辑 '+types.map(type=>logicMeta(idx,type).zh).join('、')
+      const postureTags=(m.litigation_postures||[]).map(posture=>'<span class="tag posture-'+esc(posture)+'">'+esc(LITIGATION_POSTURES[posture]?.label||posture)+'</span>').join('');
+      const ownMotionIds=m.court_own_motion_summary?.stage_ids||[];
+      const ownMotionTag=ownMotionIds.length?'<span class="tag track">含依职权阶段 · '+esc(ownMotionIds.join(' / '))+'</span>':'';
+      b.innerHTML = '<span class="module-name">'+esc(m.zh)+'</span><span class="meta-tags">'+postureTags+ownMotionTag+logicTags+sourceTag+modelTag+'</span>';
+      b.setAttribute('aria-label',m.zh+'；诉讼姿态 '+(m.litigation_postures||[]).map(posture=>LITIGATION_POSTURES[posture]?.label||posture).join('、')+'；判断逻辑 '+types.map(type=>logicMeta(idx,type).zh).join('、')
+        +(ownMotionIds.length?'；含依职权阶段 '+ownMotionIds.join('、'):'')
         +(sourceCounts.hklandlaw==null?'':'；hklandlaw '+sourceCounts.hklandlaw+'篇'));
-      b.onclick = () => { SCMOD = m.id; route(); window.scrollTo(0,0); };
+      b.onclick = () => {
+        SCCHOOSEROPEN=true;
+        SCMOD=m.id;
+        route({focusTarget:'module-radio'});
+        window.scrollTo(0,0);
+      };
+      b.onkeydown = event => {
+        if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Home','End'].includes(event.key)) return;
+        const radios=[...pick.querySelectorAll('[role="radio"]')];
+        const current=radios.indexOf(b);
+        const next=event.key==='Home'?0:event.key==='End'?radios.length-1
+          :(current+(['ArrowRight','ArrowDown'].includes(event.key)?1:-1)+radios.length)%radios.length;
+        event.preventDefault();
+        radios[next].click();
+      };
       row.appendChild(b);
     }
     sec.appendChild(row); pick.appendChild(sec);
   }
-  main.appendChild(pick);
-  main.appendChild(el('p','tiny','⚠ '+esc(reg.principle)));
   main.appendChild(el('h2','claim',esc(mod.zh)+' <span style="color:var(--ink3);font-size:.6em;font-weight:500">'+esc(mod.en)+'</span>'));
   main.appendChild(el('p','claimdesc',esc(mod.note)));
   const selectedSummary = reg.modules.find(module=>module.id===moduleId) || mod;
+  appendLitigationPosition(main,selectedSummary,reg);
   const selectedTypes = moduleLogicTypes(selectedSummary);
   const selectedSources = selectedSummary.source_counts || (selectedSummary.corpus_hits==null ? {} : {hklandlaw:selectedSummary.corpus_hits});
   main.appendChild(el('div','logic-line',selectedTypes.map(type=>'<span class="tag logic">判断逻辑 · '+esc(logicMeta(idx,type).zh)+'</span>').join('')
     +(selectedSources.hklandlaw==null?'':'<span class="tag source">语料来源 · hklandlaw · '+esc(selectedSources.hklandlaw)+'篇</span>')));
+  const chooser=el('details','card');
+  const activeFilter=SCFILTER.posture ? {kind:'诉讼姿态',id:SCFILTER.posture,meta:LITIGATION_POSTURES[SCFILTER.posture]}
+    : SCFILTER.track ? {kind:'事项轨道',id:SCFILTER.track,meta:LITIGATION_TRACKS[SCFILTER.track]} : null;
+  chooser.innerHTML='<summary class="stt">切换法律测试模块 · '+visibleModules.length+(activeFilter?' / '+reg.total_modules+' 项（已筛选）':' 项')+'</summary>';
+  chooser.open=!!activeFilter||SCCHOOSEROPEN;
+  chooser.addEventListener('toggle',()=>{SCCHOOSEROPEN=chooser.open;});
+  if(activeFilter){
+    chooser.open=true;
+    const filterBar=el('div','chips');
+    filterBar.appendChild(el('span','tag track','当前筛选 · '+esc(activeFilter.kind)+' · '+esc(activeFilter.meta?.label||activeFilter.id)));
+    const clear=el('button','chip sm','显示全部模块');
+    clear.type='button';
+    clear.onclick=()=>{SCFILTER={posture:null,track:null};route({focusTarget:'heading'});};
+    filterBar.appendChild(clear);
+    chooser.appendChild(filterBar);
+  }
+  chooser.appendChild(pick); main.appendChild(chooser);
+  main.appendChild(el('p','tiny','⚠ '+esc(reg.principle)));
 
   // test-type explainer — the important conceptual bit
   const tt = el('details','card');
@@ -1217,8 +1394,9 @@ async function viewScored(main){
   for(const st of mod.stages){
     const sec = el('section','elem');
     const isBalancing = st.test_type==='balancing';
-    sec.appendChild(el('h3',null,esc(st.zh)+' <span class="tag logic">判断逻辑 · '+esc(logicMeta(idx,st.test_type).zh)+'</span> <span class="cnt">'+esc(st.test_type)+'</span>'));
+    sec.appendChild(el('h3',null,esc(st.zh)+' <span class="tag logic">判断逻辑 · '+esc(logicMeta(idx,st.test_type).zh)+'</span> '+litigationTags(st)+' <span class="cnt">'+esc(st.test_type)+'</span>'));
     sec.appendChild(el('p','ezh',esc(st.rule||st.en)));
+    if(st.litigation_note) sec.appendChild(el('p','test stage-position-note',esc(st.litigation_note)));
     if(st.weight_note) sec.appendChild(el('p','tiny','⚠ '+esc(st.weight_note)));
     const all = (st.factors||[]).concat(st.counter_factors||[]);
     const tw = el('div','tblwrap');
@@ -1298,14 +1476,14 @@ async function viewScored(main){
 }
 
 let navigationRequest=0;
-async function route(){
+async function route({focusTarget=null}={}){
   const request=++navigationRequest;
   renderModes(); renderContext();
   // Each navigation owns its container. A late response can only alter the
   // detached previous view, never the page the user has since opened.
   const main = document.createElement('div');
   $('#main').replaceChildren(main);
-  main.innerHTML = '<div class="loading">Loading…</div>';
+  main.innerHTML = '<div class="loading" role="status" aria-live="polite">正在加载当前页面…</div>';
   try{
     if(state.mode==='doctrine') await viewDoctrine(main);
     else if(state.mode==='corpus'){
@@ -1334,7 +1512,16 @@ async function route(){
       if(retry) retry.onclick=()=>route();
     }
   }
-  if(request===navigationRequest) renderContext();
+  if(request===navigationRequest){
+    renderContext();
+    const focusNode=focusTarget==='claim-select' ? $('#context select.pick')
+      : focusTarget==='module-radio' ? main.querySelector('[role="radio"][aria-checked="true"]')
+      : focusTarget==='heading' ? (main.querySelector('h1,h2')||main.querySelector('[role="alert"] h4')) : null;
+    if(focusNode){
+      if(focusTarget==='heading') focusNode.tabIndex=-1;
+      focusNode.focus({preventScroll:true});
+    }
+  }
 }
 
 $('#gq').addEventListener('input', e => {

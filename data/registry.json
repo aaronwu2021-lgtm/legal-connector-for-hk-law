@@ -1,7 +1,7 @@
 {
- "generated": "2026-09-08",
- "version": "0.3",
- "principle": "每个判断阶段先按 test_type 分类；只有多因素权衡使用数值份量区间。hklandlaw 计数只表示语料覆盖，不决定判断逻辑、权威等级或权重。",
+ "generated": "2026-09-09",
+ "version": "0.4",
+ "principle": "每个判断阶段先按 test_type 分类；只有多因素权衡使用数值份量区间。诉讼姿态（矛／盾）与事项轨道（实体／程序／管辖）分别记录，均不是法律要件。hklandlaw 计数只表示语料覆盖，不决定判断逻辑、权威等级或权重。",
  "test_types": {
   "conjunctive": {
    "zh": "合取要件",
@@ -52,6 +52,35 @@
     "presumed undue influence",
     "resulting trust presumptions"
    ]
+  }
+ },
+ "posture_catalog": {
+  "spear": {
+   "zh": "矛",
+   "en": "Spear",
+   "description": "作为请求、反请求或程序申请主动提出。"
+  },
+  "shield": {
+   "zh": "盾",
+   "en": "Shield",
+   "description": "用于回应、限制或阻却对方的请求。"
+  }
+ },
+ "track_catalog": {
+  "merits": {
+   "zh": "实体与救济",
+   "en": "Merits & remedies",
+   "description": "处理权利、责任、抗辩、定性或救济。"
+  },
+  "procedure": {
+   "zh": "程序",
+   "en": "Procedure",
+   "description": "处理诉讼、仲裁、承认或执行步骤。"
+  },
+  "jurisdiction": {
+   "zh": "管辖",
+   "en": "Jurisdiction",
+   "description": "处理法院能否及应否审理争议。"
   }
  },
  "source_catalog": {
@@ -136,7 +165,14 @@
        "en": "Loss",
        "evidence": null
       }
-     ]
+     ],
+     "litigation_postures": [
+      "spear"
+     ],
+     "litigation_track": "merits",
+     "primary_posture": "spear",
+     "court_own_motion": false,
+     "litigation_note": "请求违约救济的一方须证明合同、条款、违反、因果关系与损失。"
     },
     {
      "id": "CT-2",
@@ -191,6 +227,13 @@
       }
      ],
      "weight_note": "档位由判词对相对份量的表述归纳,区间非点估计;经验权重须由判决结果回归得出。",
+     "litigation_postures": [
+      "spear"
+     ],
+     "litigation_track": "merits",
+     "primary_posture": "spear",
+     "court_own_motion": false,
+     "litigation_note": "无辜方以条款定性及违约后果支持终止、拒绝履行或损害赔偿请求。",
      "weight_source": "doctrinal-tier"
     },
     {
@@ -245,6 +288,13 @@
        "weight_source": "doctrinal-tier"
       }
      ],
+     "litigation_postures": [
+      "shield"
+     ],
+     "litigation_track": "merits",
+     "primary_posture": "shield",
+     "court_own_motion": false,
+     "litigation_note": "违约方通常以损害远隔性限制请求方可获赔偿的范围。",
      "weight_source": "doctrinal-tier",
      "weight_note": "档位由判词对相对份量的表述归纳,区间非点估计;经验权重须由判决结果回归得出。"
     }
@@ -255,6 +305,19 @@
    ],
    "source_counts": {
     "hklandlaw": 35
+   },
+   "litigation_postures": [
+    "spear",
+    "shield"
+   ],
+   "litigation_track": "merits",
+   "primary_posture": "spear",
+   "legal_kind": "cause-of-action",
+   "role_confidence": "typical",
+   "litigation_note": "违约通常作为请求或反请求提出；损害远隔性等内部争点可用于限制赔偿。",
+   "court_own_motion_summary": {
+    "stage_count": 0,
+    "stage_ids": []
    }
   },
   {
@@ -318,7 +381,15 @@
        "en": "Detriment suffered",
        "evidence": null
       }
-     ]
+     ],
+     "litigation_postures": [
+      "shield",
+      "spear"
+     ],
+     "litigation_track": "merits",
+     "primary_posture": null,
+     "court_own_motion": false,
+     "litigation_note": "三要件既可支持独立衡平请求，也可用于抵抗严格法律权利的执行。"
     },
     {
      "id": "PE-2",
@@ -383,6 +454,14 @@
        "weight_source": "doctrinal-tier"
       }
      ],
+     "litigation_postures": [
+      "shield",
+      "spear"
+     ],
+     "litigation_track": "merits",
+     "primary_posture": null,
+     "court_own_motion": false,
+     "litigation_note": "整体不合情理性判断沿用该禁反言在具体案件中的请求或抗辩姿态。",
      "weight_source": "doctrinal-tier",
      "weight_note": "档位由判词对相对份量的表述归纳,区间非点估计;经验权重须由判决结果回归得出。"
     },
@@ -405,7 +484,15 @@
        "en": "Proportionality adjustment",
        "evidence": null
       }
-     ]
+     ],
+     "litigation_postures": [
+      "spear",
+      "shield"
+     ],
+     "litigation_track": "merits",
+     "primary_posture": "spear",
+     "court_own_motion": false,
+     "litigation_note": "主张衡平的一方通常请求法院量定救济；作为抗辩成立时法院亦会调整最终命令。"
     }
    ],
    "logic_types": [
@@ -415,6 +502,19 @@
    ],
    "source_counts": {
     "hklandlaw": 104
+   },
+   "litigation_postures": [
+    "shield",
+    "spear"
+   ],
+   "litigation_track": "merits",
+   "primary_posture": "shield",
+   "legal_kind": "equitable-doctrine",
+   "role_confidence": "contextual",
+   "litigation_note": "可作为独立请求寻求确认或衡平救济，也可在管有或执行争议中作为抗辩；“盾而非矛”通常指允诺禁反言。",
+   "court_own_motion_summary": {
+    "stage_count": 0,
+    "stage_ids": []
    }
   },
   {
@@ -471,7 +571,15 @@
        "en": "Detrimental reliance",
        "evidence": null
       }
-     ]
+     ],
+     "litigation_postures": [
+      "spear",
+      "shield"
+     ],
+     "litigation_track": "merits",
+     "primary_posture": "spear",
+     "court_own_motion": false,
+     "litigation_note": "可主动请求确认实益权益，也可用该权益抵抗管有、出售或处分请求。"
     },
     {
      "id": "CICT-2",
@@ -558,6 +666,14 @@
        "weight_source": "doctrinal-tier"
       }
      ],
+     "litigation_postures": [
+      "spear",
+      "shield"
+     ],
+     "litigation_track": "merits",
+     "primary_posture": "spear",
+     "court_own_motion": false,
+     "litigation_note": "份额量化承接已主张的实益权益，诉答姿态取决于请求或反请求的结构。",
      "weight_source": "doctrinal-tier",
      "weight_note": "档位由判词对相对份量的表述归纳,区间非点估计;经验权重须由判决结果回归得出。"
     }
@@ -568,6 +684,19 @@
    ],
    "source_counts": {
     "hklandlaw": 134
+   },
+   "litigation_postures": [
+    "spear",
+    "shield"
+   ],
+   "litigation_track": "merits",
+   "primary_posture": "spear",
+   "legal_kind": "proprietary-doctrine",
+   "role_confidence": "contextual",
+   "litigation_note": "通常用于主动确认实益权益，也可在管有、出售或受益权争议中作为抗辩或反请求。",
+   "court_own_motion_summary": {
+    "stage_count": 0,
+    "stage_ids": []
    }
   },
   {
@@ -623,7 +752,15 @@
        "en": "Advancement relationship",
        "evidence": null
       }
-     ]
+     ],
+     "litigation_postures": [
+      "spear",
+      "shield"
+     ],
+     "litigation_track": "merits",
+     "primary_posture": null,
+     "court_own_motion": false,
+     "litigation_note": "当事人可主动主张归复信托推定，也可凭该推定抵抗登记业权人的请求。"
     },
     {
      "id": "RT-2",
@@ -677,6 +814,14 @@
        "weight_source": "doctrinal-tier"
       }
      ],
+     "litigation_postures": [
+      "shield",
+      "spear"
+     ],
+     "litigation_track": "merits",
+     "primary_posture": "shield",
+     "court_own_motion": false,
+     "litigation_note": "反驳方以赠与、借贷或同期证据抵抗推定所支持的实益权益主张。",
      "weight_source": "doctrinal-tier",
      "weight_note": "档位由判词对相对份量的表述归纳,区间非点估计;经验权重须由判决结果回归得出。"
     }
@@ -688,6 +833,19 @@
    ],
    "source_counts": {
     "hklandlaw": 55
+   },
+   "litigation_postures": [
+    "spear",
+    "shield"
+   ],
+   "litigation_track": "merits",
+   "primary_posture": "spear",
+   "legal_kind": "evidential-presumption",
+   "role_confidence": "contextual",
+   "litigation_note": "一方可主张归复信托推定，另一方可提出赠与或其他证据反驳；姿态与举证责任随阶段变化。",
+   "court_own_motion_summary": {
+    "stage_count": 0,
+    "stage_ids": []
    }
   },
   {
@@ -756,7 +914,15 @@
        "en": "Limitation period expired",
        "evidence": null
       }
-     ]
+     ],
+     "litigation_postures": [
+      "spear",
+      "shield"
+     ],
+     "litigation_track": "merits",
+     "primary_posture": "spear",
+     "court_own_motion": false,
+     "litigation_note": "占有人可申请确认或登记权利，也可在纸面业主收回管有时提出抗辩。"
     },
     {
      "id": "AP-2",
@@ -821,6 +987,14 @@
        "weight_source": "doctrinal-tier"
       }
      ],
+     "litigation_postures": [
+      "spear",
+      "shield"
+     ],
+     "litigation_track": "merits",
+     "primary_posture": "spear",
+     "court_own_motion": false,
+     "litigation_note": "事实占有因素服务于同一权利主张或管有抗辩，不另行改变姿态。",
      "weight_source": "doctrinal-tier",
      "weight_note": "档位由判词对相对份量的表述归纳,区间非点估计;经验权重须由判决结果回归得出。"
     }
@@ -831,6 +1005,19 @@
    ],
    "source_counts": {
     "hklandlaw": 81
+   },
+   "litigation_postures": [
+    "spear",
+    "shield"
+   ],
+   "litigation_track": "merits",
+   "primary_posture": "spear",
+   "legal_kind": "title-doctrine",
+   "role_confidence": "contextual",
+   "litigation_note": "可用于申请登记或确认权利，也可在业主收回管有的诉讼中作为抗辩；具体路径取决于法域及登记制度。",
+   "court_own_motion_summary": {
+    "stage_count": 0,
+    "stage_ids": []
    }
   },
   {
@@ -961,7 +1148,14 @@
        "weight_source": "doctrinal-tier"
       }
      ],
-     "weight_note": "档位由判词对相对份量的表述归纳,区间非点估计;经验权重须由判决结果回归得出。"
+     "weight_note": "档位由判词对相对份量的表述归纳,区间非点估计;经验权重须由判决结果回归得出。",
+     "litigation_postures": [
+      "spear"
+     ],
+     "litigation_track": "merits",
+     "primary_posture": "spear",
+     "court_own_motion": false,
+     "litigation_note": "受干扰的土地权益人以不合理干扰测试请求禁制令或损害赔偿。"
     }
    ],
    "logic_types": [
@@ -969,6 +1163,17 @@
    ],
    "source_counts": {
     "hklandlaw": 11
+   },
+   "litigation_postures": [
+    "spear"
+   ],
+   "litigation_track": "merits",
+   "primary_posture": "spear",
+   "legal_kind": "cause-of-action",
+   "role_confidence": "typical",
+   "court_own_motion_summary": {
+    "stage_count": 0,
+    "stage_ids": []
    }
   },
   {
@@ -1042,7 +1247,14 @@
       }
      ],
      "weight_source": "doctrinal-tier",
-     "weight_note": "档位由判词对相对份量的表述归纳,区间非点估计;经验权重须由判决结果回归得出。"
+     "weight_note": "档位由判词对相对份量的表述归纳,区间非点估计;经验权重须由判决结果回归得出。",
+     "litigation_postures": [
+      "shield"
+     ],
+     "litigation_track": "merits",
+     "primary_posture": "shield",
+     "court_own_motion": false,
+     "litigation_note": "被请求承担责任的一方通常以违法性及比例原则阻却或限制救济。"
     }
    ],
    "logic_types": [
@@ -1050,6 +1262,17 @@
    ],
    "source_counts": {
     "hklandlaw": 14
+   },
+   "litigation_postures": [
+    "shield"
+   ],
+   "litigation_track": "merits",
+   "primary_posture": "shield",
+   "legal_kind": "defence",
+   "role_confidence": "typical",
+   "court_own_motion_summary": {
+    "stage_count": 0,
+    "stage_ids": []
    }
   },
   {
@@ -1100,7 +1323,15 @@
        "en": "Presumed undue influence",
        "evidence": null
       }
-     ]
+     ],
+     "litigation_postures": [
+      "shield",
+      "spear"
+     ],
+     "litigation_track": "merits",
+     "primary_posture": "shield",
+     "court_own_motion": false,
+     "litigation_note": "受影响方可抵抗交易执行，也可主动请求撤销交易。"
     },
     {
      "id": "UI-2",
@@ -1121,7 +1352,15 @@
        "en": "Transaction calls for explanation",
        "evidence": null
       }
-     ]
+     ],
+     "litigation_postures": [
+      "shield",
+      "spear"
+     ],
+     "litigation_track": "merits",
+     "primary_posture": "shield",
+     "court_own_motion": false,
+     "litigation_note": "主张推定不当影响的一方须证明信任关系及需要解释的交易。"
     },
     {
      "id": "UI-3",
@@ -1175,6 +1414,14 @@
        "weight_source": "doctrinal-tier"
       }
      ],
+     "litigation_postures": [
+      "shield",
+      "spear"
+     ],
+     "litigation_track": "merits",
+     "primary_posture": null,
+     "court_own_motion": false,
+     "litigation_note": "交易受益方提出独立意见等证据反驳推定；其姿态随执行请求或撤销之诉而改变。",
      "weight_source": "doctrinal-tier",
      "weight_note": "档位由判词对相对份量的表述归纳,区间非点估计;经验权重须由判决结果回归得出。"
     }
@@ -1187,6 +1434,19 @@
    ],
    "source_counts": {
     "hklandlaw": 29
+   },
+   "litigation_postures": [
+    "shield",
+    "spear"
+   ],
+   "litigation_track": "merits",
+   "primary_posture": "shield",
+   "legal_kind": "avoidance-doctrine",
+   "role_confidence": "contextual",
+   "litigation_note": "可主动请求撤销交易，也可在管有或执行程序中抵抗执行。",
+   "court_own_motion_summary": {
+    "stage_count": 0,
+    "stage_ids": []
    }
   },
   {
@@ -1243,7 +1503,15 @@
        "en": "Rent",
        "evidence": null
       }
-     ]
+     ],
+     "litigation_postures": [
+      "spear",
+      "shield"
+     ],
+     "litigation_track": "merits",
+     "primary_posture": null,
+     "court_own_motion": false,
+     "litigation_note": "租赁定性可支持占有人主动确认权利，也可抵抗收回管有或许可终止。"
     },
     {
      "id": "LS-2",
@@ -1298,6 +1566,14 @@
        "weight_source": "doctrinal-tier"
       }
      ],
+     "litigation_postures": [
+      "spear",
+      "shield"
+     ],
+     "litigation_track": "merits",
+     "primary_posture": null,
+     "court_own_motion": false,
+     "litigation_note": "实质重于形式的判断沿用定性争议的双向姿态。",
      "weight_source": "doctrinal-tier",
      "weight_note": "档位由判词对相对份量的表述归纳,区间非点估计;经验权重须由判决结果回归得出。"
     }
@@ -1308,6 +1584,19 @@
    ],
    "source_counts": {
     "hklandlaw": 352
+   },
+   "litigation_postures": [
+    "spear",
+    "shield"
+   ],
+   "litigation_track": "merits",
+   "primary_posture": null,
+   "legal_kind": "classification",
+   "role_confidence": "contextual",
+   "litigation_note": "租赁或许可是前提定性争点，不是独立诉因；争议双方都可能援引。",
+   "court_own_motion_summary": {
+    "stage_count": 0,
+    "stage_ids": []
    }
   },
   {
@@ -1459,7 +1748,14 @@
        "en": "Not yet binding / set aside / suspended",
        "evidence": null
       }
-     ]
+     ],
+     "litigation_postures": [
+      "shield"
+     ],
+     "litigation_track": "procedure",
+     "primary_posture": "shield",
+     "court_own_motion": false,
+     "litigation_note": "被申请人承担举证责任，以第 V(1) 条任一封闭事由抵抗裁决的承认或执行。"
     },
     {
      "id": "NY-2",
@@ -1480,7 +1776,12 @@
        "en": "Contrary to public policy",
        "evidence": null
       }
-     ]
+     ],
+     "litigation_postures": [],
+     "litigation_track": "procedure",
+     "primary_posture": null,
+     "court_own_motion": true,
+     "litigation_note": "可仲裁性与执行地公共政策由执行法院依职权审查，不归入任一方的矛或盾。"
     },
     {
      "id": "NY-3",
@@ -1501,7 +1802,14 @@
        "en": "Discretion nonetheless to enforce",
        "evidence": null
       }
-     ]
+     ],
+     "litigation_postures": [
+      "shield"
+     ],
+     "litigation_track": "procedure",
+     "primary_posture": "shield",
+     "court_own_motion": false,
+     "litigation_note": "拒绝事由成立后由法院行使剩余裁量；它通常承接被申请人的执行抗辩，并非新的拒绝事由。"
     }
    ],
    "logic_types": [
@@ -1510,6 +1818,20 @@
    ],
    "source_counts": {
     "hklandlaw": 0
+   },
+   "litigation_postures": [
+    "shield"
+   ],
+   "litigation_track": "procedure",
+   "primary_posture": "shield",
+   "legal_kind": "enforcement-defence",
+   "role_confidence": "explicit",
+   "litigation_note": "第 V(1) 条拒绝事由由被申请人提出并举证；第 V(2) 条的可仲裁性与公共政策可由法院主动审查。",
+   "court_own_motion_summary": {
+    "stage_count": 1,
+    "stage_ids": [
+     "NY-2"
+    ]
    }
   },
   {
@@ -1676,6 +1998,13 @@
        "note": "该领域惯常做法通常是减弱因素,而非加强。"
       }
      ],
+     "litigation_postures": [
+      "spear"
+     ],
+     "litigation_track": "procedure",
+     "primary_posture": "spear",
+     "court_own_motion": false,
+     "litigation_note": "挑战方主动提出仲裁员回避申请，并证明存在对公正性的正当怀疑。",
      "weight_source": "doctrinal-tier",
      "weight_note": "档位由判词对相对份量的表述归纳,区间非点估计;经验权重须由判决结果回归得出。"
     }
@@ -1685,6 +2014,18 @@
    ],
    "source_counts": {
     "hklandlaw": 0
+   },
+   "litigation_postures": [
+    "spear"
+   ],
+   "litigation_track": "procedure",
+   "primary_posture": "spear",
+   "legal_kind": "application",
+   "role_confidence": "typical",
+   "litigation_note": "由挑战方在仲裁程序中主动提出回避申请。",
+   "court_own_motion_summary": {
+    "stage_count": 0,
+    "stage_ids": []
    }
   },
   {
@@ -1799,6 +2140,14 @@
       }
      ],
      "weight_note": "档位由判词对相对份量的表述归纳,区间非点估计;经验权重须由判决结果回归得出。",
+     "litigation_postures": [
+      "spear",
+      "shield"
+     ],
+     "litigation_track": "merits",
+     "primary_posture": null,
+     "court_own_motion": false,
+     "litigation_note": "一方以合理性审查攻击免责条款，援引条款的一方则以其有效性抵抗责任。",
      "weight_source": "doctrinal-tier"
     }
    ],
@@ -1807,6 +2156,19 @@
    ],
    "source_counts": {
     "hklandlaw": 0
+   },
+   "litigation_postures": [
+    "spear",
+    "shield"
+   ],
+   "litigation_track": "merits",
+   "primary_posture": null,
+   "legal_kind": "statutory-control",
+   "role_confidence": "contextual",
+   "litigation_note": "用于审查并可能击破免责条款；提出免责的一方与反对免责的一方都会围绕合理性使用本测试。",
+   "court_own_motion_summary": {
+    "stage_count": 0,
+    "stage_ids": []
    }
   },
   {
@@ -1863,7 +2225,14 @@
        "en": "Evasion principle",
        "evidence": null
       }
-     ]
+     ],
+     "litigation_postures": [
+      "spear"
+     ],
+     "litigation_track": "merits",
+     "primary_posture": "spear",
+     "court_own_motion": false,
+     "litigation_note": "请求把既存义务归于公司幕后主体的一方须指出隐匿或规避原则。"
     },
     {
      "id": "VL-2",
@@ -1878,7 +2247,14 @@
        "en": "Conventional remedy available",
        "evidence": null
       }
-     ]
+     ],
+     "litigation_postures": [
+      "spear"
+     ],
+     "litigation_track": "merits",
+     "primary_posture": "spear",
+     "court_own_motion": false,
+     "litigation_note": "请求揭开公司面纱的一方还须跨过不存在足够常规替代救济的限制。"
     }
    ],
    "logic_types": [
@@ -1887,6 +2263,18 @@
    ],
    "source_counts": {
     "hklandlaw": 0
+   },
+   "litigation_postures": [
+    "spear"
+   ],
+   "litigation_track": "merits",
+   "primary_posture": "spear",
+   "legal_kind": "supporting-doctrine",
+   "role_confidence": "typical",
+   "litigation_note": "揭开公司面纱依附于既存义务或责任，是极有限的归责原则，并非独立诉因。",
+   "court_own_motion_summary": {
+    "stage_count": 0,
+    "stage_ids": []
    }
   }
  ],

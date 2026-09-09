@@ -11,7 +11,7 @@ const end = html.indexOf("$('#gq').addEventListener", start);
 assert.ok(start >= 0 && end > start, 'the scoring/navigation source boundaries must exist');
 const pageFunctions = html.slice(start, end);
 assert.match(pageFunctions, /async function viewScored\(main\)/);
-assert.match(pageFunctions, /async function route\(\)/);
+assert.match(pageFunctions, /async function route\(\{focusTarget=null\}=\{\}\)/);
 
 const metadataPaths = ['/scored', '/registry', '/calibration-queue', '/scored/HKJUR'];
 const currentPage = 'CURRENT API PAGE';

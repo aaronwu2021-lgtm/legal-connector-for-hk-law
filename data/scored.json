@@ -1,6 +1,6 @@
 {
- "generated": "2026-09-08",
- "version": "0.2",
+ "generated": "2026-09-09",
+ "version": "0.3",
  "test_types": {
   "conjunctive": {
    "zh": "合取要件",
@@ -51,6 +51,35 @@
     "presumed undue influence",
     "resulting trust presumptions"
    ]
+  }
+ },
+ "posture_catalog": {
+  "spear": {
+   "zh": "矛",
+   "en": "Spear",
+   "description": "作为请求、反请求或程序申请主动提出。"
+  },
+  "shield": {
+   "zh": "盾",
+   "en": "Shield",
+   "description": "用于回应、限制或阻却对方的请求。"
+  }
+ },
+ "track_catalog": {
+  "merits": {
+   "zh": "实体与救济",
+   "en": "Merits & remedies",
+   "description": "处理权利、责任、抗辩、定性或救济。"
+  },
+  "procedure": {
+   "zh": "程序",
+   "en": "Procedure",
+   "description": "处理诉讼、仲裁、承认或执行步骤。"
+  },
+  "jurisdiction": {
+   "zh": "管辖",
+   "en": "Jurisdiction",
+   "description": "处理法院能否及应否审理争议。"
   }
  },
  "source_catalog": {
@@ -252,7 +281,14 @@
        "zh": "寻求在港作为或不作为的强制令",
        "en": "Injunction as to acts in HK"
       }
-     ]
+     ],
+     "litigation_postures": [
+      "spear"
+     ],
+     "litigation_track": "jurisdiction",
+     "primary_posture": "spear",
+     "court_own_motion": false,
+     "litigation_note": "主张香港管辖及申请域外送达的一方须指出适用的送达门槛。"
     },
     {
      "id": "HKJUR-2",
@@ -399,7 +435,14 @@
        "weight_high": -0.13,
        "weight_source": "doctrinal-tier"
       }
-     ]
+     ],
+     "litigation_postures": [
+      "shield"
+     ],
+     "litigation_track": "jurisdiction",
+     "primary_posture": "shield",
+     "court_own_motion": false,
+     "litigation_note": "申请暂缓或提出不方便法院异议的一方，以此阶段抵抗在香港继续审理。"
     },
     {
      "id": "HKJUR-3",
@@ -460,6 +503,13 @@
        "weight_source": "doctrinal-tier"
       }
      ],
+     "litigation_postures": [
+      "spear"
+     ],
+     "litigation_track": "jurisdiction",
+     "primary_posture": "spear",
+     "court_own_motion": false,
+     "litigation_note": "原请求方可证明转往替代法院会丧失正当司法利益，以维持其香港诉讼。",
      "weight_note": "档位由判词对相对份量的表述归纳,区间非点估计;经验权重须由判决结果回归得出。"
     },
     {
@@ -481,7 +531,15 @@
        "en": "Strong cause to depart shown",
        "override": true
       }
-     ]
+     ],
+     "litigation_postures": [
+      "spear",
+      "shield"
+     ],
+     "litigation_track": "jurisdiction",
+     "primary_posture": null,
+     "court_own_motion": false,
+     "litigation_note": "管辖条款可用于主动申请暂缓或禁诉，也可用于抵抗在非约定法院继续审理；法院另行行使裁量。"
     }
    ],
    "logic_types": [
@@ -489,7 +547,20 @@
     "balancing",
     "threshold-discretion"
    ],
-   "source_counts": {}
+   "source_counts": {},
+   "litigation_postures": [
+    "spear",
+    "shield"
+   ],
+   "litigation_track": "jurisdiction",
+   "primary_posture": null,
+   "legal_kind": "jurisdiction-gateway",
+   "role_confidence": "contextual",
+   "litigation_note": "送达与主张管辖可由原告提出；暂缓或管辖异议通常由被告提出，具体举证责任随阶段改变。",
+   "court_own_motion_summary": {
+    "stage_count": 0,
+    "stage_ids": []
+   }
   }
  ],
  "tiers": {

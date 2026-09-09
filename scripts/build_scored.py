@@ -2,11 +2,19 @@ import argparse
 import json
 
 from _paths import emit
-from logic_schema import SOURCE_CATALOG, TEST_TYPES, enrich_module
+from logic_schema import (
+    POSTURE_CATALOG,
+    SOURCE_CATALOG,
+    TEST_TYPES,
+    TRACK_CATALOG,
+    enrich_module,
+)
 
 W = {
- "generated":"2026-09-08","version":"0.2",
+ "generated":"2026-09-09","version":"0.3",
  "test_types":TEST_TYPES,
+ "posture_catalog":POSTURE_CATALOG,
+ "track_catalog":TRACK_CATALOG,
  "source_catalog":SOURCE_CATALOG,
  "provenance_levels":{
   "editorial-prior":"assigned by the compiler from doctrinal reading — NOT legal authority, NOT derived from outcomes",

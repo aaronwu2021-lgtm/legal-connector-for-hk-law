@@ -3,7 +3,13 @@ import argparse
 import json
 
 from _paths import emit
-from logic_schema import SOURCE_CATALOG, TEST_TYPES, enrich_module
+from logic_schema import (
+    POSTURE_CATALOG,
+    SOURCE_CATALOG,
+    TEST_TYPES,
+    TRACK_CATALOG,
+    enrich_module,
+)
 
 E = "editorial-prior"; U = "unassigned"
 def F(i,zh,en,w=None,ev=None,note=None):
@@ -298,9 +304,11 @@ M.append({"id":"VEIL","area":"公司 Company","zh":"揭开公司面纱","en":"Pi
 for module in M:
     enrich_module(module)
 
-REG={"generated":"2026-09-08","version":"0.3",
- "principle":"每个判断阶段先按 test_type 分类；只有多因素权衡使用数值份量区间。hklandlaw 计数只表示语料覆盖，不决定判断逻辑、权威等级或权重。",
+REG={"generated":"2026-09-09","version":"0.4",
+ "principle":"每个判断阶段先按 test_type 分类；只有多因素权衡使用数值份量区间。诉讼姿态（矛／盾）与事项轨道（实体／程序／管辖）分别记录，均不是法律要件。hklandlaw 计数只表示语料覆盖，不决定判断逻辑、权威等级或权重。",
  "test_types":TEST_TYPES,
+ "posture_catalog":POSTURE_CATALOG,
+ "track_catalog":TRACK_CATALOG,
  "source_catalog":SOURCE_CATALOG,
  "modules":M}
 

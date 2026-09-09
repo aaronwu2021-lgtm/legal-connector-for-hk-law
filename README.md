@@ -15,7 +15,7 @@ itself is not distributed here.
 
 | Path | Contents |
 |---|---|
-| `data/` | The element library: misrepresentation family (17 sub-tests × 4 jurisdictions), a 14-module typed registry of legal-test logic (numeric bands only inside multi-factor balancing stages), the drift/maintenance ledger, a 745-document Hong Kong land-law case-note corpus, and a 449-case England-and-Wales persuasive index (unverified, persuasive-only in HK). CC BY 4.0. |
+| `data/` | The element library: misrepresentation family (17 sub-tests × 4 jurisdictions), a 14-module typed registry of legal-test logic and two-axis litigation positions (numeric bands only inside multi-factor balancing stages), the drift/maintenance ledger, a 745-document Hong Kong land-law case-note corpus, and a 449-case England-and-Wales persuasive index (unverified, persuasive-only in HK). CC BY 4.0. |
 | `server/` | The connector itself — Netlify serverless functions implementing the REST API and a 13-tool MCP server, plus the browser UI. MIT. |
 | `experiments/exp1-lab/` | In-benchmark pilot: 6 arbitration tasks, 2 conditions, blind paired judging over 59 legal-standard criteria. Null result. |
 | `experiments/exp2-probe/` | Jurisdiction-specific probe: 21 items, 2 conditions, blind judging against a pre-registered key. 16/21 → 21/21 as originally scored; **15/21 → 19/21 re-scored against the law** after two keys were found wrong (`rescore.py`, `probe_results_rescored.json`). |
@@ -34,6 +34,17 @@ are not. Piercing the corporate veil is the worked example: a multi-factor
 enquiry before *Prest v Petrodel* [2013] UKSC 34 and two principled gateways
 after it, so a weighted model would encode a superseded test in a form that
 looks quantitatively rigorous.
+
+**Litigation position has two axes.** `litigation_postures` records whether a
+test is usually asserted as a spear, used responsively as a shield, or both.
+`litigation_track` separately records merits, procedure, or jurisdiction. A
+procedure is therefore never treated as the opposite of a defence. The legacy
+single-value `role` remains in REST and MCP responses for compatibility;
+clients should use `posture` and `track` filters for new integrations. Every
+modelled stage carries its own position metadata. For example, New York
+Convention Article V(1) is a respondent's shield, while Article V(2) is marked
+as a court-own-motion stage; element sub-tests state their inherited track and
+posture explicitly as well.
 
 **Weights are bands, and the interval propagates.** No court assigns numbers to
 the factors in a balancing test. Each factor carries an ordinal tier (heavy

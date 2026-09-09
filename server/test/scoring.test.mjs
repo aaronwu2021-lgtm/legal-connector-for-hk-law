@@ -87,6 +87,22 @@ const approx = (actual, expected, message = '') => {
   assert.ok(Math.abs(actual - expected) < 1e-9, `${message}: ${actual} != ${expected}`);
 };
 
+it('preserves module and stage litigation positions across REST and MCP scoring', async () => {
+  const source = moduleById('NYC');
+  const output = await score('NYC');
+  for (const field of ['litigation_postures', 'litigation_track', 'primary_posture', 'legal_kind', 'role_confidence', 'court_own_motion_summary', 'litigation_note']) {
+    assert.deepEqual(output[field], source[field], `NYC module ${field}`);
+  }
+  for (const sourceStage of source.stages) {
+    const resultStage = stageResult(output, sourceStage.id);
+    for (const field of ['litigation_postures', 'litigation_track', 'primary_posture', 'court_own_motion', 'litigation_note']) {
+      assert.deepEqual(resultStage[field], sourceStage[field], `${sourceStage.id} ${field}`);
+    }
+  }
+  assert.deepEqual(stageResult(output, 'NY-2').litigation_postures, []);
+  assert.equal(stageResult(output, 'NY-2').court_own_motion, true);
+});
+
 function nonnumeric(stage) {
   for (const field of ['score', 'score_low', 'score_high', 'score_mid']) {
     assert.ok(stage[field] === undefined || stage[field] === null, `${stage.stage}: ${field} must be absent/null`);

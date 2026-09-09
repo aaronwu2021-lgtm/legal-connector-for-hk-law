@@ -88,7 +88,7 @@ assert sys.dont_write_bytecode and sys.flags.utf8_mode
 dependencies = {}
 if target.parent == root / "scripts" and target.name not in {"_paths.py", "check_build.py"}:
     dependencies["_paths"] = root / "scripts/_paths.py"
-if target.name in {"build_registry.py", "build_scored.py"}:
+if target.name in {"build_elements.py", "build_registry.py", "build_scored.py"}:
     dependencies["logic_schema"] = root / "scripts/logic_schema.py"
 if target.name == "build_reader_checklist.py":
     dependencies["validate_tasks"] = target.parent / "validate_tasks.py"
@@ -196,7 +196,7 @@ class BuilderEntrypoints(unittest.TestCase):
             sources = {relative}
             if relative.startswith("scripts/"):
                 sources.add("scripts/_paths.py")
-            if relative in {"scripts/build_registry.py", "scripts/build_scored.py"}:
+            if relative in {"scripts/build_elements.py", "scripts/build_registry.py", "scripts/build_scored.py"}:
                 sources.add("scripts/logic_schema.py")
             if relative.endswith("/build_reader_checklist.py"):
                 sources.add(str(Path(relative).parent / "validate_tasks.py"))

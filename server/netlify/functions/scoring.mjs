@@ -96,6 +96,11 @@ function scoreStage(stage, states) {
   const { entries, checklist, row } = stageFacts(stage, states);
   const base = {
     stage: stage.id, zh: stage.zh, en: stage.en, test_type: stage.test_type,
+    litigation_postures: stage.litigation_postures || [],
+    litigation_track: stage.litigation_track || null,
+    primary_posture: stage.primary_posture ?? null,
+    court_own_motion: !!stage.court_own_motion,
+    litigation_note: stage.litigation_note || null,
     rule: stage.rule, ...checklist,
   };
 
@@ -226,10 +231,22 @@ export function scoreModule(module, facts) {
   const normalized = normalizeFacts(module, facts);
   if (normalized.error) return normalized;
   const stages = module.stages.map((stage) => scoreStage(stage, normalized.states));
+  const ownMotionStageIds = module.stages.filter((stage) => stage.court_own_motion).map((stage) => stage.id);
+  const courtOwnMotionSummary = module.court_own_motion_summary || {
+    stage_count: ownMotionStageIds.length,
+    stage_ids: ownMotionStageIds,
+  };
   const multiStage = stages.length !== 1;
   const singleHeuristic = !multiStage && stages[0].result === 'heuristic-range';
   return {
     module: module.id, zh: module.zh, en: module.en, jurisdiction: module.jurisdiction,
+    litigation_postures: module.litigation_postures || [],
+    litigation_track: module.litigation_track || null,
+    primary_posture: module.primary_posture ?? null,
+    legal_kind: module.legal_kind || null,
+    role_confidence: module.role_confidence || null,
+    court_own_motion_summary: courtOwnMotionSummary,
+    litigation_note: module.litigation_note || null,
     overall: singleHeuristic ? 'heuristic-only' : 'undetermined',
     overall_reason: multiStage
       ? 'Stage dependencies and alternative-route semantics are not encoded. Review each stage independently; no module-wide legal conclusion is computed.'

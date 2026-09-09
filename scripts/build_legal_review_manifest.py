@@ -11,9 +11,9 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SNAPSHOT_DATE = "2026-09-08"
+SNAPSHOT_DATE = "2026-09-09"
 DEFAULT_OUTPUT = ROOT / "docs" / "review" / f"legal-reliability-review-manifest-{SNAPSHOT_DATE}.json"
-SUPERSEDES = "docs/review/legal-reliability-review-manifest-2026-09-06.json"
+SUPERSEDES = "docs/review/legal-reliability-review-manifest-2026-09-08.json"
 EXPERIMENTS = (
     ("exp3-hk-matter", ROOT / "experiments" / "exp3-hk-matter"),
     ("exp4-cfa", ROOT / "experiments" / "exp4-cfa"),

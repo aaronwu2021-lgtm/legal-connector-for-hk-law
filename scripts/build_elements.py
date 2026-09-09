@@ -2,6 +2,7 @@ import argparse
 import json
 
 from _paths import emit
+from logic_schema import POSTURE_CATALOG, TRACK_CATALOG
 
 W = "verified-web"
 Q = "verified-quoted"
@@ -26,9 +27,32 @@ def A(case, cite, court=None, note=None, v=W, pin=None, src=None):
 
 DATA = {
  "dataset": "misrepresentation-elements-family",
- "version": "0.3",
+ "version": "0.4",
  "family": "english-common-law",
  "claim": "misrepresentation",
+ "posture_catalog": POSTURE_CATALOG,
+ "track_catalog": TRACK_CATALOG,
+ "litigation_profile": {
+   "litigation_postures": ["spear"],
+   "litigation_track": "merits",
+   "primary_posture": "spear",
+   "legal_kind": "claim-family",
+   "groups": {
+     "elements": {
+       "zh": "主张要件",
+       "en": "Claim elements",
+       "litigation_postures": ["spear"],
+       "litigation_track": "merits",
+     },
+     "defences": {
+       "zh": "抗辩",
+       "en": "Defences",
+       "litigation_postures": ["shield"],
+       "litigation_track": "merits",
+     },
+   },
+   "litigation_note": "失实陈述本身作为主动请求提出；E1–E5 是主张要件与救济，D 组是对方可能提出的抗辩。诉讼位置不是额外法律要件，也不改变各要件的证明责任。",
+ },
  "variants": ["fraudulent-deceit", "negligent-statutory", "innocent"],
  "verification_levels": {
    "unverified": "drafted from doctrine, not checked",
@@ -350,6 +374,19 @@ import re as _re
 def main(argv=None):
     parser = argparse.ArgumentParser(description='Build the element library and its verification summary.')
     parser.parse_args(argv)
+    for _element in DATA["elements"]:
+        _element["litigation_postures"] = ["spear"]
+        _element["litigation_track"] = "merits"
+        _element["litigation_position_source"] = "claim-elements"
+        for _sub_test in _element["sub_tests"]:
+            _sub_test["litigation_postures"] = ["spear"]
+            _sub_test["litigation_track"] = "merits"
+            _sub_test["litigation_position_source"] = _element["id"]
+    for _defence in DATA["defences"]:
+        _defence["litigation_postures"] = ["shield"]
+        _defence["litigation_track"] = "merits"
+        _defence["litigation_position_source"] = "defences"
+
     _missing = []
     for _tid, _tl in DATA["timelines"].items():
         for _e in _tl["events"]:
