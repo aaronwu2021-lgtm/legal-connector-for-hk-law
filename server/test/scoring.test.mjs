@@ -222,7 +222,7 @@ describe('every module preserves evidence and stage semantics', () => {
           assert.equal(stage.evidence_resolved, 0);
           assert.ok(stage.reason || stage.note || stage.caveat, 'insufficient evidence explanation');
           assert.ok(stage.score_low <= stage.score_high);
-        } else if (raw.id === 'HKJUR-4') {
+        } else if (['HKJUR-4', 'NU-7'].includes(raw.id)) {
           assert.equal(stage.result, 'undetermined');
           assert.equal(stage.engaged, null);
           nonnumeric(stage);
@@ -258,7 +258,8 @@ describe('every module preserves evidence and stage semantics', () => {
             for (const range of [stage.pro, stage.against, ...stage.factors_present.map((f) => f.range), ...stage.factors_against.map((f) => f.range)]) {
               assert.ok(range.every(Number.isFinite) && range[0] <= range[1], `${raw.id}: every displayed range is ordered`);
             }
-          } else if (raw.id !== 'HKJUR-4') manual(stage);
+          } else if (['HKJUR-4', 'NU-7'].includes(raw.id)) nonnumeric(stage);
+          else manual(stage);
         }
       }
       const first = fixture.stages.flatMap(allFactors)[0];
@@ -304,7 +305,7 @@ function endpointWorlds(selected, states) {
 }
 
 describe('balancing uncertainty ranges and evidence priority', () => {
-  for (const [moduleId, stageId] of [['HKJUR', 'HKJUR-2'], ['NUIS', 'NU-1']]) {
+  for (const [moduleId, stageId] of [['HKJUR', 'HKJUR-2']]) {
     it(`${stageId}: intervals exactly contain all endpoint worlds for 81 tri-state combinations`, async () => {
       const fixture = moduleById(moduleId);
       const raw = fixture.stages.find((s) => s.id === stageId);
@@ -390,6 +391,20 @@ describe('modeled threshold uses three-valued gate and override states', () => {
       nonnumeric(stage);
       assert.equal(result.overall, 'undetermined');
       assert.ok(result.overall_reason);
+    });
+  }
+});
+
+describe('threshold followed by a separate multi-factor discretion', () => {
+  for (const gate of [null, false, true]) {
+    it(`NUIS remedy gate=${gate}`, async () => {
+      const result = await score('NUIS', { 'NU-remedy-threshold': gate });
+      const stage = stageResult(result, 'NU-7');
+      assert.equal(stage.engaged, gate);
+      assert.equal(stage.result, gate === null ? 'undetermined' : gate === false ? 'not-engaged' : 'discretion-required');
+      assert.equal(stage.discretion_required, gate);
+      nonnumeric(stage);
+      assert.doesNotMatch(stage.reason, /gate and override are not encoded/i);
     });
   }
 });

@@ -12,12 +12,13 @@ from logic_schema import (
 )
 
 E = "editorial-prior"; U = "unassigned"
-def F(i,zh,en,w=None,ev=None,note=None):
+def F(i,zh,en,w=None,ev=None,note=None,**meta):
     d={"id":i,"zh":zh,"en":en,"weight":w,"evidence":ev}
     if note: d["note"]=note
     if w is None: d["weight_status"]=U
+    d.update(meta)
     return d
-def S(i,zh,en,tt,rule,factors,ws=None,cf=None,note=None):
+def S(i,zh,en,tt,rule,factors,ws=None,cf=None,note=None,doctrinal_role=None,applies_when=None,jurisdiction_rules=None):
     # Absence of a weight outside a balancing test means "not applicable",
     # never "awaiting assignment". Keep weight fields out of those records.
     if tt != "balancing":
@@ -28,6 +29,9 @@ def S(i,zh,en,tt,rule,factors,ws=None,cf=None,note=None):
     if ws: d["weight_source"]=ws
     if cf: d["counter_factors"]=cf
     if note: d["weight_note"]=note
+    if doctrinal_role: d["doctrinal_role"]=doctrinal_role
+    if applies_when: d["applies_when"]=applies_when
+    if jurisdiction_rules: d["jurisdiction_rules"]=jurisdiction_rules
     return d
 def A(c,cite,court,role,v="unverified",pin=None,src=None):
  d={"case":c,"cite":cite,"court":court,"role":role,"verified":v}
@@ -143,24 +147,66 @@ M.append({"id":"AP","area":"土地 Land","zh":"逆权占有","en":"Adverse posse
      F("AP-maintenance","维护修缮","Maintenance"),F("AP-exclusion","排除他人","Excluding others"),
      F("AP-land-nature","土地性质与通常用法","Nature of the land")])]})
 
-M.append({"id":"NUIS","area":"侵权 Tort","zh":"私人妨害","en":"Private nuisance","jurisdiction":"EN/HK/SG","role":"spear","role_zh":"矛",
- "top_type":"balancing","corpus_hits":11,
- "note":"本模块处理一项土地侵权：被告对土地的使用是否对原告土地权益造成法律上不合理的干扰。",
- "authorities":[A("Fearn v Tate Gallery","[2023] UKSC 4","UKSC","普通使用与视觉侵扰"),
-   A("Cambridge Water v Eastern Counties Leather","[1994] 2 AC 264","HL","可预见性")],
+M.append({"id":"NUIS","area":"侵权 Tort","zh":"私人妨害","en":"Private nuisance","jurisdiction":"HK/EN","role":"spear","role_zh":"矛",
+ "top_type":"conjunctive","corpus_hits":11,
+ "note":"私人妨害本身是诉因；必要要件、内部法律标准、抗辩与救济均置于同一诉因结构。任何法域均不以编者数值权重代替法律判断。EN 分支以 Fearn/Davies 为现行结构；HK 须分别适用 Ng Hoi Sze 的土地权益门槛及 Century Way 的情境评估，Fearn 在香港仅具说服力，不能自动覆盖香港上诉法院规则。三类路径的香港锚点 Cheng Lai Yin 属 CFI。HK 的预防性 quia timet 分支及 SG 整体在本版本不作结论，仍是覆盖缺口。",
+ "authorities":[
+   A("Fearn v Board of Trustees of the Tate Gallery","[2023] UKSC 4","UKSC","土地权益、实质干扰、普通使用、互惠边界及责任与救济分离","primary","[9]-[10],[18]-[24],[27]-[38],[47],[54]-[55],[114]-[122],[126]-[132]","https://caselaw.nationalarchives.gov.uk/uksc/2023/4"),
+   A("Davies v Bridgend County Borough Council","[2024] UKSC 15","UKSC","损害、因果关系及自然危险的过错要求","primary","[68]-[71],[76]-[77]","https://supremecourt.uk/cases/judgments/uksc-2023-0028"),
+   A("Ng Hoi Sze v Yuen Sha Sha and Another","[1999] 3 HKLRD 890","HKCA","香港土地权益及排他占有门槛","primary","[14]-[20]","https://legalref.judiciary.hk/doc/judg/html/vetted/other/en/1999/CACV000094_1999.htm"),
+   A("Century Way Investment Ltd v Willbert Ltd and Another","[2019] HKCA 739","HKCA","香港舒适便利妨害的情境评估、可预见风险及预防措施","primary","[4.2]-[4.5],[5.9]-[5.16]","https://legalref.judiciary.hk/doc/judg/html/vetted/other/en/2017/CACV000239_2017.htm"),
+   A("Leung Tsang Hung and Another v Incorporated Owners of Kwok Wing House","(2007) 10 HKCFAR 480; [2007] 4 HKLRD 654","CFA","公害案件中确认私人妨害是保护财产权的不同诉因；不作为私人妨害责任要件权威","primary","[13]","https://legalref.judiciary.hk/doc/judg/html/vetted/other/en/2007/FACV000004_2007.htm"),
+   A("Network Rail Infrastructure Ltd v Williams and Waistell","[2018] EWCA Civ 1514","EWCA","英格兰预防性 quia timet 救济及迫近危害门槛","primary","[70]-[71]","https://www.judiciary.uk/wp-content/uploads/2018/07/network-rail-v-williams-judgment.pdf"),
+   A("Cheng Lai Yin v Liu Yee Mui","[2022] HKCFI 940","CFI","香港三类妨害路径、舒适便利标准、归责与救济；属一审且当事人无争议的法律摘要","primary","[51],[54]","https://www.hklii.hk/en/cases/hkcfi/2022/940")],
  "stages":[
-  S("NU-1","是否构成不合理干扰","Unreasonable interference","balancing",
-    "综合地点性质、干扰程度与持续时间、时间段、原告是否异常敏感、被告是否恶意、社会效用。",
-    [F("NU-locality","地点性质","Character of the locality",0.22,"分区用途;周边实际状况"),
-     F("NU-severity","干扰的强度","Severity of the interference",0.22,"测量数据;证人证言"),
-     F("NU-duration","持续时间与频率","Duration and frequency",0.18,"日志;时间记录"),
-     F("NU-timing","发生时段","Time of day",0.10,"记录"),
-     F("NU-malice","被告恶意","Malice on the defendant's part",0.16,"通讯记录",
-       "有恶意时权重显著上升,可使本属合理的使用变为不合理"),
-     F("NU-utility","社会效用","Social utility of the defendant's activity",0.12,"用途证据")],
-    ws=E, cf=[F("NU-sensitivity","原告异常敏感","Abnormal sensitivity of the claimant",-0.20,"用途异常性"),
-              F("NU-common-use","被告属土地的普通使用","Ordinary use of land (Fearn)",-0.25,"同区可比用法")],
-    note="先验依据学理常见排序,未经回归校准。")]})
+  S("NU-1","受保护的土地权益","Protected land interest","conjunctive",
+    "原告须具有受法律保护的土地权益；所诉损害须是对该土地权利、用途或便利价值的干扰，而非独立的人身不适。",
+    [F("NU-interest","原告对受影响土地享有足够的法律权益，通常包括排他占有权","Claimant has a sufficient legal interest, ordinarily a right to exclusive possession",None,"业权、租约、地役权或其他土地权益文件"),
+     F("NU-land-harm","干扰针对土地权利、使用、享有或便利价值","Interference concerns rights in, use, enjoyment or amenity value of land",None,"土地用途及受影响权利证据")],
+    doctrinal_role="claim-elements",jurisdiction_rules={
+      "EN":"Fearn [9]-[10]：通常须有土地法律权益及排他占有权。",
+      "HK":"Ng Hoi Sze [14]-[20]：采纳土地权益门槛；仅居住或普通许可而无排他占有不足。"}),
+  S("NU-2","可诉干扰路径","Actionable interference route","disjunctive-gateway",
+    "至少识别一项受承认的路径：侵占、土地物理损害，或对土地舒适便利使用与享有的过度干扰。路径是受保护利益的分类；造成干扰的具体方式并非封闭清单。",
+    [F("NU-route-encroachment","侵占或越界进入土地","Encroachment onto the land",None,"边界、测量、迁移物或根系证据"),
+     F("NU-route-physical","土地发生物理损害或实质性物质损伤","Physical damage or material injury to the land",None,"检验、照片、工程或估值证据"),
+     F("NU-route-amenity","土地的舒适便利使用或享有受到过度干扰","Undue interference with amenity or enjoyment of land",None,"噪音、气味、烟尘、振动、观察或其他影响证据")],
+    doctrinal_role="claim-elements"),
+  S("NU-3","既有干扰或预防性威胁","Accrued interference or threatened nuisance","disjunctive-gateway",
+    "既有请求须证明实际干扰或损害；尚未发生时，只能在适用法容许并达到 quia timet 门槛时请求预防性救济。EN 的通常门槛是有充分证据证明迫近的物理损伤或危害；HK 的预防性私人妨害分支在本版本仍属权威覆盖缺口。",
+    [F("NU-accrued","已经发生实际干扰或可诉损害","Actual interference or actionable harm has occurred",None,"现场记录、同期投诉、证人证言、检验或损害记录"),
+     F("NU-quia-timet","尚未发生，但有充分证据证明迫近且很可能发生的妨害，符合适用法的 quia timet 门槛","No interference has yet occurred, but evidence establishes an imminent and sufficiently likely nuisance under the applicable quia-timet standard",None,"工程或专家证据、既往事件、明确计划、时间表及发生概率")],
+    doctrinal_role="claim-elements",jurisdiction_rules={
+      "EN":"Network Rail v Williams [70]-[71]：适当案件可给予 quia timet 禁制令或替代赔偿；通常须证明迫近的物理损伤或危害。",
+      "HK":"覆盖缺口：本版本尚无逐段核验的一手香港权威，不能由英格兰规则自动推定。"}),
+  S("NU-4","舒适便利路径的法律标准","Amenity-route legal standard","conjunctive",
+    "仅在 NU-route-amenity 路径适用。实质程度及普通人客观标准是必要检查；最终标准须按法域分支适用。EN 依 Fearn 的普通用途与互惠标准，拒绝开放式合理性权衡；HK 依 Century Way 评估全部相关情境。地点、强度、持续时间、频率、时段、可预见风险、预防措施、成本、资源及恶意只作为适用法律标准的事实，不换算为数值权重。",
+    [F("NU-substantial","干扰达到真实、实质或重大的最低严重程度","Interference is real, substantial or material",None,"强度、持续时间、频率、发生时段及客观测量"),
+     F("NU-objective-ordinary-use","以普通人标准评估原告土地的普通用途","Objective interference with ordinary use of the claimant's land",None,"同类土地通常用途及异常敏感性证据"),
+     F("NU-jurisdiction-standard","已经适用正确法域的责任标准","The governing jurisdiction's liability standard has been applied",None,"EN：普通通常用途与互惠；HK：全部相关情境、风险、预防措施、成本与双方资源")],
+    doctrinal_role="internal-test",applies_when={"stage_id":"NU-2","factor_ids":["NU-route-amenity"]},jurisdiction_rules={
+      "EN":"Fearn [18]-[24],[27]-[38],[54]-[55]：不是开放式合理性权衡；问是否实质干扰原告土地普通用途，并适用被告普通通常且适当顾及邻地的互惠边界。",
+      "HK":"Century Way [4.2]-[4.5],[5.9]-[5.16]：无绝对标准，评估全部情境，包括可预见风险、可用预防措施、成本及双方资源；该情境评估不是数值评分。"}),
+  S("NU-5","归责、损害、因果与可预见性","Responsibility, damage, causation and foreseeability","conjunctive",
+    "被告须对活动或状态负责。既有请求须证明可诉损害及因果关系；预防性请求须证明所威胁的妨害与被告应负责的活动或状态相连并达到适用门槛。相关种类的损害须可合理预见。主动制造妨害通常不以疏忽为必要；自然危险、第三人行为或继续妨害可能要求被告知情或应当知情并未采取合理措施。",
+    [F("NU-responsibility","被告制造、授权、采纳、继续或控制导致干扰的活动或状态，并满足适用的过错要求","Defendant is responsible for the activity or state of affairs under the applicable basis of responsibility",None,"占有控制、授权、通知、知识及应对措施证据"),
+     F("NU-actionable-harm","既有请求已证明可诉损害，或预防性请求已证明符合适用法的迫近危害门槛","Actionable harm is proved for an accrued claim, or the applicable imminent-harm threshold is proved for preventive relief",None,"土地损伤、便利价值、实际使用受损或迫近危害证据"),
+     F("NU-causation","被告应负责的行为或状态事实上及法律上造成或威胁造成所诉损害","Factual and legal causation, including the causal source of any threatened harm",None,"时间线、来源追踪、专家及反事实证据"),
+     F("NU-foreseeability","所发生种类的损害属于可合理预见范围","The relevant type of harm was reasonably foreseeable",None,"被告知识、既往事件、通知及行业资料")],
+    doctrinal_role="claim-elements"),
+  S("NU-6","抗辩","Defences","disjunctive-gateway",
+    "被告须证明适用法承认的一项抗辩。迁来妨害、一般规划许可及活动具有公共利益本身不是责任抗辩。法定授权、时效取得的权利和同意的具体条件随法域而异。",
+    [F("NU-defence-statutory","法定授权使妨害成为依法授权活动不可避免的后果","Statutory authority makes the nuisance an inevitable consequence of the authorised activity",None,"授权法例、法定权限及替代施工方式证据"),
+     F("NU-defence-prescription","依适用法完成取得继续该干扰的时效权利","Prescriptive right acquired under the applicable law",None,"干扰成为可诉后的持续期间、公开性及权利行使记录"),
+     F("NU-defence-consent","原告以有效同意、授权或契约容许该干扰","Valid consent, licence or covenant permits the interference",None,"契约、许可、协议范围及有效性")],
+    doctrinal_role="defence"),
+  S("NU-7","救济","Remedy","threshold-discretion",
+    "先确定既有责任或预防性救济资格，再分别决定禁制令、损害赔偿或减除妨害费用。公共利益只在该门槛成立后的救济选择中考虑；不能因社会效用而免除既有责任并不给补偿。",
+     [F("NU-remedy-threshold","既有私人妨害责任已经成立，或预防性救济门槛已经满足","Liability for accrued nuisance is established, or the threshold for preventive relief is satisfied",gate=True),
+      F("NU-injunction","禁制令的范围与实际可行性","Scope and practical workability of an injunction",None,"持续或重复风险、可执行条款及替代减损措施",role="discretion"),
+      F("NU-damages","损害赔偿或合理减除妨害费用是否足以救济","Adequacy of damages or reasonable abatement costs",None,"修复、减损、租值或价值损失证据",role="discretion"),
+      F("NU-public-interest-remedy","公共利益对禁制令与赔偿选择的影响","Public interest as relevant to the choice between injunction and damages",None,"公共影响及维持活动的证据",role="discretion")],
+    doctrinal_role="remedy")]})
 
 M.append({"id":"ILLEG","area":"合同 Contract","zh":"违法性抗辩","en":"Illegality (Patel v Mirza)","jurisdiction":"EN/HK/SG","role":"shield","role_zh":"盾",
  "top_type":"balancing","corpus_hits":14,

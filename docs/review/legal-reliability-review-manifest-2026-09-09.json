@@ -517,8 +517,8 @@
       "sha256": "aae100f0d040f5a6710b60b96c397e36df184e060e666f776a78120a7bb60184"
     },
     "data/registry.json": {
-      "bytes": 69169,
-      "sha256": "592cef40b3c15dfc4897ef3d4c38c8e2e32dbbf2790f16a3cf075ae7d17c19cd"
+      "bytes": 81708,
+      "sha256": "9295d5d017adf0c564b977962c98d281151c2b19b0cc07a7d67bc772c8cc30a6"
     },
     "data/scored.json": {
       "bytes": 19475,
@@ -701,8 +701,8 @@
       "sha256": "c7afbf2d8de0b4c21a208d1ea665b1efd3e7e14a85905ca3e1bbb8f1da60ec39"
     },
     "scripts/apply_tiers.py": {
-      "bytes": 6653,
-      "sha256": "fec1e33c8eb4bdd1eba1e7c967e27c279bf5f66bc76f2047e293b83b7c1cfb33"
+      "bytes": 6326,
+      "sha256": "0085d28a0c0b8b964d0bc63acd47718884a26c6f50d3a1fcf1ea10faf5d855a5"
     },
     "scripts/build_elements.py": {
       "bytes": 47810,
@@ -721,16 +721,16 @@
       "sha256": "6268278051eefe8f0714e657d69a6e30ff79e064d5dc89c2f1caa1520e2ba144"
     },
     "scripts/build_registry.py": {
-      "bytes": 28920,
-      "sha256": "d59806640b2d61db84b1c9065ea1e8059321bc520470d85f0e357a9a31b82fe2"
+      "bytes": 39163,
+      "sha256": "6adad74ad637b4122bde55bda9c87c4171401ffe2969c7600a93a735f88a298a"
     },
     "scripts/build_scored.py": {
       "bytes": 10907,
       "sha256": "282f4ab79fb3f95ef5f1522ba31b274de18a72a718751d1d0b146b358014519f"
     },
     "scripts/logic_schema.py": {
-      "bytes": 19460,
-      "sha256": "d0cbce599041a0c80276eb094575ca5e5e7fc7f5e543e2beb58dab9c66a831ec"
+      "bytes": 20878,
+      "sha256": "3f44f36f64f0840879c3a0bb5b3603167fd3e756c191cd7ee154d2ba32bb49c8"
     },
     "scripts/tests/test_build_reproducibility.py": {
       "bytes": 15205,
@@ -749,8 +749,8 @@
       "sha256": "977172da44989ff023cf3b3398ec8176303c84058cd3aceebcae6a7219a294f8"
     },
     "server/netlify/functions/_registry.mjs": {
-      "bytes": 56408,
-      "sha256": "4b2efabae3fde993d055cd896c16110651d586e2440db6ee29a1f8dbbf39a454"
+      "bytes": 67742,
+      "sha256": "6ed4ce92d78ba2f79a0fdd7d64611e735a7ad1881978aea269604d70f5c8e3ca"
     },
     "server/netlify/functions/_scored.mjs": {
       "bytes": 16161,

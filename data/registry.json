@@ -1025,152 +1025,367 @@
    "area": "侵权 Tort",
    "zh": "私人妨害",
    "en": "Private nuisance",
-   "jurisdiction": "EN/HK/SG",
+   "jurisdiction": "HK/EN",
    "role": "spear",
    "role_zh": "矛",
-   "top_type": "balancing",
+   "top_type": "conjunctive",
    "corpus_hits": 11,
-   "note": "本模块处理一项土地侵权：被告对土地的使用是否对原告土地权益造成法律上不合理的干扰。",
+   "note": "私人妨害本身是诉因；必要要件、内部法律标准、抗辩与救济均置于同一诉因结构。任何法域均不以编者数值权重代替法律判断。EN 分支以 Fearn/Davies 为现行结构；HK 须分别适用 Ng Hoi Sze 的土地权益门槛及 Century Way 的情境评估，Fearn 在香港仅具说服力，不能自动覆盖香港上诉法院规则。三类路径的香港锚点 Cheng Lai Yin 属 CFI。HK 的预防性 quia timet 分支及 SG 整体在本版本不作结论，仍是覆盖缺口。",
    "authorities": [
     {
-     "case": "Fearn v Tate Gallery",
+     "case": "Fearn v Board of Trustees of the Tate Gallery",
      "cite": "[2023] UKSC 4",
      "court": "UKSC",
-     "role": "普通使用与视觉侵扰",
-     "verified": "unverified"
+     "role": "土地权益、实质干扰、普通使用、互惠边界及责任与救济分离",
+     "verified": "primary",
+     "pin": "[9]-[10],[18]-[24],[27]-[38],[47],[54]-[55],[114]-[122],[126]-[132]",
+     "src": "https://caselaw.nationalarchives.gov.uk/uksc/2023/4"
     },
     {
-     "case": "Cambridge Water v Eastern Counties Leather",
-     "cite": "[1994] 2 AC 264",
-     "court": "HL",
-     "role": "可预见性",
-     "verified": "unverified"
+     "case": "Davies v Bridgend County Borough Council",
+     "cite": "[2024] UKSC 15",
+     "court": "UKSC",
+     "role": "损害、因果关系及自然危险的过错要求",
+     "verified": "primary",
+     "pin": "[68]-[71],[76]-[77]",
+     "src": "https://supremecourt.uk/cases/judgments/uksc-2023-0028"
+    },
+    {
+     "case": "Ng Hoi Sze v Yuen Sha Sha and Another",
+     "cite": "[1999] 3 HKLRD 890",
+     "court": "HKCA",
+     "role": "香港土地权益及排他占有门槛",
+     "verified": "primary",
+     "pin": "[14]-[20]",
+     "src": "https://legalref.judiciary.hk/doc/judg/html/vetted/other/en/1999/CACV000094_1999.htm"
+    },
+    {
+     "case": "Century Way Investment Ltd v Willbert Ltd and Another",
+     "cite": "[2019] HKCA 739",
+     "court": "HKCA",
+     "role": "香港舒适便利妨害的情境评估、可预见风险及预防措施",
+     "verified": "primary",
+     "pin": "[4.2]-[4.5],[5.9]-[5.16]",
+     "src": "https://legalref.judiciary.hk/doc/judg/html/vetted/other/en/2017/CACV000239_2017.htm"
+    },
+    {
+     "case": "Leung Tsang Hung and Another v Incorporated Owners of Kwok Wing House",
+     "cite": "(2007) 10 HKCFAR 480; [2007] 4 HKLRD 654",
+     "court": "CFA",
+     "role": "公害案件中确认私人妨害是保护财产权的不同诉因；不作为私人妨害责任要件权威",
+     "verified": "primary",
+     "pin": "[13]",
+     "src": "https://legalref.judiciary.hk/doc/judg/html/vetted/other/en/2007/FACV000004_2007.htm"
+    },
+    {
+     "case": "Network Rail Infrastructure Ltd v Williams and Waistell",
+     "cite": "[2018] EWCA Civ 1514",
+     "court": "EWCA",
+     "role": "英格兰预防性 quia timet 救济及迫近危害门槛",
+     "verified": "primary",
+     "pin": "[70]-[71]",
+     "src": "https://www.judiciary.uk/wp-content/uploads/2018/07/network-rail-v-williams-judgment.pdf"
+    },
+    {
+     "case": "Cheng Lai Yin v Liu Yee Mui",
+     "cite": "[2022] HKCFI 940",
+     "court": "CFI",
+     "role": "香港三类妨害路径、舒适便利标准、归责与救济；属一审且当事人无争议的法律摘要",
+     "verified": "primary",
+     "pin": "[51],[54]",
+     "src": "https://www.hklii.hk/en/cases/hkcfi/2022/940"
     }
    ],
    "stages": [
     {
      "id": "NU-1",
-     "zh": "是否构成不合理干扰",
-     "en": "Unreasonable interference",
-     "test_type": "balancing",
-     "rule": "综合地点性质、干扰程度与持续时间、时间段、原告是否异常敏感、被告是否恶意、社会效用。",
+     "zh": "受保护的土地权益",
+     "en": "Protected land interest",
+     "test_type": "conjunctive",
+     "rule": "原告须具有受法律保护的土地权益；所诉损害须是对该土地权利、用途或便利价值的干扰，而非独立的人身不适。",
      "factors": [
       {
-       "id": "NU-locality",
-       "zh": "地点性质",
-       "en": "Character of the locality",
-       "weight": 0.25,
-       "evidence": "分区用途;周边实际状况",
-       "tier": "heavy",
-       "weight_low": 0.2,
-       "weight_high": 0.3,
-       "weight_source": "doctrinal-tier"
+       "id": "NU-interest",
+       "zh": "原告对受影响土地享有足够的法律权益，通常包括排他占有权",
+       "en": "Claimant has a sufficient legal interest, ordinarily a right to exclusive possession",
+       "evidence": "业权、租约、地役权或其他土地权益文件"
       },
       {
-       "id": "NU-severity",
-       "zh": "干扰的强度",
-       "en": "Severity of the interference",
-       "weight": 0.25,
-       "evidence": "测量数据;证人证言",
-       "tier": "heavy",
-       "weight_low": 0.2,
-       "weight_high": 0.3,
-       "weight_source": "doctrinal-tier"
-      },
-      {
-       "id": "NU-duration",
-       "zh": "持续时间与频率",
-       "en": "Duration and frequency",
-       "weight": 0.165,
-       "evidence": "日志;时间记录",
-       "tier": "substantial",
-       "weight_low": 0.13,
-       "weight_high": 0.2,
-       "weight_source": "doctrinal-tier"
-      },
-      {
-       "id": "NU-timing",
-       "zh": "发生时段",
-       "en": "Time of day",
-       "weight": 0.105,
-       "evidence": "记录",
-       "tier": "moderate",
-       "weight_low": 0.08,
-       "weight_high": 0.13,
-       "weight_source": "doctrinal-tier"
-      },
-      {
-       "id": "NU-malice",
-       "zh": "被告恶意",
-       "en": "Malice on the defendant's part",
-       "weight": 0.165,
-       "evidence": "通讯记录",
-       "note": "恶意在场时可把本属合理的使用变为不合理,故档位高于其表面重要性。",
-       "tier": "substantial",
-       "weight_low": 0.13,
-       "weight_high": 0.2,
-       "weight_source": "doctrinal-tier"
-      },
-      {
-       "id": "NU-utility",
-       "zh": "社会效用",
-       "en": "Social utility of the defendant's activity",
-       "weight": 0.105,
-       "evidence": "用途证据",
-       "tier": "moderate",
-       "weight_low": 0.08,
-       "weight_high": 0.13,
-       "weight_source": "doctrinal-tier"
+       "id": "NU-land-harm",
+       "zh": "干扰针对土地权利、使用、享有或便利价值",
+       "en": "Interference concerns rights in, use, enjoyment or amenity value of land",
+       "evidence": "土地用途及受影响权利证据"
       }
      ],
-     "weight_source": "doctrinal-tier",
-     "counter_factors": [
-      {
-       "id": "NU-sensitivity",
-       "zh": "原告异常敏感",
-       "en": "Abnormal sensitivity of the claimant",
-       "weight": -0.165,
-       "evidence": "用途异常性",
-       "tier": "substantial",
-       "weight_low": -0.2,
-       "weight_high": -0.13,
-       "weight_source": "doctrinal-tier"
-      },
-      {
-       "id": "NU-common-use",
-       "zh": "被告属土地的普通使用",
-       "en": "Ordinary use of land (Fearn)",
-       "weight": -0.25,
-       "evidence": "同区可比用法",
-       "tier": "heavy",
-       "weight_low": -0.3,
-       "weight_high": -0.2,
-       "weight_source": "doctrinal-tier"
-      }
-     ],
-     "weight_note": "档位由判词对相对份量的表述归纳,区间非点估计;经验权重须由判决结果回归得出。",
+     "doctrinal_role": "claim-elements",
+     "jurisdiction_rules": {
+      "EN": "Fearn [9]-[10]：通常须有土地法律权益及排他占有权。",
+      "HK": "Ng Hoi Sze [14]-[20]：采纳土地权益门槛；仅居住或普通许可而无排他占有不足。"
+     },
      "litigation_postures": [
       "spear"
      ],
      "litigation_track": "merits",
      "primary_posture": "spear",
      "court_own_motion": false,
-     "litigation_note": "受干扰的土地权益人以不合理干扰测试请求禁制令或损害赔偿。"
+     "litigation_note": "原告须证明其享有受私人妨害保护的土地权益，并且所诉干扰针对土地利益。"
+    },
+    {
+     "id": "NU-2",
+     "zh": "可诉干扰路径",
+     "en": "Actionable interference route",
+     "test_type": "disjunctive-gateway",
+     "rule": "至少识别一项受承认的路径：侵占、土地物理损害，或对土地舒适便利使用与享有的过度干扰。路径是受保护利益的分类；造成干扰的具体方式并非封闭清单。",
+     "factors": [
+      {
+       "id": "NU-route-encroachment",
+       "zh": "侵占或越界进入土地",
+       "en": "Encroachment onto the land",
+       "evidence": "边界、测量、迁移物或根系证据"
+      },
+      {
+       "id": "NU-route-physical",
+       "zh": "土地发生物理损害或实质性物质损伤",
+       "en": "Physical damage or material injury to the land",
+       "evidence": "检验、照片、工程或估值证据"
+      },
+      {
+       "id": "NU-route-amenity",
+       "zh": "土地的舒适便利使用或享有受到过度干扰",
+       "en": "Undue interference with amenity or enjoyment of land",
+       "evidence": "噪音、气味、烟尘、振动、观察或其他影响证据"
+      }
+     ],
+     "doctrinal_role": "claim-elements",
+     "litigation_postures": [
+      "spear"
+     ],
+     "litigation_track": "merits",
+     "primary_posture": "spear",
+     "court_own_motion": false,
+     "litigation_note": "原告须把所诉损害置于侵占、物理损害或舒适便利干扰的一项受承认路径。"
+    },
+    {
+     "id": "NU-3",
+     "zh": "既有干扰或预防性威胁",
+     "en": "Accrued interference or threatened nuisance",
+     "test_type": "disjunctive-gateway",
+     "rule": "既有请求须证明实际干扰或损害；尚未发生时，只能在适用法容许并达到 quia timet 门槛时请求预防性救济。EN 的通常门槛是有充分证据证明迫近的物理损伤或危害；HK 的预防性私人妨害分支在本版本仍属权威覆盖缺口。",
+     "factors": [
+      {
+       "id": "NU-accrued",
+       "zh": "已经发生实际干扰或可诉损害",
+       "en": "Actual interference or actionable harm has occurred",
+       "evidence": "现场记录、同期投诉、证人证言、检验或损害记录"
+      },
+      {
+       "id": "NU-quia-timet",
+       "zh": "尚未发生，但有充分证据证明迫近且很可能发生的妨害，符合适用法的 quia timet 门槛",
+       "en": "No interference has yet occurred, but evidence establishes an imminent and sufficiently likely nuisance under the applicable quia-timet standard",
+       "evidence": "工程或专家证据、既往事件、明确计划、时间表及发生概率"
+      }
+     ],
+     "doctrinal_role": "claim-elements",
+     "jurisdiction_rules": {
+      "EN": "Network Rail v Williams [70]-[71]：适当案件可给予 quia timet 禁制令或替代赔偿；通常须证明迫近的物理损伤或危害。",
+      "HK": "覆盖缺口：本版本尚无逐段核验的一手香港权威，不能由英格兰规则自动推定。"
+     },
+     "litigation_postures": [
+      "spear",
+      "shield"
+     ],
+     "litigation_track": "merits",
+     "primary_posture": "spear",
+     "court_own_motion": false,
+     "litigation_note": "原告须证明既有实际干扰或损害；请求预防性救济时，须证明适用法所要求的迫近威胁。"
+    },
+    {
+     "id": "NU-4",
+     "zh": "舒适便利路径的法律标准",
+     "en": "Amenity-route legal standard",
+     "test_type": "conjunctive",
+     "rule": "仅在 NU-route-amenity 路径适用。实质程度及普通人客观标准是必要检查；最终标准须按法域分支适用。EN 依 Fearn 的普通用途与互惠标准，拒绝开放式合理性权衡；HK 依 Century Way 评估全部相关情境。地点、强度、持续时间、频率、时段、可预见风险、预防措施、成本、资源及恶意只作为适用法律标准的事实，不换算为数值权重。",
+     "factors": [
+      {
+       "id": "NU-substantial",
+       "zh": "干扰达到真实、实质或重大的最低严重程度",
+       "en": "Interference is real, substantial or material",
+       "evidence": "强度、持续时间、频率、发生时段及客观测量"
+      },
+      {
+       "id": "NU-objective-ordinary-use",
+       "zh": "以普通人标准评估原告土地的普通用途",
+       "en": "Objective interference with ordinary use of the claimant's land",
+       "evidence": "同类土地通常用途及异常敏感性证据"
+      },
+      {
+       "id": "NU-jurisdiction-standard",
+       "zh": "已经适用正确法域的责任标准",
+       "en": "The governing jurisdiction's liability standard has been applied",
+       "evidence": "EN：普通通常用途与互惠；HK：全部相关情境、风险、预防措施、成本与双方资源"
+      }
+     ],
+     "doctrinal_role": "internal-test",
+     "applies_when": {
+      "stage_id": "NU-2",
+      "factor_ids": [
+       "NU-route-amenity"
+      ]
+     },
+     "jurisdiction_rules": {
+      "EN": "Fearn [18]-[24],[27]-[38],[54]-[55]：不是开放式合理性权衡；问是否实质干扰原告土地普通用途，并适用被告普通通常且适当顾及邻地的互惠边界。",
+      "HK": "Century Way [4.2]-[4.5],[5.9]-[5.16]：无绝对标准，评估全部情境，包括可预见风险、可用预防措施、成本及双方资源；该情境评估不是数值评分。"
+     },
+     "litigation_postures": [
+      "spear",
+      "shield"
+     ],
+     "litigation_track": "merits",
+     "primary_posture": null,
+     "court_own_motion": false,
+     "litigation_note": "原告证明舒适便利干扰达到客观实质门槛；被告可援引普通通常且适当顾及邻地的互惠边界。"
+    },
+    {
+     "id": "NU-5",
+     "zh": "归责、损害、因果与可预见性",
+     "en": "Responsibility, damage, causation and foreseeability",
+     "test_type": "conjunctive",
+     "rule": "被告须对活动或状态负责。既有请求须证明可诉损害及因果关系；预防性请求须证明所威胁的妨害与被告应负责的活动或状态相连并达到适用门槛。相关种类的损害须可合理预见。主动制造妨害通常不以疏忽为必要；自然危险、第三人行为或继续妨害可能要求被告知情或应当知情并未采取合理措施。",
+     "factors": [
+      {
+       "id": "NU-responsibility",
+       "zh": "被告制造、授权、采纳、继续或控制导致干扰的活动或状态，并满足适用的过错要求",
+       "en": "Defendant is responsible for the activity or state of affairs under the applicable basis of responsibility",
+       "evidence": "占有控制、授权、通知、知识及应对措施证据"
+      },
+      {
+       "id": "NU-actionable-harm",
+       "zh": "既有请求已证明可诉损害，或预防性请求已证明符合适用法的迫近危害门槛",
+       "en": "Actionable harm is proved for an accrued claim, or the applicable imminent-harm threshold is proved for preventive relief",
+       "evidence": "土地损伤、便利价值、实际使用受损或迫近危害证据"
+      },
+      {
+       "id": "NU-causation",
+       "zh": "被告应负责的行为或状态事实上及法律上造成或威胁造成所诉损害",
+       "en": "Factual and legal causation, including the causal source of any threatened harm",
+       "evidence": "时间线、来源追踪、专家及反事实证据"
+      },
+      {
+       "id": "NU-foreseeability",
+       "zh": "所发生种类的损害属于可合理预见范围",
+       "en": "The relevant type of harm was reasonably foreseeable",
+       "evidence": "被告知识、既往事件、通知及行业资料"
+      }
+     ],
+     "doctrinal_role": "claim-elements",
+     "litigation_postures": [
+      "spear",
+      "shield"
+     ],
+     "litigation_track": "merits",
+     "primary_posture": "spear",
+     "court_own_motion": false,
+     "litigation_note": "原告承担归责、可诉损害或迫近危害、因果与可预见性的证明责任；被告可否认任何必要环节。"
+    },
+    {
+     "id": "NU-6",
+     "zh": "抗辩",
+     "en": "Defences",
+     "test_type": "disjunctive-gateway",
+     "rule": "被告须证明适用法承认的一项抗辩。迁来妨害、一般规划许可及活动具有公共利益本身不是责任抗辩。法定授权、时效取得的权利和同意的具体条件随法域而异。",
+     "factors": [
+      {
+       "id": "NU-defence-statutory",
+       "zh": "法定授权使妨害成为依法授权活动不可避免的后果",
+       "en": "Statutory authority makes the nuisance an inevitable consequence of the authorised activity",
+       "evidence": "授权法例、法定权限及替代施工方式证据"
+      },
+      {
+       "id": "NU-defence-prescription",
+       "zh": "依适用法完成取得继续该干扰的时效权利",
+       "en": "Prescriptive right acquired under the applicable law",
+       "evidence": "干扰成为可诉后的持续期间、公开性及权利行使记录"
+      },
+      {
+       "id": "NU-defence-consent",
+       "zh": "原告以有效同意、授权或契约容许该干扰",
+       "en": "Valid consent, licence or covenant permits the interference",
+       "evidence": "契约、许可、协议范围及有效性"
+      }
+     ],
+     "doctrinal_role": "defence",
+     "litigation_postures": [
+      "shield"
+     ],
+     "litigation_track": "merits",
+     "primary_posture": "shield",
+     "court_own_motion": false,
+     "litigation_note": "被告承担证明法定授权、时效权利、同意或其他适用抗辩的责任。"
+    },
+    {
+     "id": "NU-7",
+     "zh": "救济",
+     "en": "Remedy",
+     "test_type": "threshold-discretion",
+     "rule": "先确定既有责任或预防性救济资格，再分别决定禁制令、损害赔偿或减除妨害费用。公共利益只在该门槛成立后的救济选择中考虑；不能因社会效用而免除既有责任并不给补偿。",
+     "factors": [
+      {
+       "id": "NU-remedy-threshold",
+       "zh": "既有私人妨害责任已经成立，或预防性救济门槛已经满足",
+       "en": "Liability for accrued nuisance is established, or the threshold for preventive relief is satisfied",
+       "evidence": null,
+       "gate": true
+      },
+      {
+       "id": "NU-injunction",
+       "zh": "禁制令的范围与实际可行性",
+       "en": "Scope and practical workability of an injunction",
+       "evidence": "持续或重复风险、可执行条款及替代减损措施",
+       "role": "discretion"
+      },
+      {
+       "id": "NU-damages",
+       "zh": "损害赔偿或合理减除妨害费用是否足以救济",
+       "en": "Adequacy of damages or reasonable abatement costs",
+       "evidence": "修复、减损、租值或价值损失证据",
+       "role": "discretion"
+      },
+      {
+       "id": "NU-public-interest-remedy",
+       "zh": "公共利益对禁制令与赔偿选择的影响",
+       "en": "Public interest as relevant to the choice between injunction and damages",
+       "evidence": "公共影响及维持活动的证据",
+       "role": "discretion"
+      }
+     ],
+     "doctrinal_role": "remedy",
+     "litigation_postures": [
+      "spear",
+      "shield"
+     ],
+     "litigation_track": "merits",
+     "primary_posture": null,
+     "court_own_motion": false,
+     "litigation_note": "既有责任或预防性救济门槛成立后，双方可就禁制令、赔偿、减除费用及公共利益对救济选择的影响陈词。"
     }
    ],
    "logic_types": [
-    "balancing"
+    "conjunctive",
+    "disjunctive-gateway",
+    "threshold-discretion"
    ],
    "source_counts": {
     "hklandlaw": 11
    },
    "litigation_postures": [
-    "spear"
+    "spear",
+    "shield"
    ],
    "litigation_track": "merits",
    "primary_posture": "spear",
    "legal_kind": "cause-of-action",
    "role_confidence": "typical",
+   "litigation_note": "私人妨害由土地权益人作为诉因主动提出；被告可在责任边界及抗辩阶段抵抗请求，法院在责任成立后选择救济。",
    "court_own_motion_summary": {
     "stage_count": 0,
     "stage_ids": []

@@ -105,10 +105,10 @@ curl -X POST https://doctrine-drift-atlas.netlify.app/api/score \
 
 ### MCP
 
-Endpoint `POST /api/mcp`, JSON-RPC 2.0. Thirteen tools:
+Endpoint `POST /api/mcp`, JSON-RPC 2.0. Fourteen tools:
 
 `resolve_jurisdiction` · `pleading_checklist` · `verify_citation` ·
-`list_causes_of_action` · `get_elements` · `get_element_test` · `get_timeline`
+`list_causes_of_action` · `get_doctrine` · `get_elements` · `get_element_test` · `get_timeline`
 · `check_staleness` · `score_factors` · `list_scored_tests` · `search_corpus`
 · `lookup_case` · `propose_amendment`
 

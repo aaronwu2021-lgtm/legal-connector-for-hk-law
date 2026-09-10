@@ -126,6 +126,19 @@ h1.page{font:600 30px/1.15 Spectral,"Songti SC",serif;margin:0 0 6px;text-wrap:b
 .position-overview .axis{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-top:7px}
 .position-overview .axis-label{min-width:86px;font:500 10.5px/1 "IBM Plex Mono",monospace;color:var(--ink2);text-transform:uppercase;letter-spacing:.05em}
 .logic-line{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:4px 0 12px}
+.coverage-panel{margin:8px 0 18px}
+.coverage-panel .coverage-title{font:600 12.5px/1.4 "IBM Plex Sans",sans-serif;margin:0 0 8px}
+.coverage-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:7px}
+.coverage-item{border:1px solid var(--line);border-radius:8px;background:var(--surface2);padding:8px 10px}
+.coverage-item .coverage-layer{display:block;font:500 10px/1.3 "IBM Plex Mono",monospace;color:var(--ink3);margin-bottom:3px}
+.coverage-item strong{font-size:12.5px}
+.coverage-item[data-status="none"] strong{color:var(--warn)}
+.coverage-note{font-size:11.5px;color:var(--ink3);margin:8px 0 0;max-width:82ch}
+.doctrine-section{margin-top:20px}
+.doctrine-section-title{font:600 21px/1.3 Spectral,"Songti SC",serif;margin:0 0 4px;padding-top:14px;border-top:1px solid var(--line)}
+.coverage-gap{border-left:3px solid var(--warn);box-shadow:none}
+.logic-module{border-left:3px solid var(--accent);margin-top:10px}
+.stage-role{margin-left:0}
 .tile.clickable:hover{border-color:var(--accent)}
 .tiles .tile .sub{font-size:11px;color:var(--ink3);margin-top:2px}
 details.au{margin-top:9px}
@@ -344,12 +357,10 @@ async function api(p,options){
 }
 
 const state = { mode:'doctrine', claim:'misrepresentation', q:'', filters:{}, tax:null, elements:null, stats:null };
-let SCFILTER = {posture:null,track:null};
-let SCCHOOSEROPEN = false;
 
 /* ── shell ───────────────────────────────────────────── */
 const MODES = [
-  ['doctrine','要件 Doctrine'], ['scored','判断逻辑 Logic'], ['corpus','语料 Corpus'],
+  ['doctrine','诉因分析 Doctrine · Logic'], ['corpus','语料 Corpus'],
   ['maint','维护 Maintenance'], ['api','API / MCP'],
 ];
 const SUBS = [['corpus','文章'],['cases','判例'],['topics','标签'],['graph','图谱']];
@@ -360,7 +371,6 @@ function renderModes(){
     b.setAttribute('aria-current', String(state.mode===k));
     b.onclick = () => {
       state.mode=k;
-      if(k==='scored') SCFILTER={posture:null,track:null};
       if(state.tax && state.elements && state.stats) route({focusTarget:'heading'}); else init();
     };
     n.appendChild(b);
@@ -416,42 +426,6 @@ function appendLitigationPosition(main,item,tax=state.tax){
   box.appendChild(title);
   box.appendChild(el('div','meta-tags',litigationTags(item)));
   box.appendChild(el('p','position-note',esc(item.litigation_note||item.role_note||tax?.litigation_position_note||'')));
-  main.appendChild(box);
-}
-function appendPositionOverview(main,tax=state.tax){
-  const modules=tax?.legal_test_modules||[];
-  if(!modules.length) return;
-  const box=el('section','position-overview');
-  const title=el('h2','position-overview-title','诉讼位置 Litigation position');
-  title.id='litigation-position-overview-title';
-  box.setAttribute('aria-labelledby',title.id);
-  box.appendChild(title);
-  box.appendChild(el('p','test',esc(tax.litigation_position_note||'')));
-  const addAxis=(label,catalog,field)=>{
-    const row=el('div','axis'); row.appendChild(el('span','axis-label',label));
-    for(const [id,meta] of Object.entries(catalog)){
-      const matching=modules.filter(module=>field==='litigation_postures'
-        ? (module[field]||[]).includes(id) : module[field]===id);
-      if(!matching.length) continue;
-      const button=el('button','chip sm',esc(meta.label)+' · '+matching.length);
-      button.type='button';
-      button.title=meta.description;
-      const filterKind=field==='litigation_postures'?'posture':'track';
-      button.setAttribute('aria-label','按'+label+'筛选判断逻辑：'+meta.label+'，'+matching.length+' 个模块');
-      button.onclick=()=>{
-        SCFILTER={posture:null,track:null,[filterKind]:id};
-        const first=matching.slice().sort((a,b)=>LITIGATION_TRACK_ORDER.indexOf(a.litigation_track)-LITIGATION_TRACK_ORDER.indexOf(b.litigation_track))[0];
-        SCMOD=first.id;
-        state.mode='scored';
-        route({focusTarget:'heading'});
-        window.scrollTo(0,0);
-      };
-      row.appendChild(button);
-    }
-    box.appendChild(row);
-  };
-  addAxis('诉讼姿态',LITIGATION_POSTURES,'litigation_postures');
-  addAxis('事项轨道',LITIGATION_TRACKS,'litigation_track');
   main.appendChild(box);
 }
 function renderContext(){
@@ -614,163 +588,191 @@ async function renderTimeline(container, id){
 }
 
 /* ── views ───────────────────────────────────────────── */
-async function viewDoctrine(main){
-  const claim = state.tax.areas.flatMap(a=>a.claims).find(c=>c.id===state.claim);
-  const area = state.tax.areas.find(a=>a.claims.some(c=>c.id===state.claim));
-  main.innerHTML='';
-  main.appendChild(el('p','crumb', esc(area.zh)+' '+esc(area.en)+' / '+esc(claim.en)));
-  main.appendChild(el('h1','page', esc(claim.zh)+' <span style="color:var(--ink3);font-size:.6em;font-weight:500">'+esc(claim.en)+'</span>'));
-  appendLitigationPosition(main,claim);
-
-  if(claim.status!=='full'){
-    const c = el('div','card');
-    const logicStatus=claimLogicStatus(claim);
-    const b = logicStatus==='full' ? '<span class="badge v">法律测试已建成</span>'
-            : logicStatus==='partial' ? '<span class="badge j">已有部分测试</span>'
-            : claim.status==='planned' ? '<span class="badge n">规划中</span>'
-            : claim.status==='xref' ? '<span class="badge j">交叉引用</span>'
-            : '<span class="badge j">语料已覆盖</span>';
-    c.innerHTML = b + '<p class="test" style="margin-top:9px">'+esc(claim.note||'')+'</p>'
-      + (claim.lab?'<p class="mono" style="font-size:11.5px;color:var(--ink3);margin:0">'+esc(claim.lab)+'</p>':'');
-    main.appendChild(c);
-    if(claim.corpusTopics){
-      const box = el('div','card');
-      box.innerHTML = '<h4>语料切片</h4><p class="test">语料中的相关材料可与当前法律测试交叉核对。</p>';
-      const row = el('div','chips');
-      for(const t of claim.corpusTopics){
-        const b2 = el('button','chip sm', esc(t));
-        b2.onclick = () => { state.mode='corpus'; state.filters={topic:t}; route({focusTarget:'heading'}); };
-        row.appendChild(b2);
-      }
-      box.appendChild(row); main.appendChild(box);
-    }
-    if(claim.xref){
-      const go = el('button','chip','→ 打开 '+claim.xref.split('#')[0]);
-      go.onclick = () => { state.claim = claim.xref.split('#')[0]; route({focusTarget:'heading'}); };
-      main.appendChild(go);
-    }
-    if(claim.model_ref){
-      const go = el('button','chip','→ 打开法律测试 '+claim.model_ref.module_id);
-      go.onclick = () => {
-        SCFILTER={posture:null,track:null};
-        SCMOD=claim.model_ref.module_id;
-        state.mode='scored';
-        route({focusTarget:'heading'});
-        window.scrollTo(0,0);
-      };
-      main.appendChild(go);
-    }
-    return;
+const COVERAGE_LABELS = {
+  elements:{full:'完整要件数据',partial:'部分要件数据',xref:'交叉引用',none:'尚未建立'},
+  logic:{full:'已建引用范围',partial:'部分阶段',conjunctive:'合取要件结构',none:'尚未建立'},
+  corpus:{indexed:'已有索引',partial:'部分覆盖',full:'完整覆盖',none:'没有索引'},
+  jurisdiction_overlays:{full:'四法域 overlay',partial:'部分法域资料',none:'尚未建立'},
+};
+const COVERAGE_LAYERS = [
+  ['elements','构成要件 Elements'],['logic','判断逻辑 Logic'],
+  ['corpus','语料 Corpus'],['jurisdiction_overlays','法域资料 Jurisdictions'],
+];
+function coverageLabel(layer,status){
+  return COVERAGE_LABELS[layer]?.[status] || status || '状态未知';
+}
+function appendCoveragePanel(main,doctrine){
+  const box=el('section','card coverage-panel');
+  box.setAttribute('aria-label','当前诉因资料覆盖');
+  box.appendChild(el('h2','coverage-title','当前诉因的资料覆盖'));
+  const grid=el('div','coverage-grid');
+  for(const [layer,label] of COVERAGE_LAYERS){
+    const status=doctrine.coverage?.[layer]||'none';
+    const composedFromLogic=layer==='elements'&&status==='none'&&doctrine.composition?.elements_source==='logic-stages';
+    const statusLabel=composedFromLogic
+      ? '独立数据未建；由阶段表达' : coverageLabel(layer,status);
+    const item=el('div','coverage-item'); item.dataset.status=status;
+    item.innerHTML='<span class="coverage-layer">'+esc(label)+'</span><strong>'+esc(statusLabel)+'</strong> <span class="cnt">'+esc(composedFromLogic?'logic-stages':status)+'</span>';
+    grid.appendChild(item);
   }
-
-  const E = state.elements;
-  const [ST, REG] = await Promise.all([api('/stats'), api('/registry')]);
-  const MODTL = REG.modules.reduce((n,m)=>n+Object.keys(m.timelines||{}).length,0);
-  main.appendChild(el('p','lede','英式普通法家族模型:共享英国骨架 + 四个法域 overlay。变体 '+E.variants.join(' / ')+'。每条判例带核验级别;drift 标记的子测试挂着可 as-of 查询的时间线。'));
-  const tiles = el('div','tiles');
-  const tile = (n,l,sub,go)=>{ const d = el('button','tile clickable'); d.type='button';
-    d.innerHTML = '<div class="n">'+n+'</div><div class="l">'+l+'</div><div class="sub">'+sub+'</div>';
-    d.onclick = go; tiles.appendChild(d); };
-  tile(REG.total_modules,'法律测试模块','矛／盾姿态 · 实体／程序／管辖轨道',()=>{
-    SCFILTER={posture:null,track:null};state.mode='scored';route({focusTarget:'heading'});window.scrollTo(0,0);
-  });
-  tile(ST.timelines+MODTL,'漂移时间线','as-of 查询',()=>{ const f = main.querySelector('figure.tl'); if(f) f.scrollIntoView({behavior:'smooth',block:'start'}); });
-  tile(ST.posts,'语料文章','hklandlaw 索引',()=>{ state.mode='corpus'; state.sub='corpus'; route({focusTarget:'heading'}); window.scrollTo(0,0); });
-  tile(ST.uniqueCases,'判例','语料被讨论次序',()=>{ state.mode='corpus'; state.sub='cases'; route({focusTarget:'heading'}); window.scrollTo(0,0); });
-  main.appendChild(tiles);
-  appendPositionOverview(main);
-
-  const chips = el('div','chips');
+  box.appendChild(grid);
+  box.appendChild(el('p','coverage-note','各层分别报告。“判断逻辑已建”只说明列出的判断阶段已有模型，不表示该诉因的完整构成要件、法域权威或语料已经齐全。'));
+  main.appendChild(box);
+}
+function elementDataset(doctrine){
+  const directElements=Array.isArray(doctrine.elements)?doctrine.elements:[];
+  const directDefences=Array.isArray(doctrine.defences)?doctrine.defences:[];
+  const hasFullTests=directElements.some(e=>(e.sub_tests||[]).some(st=>st.test));
+  if(hasFullTests || doctrine.composition?.elements_source!=='elements-dataset'){
+    return {elements:directElements,defences:directDefences};
+  }
+  if(state.elements?.claim===doctrine.claim.id){
+    return {elements:state.elements.elements||directElements,defences:state.elements.defences||directDefences};
+  }
+  return {elements:directElements,defences:directDefences};
+}
+function appendCorpusLinks(main,claim){
+  if(!claim.corpusTopics?.length) return;
+  const box=el('div','card');
+  box.innerHTML='<h4>相关语料切片</h4><p class="test">这些文章是检索入口；语料命中数不证明诉因要件或法律命题。</p>';
+  const row=el('div','chips');
+  for(const topic of claim.corpusTopics){
+    const button=el('button','chip sm',esc(topic));
+    button.onclick=()=>{state.mode='corpus';state.filters={topic};route({focusTarget:'heading'});};
+    row.appendChild(button);
+  }
+  box.appendChild(row);main.appendChild(box);
+}
+function appendJurisdictionOverview(main,doctrine){
+  const E=state.elements;
+  if(doctrine.composition?.elements_source!=='elements-dataset' || E?.claim!==doctrine.claim.id || !E.jurisdictions) return;
+  const chips=el('div','chips');
   for(const j of JUR){
-    const b = el('button','chip');
-    b.setAttribute('aria-pressed', String(jActive[j]));
-    b.innerHTML = '<span class="dot" style="background:'+jColor(j)+'"></span>'+j+' '+JZH[j];
-    b.onclick = () => { jActive[j]=!jActive[j]; route(); };
-    chips.appendChild(b);
+    const button=el('button','chip');
+    button.setAttribute('aria-pressed',String(jActive[j]));
+    button.innerHTML='<span class="dot" style="background:'+jColor(j)+'"></span>'+j+' '+JZH[j];
+    button.onclick=()=>{jActive[j]=!jActive[j];route();};
+    chips.appendChild(button);
   }
   main.appendChild(chips);
   main.appendChild(el('p','tiny','选择参与比较的法域，展开卡片查看条文、判例与来源。核验标签沿用库中记录；法律命题仍需核对原文。'));
-
-  const jg = el('div','jgrid');
+  const grid=el('div','jgrid');
   for(const j of JUR){
     if(!jActive[j]) continue;
-    const J = E.jurisdictions[j];
-    const d = el('details','jcard'); d.style.borderLeftColor = jColor(j);
-    let h = '<summary>'+j+' '+esc(J.name)+' · '+((J.cases||[]).length?(J.cases.length+' 条补充判例'):'骨架来源见要件')+' · '+(J.statutes||[]).length+' 项条文</summary>';
-    h += '<p>'+esc(J.regime)+'</p>';
-    for(const st of J.statutes||[]){
-      h += '<div class="kv jurisdiction-statute"><b>'+esc(st.ref)+'</b> <span class="badge v">'+esc(st.verified||'unverified')+'</span></div>';
-      for(const [k,v] of Object.entries(st.sections||{})) h += '<div class="kv" style="padding-left:8px">'+esc(k)+' — '+esc(v)+'</div>';
+    const J=E.jurisdictions[j]; if(!J) continue;
+    const card=el('details','jcard'); card.style.borderLeftColor=jColor(j);
+    let html='<summary>'+j+' '+esc(J.name)+' · '+((J.cases||[]).length?(J.cases.length+' 条补充判例'):'骨架来源见要件')+' · '+(J.statutes||[]).length+' 项条文</summary>';
+    html+='<p>'+esc(J.regime)+'</p>';
+    for(const statute of J.statutes||[]){
+      html+='<div class="kv jurisdiction-statute"><b>'+esc(statute.ref)+'</b> <span class="badge v">'+esc(statute.verified||'unverified')+'</span></div>';
+      for(const [key,value] of Object.entries(statute.sections||{})) html+='<div class="kv" style="padding-left:8px">'+esc(key)+' — '+esc(value)+'</div>';
     }
-    h += '<p class="rule" style="margin-top:6px">'+esc(J.authority_rule)+'</p>';
-    if(J.structural_outlier) h += '<span class="badge n">REPLACES — 结构性异类</span>';
-    if((J.cases||[]).length) h += '<div class="kv" style="margin-top:7px"><b>本法域判例 '+J.cases.length+'</b></div>';
-    for(const c of J.cases||[]) h += '<div class="kv jurisdiction-authority" style="padding-left:8px">'+esc(c.name||c.case)+' <span class="mono" style="color:var(--ink3)">'+esc(c.cite)+'</span> <span class="badge v">'+esc(c.verified||'unverified')+'</span></div>';
-    if(J.gaps) for(const g of J.gaps) h += '<div class="kv" style="color:var(--note)">⚠ '+esc(g)+'</div>';
-    if(J.divergences) for(const g of J.divergences) h += '<div class="kv" style="color:var(--ink3)">↯ '+esc(g)+'</div>';
-    d.innerHTML = h;
-    d.querySelectorAll('.jurisdiction-statute').forEach((row,i)=>appendEvidence(row,J.statutes[i]));
-    d.querySelectorAll('.jurisdiction-authority').forEach((row,i)=>appendEvidence(row,J.cases[i]));
-    jg.appendChild(d);
+    html+='<p class="rule" style="margin-top:6px">'+esc(J.authority_rule)+'</p>';
+    if(J.structural_outlier) html+='<span class="badge n">REPLACES — 结构性异类</span>';
+    if((J.cases||[]).length) html+='<div class="kv" style="margin-top:7px"><b>本法域判例 '+J.cases.length+'</b></div>';
+    for(const authority of J.cases||[]) html+='<div class="kv jurisdiction-authority" style="padding-left:8px">'+esc(authority.name||authority.case)+' <span class="mono" style="color:var(--ink3)">'+esc(authority.cite)+'</span> <span class="badge v">'+esc(authority.verified||'unverified')+'</span></div>';
+    for(const gap of J.gaps||[]) html+='<div class="kv" style="color:var(--note)">⚠ '+esc(gap)+'</div>';
+    for(const divergence of J.divergences||[]) html+='<div class="kv" style="color:var(--ink3)">↯ '+esc(divergence)+'</div>';
+    card.innerHTML=html;
+    card.querySelectorAll('.jurisdiction-statute').forEach((row,i)=>appendEvidence(row,J.statutes[i]));
+    card.querySelectorAll('.jurisdiction-authority').forEach((row,i)=>appendEvidence(row,J.cases[i]));
+    grid.appendChild(card);
   }
-  main.appendChild(jg);
-
-  const groups = [...E.elements.map(e=>({...e,kind:'element'})), {id:'D',zh:'抗辩',en:'Defences',kind:'def',
-    litigation_postures:['shield'],litigation_track:'merits',sub_tests:E.defences}];
-  for(const g of groups){
-    const sec = el('section');
-    const groupLabel=g.kind==='def'?'抗辩':'主张要件';
-    const h3 = el('h3',null, esc(g.id)+' · '+esc(g.en)+' <span class="tag '+(g.kind==='def'?'posture-shield':'posture-spear')+'">'+groupLabel+' · '+(g.kind==='def'?'盾 Shield':'矛 Spear')+'</span>');
-    h3.style.cssText='font:600 18px/1.3 Spectral,serif;margin:16px 0 2px;padding-top:12px;border-top:1px solid var(--line)';
-    sec.appendChild(h3);
-    const zh = el('p',null,esc(g.zh)); zh.style.cssText='color:var(--ink3);font-size:12.5px;margin:0 0 10px';
-    sec.appendChild(zh);
-    for(const st of g.sub_tests){
-      const card = el('div','card');
-      let head = '<div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap">'
-        + '<span class="sid">'+esc(st.id)+'</span><b style="font-size:14.5px">'+esc(st.en)+'</b>'
-        + '<span style="color:var(--ink3);font-size:12px">'+esc(st.zh)+'</span>';
-      if(st.variant) head += '<span class="cnt">'+esc(st.variant)+'</span>';
-      if(st.drift) head += '<span class="badge drift">⇅ drift · '+esc(st.drift)+'</span>';
-      const subPosition=litigationTags(st);
-      if(subPosition) head += '<span class="meta-tags">'+subPosition+'</span>';
-      head += '</div>';
-      card.innerHTML = head + '<p class="test">'+esc(st.test)+'</p>';
-      const au = el('details','au');
-      const lv = {primary:0, quoted:0, web:0, unverified:0};
-      for(const a of st.auth||[]){
-        const v = String(a.verified||'unverified');
-        const k = v.includes('primary')?'primary':v.includes('quoted')?'quoted':v.includes('web')?'web':'unverified';
-        lv[k]++;
-        const r = el('div','auth');
-        r.innerHTML = '<span style="font-weight:500">'+esc(a.case)+'</span><span class="cite">'+esc(a.cite)+'</span>'
-          + (a.court?'<span class="cite">'+esc(a.court)+'</span>':'')
-          + '<span class="badge v">'+esc(a.verified)+'</span>'
-          + (a.note?'<span style="color:var(--ink3);font-size:11.5px">'+esc(a.note)+'</span>':'');
-        appendEvidence(r,a);
-        au.appendChild(r);
+  main.appendChild(grid);
+}
+function appendElementGroups(main,doctrine){
+  const data=elementDataset(doctrine);
+  const elementStageIds=doctrine.logic?.element_stage_ids||[];
+  const composedFromLogic=!data.elements.length&&elementStageIds.length>0&&doctrine.composition?.elements_source==='logic-stages';
+  if(!composedFromLogic){
+    const heading=el('h2','doctrine-section-title','构成要件 <span style="color:var(--ink3);font-size:.62em;font-weight:500">Elements</span>');
+    main.appendChild(heading);
+  }
+  if(composedFromLogic){
+    main.appendChild(el('p','test','下方统一诉因结构直接表达本诉因的构成要件、内部标准、抗辩与救济，不另建一份重复要件表。'));
+    appendJurisdictionOverview(main,doctrine);
+  }else if(!data.elements.length){
+    const message=elementStageIds.length
+      ? '尚无独立要件数据集。下方判断逻辑中标为“构成要件组”的阶段，是目前对本诉因要件的结构化表达。'
+      : '尚未建立本诉因的独立要件数据。这个缺口不表示该诉因没有法律要件。';
+    main.appendChild(el('div','card coverage-gap','<h4>要件覆盖缺口</h4><p class="test">'+esc(message)+'</p>'));
+  }else{
+    main.appendChild(el('p','test','以下要件与抗辩属于当前诉因；每项的判断方法、权威和法域差异在同一页面继续展开。'));
+    appendJurisdictionOverview(main,doctrine);
+  }
+  const groups=[...data.elements.map(item=>({...item,kind:'element'}))];
+  if(data.defences.length) groups.push({id:'D',zh:'抗辩',en:'Defences',kind:'def',litigation_postures:['shield'],litigation_track:'merits',sub_tests:data.defences});
+  for(const group of groups){
+    const section=el('section');
+    const groupLabel=group.kind==='def'?'抗辩':'主张要件';
+    const title=el('h3',null,esc(group.id)+' · '+esc(group.en)+' <span class="tag '+(group.kind==='def'?'posture-shield':'posture-spear')+'">'+groupLabel+' · '+(group.kind==='def'?'盾 Shield':'矛 Spear')+'</span>');
+    title.style.cssText='font:600 18px/1.3 Spectral,serif;margin:16px 0 2px;padding-top:12px;border-top:1px solid var(--line)';
+    section.appendChild(title);
+    const zh=el('p',null,esc(group.zh)); zh.style.cssText='color:var(--ink3);font-size:12.5px;margin:0 0 10px';section.appendChild(zh);
+    for(const test of group.sub_tests||[]){
+      const card=el('div','card');
+      let head='<div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap"><span class="sid">'+esc(test.id)+'</span><b style="font-size:14.5px">'+esc(test.en)+'</b><span style="color:var(--ink3);font-size:12px">'+esc(test.zh)+'</span>';
+      if(test.variant) head+='<span class="cnt">'+esc(test.variant)+'</span>';
+      if(test.drift) head+='<span class="badge drift">⇅ drift · '+esc(test.drift)+'</span>';
+      const position=litigationTags(test); if(position) head+='<span class="meta-tags">'+position+'</span>';
+      card.innerHTML=head+'</div><p class="test">'+esc(test.test||'判断规则尚未录入。')+'</p>';
+      const authorities=el('details','au');
+      const levels={primary:0,quoted:0,web:0,unverified:0};
+      for(const authority of test.auth||[]){
+        const verified=String(authority.verified||'unverified');
+        const level=verified.includes('primary')?'primary':verified.includes('quoted')?'quoted':verified.includes('web')?'web':'unverified';levels[level]++;
+        const row=el('div','auth');
+        row.innerHTML='<span style="font-weight:500">'+esc(authority.case)+'</span><span class="cite">'+esc(authority.cite)+'</span>'+(authority.court?'<span class="cite">'+esc(authority.court)+'</span>':'')+'<span class="badge v">'+esc(authority.verified)+'</span>'+(authority.note?'<span style="color:var(--ink3);font-size:11.5px">'+esc(authority.note)+'</span>':'');
+        appendEvidence(row,authority);authorities.appendChild(row);
       }
-      const sum = el('summary');
-      sum.innerHTML = '<b>\u6743\u5a01 '+(st.auth||[]).length+'</b> \u00b7 primary '+lv.primary+' \u00b7 quoted '+lv.quoted+' \u00b7 web '+lv.web;
-      au.prepend(sum); card.appendChild(au);
-      if(st.statute_by_jurisdiction){
-        const sj = el('div','kv'); sj.style.marginTop='7px';
-        sj.innerHTML = '<b>条文对应</b> ' + Object.entries(st.statute_by_jurisdiction).map(([k,v])=>k+': '+esc(v)).join(' · ');
-        card.appendChild(sj);
+      const summary=el('summary');summary.innerHTML='<b>权威 '+(test.auth||[]).length+'</b> · primary '+levels.primary+' · quoted '+levels.quoted+' · web '+levels.web;
+      authorities.prepend(summary);card.appendChild(authorities);
+      if(test.statute_by_jurisdiction){
+        const statutes=el('div','kv');statutes.style.marginTop='7px';
+        statutes.innerHTML='<b>条文对应</b> '+Object.entries(test.statute_by_jurisdiction).map(([key,value])=>key+': '+esc(value)).join(' · ');card.appendChild(statutes);
       }
-      sec.appendChild(card);
-      if(st.drift) renderTimeline(card, st.drift);
+      section.appendChild(card);if(test.drift) renderTimeline(card,test.drift);
     }
-    main.appendChild(sec);
+    main.appendChild(section);
   }
+}
 
-  const flags = el('details','card');
-  flags.innerHTML = '<summary class="stt">\u6838\u9a8c\u72b6\u6001\u4e0e\u5f85\u529e</summary><p class="test">下列细节 agent 明确标注为未能核实,进论文前需对原文:</p>'
-    + '<ul style="margin:0;padding-left:18px;color:var(--ink2);font-size:12.5px">'
-    + E.flagged_unverified.map(x=>'<li>'+esc(x)+'</li>').join('') + '</ul>'
-    + '<p class="test" style="margin-top:10px"><b>下一批模块</b></p><ul style="margin:0;padding-left:18px;color:var(--ink2);font-size:12.5px">'
-    + E.todo.map(x=>'<li>'+esc(x)+'</li>').join('') + '</ul>';
-  main.appendChild(flags);
+let DOCTRINE_VIEW=0;
+async function viewDoctrine(main){
+  const view=++DOCTRINE_VIEW,claimId=state.claim;
+  let doctrine;
+  try{doctrine=await api('/doctrine/'+encodeURIComponent(claimId));}
+  catch(error){if(view!==DOCTRINE_VIEW||state.mode!=='doctrine'||state.claim!==claimId)return;throw error;}
+  if(view!==DOCTRINE_VIEW||state.mode!=='doctrine'||state.claim!==claimId)return;
+  const claim=doctrine.claim,area=doctrine.area;
+  main.innerHTML='';
+  main.appendChild(el('p','crumb',esc(area.zh)+' '+esc(area.en)+' / '+esc(claim.en)));
+  main.appendChild(el('h1','page',esc(claim.zh)+' <span style="color:var(--ink3);font-size:.6em;font-weight:500">'+esc(claim.en)+'</span>'));
+  main.appendChild(el('p','lede','本页以诉因为单位：构成要件、要件内标准、抗辩、救济和适用逻辑按同一分析链展示。'));
+  appendCoveragePanel(main,doctrine);
+  appendLitigationPosition(main,claim);
+  if(claim.note||claim.lab){
+    const note=el('div','card');
+    note.innerHTML='<span class="badge '+(claim.coverage?.elements==='full'?'v':'j')+'">'+esc(claimStatusLabel(claim))+'</span>'
+      +(claim.note?'<p class="test" style="margin-top:9px">'+esc(claim.note)+'</p>':'')
+      +(claim.lab?'<p class="mono" style="font-size:11.5px;color:var(--ink3);margin:0">'+esc(claim.lab)+'</p>':'');
+    main.appendChild(note);
+  }
+  if(claim.xref){
+    const target=claim.xref.split('#')[0],button=el('button','chip','→ 打开所引用诉因 '+target);
+    button.onclick=()=>{state.claim=target;route({focusTarget:'heading'});window.scrollTo(0,0);};main.appendChild(button);
+  }
+  appendCorpusLinks(main,claim);
+  appendElementGroups(main,doctrine);
+  appendDoctrineLogic(main,doctrine,{view,claimId});
+  const E=state.elements;
+  if(doctrine.composition?.elements_source==='elements-dataset'&&E?.claim===claim.id&&(E.flagged_unverified||E.todo)){
+    const flags=el('details','card');
+    flags.innerHTML='<summary class="stt">核验状态与待办</summary><p class="test">下列细节明确标注为尚未核实，引用前需核对原文：</p><ul style="margin:0;padding-left:18px;color:var(--ink2);font-size:12.5px">'
+      +(E.flagged_unverified||[]).map(item=>'<li>'+esc(item)+'</li>').join('')+'</ul><p class="test" style="margin-top:10px"><b>下一批模块</b></p><ul style="margin:0;padding-left:18px;color:var(--ink2);font-size:12.5px">'
+      +(E.todo||[]).map(item=>'<li>'+esc(item)+'</li>').join('')+'</ul>';
+    main.appendChild(flags);
+  }
 }
 
 async function viewCorpus(main){
@@ -1244,162 +1246,102 @@ async function viewMaint(main){
 
 
 /* ── typed legal-test logic ──────────────────────────── */
-const SF = {};   // factor id -> true | false | undefined
-let SCMOD = 'HKJUR';
-let SCVIEW = 0;
 const LOGIC_FALLBACK = {
-  'conjunctive':{zh:'合取要件'},
-  'disjunctive-gateway':{zh:'择一门槛'},
-  'balancing':{zh:'多因素权衡'},
-  'threshold-discretion':{zh:'门槛后裁量'},
-  'presumption-rebuttal':{zh:'推定与反驳'},
+  'conjunctive':{zh:'合取要件',note:'列明必须共同成立的事项。'},
+  'disjunctive-gateway':{zh:'择一门槛',note:'封闭选项中至少一项成立。'},
+  'balancing':{zh:'多因素权衡',note:'综合多个正反因素；数值份量只是编者模型。'},
+  'threshold-discretion':{zh:'门槛后裁量',note:'先判断法律门槛，再独立处理裁量。'},
+  'presumption-rebuttal':{zh:'推定与反驳',note:'触发推定后，转入反驳事项。'},
+};
+const DOCTRINAL_ROLE_LABELS={
+  'claim-elements':'构成要件组 · Elements',
+  'internal-test':'要件内判断 · Internal test',
+  defence:'抗辩 · Defence',
+  remedy:'救济 · Remedy',
 };
 const logicMeta = (index,type) => index?.test_types?.[type] || LOGIC_FALLBACK[type] || {zh:type};
-const moduleLogicTypes = module => {
-  const types = Array.isArray(module.logic_types) ? module.logic_types : (module.stages||[]).map(stage=>stage.test_type);
-  return [...new Set(types.filter(type=>LOGIC_FALLBACK[type]))];
-};
-const moduleMatchesFilter = (module,filter=SCFILTER) => (!filter.posture || (module.litigation_postures||[]).includes(filter.posture))
-  && (!filter.track || module.litigation_track===filter.track);
 const stageRole = (stage,factor) => {
   if(stage.test_type==='conjunctive') return '合取项';
   if(stage.test_type==='disjunctive-gateway') return factor.dispositive ? '独立门槛' : '择一候选';
-  if(stage.test_type==='threshold-discretion') return factor.gate ? '门槛' : factor.override ? '裁量／覆盖' : '待标注角色';
+  if(stage.test_type==='threshold-discretion') return factor.gate ? '责任门槛' : factor.role==='discretion' ? '救济裁量事项' : factor.override ? '裁量／覆盖' : '待标注角色';
   if(stage.test_type==='presumption-rebuttal') return factor.role==='trigger' ? '推定触发' : factor.role==='rebuttal' ? '反驳事项' : '待标注角色';
   return '逻辑项';
 };
-async function viewScored(main){
-  const view = ++SCVIEW, moduleId = SCMOD;
-  let idx,reg,cq,mod;
-  try {
-    idx = await api('/scored');
-    reg = await api('/registry');
-    cq = await api('/calibration-queue');
-    mod = await api('/scored/'+moduleId);
-  } catch(error) {
-    if(view!==SCVIEW || state.mode!=='scored' || SCMOD!==moduleId) return;
-    throw error;
+function scopeScoreToStages(data,stages){
+  if(!data||!Array.isArray(data.stages)) return data;
+  const allowed=new Set((stages||[]).map(stage=>stage.id));
+  const selected=data.stages.filter(stage=>allowed.has(stage.stage));
+  const factorIds=new Set((stages||[]).flatMap(stage=>(stage.factors||[]).concat(stage.counter_factors||[])).map(factor=>factor.id));
+  const scoped={...data,stages:selected};
+  if(Array.isArray(data.priority_evidence)) scoped.priority_evidence=data.priority_evidence.filter(item=>factorIds.has(item.id));
+  if(selected.length!==data.stages.length){
+    scoped.overall_reason='结果已按当前诉因引用的判断阶段过滤；同一模块的其他阶段未显示。';
+    delete scoped.reason;
   }
-  if(view!==SCVIEW || state.mode!=='scored' || SCMOD!==moduleId) return;
-  for(const k of Object.keys(SF)) delete SF[k];
-  main.innerHTML='';
-  main.appendChild(el('p','crumb','判断逻辑登记表 Registry v'+esc(reg.version)+' · '+reg.total_modules+' 个模块 · '+Object.keys(idx.test_types||{}).length+' 类判断逻辑'));
-  // Module picker: matter track is the grouping axis; spear/shield are
-  // non-exclusive posture tags on each module.
-  const pick = el('div');
-  pick.setAttribute('role','radiogroup');
-  pick.setAttribute('aria-label','选择法律测试模块');
-  let visibleModules=reg.modules.filter(module=>moduleMatchesFilter(module));
-  if(!visibleModules.length){ SCFILTER={posture:null,track:null}; visibleModules=reg.modules; }
-  for(const g of LITIGATION_TRACK_ORDER){
-    const ms = visibleModules.filter(m=>m.litigation_track===g);
-    if(!ms.length) continue;
-    const sec = el('div','rgroup');
-    const track=LITIGATION_TRACKS[g];
-    sec.innerHTML = '<span class="rlab">'+esc(track?.label||g)+'</span><span class="cnt">事项轨道 · '+esc(g)+'</span> <span class="tiny">'+esc(track?.description||'')+'</span>';
-    const row = el('div','jbar');
-    for(const m of ms){
-      const b = el('button','jchip'+(m.id===SCMOD?' on':''));
-      b.type='button';
-      b.setAttribute('role','radio');
-      b.setAttribute('aria-checked', String(m.id===SCMOD));
-      b.tabIndex=m.id===SCMOD?0:-1;
-      const types = moduleLogicTypes(m);
-      const logicTags = types.map(type=>'<span class="tag logic">'+esc(logicMeta(idx,type).zh)+'</span>').join('');
-      const sourceCounts = m.source_counts || (m.corpus_hits==null ? {} : {hklandlaw:m.corpus_hits});
-      const sourceTag = sourceCounts.hklandlaw==null ? ''
-        : '<span class="tag source">hklandlaw · '+esc(sourceCounts.hklandlaw)+'篇</span>';
-      const balancing = (m.stages||[]).filter(stage=>stage.test_type==='balancing');
-      const incomplete = balancing.some(stage=>['unassigned','partial'].includes(stage.weight_status));
-      const modelTag = balancing.length ? '<span class="tag model">模型 · '+(incomplete?'份量待补':'份量区间')+'</span>' : '';
-      const postureTags=(m.litigation_postures||[]).map(posture=>'<span class="tag posture-'+esc(posture)+'">'+esc(LITIGATION_POSTURES[posture]?.label||posture)+'</span>').join('');
-      const ownMotionIds=m.court_own_motion_summary?.stage_ids||[];
-      const ownMotionTag=ownMotionIds.length?'<span class="tag track">含依职权阶段 · '+esc(ownMotionIds.join(' / '))+'</span>':'';
-      b.innerHTML = '<span class="module-name">'+esc(m.zh)+'</span><span class="meta-tags">'+postureTags+ownMotionTag+logicTags+sourceTag+modelTag+'</span>';
-      b.setAttribute('aria-label',m.zh+'；诉讼姿态 '+(m.litigation_postures||[]).map(posture=>LITIGATION_POSTURES[posture]?.label||posture).join('、')+'；判断逻辑 '+types.map(type=>logicMeta(idx,type).zh).join('、')
-        +(ownMotionIds.length?'；含依职权阶段 '+ownMotionIds.join('、'):'')
-        +(sourceCounts.hklandlaw==null?'':'；hklandlaw '+sourceCounts.hklandlaw+'篇'));
-      b.onclick = () => {
-        SCCHOOSEROPEN=true;
-        SCMOD=m.id;
-        route({focusTarget:'module-radio'});
-        window.scrollTo(0,0);
-      };
-      b.onkeydown = event => {
-        if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Home','End'].includes(event.key)) return;
-        const radios=[...pick.querySelectorAll('[role="radio"]')];
-        const current=radios.indexOf(b);
-        const next=event.key==='Home'?0:event.key==='End'?radios.length-1
-          :(current+(['ArrowRight','ArrowDown'].includes(event.key)?1:-1)+radios.length)%radios.length;
-        event.preventDefault();
-        radios[next].click();
-      };
-      row.appendChild(b);
-    }
-    sec.appendChild(row); pick.appendChild(sec);
+  return scoped;
+}
+function appendDoctrineLogic(main,doctrine,{view,claimId}){
+  const unifiedStructure=doctrine.composition?.elements_source==='logic-stages';
+  main.appendChild(el('h2','doctrine-section-title',unifiedStructure
+    ? '诉因结构 <span style="color:var(--ink3);font-size:.62em;font-weight:500">Doctrine · Logic</span>'
+    : '判断逻辑 <span style="color:var(--ink3);font-size:.62em;font-weight:500">Logic</span>'));
+  if(!doctrine.logic){
+    const status=doctrine.coverage?.logic||'none';
+    const text=status==='conjunctive'
+      ? '本诉因的完整要件数据按合取结构组织：必须分别判断上方各项。当前没有另设因素评分模块。'
+      : '尚未建立本诉因的结构化判断阶段。这个缺口不改变上方交叉引用或语料的范围。';
+    main.appendChild(el('div','card '+(status==='none'?'coverage-gap':''),'<h4>'+esc(coverageLabel('logic',status))+'</h4><p class="test">'+esc(text)+'</p>'));
+    return;
   }
-  const moduleStageCount=(mod.stages||[]).length;
-  main.appendChild(el('p','crumb','法律测试模块 · '+esc(mod.id)+' · '+moduleStageCount+' 个判断阶段'));
-  main.appendChild(el('h2','claim',esc(mod.zh)+' <span style="color:var(--ink3);font-size:.6em;font-weight:500">'+esc(mod.en)+'</span>'));
-  main.appendChild(el('p','claimdesc','<strong>模块说明</strong> · '+esc(mod.note)));
-  const selectedSummary = reg.modules.find(module=>module.id===moduleId) || mod;
-  appendLitigationPosition(main,selectedSummary,reg);
-  const selectedTypes = moduleLogicTypes(selectedSummary);
-  const selectedSources = selectedSummary.source_counts || (selectedSummary.corpus_hits==null ? {} : {hklandlaw:selectedSummary.corpus_hits});
-  main.appendChild(el('div','logic-line',selectedTypes.map(type=>'<span class="tag logic">判断逻辑 · '+esc(logicMeta(idx,type).zh)+'</span>').join('')
-    +(selectedSources.hklandlaw==null?'':'<span class="tag source">语料来源 · hklandlaw · '+esc(selectedSources.hklandlaw)+'篇</span>')));
-  const chooser=el('details','card');
-  const activeFilter=SCFILTER.posture ? {kind:'诉讼姿态',id:SCFILTER.posture,meta:LITIGATION_POSTURES[SCFILTER.posture]}
-    : SCFILTER.track ? {kind:'事项轨道',id:SCFILTER.track,meta:LITIGATION_TRACKS[SCFILTER.track]} : null;
-  chooser.innerHTML='<summary class="stt">切换法律测试模块 · '+visibleModules.length+(activeFilter?' / '+reg.total_modules+' 项（已筛选）':' 项')+'</summary>';
-  chooser.open=!!activeFilter||SCCHOOSEROPEN;
-  chooser.addEventListener('toggle',()=>{SCCHOOSEROPEN=chooser.open;});
-  if(activeFilter){
-    chooser.open=true;
-    const filterBar=el('div','chips');
-    filterBar.appendChild(el('span','tag track','当前筛选 · '+esc(activeFilter.kind)+' · '+esc(activeFilter.meta?.label||activeFilter.id)));
-    const clear=el('button','chip sm','显示全部模块');
-    clear.type='button';
-    clear.onclick=()=>{SCFILTER={posture:null,track:null};route({focusTarget:'heading'});};
-    filterBar.appendChild(clear);
-    chooser.appendChild(filterBar);
+  const logic=doctrine.logic,mod=logic.module,stages=mod.stages||[];
+  const elementStageIds=new Set(logic.element_stage_ids||[]);
+  const sourceCounts=mod.source_counts||(mod.corpus_hits==null?{}:{hklandlaw:mod.corpus_hits});
+  const types=[...new Set(stages.map(stage=>stage.test_type))];
+  const moduleCard=el('section','card logic-module');
+  const sameName=mod.zh===doctrine.claim.zh&&mod.en===doctrine.claim.en;
+  moduleCard.innerHTML='<p class="tiny stage-role">法律测试模块 · '+esc(mod.id)+' · '+stages.length+' 个当前诉因引用阶段</p>'
+    +'<h3 style="margin:4px 0">'+(sameName?'诉因内部判断结构':esc(mod.zh)+' <span style="color:var(--ink3);font-size:.72em;font-weight:500">'+esc(mod.en)+'</span>')+'</h3>'
+    +(mod.note&&(!sameName||mod.note!==doctrine.claim.note)?'<p class="test"><strong>模块说明</strong> · '+esc(mod.note)+'</p>':'');
+  const tags=el('div','logic-line');
+  for(const type of types) tags.appendChild(el('span','tag logic','判断逻辑 · '+esc(logicMeta(null,type).zh)));
+  const logicCoverage=String(logic.coverage||doctrine.coverage?.logic||'unknown').replace(/^logic-/,'');
+  tags.appendChild(el('span','tag track','逻辑覆盖 · '+esc(coverageLabel('logic',logicCoverage))));
+  if(sourceCounts.hklandlaw!=null) tags.appendChild(el('span','tag source','语料来源 · hklandlaw · '+esc(sourceCounts.hklandlaw)+'篇'));
+  moduleCard.appendChild(tags);
+  if(Array.isArray(logic.stage_ids)) moduleCard.appendChild(el('p','coverage-note','本诉因只引用 '+esc(mod.id)+' 的 '+logic.stage_ids.map(esc).join('、')+'；模块其他阶段不进入本页或本页的阶段结果。'));
+  main.appendChild(moduleCard);
+  const explainer=el('details','card');
+  let explanation='<summary class="stt">本诉因使用的判断方式</summary>';
+  for(const type of types){const meta=logicMeta(null,type);explanation+='<p class="test"><code>'+esc(type)+'</code> <strong>'+esc(meta.zh)+'</strong> — '+esc(meta.note||'该阶段按其已编码结构整理事实。')+'</p>';}
+  explanation+='<p class="tiny">只有多因素权衡阶段显示编者数值份量；其余阶段显示门槛、缺口或人工判断结果。数值不是胜诉概率。</p>';
+  explainer.innerHTML=explanation;main.appendChild(explainer);
+  if((mod.authorities||[]).length){
+    const authorities=el('details','card');
+    authorities.innerHTML='<summary class="stt">判断逻辑权威 Authorities</summary>'+(mod.authorities||[]).map(authority=>'<div class="auth"><span class="case">'+esc(authority.case)+'</span><span class="cite">'+esc(authority.cite)+'</span><span class="badge '+(authority.verified==='unverified'?'n':'v')+'">'+esc(authority.verified)+'</span> <span class="tiny">'+esc(authority.role)+'</span></div>').join('');
+    authorities.querySelectorAll('.auth').forEach((row,index)=>appendEvidence(row,mod.authorities[index]));main.appendChild(authorities);
   }
-  chooser.appendChild(pick); main.appendChild(chooser);
-  main.appendChild(el('p','tiny','⚠ '+esc(reg.principle)));
-
-  // test-type explainer — the important conceptual bit
-  const tt = el('details','card');
-  let th = '<summary class="stt">五类法律判断逻辑 — 只有多因素权衡使用权重</summary>';
-  for(const [k,v] of Object.entries(idx.test_types)){
-    th += '<p class="test"><code>'+esc(k)+'</code> <strong>'+esc(v.zh)+'</strong> — '+esc(v.en)+'<br><span class="tiny">处理方式：'+esc(v.scoring)+' · 输出：'+esc(v.output)+'</span></p>';
-  }
-  th += '<p class="test" style="border-top:1px solid var(--line2);padding-top:8px">'+esc(idx.conjunctive_note)+'</p>';
-  if(idx.tiers){
-    th += '<p class="test"><strong>档位与区间</strong>(区间由判词对相对份量的表述归纳,非点估计):</p><div class="tierleg">';
-    for(const [k,v] of Object.entries(idx.tiers)){
-      const rng = v.lo==null ? '—' : (v.lo*100)+'–'+(v.hi*100)+'%';
-      th += '<span class="tierchip" data-t="'+esc(k)+'"><b>'+esc(v.zh)+'</b> '+rng+'</span>';
-    }
-    th += '</div>';
-  }
-  tt.innerHTML = th; main.appendChild(tt);
-  const auWrap = el('details','card');
-
-  // authorities
-  const au = auWrap;
-  au.innerHTML = '<summary class="stt">权威 Authorities</summary>' +
-    mod.authorities.map(a=>'<div class="auth"><span class="case">'+esc(a.case)+'</span><span class="cite">'+esc(a.cite)+'</span><span class="badge '+(a.verified==='web'?'v':'n')+'">'+esc(a.verified)+'</span> <span class="tiny">'+esc(a.role)+'</span></div>').join('');
-  au.querySelectorAll('.auth').forEach((row,i)=>appendEvidence(row,mod.authorities[i]));
-  main.appendChild(au);
-
-  const out = el('div'); out.id='sc_out';
-  for(const [stageIndex,st] of mod.stages.entries()){
+  const out=el('div');out.id='sc_out';
+  const factorsById=new Map(stages.flatMap(stage=>(stage.factors||[]).concat(stage.counter_factors||[])).map(factor=>[factor.id,factor]));
+  for(const [stageIndex,st] of stages.entries()){
     const sec = el('section','elem');
     const isBalancing = st.test_type==='balancing';
-    const stageLabel=moduleStageCount===1?'唯一判断阶段':'判断阶段 '+(stageIndex+1)+'/'+moduleStageCount;
+    const stageLabel=stages.length===1?'唯一判断阶段':'判断阶段 '+(stageIndex+1)+'/'+stages.length;
     sec.appendChild(el('p','tiny stage-kicker',esc(stageLabel)+' · '+esc(st.id)));
-    sec.appendChild(el('h3',null,esc(st.zh)+' <span class="tag logic">判断逻辑 · '+esc(logicMeta(idx,st.test_type).zh)+'</span> '+litigationTags(st)+' <span class="cnt">'+esc(st.test_type)+'</span>'));
+    const doctrinalRole=elementStageIds.has(st.id)?DOCTRINAL_ROLE_LABELS['claim-elements']:(DOCTRINAL_ROLE_LABELS[st.doctrinal_role]||st.doctrinal_role);
+    const role=doctrinalRole?'<span class="tag '+(elementStageIds.has(st.id)?'posture-spear':'track')+'">'+esc(doctrinalRole)+'</span>':'';
+    sec.appendChild(el('h3',null,esc(st.zh)+' '+role+' <span class="tag logic">判断逻辑 · '+esc(logicMeta(null,st.test_type).zh)+'</span> '+litigationTags(st)+' <span class="cnt">'+esc(st.test_type)+'</span>'));
     sec.appendChild(el('p','ezh','<strong>阶段规则</strong> · '+esc(st.rule||st.en)));
+    if(st.applies_when){
+      const dependency=(st.applies_when.factor_ids||[]).map(id=>{
+        const factor=factorsById.get(id);return (factor?.zh||id)+' ('+id+')';
+      }).join('、');
+      sec.appendChild(el('p','test','<strong>适用条件 Applies when</strong> · 仅当 '+esc(st.applies_when.stage_id)+' 中的 '+esc(dependency||'指定路径')+' 适用。'));
+    }
+    if(st.jurisdiction_rules&&Object.keys(st.jurisdiction_rules).length){
+      const rules=el('details','card');rules.open=true;let rulesHtml='<summary class="stt">法域规则 Jurisdiction rules</summary>';
+      for(const [jurisdiction,rule] of Object.entries(st.jurisdiction_rules)) rulesHtml+='<p class="test"><span class="jtag"><i style="background:'+jColor(jurisdiction)+'"></i>'+esc(jurisdiction)+' '+esc(JZH[jurisdiction]||jurisdiction)+'</span> · '+esc(rule)+'</p>';
+      rules.innerHTML=rulesHtml;sec.appendChild(rules);
+    }
     if(st.litigation_note) sec.appendChild(el('p','test stage-position-note',esc(st.litigation_note)));
     if(st.weight_note) sec.appendChild(el('p','tiny','⚠ '+esc(st.weight_note)));
     const all = (st.factors||[]).concat(st.counter_factors||[]);
@@ -1426,41 +1368,31 @@ async function viewScored(main){
     out.appendChild(sec);
   }
   main.appendChild(out);
-
+  if(!stages.length){main.appendChild(el('div','card coverage-gap','<h4>阶段覆盖缺口</h4><p class="test">当前诉因没有可显示的判断阶段。</p>'));return;}
   const res = el('section','elem'); res.id='sc_res';
   res.innerHTML = '<h3>证据与阶段结果</h3><p class="ezh">切换事实状态后更新。只有多因素权衡阶段显示模型情景区间；它不是胜诉概率。</p><div id="sc_body" aria-live="polite"><p class="tiny">正在检查证据状态…</p></div>';
   main.appendChild(res);
-
-  const cal = el('section','elem');
-  cal.appendChild(el('h3',null,'多因素权衡 · 数值份量缺口 <span class="cnt">'+cq.total_factors+' 因素</span>'));
-  cal.appendChild(el('p','ezh','本表只统计多因素权衡阶段中尚未设置份量区间的因素；合取、择一、门槛裁量和推定反驳不进入本表。'));
-  const cwr = el('div','tblwrap');
-  let cch='<table><thead><tr><th>模块</th><th>阶段</th><th>待补份量区间</th><th>hklandlaw 相关文章</th></tr></thead><tbody>';
-  for(const r of cq.rows) cch+='<tr><td><strong>'+esc(r.zh)+'</strong></td><td>'+esc(r.stage_zh)+'</td><td class="n">'+r.factors_unassigned+' / '+r.factors_total+'</td><td class="n">'+esc(r.source_counts?.hklandlaw??r.corpus_hits??'—')+'</td></tr>';
-  cch+='</tbody></table>'; cwr.innerHTML=cch; cal.appendChild(cwr);
-  cal.appendChild(el('p','tiny','份量区间完整也不等于经验校准完成；经验校准仍需另行编码判决结果并验证模型。hklandlaw 数字只是相关文章覆盖量。'));
-  main.appendChild(cal);
-
+  const facts={};
   const resultBody = res.querySelector('#sc_body');
   const updateScore = createScoreUpdater({
-    isCurrent:()=>res.isConnected && view===SCVIEW && state.mode==='scored' && SCMOD===moduleId,
+    isCurrent:()=>res.isConnected&&view===DOCTRINE_VIEW&&state.mode==='doctrine'&&state.claim===claimId,
     onLoading:()=>{resultBody.textContent='正在更新证据状态…';resultBody.setAttribute('aria-busy','true');},
     onResult:html=>{resultBody.innerHTML=html;resultBody.setAttribute('aria-busy','false');},
     onError:message=>{
       resultBody.replaceChildren(el('p','test','阶段判断暂未完成，请重试。'),el('p','tiny',esc(message)));
       const retry=el('button','jchip','重试判断');
-      retry.onclick=()=>updateScore(SF);
+      retry.onclick=()=>updateScore(facts);
       resultBody.appendChild(retry);resultBody.setAttribute('aria-busy','false');
     },
-    fetchScore:async(facts,signal)=>{
-      const r=await request('/score',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({module:moduleId,facts}),signal});
+    fetchScore:async(values,signal)=>{
+      const r=await request('/score',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({module:mod.id,facts:values}),signal});
       const data=r.data;
       if(!r.ok || data.error) throw new Error(Array.isArray(data.errors)?data.errors.join('；'):(data.error||'评分服务暂不可用'));
-      return data;
+      return scopeScoreToStages(data,stages);
     },
   });
   main.querySelectorAll('.tri').forEach(g=>{
-    const factor = mod.stages.flatMap(s=>(s.factors||[]).concat(s.counter_factors||[])).find(f=>f.id===g.dataset.f);
+    const factor=stages.flatMap(stage=>(stage.factors||[]).concat(stage.counter_factors||[])).find(item=>item.id===g.dataset.f);
     g.setAttribute('role','group');
     g.setAttribute('aria-label',factor?.zh||g.dataset.f);
     g.querySelectorAll('button').forEach(b=>{
@@ -1470,13 +1402,12 @@ async function viewScored(main){
         b.classList.add('on');
         b.setAttribute('aria-pressed','true');
         const v=b.dataset.v, id=g.dataset.f;
-        if(v==='?') delete SF[id]; else SF[id] = v==='1';
-        updateScore(SF);
+        if(v==='?') delete facts[id]; else facts[id]=v==='1';
+        updateScore(facts);
       };
     });
   });
-
-  updateScore(SF);
+  updateScore(facts);
 }
 
 let navigationRequest=0;
@@ -1507,7 +1438,6 @@ async function route({focusTarget=null}={}){
       else await viewCorpus(body);
     }
     else if(state.mode==='maint') await viewMaint(main);
-    else if(state.mode==='scored') await viewScored(main);
     else await viewApi(main);
   }catch(e){
     if(request===navigationRequest){

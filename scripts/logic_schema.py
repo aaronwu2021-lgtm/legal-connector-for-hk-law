@@ -158,11 +158,12 @@ MODULE_LITIGATION_PROFILES = {
         "litigation_note": "可用于申请登记或确认权利，也可在业主收回管有的诉讼中作为抗辩；具体路径取决于法域及登记制度。",
     },
     "NUIS": {
-        "litigation_postures": ["spear"],
+        "litigation_postures": ["spear", "shield"],
         "litigation_track": "merits",
         "primary_posture": "spear",
         "legal_kind": "cause-of-action",
         "role_confidence": "typical",
+        "litigation_note": "私人妨害由土地权益人作为诉因主动提出；被告可在责任边界及抗辩阶段抵抗请求，法院在责任成立后选择救济。",
     },
     "ILLEG": {
         "litigation_postures": ["shield"],
@@ -303,7 +304,25 @@ STAGE_LITIGATION_POSITIONS = {
     },
     "NUIS": {
         "NU-1": _stage_position(
-            ["spear"], "spear", "受干扰的土地权益人以不合理干扰测试请求禁制令或损害赔偿。",
+            ["spear"], "spear", "原告须证明其享有受私人妨害保护的土地权益，并且所诉干扰针对土地利益。",
+        ),
+        "NU-2": _stage_position(
+            ["spear"], "spear", "原告须把所诉损害置于侵占、物理损害或舒适便利干扰的一项受承认路径。",
+        ),
+        "NU-3": _stage_position(
+            ["spear", "shield"], "spear", "原告须证明既有实际干扰或损害；请求预防性救济时，须证明适用法所要求的迫近威胁。",
+        ),
+        "NU-4": _stage_position(
+            ["spear", "shield"], None, "原告证明舒适便利干扰达到客观实质门槛；被告可援引普通通常且适当顾及邻地的互惠边界。",
+        ),
+        "NU-5": _stage_position(
+            ["spear", "shield"], "spear", "原告承担归责、可诉损害或迫近危害、因果与可预见性的证明责任；被告可否认任何必要环节。",
+        ),
+        "NU-6": _stage_position(
+            ["shield"], "shield", "被告承担证明法定授权、时效权利、同意或其他适用抗辩的责任。",
+        ),
+        "NU-7": _stage_position(
+            ["spear", "shield"], None, "既有责任或预防性救济门槛成立后，双方可就禁制令、赔偿、减除费用及公共利益对救济选择的影响陈词。",
         ),
     },
     "ILLEG": {

@@ -119,6 +119,27 @@ function scoreStage(stage, states) {
     case 'threshold-discretion': {
       const gates = entries.filter(({ factor }) => factor.gate === true);
       const overrides = entries.filter(({ factor }) => factor.override === true);
+      const discretion = entries.filter(({ factor }) => factor.role === 'discretion');
+      const hasSeparateDiscretion = gates.length === 1 && overrides.length === 0
+        && discretion.length > 0 && discretion.length === entries.length - 1;
+      if (hasSeparateDiscretion) {
+        const gate = gates[0];
+        if (gate.state === 'unknown') return {
+          ...base, engaged: null, discretion_required: null,
+          result: 'undetermined', status: 'insufficient-evidence',
+          reason: '门槛事实尚未确定；目前不能进入后续的独立裁量。',
+          effect: '先确认门槛，再分别评估已列出的裁量事项。',
+        };
+        if (gate.state === 'absent') return {
+          ...base, engaged: false, discretion_required: false,
+          result: 'not-engaged', status: 'encoded-gate-result',
+          reason: '按所输入事实，门槛未成立，因此本阶段的独立裁量尚未启动。',
+          effect: '本结果只描述该阶段门槛，不是对整个诉因的结论。',
+        };
+        return manual(base, '按所输入事实，门槛已经成立；已列出的事项仍须法院独立行使裁量。', {
+          engaged: true, discretion_required: true, result: 'discretion-required',
+        });
+      }
       if (gates.length !== 1 || overrides.length !== 1 || gates[0] === overrides[0]
           || gates[0].factor.id === overrides[0].factor.id || entries.length !== 2) {
         return manual(base, 'Exactly one distinct gate and override are not encoded; the threshold requires independent judgment.', { engaged: null });

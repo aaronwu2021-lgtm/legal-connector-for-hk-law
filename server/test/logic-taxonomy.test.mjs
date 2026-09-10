@@ -71,7 +71,7 @@ test('registry and scored data expose litigation posture and track as separate a
 
 test('every legal-test stage declares its own litigation position', () => {
   const stages = allModules.flatMap(module => module.stages.map(stage => ({ module, stage })));
-  assert.equal(stages.length, 30);
+  assert.equal(stages.length, 36);
   for (const { module, stage } of stages) {
     const id = `${module.id}/${stage.id}`;
     for (const key of ['litigation_postures', 'litigation_track', 'primary_posture', 'court_own_motion', 'litigation_note']) {

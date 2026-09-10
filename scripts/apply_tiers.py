@@ -40,9 +40,6 @@ T = {
  # Adverse possession — factual possession
  "AP-enclosure":"heavy","AP-exclusion":"heavy","AP-cultivation":"substantial",
  "AP-land-nature":"substantial","AP-maintenance":"moderate",
- # Nuisance
- "NU-locality":"heavy","NU-severity":"heavy","NU-duration":"substantial","NU-malice":"substantial",
- "NU-utility":"moderate","NU-timing":"moderate","NU-sensitivity":"substantial","NU-common-use":"heavy",
  # Illegality — Patel trio, deliberately co-equal
  "IL-purpose":"heavy","IL-other-policy":"heavy","IL-proportionality":"heavy",
  # Undue influence rebuttal
@@ -60,7 +57,6 @@ T = {
 NOTES = {
  "F-plaintiff-connection":"⚠ 直觉常高估。原告不能仅凭居港创设管辖;被告的联系重得多。",
  "LS-label":"⚠ 文件自称许可几乎不影响定性——Street v Mountford 明确实质重于形式。",
- "NU-malice":"恶意在场时可把本属合理的使用变为不合理,故档位高于其表面重要性。",
  "IL-purpose":"Patel v Mirza 将三项考量并列表述,故三者同档。",
  "AC-market-practice":"该领域惯常做法通常是减弱因素,而非加强。",
 }
