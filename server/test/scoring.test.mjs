@@ -201,7 +201,17 @@ describe('scoring public input contract', () => {
 });
 
 describe('every module preserves evidence and stage semantics', () => {
-  it('covers all 14 currently exposed modules', () => assert.equal(modules.length, 14));
+  it('covers all 20 currently exposed modules', () => assert.equal(modules.length, 20));
+
+  const hasEncodedThreshold = (stage) => {
+    if (stage.test_type !== 'threshold-discretion') return false;
+    const factors = allFactors(stage);
+    const gates = factors.filter(factor => factor.gate === true);
+    const overrides = factors.filter(factor => factor.override === true);
+    const discretion = factors.filter(factor => factor.role === 'discretion');
+    return (gates.length === 1 && overrides.length === 1 && factors.length === 2)
+      || (gates.length === 1 && overrides.length === 0 && discretion.length === factors.length - 1);
+  };
 
   for (const fixture of modules) {
     it(`${fixture.id}: empty facts are unresolved and never decisive`, async () => {
@@ -222,7 +232,7 @@ describe('every module preserves evidence and stage semantics', () => {
           assert.equal(stage.evidence_resolved, 0);
           assert.ok(stage.reason || stage.note || stage.caveat, 'insufficient evidence explanation');
           assert.ok(stage.score_low <= stage.score_high);
-        } else if (['HKJUR-4', 'NU-7'].includes(raw.id)) {
+        } else if (hasEncodedThreshold(raw)) {
           assert.equal(stage.result, 'undetermined');
           assert.equal(stage.engaged, null);
           nonnumeric(stage);
@@ -258,7 +268,7 @@ describe('every module preserves evidence and stage semantics', () => {
             for (const range of [stage.pro, stage.against, ...stage.factors_present.map((f) => f.range), ...stage.factors_against.map((f) => f.range)]) {
               assert.ok(range.every(Number.isFinite) && range[0] <= range[1], `${raw.id}: every displayed range is ordered`);
             }
-          } else if (['HKJUR-4', 'NU-7'].includes(raw.id)) nonnumeric(stage);
+          } else if (hasEncodedThreshold(raw)) nonnumeric(stage);
           else manual(stage);
         }
       }

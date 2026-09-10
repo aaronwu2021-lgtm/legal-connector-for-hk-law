@@ -106,7 +106,7 @@ function scoreStage(stage, states) {
 
   switch (stage.test_type) {
     case 'conjunctive':
-      return manual(base, 'The listed factors form a checklist. Required/optional factors and exceptions are not encoded; apply the rule with independent judgment.');
+      return manual(base, 'The listed factors form a legal checklist. Apply the stage rule and factor metadata with independent judgment; no legal determination is computed.');
     case 'presumption-rebuttal':
       return manual(base, 'Trigger and rebuttal roles are not modelled with sufficient structure to determine this stage.');
     case 'disjunctive-gateway': {

@@ -1,6 +1,6 @@
 {
- "generated": "2026-09-09",
- "version": "0.3",
+ "generated": "2026-09-10",
+ "version": "0.4",
  "test_types": {
   "conjunctive": {
    "zh": "合取要件",
@@ -80,6 +80,52 @@
    "zh": "管辖",
    "en": "Jurisdiction",
    "description": "处理法院能否及应否审理争议。"
+  }
+ },
+ "doctrinal_role_catalog": {
+  "claim-elements": {
+   "zh": "构成要件",
+   "en": "Claim elements"
+  },
+  "internal-test": {
+   "zh": "内部标准",
+   "en": "Internal test"
+  },
+  "defence": {
+   "zh": "抗辩",
+   "en": "Defence"
+  },
+  "remedy": {
+   "zh": "救济",
+   "en": "Remedy"
+  },
+  "rebuttal": {
+   "zh": "反驳",
+   "en": "Rebuttal"
+  },
+  "quantification": {
+   "zh": "量定",
+   "en": "Quantification"
+  },
+  "procedure-gateway": {
+   "zh": "程序门槛",
+   "en": "Procedure gateway"
+  },
+  "procedure-discretion": {
+   "zh": "程序裁量",
+   "en": "Procedure discretion"
+  },
+  "procedure-duty": {
+   "zh": "程序义务",
+   "en": "Procedure duty"
+  },
+  "jurisdiction-gateway": {
+   "zh": "管辖门槛",
+   "en": "Jurisdiction gateway"
+  },
+  "jurisdiction-override": {
+   "zh": "管辖覆盖规则",
+   "en": "Jurisdiction override"
   }
  },
  "source_catalog": {
@@ -231,6 +277,7 @@
      "id": "HKJUR-1",
      "zh": "门槛:能否送达",
      "en": "Gateway — can the writ be served",
+     "doctrinal_role": "jurisdiction-gateway",
      "test_type": "disjunctive-gateway",
      "rule": "域内送达当然有管辖;域外送达须落入 O.11 r.1(1) 任一项并获法院许可",
      "factors": [
@@ -294,6 +341,7 @@
      "id": "HKJUR-2",
      "zh": "第一阶段:方便法院衡量",
      "en": "Stage 1 — natural forum (weighted)",
+     "doctrinal_role": "jurisdiction-gateway",
      "test_type": "balancing",
      "rule": "申请方须证明:香港并非自然或适当法院(即与诉讼有最真实且实质联系者),且存在另一个明显或显著更适当的可用法院。",
      "weight_note": "档位由判词对相对份量的表述归纳,区间非点估计;经验权重须由判决结果回归得出。",
@@ -448,6 +496,7 @@
      "id": "HKJUR-3",
      "zh": "第二阶段:司法利益剥夺",
      "en": "Stage 2 — legitimate juridical advantage",
+     "doctrinal_role": "jurisdiction-gateway",
      "test_type": "balancing",
      "rule": "即使第一阶段指向他地,若答辩方证明在他地审理会被剥夺正当的个人或司法利益,法院仍可保留管辖;但若他地能实现实质正义,利益丧失未必致命。",
      "weight_source": "doctrinal-tier",
@@ -516,6 +565,7 @@
      "id": "HKJUR-4",
      "zh": "排他管辖条款:强理由测试",
      "en": "Exclusive jurisdiction clause — strong cause",
+     "doctrinal_role": "jurisdiction-override",
      "test_type": "threshold-discretion",
      "rule": "若合同订有排他管辖条款,法院原则上执行该条款;背离者须证明强理由(strong cause)。此段覆盖前两段的衡量。",
      "factors": [

@@ -366,12 +366,22 @@ function findSubTest(id) {
 
 const TAXONOMY_MODULE_REFS = {
   remoteness: { module_id: 'CONTRACT', stage_ids: ['CT-3'], coverage: 'partial' },
+  penalty: { module_id: 'PENALTY', coverage: 'logic-full' },
+  'negligent-misstatement': { module_id: 'NMS', coverage: 'logic-full' },
   'proprietary-estoppel': { module_id: 'PE', coverage: 'logic-full' },
   'constructive-trust': { module_id: 'CICT', coverage: 'logic-full' },
   veil: { module_id: 'VEIL', coverage: 'logic-full' },
+  privilege: { module_id: 'LPP', coverage: 'logic-full' },
+  discovery: { module_id: 'DISC', coverage: 'logic-full' },
   'adverse-possession': { module_id: 'AP', coverage: 'logic-full' },
+  easements: { module_id: 'EASE', coverage: 'partial' },
+  dmc: { module_id: 'DMC', coverage: 'logic-full' },
   'ny-convention': { module_id: 'NYC', coverage: 'logic-full' },
   'arbitrator-challenge': { module_id: 'ARBCH', coverage: 'logic-full' },
+};
+
+const TAXONOMY_CLAIM_OVERRIDES = {
+  remoteness: { legal_kind: 'damages-limitation' },
 };
 
 const TAXONOMY_MODULE_ADDITIONS = [
@@ -404,7 +414,7 @@ const TAXONOMY_EXPLICIT_PROFILES = {
   penalty: { litigation_postures: ['shield'], litigation_track: 'merits', primary_posture: 'shield', legal_kind: 'defence', jurisdictions: ['EN', 'HK'], jurisdiction_scope_source: 'editorial-scope' },
   privilege: { litigation_postures: ['shield'], litigation_track: 'procedure', primary_posture: 'shield', legal_kind: 'procedural-protection', jurisdictions: ['HK', 'EN'], jurisdiction_scope_source: 'editorial-scope' },
   discovery: { litigation_postures: ['spear', 'shield'], litigation_track: 'procedure', primary_posture: null, legal_kind: 'procedural-doctrine', jurisdictions: ['HK', 'EN'], jurisdiction_scope_source: 'editorial-scope' },
-  easements: { litigation_postures: ['spear', 'shield'], litigation_track: 'merits', primary_posture: null, legal_kind: 'property-right', jurisdictions: ['HK'], jurisdiction_scope_source: 'hklandlaw-corpus' },
+  easements: { litigation_postures: ['spear', 'shield'], litigation_track: 'merits', primary_posture: null, legal_kind: 'property-right', jurisdictions: ['HK', 'EN'], jurisdiction_scope_source: 'editorial-scope' },
   dmc: { litigation_postures: ['spear', 'shield'], litigation_track: 'merits', primary_posture: null, legal_kind: 'claim-family', jurisdictions: ['HK'], jurisdiction_scope_source: 'hklandlaw-corpus' },
 };
 
@@ -441,9 +451,21 @@ function taxonomyLitigationPosition(module, reference) {
   };
 }
 
+function taxonomyReferencedStages(module, reference) {
+  if (!reference.stage_ids) return module.stages;
+  const wanted = new Set(reference.stage_ids);
+  return module.stages.filter((stage) => wanted.has(stage.id));
+}
+
+function taxonomyElementCoverage(module, reference) {
+  const stages = taxonomyReferencedStages(module, reference);
+  return stages.some((stage) => stage.doctrinal_role === 'claim-elements')
+    ? 'logic-stages' : 'not-applicable';
+}
+
 function taxonomy() {
   const result = {
-    version: ELEMENTS.version,
+    version: REGISTRY.version,
     component_versions: {
       elements: ELEMENTS.version,
       registry: REGISTRY.version,
@@ -463,11 +485,14 @@ function taxonomy() {
           lab: 'LAB rubric: 3 criteria / 2 tasks' } ] },
       { zh: '侵权法', en: 'Tort', claims: [
         { id: 'deceit', zh: '欺诈之诉', en: 'Deceit', status: 'xref', xref: 'misrepresentation#E4a',
+          element_refs: [{ id: 'E1' }, { id: 'E2' }, { id: 'E3' }, { id: 'E4', sub_tests: ['E4a'] }, { id: 'E5', sub_tests: ['E5b'] }],
+          defence_refs: ['D2'],
           note: 'Five elements per Derry v Peek — see Misrepresentation E4a. Australia retains the same backbone via Magill v Magill [2006] HCA 51.' },
         { id: 'negligent-misstatement', zh: '过失性失实陈述', en: 'Negligent misstatement', status: 'planned',
           note: 'Hedley Byrne [1964] assumption of responsibility (Caparo three-stage → Robinson swing-back).' } ] },
       { zh: '衡平法', en: 'Equity', claims: [
         { id: 'rescission', zh: '撤销', en: 'Rescission', status: 'xref', xref: 'misrepresentation#E5a',
+          element_refs: [{ id: 'E5', sub_tests: ['E5a'] }],
           note: 'As a misrepresentation remedy see E5a (bars: affirmation / lapse / restitution impossible / third-party rights).' },
         { id: 'proprietary-estoppel', zh: '不动产禁反言', en: 'Proprietary estoppel', status: 'corpus-only',
           note: 'Not yet modelled as elements, but the corpus is dense here — assurance / reliance / detriment / unconscionability.',
@@ -523,7 +548,7 @@ function taxonomy() {
       claim.jurisdictions = taxonomyJurisdictions(Object.keys(ELEMENTS.jurisdictions || {}).join('/'));
       claim.jurisdiction_scope_source = 'elements-dataset';
       claim.logic_status = 'full';
-      claim.coverage = { elements: 'full', logic: 'conjunctive', corpus: 'partial', jurisdiction_overlays: 'full' };
+      claim.coverage = { analysis_structure: 'full', elements: 'full', logic: 'conjunctive', corpus: 'partial', jurisdiction_overlays: 'full' };
       continue;
     }
     const reference = claim.model_ref || TAXONOMY_MODULE_REFS[claim.id];
@@ -544,14 +569,18 @@ function taxonomy() {
       claim.jurisdictions = taxonomyJurisdictions(module.jurisdiction);
       claim.jurisdiction_scope_source = 'logic-module';
       claim.note = reference.coverage === 'partial'
-        ? '已作为法律测试模块 '+module.id+' 的 '+reference.stage_ids.join('、')+' 阶段建模；尚不是独立完整要件数据集。'
+        ? (reference.stage_ids?.length
+          ? '已作为法律测试模块 '+module.id+' 的 '+reference.stage_ids.join('、')+' 阶段建模；尚不是独立完整要件数据集。'
+          : module.note)
         : module.note;
-      claim.coverage = { elements: 'none', logic: reference.coverage === 'partial' ? 'partial' : 'full',
+      if (TAXONOMY_CLAIM_OVERRIDES[claim.id]) Object.assign(claim, TAXONOMY_CLAIM_OVERRIDES[claim.id]);
+      claim.coverage = { analysis_structure: reference.coverage === 'partial' ? 'partial' : 'full', elements: taxonomyElementCoverage(module, reference),
+        logic: reference.coverage === 'partial' ? 'partial' : 'full',
         corpus: module.corpus_hits > 0 ? 'indexed' : 'none', jurisdiction_overlays: 'partial' };
       continue;
     }
     if (TAXONOMY_EXPLICIT_PROFILES[claim.id]) Object.assign(claim, TAXONOMY_EXPLICIT_PROFILES[claim.id]);
-    claim.logic_status = 'none';
+    claim.logic_status = claim.xref ? 'xref' : 'none';
   }
 
   const allClaims = result.areas.flatMap((area) => area.claims);
@@ -581,16 +610,18 @@ function taxonomy() {
     claim.jurisdictions = [...new Set(claim.jurisdictions || [])]
       .filter((id) => TAXONOMY_JURISDICTIONS.some((jurisdiction) => jurisdiction.id === id));
     claim.coverage = {
+      analysis_structure: claim.xref ? 'xref' : 'none',
       elements: claim.elements.length ? 'full' : claim.xref ? 'xref' : 'none',
-      logic: claim.logic_status || 'none',
+      logic: claim.xref ? 'xref' : claim.logic_status || 'none',
       corpus: claim.corpusTopics?.length || claim.status === 'corpus-only' ? 'indexed' : 'none',
-      jurisdiction_overlays: 'none',
+      jurisdiction_overlays: claim.xref ? 'xref' : 'none',
       ...(claim.coverage || {}),
     };
   }
 
   result.posture_catalog = REGISTRY.posture_catalog || SCORED.posture_catalog || {};
   result.track_catalog = REGISTRY.track_catalog || SCORED.track_catalog || {};
+  result.doctrinal_role_catalog = REGISTRY.doctrinal_role_catalog || SCORED.doctrinal_role_catalog || {};
   result.jurisdiction_catalog = TAXONOMY_JURISDICTIONS.map((jurisdiction) => {
     const coveredAreas = result.areas.filter((area) =>
       area.claims.some((claim) => claim.jurisdictions.includes(jurisdiction.id)));
@@ -803,6 +834,7 @@ const REG_META = { version: REGISTRY.version, generated: REGISTRY.generated,
   principle: REGISTRY.principle, test_types: REGISTRY.test_types || SCORED.test_types,
   posture_catalog: REGISTRY.posture_catalog || SCORED.posture_catalog || {},
   track_catalog: REGISTRY.track_catalog || SCORED.track_catalog || {},
+  doctrinal_role_catalog: REGISTRY.doctrinal_role_catalog || SCORED.doctrinal_role_catalog || {},
   source_catalog: REGISTRY.source_catalog || SCORED.source_catalog || {} };
 const findModule = (id) => MODULES.find((m) => m.id === id);
 const MODULE_TIMELINES = {};
@@ -843,6 +875,8 @@ function stageWeightProfile(stage) {
 function stageIndexRow(stage) {
   const weight = stageWeightProfile(stage);
   return { id: stage.id, zh: stage.zh, en: stage.en, test_type: stage.test_type,
+    doctrinal_role: stage.doctrinal_role || null,
+    jurisdictions: stage.jurisdictions || null,
     factors: (stage.factors || []).length + (stage.counter_factors || []).length,
     litigation_postures: stage.litigation_postures || [],
     litigation_track: stage.litigation_track || null,
@@ -853,7 +887,30 @@ function stageIndexRow(stage) {
     weight_provenance: weight.provenance, weighted: weight.status === 'assigned' };
 }
 
-function doctrineView(id) {
+function projectedCrossReferenceData(claim) {
+  if (!claim.xref) return { elements: [], defences: [] };
+  const [target] = claim.xref.split('#');
+  if (target !== ELEMENTS.claim) throw new Error('unsupported cross-reference target ' + target);
+  const elements = (claim.element_refs || []).map((reference) => {
+    const source = ELEMENTS.elements.find((element) => element.id === reference.id);
+    if (!source) throw new Error('cross-reference identifies unknown element ' + reference.id);
+    const selected = reference.sub_tests
+      ? source.sub_tests.filter((subTest) => reference.sub_tests.includes(subTest.id))
+      : source.sub_tests;
+    if (reference.sub_tests && selected.length !== reference.sub_tests.length) {
+      throw new Error('cross-reference identifies unknown sub-test in ' + reference.id);
+    }
+    return { ...source, sub_tests: selected };
+  });
+  const defences = (claim.defence_refs || []).map((id) => {
+    const source = ELEMENTS.defences.find((defence) => defence.id === id);
+    if (!source) throw new Error('cross-reference identifies unknown defence ' + id);
+    return source;
+  });
+  return { elements, defences };
+}
+
+function doctrineView(id, jurisdiction = null) {
   const catalog = taxonomy();
   const available = [];
   let match = null;
@@ -863,20 +920,35 @@ function doctrineView(id) {
   }
   if (!match) return { error: 'unknown doctrine claim', claim: id, available };
 
+  if (jurisdiction && !TAXONOMY_JURISDICTIONS.some((item) => item.id === jurisdiction)) {
+    return { error: 'unknown jurisdiction', jurisdiction, available: TAXONOMY_JURISDICTIONS.map((item) => item.id) };
+  }
   const { elements: taxonomyElements = [], defences: taxonomyDefences = [], ...claim } = match.claim;
-  const elements = claim.id === ELEMENTS.claim ? ELEMENTS.elements : taxonomyElements;
-  const defences = claim.id === ELEMENTS.claim ? ELEMENTS.defences : taxonomyDefences;
+  const projected = projectedCrossReferenceData(claim);
+  const elements = claim.id === ELEMENTS.claim ? ELEMENTS.elements
+    : projected.elements.length ? projected.elements : taxonomyElements;
+  const defences = claim.id === ELEMENTS.claim ? ELEMENTS.defences
+    : projected.defences.length ? projected.defences : taxonomyDefences;
   let logic = null;
   if (claim.model_ref) {
     const module = findModule(claim.model_ref.module_id);
     if (!module) throw new Error('doctrine claim references unknown module ' + claim.model_ref.module_id);
     const requestedStageIds = claim.model_ref.stage_ids || null;
     const allowed = requestedStageIds ? new Set(requestedStageIds) : null;
-    const stages = module.stages.filter((stage) => !allowed || allowed.has(stage.id));
+    const stages = module.stages.filter((stage) => (!allowed || allowed.has(stage.id))
+      && (!jurisdiction || !stage.jurisdictions?.length || stage.jurisdictions.includes(jurisdiction)));
+    const role_stage_ids = {};
+    for (const stage of stages) {
+      const role = stage.doctrinal_role;
+      if (!role_stage_ids[role]) role_stage_ids[role] = [];
+      role_stage_ids[role].push(stage.id);
+    }
     logic = {
       module_id: module.id,
       coverage: claim.model_ref.coverage,
+      jurisdiction,
       stage_ids: requestedStageIds,
+      role_stage_ids,
       element_stage_ids: stages.filter((stage) => ['claim-elements', 'element-set'].includes(stage.doctrinal_role)).map((stage) => stage.id),
       module: { ...module, stages },
     };
@@ -891,8 +963,12 @@ function doctrineView(id) {
     logic,
     coverage: claim.coverage,
     composition: {
-      elements_source: elements.length ? 'elements-dataset'
-        : logic?.element_stage_ids.length ? 'logic-stages' : 'none',
+      analysis_structure_source: claim.xref ? 'xref' : elements.length ? 'elements-dataset'
+        : logic ? 'logic-stages' : 'none',
+      elements_source: claim.xref ? 'xref' : elements.length ? 'elements-dataset'
+        : claim.coverage.elements === 'not-applicable' ? 'not-applicable'
+        : logic ? 'logic-stages' : 'none',
+      xref_target: claim.xref || null,
     },
   };
 }
@@ -948,6 +1024,7 @@ const scoredIndex = () => ({
   test_types: SCORED.test_types, source_catalog: SCORED.source_catalog || REGISTRY.source_catalog || {},
   posture_catalog: SCORED.posture_catalog || REGISTRY.posture_catalog || {},
   track_catalog: SCORED.track_catalog || REGISTRY.track_catalog || {},
+  doctrinal_role_catalog: SCORED.doctrinal_role_catalog || REGISTRY.doctrinal_role_catalog || {},
   provenance_levels: SCORED.provenance_levels,
   modules: MODULES.map((m) => ({ id: m.id, zh: m.zh, en: m.en, jurisdiction: m.jurisdiction,
     litigation_postures: m.litigation_postures, litigation_track: m.litigation_track,
@@ -1014,9 +1091,10 @@ const MCP_TOOLS = [
       claim: { type: 'string', description: 'e.g. misrepresentation' },
       jurisdiction: { type: 'string', enum: ['EN', 'HK', 'SG', 'AU'] }, as_of: AS_OF_SCHEMA }, required: ['claim'] } },
   { name: 'get_doctrine',
-    description: 'Return one cause-centred doctrine view: claim metadata, any full element dataset, and its mapped legal-test module. Partial model references expose only their selected stages.',
+    description: 'Return one matter-centred doctrine view: claim metadata, any element data, and its mapped legal-test module. A jurisdiction filter removes stages that do not apply in that jurisdiction; partial model references expose only their selected stages.',
     inputSchema: { type: 'object', properties: {
-      claim: { type: 'string', description: 'taxonomy claim id, e.g. private-nuisance' } }, required: ['claim'] } },
+      claim: { type: 'string', description: 'taxonomy claim id, e.g. private-nuisance' },
+      jurisdiction: { type: 'string', enum: ['EN', 'HK', 'SG', 'AU'] } }, required: ['claim'] } },
   { name: 'get_element_test',
     description: 'Return one sub-test with its authorities, and the standing rule as at a given year.',
     inputSchema: { type: 'object', properties: {
@@ -1051,7 +1129,7 @@ function mcpCall(name, args = {}) {
     case 'get_elements':
       return elementDatasetForClaim(args.claim, args.jurisdiction);
     case 'get_doctrine':
-      return doctrineView(args.claim);
+      return doctrineView(args.claim, args.jurisdiction);
     case 'get_element_test': {
       const found = findSubTest(args.id);
       if (!found) return { error: `unknown sub-test ${args.id}` };
@@ -1077,6 +1155,7 @@ function mcpCall(name, args = {}) {
       if (args.posture) ms = ms.filter((m) => (m.litigation_postures || []).includes(args.posture));
       if (args.track) ms = ms.filter((m) => m.litigation_track === args.track);
       return { total: ms.length, principle: REG_META.principle,
+        doctrinal_role_catalog: REG_META.doctrinal_role_catalog,
         modules: ms.map((m) => ({ id: m.id, zh: m.zh, en: m.en, area: m.area, top_type: m.top_type,
           logic_types: moduleLogicTypes(m), jurisdiction: m.jurisdiction,
           corpus_hits: m.corpus_hits ?? null, source_counts: moduleSourceCounts(m), note: m.note,
@@ -1188,7 +1267,7 @@ export default async (req) => {
     if (path === 'taxonomy') return json(taxonomy());
     if (path.startsWith('doctrine/')) {
       const claim = decodeURIComponent(path.slice('doctrine/'.length));
-      const result = doctrineView(claim);
+      const result = doctrineView(claim, q.get('jurisdiction'));
       return json(result, result.error ? 404 : 200);
     }
     if (path === 'elements') {

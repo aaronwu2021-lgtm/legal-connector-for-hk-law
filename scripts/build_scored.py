@@ -3,6 +3,7 @@ import json
 
 from _paths import emit
 from logic_schema import (
+    DOCTRINAL_ROLE_CATALOG,
     POSTURE_CATALOG,
     SOURCE_CATALOG,
     TEST_TYPES,
@@ -11,10 +12,11 @@ from logic_schema import (
 )
 
 W = {
- "generated":"2026-09-09","version":"0.3",
+ "generated":"2026-09-10","version":"0.4",
  "test_types":TEST_TYPES,
  "posture_catalog":POSTURE_CATALOG,
  "track_catalog":TRACK_CATALOG,
+ "doctrinal_role_catalog":DOCTRINAL_ROLE_CATALOG,
  "source_catalog":SOURCE_CATALOG,
  "provenance_levels":{
   "editorial-prior":"assigned by the compiler from doctrinal reading — NOT legal authority, NOT derived from outcomes",
@@ -51,7 +53,7 @@ W = {
       {"j":"HK","y":2022,"f":0.7,"case":"Shanghai Gopher v China Base","cite":"[2022] HKCA 1724","court":"HKCA","court_rank":3,"treat":"applies","eff":"确认第11.2条为有效排他管辖条款(浦东法院,依PRC CPL Art 34专家证据);暂缓获准;leave申请无合理胜诉前景,拒绝许可。注意:leave决定,先例分量窄。","verified":"primary","pin":"[8]-[9],[24],[37]","source":"hklii.hk/api/getjudgment hkca/2022/1724 (judgment text read)"}
      ]}},
    "stages":[
-    {"id":"HKJUR-1","zh":"门槛:能否送达","en":"Gateway — can the writ be served",
+    {"id":"HKJUR-1","zh":"门槛:能否送达","en":"Gateway — can the writ be served","doctrinal_role":"jurisdiction-gateway",
      "test_type":"disjunctive-gateway","rule":"域内送达当然有管辖;域外送达须落入 O.11 r.1(1) 任一项并获法院许可",
      "factors":[
       {"id":"G-presence","zh":"被告在港(居住/营业/送达时在港)","en":"Defendant present or carrying on business in HK","dispositive":True},
@@ -64,7 +66,7 @@ W = {
       {"id":"G-necessary-party","zh":"被告为已妥为送达之诉的必要或适当当事人","en":"Necessary or proper party"},
       {"id":"G-injunction","zh":"寻求在港作为或不作为的强制令","en":"Injunction as to acts in HK"}
      ]},
-    {"id":"HKJUR-2","zh":"第一阶段:方便法院衡量","en":"Stage 1 — natural forum (weighted)",
+    {"id":"HKJUR-2","zh":"第一阶段:方便法院衡量","en":"Stage 1 — natural forum (weighted)","doctrinal_role":"jurisdiction-gateway",
      "test_type":"balancing",
      "rule":"申请方须证明:香港并非自然或适当法院(即与诉讼有最真实且实质联系者),且存在另一个明显或显著更适当的可用法院。",
      "weight_note":"以下权重为编者先验,法院从不给数字。待以判决结果回归校准后替换。",
@@ -96,7 +98,7 @@ W = {
       {"id":"C-foreign-law","zh":"准据法为外国法","en":"Foreign governing law","weight":-0.18},
       {"id":"C-foreign-witnesses","zh":"主要证人在境外","en":"Key witnesses abroad","weight":-0.16}
      ]},
-    {"id":"HKJUR-3","zh":"第二阶段:司法利益剥夺","en":"Stage 2 — legitimate juridical advantage",
+    {"id":"HKJUR-3","zh":"第二阶段:司法利益剥夺","en":"Stage 2 — legitimate juridical advantage","doctrinal_role":"jurisdiction-gateway",
      "test_type":"balancing",
      "rule":"即使第一阶段指向他地,若答辩方证明在他地审理会被剥夺正当的个人或司法利益,法院仍可保留管辖;但若他地能实现实质正义,利益丧失未必致命。",
      "weight_source":"editorial-prior",
@@ -107,7 +109,7 @@ W = {
       {"id":"A-procedure","zh":"他地无对应程序(如披露)","en":"No equivalent procedure (e.g. discovery)","weight":0.15},
       {"id":"A-delay","zh":"他地程序严重迟延","en":"Serious delay abroad","weight":0.10}
      ]},
-    {"id":"HKJUR-4","zh":"排他管辖条款:强理由测试","en":"Exclusive jurisdiction clause — strong cause",
+    {"id":"HKJUR-4","zh":"排他管辖条款:强理由测试","en":"Exclusive jurisdiction clause — strong cause","doctrinal_role":"jurisdiction-override",
      "test_type":"threshold-discretion",
      "rule":"若合同订有排他管辖条款,法院原则上执行该条款;背离者须证明强理由(strong cause)。此段覆盖前两段的衡量。",
      "factors":[

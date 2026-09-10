@@ -15,6 +15,10 @@ const TYPES = [
 const expectedLabels = ['合取要件', '择一门槛', '多因素权衡', '门槛后裁量', '推定与反驳'];
 const POSTURES = ['spear', 'shield'];
 const TRACKS = ['merits', 'procedure', 'jurisdiction'];
+const DOCTRINAL_ROLES = [
+  'claim-elements', 'internal-test', 'defence', 'remedy', 'rebuttal', 'quantification',
+  'procedure-gateway', 'procedure-discretion', 'procedure-duty', 'jurisdiction-gateway', 'jurisdiction-override',
+];
 const allModules = [...SCORED.modules, ...REGISTRY.modules];
 const allFactors = stage => [...(stage.factors || []), ...(stage.counter_factors || [])];
 
@@ -44,8 +48,8 @@ test('one canonical catalogue exposes all five legal-test logic types', () => {
 });
 
 test('registry and scored data expose litigation posture and track as separate axes', () => {
-  assert.equal(allModules.length, 14);
-  assert.equal(new Set(allModules.map(module => module.id)).size, 14);
+  assert.equal(allModules.length, 20);
+  assert.equal(new Set(allModules.map(module => module.id)).size, 20);
   for (const index of [REGISTRY, SCORED]) {
     assert.deepEqual(Object.keys(index.posture_catalog).sort(), [...POSTURES].sort());
     assert.deepEqual(Object.keys(index.track_catalog).sort(), [...TRACKS].sort());
@@ -71,7 +75,7 @@ test('registry and scored data expose litigation posture and track as separate a
 
 test('every legal-test stage declares its own litigation position', () => {
   const stages = allModules.flatMap(module => module.stages.map(stage => ({ module, stage })));
-  assert.equal(stages.length, 36);
+  assert.equal(stages.length, 55);
   for (const { module, stage } of stages) {
     const id = `${module.id}/${stage.id}`;
     for (const key of ['litigation_postures', 'litigation_track', 'primary_posture', 'court_own_motion', 'litigation_note']) {
@@ -87,6 +91,7 @@ test('every legal-test stage declares its own litigation position', () => {
       assert.ok(stage.litigation_postures.includes(stage.primary_posture), `${id}: primary posture is outside posture set`);
     }
     assert.ok(stage.litigation_note.trim().length > 0, `${id}: litigation note must explain the mapping`);
+    assert.ok(DOCTRINAL_ROLES.includes(stage.doctrinal_role), `${id}: unknown doctrinal role`);
     assert.equal(Object.hasOwn(module, 'court_own_motion'), false, `${module.id}: module boolean would overgeneralise`);
     const ownMotionIds = module.stages.filter(item => item.court_own_motion).map(item => item.id);
     assert.deepEqual(module.court_own_motion_summary.stage_ids, ownMotionIds, `${module.id}: own-motion summary`);
@@ -123,12 +128,15 @@ test('registry API exposes litigation catalogs and filters modules by posture an
   const registry = await get('registry');
   assert.deepEqual(Object.keys(registry.posture_catalog).sort(), [...POSTURES].sort());
   assert.deepEqual(Object.keys(registry.track_catalog).sort(), [...TRACKS].sort());
+  assert.deepEqual(Object.keys(registry.doctrinal_role_catalog).sort(), [...DOCTRINAL_ROLES].sort());
   assert.ok(registry.modules.length > 0);
   for (const module of registry.modules) {
     assert.ok(module.litigation_postures.length > 0, module.id);
     assert.ok(module.litigation_postures.every(posture => POSTURES.includes(posture)), module.id);
     assert.ok(TRACKS.includes(module.litigation_track), module.id);
     assert.ok(module.role, `${module.id}: legacy role must remain available through the API`);
+    assert.ok(module.stages.every(stage => DOCTRINAL_ROLES.includes(stage.doctrinal_role)),
+      `${module.id}: public stages must retain their doctrinal roles`);
   }
 
   const shield = await get('registry?posture=shield');
@@ -146,7 +154,7 @@ test('registry API exposes litigation catalogs and filters modules by posture an
     .filter(module => module.litigation_track === 'procedure')
     .map(module => module.id)
     .sort();
-  assert.deepEqual(expectedProcedure, ['ARBCH', 'NYC']);
+  assert.deepEqual(expectedProcedure, ['ARBCH', 'DISC', 'LPP', 'NYC']);
   assert.deepEqual(procedure.modules.map(module => module.id).sort(), expectedProcedure);
   assert.ok(procedure.modules.every(module => module.litigation_track === 'procedure'));
 });
@@ -168,11 +176,17 @@ test('doctrine taxonomy separates legacy content status from legal-test coverage
     'adverse-possession': 'corpus-only',
     'ny-convention': 'planned',
     'arbitrator-challenge': 'planned',
+    penalty: 'planned',
+    'negligent-misstatement': 'planned',
+    privilege: 'planned',
+    discovery: 'planned',
+    easements: 'corpus-only',
+    dmc: 'corpus-only',
   };
   for (const [id, legacyStatus] of Object.entries(legacyStatuses)) {
     const claim = claims.find(item => item.id === id);
     assert.equal(claim.status, legacyStatus, `${id}: legacy taxonomy status`);
-    assert.equal(claim.logic_status, 'full', `${id}: legal-test coverage`);
+    assert.equal(claim.logic_status, id === 'easements' ? 'partial' : 'full', `${id}: legal-test coverage`);
     assert.ok(claim.litigation_postures.length > 0, id);
     assert.ok(TRACKS.includes(claim.litigation_track), id);
   }
@@ -191,7 +205,7 @@ test('doctrine taxonomy separates legacy content status from legal-test coverage
   assert.equal(remoteness.litigation_note, contractRemoteness.litigation_note);
   assert.equal(remoteness.role_note, contractRemoteness.litigation_note);
   assert.deepEqual(remoteness.court_own_motion_summary, { stage_count: 0, stage_ids: [] });
-  for (const id of ['veil', 'ny-convention', 'arbitrator-challenge', 'exemption-reasonableness']) {
+  for (const id of ['veil', 'privilege', 'ny-convention', 'arbitrator-challenge', 'exemption-reasonableness']) {
     assert.equal(claims.find(claim => claim.id === id).coverage.corpus, 'none', `${id}: zero corpus hits`);
   }
   assert.equal(claims.find(claim => claim.id === 'proprietary-estoppel').coverage.corpus, 'indexed');
@@ -244,6 +258,20 @@ test('weights exist only inside multi-factor balancing stages', () => {
   }
 });
 
+test('disclosure keeps the continuing duty outside the court discretion', () => {
+  const disclosure = allModules.find(module => module.id === 'DISC');
+  const scope = disclosure.stages.find(stage => stage.id === 'DS-1');
+  const discretion = disclosure.stages.find(stage => stage.id === 'DS-2');
+  const continuing = disclosure.stages.find(stage => stage.id === 'DS-3');
+  const withholding = scope.factors.find(factor => factor.id === 'DS-withholding');
+  assert.equal(withholding.required, undefined);
+  assert.equal(withholding.role, 'exception');
+  assert.equal(discretion.factors.some(factor => factor.id === 'DS-continuing'), false);
+  assert.equal(continuing.test_type, 'conjunctive');
+  assert.equal(continuing.doctrinal_role, 'procedure-duty');
+  assert.deepEqual(continuing.jurisdiction_rules && Object.keys(continuing.jurisdiction_rules).sort(), ['EN', 'HK']);
+});
+
 test('logic profiles and hklandlaw coverage are separate structured metadata', () => {
   for (const module of REGISTRY.modules) {
     assert.ok(Array.isArray(module.logic_types) && module.logic_types.length > 0, module.id);
@@ -258,6 +286,7 @@ test('logic profiles and hklandlaw coverage are separate structured metadata', (
 
 test('registry and scored indexes agree on explicit weight applicability and status', async () => {
   const [registry, scored] = await Promise.all([get('registry'), get('scored')]);
+  assert.deepEqual(registry.doctrinal_role_catalog, scored.doctrinal_role_catalog);
   assert.deepEqual(Object.keys(registry.by_test_type), TYPES);
   assert.deepEqual(registry.by_test_type, registry.stage_counts_by_test_type);
   assert.match(registry.by_test_type_scope, /stages/);
@@ -280,12 +309,28 @@ test('registry and scored indexes agree on explicit weight applicability and sta
     assert.equal(stage.primary_posture, peer.primary_posture, id);
     assert.equal(stage.court_own_motion, peer.court_own_motion, id);
     assert.equal(stage.litigation_note, peer.litigation_note, id);
+    assert.equal(stage.doctrinal_role, peer.doctrinal_role, id);
+    assert.ok(DOCTRINAL_ROLES.includes(stage.doctrinal_role), `${id}: public doctrinal role`);
     if (!stage.weight_applicable) {
       assert.equal(stage.weight_status, 'not-applicable', id);
       assert.equal(stage.weight_provenance, null, id);
     } else if (stage.weight_status === 'assigned') {
       assert.equal(stage.weighted, true, id);
       assert.equal(stage.weight_provenance, 'doctrinal-tier', id);
+    }
+  }
+});
+
+test('MCP registry and scored lists expose the doctrinal-role catalogue and stage roles', async () => {
+  const [causes, scored] = await Promise.all([
+    mcp('list_causes_of_action', {}),
+    mcp('list_scored_tests', {}),
+  ]);
+  for (const index of [causes, scored]) {
+    assert.deepEqual(Object.keys(index.doctrinal_role_catalog).sort(), [...DOCTRINAL_ROLES].sort());
+    assert.ok(index.modules.length > 0);
+    for (const module of index.modules) {
+      assert.ok(module.stages.every(stage => DOCTRINAL_ROLES.includes(stage.doctrinal_role)), module.id);
     }
   }
 });

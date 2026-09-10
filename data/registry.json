@@ -1,6 +1,6 @@
 {
- "generated": "2026-09-09",
- "version": "0.4",
+ "generated": "2026-09-10",
+ "version": "0.5",
  "principle": "每个判断阶段先按 test_type 分类；只有多因素权衡使用数值份量区间。诉讼姿态（矛／盾）与事项轨道（实体／程序／管辖）分别记录，均不是法律要件。hklandlaw 计数只表示语料覆盖，不决定判断逻辑、权威等级或权重。",
  "test_types": {
   "conjunctive": {
@@ -81,6 +81,52 @@
    "zh": "管辖",
    "en": "Jurisdiction",
    "description": "处理法院能否及应否审理争议。"
+  }
+ },
+ "doctrinal_role_catalog": {
+  "claim-elements": {
+   "zh": "构成要件",
+   "en": "Claim elements"
+  },
+  "internal-test": {
+   "zh": "内部标准",
+   "en": "Internal test"
+  },
+  "defence": {
+   "zh": "抗辩",
+   "en": "Defence"
+  },
+  "remedy": {
+   "zh": "救济",
+   "en": "Remedy"
+  },
+  "rebuttal": {
+   "zh": "反驳",
+   "en": "Rebuttal"
+  },
+  "quantification": {
+   "zh": "量定",
+   "en": "Quantification"
+  },
+  "procedure-gateway": {
+   "zh": "程序门槛",
+   "en": "Procedure gateway"
+  },
+  "procedure-discretion": {
+   "zh": "程序裁量",
+   "en": "Procedure discretion"
+  },
+  "procedure-duty": {
+   "zh": "程序义务",
+   "en": "Procedure duty"
+  },
+  "jurisdiction-gateway": {
+   "zh": "管辖门槛",
+   "en": "Jurisdiction gateway"
+  },
+  "jurisdiction-override": {
+   "zh": "管辖覆盖规则",
+   "en": "Jurisdiction override"
   }
  },
  "source_catalog": {
@@ -166,6 +212,7 @@
        "evidence": null
       }
      ],
+     "doctrinal_role": "claim-elements",
      "litigation_postures": [
       "spear"
      ],
@@ -227,6 +274,7 @@
       }
      ],
      "weight_note": "档位由判词对相对份量的表述归纳,区间非点估计;经验权重须由判决结果回归得出。",
+     "doctrinal_role": "internal-test",
      "litigation_postures": [
       "spear"
      ],
@@ -288,6 +336,7 @@
        "weight_source": "doctrinal-tier"
       }
      ],
+     "doctrinal_role": "remedy",
      "litigation_postures": [
       "shield"
      ],
@@ -315,6 +364,379 @@
    "legal_kind": "cause-of-action",
    "role_confidence": "typical",
    "litigation_note": "违约通常作为请求或反请求提出；损害远隔性等内部争点可用于限制赔偿。",
+   "court_own_motion_summary": {
+    "stage_count": 0,
+    "stage_ids": []
+   }
+  },
+  {
+   "id": "PENALTY",
+   "area": "合同 Contract",
+   "zh": "违约金条款",
+   "en": "Penalty clauses",
+   "jurisdiction": "HK/EN",
+   "role": "shield",
+   "role_zh": "盾",
+   "top_type": "conjunctive",
+   "corpus_hits": 3,
+   "note": "罚则规则是执行抗辩，不是独立诉因。先确认条款因违约启动并课加从属不利益，再判断该不利益是否相对守约方履行利益显失比例；不以固定比例或数值权重代替法律判断。",
+   "jurisdiction_rules": {
+    "EN": "Cavendish 是控制性规则；在订约时评价。消费者不公平条款审查属于另一制度。",
+    "HK": "Law Ting Pong 明示采纳 Cavendish；主张罚则者负举证责任。"
+   },
+   "authorities": [
+    {
+     "case": "Cavendish Square Holding BV v Talal El Makdessi; ParkingEye Ltd v Beavis",
+     "cite": "[2015] UKSC 67; [2016] AC 1172",
+     "court": "UKSC",
+     "role": "主要／从属义务门槛；正当利益与显失比例测试",
+     "verified": "verified-primary",
+     "pin": "[9],[13]-[15],[31]-[35]",
+     "src": "https://supremecourt.uk/uploads/uksc_2013_0280_judgment_c7f37dda32.pdf"
+    },
+    {
+     "case": "Law Ting Pong Secondary School v Chen Wai Wah",
+     "cite": "[2021] HKCA 873; [2021] 3 HKLRD 185",
+     "court": "HKCA",
+     "role": "香港采纳 Cavendish；举证责任、适用门槛与比例分析",
+     "verified": "verified-primary",
+     "pin": "[2]-[6],[64],[69]-[75],[79]-[82]",
+     "src": "https://legalref.judiciary.hk/doc/judg/word/vetted/other/en/2019/CACV000517_2019.docx"
+    }
+   ],
+   "stages": [
+    {
+     "id": "PEN-1",
+     "zh": "适用门槛：违约后的从属义务",
+     "en": "Scope gateway — secondary obligation on breach",
+     "test_type": "conjunctive",
+     "rule": "主张该条款为罚则者须证明：条款因违反主要义务而启动，并课加一项从属性不利益。主要义务本身及非因违约发生的条件性付款不受罚则规则规制；分类看实质而非标签。",
+     "factors": [
+      {
+       "id": "PEN-breach-trigger",
+       "zh": "条款由违约触发",
+       "en": "Triggered by breach",
+       "evidence": "合同触发条文、所指主要义务及已发生的违约",
+       "required": true
+      },
+      {
+       "id": "PEN-secondary",
+       "zh": "属于违约后的从属义务而非主要义务",
+       "en": "Secondary rather than primary obligation",
+       "evidence": "整份合同、价款机制及违约后果",
+       "required": true
+      },
+      {
+       "id": "PEN-detriment",
+       "zh": "向违约方课加不利益",
+       "en": "Detriment imposed on the contract-breaker",
+       "evidence": "付款、没收、扣留价款、财产转移或其他后果",
+       "required": true
+      }
+     ],
+     "jurisdiction_rules": {
+      "EN": "按 Cavendish 在订约时检验主要／从属义务。",
+      "HK": "Law Ting Pong [69]-[71] 采纳同一门槛。"
+     },
+     "doctrinal_role": "defence",
+     "litigation_postures": [
+      "shield"
+     ],
+     "litigation_track": "merits",
+     "primary_posture": "shield",
+     "court_own_motion": false,
+     "litigation_note": "主张条款属于罚则的一方须先证明它是因违约启动并课加从属不利益。"
+    },
+    {
+     "id": "PEN-2",
+     "zh": "正当利益与显失比例",
+     "en": "Legitimate interest and disproportionality",
+     "test_type": "conjunctive",
+     "rule": "识别守约方在主要义务履行上的正当利益。只有所加不利益相对于任何该等利益均显失比例，达到 extravagant、exorbitant 或 unconscionable 的惩罚性质，才作为罚则不可执行。预期损失仍重要，但不是唯一可保护利益。",
+     "factors": [
+      {
+       "id": "PEN-interest",
+       "zh": "识别订约时可保护的正当履行利益",
+       "en": "Legitimate performance interest identified",
+       "evidence": "补偿、履行、商誉、周转或交易结构等订约时材料",
+       "required": true
+      },
+      {
+       "id": "PEN-proportionality",
+       "zh": "不利益相对任何正当利益显失比例",
+       "en": "Detriment out of all proportion to every legitimate interest",
+       "evidence": "金额、实际效果、预期损失、损失估算难度及商业背景",
+       "required": true,
+       "dispositive": true
+      }
+     ],
+     "jurisdiction_rules": {
+      "EN": "同等议价且获专业意见的成熟商业合同通常受到较强尊重，但不是不可推翻。",
+      "HK": "主张罚则者负举证责任；重点仍是正当利益与比例，而非机械适用 Dunlop 标签。"
+     },
+     "doctrinal_role": "defence",
+     "litigation_postures": [
+      "shield"
+     ],
+     "litigation_track": "merits",
+     "primary_posture": "shield",
+     "court_own_motion": false,
+     "litigation_note": "主张罚则的一方须证明不利益相对守约方在履行上的任何正当利益显失比例。"
+    }
+   ],
+   "logic_types": [
+    "conjunctive"
+   ],
+   "source_counts": {
+    "hklandlaw": 3
+   },
+   "litigation_postures": [
+    "shield"
+   ],
+   "litigation_track": "merits",
+   "primary_posture": "shield",
+   "legal_kind": "defence",
+   "role_confidence": "typical",
+   "litigation_note": "主张罚则的一方以该规则抵抗从属义务的执行；先判断规则是否适用，再判断不利益是否相对正当利益显失比例。",
+   "court_own_motion_summary": {
+    "stage_count": 0,
+    "stage_ids": []
+   }
+  },
+  {
+   "id": "NMS",
+   "area": "侵权 Tort",
+   "zh": "过失性失实陈述",
+   "en": "Negligent misstatement",
+   "jurisdiction": "HK/EN",
+   "role": "spear",
+   "role_zh": "矛",
+   "top_type": "conjunctive",
+   "corpus_hits": 1,
+   "note": "责任链分为注意义务、违反及损失三段。Hedley Byrne 的客观承担责任与合理信赖是本类别基础；在既有类别中不把 Caparo 三项再机械叠加为第二套固定要件。",
+   "jurisdiction_rules": {
+    "EN": "Hedley Byrne／Playboy Club 以客观承担责任为基础；Manchester Building Society 以义务目的界定可赔风险。",
+    "HK": "Desmond Yiu 以客观承担责任和合理信赖表述规则，并把实际信赖作为独立事实问题；Manchester 2021 的义务目的分析在此仅列为英格兰控制性发展及香港说服性参照。"
+   },
+   "authorities": [
+    {
+     "case": "Hedley Byrne & Co Ltd v Heller & Partners Ltd",
+     "cite": "[1963] UKHL 4; [1964] AC 465",
+     "court": "HL",
+     "role": "特殊关系、承担责任与免责声明",
+     "verified": "verified-primary",
+     "pin": "AC 486,492-493,502-503,529-533",
+     "src": "https://www.bailii.org/uk/cases/UKHL/1963/4.html"
+    },
+    {
+     "case": "Desmond Yiu Chown Leung v Chow Wai Lam William",
+     "cite": "[2005] HKCFA 68; (2005) 8 HKCFAR 592",
+     "court": "HKCFA",
+     "role": "香港约束性客观承担责任测试、义务范围与实际信赖",
+     "verified": "verified-primary",
+     "pin": "[7],[26]-[30]",
+     "src": "https://legalref.judiciary.hk/doc/judg/word/vetted/other/en/2004/FACV000018_2004.doc"
+    },
+    {
+     "case": "Banca Nazionale del Lavoro SpA v Playboy Club London Ltd",
+     "cite": "[2018] UKSC 43; [2018] 1 WLR 4041",
+     "court": "UKSC",
+     "role": "可识别收件人、已知交易与目的",
+     "verified": "verified-primary",
+     "pin": "[6]-[11],[16],[20]-[24]",
+     "src": "https://supremecourt.uk/uploads/uksc_2016_0121_judgment_837b810e47.pdf"
+    },
+    {
+     "case": "Manchester Building Society v Grant Thornton UK LLP",
+     "cite": "[2021] UKSC 20; [2022] AC 783",
+     "court": "UKSC",
+     "role": "可赔损失范围由义务目的客观界定",
+     "verified": "verified-primary",
+     "pin": "[4],[6],[13]-[15]",
+     "src": "https://supremecourt.uk/uploads/uksc_2019_0040_judgment_2b04c84658.pdf"
+    }
+   ],
+   "stages": [
+    {
+     "id": "NMS-1",
+     "zh": "注意义务：承担责任与合理信赖",
+     "en": "Duty — assumption of responsibility and reasonable reliance",
+     "test_type": "conjunctive",
+     "rule": "在无合同的情况下，若原告在合理情境中依赖被告提供的资料、意见或服务，而被告客观上承担该任务并知道或应知道该原告或可识别类别会为已知目的依赖，可产生对纯经济损失的注意义务；无须证明被告主观上有意承担。",
+     "factors": [
+      {
+       "id": "NMS-undertaking",
+       "zh": "被告客观承担提供资料、意见或服务的任务",
+       "en": "Objective undertaking or assumption of responsibility",
+       "evidence": null,
+       "required": true
+      },
+      {
+       "id": "NMS-recipient",
+       "zh": "原告属于已识别或可识别的人或类别",
+       "en": "Identifiable person or class",
+       "evidence": null,
+       "required": true
+      },
+      {
+       "id": "NMS-purpose",
+       "zh": "被告知悉具体交易或依赖目的",
+       "en": "Known transaction or purpose",
+       "evidence": null,
+       "required": true
+      },
+      {
+       "id": "NMS-knowledge",
+       "zh": "被告知道或应知道该依赖很可能发生",
+       "en": "Knowledge that reliance was likely",
+       "evidence": null,
+       "required": true
+      },
+      {
+       "id": "NMS-reasonable-reliance",
+       "zh": "该信赖在整体情境中合理",
+       "en": "Reliance objectively reasonable",
+       "evidence": null,
+       "required": true
+      },
+      {
+       "id": "NMS-disclaimer",
+       "zh": "有效免责声明是否客观否定承担责任",
+       "en": "Effective disclaimer may negate responsibility",
+       "evidence": null,
+       "note": "效力仍须接受适用的合同及法定控制，不能自动视为有效。",
+       "negates": true
+      }
+     ],
+     "doctrinal_role": "claim-elements",
+     "litigation_postures": [
+      "spear",
+      "shield"
+     ],
+     "litigation_track": "merits",
+     "primary_posture": "spear",
+     "court_own_motion": false,
+     "litigation_note": "原告须证明被告就已知目的向可识别收件人客观承担责任，且预期的信赖属合理。"
+    },
+    {
+     "id": "NMS-2",
+     "zh": "违反义务及任务范围",
+     "en": "Breach and scope of the task",
+     "test_type": "conjunctive",
+     "rule": "资料或意见须不准确、不完整或以其他方式误导，而且被告在准备或传达时未尽合理谨慎与技能；错误须落在被告客观承担的任务及已知使用目的内。",
+     "factors": [
+      {
+       "id": "NMS-inaccuracy",
+       "zh": "资料或意见不准确、不完整或误导",
+       "en": "Inaccurate, incomplete or misleading information or advice",
+       "evidence": null,
+       "required": true
+      },
+      {
+       "id": "NMS-standard",
+       "zh": "被告未尽合理谨慎与技能",
+       "en": "Failure to exercise reasonable care and skill",
+       "evidence": null,
+       "required": true
+      },
+      {
+       "id": "NMS-task-scope",
+       "zh": "错误落在被承担任务内",
+       "en": "Error within the task undertaken",
+       "evidence": null,
+       "required": true
+      },
+      {
+       "id": "NMS-use-scope",
+       "zh": "原告按被告知悉的目的使用陈述",
+       "en": "Use for the known purpose or transaction",
+       "evidence": null,
+       "required": true
+      }
+     ],
+     "doctrinal_role": "claim-elements",
+     "litigation_postures": [
+      "spear",
+      "shield"
+     ],
+     "litigation_track": "merits",
+     "primary_posture": "spear",
+     "court_own_motion": false,
+     "litigation_note": "原告须证明资料或意见有误并且被告未尽合理谨慎与技能；被告可否认错误或违反标准。"
+    },
+    {
+     "id": "NMS-3",
+     "zh": "实际信赖、因果关系与可赔损失",
+     "en": "Actual reliance, causation and recoverable loss",
+     "test_type": "conjunctive",
+     "rule": "原告须实际依赖，并证明违反义务事实上造成可诉损失；可赔范围还须对应义务旨在防范的风险，并受法律因果关系、遥远性、减损及共同过失等一般限制。",
+     "factors": [
+      {
+       "id": "NMS-actual-reliance",
+       "zh": "原告实际依赖该陈述或意见",
+       "en": "Actual reliance",
+       "evidence": null,
+       "required": true
+      },
+      {
+       "id": "NMS-factual-cause",
+       "zh": "若无该过失陈述，损失不会发生",
+       "en": "Factual causation",
+       "evidence": null,
+       "required": true
+      },
+      {
+       "id": "NMS-actionable-loss",
+       "zh": "发生可诉损失，包括适用时的纯经济损失",
+       "en": "Actionable loss, including pure economic loss where recoverable",
+       "evidence": null,
+       "required": true
+      },
+      {
+       "id": "NMS-duty-risk",
+       "zh": "损失属于该义务目的所防范的风险",
+       "en": "Loss within the purpose and scope of duty",
+       "evidence": null,
+       "required": true
+      },
+      {
+       "id": "NMS-remoteness",
+       "zh": "通过遥远性及其他损害限制",
+       "en": "Remoteness and other limits",
+       "evidence": null,
+       "required": true
+      }
+     ],
+     "jurisdiction_rules": {
+      "EN": "Manchester Building Society 是义务范围的控制性说明。",
+      "HK": "本地现有锚点为 Desmond Yiu；Manchester 的精确适用仍应核对其后香港约束性权威。"
+     },
+     "doctrinal_role": "claim-elements",
+     "litigation_postures": [
+      "spear",
+      "shield"
+     ],
+     "litigation_track": "merits",
+     "primary_posture": "spear",
+     "court_own_motion": false,
+     "litigation_note": "原告须证明实际信赖、事实因果关系、可诉损失及义务目的所涵盖的风险。"
+    }
+   ],
+   "logic_types": [
+    "conjunctive"
+   ],
+   "source_counts": {
+    "hklandlaw": 1
+   },
+   "litigation_postures": [
+    "spear",
+    "shield"
+   ],
+   "litigation_track": "merits",
+   "primary_posture": "spear",
+   "legal_kind": "cause-of-action",
+   "role_confidence": "typical",
+   "litigation_note": "原告以承担责任、违反义务、实际信赖、因果关系及损失提出请求；被告可逐项否认责任链或援引有效免责声明。",
    "court_own_motion_summary": {
     "stage_count": 0,
     "stage_ids": []
@@ -382,6 +804,7 @@
        "evidence": null
       }
      ],
+     "doctrinal_role": "claim-elements",
      "litigation_postures": [
       "shield",
       "spear"
@@ -454,6 +877,7 @@
        "weight_source": "doctrinal-tier"
       }
      ],
+     "doctrinal_role": "internal-test",
      "litigation_postures": [
       "shield",
       "spear"
@@ -485,6 +909,7 @@
        "evidence": null
       }
      ],
+     "doctrinal_role": "remedy",
      "litigation_postures": [
       "spear",
       "shield"
@@ -572,6 +997,7 @@
        "evidence": null
       }
      ],
+     "doctrinal_role": "claim-elements",
      "litigation_postures": [
       "spear",
       "shield"
@@ -666,6 +1092,7 @@
        "weight_source": "doctrinal-tier"
       }
      ],
+     "doctrinal_role": "quantification",
      "litigation_postures": [
       "spear",
       "shield"
@@ -753,6 +1180,7 @@
        "evidence": null
       }
      ],
+     "doctrinal_role": "claim-elements",
      "litigation_postures": [
       "spear",
       "shield"
@@ -814,6 +1242,7 @@
        "weight_source": "doctrinal-tier"
       }
      ],
+     "doctrinal_role": "rebuttal",
      "litigation_postures": [
       "shield",
       "spear"
@@ -915,6 +1344,7 @@
        "evidence": null
       }
      ],
+     "doctrinal_role": "claim-elements",
      "litigation_postures": [
       "spear",
       "shield"
@@ -987,6 +1417,7 @@
        "weight_source": "doctrinal-tier"
       }
      ],
+     "doctrinal_role": "internal-test",
      "litigation_postures": [
       "spear",
       "shield"
@@ -1463,6 +1894,7 @@
      ],
      "weight_source": "doctrinal-tier",
      "weight_note": "档位由判词对相对份量的表述归纳,区间非点估计;经验权重须由判决结果回归得出。",
+     "doctrinal_role": "defence",
      "litigation_postures": [
       "shield"
      ],
@@ -1539,6 +1971,7 @@
        "evidence": null
       }
      ],
+     "doctrinal_role": "claim-elements",
      "litigation_postures": [
       "shield",
       "spear"
@@ -1568,6 +2001,7 @@
        "evidence": null
       }
      ],
+     "doctrinal_role": "claim-elements",
      "litigation_postures": [
       "shield",
       "spear"
@@ -1629,6 +2063,7 @@
        "weight_source": "doctrinal-tier"
       }
      ],
+     "doctrinal_role": "rebuttal",
      "litigation_postures": [
       "shield",
       "spear"
@@ -1719,6 +2154,7 @@
        "evidence": null
       }
      ],
+     "doctrinal_role": "internal-test",
      "litigation_postures": [
       "spear",
       "shield"
@@ -1781,6 +2217,7 @@
        "weight_source": "doctrinal-tier"
       }
      ],
+     "doctrinal_role": "internal-test",
      "litigation_postures": [
       "spear",
       "shield"
@@ -1964,6 +2401,7 @@
        "evidence": null
       }
      ],
+     "doctrinal_role": "defence",
      "litigation_postures": [
       "shield"
      ],
@@ -1992,6 +2430,7 @@
        "evidence": null
       }
      ],
+     "doctrinal_role": "procedure-gateway",
      "litigation_postures": [],
      "litigation_track": "procedure",
      "primary_posture": null,
@@ -2018,6 +2457,7 @@
        "evidence": null
       }
      ],
+     "doctrinal_role": "procedure-discretion",
      "litigation_postures": [
       "shield"
      ],
@@ -2213,6 +2653,7 @@
        "note": "该领域惯常做法通常是减弱因素,而非加强。"
       }
      ],
+     "doctrinal_role": "procedure-gateway",
      "litigation_postures": [
       "spear"
      ],
@@ -2355,6 +2796,7 @@
       }
      ],
      "weight_note": "档位由判词对相对份量的表述归纳,区间非点估计;经验权重须由判决结果回归得出。",
+     "doctrinal_role": "internal-test",
      "litigation_postures": [
       "spear",
       "shield"
@@ -2441,6 +2883,7 @@
        "evidence": null
       }
      ],
+     "doctrinal_role": "internal-test",
      "litigation_postures": [
       "spear"
      ],
@@ -2463,6 +2906,7 @@
        "evidence": null
       }
      ],
+     "doctrinal_role": "internal-test",
      "litigation_postures": [
       "spear"
      ],
@@ -2487,6 +2931,1096 @@
    "legal_kind": "supporting-doctrine",
    "role_confidence": "typical",
    "litigation_note": "揭开公司面纱依附于既存义务或责任，是极有限的归责原则，并非独立诉因。",
+   "court_own_motion_summary": {
+    "stage_count": 0,
+    "stage_ids": []
+   }
+  },
+  {
+   "id": "LPP",
+   "area": "程序与证据 Procedure & Evidence",
+   "zh": "法律专业特权",
+   "en": "Legal professional privilege",
+   "jurisdiction": "HK/EN",
+   "role": "shield",
+   "role_zh": "盾",
+   "top_type": "conjunctive+disjunctive-gateway",
+   "corpus_hits": 0,
+   "note": "先过共同保密和举证门槛，再由法律意见特权或诉讼特权任一分支成立，最后独立检查放弃、欺诈／不法目的、保密性丧失或明确法定限制。各分支均为法律清单，不赋数值权重。Without-prejudice privilege 是另一制度，未混入本模块。",
+   "jurisdiction_rules": {
+    "HK": "Citic Pacific 不采 Three Rivers (No 5) 的狭窄公司 client group；获授权雇员为取得法律意见而参与的沟通过程可受保护，但仍须逐件证明主导目的。Akai 控制诉讼特权的现实诉讼前景及主导目的。",
+    "EN": "Three Rivers (No 5) 的狭窄 client group 规则仍约束上诉法院；ENRC 明言认为该规则有疑问但无权推翻。Aabar 2026 仅为高院层面对已确定客户组内部文件的更新。"
+   },
+   "authorities": [
+    {
+     "case": "Citic Pacific Ltd v Secretary for Justice and Commissioner of Police",
+     "cite": "[2015] HKCA 293; [2015] 4 HKLRD 20",
+     "court": "HKCA",
+     "role": "香港法律意见特权、主导目的、既有原始文件及公司客户范围",
+     "verified": "verified-primary",
+     "pin": "[2],[34]-[36],[42]-[50],[52]-[63]",
+     "src": "https://legalref.judiciary.hk/doc/judg/word/vetted/other/en/2012/CACV000007_2012.doc"
+    },
+    {
+     "case": "Akai Holdings Ltd (in Compulsory Liquidation) v Ernst & Young (A Hong Kong Firm)",
+     "cite": "[2009] HKCFA 14; (2009) 12 HKCFAR 649",
+     "court": "HKCFA",
+     "role": "现实诉讼前景、主导目的及调查性取材与对抗性目标诉讼",
+     "verified": "verified-primary",
+     "pin": "[67]-[72],[76]-[77],[99]-[102],[117]-[123]",
+     "src": "https://legalref.judiciary.hk/doc/judg/word/vetted/other/en/2008/FACV000028_2008.doc"
+    },
+    {
+     "case": "Director of the Serious Fraud Office v Eurasian Natural Resources Corp Ltd",
+     "cite": "[2018] EWCA Civ 2006; [2019] 1 WLR 791",
+     "court": "EWCA",
+     "role": "英国两类特权、合理预期诉讼与主导目的；Three Rivers 窄客户规则仍具约束力",
+     "verified": "verified-primary",
+     "pin": "[64]-[66],[91]-[102],[121]-[133]",
+     "src": "https://caselaw.nationalarchives.gov.uk/ewca/civ/2018/2006"
+    },
+    {
+     "case": "Aabar Holdings SARL v Glencore plc",
+     "cite": "[2026] EWHC 877 (Comm); [2026] WLR(D) 233",
+     "court": "EWHC (Comm)",
+     "role": "既定客户组内部材料以寻求法律意见为主导目的时的高院更新",
+     "verified": "verified-primary",
+     "pin": "[16],[46],[51],[62]-[75]",
+     "src": "https://www.judiciary.uk/wp-content/uploads/2026/04/FL-2022-000024-Judgment-Final.pdf"
+    }
+   ],
+   "stages": [
+    {
+     "id": "LPP-1",
+     "zh": "共同门槛：保密、权利人及具体证明",
+     "en": "Common gateway — confidentiality, holder and proof",
+     "test_type": "conjunctive",
+     "rule": "主张者负举证责任，须识别具体通信或材料，证明其保密性及主张特权的资格，并以材料形成时的客观事实和具体证据支持法律意见或诉讼分支。标签、把律师抄送在内或事后把既有文件交给律师均不充分。",
+     "factors": [
+      {
+       "id": "LPP-confidential",
+       "zh": "材料具有并维持保密性",
+       "en": "Material is confidential",
+       "evidence": "收件人、传播范围、保密标示与实际处理",
+       "required": true
+      },
+      {
+       "id": "LPP-holder",
+       "zh": "特权属于该客户且由其或获授权者主张",
+       "en": "Privilege belongs to the client and is properly asserted",
+       "evidence": null,
+       "required": true
+      },
+      {
+       "id": "LPP-proof",
+       "zh": "有具体、同期及客观证据证明形成目的",
+       "en": "Specific contemporaneous and objective proof",
+       "evidence": "形成日期、作者、收件人、委聘范围、同期邮件及具体誓章",
+       "required": true
+      },
+      {
+       "id": "LPP-material-identity",
+       "zh": "已区分既有原始文件与为受保护目的形成的新通信或材料",
+       "en": "Pre-existing raw material distinguished from newly privileged communications",
+       "evidence": null,
+       "role": "scope-check"
+      }
+     ],
+     "doctrinal_role": "procedure-gateway",
+     "litigation_postures": [
+      "shield",
+      "spear"
+     ],
+     "litigation_track": "procedure",
+     "primary_posture": "shield",
+     "court_own_motion": false,
+     "litigation_note": "权利人须以具体证据证明保密性、主张资格及材料形成目的；请求查阅者可逐项挑战。"
+    },
+    {
+     "id": "LPP-2",
+     "zh": "法律意见特权",
+     "en": "Legal advice privilege",
+     "test_type": "conjunctive",
+     "rule": "须为保密的律师—客户通信，或依适用法域可纳入的客户内部材料，其唯一或主导目的为寻求、给予、记录、传达或落实法律意见。法律意见可涵盖在相关法律情境中应审慎合理采取的行动；主要为商业或行政意见不会因律师参与而受保护。",
+     "factors": [
+      {
+       "id": "LAP-lawyer-capacity",
+       "zh": "法律顾问以专业法律身份参与",
+       "en": "Lawyer acting in a legal capacity",
+       "evidence": null,
+       "required": true
+      },
+      {
+       "id": "LAP-client-channel",
+       "zh": "属于适用法域认可的客户沟通渠道",
+       "en": "Recognised client communication channel",
+       "evidence": null,
+       "required": true
+      },
+      {
+       "id": "LAP-dominant-purpose",
+       "zh": "唯一或主导目的为取得或给予法律意见",
+       "en": "Sole or dominant legal-advice purpose",
+       "evidence": null,
+       "required": true
+      },
+      {
+       "id": "LAP-legal-context",
+       "zh": "内容属于广义法律意见或其传达落实",
+       "en": "Advice in a relevant legal context or its communication and implementation",
+       "evidence": null,
+       "required": true
+      },
+      {
+       "id": "LAP-mixed-purpose",
+       "zh": "如材料具有混合目的，已经逐件或逐通信判断",
+       "en": "Mixed-purpose material assessed document by document where applicable",
+       "evidence": null,
+       "role": "conditional-check"
+      }
+     ],
+     "jurisdiction_rules": {
+      "HK": "公司本身为客户；依 Citic Pacific，获授权雇员在以取得法律意见为主导目的的过程中的通信可受保护。",
+      "EN": "须先按 Three Rivers (No 5) 识别获授权寻求和接收法律意见的 client group；Aabar 2026 仅说明该组内部材料的主导目的分析，且只是高院判决。"
+     },
+     "doctrinal_role": "procedure-gateway",
+     "litigation_postures": [
+      "shield",
+      "spear"
+     ],
+     "litigation_track": "procedure",
+     "primary_posture": "shield",
+     "court_own_motion": false,
+     "litigation_note": "主张法律意见特权的一方须证明适用法域认可的律师客户沟通与法律意见目的。"
+    },
+    {
+     "id": "LPP-3",
+     "zh": "诉讼特权",
+     "en": "Litigation privilege",
+     "test_type": "conjunctive",
+     "rule": "材料形成时，目标诉讼须已进行或被合理预期并属对抗性；受保护通信或材料的唯一或主导目的须为就该诉讼取得或给予法律意见、搜集证据或进行诉讼，包括抵抗、避免或和解现实预期的程序。一般合规、业务补救或抽象风险本身不足。",
+     "factors": [
+      {
+       "id": "LIT-prospect",
+       "zh": "诉讼已进行或有现实且合理的前景",
+       "en": "Litigation in progress or reasonably contemplated",
+       "evidence": null,
+       "required": true
+      },
+      {
+       "id": "LIT-adversarial",
+       "zh": "目标程序具有对抗性",
+       "en": "Target proceedings are adversarial",
+       "evidence": null,
+       "required": true
+      },
+      {
+       "id": "LIT-material",
+       "zh": "属于客户、律师或第三方通信，或为诉讼形成的取证材料",
+       "en": "Protected communication or evidential material",
+       "evidence": null,
+       "required": true
+      },
+      {
+       "id": "LIT-dominant-purpose",
+       "zh": "形成时唯一或主导目的为进行该诉讼",
+       "en": "Sole or dominant litigation purpose at creation",
+       "evidence": null,
+       "required": true
+      },
+      {
+       "id": "LIT-conduct",
+       "zh": "目的属于取证、法律意见、抵抗、避免或和解诉讼",
+       "en": "Evidence, advice, resistance, avoidance or settlement",
+       "evidence": null,
+       "required": true
+      }
+     ],
+     "jurisdiction_rules": {
+      "HK": "Akai 要求积极考虑且具有现实前景；取材机制本身即使调查或纠问，也不自动排除材料服务于另一对抗性诉讼。",
+      "EN": "ENRC 要求现实可能而非抽象可能；避免或和解预期程序也可属于进行诉讼。"
+     },
+     "doctrinal_role": "procedure-gateway",
+     "litigation_postures": [
+      "shield",
+      "spear"
+     ],
+     "litigation_track": "procedure",
+     "primary_posture": "shield",
+     "court_own_motion": false,
+     "litigation_note": "主张诉讼特权的一方须证明现实预期的对抗性诉讼及主导诉讼目的。"
+    },
+    {
+     "id": "LPP-4",
+     "zh": "丧失、不适用与明确限制",
+     "en": "Loss, exceptions and express limits",
+     "test_type": "disjunctive-gateway",
+     "rule": "即使某分支初步成立，请求查阅者仍可证明一项适用的丧失或排除理由。每项理由须按法域分别证明；披露迟延或一般公平诉求本身不够。",
+     "factors": [
+      {
+       "id": "LPP-waiver",
+       "zh": "权利人明示或默示放弃相关特权及其适当范围",
+       "en": "Express or implied waiver and its proper scope",
+       "evidence": "自愿披露、依赖材料、共同公平及有限放弃范围"
+      },
+      {
+       "id": "LPP-iniquity",
+       "zh": "通信服务于欺诈、不法或滥用法律咨询关系的目的",
+       "en": "Fraud, iniquity or abuse exception",
+       "evidence": "通信目的而非仅指称既往不法"
+      },
+      {
+       "id": "LPP-confidentiality-lost",
+       "zh": "保密性已经丧失且法律不再保护",
+       "en": "Confidentiality lost so protection no longer subsists",
+       "evidence": "传播对象、授权、公开程度及补救步骤"
+      },
+      {
+       "id": "LPP-statutory-limit",
+       "zh": "成文法以足够明确用语废除或限制特权",
+       "en": "Statute clearly abrogates or limits privilege",
+       "evidence": "条文文字、适用范围及保留条款"
+      }
+     ],
+     "jurisdiction_rules": {
+      "HK": "放弃、欺诈／不法目的及法定限制必须按香港权威和具体事实分别核验；本阶段不把任一标签自动当作成立。",
+      "EN": "同样须逐项适用英格兰现行规则；common-interest privilege 属另一扩展问题，并非本阶段的丧失理由。"
+     },
+     "doctrinal_role": "rebuttal",
+     "litigation_postures": [
+      "spear",
+      "shield"
+     ],
+     "litigation_track": "procedure",
+     "primary_posture": "spear",
+     "court_own_motion": false,
+     "litigation_note": "请求查阅者可证明放弃、欺诈或不法目的、保密性丧失或明确法定排除；权利人可否认该限制。"
+    }
+   ],
+   "logic_types": [
+    "conjunctive",
+    "disjunctive-gateway"
+   ],
+   "source_counts": {
+    "hklandlaw": 0
+   },
+   "litigation_postures": [
+    "shield",
+    "spear"
+   ],
+   "litigation_track": "procedure",
+   "primary_posture": "shield",
+   "legal_kind": "procedural-protection",
+   "role_confidence": "contextual",
+   "litigation_note": "权利人通常以特权抵抗披露；请求查阅的一方可主动挑战共同门槛、具体分支或主张特权已经丧失／不适用。",
+   "court_own_motion_summary": {
+    "stage_count": 0,
+    "stage_ids": []
+   }
+  },
+  {
+   "id": "DISC",
+   "area": "程序与证据 Procedure & Evidence",
+   "zh": "文件披露范围",
+   "en": "Scope of disclosure",
+   "jurisdiction": "HK/EN",
+   "role": "procedure",
+   "role_zh": "程序",
+   "top_type": "conjunctive+threshold-discretion",
+   "corpus_hits": 1,
+   "note": "香港与英格兰的范围规则必须分支处理。香港 O.24 保留较宽的直接、间接及调查线索相关性，但具体披露仍须与已诉辩争点相连并受公正、成本和比例限制；英格兰普通 CPR 31.6 与 Business and Property Courts 的 PD57AD 不能混用。特权、诉前披露及非当事人披露另按各自门槛处理。",
+   "jurisdiction_rules": {
+    "HK": "RHC O.24 以直接、间接及合理调查线索相关性为起点；具体披露须就已诉辩争点必要，并受 O.1A、rr.8、13、15A 的公正、成本及比例限制。",
+    "EN": "CPR 31.6 标准披露涵盖己方依赖、对己方或他方不利、或支持他方案件的文件；Business and Property Courts 依 PD57AD 按争点选择 Models A–E，Model E 的调查线索搜索只属例外。"
+   },
+   "authorities": [
+    {
+     "case": "Rules of the High Court, Order 24",
+     "cite": "Cap 4A, O.24 rr.1,3,7,8,13,15A",
+     "court": "HK subsidiary legislation",
+     "role": "香港文件披露、具体披露、搜索、拒绝披露与持续义务",
+     "verified": "verified-primary",
+     "pin": "O.24 rr.1,3,7,8,13,15A",
+     "src": "https://www.civiljustice.hk/gaz_sub_leg/documents/rhc/RHC_Order_24.pdf"
+    },
+    {
+     "case": "Tullett Prebon (Hong Kong) Ltd v Chan Yeung Fong Nick",
+     "cite": "HCA 2197/2009; [2011] HKEC 761",
+     "court": "HKCFI",
+     "role": "相关性、具体披露与比例限制",
+     "verified": "verified-web",
+     "pin": "[10]-[19],[64]-[85]",
+     "src": "https://vlex.hk/vid/tullett-prebon-hong-kong-862792558"
+    },
+    {
+     "case": "Civil Procedure Rules Part 31",
+     "cite": "CPR rr.31.5-31.12A",
+     "court": "E&W rules",
+     "role": "英格兰标准披露、控制、合理搜索、清单及持续义务",
+     "verified": "verified-primary",
+     "pin": "rr.31.5-31.12A",
+     "src": "https://www.justice.gov.uk/courts/procedure-rules/civil/rules/part31"
+    },
+    {
+     "case": "Practice Direction 57AD",
+     "cite": "PD57AD paras 1,3,6-10",
+     "court": "E&W practice direction",
+     "role": "Business and Property Courts 的按争点披露 Models A-E",
+     "verified": "verified-primary",
+     "pin": "paras 1,3,6-10",
+     "src": "https://www.justice.gov.uk/courts/procedure-rules/civil/rules/part-57a-business-and-property-courts/practice-direction-57ad-disclosure-in-the-business-and-property-courts"
+    }
+   ],
+   "stages": [
+    {
+     "id": "DS-1",
+     "zh": "范围与控制门槛",
+     "en": "Scope and control gateway",
+     "test_type": "conjunctive",
+     "rule": "须先确定适用制度及当前争点；被请求的文件或自然类别须存在、落入该制度的披露范围，并在被申请人的管有、保管或权力（香港）或控制（英格兰）内。任何拒绝披露理由须按适用程序明确提出。",
+     "factors": [
+      {
+       "id": "DS-regime",
+       "zh": "已确定适用法域、规则及披露模式",
+       "en": "Applicable jurisdiction, rule and disclosure model identified",
+       "evidence": null,
+       "required": true
+      },
+      {
+       "id": "DS-live-issue",
+       "zh": "文件对应当前诉辩争点或 Issues for Disclosure",
+       "en": "Connected to a live pleaded issue or Issue for Disclosure",
+       "evidence": null,
+       "required": true
+      },
+      {
+       "id": "DS-document",
+       "zh": "文件或按性质界定的自然类别存在",
+       "en": "Document or naturally defined class exists",
+       "evidence": null,
+       "required": true
+      },
+      {
+       "id": "DS-relevance",
+       "zh": "达到适用法域的内容或调查线索门槛",
+       "en": "Applicable content or train-of-inquiry threshold met",
+       "evidence": null,
+       "required": true
+      },
+      {
+       "id": "DS-control",
+       "zh": "属于管有、保管、权力或控制范围",
+       "en": "Within possession, custody, power or control",
+       "evidence": null,
+       "required": true
+      },
+      {
+       "id": "DS-withholding",
+       "zh": "如主张拒绝披露，已识别并依规则提出特权或其他理由",
+       "en": "Any privilege or other withholding ground identified and claimed where applicable",
+       "evidence": null,
+       "note": "只有实际主张拒绝披露时才适用；不存在拒绝理由不是要件缺口。",
+       "role": "exception"
+      }
+     ],
+     "jurisdiction_rules": {
+      "HK": "具体披露申请还须以证据支持文件存在及管有、保管或权力；不得仅作 fishing。",
+      "EN": "先区分 CPR 31 普通制度、法院特别命令及 PD57AD Models A-E。"
+     },
+     "doctrinal_role": "procedure-gateway",
+     "litigation_postures": [
+      "spear",
+      "shield"
+     ],
+     "litigation_track": "procedure",
+     "primary_posture": null,
+     "court_own_motion": false,
+     "litigation_note": "请求方提出范围及控制基础；被请求方可否认相关性、存在、控制或正式主张拒绝披露理由。"
+    },
+    {
+     "id": "DS-2",
+     "zh": "具体披露、搜索与限缩",
+     "en": "Specific disclosure, search and tailoring",
+     "test_type": "threshold-discretion",
+     "rule": "只有额外披露或搜索为公正处理争议而合理必要时才进入命令裁量。法院可按争点、期间、保管人、资料源、格式及搜索方法限缩，兼顾证明价值、成本、压迫性、替代来源、特权与保护措施。",
+     "factors": [
+      {
+       "id": "DS-necessity",
+       "zh": "额外披露或搜索为公正处理当前争点而合理必要",
+       "en": "Additional disclosure or search is reasonably necessary for fair disposal",
+       "evidence": null,
+       "gate": true
+      },
+      {
+       "id": "DS-specificity",
+       "zh": "文件或类别按性质具体界定",
+       "en": "Specificity of the document or class",
+       "evidence": "文件类别、期间、保管人及资料源",
+       "role": "discretion"
+      },
+      {
+       "id": "DS-yield",
+       "zh": "预期证明价值及争点重要性",
+       "en": "Expected probative yield and importance",
+       "evidence": null,
+       "role": "discretion"
+      },
+      {
+       "id": "DS-burden",
+       "zh": "数量、复杂程度、成本及人力负担",
+       "en": "Volume, complexity, cost and effort",
+       "evidence": null,
+       "role": "discretion"
+      },
+      {
+       "id": "DS-access",
+       "zh": "检索难度及替代来源",
+       "en": "Retrieval difficulty and alternative sources",
+       "evidence": null,
+       "role": "discretion"
+      },
+      {
+       "id": "DS-search-design",
+       "zh": "期间、保管人、资料库、格式及搜索方法",
+       "en": "Search design and limits",
+       "evidence": null,
+       "role": "discretion"
+      },
+      {
+       "id": "DS-protection",
+       "zh": "特权、保密、删节、保密圈或分阶段披露",
+       "en": "Privilege, confidentiality and protective measures",
+       "evidence": null,
+       "role": "discretion"
+      }
+     ],
+     "jurisdiction_rules": {
+      "HK": "适用 O.1A 与 O.24 rr.8、13、15A 的必要性和比例控制。",
+      "EN": "适用 CPR 31.5/31.7 或 PD57AD 所选 Model；Model E 仅在例外案件使用。"
+     },
+     "doctrinal_role": "procedure-discretion",
+     "litigation_postures": [
+      "spear",
+      "shield"
+     ],
+     "litigation_track": "procedure",
+     "primary_posture": null,
+     "court_own_motion": false,
+     "litigation_note": "申请方说明额外披露的必要性；双方就范围、成本及保护措施提出意见，由法院裁量。"
+    },
+    {
+     "id": "DS-3",
+     "zh": "持续披露义务",
+     "en": "Continuing duty of disclosure",
+     "test_type": "conjunctive",
+     "rule": "披露义务持续至程序终结。已经作出披露后，如发现应披露的新文件或先前遗漏，负有义务的一方须及时通知其他方，并依适用规则补充清单、披露或查阅安排；这是一项持续义务，不是法院权衡中的可选因素。",
+     "factors": [
+      {
+       "id": "DS-continuing",
+       "zh": "适用的披露义务持续至程序终结",
+       "en": "Applicable disclosure duty continues until the proceedings conclude",
+       "evidence": null,
+       "required": true
+      },
+      {
+       "id": "DS-supplement",
+       "zh": "如发现新文件或遗漏，已及时通知并补充披露",
+       "en": "Newly discovered or omitted documents are promptly notified and disclosed where applicable",
+       "evidence": null,
+       "note": "只有发现落入适用披露范围的新文件或遗漏时，补充行动才被触发。",
+       "required": true,
+       "role": "conditional-check"
+      }
+     ],
+     "applies_when": {
+      "stage_id": "DS-1",
+      "factor_ids": [
+       "DS-relevance",
+       "DS-control"
+      ]
+     },
+     "jurisdiction_rules": {
+      "HK": "RHC O.24 r.13 规定持续披露义务。",
+      "EN": "CPR 31.11 规定持续披露义务；PD57AD 案件另依其持续义务条文核对。"
+     },
+     "doctrinal_role": "procedure-duty",
+     "litigation_postures": [
+      "spear",
+      "shield"
+     ],
+     "litigation_track": "procedure",
+     "primary_posture": null,
+     "court_own_motion": false,
+     "litigation_note": "负有披露义务的一方须持续复核，并在发现应披露的新文件或遗漏时及时通知及补充。"
+    }
+   ],
+   "logic_types": [
+    "conjunctive",
+    "threshold-discretion"
+   ],
+   "source_counts": {
+    "hklandlaw": 1
+   },
+   "litigation_postures": [
+    "spear",
+    "shield"
+   ],
+   "litigation_track": "procedure",
+   "primary_posture": null,
+   "legal_kind": "procedural-doctrine",
+   "role_confidence": "contextual",
+   "litigation_note": "一方可主动请求披露或具体披露，另一方可否认范围、控制或必要性并请求限缩和保护。",
+   "court_own_motion_summary": {
+    "stage_count": 0,
+    "stage_ids": []
+   }
+  },
+  {
+   "id": "EASE",
+   "area": "土地 Land",
+   "zh": "地役权",
+   "en": "Easements",
+   "jurisdiction": "HK/EN",
+   "role": "spear",
+   "role_zh": "矛",
+   "top_type": "conjunctive+disjunctive-gateway",
+   "corpus_hits": 63,
+   "note": "先判断所主张权利能否成为地役权，再分别选择明示、默示或时效取得路径。香港多层大厦共同业主间的使用权可能由公契创设，不能未经文书与 Cap 344 分析直接当作普通法地役权。范围、过度使用、消灭、登记及优先权须在具体案件另行核对。",
+   "jurisdiction_rules": {
+    "HK": "资格结构承接普通法；取得可经明示、默示或时效。香港时效取得主要采用 lost modern grant，并不直接适用英国 Prescription Act 1832。",
+    "EN": "适用 Ellenborough 四项资格要求及 Regency Villas 的现代解释；明示、默示和传统三种时效路径须分别分析。"
+   },
+   "authorities": [
+    {
+     "case": "Re Ellenborough Park",
+     "cite": "[1955] EWCA Civ 4; [1956] Ch 131",
+     "court": "EWCA",
+     "role": "地役权四项资格要求",
+     "verified": "verified-primary",
+     "pin": "pp 163-164",
+     "src": "https://www.bailii.org/ew/cases/EWCA/Civ/1955/4.html"
+    },
+    {
+     "case": "Regency Villas Title Ltd v Diamond Resorts (Europe) Ltd",
+     "cite": "[2018] UKSC 57",
+     "court": "UKSC",
+     "role": "现代解释、便利需役地与可授予权利边界",
+     "verified": "verified-primary",
+     "pin": "[39]-[81]",
+     "src": "https://www.supremecourt.uk/cases/uksc-2017-0083"
+    },
+    {
+     "case": "China Field Ltd v Appeal Tribunal (Buildings) (No 2)",
+     "cite": "(2009) 12 HKCFAR 342",
+     "court": "HKCFA",
+     "role": "香港普通法地役权及建筑物语境",
+     "verified": "verified-web",
+     "pin": "[41]-[48],[71],[73]-[87]",
+     "src": "https://babelcite.com/case/68220"
+    },
+    {
+     "case": "Loyal Luck Trading Ltd v Tam Chun Wah",
+     "cite": "[2008] 4 HKLRD 681",
+     "court": "HKCA",
+     "role": "CPO s.16、Wheeldon 与通道默示取得",
+     "verified": "verified-web",
+     "src": "https://babelcite.com/case/60637"
+    }
+   ],
+   "stages": [
+    {
+     "id": "EA-1",
+     "zh": "地役权资格",
+     "en": "Easement characteristics",
+     "test_type": "conjunctive",
+     "rule": "须有可识别的需役地与供役地；权利客观上便利需役地的正常使用或享用；两地所有及占用并非完全统一；权利内容须足够确定、合法且能够成为授予标的，不实质排除供役地主的占有，也不要求其持续支出或提供服务。",
+     "factors": [
+      {
+       "id": "EA-tenements",
+       "zh": "存在可识别的需役地与供役地",
+       "en": "Identifiable dominant and servient tenements",
+       "evidence": null,
+       "required": true
+      },
+      {
+       "id": "EA-accommodation",
+       "zh": "权利便利需役地而非仅给个人利益",
+       "en": "Right accommodates the dominant tenement",
+       "evidence": null,
+       "required": true
+      },
+      {
+       "id": "EA-diversity",
+       "zh": "两地所有及占用并非完全统一",
+       "en": "Diversity of ownership or occupation",
+       "evidence": null,
+       "required": true
+      },
+      {
+       "id": "EA-certainty",
+       "zh": "权利的性质、区域、期间及使用方式足够明确",
+       "en": "Sufficient certainty of nature, area, duration and use",
+       "evidence": null,
+       "required": true
+      },
+      {
+       "id": "EA-capacity",
+       "zh": "权利合法且当事人有能力授予和受领",
+       "en": "Lawful and capable grantor and grantee",
+       "evidence": null,
+       "required": true
+      },
+      {
+       "id": "EA-no-ouster",
+       "zh": "不实质独占或排除供役地主",
+       "en": "No substantial ouster of the servient owner",
+       "evidence": null,
+       "required": true
+      },
+      {
+       "id": "EA-no-positive-duty",
+       "zh": "不强制供役地主持续支出或提供服务",
+       "en": "No continuing positive expenditure or service by servient owner",
+       "evidence": null,
+       "required": true
+      }
+     ],
+     "doctrinal_role": "claim-elements",
+     "litigation_postures": [
+      "spear",
+      "shield"
+     ],
+     "litigation_track": "merits",
+     "primary_posture": null,
+     "court_own_motion": false,
+     "litigation_note": "主张地役权的一方须证明该权利具备成为地役权的资格，无论用于请求确认还是抵抗干预。"
+    },
+    {
+     "id": "EA-2",
+     "zh": "取得路径",
+     "en": "Mode of acquisition",
+     "test_type": "disjunctive-gateway",
+     "rule": "申请人须证明至少一条取得路径：有效明示授予或保留、适用法承认的默示取得，或时效取得。每条路径仍须分别满足其自身要件。",
+     "factors": [
+      {
+       "id": "EA-express",
+       "zh": "有效明示授予或保留",
+       "en": "Valid express grant or reservation",
+       "evidence": "文书、地段图、登记及实际范围"
+      },
+      {
+       "id": "EA-implied",
+       "zh": "适用法承认的默示取得路径",
+       "en": "Recognised implied acquisition route",
+       "evidence": "处分时使用、必要性、共同意图及文书背景"
+      },
+      {
+       "id": "EA-prescription",
+       "zh": "适用法承认的时效取得路径",
+       "en": "Recognised prescriptive acquisition route",
+       "evidence": "使用期间、性质、中断、许可及授予能力"
+      }
+     ],
+     "doctrinal_role": "claim-elements",
+     "litigation_postures": [
+      "spear",
+      "shield"
+     ],
+     "litigation_track": "merits",
+     "primary_posture": null,
+     "court_own_motion": false,
+     "litigation_note": "主张地役权的一方须指出一条有效的明示、默示或时效取得路径。"
+    },
+    {
+     "id": "EA-3",
+     "zh": "香港时效取得",
+     "en": "Hong Kong prescription — lost modern grant",
+     "test_type": "conjunctive",
+     "rule": "在香港以 lost modern grant 主张时，通常须证明至少连续二十年按权利使用，即不凭武力、不秘密且未经许可，并且在法律上曾存在可作出的有效授予。",
+     "factors": [
+      {
+       "id": "EA-prescriptive-period",
+       "zh": "至少二十年连续且按土地性质可期待的使用",
+       "en": "At least twenty years of continuous use appropriate to the land",
+       "evidence": null,
+       "required": true
+      },
+      {
+       "id": "EA-as-of-right",
+       "zh": "使用 nec vi、nec clam、nec precario",
+       "en": "Use as of right: without force, secrecy or permission",
+       "evidence": null,
+       "required": true
+      },
+      {
+       "id": "EA-grant-possible",
+       "zh": "期间内法律上存在能够作出授予的人及可能性",
+       "en": "A lawful grant was possible during the period",
+       "evidence": null,
+       "required": true
+      }
+     ],
+     "applies_when": {
+      "stage_id": "EA-2",
+      "factor_ids": [
+       "EA-prescription"
+      ]
+     },
+     "jurisdiction_rules": {
+      "HK": "二十年本身不够；容忍或许可使用不能满足 as-of-right。"
+     },
+     "jurisdictions": [
+      "HK"
+     ],
+     "doctrinal_role": "internal-test",
+     "litigation_postures": [
+      "spear",
+      "shield"
+     ],
+     "litigation_track": "merits",
+     "primary_posture": null,
+     "court_own_motion": false,
+     "litigation_note": "在香港依 lost modern grant 主张者须证明二十年按权利使用及授予可能性。"
+    },
+    {
+     "id": "EA-4",
+     "zh": "默示取得的分支",
+     "en": "Implied acquisition routes",
+     "test_type": "disjunctive-gateway",
+     "rule": "默示权利必须落入适用法承认的一条具体路径；不得只因长期便利或合理需要便推定存在。",
+     "factors": [
+      {
+       "id": "EA-necessity",
+       "zh": "严格必要的地役权",
+       "en": "Easement of strict necessity",
+       "evidence": null
+      },
+      {
+       "id": "EA-common-intention",
+       "zh": "为落实双方共同意图所必要",
+       "en": "Necessary to give effect to common intention",
+       "evidence": null
+      },
+      {
+       "id": "EA-nonderogation",
+       "zh": "不得减损授予原则",
+       "en": "Non-derogation from grant",
+       "evidence": null
+      },
+      {
+       "id": "EA-wheeldon",
+       "zh": "Wheeldon v Burrows 条件满足",
+       "en": "Wheeldon v Burrows conditions met",
+       "evidence": null
+      },
+      {
+       "id": "EA-statutory-implied",
+       "zh": "适用的法定默示条款满足",
+       "en": "Applicable statutory implication satisfied",
+       "evidence": null
+      }
+     ],
+     "jurisdiction_rules": {
+      "HK": "须分别核对 CPO s.16、Wheeldon、必要性、共同意图及不得减损授予；它们不是一个宽松的总体公平测试。",
+      "EN": "另核对 Law of Property Act 1925 s.62 及保留与授予规则。"
+     },
+     "doctrinal_role": "internal-test",
+     "litigation_postures": [
+      "spear",
+      "shield"
+     ],
+     "litigation_track": "merits",
+     "primary_posture": null,
+     "court_own_motion": false,
+     "litigation_note": "依默示取得者须选定并证明适用法承认的具体路径。"
+    }
+   ],
+   "logic_types": [
+    "conjunctive",
+    "disjunctive-gateway"
+   ],
+   "source_counts": {
+    "hklandlaw": 63
+   },
+   "litigation_postures": [
+    "spear",
+    "shield"
+   ],
+   "litigation_track": "merits",
+   "primary_posture": null,
+   "legal_kind": "property-right",
+   "role_confidence": "contextual",
+   "litigation_note": "可主动请求确认、禁制令或损害赔偿，也可凭既有地役权抵抗妨碍、管有或建筑争议；取得路径决定举证内容。",
+   "court_own_motion_summary": {
+    "stage_count": 0,
+    "stage_ids": []
+   }
+  },
+  {
+   "id": "DMC",
+   "area": "土地 Land",
+   "zh": "公契与大厦管理",
+   "en": "DMC and building management",
+   "jurisdiction": "HK",
+   "role": "spear",
+   "role_zh": "矛",
+   "top_type": "conjunctive+threshold-discretion+defence",
+   "corpus_hits": 65,
+   "note": "这是公契执行、共有部分分类与法团管理义务组成的事项族，不是假定所有大厦都有同一实体条款。必须读取该大厦已登记公契、第一份转让、有效决议及 Cap 344。Centre Chase [2026] HKCFA 26 是法团 s.18(1)(c) 义务及 waiver／acquiescence 的现行控制性权威。",
+   "jurisdiction_rules": {
+    "HK": "法团成立后，与共有部分有关的业主权利、权力、特权及职责原则上由法团依 s.16 行使；公契、第一份转让及 Cap 344 共同决定分类、义务、权限与救济。"
+   },
+   "authorities": [
+    {
+     "case": "Building Management Ordinance",
+     "cite": "Cap 344 ss.2,8(2),16,18,29A,34C,34E,34F,34I,34K and Schedules",
+     "court": "HK legislation",
+     "role": "公契法定效力、共有部分、法团权限和管理义务",
+     "verified": "verified-primary",
+     "pin": "ss.2,8(2),16,18,29A,34C,34E,34F,34I,34K",
+     "src": "https://www.buildingmgt.gov.hk/en/Policy_and_Legislation/3_1.html"
+    },
+    {
+     "case": "Kung Ming Tak Tong Co Ltd v Park Solid Enterprises Ltd",
+     "cite": "(2008) 11 HKCFAR 403",
+     "court": "HKCFA",
+     "role": "公契解释、共有部分及执行结构",
+     "verified": "verified-web",
+     "pin": "[18]-[20],[39]-[50]",
+     "src": "https://babelcite.com/case/62498"
+    },
+    {
+     "case": "Incorporated Owners of Westlands Garden v Oey Chiou Ling",
+     "cite": "[2011] 2 HKLRD 421",
+     "court": "HKCA",
+     "role": "法团地位与共有部分权利",
+     "verified": "verified-web",
+     "pin": "[15]-[17],[25]-[41]",
+     "src": "https://babelcite.com/case/75296"
+    },
+    {
+     "case": "Centre Chase Investment Ltd v Incorporated Owners of Castle Peak Road International Industrial Building",
+     "cite": "[2026] HKCFA 26; FACV 2/2026",
+     "court": "HKCFA",
+     "role": "s.18(1)(c) 的合理管理义务；批准、弃权和默许的边界",
+     "verified": "verified-primary",
+     "pin": "[4]-[13],[40]-[59],[67]-[70],[82]-[85]",
+     "src": "https://legalref.judiciary.hk/lrs/common/ju/ju_frame.jsp?DIS=181958"
+    }
+   ],
+   "stages": [
+    {
+     "id": "BM-1",
+     "zh": "公契义务、共有部分与适格主体",
+     "en": "DMC obligation, common parts and standing",
+     "test_type": "conjunctive",
+     "rule": "须根据已登记公契、第一份转让及 Cap 344 分类涉案位置或权利，识别明示条款或法定加入／当作违反公契的义务，证明相关行为，并确认由法团或其他适格主体执行。违法建筑及公共安全要求须另作硬性审查。",
+     "factors": [
+      {
+       "id": "BM-instrument",
+       "zh": "已取得并解释有效注册公契与第一份转让",
+       "en": "Registered DMC and first assignment obtained and construed",
+       "evidence": null,
+       "required": true
+      },
+      {
+       "id": "BM-bound-party",
+       "zh": "相关业主、占用人或法团受该义务约束或有权执行",
+       "en": "Relevant party is bound or entitled to enforce",
+       "evidence": null,
+       "required": true
+      },
+      {
+       "id": "BM-classification",
+       "zh": "涉案位置或权利已分类为专有、共有或获指定专用",
+       "en": "Area or right classified as exclusive, common or designated-use",
+       "evidence": null,
+       "required": true
+      },
+      {
+       "id": "BM-obligation",
+       "zh": "已识别明示条款或 Cap 344 的适用义务",
+       "en": "Express covenant or applicable Cap 344 obligation identified",
+       "evidence": null,
+       "required": true
+      },
+      {
+       "id": "BM-conduct",
+       "zh": "转用、占用、阻塞、失修或其他实际行为已证明",
+       "en": "Relevant conversion, occupation, obstruction, disrepair or conduct proved",
+       "evidence": null,
+       "required": true
+      },
+      {
+       "id": "BM-breach",
+       "zh": "该行为落入所识别义务的违反范围",
+       "en": "Conduct falls within the identified breach",
+       "evidence": null,
+       "required": true
+      },
+      {
+       "id": "BM-standing",
+       "zh": "法团或其他申请人具备适格性及权限",
+       "en": "Applicant has standing and authority",
+       "evidence": null,
+       "required": true
+      },
+      {
+       "id": "BM-legality",
+       "zh": "违法建筑、公共安全及健康问题已独立核对",
+       "en": "Illegality, public safety and health separately checked",
+       "evidence": null,
+       "role": "scope-check"
+      }
+     ],
+     "doctrinal_role": "claim-elements",
+     "litigation_postures": [
+      "spear",
+      "shield"
+     ],
+     "litigation_track": "merits",
+     "primary_posture": null,
+     "court_own_motion": false,
+     "litigation_note": "执行方须证明文书、分类、义务、违反和适格性；相对方可否认任何必要环节。"
+    },
+    {
+     "id": "BM-2",
+     "zh": "法团执行义务与管理裁量",
+     "en": "IO enforcement duty and managerial discretion",
+     "test_type": "threshold-discretion",
+     "rule": "当 s.18(1)(c) 的公契控制、管理或行政义务被触发，管委会须认真并合理考虑投诉。法律不要求每宗投诉立即全面诉讼；法团可按具体情况调查、要求纠正、分阶段行动、和解、部分执行、暂缓、弃权或默许，但须在权限内、善意并以合理方式决定。",
+     "factors": [
+      {
+       "id": "BM-duty-engaged",
+       "zh": "投诉涉及法团为控制、管理或行政大厦而须执行的公契义务",
+       "en": "Section 18(1)(c) management duty is engaged",
+       "evidence": null,
+       "gate": true
+      },
+      {
+       "id": "BM-type",
+       "zh": "违反事项的性质及法律依据",
+       "en": "Nature and legal basis of breach",
+       "evidence": null,
+       "role": "discretion"
+      },
+      {
+       "id": "BM-seriousness",
+       "zh": "严重性、持续时间及实际影响",
+       "en": "Seriousness, duration and practical impact",
+       "evidence": null,
+       "role": "discretion"
+      },
+      {
+       "id": "BM-safety",
+       "zh": "违法、公共安全或健康风险",
+       "en": "Illegality, public safety or health risk",
+       "evidence": null,
+       "role": "discretion"
+      },
+      {
+       "id": "BM-common-interest",
+       "zh": "全体业主及管理目的",
+       "en": "Collective interests and management purpose",
+       "evidence": null,
+       "role": "discretion"
+      },
+      {
+       "id": "BM-consistency",
+       "zh": "类似个案的一致处理及整体公平",
+       "en": "Consistency and overall fairness",
+       "evidence": null,
+       "role": "discretion"
+      },
+      {
+       "id": "BM-resources",
+       "zh": "成本、业主负担、人员及时间",
+       "en": "Cost, owner burden, staff and time",
+       "evidence": null,
+       "role": "discretion"
+      },
+      {
+       "id": "BM-options",
+       "zh": "调查、纠正、和解、分阶段行动及成功机会",
+       "en": "Available responses and prospects",
+       "evidence": null,
+       "role": "discretion"
+      },
+      {
+       "id": "BM-governance",
+       "zh": "权限、决议、资料、理由、善意与合理过程",
+       "en": "Authority, resolutions, information, reasons and good-faith process",
+       "evidence": null,
+       "role": "discretion"
+      }
+     ],
+     "doctrinal_role": "internal-test",
+     "litigation_postures": [
+      "spear",
+      "shield"
+     ],
+     "litigation_track": "merits",
+     "primary_posture": null,
+     "court_own_motion": false,
+     "litigation_note": "投诉方可请求法团履行管理义务；法团及相关业主可就认真、合理的管理回应和可行选择陈词。"
+    },
+    {
+     "id": "BM-3",
+     "zh": "批准、弃权与默许",
+     "en": "Approval, waiver and acquiescence",
+     "test_type": "disjunctive-gateway",
+     "rule": "共有部分转作自用可按 s.34I 经所需有效决议批准。除违法或公共安全事项外，普通私法的 waiver 或 acquiescence 可对法团适用，但迟延本身不会自动成立；必须证明所援引抗辩的通常要件及具体范围，并复核管理决定是否认真、合理。",
+     "factors": [
+      {
+       "id": "BM-valid-resolution",
+       "zh": "有权限机关以有效决议批准具体使用",
+       "en": "Valid authorised resolution approves the particular use",
+       "evidence": "权限、法定人数、表决、批准范围及期间"
+      },
+      {
+       "id": "BM-waiver",
+       "zh": "弃权的通常要件就具体权利成立",
+       "en": "Ordinary elements of waiver are established",
+       "evidence": "知悉、明确选择或具法律意义的行为及范围"
+      },
+      {
+       "id": "BM-acquiescence",
+       "zh": "默许的通常要件就具体行为成立",
+       "en": "Ordinary elements of acquiescence are established",
+       "evidence": "知悉、表示或不作为、信赖、不公平及范围"
+      }
+     ],
+     "jurisdiction_rules": {
+      "HK": "Centre Chase 否定法团一概无权弃权的旧线；涉及违法、公共安全或健康的事项不能藉私法弃权规避。"
+     },
+     "doctrinal_role": "defence",
+     "litigation_postures": [
+      "shield",
+      "spear"
+     ],
+     "litigation_track": "merits",
+     "primary_posture": "shield",
+     "court_own_motion": false,
+     "litigation_note": "被指违反者通常以有效批准、弃权或默许抵抗执行；对方可主动质疑权限、要件及范围。"
+    }
+   ],
+   "logic_types": [
+    "conjunctive",
+    "threshold-discretion",
+    "disjunctive-gateway"
+   ],
+   "source_counts": {
+    "hklandlaw": 65
+   },
+   "litigation_postures": [
+    "spear",
+    "shield"
+   ],
+   "litigation_track": "merits",
+   "primary_posture": null,
+   "legal_kind": "claim-family",
+   "role_confidence": "contextual",
+   "litigation_note": "法团或业主可主动执行公契、质疑占用或寻求管理命令；另一方可否认分类、义务、违反或援引有效批准、弃权和默许。",
    "court_own_motion_summary": {
     "stage_count": 0,
     "stage_ids": []

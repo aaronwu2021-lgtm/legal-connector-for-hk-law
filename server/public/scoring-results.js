@@ -46,7 +46,7 @@ export function renderScoreResult(data) {
     } else {
       const status = {
         undetermined:'证据或模型信息不足，无法判断',
-        'manual-checklist':'需要人工判断：尚未建立完整判定规则，以下仅为事实清单',
+        'manual-checklist':'需要人工判断：以下为法律清单',
         unsupported:'该测试结构尚不支持自动判断',
         'not-engaged':'当前记录下，该阶段未触发',
         'clause-enforced':'按该阶段已编码规则适用条款；总体仍需判断',
@@ -55,7 +55,7 @@ export function renderScoreResult(data) {
         'departure-permitted':'按该阶段已编码规则允许偏离；总体仍需判断',
       }[stage.result] || '需要人工判断：该阶段只提供已编码的事实与规则';
       html += '<p class="test"><strong>'+status+'</strong></p>'
-        +'<p class="tiny">清单中的“存在／不存在”描述事实记录，不表示每一项都是法律上的必要条件。</p>';
+        +'<p class="tiny">“存在／不存在”记录事实；必要项、路径、排除项及例外须结合阶段规则判断，系统不自动作法律结论。</p>';
     }
     if (stage.reason || stage.note || stage.effect) html += '<p class="tiny">'+escapeHtml(stage.reason || stage.note || stage.effect)+'</p>';
     html += list('已记录存在',stage.factors_present || stage.gateways_open)

@@ -10,7 +10,7 @@ test('navigation is cause-centred and has no independent logic catalogue tab', (
   assert.match(modes, /法律事项分析 Doctrine · Logic/);
   assert.doesNotMatch(modes, /\['scored'/);
   assert.doesNotMatch(html, /async function viewScored|state\.mode\s*=\s*'scored'|state\.mode\s*===\s*'scored'/);
-  assert.match(html, /api\('\/doctrine\/'\+encodeURIComponent\(claimId\)\)/);
+  assert.match(html, /api\('\/doctrine\/'\+encodeURIComponent\(claimId\)\+'\?jurisdiction='\+encodeURIComponent\(jurisdictionId\)\)/);
   assert.match(html, /appendElementGroups\(main,doctrine\);\s*appendDoctrineLogic\(main,doctrine/,
     'logic must be rendered after the elements for the same cause');
   assert.match(html, /const state = \{ mode:'doctrine', jurisdiction:null, bucket:null, claim:null/,
@@ -54,19 +54,25 @@ test('coverage copy keeps element, logic, corpus and jurisdiction coverage disti
   for (const layer of ['构成要件 Elements', '判断逻辑 Logic', '语料 Corpus', '法域资料 Jurisdictions']) {
     assert.match(html, new RegExp(layer));
   }
-  assert.match(html, /“判断逻辑已建”只说明列出的判断阶段已有模型，不表示该诉因的完整构成要件/);
+  assert.match(html, /“判断逻辑已建”只说明列出的判断阶段已有模型/);
   assert.match(html, /这个缺口不表示该诉因没有法律要件/);
   assert.match(html, /st\.applies_when/);
   assert.match(html, /法域规则 Jurisdiction rules/);
-  assert.match(html, /sameName\?'诉因内部判断结构'/);
-  assert.ok(html.includes("factor.role==='discretion' ? '救济裁量事项'"));
+  assert.match(html, /sameName\?'事项内部判断结构'/);
+  assert.ok(html.includes("factor.role==='discretion' ? '裁量事项'"));
   assert.ok(html.includes("mod.note&&(!sameName||mod.note!==doctrine.claim.note)"));
   assert.ok(html.includes("replace(/^logic-/,'')"));
-  assert.match(html, /诉因结构 <span[^>]*>Doctrine · Logic<\/span>/);
+  assert.match(html, /法律事项结构 <span[^>]*>Doctrine · Logic<\/span>/);
   assert.match(html, /if\(composedFromLogic\)[\s\S]*?else if\(!data\.elements\.length\)/,
     'a cause composed from logic stages must not render a false element-gap card');
-  assert.match(html, /统一诉因结构直接表达本诉因的构成要件、内部标准、抗辩与救济/,
-    'the unified cause view should explain that logic stages are the doctrine structure');
+  assert.match(html, /统一法律事项结构直接表达构成要件、内部标准、抗辩与救济/,
+    'the unified matter view should explain that logic stages are the doctrine structure');
+  assert.ok(!html.includes("<span class=\"cnt\">'+esc(status)"),
+    'coverage cards must not expose internal status tokens such as none or logic-stages');
+  assert.match(html, /status==='xref'[\s\S]*?沿用上方交叉引用所列的结构化要件与判断规则/,
+    'cross-referenced matters must not render a false logic gap');
+  assert.match(html, /stage\.jurisdictions\?\.length/,
+    'jurisdiction-specific stages must be filtered before display and scoring');
 });
 
 const scopeStart = html.indexOf('function scopeScoreToStages');
@@ -85,7 +91,7 @@ test('score results and priority evidence are restricted to model_ref stages', (
   const scoped = scopeContext.scopeScoreToStages(result, selected);
   assert.deepEqual(Array.from(scoped.stages, stage => stage.stage), ['CT-3']);
   assert.deepEqual(Array.from(scoped.priority_evidence, factor => factor.id), ['f3']);
-  assert.match(scoped.overall_reason, /当前诉因引用的判断阶段/);
+  assert.match(scoped.overall_reason, /当前法律事项引用的判断阶段/);
   assert.equal(result.stages.length, 3, 'the server result is not mutated');
 });
 
@@ -119,7 +125,7 @@ test('a doctrine response that finishes after leaving cannot paint the old cause
   const pending = deferred();
   const context = vm.createContext({
     state: { mode: 'doctrine', jurisdiction: 'HK', claim: 'private-nuisance', elements: null },
-    api: path => { assert.equal(path, '/doctrine/private-nuisance'); return pending.promise; },
+    api: path => { assert.equal(path, '/doctrine/private-nuisance?jurisdiction=HK'); return pending.promise; },
     encodeURIComponent, esc: String,
     el: (_tag, _className, innerHTML = '') => ({ innerHTML }),
     appendCoveragePanel() {}, appendLitigationPosition() {}, appendCorpusLinks() {},

@@ -420,8 +420,8 @@ const claimLogicStatus = claim => claim?.logic_status
 function claimStatusLabel(claim){
   if(claim?.status==='full') return '完整要件';
   const logicStatus=claimLogicStatus(claim);
-  if(logicStatus==='full') return '测试已建';
-  if(logicStatus==='partial') return '部分测试';
+  if(logicStatus==='full') return '结构已建';
+  if(logicStatus==='partial') return '部分结构';
   if(claim?.status==='xref') return '交叉引用';
   if(claim?.status==='corpus-only') return '语料覆盖';
   if(claim?.status==='planned') return '规划中';
@@ -610,13 +610,14 @@ async function renderTimeline(container, id){
 
 /* ── views ───────────────────────────────────────────── */
 const COVERAGE_LABELS = {
-  elements:{full:'完整要件数据',partial:'部分要件数据',xref:'交叉引用',none:'尚未建立'},
-  logic:{full:'已建引用范围',partial:'部分阶段',conjunctive:'合取要件结构',none:'尚未建立'},
+  analysis_structure:{full:'完整结构',partial:'部分结构',xref:'交叉引用',none:'尚未建立'},
+  elements:{full:'独立要件数据',partial:'部分要件数据',xref:'引用现有要件','logic-stages':'由统一阶段表达','not-applicable':'非诉因要件层',none:'尚未建立'},
+  logic:{full:'已建引用范围',partial:'部分阶段',conjunctive:'合取要件结构',xref:'沿用被引用事项',none:'尚未建立'},
   corpus:{indexed:'已有索引',partial:'部分覆盖',full:'完整覆盖',none:'没有索引'},
-  jurisdiction_overlays:{full:'四法域 overlay',partial:'部分法域资料',none:'尚未建立'},
+  jurisdiction_overlays:{full:'四法域 overlay',partial:'部分法域资料',xref:'沿用被引用事项',none:'尚未建立'},
 };
 const COVERAGE_LAYERS = [
-  ['elements','构成要件 Elements'],['logic','判断逻辑 Logic'],
+  ['analysis_structure','法律分析结构 Structure'],['elements','构成要件 Elements'],['logic','判断逻辑 Logic'],
   ['corpus','语料 Corpus'],['jurisdiction_overlays','法域资料 Jurisdictions'],
 ];
 function coverageLabel(layer,status){
@@ -624,20 +625,17 @@ function coverageLabel(layer,status){
 }
 function appendCoveragePanel(main,doctrine){
   const box=el('section','card coverage-panel');
-  box.setAttribute('aria-label','当前诉因资料覆盖');
-  box.appendChild(el('h2','coverage-title','当前诉因的资料覆盖'));
+  box.setAttribute('aria-label','当前法律事项资料覆盖');
+  box.appendChild(el('h2','coverage-title','当前法律事项的资料覆盖'));
   const grid=el('div','coverage-grid');
   for(const [layer,label] of COVERAGE_LAYERS){
     const status=doctrine.coverage?.[layer]||'none';
-    const composedFromLogic=layer==='elements'&&status==='none'&&doctrine.composition?.elements_source==='logic-stages';
-    const statusLabel=composedFromLogic
-      ? '独立数据未建；由阶段表达' : coverageLabel(layer,status);
     const item=el('div','coverage-item'); item.dataset.status=status;
-    item.innerHTML='<span class="coverage-layer">'+esc(label)+'</span><strong>'+esc(statusLabel)+'</strong> <span class="cnt">'+esc(composedFromLogic?'logic-stages':status)+'</span>';
+    item.innerHTML='<span class="coverage-layer">'+esc(label)+'</span><strong>'+esc(coverageLabel(layer,status))+'</strong>';
     grid.appendChild(item);
   }
   box.appendChild(grid);
-  box.appendChild(el('p','coverage-note','各层分别报告。“判断逻辑已建”只说明列出的判断阶段已有模型，不表示该诉因的完整构成要件、法域权威或语料已经齐全。'));
+  box.appendChild(el('p','coverage-note','各层分别报告。“判断逻辑已建”只说明列出的判断阶段已有模型；诉因类事项另看构成要件层，法域权威与语料覆盖也分别核对。'));
   main.appendChild(box);
 }
 function elementDataset(doctrine){
@@ -703,22 +701,28 @@ function appendJurisdictionOverview(main,doctrine){
 }
 function appendElementGroups(main,doctrine){
   const data=elementDataset(doctrine);
-  const elementStageIds=doctrine.logic?.element_stage_ids||[];
-  const composedFromLogic=!data.elements.length&&elementStageIds.length>0&&doctrine.composition?.elements_source==='logic-stages';
+  const structureSource=doctrine.composition?.analysis_structure_source||doctrine.composition?.elements_source;
+  const composedFromLogic=!data.elements.length&&structureSource==='logic-stages';
+  const crossReferenced=structureSource==='xref';
   if(!composedFromLogic){
     const heading=el('h2','doctrine-section-title','构成要件 <span style="color:var(--ink3);font-size:.62em;font-weight:500">Elements</span>');
     main.appendChild(heading);
   }
   if(composedFromLogic){
-    main.appendChild(el('p','test','下方统一诉因结构直接表达本诉因的构成要件、内部标准、抗辩与救济，不另建一份重复要件表。'));
+    const message=doctrine.coverage?.elements==='not-applicable'
+      ? '本事项不是独立诉因；下方统一结构直接表达其适用条件、内部标准及裁量步骤。'
+      : '下方统一法律事项结构直接表达构成要件、内部标准、抗辩与救济，不另建重复要件表。';
+    main.appendChild(el('p','test',message));
     appendJurisdictionOverview(main,doctrine);
+  }else if(crossReferenced&&!data.elements.length){
+    main.appendChild(el('div','card','<h4>引用现有要件</h4><p class="test">本事项沿用交叉引用所指的结构化要件，避免复制后产生版本分叉。</p>'));
   }else if(!data.elements.length){
-    const message=elementStageIds.length
-      ? '尚无独立要件数据集。下方判断逻辑中标为“构成要件组”的阶段，是目前对本诉因要件的结构化表达。'
-      : '尚未建立本诉因的独立要件数据。这个缺口不表示该诉因没有法律要件。';
+    const message='尚未建立本诉因的独立要件数据。这个缺口不表示该诉因没有法律要件。';
     main.appendChild(el('div','card coverage-gap','<h4>要件覆盖缺口</h4><p class="test">'+esc(message)+'</p>'));
   }else{
-    main.appendChild(el('p','test','以下要件与抗辩属于当前诉因；每项的判断方法、权威和法域差异在同一页面继续展开。'));
+    main.appendChild(el('p','test',crossReferenced
+      ? '以下内容从所引用的完整数据集中按本事项筛选；修改来源后会同步更新，不在此复制另一套规则。'
+      : '以下要件与抗辩属于当前诉因；每项的判断方法、权威和法域差异在同一页面继续展开。'));
     appendJurisdictionOverview(main,doctrine);
   }
   const groups=[...data.elements.map(item=>({...item,kind:'element'}))];
@@ -731,7 +735,7 @@ function appendElementGroups(main,doctrine){
     section.appendChild(title);
     const zh=el('p',null,esc(group.zh)); zh.style.cssText='color:var(--ink3);font-size:12.5px;margin:0 0 10px';section.appendChild(zh);
     for(const test of group.sub_tests||[]){
-      const card=el('div','card');
+      const card=el('div','card'); card.id='test-'+test.id;
       let head='<div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap"><span class="sid">'+esc(test.id)+'</span><b style="font-size:14.5px">'+esc(test.en)+'</b><span style="color:var(--ink3);font-size:12px">'+esc(test.zh)+'</span>';
       if(test.variant) head+='<span class="cnt">'+esc(test.variant)+'</span>';
       if(test.drift) head+='<span class="badge drift">⇅ drift · '+esc(test.drift)+'</span>';
@@ -838,7 +842,7 @@ async function viewDoctrine(main){
   if(!state.claim){viewJurisdictionLanding(main);return;}
   const claimId=state.claim,jurisdictionId=state.jurisdiction;
   let doctrine;
-  try{doctrine=await api('/doctrine/'+encodeURIComponent(claimId));}
+  try{doctrine=await api('/doctrine/'+encodeURIComponent(claimId)+'?jurisdiction='+encodeURIComponent(jurisdictionId));}
   catch(error){if(view!==DOCTRINE_VIEW||state.mode!=='doctrine'||state.claim!==claimId||state.jurisdiction!==jurisdictionId)return;throw error;}
   if(view!==DOCTRINE_VIEW||state.mode!=='doctrine'||state.claim!==claimId||state.jurisdiction!==jurisdictionId)return;
   const claim=doctrine.claim,area=doctrine.area;
@@ -851,16 +855,15 @@ async function viewDoctrine(main){
   main.appendChild(el('p','lede','当前以 '+esc(jurisdictionId)+' '+esc(JZH[jurisdictionId]||jurisdictionId)+' 为资料视角。本页以当前法律事项为单位：构成要件或门槛、内部标准、抗辩、救济和适用逻辑按同一分析链展示；跨法域权威保留作比较。'));
   appendCoveragePanel(main,doctrine);
   appendLitigationPosition(main,claim);
-  if(claim.note||claim.lab){
+  if(claim.note){
     const note=el('div','card');
     note.innerHTML='<span class="badge '+(claim.coverage?.elements==='full'?'v':'j')+'">'+esc(claimStatusLabel(claim))+'</span>'
-      +(claim.note?'<p class="test" style="margin-top:9px">'+esc(claim.note)+'</p>':'')
-      +(claim.lab?'<p class="mono" style="font-size:11.5px;color:var(--ink3);margin:0">'+esc(claim.lab)+'</p>':'');
+      +'<p class="test" style="margin-top:9px">'+esc(claim.note)+'</p>';
     main.appendChild(note);
   }
   if(claim.xref){
-    const target=claim.xref.split('#')[0],button=el('button','chip','→ 打开所引用诉因 '+target);
-    button.onclick=()=>{state.claim=target;route({focusTarget:'heading'});window.scrollTo(0,0);};main.appendChild(button);
+    const [target,fragment]=claim.xref.split('#'),button=el('button','chip','→ 打开完整来源事项 '+target);
+    button.onclick=async()=>{state.claim=target;await route({focusTarget:'heading'});const anchor=fragment&&document.getElementById('test-'+fragment);if(anchor)anchor.scrollIntoView({block:'start'});else window.scrollTo(0,0);};main.appendChild(button);
   }
   appendCorpusLinks(main,claim);
   appendElementGroups(main,doctrine);
@@ -1358,12 +1361,24 @@ const DOCTRINAL_ROLE_LABELS={
   'internal-test':'要件内判断 · Internal test',
   defence:'抗辩 · Defence',
   remedy:'救济 · Remedy',
+  rebuttal:'反驳 · Rebuttal',
+  quantification:'量定 · Quantification',
+  'procedure-gateway':'程序门槛 · Procedure gateway',
+  'procedure-discretion':'程序裁量 · Procedure discretion',
+  'procedure-duty':'程序义务 · Procedure duty',
+  'jurisdiction-gateway':'管辖门槛 · Jurisdiction gateway',
+  'jurisdiction-override':'管辖覆盖规则 · Jurisdiction override',
 };
 const logicMeta = (index,type) => index?.test_types?.[type] || LOGIC_FALLBACK[type] || {zh:type};
 const stageRole = (stage,factor) => {
-  if(stage.test_type==='conjunctive') return '合取项';
+  if(stage.test_type==='conjunctive'){
+    if(factor.negates || factor.negates_auto_claim || factor.counterfactor || factor.role==='exception') return '排除／反向项';
+    if(factor.role==='scope-check') return '适用性检查';
+    if(factor.role==='conditional-check') return '条件性检查';
+    return factor.required ? '必要项' : '合取事项';
+  }
   if(stage.test_type==='disjunctive-gateway') return factor.dispositive ? '独立门槛' : '择一候选';
-  if(stage.test_type==='threshold-discretion') return factor.gate ? '责任门槛' : factor.role==='discretion' ? '救济裁量事项' : factor.override ? '裁量／覆盖' : '待标注角色';
+  if(stage.test_type==='threshold-discretion') return factor.gate ? '适用门槛' : factor.role==='discretion' ? '裁量事项' : factor.override ? '裁量／覆盖' : '待标注角色';
   if(stage.test_type==='presumption-rebuttal') return factor.role==='trigger' ? '推定触发' : factor.role==='rebuttal' ? '反驳事项' : '待标注角色';
   return '逻辑项';
 };
@@ -1375,32 +1390,34 @@ function scopeScoreToStages(data,stages){
   const scoped={...data,stages:selected};
   if(Array.isArray(data.priority_evidence)) scoped.priority_evidence=data.priority_evidence.filter(item=>factorIds.has(item.id));
   if(selected.length!==data.stages.length){
-    scoped.overall_reason='结果已按当前诉因引用的判断阶段过滤；同一模块的其他阶段未显示。';
+    scoped.overall_reason='结果已按当前法律事项引用的判断阶段过滤；同一模块的其他阶段未显示。';
     delete scoped.reason;
   }
   return scoped;
 }
 function appendDoctrineLogic(main,doctrine,{view,claimId,jurisdictionId}){
-  const unifiedStructure=doctrine.composition?.elements_source==='logic-stages';
+  const unifiedStructure=(doctrine.composition?.analysis_structure_source||doctrine.composition?.elements_source)==='logic-stages';
   main.appendChild(el('h2','doctrine-section-title',unifiedStructure
-    ? '诉因结构 <span style="color:var(--ink3);font-size:.62em;font-weight:500">Doctrine · Logic</span>'
+    ? '法律事项结构 <span style="color:var(--ink3);font-size:.62em;font-weight:500">Doctrine · Logic</span>'
     : '判断逻辑 <span style="color:var(--ink3);font-size:.62em;font-weight:500">Logic</span>'));
   if(!doctrine.logic){
     const status=doctrine.coverage?.logic||'none';
-    const text=status==='conjunctive'
-      ? '本诉因的完整要件数据按合取结构组织：必须分别判断上方各项。当前没有另设因素评分模块。'
-      : '尚未建立本诉因的结构化判断阶段。这个缺口不改变上方交叉引用或语料的范围。';
+    const text=status==='xref'
+      ? '本事项沿用上方交叉引用所列的结构化要件与判断规则；可打开完整来源事项查看全部背景。'
+      : status==='conjunctive'
+      ? '本事项的完整要件数据按合取结构组织：必须分别判断上方各项。当前没有另设因素评分模块。'
+      : '尚未建立本事项的结构化判断阶段。这个缺口不改变交叉引用或语料的范围。';
     main.appendChild(el('div','card '+(status==='none'?'coverage-gap':''),'<h4>'+esc(coverageLabel('logic',status))+'</h4><p class="test">'+esc(text)+'</p>'));
     return;
   }
-  const logic=doctrine.logic,mod=logic.module,stages=mod.stages||[];
+  const logic=doctrine.logic,mod=logic.module,stages=(mod.stages||[]).filter(stage=>!stage.jurisdictions?.length||stage.jurisdictions.includes(jurisdictionId));
   const elementStageIds=new Set(logic.element_stage_ids||[]);
   const sourceCounts=mod.source_counts||(mod.corpus_hits==null?{}:{hklandlaw:mod.corpus_hits});
   const types=[...new Set(stages.map(stage=>stage.test_type))];
   const moduleCard=el('section','card logic-module');
   const sameName=mod.zh===doctrine.claim.zh&&mod.en===doctrine.claim.en;
-  moduleCard.innerHTML='<p class="tiny stage-role">法律测试模块 · '+esc(mod.id)+' · '+stages.length+' 个当前诉因引用阶段</p>'
-    +'<h3 style="margin:4px 0">'+(sameName?'诉因内部判断结构':esc(mod.zh)+' <span style="color:var(--ink3);font-size:.72em;font-weight:500">'+esc(mod.en)+'</span>')+'</h3>'
+  moduleCard.innerHTML='<p class="tiny stage-role">法律测试模块 · '+esc(mod.id)+' · '+stages.length+' 个当前事项引用阶段</p>'
+    +'<h3 style="margin:4px 0">'+(sameName?'事项内部判断结构':esc(mod.zh)+' <span style="color:var(--ink3);font-size:.72em;font-weight:500">'+esc(mod.en)+'</span>')+'</h3>'
     +(mod.note&&(!sameName||mod.note!==doctrine.claim.note)?'<p class="test"><strong>模块说明</strong> · '+esc(mod.note)+'</p>':'');
   const tags=el('div','logic-line');
   for(const type of types) tags.appendChild(el('span','tag logic','判断逻辑 · '+esc(logicMeta(null,type).zh)));
@@ -1408,10 +1425,10 @@ function appendDoctrineLogic(main,doctrine,{view,claimId,jurisdictionId}){
   tags.appendChild(el('span','tag track','逻辑覆盖 · '+esc(coverageLabel('logic',logicCoverage))));
   if(sourceCounts.hklandlaw!=null) tags.appendChild(el('span','tag source','语料来源 · hklandlaw · '+esc(sourceCounts.hklandlaw)+'篇'));
   moduleCard.appendChild(tags);
-  if(Array.isArray(logic.stage_ids)) moduleCard.appendChild(el('p','coverage-note','本诉因只引用 '+esc(mod.id)+' 的 '+logic.stage_ids.map(esc).join('、')+'；模块其他阶段不进入本页或本页的阶段结果。'));
+  if(Array.isArray(logic.stage_ids)) moduleCard.appendChild(el('p','coverage-note','本事项只引用 '+esc(mod.id)+' 的 '+logic.stage_ids.map(esc).join('、')+'；模块其他阶段不进入本页或本页的阶段结果。'));
   main.appendChild(moduleCard);
   const explainer=el('details','card');
-  let explanation='<summary class="stt">本诉因使用的判断方式</summary>';
+  let explanation='<summary class="stt">本事项使用的判断方式</summary>';
   for(const type of types){const meta=logicMeta(null,type);explanation+='<p class="test"><code>'+esc(type)+'</code> <strong>'+esc(meta.zh)+'</strong> — '+esc(meta.note||'该阶段按其已编码结构整理事实。')+'</p>';}
   explanation+='<p class="tiny">只有多因素权衡阶段显示编者数值份量；其余阶段显示门槛、缺口或人工判断结果。数值不是胜诉概率。</p>';
   explainer.innerHTML=explanation;main.appendChild(explainer);
@@ -1472,7 +1489,7 @@ function appendDoctrineLogic(main,doctrine,{view,claimId,jurisdictionId}){
     out.appendChild(sec);
   }
   main.appendChild(out);
-  if(!stages.length){main.appendChild(el('div','card coverage-gap','<h4>阶段覆盖缺口</h4><p class="test">当前诉因没有可显示的判断阶段。</p>'));return;}
+  if(!stages.length){main.appendChild(el('div','card coverage-gap','<h4>阶段覆盖缺口</h4><p class="test">当前事项没有可显示的判断阶段。</p>'));return;}
   const res = el('section','elem'); res.id='sc_res';
   res.innerHTML = '<h3>证据与阶段结果</h3><p class="ezh">切换事实状态后更新。只有多因素权衡阶段显示模型情景区间；它不是胜诉概率。</p><div id="sc_body" aria-live="polite"><p class="tiny">正在检查证据状态…</p></div>';
   main.appendChild(res);
