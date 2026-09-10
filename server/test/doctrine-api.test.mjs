@@ -26,13 +26,34 @@ test('taxonomy gives every claim a uniform composition contract', async () => {
   assert.equal(response.status, 200);
   const claims = body.areas.flatMap((area) => area.claims);
   assert.ok(claims.length > 0);
+  assert.deepEqual(body.jurisdiction_catalog.map(item => item.id), ['HK', 'EN', 'SG', 'AU']);
   for (const claim of claims) {
     assert.ok(Array.isArray(claim.elements), `${claim.id}: elements`);
     assert.ok(Array.isArray(claim.defences), `${claim.id}: defences`);
     assert.ok(claim.model_ref === null || typeof claim.model_ref.module_id === 'string', `${claim.id}: model_ref`);
     assert.deepEqual(Object.keys(claim.coverage).sort(),
       ['corpus', 'elements', 'jurisdiction_overlays', 'logic'], `${claim.id}: coverage`);
+    assert.ok(Array.isArray(claim.jurisdictions), `${claim.id}: jurisdictions`);
+    assert.equal(new Set(claim.jurisdictions).size, claim.jurisdictions.length, `${claim.id}: unique jurisdictions`);
+    assert.ok(claim.jurisdictions.length > 0, `${claim.id}: navigation scope must not silently disappear`);
+    assert.ok(claim.jurisdictions.every(id => ['HK', 'EN', 'SG', 'AU'].includes(id)), `${claim.id}: known jurisdictions`);
+    assert.equal(typeof claim.jurisdiction_scope_source, 'string', `${claim.id}: jurisdiction scope source`);
+    assert.ok(['merits', 'procedure', 'jurisdiction'].includes(claim.litigation_track),
+      `${claim.id}: classified matter track`);
+    assert.ok(Array.isArray(claim.litigation_postures) && claim.litigation_postures.length > 0,
+      `${claim.id}: classified spear/shield posture`);
   }
+  const byId = new Map(claims.map(claim => [claim.id, claim]));
+  assert.deepEqual(byId.get('private-nuisance').jurisdictions, ['HK', 'EN']);
+  assert.deepEqual(byId.get('misrepresentation').jurisdictions, ['HK', 'EN', 'SG', 'AU']);
+  assert.deepEqual(byId.get('deceit').jurisdictions, byId.get('misrepresentation').jurisdictions,
+    'cross-referenced claims inherit the referenced data scope');
+  assert.deepEqual(byId.get('private-nuisance').litigation_postures, ['spear', 'shield']);
+  assert.deepEqual(byId.get('illegality').litigation_postures, ['shield']);
+  assert.equal(byId.get('arbitrator-challenge').litigation_track, 'procedure');
+  assert.equal(byId.get('hong-kong-jurisdiction').litigation_track, 'jurisdiction');
+  assert.equal(body.jurisdiction_catalog.find(item => item.id === 'HK').claim_count,
+    claims.filter(claim => claim.jurisdictions.includes('HK')).length);
 });
 
 test('one doctrine response composes the private-nuisance claim and its logic module', async () => {

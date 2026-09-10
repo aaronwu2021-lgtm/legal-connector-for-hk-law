@@ -16,7 +16,7 @@ itself is not distributed here.
 | Path | Contents |
 |---|---|
 | `data/` | The element library: misrepresentation family (17 sub-tests × 4 jurisdictions), a 14-module typed registry of legal-test logic and two-axis litigation positions (numeric bands only inside multi-factor balancing stages), the drift/maintenance ledger, a 745-document Hong Kong land-law case-note corpus, and a 449-case England-and-Wales persuasive index (unverified, persuasive-only in HK). CC BY 4.0. |
-| `server/` | The connector itself — Netlify serverless functions implementing the REST API and a 13-tool MCP server, plus the browser UI. MIT. |
+| `server/` | The connector itself — Netlify serverless functions implementing the REST API and a 14-tool MCP server, plus the browser UI. MIT. |
 | `experiments/exp1-lab/` | In-benchmark pilot: 6 arbitration tasks, 2 conditions, blind paired judging over 59 legal-standard criteria. Null result. |
 | `experiments/exp2-probe/` | Jurisdiction-specific probe: 21 items, 2 conditions, blind judging against a pre-registered key. 16/21 → 21/21 as originally scored; **15/21 → 19/21 re-scored against the law** after two keys were found wrong (`rescore.py`, `probe_results_rescored.json`). |
 | `experiments/exp3-hk-matter/` | The Hong Kong matter-file eval set the paper identified as missing: 5 tasks, 31 criteria, 6 drift-sensitive, with an as_of pair either side of *Chang Pui Yin*. **Unrun** — a task set with answer keys, no results claimed. |
@@ -75,6 +75,12 @@ lower bound. Observation-window, coverage and prior-sensitivity analyses remain
 necessary before using it as an empirical maintenance estimate.
 
 ## Quick start
+
+The doctrine UI opens on a jurisdiction overview. After choosing Hong Kong,
+England and Wales, Singapore, or Australia, legal matters are kept inside four
+separate selectors: spear, shield, procedure, and jurisdiction. A matter is
+expanded only after selection; a merits matter may deliberately appear in both
+the spear and shield selectors.
 
 On Windows, double-click `Start Preview.cmd`, then open
 `http://127.0.0.1:8918/`. The launcher starts a hidden local process, waits for

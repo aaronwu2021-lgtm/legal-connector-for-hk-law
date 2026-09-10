@@ -7,12 +7,47 @@ const html = readFileSync(new URL('../public/index.html', import.meta.url), 'utf
 
 test('navigation is cause-centred and has no independent logic catalogue tab', () => {
   const modes = html.slice(html.indexOf('const MODES = ['), html.indexOf('const SUBS ='));
-  assert.match(modes, /诉因分析 Doctrine · Logic/);
+  assert.match(modes, /法律事项分析 Doctrine · Logic/);
   assert.doesNotMatch(modes, /\['scored'/);
   assert.doesNotMatch(html, /async function viewScored|state\.mode\s*=\s*'scored'|state\.mode\s*===\s*'scored'/);
   assert.match(html, /api\('\/doctrine\/'\+encodeURIComponent\(claimId\)\)/);
   assert.match(html, /appendElementGroups\(main,doctrine\);\s*appendDoctrineLogic\(main,doctrine/,
     'logic must be rendered after the elements for the same cause');
+  assert.match(html, /const state = \{ mode:'doctrine', jurisdiction:null, bucket:null, claim:null/,
+    'the doctrine home page must not preselect a concrete legal matter');
+  assert.match(html, /if\(!state\.jurisdiction\)\{viewDoctrineHome\(main\);return;\}[\s\S]*if\(!state\.claim\)\{viewJurisdictionLanding\(main\);return;\}[\s\S]*api\('\/doctrine\/'/,
+    'details are fetched only after choosing a jurisdiction and a matter');
+  assert.doesNotMatch(html, /aria-label','选择法律事项'/,
+    'the former mixed legal-matter dropdown must be removed');
+});
+
+const bucketStart = html.indexOf('const MATTER_BUCKETS = [');
+const bucketEnd = html.indexOf('const claimLogicStatus', bucketStart);
+const bucketHelpersStart = html.indexOf('function taxonomyClaims');
+const bucketHelpersEnd = html.indexOf('function renderContext', bucketHelpersStart);
+assert.ok(bucketStart >= 0 && bucketEnd > bucketStart && bucketHelpersStart >= 0 && bucketHelpersEnd > bucketHelpersStart);
+const bucketContext = vm.createContext({});
+vm.runInContext(html.slice(bucketStart, bucketEnd) + html.slice(bucketHelpersStart, bucketHelpersEnd)
+  + ';this.MATTER_BUCKETS=MATTER_BUCKETS;this.claimMatterBuckets=claimMatterBuckets;', bucketContext);
+
+test('jurisdiction landing separates matters into four non-exclusive dropdowns', () => {
+  assert.deepEqual(Array.from(bucketContext.MATTER_BUCKETS, item => item.id),
+    ['spear', 'shield', 'procedure', 'jurisdiction']);
+  assert.deepEqual(Array.from(bucketContext.claimMatterBuckets({
+    litigation_track: 'merits', litigation_postures: ['spear', 'shield'],
+  })), ['spear', 'shield'], 'a dual-position merits matter belongs to both dropdowns');
+  assert.deepEqual(Array.from(bucketContext.claimMatterBuckets({
+    litigation_track: 'procedure', litigation_postures: ['spear'],
+  })), ['procedure'], 'procedure remains a separate matter track');
+  assert.deepEqual(Array.from(bucketContext.claimMatterBuckets({
+    litigation_track: 'jurisdiction', litigation_postures: ['spear', 'shield'],
+  })), ['jurisdiction'], 'jurisdiction remains a separate matter track');
+  assert.match(html, /label\.setAttribute\('for',selectId\)/);
+  assert.match(html, /label\.innerHTML=esc\(bucket\.zh\)\+'类法律事项 '/);
+  assert.doesNotMatch(html, /select\.setAttribute\('aria-label',bucket\.zh/,
+    'the visible label must remain the complete accessible name');
+  assert.match(html, /首页只显示法域入口和资料覆盖概览/);
+  assert.match(html, /jurisdiction-home-grid/);
 });
 
 test('coverage copy keeps element, logic, corpus and jurisdiction coverage distinct', () => {
@@ -64,16 +99,32 @@ const viewStart = html.indexOf('let DOCTRINE_VIEW=0;');
 const viewEnd = html.indexOf('async function viewCorpus', viewStart);
 assert.ok(viewStart >= 0 && viewEnd > viewStart, 'doctrine view source boundaries must exist');
 
+test('the doctrine homepage does not request or render a concrete matter', async () => {
+  let apiCalls = 0;
+  const context = vm.createContext({
+    state: { mode: 'doctrine', jurisdiction: null, claim: null, tax: { jurisdiction_catalog: [] } },
+    api: async () => { apiCalls += 1; throw new Error('detail API must not run'); },
+    esc: String,
+    el: (_tag, _className, innerHTML = '') => ({ innerHTML, appendChild() {} }),
+  });
+  const main = { innerHTML: '', children: [], appendChild(node) { this.children.push(node); } };
+  context.main = main;
+  vm.runInContext(html.slice(viewStart, viewEnd), context, { filename: 'index.html-doctrine-home' });
+  await vm.runInContext('viewDoctrine(main)', context);
+  assert.equal(apiCalls, 0);
+  assert.match(main.children.map(node => node.innerHTML).join(' '), /选择资料法域/);
+});
+
 test('a doctrine response that finishes after leaving cannot paint the old cause', async () => {
   const pending = deferred();
   const context = vm.createContext({
-    state: { mode: 'doctrine', claim: 'private-nuisance', elements: null },
+    state: { mode: 'doctrine', jurisdiction: 'HK', claim: 'private-nuisance', elements: null },
     api: path => { assert.equal(path, '/doctrine/private-nuisance'); return pending.promise; },
     encodeURIComponent, esc: String,
     el: (_tag, _className, innerHTML = '') => ({ innerHTML }),
     appendCoveragePanel() {}, appendLitigationPosition() {}, appendCorpusLinks() {},
     appendElementGroups() {}, appendDoctrineLogic() {}, claimStatusLabel() { return ''; },
-    route() {}, window: { scrollTo() {} },
+    route() {}, window: { scrollTo() {} }, JZH: { HK: '香港' },
   });
   const main = { innerHTML: 'NEWER PAGE', children: [], appendChild(node) { this.children.push(node); } };
   context.main = main;
@@ -88,12 +139,12 @@ test('a doctrine response that finishes after leaving cannot paint the old cause
 
 test('a current doctrine failure remains available to the route error boundary', async () => {
   const context = vm.createContext({
-    state: { mode: 'doctrine', claim: 'private-nuisance', elements: null },
+    state: { mode: 'doctrine', jurisdiction: 'HK', claim: 'private-nuisance', elements: null },
     api: async () => { throw new Error('CURRENT DOCTRINE FAILURE'); },
     encodeURIComponent, esc: String,
     el: () => ({}), appendCoveragePanel() {}, appendLitigationPosition() {}, appendCorpusLinks() {},
     appendElementGroups() {}, appendDoctrineLogic() {}, claimStatusLabel() { return ''; },
-    route() {}, window: { scrollTo() {} }, main: { innerHTML: '' },
+    route() {}, window: { scrollTo() {} }, JZH: { HK: '香港' }, main: { innerHTML: '' },
   });
   vm.runInContext(html.slice(viewStart, viewEnd), context, { filename: 'index.html-doctrine-view' });
   await assert.rejects(vm.runInContext('viewDoctrine(main)', context), /CURRENT DOCTRINE FAILURE/);

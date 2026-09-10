@@ -385,10 +385,27 @@ const TAXONOMY_MODULE_ADDITIONS = [
   { area: 'Jurisdiction', area_zh: '管辖', id: 'hong-kong-jurisdiction', zh: '香港法院管辖权', en: 'Hong Kong civil jurisdiction', module_id: 'HKJUR' },
 ];
 
+const TAXONOMY_JURISDICTIONS = [
+  { id: 'HK', zh: '香港', en: 'Hong Kong SAR' },
+  { id: 'EN', zh: '英格兰及威尔士', en: 'England & Wales' },
+  { id: 'SG', zh: '新加坡', en: 'Singapore' },
+  { id: 'AU', zh: '澳大利亚', en: 'Australia' },
+];
+
+function taxonomyJurisdictions(value) {
+  const supplied = new Set(String(value || '').toUpperCase().split(/[^A-Z]+/).filter(Boolean));
+  return TAXONOMY_JURISDICTIONS.map((jurisdiction) => jurisdiction.id).filter((id) => supplied.has(id));
+}
+
 const TAXONOMY_EXPLICIT_PROFILES = {
   deceit: { litigation_postures: ['spear'], litigation_track: 'merits', primary_posture: 'spear', legal_kind: 'cause-of-action' },
   rescission: { litigation_postures: ['spear'], litigation_track: 'merits', primary_posture: 'spear', legal_kind: 'remedy' },
-  'negligent-misstatement': { litigation_postures: ['spear'], litigation_track: 'merits', primary_posture: 'spear', legal_kind: 'cause-of-action' },
+  'negligent-misstatement': { litigation_postures: ['spear'], litigation_track: 'merits', primary_posture: 'spear', legal_kind: 'cause-of-action', jurisdictions: ['EN', 'HK'], jurisdiction_scope_source: 'editorial-scope' },
+  penalty: { litigation_postures: ['shield'], litigation_track: 'merits', primary_posture: 'shield', legal_kind: 'defence', jurisdictions: ['EN', 'HK'], jurisdiction_scope_source: 'editorial-scope' },
+  privilege: { litigation_postures: ['shield'], litigation_track: 'procedure', primary_posture: 'shield', legal_kind: 'procedural-protection', jurisdictions: ['HK', 'EN'], jurisdiction_scope_source: 'editorial-scope' },
+  discovery: { litigation_postures: ['spear', 'shield'], litigation_track: 'procedure', primary_posture: null, legal_kind: 'procedural-doctrine', jurisdictions: ['HK', 'EN'], jurisdiction_scope_source: 'editorial-scope' },
+  easements: { litigation_postures: ['spear', 'shield'], litigation_track: 'merits', primary_posture: null, legal_kind: 'property-right', jurisdictions: ['HK'], jurisdiction_scope_source: 'hklandlaw-corpus' },
+  dmc: { litigation_postures: ['spear', 'shield'], litigation_track: 'merits', primary_posture: null, legal_kind: 'claim-family', jurisdictions: ['HK'], jurisdiction_scope_source: 'hklandlaw-corpus' },
 };
 
 function taxonomyLitigationPosition(module, reference) {
@@ -503,6 +520,8 @@ function taxonomy() {
   for (const claim of result.areas.flatMap((area) => area.claims)) {
     if (claim.id === 'misrepresentation') {
       Object.assign(claim, ELEMENTS.litigation_profile || {});
+      claim.jurisdictions = taxonomyJurisdictions(Object.keys(ELEMENTS.jurisdictions || {}).join('/'));
+      claim.jurisdiction_scope_source = 'elements-dataset';
       claim.logic_status = 'full';
       claim.coverage = { elements: 'full', logic: 'conjunctive', corpus: 'partial', jurisdiction_overlays: 'full' };
       continue;
@@ -522,6 +541,8 @@ function taxonomy() {
       claim.court_own_motion_summary = position.court_own_motion_summary;
       claim.litigation_note = position.litigation_note;
       claim.role_note = position.litigation_note;
+      claim.jurisdictions = taxonomyJurisdictions(module.jurisdiction);
+      claim.jurisdiction_scope_source = 'logic-module';
       claim.note = reference.coverage === 'partial'
         ? '已作为法律测试模块 '+module.id+' 的 '+reference.stage_ids.join('、')+' 阶段建模；尚不是独立完整要件数据集。'
         : module.note;
@@ -533,6 +554,23 @@ function taxonomy() {
     claim.logic_status = 'none';
   }
 
+  const allClaims = result.areas.flatMap((area) => area.claims);
+  const claimsById = new Map(allClaims.map((claim) => [claim.id, claim]));
+  for (const claim of allClaims) {
+    if (Array.isArray(claim.jurisdictions)) continue;
+    const crossReference = claim.xref && claimsById.get(claim.xref.split('#')[0]);
+    if (crossReference?.jurisdictions?.length) {
+      claim.jurisdictions = [...crossReference.jurisdictions];
+      claim.jurisdiction_scope_source = 'cross-reference';
+    } else if (claim.corpusTopics?.length || claim.status === 'corpus-only') {
+      claim.jurisdictions = ['HK'];
+      claim.jurisdiction_scope_source = 'hklandlaw-corpus';
+    } else {
+      claim.jurisdictions = [];
+      claim.jurisdiction_scope_source = 'unclassified';
+    }
+  }
+
   // Keep the claim catalogue structurally uniform. Consumers can compose one
   // cause-centred view without guessing whether a missing property means
   // "not modelled" or merely a different claim shape.
@@ -540,6 +578,8 @@ function taxonomy() {
     claim.elements = Array.isArray(claim.elements) ? claim.elements : [];
     claim.defences = Array.isArray(claim.defences) ? claim.defences : [];
     claim.model_ref = claim.model_ref || null;
+    claim.jurisdictions = [...new Set(claim.jurisdictions || [])]
+      .filter((id) => TAXONOMY_JURISDICTIONS.some((jurisdiction) => jurisdiction.id === id));
     claim.coverage = {
       elements: claim.elements.length ? 'full' : claim.xref ? 'xref' : 'none',
       logic: claim.logic_status || 'none',
@@ -551,6 +591,16 @@ function taxonomy() {
 
   result.posture_catalog = REGISTRY.posture_catalog || SCORED.posture_catalog || {};
   result.track_catalog = REGISTRY.track_catalog || SCORED.track_catalog || {};
+  result.jurisdiction_catalog = TAXONOMY_JURISDICTIONS.map((jurisdiction) => {
+    const coveredAreas = result.areas.filter((area) =>
+      area.claims.some((claim) => claim.jurisdictions.includes(jurisdiction.id)));
+    return {
+      ...jurisdiction,
+      claim_count: coveredAreas.reduce((count, area) => count
+        + area.claims.filter((claim) => claim.jurisdictions.includes(jurisdiction.id)).length, 0),
+      area_count: coveredAreas.length,
+    };
+  });
   result.litigation_position_note = '诉讼姿态（矛／盾）可多选；程序与管辖属于事项轨道。它们描述测试通常如何进入争议，不是额外法律要件。';
   result.modelled_modules = modules.length;
   result.legal_test_modules = modules.map((module) => ({
