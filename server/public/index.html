@@ -146,9 +146,6 @@ h1.page{font:600 30px/1.15 Spectral,"Songti SC",serif;margin:0 0 6px;text-wrap:b
 .jurisdiction-home-card .jurisdiction-code{font:500 10px/1 "IBM Plex Mono",monospace;letter-spacing:.1em;color:var(--ink3)}
 .jurisdiction-home-card strong{font:600 18px/1.25 Spectral,"Songti SC",serif}
 .jurisdiction-home-card .jurisdiction-count{display:block;margin-top:5px;font-size:11.5px;color:var(--ink3)}
-.analysis-path{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:12px 0 0}
-.analysis-path div{padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--surface2);font-size:12px;color:var(--ink2)}
-.analysis-path b{display:block;margin-bottom:3px;color:var(--ink);font-size:12.5px}
 .matter-launchers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:18px 0}
 .matter-launcher{margin:0;padding:14px 15px;border-top:3px solid var(--accent)}
 .matter-launcher[data-bucket="shield"]{border-top-color:var(--warn)}
@@ -174,7 +171,7 @@ details.au summary b{color:var(--ink);font-weight:600}
 .jgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:0 0 22px;align-items:start}
 @media(max-width:620px){
   .jgrid{grid-template-columns:1fr}
-  .jurisdiction-home-grid,.matter-launchers,.analysis-path{grid-template-columns:1fr}
+  .jurisdiction-home-grid,.matter-launchers{grid-template-columns:1fr}
   .topbar{position:static;gap:7px;padding:8px 12px}
   .brand{width:100%}
   .gsearch{flex:1 0 100%;max-width:none}
@@ -264,7 +261,6 @@ pre.code b{color:var(--accent);font-weight:500}
 .ep code{font:500 12px/1.5 "IBM Plex Mono",monospace;color:var(--accent)}
 .ep .d{color:var(--ink2)}
 .loading{color:var(--ink3);font-size:13px;padding:20px 0}
-footer.site{margin-top:40px;border-top:1px solid var(--line);padding-top:14px;color:var(--ink3);font-size:11.5px;max-width:90ch}
 @media (max-width:900px){
   .bar{grid-template-columns:120px 1fr 44px}
 }
@@ -320,9 +316,6 @@ details.card[open]>summary::before{content:'▾ '}
 <div class="wrap">
   <div id="context" aria-label="context navigation"></div>
   <main id="main"><div class="loading" role="status" aria-live="polite">正在加载…</div></main>
-  <footer class="site">
-    要件数据集 v0.4（英/港/新/澳）。核验等级以每条来源记录为准；名称或引证匹配不证明法律命题。favor 轴为编者标定。语料为 hklandlaw.wordpress.com 745 篇公开文章的<strong>元数据与自动生成的简短摘要</strong>（标题、日期、判例名与引证、学说标签），每条均回链原文，不复制原文内容；版权归原作者所有。本页为研究工具，不构成法律意见。
-  </footer>
 </div>
 
 <script type="module">
@@ -788,10 +781,6 @@ function viewDoctrineHome(main){
     grid.appendChild(card);
   }
   main.appendChild(grid);
-  const path=el('div','analysis-path');
-  path.innerHTML='<div><b>1 · 选择资料法域</b>香港、英格兰及威尔士、新加坡或澳大利亚</div><div><b>2 · 选择事项位置</b>矛、盾、程序、管辖分别进入</div><div><b>3 · 打开统一分析</b>再显示要件、判断逻辑、权威和证据状态</div>';
-  main.appendChild(path);
-  main.appendChild(el('p','coverage-note','法域入口表示当前资料的阅读与比较范围，不代替适用法、管辖权或冲突法分析。'));
 }
 function viewJurisdictionLanding(main){
   const jurisdiction=(state.tax?.jurisdiction_catalog||[]).find(item=>item.id===state.jurisdiction)
