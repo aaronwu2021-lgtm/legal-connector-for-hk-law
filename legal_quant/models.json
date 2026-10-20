@@ -1,0 +1,1809 @@
+{
+  "schema_version": "1",
+  "models": [
+    {
+      "id": "hand",
+      "version": "1",
+      "title": "汉德公式：预防成本与风险减少",
+      "category": "decision",
+      "question": "指定措施减少的预期损失，是否超过其同期间成本？",
+      "output_kind": "economic_comparison",
+      "formula_summary": "ΔEL = NpL(eₚ+eₗ−eₚeₗ)，等价于措施前后预期损失之差；净收益 = ΔEL − B",
+      "legal_status": "源自美国侵权判例的风险权衡；这里采用增量预期损失的经济扩展，不自动认定违反注意义务。",
+      "assumptions": [
+        "暴露次数、概率、损失与预防成本使用同一期间和一致货币口径。",
+        "L为事故发生后的条件平均损失；p为每次暴露事故概率。",
+        "两种措施效果分别作用于事故概率与条件损失，且未重复计入。",
+        "忽略风险厌恶、外部未计量利益及不可货币化限制。"
+      ],
+      "limitations": [
+        "经济上有净收益不等于法律上负有采取措施义务。",
+        "p与措施效果必须有数据或明确假设；不能由结果反推当时可预见性。",
+        "等号只表示经济收支相等；此模型采用严格大于作为净收益为正条件。"
+      ],
+      "required_legal_findings": [
+        "相关注意义务及标准",
+        "风险可预见性与措施可行性",
+        "适用法是否及如何允许经济权衡"
+      ],
+      "source_ids": [
+        "hand-carroll"
+      ],
+      "fields": [
+        {
+          "id": "N",
+          "label": "同期间暴露次数",
+          "unit": "次",
+          "description": "",
+          "type": "number",
+          "min": 0
+        },
+        {
+          "id": "p",
+          "label": "每次暴露事故概率",
+          "unit": "0–1比例",
+          "description": "",
+          "type": "number",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "id": "L",
+          "label": "事故条件平均损失",
+          "unit": "同一货币单位",
+          "description": "",
+          "type": "number",
+          "min": 0
+        },
+        {
+          "id": "annual_B",
+          "label": "同期间预防成本",
+          "unit": "同一货币单位",
+          "description": "默认年度；更换期间时全部输入同步。",
+          "type": "number",
+          "min": 0
+        },
+        {
+          "id": "prob_reduction",
+          "label": "事故概率降低比例",
+          "unit": "0–1比例",
+          "description": "",
+          "type": "number",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "id": "severity_reduction",
+          "label": "条件损失降低比例",
+          "unit": "0–1比例",
+          "description": "",
+          "type": "number",
+          "min": 0,
+          "max": 1
+        }
+      ],
+      "outputs": [
+        {
+          "id": "expected_before",
+          "label": "措施前预期损失",
+          "unit": "货币/期间",
+          "formula": "NpL",
+          "expression": {
+            "op": "mul",
+            "args": [
+              {
+                "var": "input.N"
+              },
+              {
+                "var": "input.p"
+              },
+              {
+                "var": "input.L"
+              }
+            ]
+          }
+        },
+        {
+          "id": "expected_after",
+          "label": "措施后预期损失",
+          "unit": "货币/期间",
+          "formula": "Np(1−eₚ)L(1−eₗ)",
+          "expression": {
+            "op": "mul",
+            "args": [
+              {
+                "var": "input.N"
+              },
+              {
+                "var": "input.p"
+              },
+              {
+                "op": "sub",
+                "args": [
+                  1,
+                  {
+                    "var": "input.prob_reduction"
+                  }
+                ]
+              },
+              {
+                "var": "input.L"
+              },
+              {
+                "op": "sub",
+                "args": [
+                  1,
+                  {
+                    "var": "input.severity_reduction"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "avoided_expected_loss",
+          "label": "减少的预期损失",
+          "unit": "货币/期间",
+          "formula": "NpL(eₚ+eₗ−eₚeₗ)，等价于EL前−EL后",
+          "expression": {
+            "op": "mul",
+            "args": [
+              {
+                "var": "out.expected_before"
+              },
+              {
+                "op": "sub",
+                "args": [
+                  {
+                    "op": "add",
+                    "args": [
+                      {
+                        "var": "input.prob_reduction"
+                      },
+                      {
+                        "var": "input.severity_reduction"
+                      }
+                    ]
+                  },
+                  {
+                    "op": "mul",
+                    "args": [
+                      {
+                        "var": "input.prob_reduction"
+                      },
+                      {
+                        "var": "input.severity_reduction"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "net_benefit",
+          "label": "经济净收益",
+          "unit": "货币/期间",
+          "formula": "ΔEL−B",
+          "expression": {
+            "op": "sub",
+            "args": [
+              {
+                "var": "out.avoided_expected_loss"
+              },
+              {
+                "var": "input.annual_B"
+              }
+            ]
+          }
+        },
+        {
+          "id": "economically_favourable",
+          "label": "经济净收益是否为正",
+          "unit": "布尔值",
+          "formula": "ΔEL>B",
+          "expression": {
+            "op": "gt",
+            "args": [
+              {
+                "var": "out.avoided_expected_loss"
+              },
+              {
+                "var": "input.annual_B"
+              }
+            ]
+          }
+        }
+      ],
+      "constraints": [],
+      "example_inputs": {
+        "N": 100000,
+        "p": 8e-05,
+        "L": 104000,
+        "annual_B": 120000,
+        "prob_reduction": 0.6,
+        "severity_reduction": 0
+      },
+      "example_basis": "hypothetical"
+    },
+    {
+      "id": "alexy",
+      "version": "1",
+      "title": "Alexy权重公式：原则间的理论权衡",
+      "category": "balancing",
+      "question": "给定有争议的强度与可靠性等级，理论权重比如何变化？",
+      "output_kind": "theoretical_weight_ratio",
+      "formula_summary": "Wᵢⱼ = (IᵢWᵢRᵢ)/(IⱼWⱼRⱼ)",
+      "legal_status": "法哲学上的论证结构；序数等级的数字编码并非客观测量、概率或香港法定评分表。",
+      "assumptions": [
+        "I、W采用轻/中/重的1、2、4等级编码；Iᵢ为原则i受干预程度，Iⱼ为实现相冲突原则j的重要程度。",
+        "R采用1、0.5、0.25的认知可靠性等级编码。",
+        "每个评分及其理由由使用者外部提供，两个原则使用相同评分口径。"
+      ],
+      "limitations": [
+        "结果依赖赋值；比值为2不证明某权利客观上重要两倍。",
+        "R不是案件胜诉概率；比值不是合法性概率。",
+        "适合展示理由与敏感性，不替代合法性、适当性、必要性等适用审查步骤。"
+      ],
+      "required_legal_findings": [
+        "两个原则及具体冲突",
+        "适用的权利限制与比例审查框架",
+        "每个赋值的事实和规范理由"
+      ],
+      "source_ids": [
+        "alexy-2014"
+      ],
+      "fields": [
+        {
+          "id": "I_i",
+          "label": "原则i的干预强度",
+          "unit": "理论等级",
+          "description": "",
+          "type": "number",
+          "enum": [
+            1,
+            2,
+            4
+          ]
+        },
+        {
+          "id": "W_i",
+          "label": "原则i的抽象重要性",
+          "unit": "理论等级",
+          "description": "",
+          "type": "number",
+          "enum": [
+            1,
+            2,
+            4
+          ]
+        },
+        {
+          "id": "R_i",
+          "label": "原则i前提可靠性",
+          "unit": "理论等级",
+          "description": "",
+          "type": "number",
+          "enum": [
+            1,
+            0.5,
+            0.25
+          ]
+        },
+        {
+          "id": "I_j",
+          "label": "原则j实现的重要程度",
+          "unit": "理论等级",
+          "description": "",
+          "type": "number",
+          "enum": [
+            1,
+            2,
+            4
+          ]
+        },
+        {
+          "id": "W_j",
+          "label": "原则j的抽象重要性",
+          "unit": "理论等级",
+          "description": "",
+          "type": "number",
+          "enum": [
+            1,
+            2,
+            4
+          ]
+        },
+        {
+          "id": "R_j",
+          "label": "原则j前提可靠性",
+          "unit": "理论等级",
+          "description": "",
+          "type": "number",
+          "enum": [
+            1,
+            0.5,
+            0.25
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "id": "weighted_i",
+          "label": "原则i的理论乘积",
+          "unit": "理论分值",
+          "formula": "IᵢWᵢRᵢ",
+          "expression": {
+            "op": "mul",
+            "args": [
+              {
+                "var": "input.I_i"
+              },
+              {
+                "var": "input.W_i"
+              },
+              {
+                "var": "input.R_i"
+              }
+            ]
+          }
+        },
+        {
+          "id": "weighted_j",
+          "label": "原则j的理论乘积",
+          "unit": "理论分值",
+          "formula": "IⱼWⱼRⱼ",
+          "expression": {
+            "op": "mul",
+            "args": [
+              {
+                "var": "input.I_j"
+              },
+              {
+                "var": "input.W_j"
+              },
+              {
+                "var": "input.R_j"
+              }
+            ]
+          }
+        },
+        {
+          "id": "weight_ratio",
+          "label": "原则i相对于j的权重比",
+          "unit": "理论比值",
+          "formula": "(IᵢWᵢRᵢ)/(IⱼWⱼRⱼ)",
+          "expression": {
+            "op": "div",
+            "args": [
+              {
+                "var": "out.weighted_i"
+              },
+              {
+                "var": "out.weighted_j"
+              }
+            ]
+          }
+        }
+      ],
+      "constraints": [],
+      "example_inputs": {
+        "I_i": 4,
+        "W_i": 2,
+        "R_i": 0.5,
+        "I_j": 2,
+        "W_j": 2,
+        "R_j": 1
+      },
+      "example_basis": "hypothetical"
+    },
+    {
+      "id": "bayes",
+      "version": "1",
+      "title": "贝叶斯更新：事实命题与证据",
+      "category": "evidence",
+      "question": "对一个明确事实命题，新证据在指定假设下如何更新概率？",
+      "output_kind": "conditional_hypothesis_probability",
+      "formula_summary": "P(H|E) = LR·p/(1−p+LR·p)",
+      "legal_status": "统计证据解释工具；输出不是有罪概率、法律责任概率或自动证明标准。",
+      "assumptions": [
+        "H与非H构成所选分析中的互斥且穷尽假说。",
+        "先验与似然比有独立依据；本模型只处理一个合并似然比。",
+        "似然比LR=P(E|H)/P(E|非H)，不能把P(E|H)误当后验。"
+      ],
+      "limitations": [
+        "多项相关证据不能直接相乘似然比；相关结构须另行建模。",
+        "先验和似然比不可靠时，精确的小数不代表可靠结论。",
+        "先验为1且LR为0导致不相容的零分母，必须拒绝计算。"
+      ],
+      "required_legal_findings": [
+        "待证明的具体事实命题",
+        "证据可采性、可靠性及证明标准",
+        "先验与似然比来源"
+      ],
+      "source_ids": [
+        "nist-bayes"
+      ],
+      "fields": [
+        {
+          "id": "prior",
+          "label": "事实命题先验概率",
+          "unit": "0–1比例",
+          "description": "",
+          "type": "number",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "id": "likelihood_ratio",
+          "label": "证据似然比",
+          "unit": "比值",
+          "description": "",
+          "type": "number",
+          "min": 0
+        }
+      ],
+      "outputs": [
+        {
+          "id": "denominator",
+          "label": "归一化分母",
+          "unit": "无量纲",
+          "formula": "1−p+LR·p",
+          "expression": {
+            "op": "add",
+            "args": [
+              {
+                "op": "sub",
+                "args": [
+                  1,
+                  {
+                    "var": "input.prior"
+                  }
+                ]
+              },
+              {
+                "op": "mul",
+                "args": [
+                  {
+                    "var": "input.likelihood_ratio"
+                  },
+                  {
+                    "var": "input.prior"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "posterior",
+          "label": "指定事实命题的条件后验概率",
+          "unit": "0–1比例",
+          "formula": "LR·p/(1−p+LR·p)",
+          "expression": {
+            "op": "div",
+            "args": [
+              {
+                "op": "mul",
+                "args": [
+                  {
+                    "var": "input.likelihood_ratio"
+                  },
+                  {
+                    "var": "input.prior"
+                  }
+                ]
+              },
+              {
+                "var": "out.denominator"
+              }
+            ]
+          }
+        }
+      ],
+      "constraints": [
+        {
+          "expression": {
+            "op": "gt",
+            "args": [
+              {
+                "op": "add",
+                "args": [
+                  {
+                    "op": "sub",
+                    "args": [
+                      1,
+                      {
+                        "var": "input.prior"
+                      }
+                    ]
+                  },
+                  {
+                    "op": "mul",
+                    "args": [
+                      {
+                        "var": "input.likelihood_ratio"
+                      },
+                      {
+                        "var": "input.prior"
+                      }
+                    ]
+                  }
+                ]
+              },
+              0
+            ]
+          },
+          "message": "先验与似然比产生零分母，无法更新概率。"
+        }
+      ],
+      "example_inputs": {
+        "prior": 0.2,
+        "likelihood_ratio": 8
+      },
+      "example_basis": "hypothetical"
+    },
+    {
+      "id": "deterrence",
+      "version": "1",
+      "title": "预期制裁：执行概率与社会损害",
+      "category": "policy",
+      "question": "在简化威慑假设下，何种制裁额的期望值等于社会损害？",
+      "output_kind": "policy_benchmark",
+      "formula_summary": "F* = H/q；qF* = H",
+      "legal_status": "法律经济学的政策基准；不是法定罚款、量刑建议或最低处罚要求。",
+      "assumptions": [
+        "行为人风险中性且了解最终受罚概率。",
+        "q为最终实际受制裁的概率，已包含必要执行环节。",
+        "社会损害可以货币化，忽略制裁成本、错误处罚及行为收益差异。"
+      ],
+      "limitations": [
+        "不能突破法律授权、罚款上限、比例原则或支付能力约束。",
+        "q接近零会产生极大基准，体现简化模型局限。",
+        "此模型仅将预期制裁与损害相等，不单独证明最佳执法或完全威慑。"
+      ],
+      "required_legal_findings": [
+        "处罚的法律授权与上限",
+        "受罚概率和损害估计依据",
+        "比例、错误风险及执行成本"
+      ],
+      "source_ids": [
+        "shavell-enforcement"
+      ],
+      "fields": [
+        {
+          "id": "harm",
+          "label": "每次行为的社会损害",
+          "unit": "同一货币单位",
+          "description": "",
+          "type": "number",
+          "min": 0
+        },
+        {
+          "id": "sanction_probability",
+          "label": "最终受制裁概率",
+          "unit": "0–1比例",
+          "description": "",
+          "type": "number",
+          "min": 0,
+          "max": 1
+        }
+      ],
+      "outputs": [
+        {
+          "id": "benchmark_sanction",
+          "label": "简化政策制裁基准",
+          "unit": "货币",
+          "formula": "H/q",
+          "expression": {
+            "op": "div",
+            "args": [
+              {
+                "var": "input.harm"
+              },
+              {
+                "var": "input.sanction_probability"
+              }
+            ]
+          }
+        },
+        {
+          "id": "expected_sanction",
+          "label": "基准下预期制裁",
+          "unit": "货币",
+          "formula": "qF*",
+          "expression": {
+            "op": "mul",
+            "args": [
+              {
+                "var": "input.sanction_probability"
+              },
+              {
+                "var": "out.benchmark_sanction"
+              }
+            ]
+          }
+        }
+      ],
+      "constraints": [
+        {
+          "expression": {
+            "op": "gt",
+            "args": [
+              {
+                "var": "input.sanction_probability"
+              },
+              0
+            ]
+          },
+          "message": "最终受制裁概率必须大于0。"
+        }
+      ],
+      "example_inputs": {
+        "harm": 100000,
+        "sanction_probability": 0.2
+      },
+      "example_basis": "hypothetical"
+    },
+    {
+      "id": "coase",
+      "version": "1",
+      "title": "社会成本比较：冲突解决方案",
+      "category": "decision",
+      "question": "给定可行方案，哪一项计入交易及执行成本后的社会总成本最低？",
+      "output_kind": "alternative_cost_comparison",
+      "formula_summary": "TCₐ = 预防成本+残余损害+交易成本+执行成本；比较min(TCₐ)",
+      "legal_status": "受科斯分析启发的成本比较；不是一条可直接决定权利归属的法律公式。",
+      "assumptions": [
+        "各方案使用同一期间、货币与社会评价范围。",
+        "各类成本不重复计数，纯粹内部转移不误计为新增社会成本。",
+        "方案可行性由外部确认；并列最低方案全部保留。"
+      ],
+      "limitations": [
+        "总成本最低不决定谁有权利、谁付钱或何种救济合法。",
+        "非货币利益、分配影响及协商障碍可能改变实际选择。",
+        "没有列入的方案不被模型评价。"
+      ],
+      "required_legal_findings": [
+        "权利归属与可用救济",
+        "方案法律及实际可行性",
+        "评价范围、成本归属及证据"
+      ],
+      "source_ids": [
+        "coase-1960"
+      ],
+      "fields": [
+        {
+          "id": "alternatives",
+          "label": "候选方案",
+          "unit": "",
+          "description": "",
+          "type": "object_array",
+          "minItems": 1,
+          "maxItems": 100,
+          "items": [
+            {
+              "id": "name",
+              "label": "方案名称",
+              "unit": "",
+              "description": "",
+              "type": "string"
+            },
+            {
+              "id": "prevention_cost",
+              "label": "预防成本",
+              "unit": "同一货币单位",
+              "description": "",
+              "type": "number",
+              "min": 0
+            },
+            {
+              "id": "residual_harm",
+              "label": "残余损害",
+              "unit": "同一货币单位",
+              "description": "",
+              "type": "number",
+              "min": 0
+            },
+            {
+              "id": "transaction_cost",
+              "label": "交易成本",
+              "unit": "同一货币单位",
+              "description": "",
+              "type": "number",
+              "min": 0
+            },
+            {
+              "id": "enforcement_cost",
+              "label": "执行成本",
+              "unit": "同一货币单位",
+              "description": "",
+              "type": "number",
+              "min": 0
+            }
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "id": "total_costs",
+          "label": "各方案总成本（依输入顺序）",
+          "unit": "货币列表",
+          "formula": "各方案四项成本之和",
+          "expression": {
+            "op": "map",
+            "items": {
+              "var": "input.alternatives"
+            },
+            "value": {
+              "op": "add",
+              "args": [
+                {
+                  "var": "item.prevention_cost"
+                },
+                {
+                  "var": "item.residual_harm"
+                },
+                {
+                  "var": "item.transaction_cost"
+                },
+                {
+                  "var": "item.enforcement_cost"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "minimum_total_cost",
+          "label": "最低总成本",
+          "unit": "货币",
+          "formula": "min(TC)",
+          "expression": {
+            "op": "min",
+            "args": [
+              {
+                "var": "out.total_costs"
+              }
+            ]
+          }
+        },
+        {
+          "id": "minimum_indices",
+          "label": "所有最低成本方案索引",
+          "unit": "从0开始的索引列表",
+          "formula": "argmin(TC)，保留并列",
+          "expression": {
+            "op": "argmin",
+            "args": [
+              {
+                "var": "out.total_costs"
+              }
+            ]
+          }
+        }
+      ],
+      "constraints": [],
+      "example_inputs": {
+        "alternatives": [
+          {
+            "name": "工厂隔音",
+            "prevention_cost": 30000,
+            "residual_harm": 0,
+            "transaction_cost": 8000,
+            "enforcement_cost": 2000
+          },
+          {
+            "name": "居民搬迁",
+            "prevention_cost": 80000,
+            "residual_harm": 0,
+            "transaction_cost": 8000,
+            "enforcement_cost": 2000
+          },
+          {
+            "name": "维持现状",
+            "prevention_cost": 0,
+            "residual_harm": 100000,
+            "transaction_cost": 0,
+            "enforcement_cost": 0
+          }
+        ]
+      },
+      "example_basis": "hypothetical"
+    },
+    {
+      "id": "settlement",
+      "version": "1",
+      "title": "诉讼和解：双方预期价值区间",
+      "category": "decision",
+      "question": "在指定成本与主观胜诉概率下，双方是否存在潜在和解区间？",
+      "output_kind": "reservation_value_range",
+      "formula_summary": "Smin=pP·D−CP；Smax=pD·D+CD；若Smin≤Smax则区间存在",
+      "legal_status": "风险中性诉讼决策模型；不是案件价值鉴定、胜诉预测或推荐报价。",
+      "assumptions": [
+        "双方各自承担未来诉讼费用；不适用于未经调整的败诉方付费制度。",
+        "双方风险中性，赔偿金额D固定，忽略折现、执行回收风险与和解成本。",
+        "两方胜诉概率代表各自主观评估，不要求相等。"
+      ],
+      "limitations": [
+        "存在区间不保证达成和解；本模型不决定区间内的成交点。",
+        "香港使用时应另行评估讼费转移、要约后果、回收率和时间。",
+        "负的原告底线按算式保留，只表示简化继续诉讼净值，不产生反向付款义务。"
+      ],
+      "required_legal_findings": [
+        "请求权和可赔项目",
+        "讼费制度、要约及费用后果",
+        "可执行性与双方授权"
+      ],
+      "source_ids": [
+        "shavell-settlement"
+      ],
+      "fields": [
+        {
+          "id": "plaintiff_probability",
+          "label": "原告估计的原告胜诉概率",
+          "unit": "0–1比例",
+          "description": "",
+          "type": "number",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "id": "defendant_probability",
+          "label": "被告估计的原告胜诉概率",
+          "unit": "0–1比例",
+          "description": "",
+          "type": "number",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "id": "award",
+          "label": "胜诉时固定赔偿金额",
+          "unit": "同一货币单位",
+          "description": "",
+          "type": "number",
+          "min": 0
+        },
+        {
+          "id": "plaintiff_cost",
+          "label": "原告未来诉讼成本",
+          "unit": "同一货币单位",
+          "description": "",
+          "type": "number",
+          "min": 0
+        },
+        {
+          "id": "defendant_cost",
+          "label": "被告未来诉讼成本",
+          "unit": "同一货币单位",
+          "description": "",
+          "type": "number",
+          "min": 0
+        }
+      ],
+      "outputs": [
+        {
+          "id": "lower",
+          "label": "原告简化保留价",
+          "unit": "货币",
+          "formula": "pP·D−CP",
+          "expression": {
+            "op": "sub",
+            "args": [
+              {
+                "op": "mul",
+                "args": [
+                  {
+                    "var": "input.plaintiff_probability"
+                  },
+                  {
+                    "var": "input.award"
+                  }
+                ]
+              },
+              {
+                "var": "input.plaintiff_cost"
+              }
+            ]
+          }
+        },
+        {
+          "id": "upper",
+          "label": "被告简化保留价",
+          "unit": "货币",
+          "formula": "pD·D+CD",
+          "expression": {
+            "op": "add",
+            "args": [
+              {
+                "op": "mul",
+                "args": [
+                  {
+                    "var": "input.defendant_probability"
+                  },
+                  {
+                    "var": "input.award"
+                  }
+                ]
+              },
+              {
+                "var": "input.defendant_cost"
+              }
+            ]
+          }
+        },
+        {
+          "id": "overlap",
+          "label": "潜在区间是否存在",
+          "unit": "布尔值",
+          "formula": "Smin≤Smax",
+          "expression": {
+            "op": "le",
+            "args": [
+              {
+                "var": "out.lower"
+              },
+              {
+                "var": "out.upper"
+              }
+            ]
+          }
+        },
+        {
+          "id": "interval_width",
+          "label": "区间宽度或分歧缺口",
+          "unit": "货币",
+          "formula": "Smax−Smin；负值表示无重叠",
+          "expression": {
+            "op": "sub",
+            "args": [
+              {
+                "var": "out.upper"
+              },
+              {
+                "var": "out.lower"
+              }
+            ]
+          }
+        }
+      ],
+      "constraints": [],
+      "example_inputs": {
+        "plaintiff_probability": 0.65,
+        "defendant_probability": 0.5,
+        "award": 1000000,
+        "plaintiff_cost": 150000,
+        "defendant_cost": 100000
+      },
+      "example_basis": "hypothetical"
+    },
+    {
+      "id": "cover_damages",
+      "version": "1",
+      "title": "合同补购差额：替代交易与调整",
+      "category": "amount",
+      "question": "在补购规则及损失项目均已确认适用后，输入金额产生多少条件计算值？",
+      "output_kind": "conditional_loss_amount",
+      "formula_summary": "D = 替代价−合同价+其他可赔损失−节省成本",
+      "legal_status": "以美国UCC §2-712的补购结构为参照；其他法域适用性需另行核验。",
+      "assumptions": [
+        "替代商品、数量、品质及价格口径可比。",
+        "善意、合理补购及其他损失的法律可赔性均为外部待确认前提。",
+        "其他损失与节省成本不存在重复计算。"
+      ],
+      "limitations": [
+        "算术金额不证明违约、因果关系、可预见性或减损义务已满足。",
+        "净值可为负；它仅表示输入的净差额，不自动产生反向赔偿责任。",
+        "本模型没有自行套用赔偿上限、免除责任条款或法域规则。"
+      ],
+      "required_legal_findings": [
+        "合同及违约",
+        "补购规则适用性与合理性",
+        "各损失项目可赔性、因果关系、减损及限额"
+      ],
+      "source_ids": [
+        "ucc-cover"
+      ],
+      "fields": [
+        {
+          "id": "replacement_price",
+          "label": "合理替代购买价",
+          "unit": "同一货币单位",
+          "description": "",
+          "type": "number",
+          "min": 0
+        },
+        {
+          "id": "contract_price",
+          "label": "原合同价",
+          "unit": "同一货币单位",
+          "description": "",
+          "type": "number",
+          "min": 0
+        },
+        {
+          "id": "other_losses",
+          "label": "其他已筛选可赔损失",
+          "unit": "同一货币单位",
+          "description": "",
+          "type": "number",
+          "min": 0
+        },
+        {
+          "id": "saved_costs",
+          "label": "因违约节省成本",
+          "unit": "同一货币单位",
+          "description": "",
+          "type": "number",
+          "min": 0
+        }
+      ],
+      "outputs": [
+        {
+          "id": "raw_difference",
+          "label": "替代交易价格差额",
+          "unit": "货币",
+          "formula": "替代价−合同价",
+          "expression": {
+            "op": "sub",
+            "args": [
+              {
+                "var": "input.replacement_price"
+              },
+              {
+                "var": "input.contract_price"
+              }
+            ]
+          }
+        },
+        {
+          "id": "net_amount",
+          "label": "调整后条件净差额",
+          "unit": "货币",
+          "formula": "价差+其他损失−节省成本",
+          "expression": {
+            "op": "sub",
+            "args": [
+              {
+                "op": "add",
+                "args": [
+                  {
+                    "var": "out.raw_difference"
+                  },
+                  {
+                    "var": "input.other_losses"
+                  }
+                ]
+              },
+              {
+                "var": "input.saved_costs"
+              }
+            ]
+          }
+        }
+      ],
+      "constraints": [],
+      "example_inputs": {
+        "replacement_price": 130000,
+        "contract_price": 100000,
+        "other_losses": 20000,
+        "saved_costs": 5000
+      },
+      "example_basis": "hypothetical"
+    },
+    {
+      "id": "loss_of_chance",
+      "version": "1",
+      "title": "机会丧失：条件机会价值",
+      "category": "amount",
+      "question": "适用法承认该机会损失时，机会下降对应的期望净利益是多少？",
+      "output_kind": "conditional_chance_value",
+      "formula_summary": "D = (p前−p后)·V",
+      "legal_status": "机会价值估算；UNIDROIT通则列有机会丧失补偿，但不是所有法域或损害类型的通用规则。",
+      "assumptions": [
+        "前后概率针对同一明确机会，且成功时净价值V固定。",
+        "V已扣除取得收益所需成本；概率下降归因于有关行为的范围已外部评估。",
+        "本模型只计算机会下降，不适用于概率增加。"
+      ],
+      "limitations": [
+        "机会概率不是责任成立概率，不能与其他赔偿再重复相乘。",
+        "须先确认该类机会损失在适用法下可赔，尤其不能自动移植到人身伤害。",
+        "概率与收益可能有关联；固定V假设不适用于所有机会分布。"
+      ],
+      "required_legal_findings": [
+        "机会损失是否获适用法承认",
+        "机会真实程度、因果关系与证明要求",
+        "净收益及概率依据"
+      ],
+      "source_ids": [
+        "unidroit-2016"
+      ],
+      "fields": [
+        {
+          "id": "probability_before",
+          "label": "原有成功概率",
+          "unit": "0–1比例",
+          "description": "",
+          "type": "number",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "id": "probability_after",
+          "label": "剩余成功概率",
+          "unit": "0–1比例",
+          "description": "",
+          "type": "number",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "id": "net_value",
+          "label": "成功时净利益",
+          "unit": "同一货币单位",
+          "description": "",
+          "type": "number",
+          "min": 0
+        }
+      ],
+      "outputs": [
+        {
+          "id": "chance_reduction",
+          "label": "成功机会减少",
+          "unit": "概率百分点的0–1表达",
+          "formula": "p前−p后",
+          "expression": {
+            "op": "sub",
+            "args": [
+              {
+                "var": "input.probability_before"
+              },
+              {
+                "var": "input.probability_after"
+              }
+            ]
+          }
+        },
+        {
+          "id": "chance_value",
+          "label": "丧失机会的条件价值",
+          "unit": "货币",
+          "formula": "(p前−p后)·V",
+          "expression": {
+            "op": "mul",
+            "args": [
+              {
+                "var": "out.chance_reduction"
+              },
+              {
+                "var": "input.net_value"
+              }
+            ]
+          }
+        }
+      ],
+      "constraints": [
+        {
+          "expression": {
+            "op": "ge",
+            "args": [
+              {
+                "var": "input.probability_before"
+              },
+              {
+                "var": "input.probability_after"
+              }
+            ]
+          },
+          "message": "原有成功概率不得小于剩余成功概率。"
+        }
+      ],
+      "example_inputs": {
+        "probability_before": 0.4,
+        "probability_after": 0.1,
+        "net_value": 1000000
+      },
+      "example_basis": "hypothetical"
+    },
+    {
+      "id": "present_value",
+      "version": "1",
+      "title": "未来损失现值：逐期折现",
+      "category": "amount",
+      "question": "给定逐期损失、条件持续概率和折现率，估值日金额是多少？",
+      "output_kind": "conditional_present_value",
+      "formula_summary": "PV = Σ Cₜsₜ/(1+r)^t",
+      "legal_status": "精算与金额计算结构；司法折现率、生存及就业条件等须按适用法和证据另行确定。",
+      "assumptions": [
+        "各期现金流与折现率的名义/实际口径一致，金额使用同一货币。",
+        "year以估值日为0，年末发生的第1年损失填1；只支持非负整数年度。",
+        "每项probability为该项损失发生的联合条件概率；未在amount中先行重复调整。",
+        "采用固定非负年折现率；本版本不支持负折现率、期中时点或率曲线。"
+      ],
+      "limitations": [
+        "输入折现率不等于适用法认可的折现率；不得直接套用投资收益率。",
+        "未来增长、通胀与相关条件需体现在现金流或外部估计中。",
+        "金额计算不决定未来损失的可赔性。"
+      ],
+      "required_legal_findings": [
+        "未来损失项目及持续期间可赔性",
+        "适用折现规则",
+        "生存、就业、护理或其他条件概率依据"
+      ],
+      "source_ids": [
+        "gad-ogden"
+      ],
+      "fields": [
+        {
+          "id": "cashflows",
+          "label": "逐期损失",
+          "unit": "",
+          "description": "",
+          "type": "object_array",
+          "minItems": 1,
+          "maxItems": 256,
+          "items": [
+            {
+              "id": "amount",
+              "label": "条件成立时的损失",
+              "unit": "同一货币单位",
+              "description": "",
+              "type": "number",
+              "min": 0
+            },
+            {
+              "id": "year",
+              "label": "距估值日年数",
+              "unit": "年",
+              "description": "",
+              "type": "integer",
+              "min": 0,
+              "max": 200
+            },
+            {
+              "id": "probability",
+              "label": "该项损失发生的联合条件概率",
+              "unit": "0–1比例",
+              "description": "",
+              "type": "number",
+              "min": 0,
+              "max": 1
+            }
+          ]
+        },
+        {
+          "id": "discount_rate",
+          "label": "固定年折现率",
+          "unit": "小数比例",
+          "description": "0.03表示3%；本版本仅支持非负率。",
+          "type": "number",
+          "min": 0
+        }
+      ],
+      "outputs": [
+        {
+          "id": "discounted_cashflows",
+          "label": "各期概率调整后现值",
+          "unit": "货币列表",
+          "formula": "Cₜsₜ/(1+r)^t",
+          "expression": {
+            "op": "map",
+            "items": {
+              "var": "input.cashflows"
+            },
+            "value": {
+              "op": "div",
+              "args": [
+                {
+                  "op": "mul",
+                  "args": [
+                    {
+                      "var": "item.amount"
+                    },
+                    {
+                      "var": "item.probability"
+                    }
+                  ]
+                },
+                {
+                  "op": "pow",
+                  "args": [
+                    {
+                      "op": "add",
+                      "args": [
+                        1,
+                        {
+                          "var": "input.discount_rate"
+                        }
+                      ]
+                    },
+                    {
+                      "var": "item.year"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "present_value",
+          "label": "未来损失条件现值总和",
+          "unit": "货币",
+          "formula": "Σ各期现值",
+          "expression": {
+            "op": "sum",
+            "args": [
+              {
+                "var": "out.discounted_cashflows"
+              }
+            ]
+          }
+        }
+      ],
+      "constraints": [],
+      "example_inputs": {
+        "cashflows": [
+          {
+            "amount": 100000,
+            "year": 1,
+            "probability": 1
+          },
+          {
+            "amount": 100000,
+            "year": 2,
+            "probability": 0.95
+          },
+          {
+            "amount": 100000,
+            "year": 3,
+            "probability": 0.9
+          }
+        ],
+        "discount_rate": 0.03
+      },
+      "example_basis": "hypothetical"
+    },
+    {
+      "id": "counterfactual_damage",
+      "version": "1",
+      "title": "反事实损害：多付款、转嫁与销量损失",
+      "category": "amount",
+      "question": "给定已外部估计的无违法价格，单期简化过收费路径的净损失是多少？",
+      "output_kind": "conditional_counterfactual_loss",
+      "formula_summary": "毛多付款=Q(P实−P反事实)；净额=毛多付款−转嫁额+销量损失利润",
+      "legal_status": "经济损害估算路径；模型不自行识别违法影响，也不自行拟合反事实价格。",
+      "assumptions": [
+        "只处理实际价不低于反事实价的购买者过收费情景。",
+        "数量为该价格口径下实际购买数量，价格具有可比性。",
+        "转嫁额为金额且不超过毛多付款；销量损失净利润另由外部估计。",
+        "转嫁、销量影响与其他损失不重复计数。"
+      ],
+      "limitations": [
+        "违法期间发生涨价不证明涨价由违法造成。",
+        "反事实价格须由可比数据、经济分析或明确假设支持；输出未包含估计置信区间。",
+        "下游交易、税项及多期情况须先统一口径；本版本不覆盖全部竞争损害路径。"
+      ],
+      "required_legal_findings": [
+        "违法行为、原告资格及因果关系",
+        "适用损害及转嫁规则",
+        "反事实价格、转嫁和销量损失的证据基础"
+      ],
+      "source_ids": [
+        "ec-passing-on"
+      ],
+      "fields": [
+        {
+          "id": "quantity",
+          "label": "实际购买数量",
+          "unit": "件/统一计量单位",
+          "description": "",
+          "type": "number",
+          "min": 0
+        },
+        {
+          "id": "actual_price",
+          "label": "实际单位价格",
+          "unit": "同一货币单位",
+          "description": "",
+          "type": "number",
+          "min": 0
+        },
+        {
+          "id": "but_for_price",
+          "label": "无违法反事实单位价格",
+          "unit": "同一货币单位",
+          "description": "",
+          "type": "number",
+          "min": 0
+        },
+        {
+          "id": "passed_on",
+          "label": "已转嫁金额",
+          "unit": "同一货币单位",
+          "description": "",
+          "type": "number",
+          "min": 0
+        },
+        {
+          "id": "volume_lost_profit",
+          "label": "销量减少的净利润损失",
+          "unit": "同一货币单位",
+          "description": "",
+          "type": "number",
+          "min": 0
+        }
+      ],
+      "outputs": [
+        {
+          "id": "unit_overcharge",
+          "label": "单位过收费",
+          "unit": "货币/单位",
+          "formula": "P实−P反事实",
+          "expression": {
+            "op": "sub",
+            "args": [
+              {
+                "var": "input.actual_price"
+              },
+              {
+                "var": "input.but_for_price"
+              }
+            ]
+          }
+        },
+        {
+          "id": "gross_overcharge",
+          "label": "毛多付款",
+          "unit": "货币",
+          "formula": "Q·max(P实−P反事实,0)",
+          "expression": {
+            "op": "mul",
+            "args": [
+              {
+                "var": "input.quantity"
+              },
+              {
+                "op": "max",
+                "args": [
+                  {
+                    "var": "out.unit_overcharge"
+                  },
+                  0
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "net_damage",
+          "label": "转嫁及销量调整后的条件损失",
+          "unit": "货币",
+          "formula": "毛多付款−转嫁额+销量损失利润",
+          "expression": {
+            "op": "add",
+            "args": [
+              {
+                "op": "sub",
+                "args": [
+                  {
+                    "var": "out.gross_overcharge"
+                  },
+                  {
+                    "var": "input.passed_on"
+                  }
+                ]
+              },
+              {
+                "var": "input.volume_lost_profit"
+              }
+            ]
+          }
+        }
+      ],
+      "constraints": [
+        {
+          "expression": {
+            "op": "ge",
+            "args": [
+              {
+                "var": "input.actual_price"
+              },
+              {
+                "var": "input.but_for_price"
+              }
+            ]
+          },
+          "message": "本模型仅支持实际价格不低于反事实价格的过收费路径。"
+        },
+        {
+          "expression": {
+            "op": "le",
+            "args": [
+              {
+                "var": "input.passed_on"
+              },
+              {
+                "op": "mul",
+                "args": [
+                  {
+                    "var": "input.quantity"
+                  },
+                  {
+                    "op": "sub",
+                    "args": [
+                      {
+                        "var": "input.actual_price"
+                      },
+                      {
+                        "var": "input.but_for_price"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "message": "转嫁金额不得超过毛多付款。"
+        }
+      ],
+      "example_inputs": {
+        "quantity": 10000,
+        "actual_price": 120,
+        "but_for_price": 100,
+        "passed_on": 50000,
+        "volume_lost_profit": 10000
+      },
+      "example_basis": "hypothetical"
+    },
+    {
+      "id": "hhi",
+      "version": "1",
+      "title": "HHI：市场集中度与两家企业合并",
+      "category": "market",
+      "question": "在已经界定的市场中，两家企业合并使集中度增加多少？",
+      "output_kind": "market_structure_indicator",
+      "formula_summary": "HHI=Σsᵢ²；ΔHHI=2sₐsᵦ；合并后HHI=合并前HHI+ΔHHI",
+      "legal_status": "竞争分析中使用的结构指标；本模型不包含任何法域的违法或申报阈值。",
+      "assumptions": [
+        "份额使用0–100的百分数，而非0–1小数；总和为100（容差1e−8）。",
+        "所有企业份额来自同一相关市场、期间和指标。",
+        "仅模拟两家不同企业合并且其他企业份额不变。",
+        "merger_index_a和merger_index_b使用从0开始的数组索引。"
+      ],
+      "limitations": [
+        "市场界定错误会使指标缺乏意义。",
+        "HHI不单独证明市场力量、显著减损竞争或违法。",
+        "进入、竞争接近程度、买方力量及其他证据仍需另行分析。"
+      ],
+      "required_legal_findings": [
+        "相关市场与份额口径",
+        "合并控制制度及适用阈值",
+        "结构指标外的竞争影响证据"
+      ],
+      "source_ids": [
+        "cma-mergers"
+      ],
+      "fields": [
+        {
+          "id": "shares",
+          "label": "各企业市场份额",
+          "unit": "百分数（合计100）",
+          "description": "",
+          "type": "number_array",
+          "min": 0,
+          "max": 100,
+          "minItems": 2,
+          "maxItems": 256
+        },
+        {
+          "id": "merger_index_a",
+          "label": "合并企业A索引",
+          "unit": "从0开始",
+          "description": "",
+          "type": "integer",
+          "min": 0
+        },
+        {
+          "id": "merger_index_b",
+          "label": "合并企业B索引",
+          "unit": "从0开始",
+          "description": "",
+          "type": "integer",
+          "min": 0
+        }
+      ],
+      "outputs": [
+        {
+          "id": "pre_hhi",
+          "label": "合并前HHI",
+          "unit": "HHI点",
+          "formula": "Σsᵢ²",
+          "expression": {
+            "op": "sum",
+            "args": [
+              {
+                "op": "map",
+                "items": {
+                  "var": "input.shares"
+                },
+                "value": {
+                  "op": "pow",
+                  "args": [
+                    {
+                      "var": "item"
+                    },
+                    2
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "delta_hhi",
+          "label": "HHI增量",
+          "unit": "HHI点",
+          "formula": "2sₐsᵦ",
+          "expression": {
+            "op": "mul",
+            "args": [
+              2,
+              {
+                "op": "at",
+                "args": [
+                  {
+                    "var": "input.shares"
+                  },
+                  {
+                    "var": "input.merger_index_a"
+                  }
+                ]
+              },
+              {
+                "op": "at",
+                "args": [
+                  {
+                    "var": "input.shares"
+                  },
+                  {
+                    "var": "input.merger_index_b"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "post_hhi",
+          "label": "合并后HHI",
+          "unit": "HHI点",
+          "formula": "合并前HHI+ΔHHI",
+          "expression": {
+            "op": "add",
+            "args": [
+              {
+                "var": "out.pre_hhi"
+              },
+              {
+                "var": "out.delta_hhi"
+              }
+            ]
+          }
+        }
+      ],
+      "constraints": [
+        {
+          "expression": {
+            "op": "and",
+            "args": [
+              {
+                "op": "ge",
+                "args": [
+                  {
+                    "op": "sum",
+                    "args": [
+                      {
+                        "var": "input.shares"
+                      }
+                    ]
+                  },
+                  99.99999999
+                ]
+              },
+              {
+                "op": "le",
+                "args": [
+                  {
+                    "op": "sum",
+                    "args": [
+                      {
+                        "var": "input.shares"
+                      }
+                    ]
+                  },
+                  100.00000001
+                ]
+              }
+            ]
+          },
+          "message": "市场份额必须合计100（容差1e−8）。"
+        },
+        {
+          "expression": {
+            "op": "ne",
+            "args": [
+              {
+                "var": "input.merger_index_a"
+              },
+              {
+                "var": "input.merger_index_b"
+              }
+            ]
+          },
+          "message": "合并企业必须是两个不同索引。"
+        },
+        {
+          "expression": {
+            "op": "lt",
+            "args": [
+              {
+                "var": "input.merger_index_a"
+              },
+              {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "map",
+                    "items": {
+                      "var": "input.shares"
+                    },
+                    "value": 1
+                  }
+                ]
+              }
+            ]
+          },
+          "message": "合并企业A索引超出份额数组。"
+        },
+        {
+          "expression": {
+            "op": "lt",
+            "args": [
+              {
+                "var": "input.merger_index_b"
+              },
+              {
+                "op": "sum",
+                "args": [
+                  {
+                    "op": "map",
+                    "items": {
+                      "var": "input.shares"
+                    },
+                    "value": 1
+                  }
+                ]
+              }
+            ]
+          },
+          "message": "合并企业B索引超出份额数组。"
+        }
+      ],
+      "example_inputs": {
+        "shares": [
+          40,
+          30,
+          20,
+          10
+        ],
+        "merger_index_a": 2,
+        "merger_index_b": 3
+      },
+      "example_basis": "hypothetical"
+    }
+  ]
+}

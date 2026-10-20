@@ -8,6 +8,7 @@ import PERSUASIVE from './_persuasive.mjs';
 import { createCitationIndex, matchesCaseName } from './citation.mjs';
 import { parseAsOf, createHistoricalLibrary } from './historical.mjs';
 import { scoreModule as evaluateScoreModule, validateScoreRequest, validationError as scoringValidationError } from './scoring.mjs';
+import { quantitativeCatalogue, quantitativeRequest, quantitativeTools, parseQuantitativeJSON } from './quantitative.mjs';
 
 /* ──────────────────────────────────────────────────────────────
    Cold-start indexes
@@ -1058,6 +1059,7 @@ function historicalCall(name,args) {
 }
 
 const MCP_TOOLS = [
+  ...quantitativeTools,
   { name: 'resolve_jurisdiction',
     description: 'Decide WHICH jurisdiction overlay applies before pulling doctrine. Give it the governing-law clause, seat, forum or any text naming courts or statutes; it returns the resolved jurisdiction with its precedent rule and statutes, or says it is ambiguous. Call this first — injecting English doctrine into a Hong Kong matter is the failure this tool exists to prevent.',
     inputSchema: { type: 'object', properties: { text: { type: 'string', description: 'governing law clause, seat, forum, or a description of the matter' } }, required: ['text'] } },
@@ -1117,6 +1119,13 @@ const MCP_TOOLS = [
 ];
 
 function mcpCall(name, args = {}) {
+  if (name === 'evaluate_quantitative_model') return quantitativeRequest(args).body;
+  if (name === 'list_quantitative_models') {
+    if (!args || typeof args !== 'object' || Array.isArray(args) || Object.keys(args).length) {
+      return { error: 'list_quantitative_models accepts an empty object only.' };
+    }
+    return quantitativeCatalogue();
+  }
   if(args && typeof args==='object' && Object.prototype.hasOwnProperty.call(args,'as_of') && args.as_of!==undefined) return historicalCall(name,args);
   switch (name) {
     case 'resolve_jurisdiction':
@@ -1193,9 +1202,9 @@ function mcpCall(name, args = {}) {
    Router
    ────────────────────────────────────────────────────────────── */
 
-const json = (body, status = 200) => new Response(JSON.stringify(body), {
+const json = (body, status = 200, cacheControl = 'public, max-age=300') => new Response(JSON.stringify(body), {
   status,
-  headers: { 'content-type': 'application/json; charset=utf-8', 'access-control-allow-origin': '*', 'cache-control': 'public, max-age=300' },
+  headers: { 'content-type': 'application/json; charset=utf-8', 'access-control-allow-origin': '*', 'cache-control': cacheControl },
 });
 
 
@@ -1232,7 +1241,7 @@ export default async (req) => {
   if (req.method === 'OPTIONS') return new Response(null, { status: 204, headers: { 'access-control-allow-origin': '*', 'access-control-allow-headers': 'content-type', 'access-control-allow-methods': 'GET,POST,OPTIONS' } });
 
   try {
-    if (path === '' || path === 'health') return json({ ok: true, service: 'doctrine-atlas-api', endpoints: ['/api/stats', '/api/taxonomy', '/api/doctrine/{claim}', '/api/elements', '/api/element/{id}', '/api/timeline/{id}?as_of=YYYY', '/api/jurisdictions', '/api/search?q=', '/api/cases', '/api/case?name=', '/api/topics', '/api/statutes', '/api/graph', '/api/maintenance', '/api/maintenance/calendar', '/api/maintenance/gaps', '/api/maintenance/queue', '/api/maintenance/watchlist', '/api/maintenance/propose (POST)', '/api/scored', '/api/scored/{id}', '/api/score (POST)', '/api/registry', '/api/calibration-queue', '/api/resolve?text=', '/api/checklist?jurisdiction=HK&variant=&as_of=', '/api/verify?cite=', '/api/persuasive', '/api/persuasive/{slug}', '/api/persuasive/graph', '/api/persuasive/queue', '/api/mcp (POST)'] });
+    if (path === '' || path === 'health') return json({ ok: true, service: 'doctrine-atlas-api', endpoints: ['/api/stats', '/api/taxonomy', '/api/doctrine/{claim}', '/api/elements', '/api/element/{id}', '/api/timeline/{id}?as_of=YYYY', '/api/jurisdictions', '/api/search?q=', '/api/cases', '/api/case?name=', '/api/topics', '/api/statutes', '/api/graph', '/api/maintenance', '/api/maintenance/calendar', '/api/maintenance/gaps', '/api/maintenance/queue', '/api/maintenance/watchlist', '/api/maintenance/propose (POST)', '/api/scored', '/api/scored/{id}', '/api/score (POST)', '/api/registry', '/api/calibration-queue', '/api/resolve?text=', '/api/checklist?jurisdiction=HK&variant=&as_of=', '/api/verify?cite=', '/api/persuasive', '/api/persuasive/{slug}', '/api/persuasive/graph', '/api/persuasive/queue', '/api/quant/models', '/api/quant/evaluate (POST)', '/api/mcp (POST)'] });
 
     if(q.has('as_of') && path!=='verify') {
       const cutoff=parseAsOf(q.get('as_of'));
@@ -1253,6 +1262,20 @@ export default async (req) => {
       return json(historical,historical.error?404:200);
     }
 
+    if (path === 'quant/models') {
+      if (req.method !== 'GET') return json({ error: 'GET required' }, 405);
+      return json(quantitativeCatalogue());
+    }
+    if (path === 'quant/evaluate') {
+      if (req.method !== 'POST') return json({ error: 'POST required' }, 405, 'no-store');
+      const raw = await req.text();
+      if (new TextEncoder().encode(raw).length > 131072) return json({ error: 'Request exceeds 128 KiB.' }, 413, 'no-store');
+      let body;
+      try { body = parseQuantitativeJSON(raw); }
+      catch (error) { return json({ error: error.message }, 400, 'no-store'); }
+      const result = quantitativeRequest(body);
+      return json(result.body, result.status, 'no-store');
+    }
     if (path === 'resolve') return json(resolveJurisdiction(q.get('text') || ''));
     if (path === 'checklist') return json(pleadingChecklist(q.get('jurisdiction'), q.get('variant'), q.get('as_of')));
     if (path === 'verify') {
@@ -1441,13 +1464,23 @@ export default async (req) => {
 
     if (path === 'mcp') {
       if (req.method !== 'POST') return json({ error: 'POST required', tools: MCP_TOOLS.map((t) => t.name) }, 405);
-      const body = await req.json().catch(() => ({}));
+      const raw = await req.text();
+      let body;
+      try { body = JSON.parse(raw); } catch { body = {}; }
       const { id = null, method, params = {} } = body;
-      const ok = (result) => json({ jsonrpc: '2.0', id, result });
+      const quantCall = method === 'tools/call' && ['list_quantitative_models', 'evaluate_quantitative_model'].includes(params.name);
+      if (quantCall) {
+        if (new TextEncoder().encode(raw).length > 131072) {
+          return json({ jsonrpc: '2.0', id, error: { code: -32600, message: 'Request exceeds 128 KiB.' } }, 413, 'no-store');
+        }
+        try { parseQuantitativeJSON(raw); }
+        catch (error) { return json({ jsonrpc: '2.0', id, error: { code: -32700, message: error.message } }, 400, 'no-store'); }
+      }
+      const ok = (result) => json({ jsonrpc: '2.0', id, result }, 200, quantCall ? 'no-store' : 'public, max-age=300');
       if (method === 'initialize') return ok({ protocolVersion: '2024-11-05', capabilities: { tools: {} }, serverInfo: { name: 'doctrine-atlas', version: ELEMENTS.version } });
       if (method === 'tools/list') return ok({ tools: MCP_TOOLS });
       if (method === 'tools/call') {
-        const args = ['score_factors', 'verify_citation', 'lookup_case'].includes(params.name) ? params.arguments : (params.arguments || {});
+        const args = ['score_factors', 'verify_citation', 'lookup_case', 'list_quantitative_models', 'evaluate_quantitative_model'].includes(params.name) ? params.arguments : (params.arguments || {});
         const out = mcpCall(params.name, args);
         const failed = !!out.error || (params.name === 'propose_amendment' && !!out && out.accepted === false);
         return ok({ content: [{ type: 'text', text: JSON.stringify(out, null, 1) }], isError: failed });

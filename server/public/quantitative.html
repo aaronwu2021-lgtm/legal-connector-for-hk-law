@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="法律量化工作台：按问题选择模型，记录假设与证据来源，查看公式、计算步骤和适用边界。">
+  <title>法律量化工作台 · Doctrine Drift Atlas</title>
+  <link rel="stylesheet" href="/quantitative.css">
+  <script src="/quantitative.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到主要内容</a>
+  <header class="topbar">
+    <a class="brand" href="/">要件漂移图谱 <span>Doctrine Drift Atlas</span></a>
+    <a class="back-link" href="/">← 返回图谱</a>
+  </header>
+  <main id="main" class="wrap">
+    <div class="eyebrow">LEGAL QUANTIFICATION / 法律量化</div>
+    <h1>从法律问题，到可检查的计算</h1>
+    <p class="lede">选择问题，记录数据与来源，逐步检查公式。金额计算、证据分析、行动选择与理论权衡分别呈现，适用法律要件单独核对。</p>
+    <p id="load-status" class="notice" role="status">正在载入模型…</p>
+    <div id="workspace" hidden>
+      <section class="card selection" aria-label="选择分析模型">
+        <div class="control">
+          <label for="category">分析类别</label>
+          <select id="category"></select>
+        </div>
+        <div class="control">
+          <label for="model">分析模型</label>
+          <select id="model"></select>
+        </div>
+      </section>
+      <section class="card model-overview" aria-labelledby="model-title">
+        <div id="model-kind" class="badge"></div>
+        <h2 id="model-title"></h2>
+        <p id="model-question" class="question"></p>
+        <p id="model-status" class="muted"></p>
+        <div class="formula-block"><span class="small-label">计算结构</span><div id="formula"></div></div>
+        <div class="detail-grid">
+          <div><h3>适用前提</h3><ul id="assumptions"></ul></div>
+          <div><h3>解释边界</h3><ul id="limitations"></ul></div>
+        </div>
+        <details>
+          <summary>需要独立核对的法律问题</summary>
+          <ul id="legal-findings"></ul>
+        </details>
+      </section>
+      <form id="analysis-form">
+        <section class="card" aria-labelledby="context-title">
+          <div class="section-head"><div><span class="step-number">01</span><h2 id="context-title">记录分析背景</h2></div></div>
+          <div class="context-grid">
+            <div class="control">
+              <label for="jurisdiction">拟适用法域</label>
+              <input id="jurisdiction" name="jurisdiction" type="text" value="HK" maxlength="100" required>
+              <span class="help">默认香港（HK）。选择法域不会自动验证模型的法律适用性。</span>
+            </div>
+            <div class="control">
+              <label for="as-of">分析基准日</label>
+              <input id="as-of" name="as_of" type="date">
+              <span class="help">可留空。用于记录本次分析背景；不是损害发生日或时效起算日。</span>
+            </div>
+            <div class="control">
+              <label for="input-basis">输入依据</label>
+              <select id="input-basis" name="input_basis">
+                <option value="hypothetical">教学假设 / 情景演示</option>
+                <option value="case_data">案件数据 / 逐项记录来源</option>
+              </select>
+            </div>
+            <div class="control">
+              <label for="applicability">法律适用审查</label>
+              <select id="applicability" name="applicability">
+                <option value="unreviewed">待独立审查</option>
+                <option value="externally_assessed">已由使用者在程序外审查</option>
+              </select>
+              <span class="help">此处记录使用者的审查状态，程序不作法律认定。</span>
+            </div>
+          </div>
+        </section>
+        <section class="card" aria-labelledby="inputs-title">
+          <div class="section-head">
+            <div><span class="step-number">02</span><h2 id="inputs-title">输入数据与证据</h2></div>
+            <button id="load-example" type="button" class="secondary">载入教学假设</button>
+          </div>
+          <p id="basis-notice" class="notice">当前为教学假设。示例数值不代表法律标准或真实案件事实。</p>
+          <p class="muted input-guidance">逐项保持金额、期间和概率口径一致。概率及比例按字段注明的单位输入，例如 0.2 代表 20%。来源可填写文件名、页码、日期和估计方法。</p>
+          <div id="fields" class="fields"></div>
+          <div class="form-actions">
+            <button id="calculate" type="submit" class="primary">查看计算步骤</button>
+            <button id="reset" type="button" class="secondary">清空本模型输入</button>
+          </div>
+          <p id="form-status" class="status-line" role="status" aria-live="polite"></p>
+        </section>
+      </form>
+      <section id="results" class="card result-section" aria-labelledby="results-title" hidden>
+        <div class="section-head">
+          <div><span class="step-number">03</span><h2 id="results-title">计算结果</h2></div>
+          <button id="download-result" type="button" class="secondary">下载结果 JSON</button>
+        </div>
+        <p id="result-context" class="muted"></p>
+        <p id="result-applicability" class="notice"></p>
+        <div id="result-cards" class="result-grid"></div>
+        <details>
+          <summary>本次代入的数据与来源</summary>
+          <dl id="result-inputs" class="input-summary"></dl>
+        </details>
+        <h3>逐项计算</h3>
+        <ol id="calculation-steps" class="calculation-steps"></ol>
+        <details open>
+          <summary>解释结果时须保留的前提与限制</summary>
+          <ul id="result-boundaries"></ul>
+        </details>
+        <details>
+          <summary>法律判断仍需逐项完成</summary>
+          <ul id="result-findings"></ul>
+        </details>
+      </section>
+      <section class="card" aria-labelledby="files-title">
+        <h2 id="files-title">保存与继续分析</h2>
+        <p class="muted">可下载包含输入、逐项来源、法域与日期的 JSON 文件，再导入继续计算。计算请求会发送到本项目服务；工作台不在服务器保存案件记录。</p>
+        <div class="file-actions">
+          <button id="download-case" type="button" class="secondary">下载本次输入 JSON</button>
+          <button id="import-case" type="button" class="secondary">导入已有输入</button>
+          <input id="case-file" type="file" accept=".json,application/json" hidden>
+        </div>
+        <p id="file-status" class="status-line" role="status"></p>
+      </section>
+      <section class="card" aria-labelledby="sources-title">
+        <h2 id="sources-title">模型依据</h2>
+        <p class="muted">理论来源、外国法规则与香港适用性分别标注。案例输入的证据来源见上方各字段。</p>
+        <ul id="model-sources" class="source-list"></ul>
+      </section>
+      <p class="footer-note">计算值取决于输入与模型前提；法律结论始终保留给独立的要件分析。</p>
+    </div>
+  </main>
+</body>
+</html>

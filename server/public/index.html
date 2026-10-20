@@ -57,10 +57,11 @@ button{font:inherit;cursor:pointer}
   background:var(--bg);color:var(--ink);font:inherit;font-size:13.5px}
 .gsearch .ic{position:absolute;left:10px;top:8px;color:var(--ink3);font-size:13px}
 .modes{display:flex;gap:2px;flex-wrap:wrap}
-.modes button{background:none;border:0;border-bottom:2px solid transparent;color:var(--ink2);
+.modes button,.modes a{background:none;border:0;border-bottom:2px solid transparent;color:var(--ink2);
   padding:6px 10px;font-size:13.5px;border-radius:0}
 .modes button[aria-current="true"]{color:var(--ink);border-bottom-color:var(--accent);font-weight:600}
-.modes button:hover{color:var(--ink)}
+.modes button:hover,.modes a:hover{color:var(--ink)}
+.modes a{text-decoration:none}
 .apihint{margin-left:auto;font:400 11px/1 "IBM Plex Mono",monospace;color:var(--ink3)}
 .apihint b{color:var(--ink3);font-weight:500}
 .apihint b[data-state="online"]{color:var(--good)}
@@ -176,7 +177,7 @@ details.au summary b{color:var(--ink);font-weight:600}
   .brand{width:100%}
   .gsearch{flex:1 0 100%;max-width:none}
   .modes{flex:1 0 100%;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin;padding-bottom:2px}
-  .modes button{flex:0 0 auto;padding:5px 8px}
+  .modes button,.modes a{flex:0 0 auto;padding:5px 8px}
   .apihint{width:100%;margin-left:0;text-align:right;font-size:10px}
 }
 .jcard{background:var(--surface);border:1px solid var(--line);border-left-width:3px;border-radius:9px;padding:12px 14px;box-shadow:var(--shadow)}
@@ -393,6 +394,9 @@ function renderModes(){
     };
     n.appendChild(b);
   }
+  const quantitativeLink = el('a', null, '量化分析 Quantitative');
+  quantitativeLink.href = '/quantitative.html';
+  n.appendChild(quantitativeLink);
 }
 
 /* ── context bar (single-column shell: claim select / slice chips / stats) ── */
@@ -1182,14 +1186,17 @@ async function viewApi(main){
     ['GET /api/persuasive/graph', '\u5224\u4f8b\u5f15\u7528\u5173\u7cfb\u8fb9'],
     ['GET /api/persuasive/queue', '\u5f85\u4eba\u5de5\u6838\u9a8c\u961f\u5217\uff08\u5148\u91cd\u540e\u8f7b\uff09'],
     ['GET /api/topics · /api/statutes · /api/graph','标签、条文、共现图'],
+    ['GET /api/quant/models','11种量化模型：输入、公式、法律前提与来源'],
+    ['POST /api/quant/evaluate','根据明确输入逐步计算；在量化工作台尝试'],
     ['POST /api/mcp','MCP JSON-RPC:initialize / tools/list / tools/call'],
   ];
   for(const [a,b] of eps){
     const r = el('div','ep');
     r.innerHTML = '<code>'+esc(a)+'</code><span class="d">'+esc(b)+'</span>';
-    const btn = el('button','chip sm','试一下');
+    const btn = el('button','chip sm',a === 'POST /api/quant/evaluate' ? '打开工作台' : '试一下');
     let output;
     btn.onclick = async () => {
+      if(a === 'POST /api/quant/evaluate'){ location.href='/quantitative.html'; return; }
       btn.disabled=true;
       if(!output){ output=el('pre','code'); r.after(output); }
       output.textContent='正在请求…';

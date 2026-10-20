@@ -1,0 +1,611 @@
+{
+  "meta": {
+    "title": "教学示例：商场湿滑地面，整套过失分析",
+    "data_status": "synthetic_teaching_example",
+    "currency": "HKD",
+    "price_year": 2026,
+    "jurisdiction_context": "香港项目背景；适用法律尚未核验",
+    "incident_date": "2026-09-01",
+    "valuation_date": "2026-10-20"
+  },
+  "legal": {
+    "state": "unresolved",
+    "unresolved": [
+      "jurisdiction_review",
+      "duty_of_care",
+      "breach",
+      "factual_causation",
+      "scope_and_remoteness",
+      "actionable_damage",
+      "applicable_defences_and_time",
+      "damages_adjustments"
+    ],
+    "not_supported": [],
+    "issues": [
+      {
+        "id": "duty_of_care",
+        "finding": "unknown",
+        "proposition": "本路径主张被告对该原告及该类风险负有注意义务",
+        "basis": "需核验关系、控制或承担责任、风险及适用法；不设置分数阈值",
+        "evidence_ids": [
+          "E3"
+        ],
+        "quantifiable_observations": [
+          "控制区域面积与时段",
+          "接触次数",
+          "收到的风险通知次数及时间"
+        ],
+        "cannot_infer_from": "控制比例或接触频率不能直接决定注意义务"
+      },
+      {
+        "id": "breach",
+        "finding": "unknown",
+        "proposition": "事故前的行为违反了适用的注意标准",
+        "basis": "风险引擎仅提供经济权衡；还需法定要求、情境、行业做法和合理可得知识",
+        "evidence_ids": [
+          "E1",
+          "E2",
+          "E3"
+        ],
+        "quantifiable_observations": [
+          "事前事故数/暴露次数",
+          "危险持续分钟",
+          "发现至处置分钟",
+          "完成巡检次数/应有巡检次数",
+          "各措施年化成本、风险减少额"
+        ],
+        "cannot_infer_from": "净经济收益大于零不能自动将本项设为成立"
+      },
+      {
+        "id": "factual_causation",
+        "finding": "unknown",
+        "proposition": "依适用因果规则，该违反义务导致了本次损害",
+        "basis": "需具体机制与反事实证据；群体相对风险不是个体原因概率",
+        "evidence_ids": [
+          "E4"
+        ],
+        "quantifiable_observations": [
+          "事件时间差",
+          "路径和位置距离",
+          "暴露剂量或持续时间",
+          "有措施与无措施群体的事故率及置信区间"
+        ],
+        "cannot_infer_from": "措施降低60%事故率不等于有60%概率造成这位原告的伤害"
+      },
+      {
+        "id": "scope_and_remoteness",
+        "finding": "unknown",
+        "proposition": "所主张损失处于本案适用的责任范围内，未被相关限制排除",
+        "basis": "依案件类型分析义务范围、损害类型、介入原因及过远性",
+        "evidence_ids": [
+          "E3",
+          "E4",
+          "E6"
+        ],
+        "quantifiable_observations": [
+          "各损失项目金额",
+          "损害发生时间及距离",
+          "已知同类事故记录"
+        ],
+        "cannot_infer_from": "距离或时间不存在本工具通用的法律截断点"
+      },
+      {
+        "id": "actionable_damage",
+        "finding": "unknown",
+        "proposition": "存在且已证明适用法承认的可赔损害",
+        "basis": "必须审核项目资格、证明、重复计算及估值",
+        "evidence_ids": [
+          "E5"
+        ],
+        "quantifiable_observations": [
+          "医疗发票",
+          "实际工资损失",
+          "未来现金流现值",
+          "护理工时与单价",
+          "获认可的非财产损害估值"
+        ],
+        "cannot_infer_from": "教学估值不等于法院会判赔的金额"
+      },
+      {
+        "id": "applicable_defences_and_time",
+        "finding": "unknown",
+        "proposition": "本路径未被适用的完全抗辩、时效或其他程序障碍阻却",
+        "basis": "按案件启用相应规则；unknown不代表抗辩已经证明；举证责任需另行核验",
+        "evidence_ids": [
+          "E6"
+        ],
+        "quantifiable_observations": [
+          "经过日数",
+          "法定起算、暂停及延展所需的日期"
+        ],
+        "cannot_infer_from": "仅按事故日加固定年数不能确定时效"
+      },
+      {
+        "id": "damages_adjustments",
+        "finding": "unknown",
+        "proposition": "可赔项目、减损扣额、共分疏忽比例及适用顺序已有依据",
+        "basis": "示例20%只作情景输入；不由模型评分生成",
+        "evidence_ids": [
+          "E5",
+          "E6"
+        ],
+        "quantifiable_observations": [
+          "外部认定的扣减比例",
+          "经证明可避免损失金额"
+        ],
+        "cannot_infer_from": "缺少扣减证据不自动意味着应扣0%或100%"
+      }
+    ],
+    "note": "Economic outputs never change a legal finding. No liability probability is calculated."
+  },
+  "observed_frequency": {
+    "accidents": 8,
+    "exposures": 100000,
+    "source": "E1；一次暴露定义为一人在指定湿滑区域的一次通行",
+    "observed_probability_per_exposure": 8e-05,
+    "accidents_per_100000_exposures": 8.0,
+    "wilson_95_interval": [
+      4.053852835999305e-05,
+      0.00015786843812503332
+    ],
+    "assumptions": [
+      "Independent, comparable exposures; one binary accident outcome per exposure.",
+      "Clustering, changing conditions and under-reporting can invalidate this interval.",
+      "A zero count does not establish zero risk.",
+      "This sampling interval is distinct from the risk engine's assumed triangular range."
+    ]
+  },
+  "quantified_observations": [
+    {
+      "id": "control_share",
+      "issue_id": "duty_of_care",
+      "label": "实际管理面积占比",
+      "value": 0.8,
+      "unit": "比例；平方米/平方米",
+      "source": "E3",
+      "interpretation_limit": "800/1000为演示占位，不是已核事实；80%控制面积不等于80%注意义务"
+    },
+    {
+      "id": "prior_notice_count",
+      "issue_id": "duty_of_care",
+      "label": "事前同类风险通知次数",
+      "value": 3.0,
+      "unit": "次",
+      "source": "E1",
+      "interpretation_limit": "教学假设；通知次数是可预见性和知识证据之一，不自动创设义务"
+    },
+    {
+      "id": "inspection_completion",
+      "issue_id": "breach",
+      "label": "当日约定巡检完成率",
+      "value": 0.6666666666666666,
+      "unit": "比例；次数/次数",
+      "source": "E2",
+      "interpretation_limit": "教学假设；约定次数不是已核验的法定要求，完成率不等于过失程度"
+    },
+    {
+      "id": "response_delay",
+      "issue_id": "breach",
+      "label": "实际处置时间减去假设可行处置时间",
+      "value": 20.0,
+      "unit": "分钟",
+      "source": "E2",
+      "interpretation_limit": "教学假设；10分钟需要可行性证据，不是通用法律期限"
+    },
+    {
+      "id": "causal_gap",
+      "issue_id": "factual_causation",
+      "label": "湿滑出现至跌倒的时间间隔",
+      "value": 20.0,
+      "unit": "分钟",
+      "source": "E4",
+      "interpretation_limit": "演示占位；时间先后本身不证明因果关系"
+    },
+    {
+      "id": "harm_distance",
+      "issue_id": "scope_and_remoteness",
+      "label": "事故位置距已知危险源",
+      "value": 2.0,
+      "unit": "米",
+      "source": "E4",
+      "interpretation_limit": "演示占位；物理距离不等于法律过远性"
+    },
+    {
+      "id": "past_earnings",
+      "issue_id": "actionable_damage",
+      "label": "缺勤收入损失",
+      "value": 40000.0,
+      "unit": "HKD；1000元/日×40日",
+      "source": "E5",
+      "interpretation_limit": "教学假设；需证明原收入、缺勤及可赔性，不能与其他收入项目重复"
+    },
+    {
+      "id": "elapsed_since_incident",
+      "issue_id": "applicable_defences_and_time",
+      "label": "事故日至估值日的经过天数",
+      "value": 49,
+      "unit": "日",
+      "source": "E6",
+      "interpretation_limit": "49天仅为日历计算，不确定法律上的起算点、届满日或延期"
+    }
+  ],
+  "cohort_association": {
+    "baseline": {
+      "accidents": 8,
+      "exposures": 100000,
+      "source": "E1；一次暴露定义为一人在指定湿滑区域的一次通行",
+      "observed_probability_per_exposure": 8e-05,
+      "accidents_per_100000_exposures": 8.0,
+      "wilson_95_interval": [
+        4.053852835999305e-05,
+        0.00015786843812503332
+      ],
+      "assumptions": [
+        "Independent, comparable exposures; one binary accident outcome per exposure.",
+        "Clustering, changing conditions and under-reporting can invalidate this interval.",
+        "A zero count does not establish zero risk.",
+        "This sampling interval is distinct from the risk engine's assumed triangular range."
+      ]
+    },
+    "comparison": {
+      "accidents": 3,
+      "exposures": 100000,
+      "source": "教学假设：另一有防滑措施区域；未控制人群、天气、地面等混杂因素",
+      "observed_probability_per_exposure": 3e-05,
+      "accidents_per_100000_exposures": 3.0,
+      "wilson_95_interval": [
+        1.0202758544517341e-05,
+        8.820804925176732e-05
+      ],
+      "assumptions": [
+        "Independent, comparable exposures; one binary accident outcome per exposure.",
+        "Clustering, changing conditions and under-reporting can invalidate this interval.",
+        "A zero count does not establish zero risk.",
+        "This sampling interval is distinct from the risk engine's assumed triangular range."
+      ]
+    },
+    "risk_difference_per_exposure": 5.000000000000001e-05,
+    "risk_ratio_comparison_over_baseline": 0.375,
+    "observed_relative_reduction": 0.625,
+    "note": "Descriptive association only; nonrandom assignment, confounding and sampling error remain. It neither estimates individual causation nor automatically sets the preventive effect input."
+  },
+  "risk": {
+    "units": {
+      "currency": "HKD",
+      "time_basis": "per_year",
+      "event_probability_basis": "per_exposure"
+    },
+    "point_estimate": {
+      "method": "triangular_modes; not the mean of the uncertain output",
+      "conditional_expected_loss_per_event": 104000.0,
+      "expected_event_count_annual": 8.0,
+      "baseline_expected_loss_annual": 832000.0,
+      "measures": [
+        {
+          "id": "signs",
+          "name": "方案A：警示与提醒",
+          "burden_annual": 12000.0,
+          "baseline_expected_loss_annual": 832000.0,
+          "residual_expected_loss_annual": 748800.0,
+          "avoided_expected_loss_annual": 83200.0,
+          "net_benefit_annual": 71200.0,
+          "total_social_cost_annual": 760800.0,
+          "benefit_cost_ratio": 6.933333333333334,
+          "break_even_probability_per_exposure": 1.1538461538461538e-05,
+          "break_even_probability_reduction": 0.014423076923076924,
+          "combined_loss_reduction": 0.1,
+          "economic_support": "positive"
+        },
+        {
+          "id": "mats",
+          "name": "方案B：防滑设施与巡检",
+          "burden_annual": 120000.0,
+          "baseline_expected_loss_annual": 832000.0,
+          "residual_expected_loss_annual": 332800.0,
+          "avoided_expected_loss_annual": 499200.0,
+          "net_benefit_annual": 379200.0,
+          "total_social_cost_annual": 452800.0,
+          "benefit_cost_ratio": 4.16,
+          "break_even_probability_per_exposure": 1.923076923076923e-05,
+          "break_even_probability_reduction": 0.14423076923076922,
+          "combined_loss_reduction": 0.6,
+          "economic_support": "positive"
+        },
+        {
+          "id": "mats_staff",
+          "name": "方案C：防滑设施与驻点人员",
+          "burden_annual": 260000.0,
+          "baseline_expected_loss_annual": 832000.0,
+          "residual_expected_loss_annual": 166399.99999999997,
+          "avoided_expected_loss_annual": 665600.0,
+          "net_benefit_annual": 405600.0,
+          "total_social_cost_annual": 426400.0,
+          "benefit_cost_ratio": 2.56,
+          "break_even_probability_per_exposure": 3.125e-05,
+          "break_even_probability_reduction": 0.3125,
+          "combined_loss_reduction": 0.8,
+          "economic_support": "positive"
+        },
+        {
+          "id": "closure",
+          "name": "方案D：全年关闭该区域",
+          "burden_annual": 1200000.0,
+          "baseline_expected_loss_annual": 832000.0,
+          "residual_expected_loss_annual": 0.0,
+          "avoided_expected_loss_annual": 832000.0,
+          "net_benefit_annual": -368000.0,
+          "total_social_cost_annual": 1200000.0,
+          "benefit_cost_ratio": 0.6933333333333334,
+          "break_even_probability_per_exposure": 0.00011538461538461538,
+          "break_even_probability_reduction": 1.4423076923076923,
+          "combined_loss_reduction": 1.0,
+          "economic_support": "negative"
+        }
+      ],
+      "preferred_measure_id": "mats_staff"
+    },
+    "bounds": {
+      "method": "conservative input corners; not confidence intervals",
+      "baseline_expected_loss_annual": {
+        "min": 170400.0,
+        "max": 3193200.0
+      },
+      "measures": [
+        {
+          "id": "signs",
+          "name": "方案A：警示与提醒",
+          "net_benefit_annual": {
+            "min": -14392.0,
+            "max": 630040.0
+          }
+        },
+        {
+          "id": "mats",
+          "name": "方案B：防滑设施与巡检",
+          "net_benefit_annual": {
+            "min": -110360.0,
+            "max": 2459560.0
+          }
+        },
+        {
+          "id": "mats_staff",
+          "name": "方案C：防滑设施与驻点人员",
+          "net_benefit_annual": {
+            "min": -246280.0,
+            "max": 2759676.0
+          }
+        },
+        {
+          "id": "closure",
+          "name": "方案D：全年关闭该区域",
+          "net_benefit_annual": {
+            "min": -1629600.0,
+            "max": 2293200.0
+          }
+        }
+      ]
+    },
+    "simulation": {
+      "draws": 10000,
+      "seed": 42,
+      "method": "independent triangular parameter draws with a shared baseline",
+      "net_benefit_by_measure": [
+        {
+          "id": "signs",
+          "name": "方案A：警示与提醒",
+          "p05": 26156.43184407034,
+          "p50": 93350.84653274389,
+          "p95": 215305.91460860803,
+          "positive_share": 0.9995,
+          "mc_standard_error": 0.00022355088906106927
+        },
+        {
+          "id": "mats",
+          "name": "方案B：防滑设施与巡检",
+          "p05": 167440.6722452624,
+          "p50": 471928.34479732637,
+          "p95": 948028.5669452695,
+          "positive_share": 1.0,
+          "mc_standard_error": 0.0
+        },
+        {
+          "id": "mats_staff",
+          "name": "方案C：防滑设施与驻点人员",
+          "p05": 126676.79746285573,
+          "p50": 516919.3365668852,
+          "p95": 1094820.5365563477,
+          "positive_share": 0.9965,
+          "mc_standard_error": 0.0005905717568593971
+        },
+        {
+          "id": "closure",
+          "name": "方案D：全年关闭该区域",
+          "p05": -846139.9858779315,
+          "p50": -241313.31148471055,
+          "p95": 511157.4778930466,
+          "positive_share": 0.2957,
+          "mc_standard_error": 0.0045635677928568125
+        }
+      ],
+      "preferred_share": {
+        "baseline": 0.0,
+        "signs": 0.0005,
+        "mats": 0.4115,
+        "mats_staff": 0.5879,
+        "closure": 0.0001
+      },
+      "tie_policy": "baseline first, then input order; numerical equality tolerance 1e-12"
+    },
+    "assumptions": [
+      "All monetary inputs use one currency and price year; all comparisons are annual.",
+      "N is annual exposures and p is event probability per exposure; N*p is an expected event count, not a probability.",
+      "Loss-category shares are fixed, mutually exclusive, exhaustive and conditional on one event.",
+      "Loss components within each category are additive and must not double-count the same loss.",
+      "Each measure is an alternative complete package; effects of separate packages are not combined.",
+      "Initial cost is annualized over its useful life with no residual value; annual costs and risks are stationary.",
+      "The same loss-proportion reduction applies across categories; probability and severity reductions multiply residual loss.",
+      "Monte Carlo assumes independent marginal triangular parameter distributions; all measures share each draw's baseline probability and losses.",
+      "Monte Carlo represents input uncertainty, not realized accidents or a probability of legal liability.",
+      "positive_share is the fraction of assumed parameter draws with positive net benefit; mc_standard_error is simulation error, not empirical uncertainty.",
+      "Equal economic values use relative and absolute floating-point tolerances of 1e-12; baseline wins ties.",
+      "Economic support, risk differences and relative reductions do not establish legal breach or causation."
+    ]
+  },
+  "incremental_comparisons": [
+    {
+      "from": "baseline",
+      "to": "signs",
+      "incremental_cost_annual": 12000.0,
+      "incremental_avoided_loss_annual": 83200.0,
+      "incremental_net_benefit_annual": 71200.0
+    },
+    {
+      "from": "baseline",
+      "to": "mats",
+      "incremental_cost_annual": 120000.0,
+      "incremental_avoided_loss_annual": 499200.0,
+      "incremental_net_benefit_annual": 379200.0
+    },
+    {
+      "from": "baseline",
+      "to": "mats_staff",
+      "incremental_cost_annual": 260000.0,
+      "incremental_avoided_loss_annual": 665600.0,
+      "incremental_net_benefit_annual": 405600.0
+    },
+    {
+      "from": "baseline",
+      "to": "closure",
+      "incremental_cost_annual": 1200000.0,
+      "incremental_avoided_loss_annual": 832000.0,
+      "incremental_net_benefit_annual": -368000.0
+    },
+    {
+      "from": "signs",
+      "to": "mats",
+      "incremental_cost_annual": 108000.0,
+      "incremental_avoided_loss_annual": 416000.0,
+      "incremental_net_benefit_annual": 308000.0
+    },
+    {
+      "from": "signs",
+      "to": "mats_staff",
+      "incremental_cost_annual": 248000.0,
+      "incremental_avoided_loss_annual": 582400.0,
+      "incremental_net_benefit_annual": 334400.0
+    },
+    {
+      "from": "signs",
+      "to": "closure",
+      "incremental_cost_annual": 1188000.0,
+      "incremental_avoided_loss_annual": 748800.0,
+      "incremental_net_benefit_annual": -439200.0
+    },
+    {
+      "from": "mats",
+      "to": "mats_staff",
+      "incremental_cost_annual": 140000.0,
+      "incremental_avoided_loss_annual": 166400.00000000003,
+      "incremental_net_benefit_annual": 26400.00000000003
+    },
+    {
+      "from": "mats",
+      "to": "closure",
+      "incremental_cost_annual": 1080000.0,
+      "incremental_avoided_loss_annual": 332800.0,
+      "incremental_net_benefit_annual": -747200.0
+    },
+    {
+      "from": "mats_staff",
+      "to": "closure",
+      "incremental_cost_annual": 940000.0,
+      "incremental_avoided_loss_annual": 166399.99999999997,
+      "incremental_net_benefit_annual": -773600.0
+    }
+  ],
+  "claimant_damages": {
+    "valuation_date": "2026-10-20",
+    "components": [
+      {
+        "name": "医疗",
+        "present_value": {
+          "low": 60000.0,
+          "mode": 60000.0,
+          "high": 60000.0
+        }
+      },
+      {
+        "name": "过去收入损失",
+        "present_value": {
+          "low": 30000.0,
+          "mode": 40000.0,
+          "high": 50000.0
+        }
+      },
+      {
+        "name": "未来护理现值",
+        "present_value": {
+          "low": 100000.0,
+          "mode": 150000.0,
+          "high": 220000.0
+        }
+      },
+      {
+        "name": "非财产损害情景",
+        "present_value": {
+          "low": 50000.0,
+          "mode": 80000.0,
+          "high": 120000.0
+        }
+      }
+    ],
+    "known_component_subtotal": {
+      "low": 240000.0,
+      "mode": 330000.0,
+      "high": 450000.0
+    },
+    "missing": [],
+    "conditional_net_damages": {
+      "low": 168000.0,
+      "mode": 264000.0,
+      "high": 405000.0
+    },
+    "legally_payable_amount": null,
+    "note": "Scenario only. Eligibility, deduction applicability and order need external legal findings."
+  },
+  "non_monetized_constraints": [
+    {
+      "issue": "适用的强制安全义务",
+      "status": "unknown",
+      "effect": "经济净收益不能授权违反适用的强制义务"
+    },
+    {
+      "issue": "严重伤害和脆弱使用者",
+      "status": "requires_review",
+      "effect": "单列严重事故条件占比2%；如特定人群风险不同应分层重估，不能只看均值"
+    },
+    {
+      "issue": "不可货币化的尊严、可达性及公共服务",
+      "status": "not_valued",
+      "effect": "不能因缺少估值而记作零；当前经济排名不覆盖这些维度"
+    },
+    {
+      "issue": "相依风险与风险转移",
+      "status": "not_modelled",
+      "effect": "措施可能改变人员流向和其他事故类型；需要扩展事件树后再作结论"
+    }
+  ],
+  "input_audit": [
+    "All demonstration values are synthetic; no empirical calibration has been established.",
+    "E1: synthetic; 假设事故前同类区域有100000次通行、8次事故；并非真实统计",
+    "E2: synthetic; 假设措施成本报价与有效性范围；尚无对照实验",
+    "E3: missing; 租约、控制权、人员职责、适用成文规定与判例",
+    "E4: missing; 事故录像、清洁记录、医师及工程专家的因果意见",
+    "E5: synthetic; 假设个案发票、收入、护理和非财产损害数值",
+    "E6: missing; 可预见性、第三方介入、共分疏忽、减损、时效及适用抗辩证据",
+    "No risk score establishes duty, breach, factual causation, remoteness, or a defence.",
+    "The selected option minimizes monetized expected cost only among the declared options.",
+    "Tail severity, distributional effects and non-monetized rights remain separately recorded.",
+    "Relative risk and risk reduction do not equal the probability that this defendant caused this injury."
+  ]
+}

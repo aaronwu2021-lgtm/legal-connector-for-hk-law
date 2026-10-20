@@ -1,0 +1,133 @@
+{
+  "meta": {
+    "title": "教学示例：商场湿滑地面，整套过失分析",
+    "data_status": "synthetic_teaching_example",
+    "currency": "HKD",
+    "price_year": 2026,
+    "jurisdiction_context": "香港项目背景；适用法律尚未核验",
+    "incident_date": "2026-09-01",
+    "valuation_date": "2026-10-20"
+  },
+  "evidence": [
+    {"id": "E1", "status": "synthetic", "description": "假设事故前同类区域有100000次通行、8次事故；并非真实统计"},
+    {"id": "E2", "status": "synthetic", "description": "假设措施成本报价与有效性范围；尚无对照实验"},
+    {"id": "E3", "status": "missing", "description": "租约、控制权、人员职责、适用成文规定与判例"},
+    {"id": "E4", "status": "missing", "description": "事故录像、清洁记录、医师及工程专家的因果意见"},
+    {"id": "E5", "status": "synthetic", "description": "假设个案发票、收入、护理和非财产损害数值"},
+    {"id": "E6", "status": "missing", "description": "可预见性、第三方介入、共分疏忽、减损、时效及适用抗辩证据"}
+  ],
+  "observations": {
+    "exposures": 100000,
+    "accidents": 8,
+    "at_most_one_accident_per_exposure": true,
+    "source": "E1；一次暴露定义为一人在指定湿滑区域的一次通行"
+  },
+  "comparison_observations": {
+    "exposures": 100000,
+    "accidents": 3,
+    "at_most_one_accident_per_exposure": true,
+    "source": "教学假设：另一有防滑措施区域；未控制人群、天气、地面等混杂因素"
+  },
+  "quantified_observations": [
+    {"id": "control_share", "issue_id": "duty_of_care", "label": "实际管理面积占比", "kind": "ratio", "numerator": 800, "denominator": 1000, "unit": "比例；平方米/平方米", "source": "E3", "interpretation_limit": "800/1000为演示占位，不是已核事实；80%控制面积不等于80%注意义务"},
+    {"id": "prior_notice_count", "issue_id": "duty_of_care", "label": "事前同类风险通知次数", "kind": "quantity", "value": 3, "unit": "次", "source": "E1", "interpretation_limit": "教学假设；通知次数是可预见性和知识证据之一，不自动创设义务"},
+    {"id": "inspection_completion", "issue_id": "breach", "label": "当日约定巡检完成率", "kind": "ratio", "numerator": 8, "denominator": 12, "unit": "比例；次数/次数", "source": "E2", "interpretation_limit": "教学假设；约定次数不是已核验的法定要求，完成率不等于过失程度"},
+    {"id": "response_delay", "issue_id": "breach", "label": "实际处置时间减去假设可行处置时间", "kind": "difference", "observed": 30, "comparison": 10, "unit": "分钟", "source": "E2", "interpretation_limit": "教学假设；10分钟需要可行性证据，不是通用法律期限"},
+    {"id": "causal_gap", "issue_id": "factual_causation", "label": "湿滑出现至跌倒的时间间隔", "kind": "quantity", "value": 20, "unit": "分钟", "source": "E4", "interpretation_limit": "演示占位；时间先后本身不证明因果关系"},
+    {"id": "harm_distance", "issue_id": "scope_and_remoteness", "label": "事故位置距已知危险源", "kind": "quantity", "value": 2, "unit": "米", "source": "E4", "interpretation_limit": "演示占位；物理距离不等于法律过远性"},
+    {"id": "past_earnings", "issue_id": "actionable_damage", "label": "缺勤收入损失", "kind": "quantity", "value": 40000, "unit": "HKD；1000元/日×40日", "source": "E5", "interpretation_limit": "教学假设；需证明原收入、缺勤及可赔性，不能与其他收入项目重复"},
+    {"id": "elapsed_since_incident", "issue_id": "applicable_defences_and_time", "label": "事故日至估值日的经过天数", "kind": "elapsed_days", "start": "2026-09-01", "end": "2026-10-20", "unit": "日", "source": "E6", "interpretation_limit": "49天仅为日历计算，不确定法律上的起算点、届满日或延期"}
+  ],
+  "legal": {
+    "jurisdiction_review": {"finding": "unknown", "basis": "未将美国或英国判例直接转写为香港现行法律规则"},
+    "issues": [
+      {"id": "duty_of_care", "finding": "unknown", "proposition": "本路径主张被告对该原告及该类风险负有注意义务", "basis": "需核验关系、控制或承担责任、风险及适用法；不设置分数阈值", "evidence_ids": ["E3"], "quantifiable_observations": ["控制区域面积与时段", "接触次数", "收到的风险通知次数及时间"], "cannot_infer_from": "控制比例或接触频率不能直接决定注意义务"},
+      {"id": "breach", "finding": "unknown", "proposition": "事故前的行为违反了适用的注意标准", "basis": "风险引擎仅提供经济权衡；还需法定要求、情境、行业做法和合理可得知识", "evidence_ids": ["E1", "E2", "E3"], "quantifiable_observations": ["事前事故数/暴露次数", "危险持续分钟", "发现至处置分钟", "完成巡检次数/应有巡检次数", "各措施年化成本、风险减少额"], "cannot_infer_from": "净经济收益大于零不能自动将本项设为成立"},
+      {"id": "factual_causation", "finding": "unknown", "proposition": "依适用因果规则，该违反义务导致了本次损害", "basis": "需具体机制与反事实证据；群体相对风险不是个体原因概率", "evidence_ids": ["E4"], "quantifiable_observations": ["事件时间差", "路径和位置距离", "暴露剂量或持续时间", "有措施与无措施群体的事故率及置信区间"], "cannot_infer_from": "措施降低60%事故率不等于有60%概率造成这位原告的伤害"},
+      {"id": "scope_and_remoteness", "finding": "unknown", "proposition": "所主张损失处于本案适用的责任范围内，未被相关限制排除", "basis": "依案件类型分析义务范围、损害类型、介入原因及过远性", "evidence_ids": ["E3", "E4", "E6"], "quantifiable_observations": ["各损失项目金额", "损害发生时间及距离", "已知同类事故记录"], "cannot_infer_from": "距离或时间不存在本工具通用的法律截断点"},
+      {"id": "actionable_damage", "finding": "unknown", "proposition": "存在且已证明适用法承认的可赔损害", "basis": "必须审核项目资格、证明、重复计算及估值", "evidence_ids": ["E5"], "quantifiable_observations": ["医疗发票", "实际工资损失", "未来现金流现值", "护理工时与单价", "获认可的非财产损害估值"], "cannot_infer_from": "教学估值不等于法院会判赔的金额"},
+      {"id": "applicable_defences_and_time", "finding": "unknown", "proposition": "本路径未被适用的完全抗辩、时效或其他程序障碍阻却", "basis": "按案件启用相应规则；unknown不代表抗辩已经证明；举证责任需另行核验", "evidence_ids": ["E6"], "quantifiable_observations": ["经过日数", "法定起算、暂停及延展所需的日期"], "cannot_infer_from": "仅按事故日加固定年数不能确定时效"},
+      {"id": "damages_adjustments", "finding": "unknown", "proposition": "可赔项目、减损扣额、共分疏忽比例及适用顺序已有依据", "basis": "示例20%只作情景输入；不由模型评分生成", "evidence_ids": ["E5", "E6"], "quantifiable_observations": ["外部认定的扣减比例", "经证明可避免损失金额"], "cannot_infer_from": "缺少扣减证据不自动意味着应扣0%或100%"}
+    ]
+  },
+  "risk": {
+    "information_available_by": "2026-08-31",
+    "event_probability_basis": "per_exposure",
+    "exposure_count_per_year": 100000,
+    "baseline_event_probability": {"low": 0.00003, "mode": 0.00008, "high": 0.00018},
+    "probability_source": "E1；范围为教学假设，非Wilson置信区间",
+    "discount_rate": 0,
+    "loss_categories": [
+      {"name": "轻伤", "share": 0.8, "components": [
+        {"name": "医疗", "amount": {"low": 3000, "mode": 5000, "high": 8000}, "source": "教学假设"},
+        {"name": "收入损失", "amount": {"low": 1000, "mode": 2000, "high": 4000}, "source": "教学假设"},
+        {"name": "康复等其余损失", "amount": {"low": 2000, "mode": 3000, "high": 6000}, "source": "教学假设；与前两项不重叠"}
+      ]},
+      {"name": "中度伤害", "share": 0.18, "components": [
+        {"name": "医疗", "amount": {"low": 20000, "mode": 40000, "high": 70000}, "source": "教学假设"},
+        {"name": "收入损失", "amount": {"low": 30000, "mode": 60000, "high": 100000}, "source": "教学假设"},
+        {"name": "康复护理等其余损失", "amount": {"low": 50000, "mode": 100000, "high": 180000}, "source": "教学假设；不得与医疗和收入重复"}
+      ]},
+      {"name": "严重伤害", "share": 0.02, "components": [
+        {"name": "医疗", "amount": {"low": 200000, "mode": 300000, "high": 500000}, "source": "教学假设"},
+        {"name": "收入损失现值", "amount": {"low": 600000, "mode": 1000000, "high": 1500000}, "source": "教学假设"},
+        {"name": "终身护理等其余损失现值", "amount": {"low": 900000, "mode": 1700000, "high": 3000000}, "source": "教学假设；非生命价值或法院赔偿标价"}
+      ]}
+    ],
+    "measures": [
+      {"id": "signs", "name": "方案A：警示与提醒", "initial_cost": {"low": 8000, "mode": 10000, "high": 14000}, "life_years": 5,
+        "annual_costs": [
+          {"name": "提示人工", "amount": {"low": 4000, "mode": 6000, "high": 9000}},
+          {"name": "维护", "amount": {"low": 3000, "mode": 4000, "high": 6000}}
+        ],
+        "probability_reduction": {"low": 0.02, "mode": 0.1, "high": 0.2},
+        "severity_reduction": {"low": 0, "mode": 0, "high": 0},
+        "source": "E2；独立完整方案"
+      },
+      {"id": "mats", "name": "方案B：防滑设施与巡检", "initial_cost": {"low": 250000, "mode": 300000, "high": 400000}, "life_years": 5,
+        "annual_costs": [
+          {"name": "维护", "amount": {"low": 15000, "mode": 20000, "high": 30000}},
+          {"name": "巡检人工", "amount": {"low": 25000, "mode": 30000, "high": 40000}},
+          {"name": "使用者绕行时间成本", "amount": {"low": 5000, "mode": 10000, "high": 20000}}
+        ],
+        "probability_reduction": {"low": 0.35, "mode": 0.6, "high": 0.8},
+        "severity_reduction": {"low": 0, "mode": 0, "high": 0},
+        "source": "E2；独立完整方案，非在A上另行叠加"
+      },
+      {"id": "mats_staff", "name": "方案C：防滑设施与驻点人员", "initial_cost": {"low": 250000, "mode": 300000, "high": 400000}, "life_years": 5,
+        "annual_costs": [
+          {"name": "维护", "amount": {"low": 15000, "mode": 20000, "high": 30000}},
+          {"name": "全部安全人工", "amount": {"low": 140000, "mode": 170000, "high": 210000}},
+          {"name": "使用者绕行时间成本", "amount": {"low": 5000, "mode": 10000, "high": 20000}}
+        ],
+        "probability_reduction": {"low": 0.55, "mode": 0.8, "high": 0.93},
+        "severity_reduction": {"low": 0, "mode": 0, "high": 0},
+        "source": "E2；已包含B的相关成本，不能与B相加"
+      },
+      {"id": "closure", "name": "方案D：全年关闭该区域", "initial_cost": {"low": 0, "mode": 0, "high": 0}, "life_years": 1,
+        "annual_costs": [{"name": "净服务与机会损失", "amount": {"low": 900000, "mode": 1200000, "high": 1800000}}],
+        "probability_reduction": {"low": 1, "mode": 1, "high": 1},
+        "severity_reduction": {"low": 0, "mode": 0, "high": 0},
+        "source": "教学假设：该类暴露完全消除；未建模的风险转移须另评估"
+      }
+    ]
+  },
+  "damages": {
+    "valuation_date": "2026-10-20",
+    "required_components": ["医疗", "过去收入损失", "未来护理现值", "非财产损害情景"],
+    "components": [
+      {"name": "医疗", "kind": "present_value", "amount": {"low": 60000, "mode": 60000, "high": 60000}, "source": "E5：教学假设"},
+      {"name": "过去收入损失", "kind": "present_value", "amount": {"low": 30000, "mode": 40000, "high": 50000}, "source": "E5：教学假设"},
+      {"name": "未来护理现值", "kind": "present_value", "amount": {"low": 100000, "mode": 150000, "high": 220000}, "source": "E5：教学假设，已经折现，不再二次折现"},
+      {"name": "非财产损害情景", "kind": "present_value", "amount": {"low": 50000, "mode": 80000, "high": 120000}, "source": "E5：教学假设，不是香港判赔标准"}
+    ],
+    "mitigation_deduction": {"amount": {"low": 0, "mode": 0, "high": 0}, "basis": "暂设无减损扣额的算术情景，法律认定仍unknown", "source": "教学假设"},
+    "contributory_fraction": {"amount": {"low": 0.1, "mode": 0.2, "high": 0.3}, "basis": "测试10%/20%/30%扣减情景，不是模型认定原告过错", "source": "教学假设"}
+  },
+  "non_monetized_constraints": [
+    {"issue": "适用的强制安全义务", "status": "unknown", "effect": "经济净收益不能授权违反适用的强制义务"},
+    {"issue": "严重伤害和脆弱使用者", "status": "requires_review", "effect": "单列严重事故条件占比2%；如特定人群风险不同应分层重估，不能只看均值"},
+    {"issue": "不可货币化的尊严、可达性及公共服务", "status": "not_valued", "effect": "不能因缺少估值而记作零；当前经济排名不覆盖这些维度"},
+    {"issue": "相依风险与风险转移", "status": "not_modelled", "effect": "措施可能改变人员流向和其他事故类型；需要扩展事件树后再作结论"}
+  ]
+}

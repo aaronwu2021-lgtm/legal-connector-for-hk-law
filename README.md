@@ -16,7 +16,9 @@ itself is not distributed here.
 | Path | Contents |
 |---|---|
 | `data/` | The element library: misrepresentation family (17 sub-tests × 4 jurisdictions), a 20-module typed registry of legal-test logic and two-axis litigation positions (numeric bands only inside multi-factor balancing stages), the drift/maintenance ledger, a 745-document Hong Kong land-law case-note corpus, and a 449-case England-and-Wales persuasive index (unverified, persuasive-only in HK). CC BY 4.0. |
-| `server/` | The connector itself — Netlify serverless functions implementing the REST API and a 14-tool MCP server, plus the browser UI. MIT. |
+| `server/` | The connector itself — Netlify serverless functions implementing the REST API and MCP server, plus the browser UI. MIT. |
+| `legal_quant/` | Eleven quantitative legal analysis models, a shared formula catalogue, source ledger, and standard-library Python engine/CLI. |
+| `examples/negligence_quant/` | A synthetic negligence assessment with separate legal elements, observable evidence, uncertainty ranges, and prevention scenarios. |
 | `experiments/exp1-lab/` | In-benchmark pilot: 6 arbitration tasks, 2 conditions, blind paired judging over 59 legal-standard criteria. Null result. |
 | `experiments/exp2-probe/` | Jurisdiction-specific probe: 21 items, 2 conditions, blind judging against a pre-registered key. 16/21 → 21/21 as originally scored; **15/21 → 19/21 re-scored against the law** after two keys were found wrong (`rescore.py`, `probe_results_rescored.json`). |
 | `experiments/exp3-hk-matter/` | The Hong Kong matter-file eval set the paper identified as missing: 5 tasks, 31 criteria, 6 drift-sensitive, with an as_of pair either side of *Chang Pui Yin*. **Unrun** — a task set with answer keys, no results claimed. |
@@ -109,14 +111,49 @@ curl -X POST https://doctrine-drift-atlas.netlify.app/api/score \
   -d '{"module":"HKJUR","facts":{"F-governing-law":true}}'
 ```
 
+### Quantitative legal analysis
+
+Open `/quantitative.html` from the **量化分析 Quantitative** navigation link.
+The Chinese workspace provides 11 models: Hand risk reduction, Alexy balancing,
+Bayesian evidence updating, deterrence, cost alternatives, settlement, cover
+damages, loss of chance, discounted losses, counterfactual damages and HHI.
+Each model states the legal questions that require separate assessment, input
+units and sources, calculation steps, assumptions, and limits.
+
+The Python and JavaScript engines read the same versioned formula definitions
+in `legal_quant/models.json`. Neither engine turns its calculations into a
+finding of liability. Missing inputs are rejected; case-data inputs require
+source notes. The jurisdiction and date are recorded context, not certification
+of applicable law. All 11 models' Hong Kong applicability remains unverified.
+See [the model guide](docs/legal-quantitative-models.md) and
+[source ledger](legal_quant/sources.json) for individual source-review levels.
+
+```bash
+python -m legal_quant list
+python -m legal_quant example hand --output hand-input.json
+python -m legal_quant evaluate --input hand-input.json --output hand-result.json
+python -m unittest discover -s legal_quant/tests -v
+```
+
+REST: `GET /api/quant/models` lists definitions and sources;
+`POST /api/quant/evaluate` accepts the same request JSON as the Python CLI.
+MCP provides `list_quantitative_models` and `evaluate_quantitative_model`.
+Evaluation responses are marked `Cache-Control: no-store`.
+
+The [extended negligence example](examples/negligence_quant/README.md) also
+models separate legal elements, observable facts, uncertainty ranges,
+annualized costs, scenario comparisons and conditional damages. It runs as a
+separate Python workflow; the web/API Hand model is the fixed-input calculation.
+All supplied examples are synthetic, and the software tests do not verify law.
+
 ### MCP
 
-Endpoint `POST /api/mcp`, JSON-RPC 2.0. Fourteen tools:
+Endpoint `POST /api/mcp`, JSON-RPC 2.0. Sixteen tools:
 
 `resolve_jurisdiction` · `pleading_checklist` · `verify_citation` ·
 `list_causes_of_action` · `get_doctrine` · `get_elements` · `get_element_test` · `get_timeline`
 · `check_staleness` · `score_factors` · `list_scored_tests` · `search_corpus`
-· `lookup_case` · `propose_amendment`
+· `lookup_case` · `propose_amendment` · `list_quantitative_models` · `evaluate_quantitative_model`
 
 The first three exist because of what the experiments found. `resolve_jurisdiction`
 answers the Experiment 1 defect (doctrine injected without deciding whose law
