@@ -21,10 +21,10 @@ class ModelCalculations(unittest.TestCase):
     def calculate(self, name, **updates):
         return evaluate(name, self.inputs(name, **updates))["results"]
 
-    def test_all_eleven_examples_have_traces_and_no_legal_conclusion(self):
+    def test_all_examples_have_traces_and_no_legal_conclusion(self):
         models = list_models()
-        self.assertEqual(len(models), 11)
-        self.assertEqual(len({model["id"] for model in models}), 11)
+        self.assertEqual(len(models), 17)
+        self.assertEqual(len({model["id"] for model in models}), 17)
         for model in models:
             with self.subTest(model=model["id"]):
                 response = evaluate(model["id"], model["example_inputs"])

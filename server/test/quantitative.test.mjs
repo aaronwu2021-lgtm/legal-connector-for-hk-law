@@ -34,8 +34,8 @@ async function mcp(name, args) {
   return { body: JSON.parse(envelope.result.content[0].text), failed: envelope.result.isError, cache: response.headers.get('cache-control') };
 }
 
-test('all 11 models have source records, explicit premises and traceable non-legal results', () => {
-  assert.equal(catalogue.models.length, 11);
+test('all models have source records, explicit premises and traceable non-legal results', () => {
+  assert.equal(catalogue.models.length, 17);
   const sources = new Set(catalogue.sources.map(source => source.id));
   for (const model of catalogue.models) {
     assert.ok(model.required_legal_findings.length);
@@ -45,6 +45,8 @@ test('all 11 models have source records, explicit premises and traceable non-leg
     model.source_ids.forEach(id => assert.ok(sources.has(id), `${model.id}: ${id}`));
     const calculated = evaluateQuantitative(request(model.id));
     assert.equal(calculated.legal_conclusion, null);
+    assert.equal(calculated.analysis_layer, model.analysis_layer);
+    assert.equal(calculated.formula_authority, model.formula_authority);
     assert.equal(calculated.applicability_status, 'unreviewed');
     assert.equal(calculated.context.as_of, null);
     assert.deepEqual(calculated.inputs, model.example_inputs);
@@ -182,6 +184,14 @@ test('REST and MCP expose identical model calculations and no-store responses', 
 test('Python and JavaScript agree across examples and boundary cases', () => {
   const fixtures = catalogue.models.map(model => request(model.id));
   fixtures.push(request('hand', { prob_reduction: 0, annual_B: 0 }),
+    request('alarp', { monetised_risk_reduction: 0 }),
+    request('interim_injunction', { success_probability: 0.5, harm_if_denied: 100, harm_if_granted: 100 }),
+    request('procedural_safeguards', { error_probability_before: 0.1, error_probability_after: 0.2 }),
+    request('necessity', { candidates: [] }),
+    request('necessity', { candidates: [{ name: 'Not confirmed feasible', feasible: 0, effectiveness: 1, rights_burden: 0 }] }),
+    request('penalty_proportionality', { secondary_obligation: 0 }),
+    request('penalty_proportionality', { anticipated_compensatory_loss: 0 }),
+    request('penalty_proportionality', { secondary_obligation: 0.5 }),
     request('hand', { N: 1e9, p: 0.1, L: 1e9, prob_reduction: 1e-18 }),
     request('cover_damages', { replacement_price: 2 ** 53, contract_price: 2 ** 53, other_losses: 0, saved_costs: 0 }),
     request('bayes', { prior: 0 }), request('bayes', { prior: 1 }),

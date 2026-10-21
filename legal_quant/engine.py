@@ -324,6 +324,8 @@ def evaluate(model_id: str, inputs: dict[str, Any], context: dict[str, Any] | No
         "model_version": model["version"],
         "category": model["category"],
         "output_kind": model["output_kind"],
+        "analysis_layer": model["analysis_layer"],
+        "formula_authority": model["formula_authority"],
         "context": normalized_context,
         "inputs": deepcopy(inputs),
         "source_ids": model["source_ids"],

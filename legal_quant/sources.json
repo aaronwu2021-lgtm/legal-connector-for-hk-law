@@ -121,6 +121,72 @@
       "source_kind": "guidance",
       "reviewed_on": "2026-10-20",
       "note": "Read the official discussion naming HHI as one possible concentration measure and emphasizing case context and remaining competitive alternatives. The module reports arithmetic concentration and change only; it imports no legal threshold and makes no merger-clearance or dominance decision. Hong Kong applicability has not been verified."
+    },
+    {
+      "id": "hse-reasonably-practicable",
+      "title": "HSE, Fairgrounds and amusement parks: Guidance on safe practice, HSG175 (3rd ed, 2017)",
+      "url": "https://www.hse.gov.uk/pubns/priced/hsg175.pdf",
+      "pin": "Paragraph 26, PDF page 18 (zero-based index 17)",
+      "verification": "primary",
+      "jurisdiction": "Great Britain health and safety; regulator guidance",
+      "source_kind": "guidance",
+      "reviewed_on": "2026-10-21",
+      "note": "Read the regulator’s original paragraph explaining reasonably practicable through gross disproportion of cost (including time and effort) to risk reduction. The ratio is a constructed diagnostic; this passage prescribes no numerical multiplier. It does not establish applicability to Hong Kong or private commercial contracts."
+    },
+    {
+      "id": "american-hospital-injunction",
+      "title": "American Hospital Supply Corp. v Hospital Products Ltd., 780 F.2d 589 (7th Cir. 1986)",
+      "url": "https://law.justia.com/cases/federal/appellate-courts/F2/780/589/148335/",
+      "pin": "593–594: formula, express qualification and familiar injunction factors",
+      "verification": "primary",
+      "jurisdiction": "US federal, Seventh Circuit; historical judicial heuristic",
+      "source_kind": "judgment",
+      "reviewed_on": "2026-10-21",
+      "note": "Read the reproduced judgment’s weighted-error formula and express statement that it is not a new legal standard. Irreparable harm, adequacy of remedies, likelihood of success and public/third-party interests remain relevant. This review does not establish current universal US or Hong Kong injunction doctrine."
+    },
+    {
+      "id": "mathews-procedure",
+      "title": "Mathews v Eldridge, 424 U.S. 319 (1976)",
+      "url": "https://www.law.cornell.edu/supremecourt/text/424/319",
+      "pin": "335: three-factor procedural due-process analysis",
+      "verification": "primary",
+      "jurisdiction": "US constitutional law; governmental deprivation of protected interests",
+      "source_kind": "judgment",
+      "reviewed_on": "2026-10-21",
+      "note": "Read the opinion’s private-interest, error-risk/procedural-value and governmental-interest factors. The judgment does not prescribe the module’s multiplication or a monetary threshold. This is an auxiliary model of quantifiable factors, not a private-platform process rule or Hong Kong authority."
+    },
+    {
+      "id": "bank-mellat-necessity",
+      "title": "Bank Mellat v HM Treasury (No. 2) [2013] UKSC 39",
+      "url": "https://supremecourt.uk/uploads/uksc_2011_0040_judgment_32e27b53c6.pdf",
+      "pin": "No. 2, paragraph 20 (printed pp. 10–11) and paragraphs 74–75 (printed pp. 33–34); combined PDF indices 51–52 and 74–75",
+      "verification": "primary",
+      "jurisdiction": "United Kingdom public law; proportionality",
+      "source_kind": "judgment",
+      "reviewed_on": "2026-10-21",
+      "note": "Read the official judgment’s less-intrusive-means formulation and warning against strict least-restrictive optimisation. Lord Sumption at paragraph 20 agrees with Lord Reed’s formulation despite their different applications. The candidate comparison is our narrower diagnostic, not the court’s equation; absence of flagged candidates proves nothing about necessity or Hong Kong applicability."
+    },
+    {
+      "id": "sharp-mitigation",
+      "title": "Sharp Corp Ltd v Viterra BV [2024] UKSC 14",
+      "url": "https://supremecourt.uk/cases/judgments/uksc-2023-0029",
+      "pin": "Paragraphs 83–86, particularly paragraph 85",
+      "verification": "primary",
+      "jurisdiction": "English contract damages",
+      "source_kind": "judgment",
+      "reviewed_on": "2026-10-21",
+      "note": "Read the official judgment’s reasonable-mitigation principles, including recovery of loss from reasonable steps even when they increase loss. The expected-benefit calculation is our auxiliary ex ante comparison; neither positive net benefit nor hindsight success is the legal test. Hong Kong applicability has not been verified."
+    },
+    {
+      "id": "cavendish-penalties",
+      "title": "Cavendish Square Holding BV v Makdessi; ParkingEye Ltd v Beavis [2015] UKSC 67",
+      "url": "https://supremecourt.uk/uploads/uksc_2013_0280_judgment_c7f37dda32.pdf",
+      "pin": "Paragraph 32, printed p. 17 (PDF index 17)",
+      "verification": "primary",
+      "jurisdiction": "English contract law; penalty doctrine",
+      "source_kind": "judgment",
+      "reviewed_on": "2026-10-21",
+      "note": "Read the official judgment’s secondary-obligation gateway and detriment/legitimate-interest test, expressly allowing interests beyond compensation. The module’s compensatory-loss ratio is not the legal test and has no fixed invalidity threshold. Hong Kong applicability has not been verified."
     }
   ]
 }

@@ -229,6 +229,7 @@ export function evaluateQuantitative(request) {
     model_id: model.id, model_version: model.version, category: model.category,
     output_kind: model.output_kind, context, inputs: structuredClone(request.inputs), results, steps,
     source_ids: [...model.source_ids], legal_status: model.legal_status,
+    analysis_layer: model.analysis_layer, formula_authority: model.formula_authority,
     assumptions: model.assumptions, limitations: model.limitations,
     required_legal_findings: model.required_legal_findings,
     legal_conclusion: null, applicability_status: context.applicability,
@@ -245,7 +246,7 @@ export function quantitativeRequest(request) {
 
 export const quantitativeTools = [
   { name: 'list_quantitative_models',
-    description: 'List 11 quantitative legal analysis models with typed inputs, formulas, sources, assumptions and legal applicability limits. Economic, evidentiary and theoretical outputs are not liability findings.',
+    description: 'List legal-standard models and supporting quantitative analysis with typed inputs, formulas, source jurisdictions and formula authority. Distinguishes judicial heuristics from project formalisation; calculations are not legal findings.',
     inputSchema: { type: 'object', additionalProperties: false, properties: {} } },
   { name: 'evaluate_quantitative_model',
     description: 'Calculate one fixed versioned model using explicit values and provenance. Missing values are rejected, never zero. Case data require source notes for every input; applicability is an external assertion, never certified by the calculation. Returns calculation steps and no legal conclusion.',

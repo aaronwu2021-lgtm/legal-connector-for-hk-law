@@ -22,7 +22,7 @@ def _unique_object(pairs):
 
 
 def main(argv=None):
-    parser = argparse.ArgumentParser(description="11项可追溯法律量化模型；计算不认定法律责任。")
+    parser = argparse.ArgumentParser(description="法律标准与辅助量化模型；区分公式依据，计算不认定法律责任。")
     commands = parser.add_subparsers(dest="command", required=True)
     commands.add_parser("list", help="列出模型目录")
     show = commands.add_parser("show", help="查看完整模型定义、边界和示例")
@@ -37,7 +37,9 @@ def main(argv=None):
     try:
         if args.command == "list":
             result = [{"id": m["id"], "version": m["version"], "title": m["title"],
-                       "category": m["category"], "question": m["question"]} for m in list_models()]
+                       "category": m["category"], "question": m["question"],
+                       "analysis_layer": m["analysis_layer"],
+                       "formula_authority": m["formula_authority"]} for m in list_models()]
         elif args.command == "show":
             result = get_model(args.model_id)
         elif args.command == "example":

@@ -5,7 +5,7 @@
       "id": "hand",
       "version": "1",
       "title": "汉德公式：预防成本与风险减少",
-      "category": "decision",
+      "category": "legal_standard",
       "question": "指定措施减少的预期损失，是否超过其同期间成本？",
       "output_kind": "economic_comparison",
       "formula_summary": "ΔEL = NpL(eₚ+eₗ−eₚeₗ)，等价于措施前后预期损失之差；净收益 = ΔEL − B",
@@ -226,7 +226,9 @@
         "prob_reduction": 0.6,
         "severity_reduction": 0
       },
-      "example_basis": "hypothetical"
+      "example_basis": "hypothetical",
+      "analysis_layer": "legal_standard",
+      "formula_authority": "judicial_heuristic"
     },
     {
       "id": "alexy",
@@ -397,7 +399,9 @@
         "W_j": 2,
         "R_j": 1
       },
-      "example_basis": "hypothetical"
+      "example_basis": "hypothetical",
+      "analysis_layer": "supporting_analysis",
+      "formula_authority": "supporting_analysis"
     },
     {
       "id": "bayes",
@@ -543,7 +547,9 @@
         "prior": 0.2,
         "likelihood_ratio": 8
       },
-      "example_basis": "hypothetical"
+      "example_basis": "hypothetical",
+      "analysis_layer": "supporting_analysis",
+      "formula_authority": "supporting_analysis"
     },
     {
       "id": "deterrence",
@@ -645,7 +651,9 @@
         "harm": 100000,
         "sanction_probability": 0.2
       },
-      "example_basis": "hypothetical"
+      "example_basis": "hypothetical",
+      "analysis_layer": "supporting_analysis",
+      "formula_authority": "supporting_analysis"
     },
     {
       "id": "coase",
@@ -811,7 +819,9 @@
           }
         ]
       },
-      "example_basis": "hypothetical"
+      "example_basis": "hypothetical",
+      "analysis_layer": "supporting_analysis",
+      "formula_authority": "supporting_analysis"
     },
     {
       "id": "settlement",
@@ -978,7 +988,9 @@
         "plaintiff_cost": 150000,
         "defendant_cost": 100000
       },
-      "example_basis": "hypothetical"
+      "example_basis": "hypothetical",
+      "analysis_layer": "supporting_analysis",
+      "formula_authority": "supporting_analysis"
     },
     {
       "id": "cover_damages",
@@ -1092,7 +1104,9 @@
         "other_losses": 20000,
         "saved_costs": 5000
       },
-      "example_basis": "hypothetical"
+      "example_basis": "hypothetical",
+      "analysis_layer": "supporting_analysis",
+      "formula_authority": "supporting_analysis"
     },
     {
       "id": "loss_of_chance",
@@ -1206,7 +1220,9 @@
         "probability_after": 0.1,
         "net_value": 1000000
       },
-      "example_basis": "hypothetical"
+      "example_basis": "hypothetical",
+      "analysis_layer": "supporting_analysis",
+      "formula_authority": "supporting_analysis"
     },
     {
       "id": "present_value",
@@ -1365,7 +1381,9 @@
         ],
         "discount_rate": 0.03
       },
-      "example_basis": "hypothetical"
+      "example_basis": "hypothetical",
+      "analysis_layer": "supporting_analysis",
+      "formula_authority": "supporting_analysis"
     },
     {
       "id": "counterfactual_damage",
@@ -1557,7 +1575,9 @@
         "passed_on": 50000,
         "volume_lost_profit": 10000
       },
-      "example_basis": "hypothetical"
+      "example_basis": "hypothetical",
+      "analysis_layer": "supporting_analysis",
+      "formula_authority": "supporting_analysis"
     },
     {
       "id": "hhi",
@@ -1803,7 +1823,888 @@
         "merger_index_a": 2,
         "merger_index_b": 3
       },
-      "example_basis": "hypothetical"
+      "example_basis": "hypothetical",
+      "analysis_layer": "supporting_analysis",
+      "formula_authority": "supporting_analysis"
+    },
+    {
+      "id": "alarp",
+      "version": "1",
+      "title": "合理可行预防：ALARP 的成本与风险减少",
+      "category": "legal_standard",
+      "analysis_layer": "legal_standard",
+      "formula_authority": "legal_test_formalisation",
+      "question": "量化的预防负担与风险减少是什么比例，尚有哪些因素需要判断？",
+      "output_kind": "bounded_standard_analysis",
+      "formula_summary": "诊断比例 = C / ΔR；ΔR为货币化风险减少。ΔR = 0 时比例未定义。",
+      "legal_status": "英国健康与安全语境中，合理可行标准要求控制风险，除非负担相对风险减少严重不成比例。法律没有在本来源中规定统一倍数；此比例只是本项目的数值诊断。",
+      "assumptions": [
+        "C与ΔR使用同一期间、同一货币和一致估值口径。",
+        "ΔR为措施前后风险减少的货币化部分；未货币化的风险、时间和努力仍须单独记录。",
+        "风险估值及措施可行性由外部专业判断，不由计算器推断。"
+      ],
+      "limitations": [
+        "比例大于1不等于可免于采取措施；模型不设严重不成比例的固定倍数。",
+        "ΔR为0时返回null，可能是没有量化到收益，不能据此推断没有安全义务。",
+        "此英国安全规范不自动成为香港私人合同或侵权案件的适用规则。"
+      ],
+      "required_legal_findings": [
+        "具体法定义务和适用的安全标准",
+        "严重不成比例的情境判断",
+        "可行性、非货币化风险及其他强制要求"
+      ],
+      "source_ids": [
+        "hse-reasonably-practicable"
+      ],
+      "fields": [
+        {
+          "id": "precaution_cost",
+          "label": "预防措施的量化成本 C",
+          "unit": "同一货币/期间",
+          "description": "",
+          "type": "number",
+          "min": 0
+        },
+        {
+          "id": "monetised_risk_reduction",
+          "label": "货币化风险减少 ΔR",
+          "unit": "同一货币/期间",
+          "description": "",
+          "type": "number",
+          "min": 0
+        }
+      ],
+      "outputs": [
+        {
+          "id": "cost_risk_ratio",
+          "label": "成本与货币化风险减少之比",
+          "unit": "倍；null为未定义",
+          "formula": "C/ΔR，ΔR=0时为null",
+          "expression": {
+            "op": "if",
+            "condition": {
+              "op": "gt",
+              "args": [
+                {
+                  "var": "input.monetised_risk_reduction"
+                },
+                0
+              ]
+            },
+            "then": {
+              "op": "div",
+              "args": [
+                {
+                  "var": "input.precaution_cost"
+                },
+                {
+                  "var": "input.monetised_risk_reduction"
+                }
+              ]
+            },
+            "else": null
+          }
+        }
+      ],
+      "constraints": [],
+      "example_inputs": {
+        "precaution_cost": 60000,
+        "monetised_risk_reduction": 20000
+      },
+      "example_basis": "全部数值和情景均为合成教学示例，不是个案证据、法院认定或法律阈值。"
+    },
+    {
+      "id": "interim_injunction",
+      "version": "1",
+      "title": "临时禁令：错误决定的加权损害",
+      "category": "legal_standard",
+      "analysis_layer": "legal_standard",
+      "formula_authority": "judicial_heuristic",
+      "question": "在明确假设下，错误拒绝与错误颁发临时禁令的预期损害相差多少？",
+      "output_kind": "bounded_standard_analysis",
+      "formula_summary": "拒发的加权损害 = pHₚ；颁发的加权损害 = (1−p)Hᴅ；差额 = pHₚ−(1−p)Hᴅ。",
+      "legal_status": "美国第七巡回上诉法院在American Hospital Supply中提出此辅助公式，并明确它不是新的法律标准。这里只复现其数值关系，不替代现行或当地禁令要件。",
+      "assumptions": [
+        "p为外部提供的假设胜诉概率；本模型不从证据、AI信心或事实计数推导p。",
+        "Hₚ为错误拒发造成的不可弥补损害，Hᴅ为错误颁发造成的不可弥补损害，使用同一尺度和期间。",
+        "两种结果在此简化情景中互斥且穷尽；多项诉求或部分胜诉须另建情景。"
+      ],
+      "limitations": [
+        "数值差额为正只表示该假设下的加权比较，不表示应颁发禁令。",
+        "不可弥补性、金钱赔偿是否充分、当地胜诉可能性要求、公共利益及第三方影响须另行判断。",
+        "不可弥补损害常无法可靠货币化；不得把全部索赔额直接作为Hₚ。",
+        "等号没有数值优势；本模型不规定司法上的平局处理。"
+      ],
+      "required_legal_findings": [
+        "所请求禁令的适用法与裁量标准",
+        "不可弥补损害和其他救济是否充分",
+        "第三方和公共利益",
+        "提出p及损害尺度的可靠依据"
+      ],
+      "source_ids": [
+        "american-hospital-injunction"
+      ],
+      "fields": [
+        {
+          "id": "success_probability",
+          "label": "假设最终胜诉概率 p",
+          "unit": "0–1比例",
+          "description": "",
+          "type": "number",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "id": "harm_if_denied",
+          "label": "错误拒发的损害 Hₚ",
+          "unit": "一致损害单位",
+          "description": "",
+          "type": "number",
+          "min": 0
+        },
+        {
+          "id": "harm_if_granted",
+          "label": "错误颁发的损害 Hᴅ",
+          "unit": "一致损害单位",
+          "description": "",
+          "type": "number",
+          "min": 0
+        }
+      ],
+      "outputs": [
+        {
+          "id": "weighted_denial_harm",
+          "label": "错误拒发的加权损害",
+          "unit": "一致损害单位",
+          "formula": "pHₚ",
+          "expression": {
+            "op": "mul",
+            "args": [
+              {
+                "var": "input.success_probability"
+              },
+              {
+                "var": "input.harm_if_denied"
+              }
+            ]
+          }
+        },
+        {
+          "id": "weighted_grant_harm",
+          "label": "错误颁发的加权损害",
+          "unit": "一致损害单位",
+          "formula": "(1−p)Hᴅ",
+          "expression": {
+            "op": "mul",
+            "args": [
+              {
+                "op": "sub",
+                "args": [
+                  1,
+                  {
+                    "var": "input.success_probability"
+                  }
+                ]
+              },
+              {
+                "var": "input.harm_if_granted"
+              }
+            ]
+          }
+        },
+        {
+          "id": "weighted_harm_difference",
+          "label": "拒发减颁发的加权损害差",
+          "unit": "一致损害单位",
+          "formula": "pHₚ−(1−p)Hᴅ",
+          "expression": {
+            "op": "sub",
+            "args": [
+              {
+                "var": "out.weighted_denial_harm"
+              },
+              {
+                "var": "out.weighted_grant_harm"
+              }
+            ]
+          }
+        },
+        {
+          "id": "numerical_balance_favours_grant",
+          "label": "数值比较是否偏向颁发一侧",
+          "unit": "布尔；不是禁令结论",
+          "formula": "pHₚ > (1−p)Hᴅ",
+          "expression": {
+            "op": "gt",
+            "args": [
+              {
+                "var": "out.weighted_harm_difference"
+              },
+              0
+            ]
+          }
+        }
+      ],
+      "constraints": [],
+      "example_inputs": {
+        "success_probability": 0.4,
+        "harm_if_denied": 1000000,
+        "harm_if_granted": 200000
+      },
+      "example_basis": "全部数值和情景均为合成教学示例，不是个案证据、法院认定或法律阈值。"
+    },
+    {
+      "id": "procedural_safeguards",
+      "version": "1",
+      "title": "程序保障：错误风险减少与新增负担",
+      "category": "legal_standard",
+      "analysis_layer": "legal_standard",
+      "formula_authority": "legal_test_formalisation",
+      "question": "增加一道程序能减少多少预期错误损害，与其量化负担如何比较？",
+      "output_kind": "bounded_standard_analysis",
+      "formula_summary": "Δp = p₀−p₁；量化收益 = Δp×L；量化净收益 = Δp×L−C。",
+      "legal_status": "Mathews v Eldridge的美国政府程序正当性标准衡量私人利益、错误剥夺风险与程序增益、政府职能及负担。此乘法是本项目对部分因素的辅助形式化，判决没有规定该数值公式。",
+      "assumptions": [
+        "p₀与p₁是同类政府决定在原程序及新增程序下的错误剥夺概率，须有独立依据或标明假设。",
+        "L为发生错误剥夺后的条件损害，C为相同决定单位下的新增程序成本。",
+        "两项货币数值具有一致期间；私人利益和政府职能中无法货币化的部分另行评估。"
+      ],
+      "limitations": [
+        "正净收益不能单独证明必须增加程序，负净收益也不能否定程序权利。",
+        "这是美国政府行为的正当程序语境，不自动适用于私人平台的申诉流程。",
+        "p₁高于p₀会返回负的风险减少，保留不利情景而不假设每项程序都有效。"
+      ],
+      "required_legal_findings": [
+        "是否存在受保障利益和政府行为",
+        "现有程序的错误风险与额外保障的实际价值",
+        "政府职能与非金钱负担",
+        "适用法下不可被成本收益计算取代的保障"
+      ],
+      "source_ids": [
+        "mathews-procedure"
+      ],
+      "fields": [
+        {
+          "id": "error_probability_before",
+          "label": "现有程序错误剥夺概率 p₀",
+          "unit": "0–1比例",
+          "description": "",
+          "type": "number",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "id": "error_probability_after",
+          "label": "新增程序后错误剥夺概率 p₁",
+          "unit": "0–1比例",
+          "description": "",
+          "type": "number",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "id": "conditional_harm",
+          "label": "错误剥夺的条件损害 L",
+          "unit": "同一货币/决定",
+          "description": "",
+          "type": "number",
+          "min": 0
+        },
+        {
+          "id": "added_procedure_cost",
+          "label": "新增程序量化成本 C",
+          "unit": "同一货币/决定",
+          "description": "",
+          "type": "number",
+          "min": 0
+        }
+      ],
+      "outputs": [
+        {
+          "id": "error_risk_reduction",
+          "label": "错误剥夺概率之差",
+          "unit": "比例差",
+          "formula": "p₀−p₁",
+          "expression": {
+            "op": "sub",
+            "args": [
+              {
+                "var": "input.error_probability_before"
+              },
+              {
+                "var": "input.error_probability_after"
+              }
+            ]
+          }
+        },
+        {
+          "id": "avoided_expected_error_harm",
+          "label": "减少的预期错误损害",
+          "unit": "同一货币/决定",
+          "formula": "(p₀−p₁)L",
+          "expression": {
+            "op": "mul",
+            "args": [
+              {
+                "var": "out.error_risk_reduction"
+              },
+              {
+                "var": "input.conditional_harm"
+              }
+            ]
+          }
+        },
+        {
+          "id": "net_expected_benefit",
+          "label": "量化净收益",
+          "unit": "同一货币/决定",
+          "formula": "(p₀−p₁)L−C",
+          "expression": {
+            "op": "sub",
+            "args": [
+              {
+                "var": "out.avoided_expected_error_harm"
+              },
+              {
+                "var": "input.added_procedure_cost"
+              }
+            ]
+          }
+        },
+        {
+          "id": "positive_quantified_balance",
+          "label": "量化收益是否大于量化负担",
+          "unit": "布尔；不是程序合宪结论",
+          "formula": "(p₀−p₁)L > C",
+          "expression": {
+            "op": "gt",
+            "args": [
+              {
+                "var": "out.net_expected_benefit"
+              },
+              0
+            ]
+          }
+        }
+      ],
+      "constraints": [],
+      "example_inputs": {
+        "error_probability_before": 0.1,
+        "error_probability_after": 0.02,
+        "conditional_harm": 50000,
+        "added_procedure_cost": 1000
+      },
+      "example_basis": "全部数值和情景均为合成教学示例，不是个案证据、法院认定或法律阈值。"
+    },
+    {
+      "id": "necessity",
+      "version": "1",
+      "title": "必要性：可行且同样有效的较少侵害替代措施",
+      "category": "legal_standard",
+      "analysis_layer": "legal_standard",
+      "formula_authority": "legal_test_formalisation",
+      "question": "列出的可行替代措施中，哪些效果不低于现措施且权利负担更小？",
+      "output_kind": "bounded_standard_analysis",
+      "formula_summary": "逐项提示：Fᵢ=1 且 Eᵢ≥E₀ 且 Iᵢ<I₀。只寻找一种足以值得进一步审查的比较情形。",
+      "legal_status": "英国Bank Mellat的比例原则包括是否能以较少侵害措施实现目标而不造成不可接受的效果损失。本项目只形式化其中一个保守比较情形，未把全部必要性标准等同于严格最优化。",
+      "assumptions": [
+        "所有措施针对相同目标；效果尺度内可比较，权利负担尺度内可比较，但两种尺度无需互相换算。",
+        "效果数值越大越有效；负担数值越大侵害越重；尺度含义须明确填写。",
+        "feasible=1表示调用者已从技术、时间、资源和法律条件评估可行；模型不作该评估。",
+        "候选集仅是已列出方案，可以为空，绝不假设穷尽所有可行措施。"
+      ],
+      "limitations": [
+        "提示true仅要求进一步核查理由，不是措施违法、不必要或不合宪的结论。",
+        "全部false不证明必要性；稍低效果的替代措施仍可能没有不可接受地损及目标。",
+        "合法目标、合理联系、最终公平平衡、裁量空间及适用权利均在本模型之外。",
+        "不可比较的权利负担不能强行合成任意分数；香港或私人合同适用性须另核。"
+      ],
+      "required_legal_findings": [
+        "比例原则在具体争议中的适用依据",
+        "目标和权利范围、合理联系",
+        "候选措施可行性及尺度可比性",
+        "何种效果减损不可接受、裁量空间及最终平衡"
+      ],
+      "source_ids": [
+        "bank-mellat-necessity"
+      ],
+      "fields": [
+        {
+          "id": "selected_effectiveness",
+          "label": "现措施效果 E₀",
+          "unit": "已定义效果尺度",
+          "description": "",
+          "type": "number",
+          "min": 0
+        },
+        {
+          "id": "selected_rights_burden",
+          "label": "现措施权利负担 I₀",
+          "unit": "已定义负担尺度",
+          "description": "",
+          "type": "number",
+          "min": 0
+        },
+        {
+          "id": "effectiveness_scale",
+          "label": "效果尺度的具体含义",
+          "unit": "说明",
+          "description": "",
+          "type": "string"
+        },
+        {
+          "id": "rights_burden_scale",
+          "label": "权利负担尺度的具体含义",
+          "unit": "说明",
+          "description": "",
+          "type": "string"
+        },
+        {
+          "id": "candidates",
+          "label": "替代措施",
+          "unit": "方案列表",
+          "description": "",
+          "type": "object_array",
+          "minItems": 0,
+          "maxItems": 64,
+          "items": [
+            {
+              "id": "name",
+              "label": "方案名称",
+              "unit": "说明",
+              "description": "",
+              "type": "string"
+            },
+            {
+              "id": "feasible",
+              "label": "已外部评估可行",
+              "unit": "1=是；0=否或未确认",
+              "description": "",
+              "type": "number",
+              "min": 0,
+              "enum": [
+                0,
+                1
+              ]
+            },
+            {
+              "id": "effectiveness",
+              "label": "方案效果",
+              "unit": "相同效果尺度",
+              "description": "",
+              "type": "number",
+              "min": 0
+            },
+            {
+              "id": "rights_burden",
+              "label": "方案权利负担",
+              "unit": "相同负担尺度",
+              "description": "",
+              "type": "number",
+              "min": 0
+            }
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "id": "candidate_names",
+          "label": "候选方案名称（保持输入顺序）",
+          "unit": "名称列表",
+          "formula": "nameᵢ",
+          "expression": {
+            "op": "map",
+            "items": {
+              "var": "input.candidates"
+            },
+            "value": {
+              "var": "item.name"
+            }
+          }
+        },
+        {
+          "id": "candidate_review_flags",
+          "label": "值得进一步审查的替代措施（对应上述顺序）",
+          "unit": "布尔列表；不是合法性结论",
+          "formula": "Fᵢ=1 ∧ Eᵢ≥E₀ ∧ Iᵢ<I₀",
+          "expression": {
+            "op": "map",
+            "items": {
+              "var": "input.candidates"
+            },
+            "value": {
+              "op": "and",
+              "args": [
+                {
+                  "op": "eq",
+                  "args": [
+                    {
+                      "var": "item.feasible"
+                    },
+                    1
+                  ]
+                },
+                {
+                  "op": "ge",
+                  "args": [
+                    {
+                      "var": "item.effectiveness"
+                    },
+                    {
+                      "var": "input.selected_effectiveness"
+                    }
+                  ]
+                },
+                {
+                  "op": "lt",
+                  "args": [
+                    {
+                      "var": "item.rights_burden"
+                    },
+                    {
+                      "var": "input.selected_rights_burden"
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        {
+          "id": "flagged_candidate_count",
+          "label": "触发比较提示的候选数",
+          "unit": "个",
+          "formula": "Σ 1[Fᵢ=1 ∧ Eᵢ≥E₀ ∧ Iᵢ<I₀]",
+          "expression": {
+            "op": "sum",
+            "args": [
+              {
+                "op": "map",
+                "items": {
+                  "var": "input.candidates"
+                },
+                "value": {
+                  "op": "if",
+                  "condition": {
+                    "op": "and",
+                    "args": [
+                      {
+                        "op": "eq",
+                        "args": [
+                          {
+                            "var": "item.feasible"
+                          },
+                          1
+                        ]
+                      },
+                      {
+                        "op": "ge",
+                        "args": [
+                          {
+                            "var": "item.effectiveness"
+                          },
+                          {
+                            "var": "input.selected_effectiveness"
+                          }
+                        ]
+                      },
+                      {
+                        "op": "lt",
+                        "args": [
+                          {
+                            "var": "item.rights_burden"
+                          },
+                          {
+                            "var": "input.selected_rights_burden"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "then": 1,
+                  "else": 0
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "constraints": [],
+      "example_inputs": {
+        "selected_effectiveness": 0.9,
+        "selected_rights_burden": 24,
+        "effectiveness_scale": "假设拦截同类风险事件的比例0至1，须按同一数据口径估计",
+        "rights_burden_scale": "每名受影响者的限制持续小时；仅比较持续时间这一维度",
+        "candidates": [
+          {
+            "name": "可行的短时措施",
+            "feasible": 1,
+            "effectiveness": 0.9,
+            "rights_burden": 6
+          },
+          {
+            "name": "效果不足的措施",
+            "feasible": 1,
+            "effectiveness": 0.6,
+            "rights_burden": 2
+          },
+          {
+            "name": "尚不可行的设计",
+            "feasible": 0,
+            "effectiveness": 1,
+            "rights_burden": 1
+          }
+        ]
+      },
+      "example_basis": "全部数值和情景均为合成教学示例，不是个案证据、法院认定或法律阈值。"
+    },
+    {
+      "id": "reasonable_mitigation",
+      "version": "1",
+      "title": "合理减损：预期可避免损失与措施成本",
+      "category": "legal_standard",
+      "analysis_layer": "legal_standard",
+      "formula_authority": "legal_test_formalisation",
+      "question": "从当时可知信息出发，减损措施的预期可避免损失是否覆盖量化成本？",
+      "output_kind": "bounded_standard_analysis",
+      "formula_summary": "预期可避免损失 = pA；量化净收益 = pA−C。",
+      "legal_status": "英国合同损害赔偿要求合理减损，合理采取但失败的措施仍可能获偿。此预期净收益是本项目的辅助经济比较，不是判决设定的合理性公式或收益最大化义务。",
+      "assumptions": [
+        "p和A采用作决定时可获得的信息；A为措施成功时可避免的损失。",
+        "C为措施增量成本，和A使用同一货币及期间；新增风险或负担应单独评估。",
+        "不把事后成功或失败直接当作当时合理与否的证明。"
+      ],
+      "limitations": [
+        "净收益为正不自动要求采取措施；可行性、资金、时间、风险等仍重要。",
+        "净收益为负不自动排除合理减损成本的可赔偿性；无需选择事后最优方案。",
+        "本模型不直接扣减赔偿，也不决定举证责任或某项损失是否可赔。"
+      ],
+      "required_legal_findings": [
+        "具体适用法、合同与损失范围",
+        "当时条件下措施的合理性、可行性及新增风险",
+        "可合理避免的损失和合理减损费用",
+        "避免重复扣减损失或重复计入费用"
+      ],
+      "source_ids": [
+        "sharp-mitigation"
+      ],
+      "fields": [
+        {
+          "id": "success_probability",
+          "label": "假设减损成功概率 p",
+          "unit": "0–1比例",
+          "description": "",
+          "type": "number",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "id": "avoidable_loss_if_success",
+          "label": "成功时可避免的损失 A",
+          "unit": "同一货币单位",
+          "description": "",
+          "type": "number",
+          "min": 0
+        },
+        {
+          "id": "mitigation_cost",
+          "label": "减损措施增量成本 C",
+          "unit": "同一货币单位",
+          "description": "",
+          "type": "number",
+          "min": 0
+        }
+      ],
+      "outputs": [
+        {
+          "id": "expected_avoided_loss",
+          "label": "预期可避免损失",
+          "unit": "同一货币单位",
+          "formula": "pA",
+          "expression": {
+            "op": "mul",
+            "args": [
+              {
+                "var": "input.success_probability"
+              },
+              {
+                "var": "input.avoidable_loss_if_success"
+              }
+            ]
+          }
+        },
+        {
+          "id": "net_expected_benefit",
+          "label": "量化净收益",
+          "unit": "同一货币单位",
+          "formula": "pA−C",
+          "expression": {
+            "op": "sub",
+            "args": [
+              {
+                "var": "out.expected_avoided_loss"
+              },
+              {
+                "var": "input.mitigation_cost"
+              }
+            ]
+          }
+        },
+        {
+          "id": "positive_quantified_balance",
+          "label": "量化收益是否大于量化成本",
+          "unit": "布尔；不是减损合理性结论",
+          "formula": "pA > C",
+          "expression": {
+            "op": "gt",
+            "args": [
+              {
+                "var": "out.net_expected_benefit"
+              },
+              0
+            ]
+          }
+        }
+      ],
+      "constraints": [],
+      "example_inputs": {
+        "success_probability": 0.6,
+        "avoidable_loss_if_success": 100000,
+        "mitigation_cost": 20000
+      },
+      "example_basis": "全部数值和情景均为合成教学示例，不是个案证据、法院认定或法律阈值。"
+    },
+    {
+      "id": "penalty_proportionality",
+      "version": "1",
+      "title": "罚则审查：次级义务与补偿损失比较",
+      "category": "legal_standard",
+      "analysis_layer": "legal_standard",
+      "formula_authority": "legal_test_formalisation",
+      "question": "在次级义务入口已外部评估后，条款负担相对预计补偿损失有多大？",
+      "output_kind": "bounded_standard_analysis",
+      "formula_summary": "入口S=1时诊断比例 = D/L；S=0或L=0时比例为null。不存在本模型规定的无效倍数。",
+      "legal_status": "Cavendish的测试关注次级义务的负担是否相对守约方履行利益严重失衡；合法利益可超出损害补偿。D/L只是本项目的补偿维度诊断，不是该法律测试本身。",
+      "assumptions": [
+        "secondary_obligation=1只记录调用者已评估的入口，不能由条款数值自行推断。",
+        "D为违约触发的量化负担，L为相关时点预计的补偿性损失，统一货币口径。",
+        "合法利益的描述须独立提供，不能假定它等于L。"
+      ],
+      "limitations": [
+        "比例大、比例小或恰等于1均不决定条款有效或无效。",
+        "L=0不等于没有合法利益；分母为0只表示该诊断比例未定义。",
+        "S=0只关闭本模型的罚则比较，不表示条款不受其他法律控制。",
+        "不能将模型当作香港法适用性的核验，或以固定倍数替代严重失衡判断。"
+      ],
+      "required_legal_findings": [
+        "适用法及条款的初级或次级义务性质",
+        "守约方具体合法履行利益，包括非补偿利益",
+        "负担与合法利益是否严重失衡",
+        "其他合同、消费者保护或公平性规则"
+      ],
+      "source_ids": [
+        "cavendish-penalties"
+      ],
+      "fields": [
+        {
+          "id": "secondary_obligation",
+          "label": "已外部评估为次级义务 S",
+          "unit": "1=是；0=否或未确认",
+          "description": "",
+          "type": "number",
+          "min": 0,
+          "enum": [
+            0,
+            1
+          ]
+        },
+        {
+          "id": "clause_detriment",
+          "label": "违约触发的量化负担 D",
+          "unit": "同一货币单位",
+          "description": "",
+          "type": "number",
+          "min": 0
+        },
+        {
+          "id": "anticipated_compensatory_loss",
+          "label": "预计补偿性损失 L",
+          "unit": "同一货币单位",
+          "description": "",
+          "type": "number",
+          "min": 0
+        },
+        {
+          "id": "legitimate_interest_description",
+          "label": "具体合法利益及其依据",
+          "unit": "说明",
+          "description": "",
+          "type": "string"
+        }
+      ],
+      "outputs": [
+        {
+          "id": "secondary_gateway_assumed",
+          "label": "调用者是否确认次级义务入口",
+          "unit": "布尔；记录输入而非作出认定",
+          "formula": "S=1",
+          "expression": {
+            "op": "eq",
+            "args": [
+              {
+                "var": "input.secondary_obligation"
+              },
+              1
+            ]
+          }
+        },
+        {
+          "id": "detriment_loss_ratio",
+          "label": "负担与预计补偿损失的诊断比例",
+          "unit": "倍；null为未计算或未定义",
+          "formula": "S=1且L>0时D/L，否则null",
+          "expression": {
+            "op": "if",
+            "condition": {
+              "op": "and",
+              "args": [
+                {
+                  "var": "out.secondary_gateway_assumed"
+                },
+                {
+                  "op": "gt",
+                  "args": [
+                    {
+                      "var": "input.anticipated_compensatory_loss"
+                    },
+                    0
+                  ]
+                }
+              ]
+            },
+            "then": {
+              "op": "div",
+              "args": [
+                {
+                  "var": "input.clause_detriment"
+                },
+                {
+                  "var": "input.anticipated_compensatory_loss"
+                }
+              ]
+            },
+            "else": null
+          }
+        }
+      ],
+      "constraints": [],
+      "example_inputs": {
+        "secondary_obligation": 1,
+        "clause_detriment": 30000,
+        "anticipated_compensatory_loss": 10000,
+        "legitimate_interest_description": "合成示例：除预计补偿损失外，是否存在维持服务容量的履行利益，尚须审查依据。"
+      },
+      "example_basis": "全部数值和情景均为合成教学示例，不是个案证据、法院认定或法律阈值。"
     }
   ]
 }

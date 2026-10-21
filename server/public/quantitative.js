@@ -8,12 +8,18 @@
     revision: 0, request: null, result: null,
   };
   const categoryLabels = {
+    legal_standard: '法律标准本身 · 合理性、必要性与比例',
     money: '金额计算', monetary: '金额计算', damages: '金额计算', amount: '金额计算',
     evidence: '事实与证据', action: '行动选择', decision: '行动选择',
     principles: '原则权衡', principle: '原则权衡', balancing: '原则权衡',
     market: '市场结构', policy: '执法与政策', enforcement: '执法与政策',
   };
+  const authorityLabels = {
+    judicial_heuristic: '公式地位：判决中的分析方法；本模型的扩展与未涵盖要件见下方。',
+    legal_test_formalisation: '公式地位：法律规定了比较标准；这里的算式是该标准的分析模型，并非法院规定的统一数值门槛。',
+  };
   const kindLabels = {
+    bounded_standard_analysis: '法律标准中的有限量化比较',
     monetary_calculation: '金额计算', judicial_calculation: '司法金额计算',
     expert_evidence: '专家证据模型', theoretical_model: '理论模型',
     decision_support: '行动决策工具', policy_model: '政策分析模型',
@@ -178,6 +184,8 @@
     $('model-question').textContent = model.question;
     $('model-kind').textContent = kindLabels[model.output_kind] || model.output_kind;
     $('model-status').textContent = readable(model.legal_status || '');
+    $('formula-authority').textContent = authorityLabels[model.formula_authority]
+      || '模型定位：辅助金额、证据、经济或理论分析；公式本身不设定合理性等法律标准。';
     $('formula').textContent = model.formula_summary;
     listInto($('assumptions'), model.assumptions);
     listInto($('limitations'), model.limitations);
@@ -305,12 +313,17 @@
   }
   const numberFormat = new Intl.NumberFormat('zh-Hans', { maximumSignificantDigits: 10 });
   function displayValue(value) {
+    if (value === null) return '无数值（见解释边界）';
+    if (Array.isArray(value)) return value.length ? value.map(displayValue).join('；') : '无列出项目';
     if (typeof value === 'boolean') return value ? '是' : '否';
     if (typeof value === 'number') {
       if (value !== 0 && (Math.abs(value) < 1e-6 || Math.abs(value) >= 1e14)) return value.toExponential(6);
       return numberFormat.format(value);
     }
     return readable(value);
+  }
+  function displayUnit(unit) {
+    return unit.replaceAll('null', '无数值').replaceAll('布尔', '是/否');
   }
   function showResult(result, data) {
     state.result = { ...result, input_record: data };
@@ -330,7 +343,7 @@
       const output = outputMap.get(key) || stepsMap.get(key) || {};
       const card = element('div', undefined, 'result-card');
       card.append(element('h3', output.label || key), element('p', displayValue(value), 'result-value'));
-      if (output.unit) card.append(element('p', output.unit, 'result-unit'));
+      if (output.unit) card.append(element('p', displayUnit(output.unit), 'result-unit'));
       if (data.model_id === 'coase' && key === 'minimum_indices' && Array.isArray(value)) {
         const names = value.map(index => data.inputs.alternatives[index]?.name).filter(Boolean);
         card.append(element('p', `对应方案：${names.join('、')}`, 'result-unit'));
@@ -341,7 +354,7 @@
       const row = element('li');
       row.append(element('h4', step.label), element('div', step.formula, 'step-formula'));
       if (step.substitution) row.append(element('p', readable(step.substitution), 'step-substitution'));
-      row.append(element('p', `= ${displayValue(step.value)}${step.unit ? ` ${step.unit}` : ''}`, 'step-value'));
+      row.append(element('p', `= ${displayValue(step.value)}${step.unit ? ` ${displayUnit(step.unit)}` : ''}`, 'step-value'));
       return row;
     }));
     listInto($('result-boundaries'), [...(result.assumptions || []), ...(result.limitations || [])]);

@@ -17,7 +17,7 @@ itself is not distributed here.
 |---|---|
 | `data/` | The element library: misrepresentation family (17 sub-tests × 4 jurisdictions), a 20-module typed registry of legal-test logic and two-axis litigation positions (numeric bands only inside multi-factor balancing stages), the drift/maintenance ledger, a 745-document Hong Kong land-law case-note corpus, and a 449-case England-and-Wales persuasive index (unverified, persuasive-only in HK). CC BY 4.0. |
 | `server/` | The connector itself — Netlify serverless functions implementing the REST API and MCP server, plus the browser UI. MIT. |
-| `legal_quant/` | Eleven quantitative legal analysis models, a shared formula catalogue, source ledger, and standard-library Python engine/CLI. |
+| `legal_quant/` | Seven models of legal standards plus ten supporting quantitative tools, a shared formula catalogue, source ledger, and standard-library Python engine/CLI. |
 | `examples/negligence_quant/` | A synthetic negligence assessment with separate legal elements, observable evidence, uncertainty ranges, and prevention scenarios. |
 | `experiments/exp1-lab/` | In-benchmark pilot: 6 arbitration tasks, 2 conditions, blind paired judging over 59 legal-standard criteria. Null result. |
 | `experiments/exp2-probe/` | Jurisdiction-specific probe: 21 items, 2 conditions, blind judging against a pre-registered key. 16/21 → 21/21 as originally scored; **15/21 → 19/21 re-scored against the law** after two keys were found wrong (`rescore.py`, `probe_results_rescored.json`). |
@@ -114,7 +114,14 @@ curl -X POST https://doctrine-drift-atlas.netlify.app/api/score \
 ### Quantitative legal analysis
 
 Open `/quantitative.html` from the **量化分析 Quantitative** navigation link.
-The Chinese workspace provides 11 models: Hand risk reduction, Alexy balancing,
+The Chinese workspace opens with seven models of legal standards: reasonable
+care (Hand), ALARP, interim injunction balancing, procedural safeguards,
+necessity, reasonable mitigation, and penalty proportionality. Each distinguishes
+a judicial heuristic from this project's formalisation of a legal test. The
+underlying rules have jurisdiction-specific scopes; a calculation is not a
+finding that a rule applies or that all its requirements have been met.
+
+Ten supporting tools remain available in the other categories: Alexy balancing,
 Bayesian evidence updating, deterrence, cost alternatives, settlement, cover
 damages, loss of chance, discounted losses, counterfactual damages and HHI.
 Each model states the legal questions that require separate assessment, input
@@ -124,14 +131,18 @@ The Python and JavaScript engines read the same versioned formula definitions
 in `legal_quant/models.json`. Neither engine turns its calculations into a
 finding of liability. Missing inputs are rejected; case-data inputs require
 source notes. The jurisdiction and date are recorded context, not certification
-of applicable law. All 11 models' Hong Kong applicability remains unverified.
-See [the model guide](docs/legal-quantitative-models.md) and
+of applicable law. Hong Kong applicability must be independently checked;
+foreign rules and our mathematical proxies are not automatically Hong Kong law.
+Start with [法律标准本身如何计算](docs/legal-normative-standards.md), then see
+[the supporting model guide](docs/legal-quantitative-models.md) and
 [source ledger](legal_quant/sources.json) for individual source-review levels.
 
 ```bash
 python -m legal_quant list
 python -m legal_quant example hand --output hand-input.json
 python -m legal_quant evaluate --input hand-input.json --output hand-result.json
+python -m legal_quant example interim_injunction --output injunction-input.json
+python -m legal_quant evaluate --input injunction-input.json --output injunction-result.json
 python -m unittest discover -s legal_quant/tests -v
 ```
 

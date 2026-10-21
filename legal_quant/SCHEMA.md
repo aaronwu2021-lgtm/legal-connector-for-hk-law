@@ -12,12 +12,18 @@ The root contains `schema_version: "1"` and a `models` array. Each model has:
 
 - Identity: `id`, `version` (a string), `title`, `category`, `output_kind`.
 - Purpose: `question`, `formula_summary`, `legal_status`.
+- Classification: `analysis_layer` (`legal_standard` or `supporting_analysis`)
+  and `formula_authority`. `judicial_heuristic` identifies reasoning explicitly
+  found in a judgment (the model may include stated extensions);
+  `legal_test_formalisation` identifies a project model of an actual legal test.
+  Supporting tools retain a separate classification. None of these labels
+  certifies jurisdictional applicability or a binding numerical threshold.
 - Boundaries: `assumptions`, `limitations`, `required_legal_findings`.
 - Provenance: `source_ids`, resolved against the source ledger.
 - Computation: `fields`, `constraints`, and ordered `outputs`.
 - Demonstration: `example_inputs`, `example_basis: "hypothetical"`.
 
-Categories distinguish `amount`, `evidence`, `decision`, `balancing`, `market`
+Categories distinguish `legal_standard`, `amount`, `evidence`, `decision`, `balancing`, `market`
 and `policy`. These are not elements of a common legal score and must not be
 summed into one.
 
@@ -144,6 +150,7 @@ The response contains:
 
 ```text
 model_id, model_version, category, output_kind,
+analysis_layer, formula_authority,
 context, inputs, source_ids, legal_status,
 results: { output_id: value },
 steps: [{ id, label, unit, formula, value }],

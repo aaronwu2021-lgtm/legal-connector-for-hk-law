@@ -119,10 +119,13 @@ function inputRecord(modelId = 'hand') {
   };
 }
 
-test('all eleven model examples produce valid typed requests from the generated form', async () => {
+test('all model examples produce valid typed requests from the generated form', async () => {
   const h = await harness();
   assert.equal(h.at('workspace').hidden, false);
-  assert.equal(catalogue.models.length, 11);
+  assert.equal(catalogue.models.length, 17);
+  assert.equal(h.at('category').value, 'legal_standard');
+  assert.equal(h.at('model').children.length, 7);
+  assert.match(h.at('formula-authority').textContent, /判决/);
   for (const model of catalogue.models) {
     await h.choose(model.id);
     await h.emit('load-example', 'click');
