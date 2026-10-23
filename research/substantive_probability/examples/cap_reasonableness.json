@@ -1,0 +1,23 @@
+{
+  "rows": [
+    {
+      "p": 0.9,
+      "loss": 0,
+      "insurable": true
+    },
+    {
+      "p": 0.08,
+      "loss": 100000,
+      "insurable": true
+    },
+    {
+      "p": 0.02,
+      "loss": 1000000,
+      "insurable": false
+    }
+  ],
+  "cap": 50000,
+  "insurance_limit": 30000,
+  "insurance_deductible": 10000,
+  "resources": 20000
+}

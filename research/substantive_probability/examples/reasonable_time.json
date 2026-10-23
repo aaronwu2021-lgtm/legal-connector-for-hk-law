@@ -1,0 +1,17 @@
+{
+  "rows": [
+    {
+      "p": 0.6,
+      "duration": 30
+    },
+    {
+      "p": 0.3,
+      "duration": 90
+    },
+    {
+      "p": 0.1,
+      "duration": 300
+    }
+  ],
+  "deadline": 120
+}

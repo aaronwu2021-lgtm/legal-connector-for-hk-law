@@ -1,0 +1,19 @@
+{
+  "rows": [
+    {
+      "p": 0.9,
+      "loss": 0,
+      "selected": false
+    },
+    {
+      "p": 0.08,
+      "loss": 0,
+      "selected": false
+    },
+    {
+      "p": 0.02,
+      "loss": 300000,
+      "selected": true
+    }
+  ]
+}

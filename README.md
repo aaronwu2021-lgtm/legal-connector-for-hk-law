@@ -113,6 +113,14 @@ curl -X POST https://doctrine-drift-atlas.netlify.app/api/score \
 
 ### Quantitative legal analysis
 
+The expanded [substantive probability atlas](research/substantive_probability/README.md)
+is available at `/substantive-probability.html`: 19 substantive-law analysis entries,
+their legal sources, formulas, data requirements and executable synthetic examples.
+They reuse six scenario calculations rather than claiming 19 judicial formulas.
+The existing four direct-entry calculators below remain available. Private pleading
+mappings are kept in the ignored `research/substantive_probability/local/` directory,
+outside the public web/deployment root.
+
 Open `/quantitative.html` from the **量化分析 Quantitative** navigation link.
 The Chinese workspace contains four substantive-law probability models:
 reasonable care (`hand`), reasonably practicable prevention (`alarp_probability`),

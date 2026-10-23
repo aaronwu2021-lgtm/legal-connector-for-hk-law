@@ -1,0 +1,15 @@
+{
+  "rows": [
+    {
+      "p": 0.6,
+      "price": 10
+    },
+    {
+      "p": 0.4,
+      "price": 8
+    }
+  ],
+  "quantity": 1000,
+  "cost": 100,
+  "actual_net_proceeds": 8500
+}
