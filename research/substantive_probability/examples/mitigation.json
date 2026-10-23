@@ -1,0 +1,15 @@
+{
+  "rows": [
+    {
+      "p": 0.6,
+      "current_loss": 100000,
+      "alternative_loss": 0
+    },
+    {
+      "p": 0.4,
+      "current_loss": 100000,
+      "alternative_loss": 100000
+    }
+  ],
+  "cost": 20000
+}

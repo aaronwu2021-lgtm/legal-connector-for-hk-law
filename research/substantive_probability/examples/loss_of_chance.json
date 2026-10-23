@@ -1,0 +1,16 @@
+{
+  "rows": [
+    {
+      "p": 0.3,
+      "actual_loss": 1000000,
+      "compliant_loss": 0,
+      "in_scope": true
+    },
+    {
+      "p": 0.7,
+      "actual_loss": 0,
+      "compliant_loss": 0,
+      "in_scope": true
+    }
+  ]
+}

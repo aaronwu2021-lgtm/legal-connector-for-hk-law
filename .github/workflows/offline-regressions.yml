@@ -40,6 +40,11 @@ jobs:
         run: node --test "test/**/*.test.mjs"
       - name: Independent offline API acceptance
         run: node scripts/audit_api_contract.mjs
+      - name: Quantitative models and negligence scenario checks (synthetic)
+        run: |
+          python -B -m unittest discover -s legal_quant/tests -v
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          python -B -m unittest discover -s examples/negligence_quant -v
       - name: Builder import and CLI safety (temporary copies)
         run: python -B -m unittest discover -s scripts/tests -p "test_builder_entrypoints.py" -v
       - name: Isolated build and failure-reporting regressions

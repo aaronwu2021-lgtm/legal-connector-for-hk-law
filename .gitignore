@@ -22,3 +22,6 @@ experiments/exp4-cfa/runs_inv/
 
 # Local preview process logs and status; never experiment data.
 server/.preview/
+
+# Private pleading mappings and source audit. Kept outside the web deployment root.
+research/substantive_probability/local/

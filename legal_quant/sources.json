@@ -1,0 +1,49 @@
+{
+  "version": "1",
+  "sources": [
+    {
+      "id": "hand-carroll",
+      "title": "United States v. Carroll Towing Co., 159 F.2d 169 (2d Cir. 1947) — teaching excerpt",
+      "url": "https://sites.oxy.edu/whitney/xaccess/ec357/cases/tort/unitedstates_v_carrolltowing.htm",
+      "pin": "Excerpt paragraphs beginning 'Since there are occasions' and 'Possibly it serves'",
+      "verification": "web",
+      "jurisdiction": "US federal, Second Circuit",
+      "source_kind": "judgment",
+      "reviewed_on": "2026-10-20",
+      "note": "Read the hosted judgment excerpt stating B < PL and its factual application. This is an edited teaching reproduction, not a verified complete report. The module's before/after expected-loss calculation is an economic extension, not the judgment's own numerical calculation; Hong Kong applicability has not been verified."
+    },
+    {
+      "id": "hse-reasonably-practicable",
+      "title": "HSE, Fairgrounds and amusement parks: Guidance on safe practice, HSG175 (3rd ed, 2017)",
+      "url": "https://www.hse.gov.uk/pubns/priced/hsg175.pdf",
+      "pin": "Paragraph 26, PDF page 18 (zero-based index 17)",
+      "verification": "primary",
+      "jurisdiction": "Great Britain health and safety; regulator guidance",
+      "source_kind": "guidance",
+      "reviewed_on": "2026-10-21",
+      "note": "Read the regulator’s original paragraph explaining reasonably practicable through gross disproportion of cost (including time and effort) to risk reduction. The ratio is a constructed diagnostic; this passage prescribes no numerical multiplier. It does not establish applicability to Hong Kong or private commercial contracts."
+    },
+    {
+      "id": "sharp-mitigation",
+      "title": "Sharp Corp Ltd v Viterra BV [2024] UKSC 14",
+      "url": "https://supremecourt.uk/cases/judgments/uksc-2023-0029",
+      "pin": "Paragraphs 83–86, particularly paragraph 85",
+      "verification": "primary",
+      "jurisdiction": "English contract damages",
+      "source_kind": "judgment",
+      "reviewed_on": "2026-10-21",
+      "note": "Read the official judgment’s reasonable-mitigation principles, including recovery of loss from reasonable steps even when they increase loss. The expected-benefit calculation is our auxiliary ex ante comparison; neither positive net benefit nor hindsight success is the legal test. Hong Kong applicability has not been verified."
+    },
+    {
+      "id": "unidroit-2016",
+      "title": "UNIDROIT Principles of International Commercial Contracts 2016, black-letter text",
+      "url": "https://www.unidroit.org/wp-content/uploads/2021/06/Unidroit-Principles-2016-English-bl.pdf",
+      "pin": "Article 7.4.3(1)–(3), especially Article 7.4.3(2); PDF page 23",
+      "verification": "primary",
+      "jurisdiction": "International commercial contract soft law",
+      "source_kind": "guidance",
+      "reviewed_on": "2026-10-20",
+      "note": "Read the official text on certainty of harm and compensation for loss of a chance in proportion to its probability. These Principles do not automatically apply as domestic legislation. The model values a reduced opportunity; it does not discount uncertain liability or resolve recognition of medical/personal-injury chance claims. Hong Kong applicability has not been verified."
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+﻿id,name,burden_annual,baseline_expected_loss_annual,residual_expected_loss_annual,avoided_expected_loss_annual,net_benefit_annual,total_social_cost_annual,benefit_cost_ratio,break_even_probability_per_exposure,break_even_probability_reduction,combined_loss_reduction,economic_support
+signs,方案A：警示与提醒,12000.0,832000.0,748800.0,83200.0,71200.0,760800.0,6.933333333333334,1.1538461538461538e-05,0.014423076923076924,0.1,positive
+mats,方案B：防滑设施与巡检,120000.0,832000.0,332800.0,499200.0,379200.0,452800.0,4.16,1.923076923076923e-05,0.14423076923076922,0.6,positive
+mats_staff,方案C：防滑设施与驻点人员,260000.0,832000.0,166399.99999999997,665600.0,405600.0,426400.0,2.56,3.125e-05,0.3125,0.8,positive
+closure,方案D：全年关闭该区域,1200000.0,832000.0,0.0,832000.0,-368000.0,1200000.0,0.6933333333333334,0.00011538461538461538,1.4423076923076923,1.0,negative

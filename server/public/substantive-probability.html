@@ -1,0 +1,622 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>实体法律概率分析：标准、公式与数据</title><style>
+:root{color-scheme:light;--navy:#18324e;--ink:#243747;--muted:#647181;--paper:#faf8f3;--line:#dedfd9;--blue:#eaf0f6;--gold:#ece1c5}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:system-ui,-apple-system,'Segoe UI','Microsoft YaHei',sans-serif;line-height:1.75}main{max-width:1200px;margin:auto;padding:52px 28px 70px}header{border-top:6px solid var(--navy);padding:24px 0}h1{font-size:clamp(28px,4vw,43px);line-height:1.3;color:var(--navy);margin:12px 0}h2,h3,h4,p{margin:0 0 12px}h3{font-size:17px;color:var(--navy)}h4{font-size:14px}p{white-space:pre-wrap}a{color:#23577c;text-underline-offset:3px}.eyebrow,.entry-id{font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted)}.scope{max-width:980px;color:var(--muted)}.toolbar{position:sticky;top:0;z-index:2;background:var(--paper);padding:18px 0;border-bottom:1px solid var(--line);margin-bottom:20px}.search{display:block;width:100%;padding:13px 16px;border:1px solid #b7c1c9;border-radius:7px;background:white;color:var(--ink);font:inherit}.filters{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 8px}button{border:1px solid #b7c1c9;border-radius:20px;padding:7px 14px;background:transparent;color:var(--navy);font:inherit;font-size:13px;cursor:pointer}button[aria-pressed=true]{background:var(--navy);color:white;border-color:var(--navy)}button:focus-visible,summary:focus-visible,a:focus-visible{outline:3px solid #b98b39;outline-offset:3px}.count,.muted{color:var(--muted);font-size:13px}.entry{background:white;border:1px solid var(--line);border-radius:9px;margin-bottom:14px}.entry summary{padding:20px 23px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:18px;list-style:none}.entry summary::-webkit-details-marker{display:none}.entry summary:after{content:'+';font-size:22px;font-weight:300}.entry[open] summary:after{content:'−'}.entry summary>span:first-child{flex:1}.entry-id{display:block;margin-bottom:3px}.entry-title{font-size:19px;font-weight:650;color:var(--navy)}.badge{font-size:11px;white-space:nowrap;background:var(--blue);padding:4px 9px;border-radius:4px}.entry-body{padding:4px 23px 25px;border-top:1px solid var(--line)}section{margin-top:24px}.formula{background:var(--navy);color:#fff;border-radius:7px;padding:17px 20px}.formula h3{color:#f3dfab}.formula pre{background:none;border:0;padding:0;color:white}.case-map{background:#f5f1e7;padding:20px;border-left:3px solid #b99857}.case-map section{margin-top:14px}.example{border:1px dashed #b4c2cf;padding:20px;border-radius:6px}pre{margin:0 0 12px;white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.55;font-size:13px;padding:14px 16px;background:#f4f6f8;border:1px solid #e4e9ed;border-radius:4px}ul{padding-left:22px;margin:0}li{margin:6px 0}.table-wrap{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:14px;text-align:left}th,td{padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top;min-width:90px;overflow-wrap:anywhere}thead th{background:#f1f4f5;font-weight:600}.sources{padding:0;list-style:none}.source{border-top:1px solid var(--line);padding-top:12px;margin-top:14px}.source-meta{font-size:12px;color:var(--muted);margin:5px 0}.source p:last-child{font-size:13px}.calculation-error{color:#8a3c25}.empty{padding:35px;text-align:center;color:var(--muted)}footer{border-top:1px solid var(--line);margin-top:35px;padding-top:20px;font-size:12px;color:var(--muted)}[hidden]{display:none!important}@media(max-width:640px){main{padding:25px 14px 45px}.entry summary{padding:17px 15px;gap:8px;flex-wrap:wrap}.entry-title{font-size:17px}.entry-body{padding:3px 15px 20px}.badge{white-space:normal}.case-map,.example{padding:14px}.toolbar{position:static}th,td{padding:9px 7px}.formula{padding:14px}}
+</style></head>
+<body><main><header><div class="eyebrow">SUBSTANTIVE LAW · PROBABILITY · 通用法律标准目录</div><h1>实体法律概率分析：标准、公式与数据</h1><p class="scope">19个实体法律分析条目，共用6种概率情景运算；不是19个法院规定的公式。两项延续现有行为风险分析，十四项补充实体标准及赔偿问题，三项为有前提的法律拓展。程序法、证据可信度、胜诉率及责任评分均不纳入。</p><p class="muted">只讨论实体法律标准。概率的对象、法律前提、数据口径与公式地位分别列明；合成示例不构成本案数值结论。</p><details><summary>计算口径、覆盖范围与来源版本</summary><section><h3>统一计算口径</h3><ul><li>先确定法律标准与时间口径，再定义事件和情景，最后计算；法源与公式地位分开。</li><li>概率须有数据或明确假设来源；情景互斥、穷尽，总和为1；不能偷偷归一化。</li><li>情景必须保留共同市场路径和相关性；未知输入不填零。</li><li>所有教学数字均为synthetic，与案件真实数值无关；输出legal_conclusion始终为null。</li></ul></section><section><h3>明确不作概率判定的事项</h3><ul><li>合同成立、条款纳入、信托成立、权利归属：不能由概率权重表决。</li><li>no-profit/no-conflict、返还及不当得利要件：金额可以计算，不因此成为概率标准。</li><li>未见独立成形的contributory negligence或material contribution法律论证；不凭技术多因创造特殊规则。</li><li>ALARP保留在原通用比较法计算器，未发现它在本案诉辩中有直接的英国安全法适用基础，不用它增加本案标准数量。</li></ul></section></details></header>
+<div class="toolbar"><label for="search" class="muted">搜索法律标准、公式或案卷论点</label><input id="search" class="search" type="search" placeholder="例如：可预见性、减损、免责上限" autocomplete="off"><div class="filters"><button type="button" data-filter="all" aria-pressed="true">全部</button><button type="button" data-filter="direct" aria-pressed="false">现有计算模块的深化</button><button type="button" data-filter="support" aria-pressed="false">概率辅助法律判断</button><button type="button" data-filter="extension" aria-pressed="false">有前提的扩展</button><button type="button" id="expand">展开当前结果</button><button type="button" id="collapse">收起全部</button></div><div id="count" class="count" aria-live="polite">共 19 项实体法律问题</div></div>
+<div id="entries"><details class="entry" data-status="direct" data-search="合理注意与技能：预防措施的风险权衡 暂停清算、备用接入或风险控制措施是否属于合理服务要求？ cap.457 s.5要求以合理注意与技能履行约定服务。hand可帮助比较特定措施；同时必须计入措施新增的损害。 nb = σ wₛ[l继续(s) − l措施(s)] − c 在相同市场情景下，不同操作政策造成损害的概率；并非平台承担责任的概率。 " id="care"><summary><span><span class="entry-id">care</span><span class="entry-title">合理注意与技能：预防措施的风险权衡</span></span><span class="badge">现有计算模块的深化</span></summary><div class="entry-body"><section class=""><h3>实体法律问题</h3><p>暂停清算、备用接入或风险控制措施是否属于合理服务要求？</p></section><section class=""><h3>法律标准</h3><p>Cap.457 s.5要求以合理注意与技能履行约定服务。Hand可帮助比较特定措施；同时必须计入措施新增的损害。</p></section><section class=""><h3>概率指什么</h3><p>在相同市场情景下，不同操作政策造成损害的概率；并非平台承担责任的概率。</p></section><section class="formula"><h3>计算表达</h3><pre>NB = Σ wₛ[L继续(s) − L措施(s)] − C</pre></section><section class=""><h3>公式地位</h3><p>项目分析算式；法源支持法律标准，未规定这个统一公式或概率门槛。</p></section><section><h3>需要的数据</h3><div class="table-wrap"><table><thead><tr><th>数据</th><th>单位 / 口径</th><th>取得方式 / 来源</th></tr></thead><tbody><tr><td>场景及概率 wₛ</td><td>0–1；互斥、穷尽、总和1</td><td>当时资料、实测频率或有说明的压力情景；未知不得填零</td></tr><tr><td>各场景损失 Lₛ</td><td>同一币种、同一期间</td><td>账户及执行数据；区分损失种类，避免重复</td></tr><tr><td>增量措施成本 C</td><td>货币/同期间</td><td>扩容、备用通道、暂停与恢复成本</td></tr><tr><td>新增风险及受影响主体</td><td>货币及风险类别</td><td>用户、基金、其他用户分别列账；同一转移不得重复计损</td></tr></tbody></table></div></section><section><h3>计算边界与法律前提</h3><ul><li>不能假定暂停交易没有风险，也不能假定恢复后价格必定反弹。</li><li>净收益为正不是违反注意义务的自动裁判；义务范围、可行性和风险分配另认定。</li><li>若Cap.457适用且用户deals as consumer，s.8(1)禁止以合同排除或限制该条例责任；不可把法定禁止再降格为成本收益权衡。</li></ul></section><section class=""><h3>示例实现范围</h3><p>简化的合成情景，用于验证所列算术。真实输入需先完成本项法律前提及数据口径审查。</p></section><section class="example"><h3>合成数据示例 · 非本案估值</h3><p class="muted">以下数字仅用于展示运算，不代表案卷事实、司法认定或胜诉率。</p><h4>运算类型与输入</h4><pre>{
+  &quot;kind&quot;: &quot;precaution_comparison&quot;,
+  &quot;inputs&quot;: {
+    &quot;rows&quot;: [
+      {
+        &quot;p&quot;: 0.8,
+        &quot;current_loss&quot;: 100000,
+        &quot;alternative_loss&quot;: 20000
+      },
+      {
+        &quot;p&quot;: 0.2,
+        &quot;current_loss&quot;: 50000,
+        &quot;alternative_loss&quot;: 150000
+      }
+    ],
+    &quot;cost&quot;: 5000
+  }
+}</pre><h4>计算输出</h4><pre>{
+  &quot;kind&quot;: &quot;precaution_comparison&quot;,
+  &quot;input_basis&quot;: &quot;explicit_scenarios_not_case_findings&quot;,
+  &quot;description&quot;: &quot;Arithmetic over the supplied scenarios; probabilities, legal scope, coverage and feasibility are input assumptions, not established case facts. No legal threshold or legal conclusion is inferred.&quot;,
+  &quot;results&quot;: {
+    &quot;current_expected_loss&quot;: 90000.0,
+    &quot;alternative_expected_loss&quot;: 46000.0,
+    &quot;avoided_expected_loss&quot;: 44000.0,
+    &quot;net_benefit&quot;: 39000.0
+  },
+  &quot;legal_conclusion&quot;: null
+}</pre></section><section><h3>法律依据与核实状态</h3><ul class="sources"><li class="source"><strong><a href="https://www.elegislation.gov.hk/hk/cap457" target="_blank" rel="noopener noreferrer">服务提供（隐含条款）条例 Cap.457</a></strong><p class="source-meta">香港 · ss.5–6、8(1)–(3)；附件CLA-2 PDF4、6，版本标示2021-04-08 · primary_local_copy</p><p>已读案件法律附件中的香港法例 Verified Copy 原文；官方网页本次仅返回加载页。所列是附件版本核验，不声称完成事件时点及最新修订沿革核验。</p></li><li class="source"><strong><a href="https://sites.oxy.edu/whitney/xaccess/ec357/cases/tort/unitedstates_v_carrolltowing.htm" target="_blank" rel="noopener noreferrer">United States v. Carroll Towing Co., 159 F.2d 169 (2d Cir. 1947) — teaching excerpt</a></strong><p class="source-meta">US federal, Second Circuit · Excerpt paragraphs beginning &#x27;Since there are occasions&#x27; and &#x27;Possibly it serves&#x27; · web</p><p>Read the hosted judgment excerpt stating B &lt; PL and its factual application. This is an edited teaching reproduction, not a verified complete report. The module&#x27;s before/after expected-loss calculation is an economic extension, not the judgment&#x27;s own numerical calculation; Hong Kong applicability has not been verified.</p></li></ul></section></div></details>
+<details class="entry" data-status="support" data-search="合理可预见性：事前可认识的损害种类 前次故障和当时警报，是否使有关损害成为可合理认识的风险？ 可预见性是义务及损失范围分析中的法律评价。真实但低概率的风险仍可能重要；先界定损害种类和信息时点。 pk = σ wₛ·1{损害属于k}；elk = σ wₛlₛ·1{k} 措施作出或义务违反时，可获知资料所支持的损害事件概率。 " id="foreseeability"><summary><span><span class="entry-id">foreseeability</span><span class="entry-title">合理可预见性：事前可认识的损害种类</span></span><span class="badge">概率辅助法律判断</span></summary><div class="entry-body"><section class=""><h3>实体法律问题</h3><p>前次故障和当时警报，是否使有关损害成为可合理认识的风险？</p></section><section class=""><h3>法律标准</h3><p>可预见性是义务及损失范围分析中的法律评价。真实但低概率的风险仍可能重要；先界定损害种类和信息时点。</p></section><section class=""><h3>概率指什么</h3><p>措施作出或义务违反时，可获知资料所支持的损害事件概率。</p></section><section class="formula"><h3>计算表达</h3><pre>pK = Σ wₛ·1{损害属于K}；ELK = Σ wₛLₛ·1{K}</pre></section><section class=""><h3>公式地位</h3><p>项目分析算式；法源支持法律标准，未规定这个统一公式或概率门槛。</p></section><section><h3>需要的数据</h3><div class="table-wrap"><table><thead><tr><th>数据</th><th>单位 / 口径</th><th>取得方式 / 来源</th></tr></thead><tbody><tr><td>场景及概率 wₛ</td><td>0–1；互斥、穷尽、总和1</td><td>当时资料、实测频率或有说明的压力情景；未知不得填零</td></tr><tr><td>各场景损失 Lₛ</td><td>同一币种、同一期间</td><td>账户及执行数据；区分损失种类，避免重复</td></tr><tr><td>信息时点及故障分类</td><td>UTC/分类</td><td>当时告警、事故复盘、容量测试；区分不同子系统</td></tr><tr><td>可比暴露分母</td><td>次/账户时数</td><td>完整样本及选择规则；不能只搜集出事故的样本</td></tr></tbody></table></div></section><section><h3>计算边界与法律前提</h3><ul><li>不设5%、50%或统计显著性阈值认定可预见性。</li><li>纯经济损失的注意义务须先成立；风险可预见不能单独证明接近性和义务。</li></ul></section><section class=""><h3>示例实现范围</h3><p>selected预先标识所讨论损害种类；5%是示例输入合计，不是可预见性门槛。</p></section><section class="example"><h3>合成数据示例 · 非本案估值</h3><p class="muted">以下数字仅用于展示运算，不代表案卷事实、司法认定或胜诉率。</p><h4>运算类型与输入</h4><pre>{
+  &quot;kind&quot;: &quot;risk_distribution&quot;,
+  &quot;inputs&quot;: {
+    &quot;rows&quot;: [
+      {
+        &quot;p&quot;: 0.95,
+        &quot;loss&quot;: 0,
+        &quot;selected&quot;: false
+      },
+      {
+        &quot;p&quot;: 0.04,
+        &quot;loss&quot;: 100000,
+        &quot;selected&quot;: true
+      },
+      {
+        &quot;p&quot;: 0.01,
+        &quot;loss&quot;: 1000000,
+        &quot;selected&quot;: true
+      }
+    ]
+  }
+}</pre><h4>计算输出</h4><pre>{
+  &quot;kind&quot;: &quot;risk_distribution&quot;,
+  &quot;input_basis&quot;: &quot;explicit_scenarios_not_case_findings&quot;,
+  &quot;description&quot;: &quot;Arithmetic over the supplied scenarios; probabilities, legal scope, coverage and feasibility are input assumptions, not established case facts. No legal threshold or legal conclusion is inferred.&quot;,
+  &quot;results&quot;: {
+    &quot;expected_loss&quot;: 14000.0,
+    &quot;selected_probability&quot;: 0.05,
+    &quot;selected_expected_loss&quot;: 14000.0
+  },
+  &quot;legal_conclusion&quot;: null
+}</pre></section><section><h3>法律依据与核实状态</h3><ul class="sources"><li class="source"><strong><a href="https://www.hkcfa.hk/en/work/cases/index.html" target="_blank" rel="noopener noreferrer">Luen Hing Fat Coating &amp; Finishing Factory Ltd v Waan Chuen Ming (2011) 14 HKCFAR 14</a></strong><p class="source-meta">香港终审法院 · ¶¶37–42；已读判决报告附件CLA-41 PDF11–12 · primary_local_copy</p><p>已读本地完整判决报告；这里引用其可预见性、接近性及公平合理的分层分析，不能直接把人身安全判决移植成平台纯经济损失义务。网页地址仅供检索，未据该地址核验中性引注。</p></li><li class="source"><strong><a href="https://publications.parliament.uk/pa/ld200607/ldjudgmt/jd071017/johns-2.htm" target="_blank" rel="noopener noreferrer">Rothwell v Chemical &amp; Insulating Co Ltd / Johnston v NEI International Combustion Ltd [2007] UKHL 39</a></strong><p class="source-meta">England and Wales · Lord Hoffmann, paras 28-29 · primary</p><p>可预见性随风险的描述层级和情境而变化；统计概率不是全部。第29段引用 Wagon Mound II 说明低概率真实风险也可能要求采取容易且无负担的预防。 已读所列原文；英国权威的香港适用性须另核。</p></li><li class="source"><strong><a href="https://supremecourt.uk/cases/judgments/uksc-2022-0100" target="_blank" rel="noopener noreferrer">Armstead v Royal &amp; Sun Alliance Insurance Company Ltd [2024] UKSC 6</a></strong><p class="source-meta">England and Wales · paras 47(i), 55, 73 · primary</p><p>侵权遥远性通常考察违约义务时可合理预见的损失种类，不要求预见精确发生机制；第73段警示专业服务义务范围案件的六问题框架并非一切侵权案件的通用清单。 已读所列原文；英国权威的香港适用性须另核。</p></li></ul></section></div></details>
+<details class="entry" data-status="support" data-search="合同损失过远：订约时风险与承担范围 这类强平、其他平台交易或特殊利润损失，是否属于合同承担的风险？ 合同遥远性关注订约/承担责任时可归责知识、损失种类和风险承担。not unlikely不是固定50%规则。 pk(t₀)=σ wₛ(t₀)·1{k}；elk=σ wₛ(t₀)lk(s) 订约或承担责任时对特定种类损失的发生可能性；不是事后胜诉可能性。 " id="contract_remoteness"><summary><span><span class="entry-id">contract_remoteness</span><span class="entry-title">合同损失过远：订约时风险与承担范围</span></span><span class="badge">概率辅助法律判断</span></summary><div class="entry-body"><section class=""><h3>实体法律问题</h3><p>这类强平、其他平台交易或特殊利润损失，是否属于合同承担的风险？</p></section><section class=""><h3>法律标准</h3><p>合同遥远性关注订约/承担责任时可归责知识、损失种类和风险承担。not unlikely不是固定50%规则。</p></section><section class=""><h3>概率指什么</h3><p>订约或承担责任时对特定种类损失的发生可能性；不是事后胜诉可能性。</p></section><section class="formula"><h3>计算表达</h3><pre>pK(t₀)=Σ wₛ(t₀)·1{K}；ELK=Σ wₛ(t₀)LK(s)</pre></section><section class=""><h3>公式地位</h3><p>项目分析算式；法源支持法律标准，未规定这个统一公式或概率门槛。</p></section><section><h3>需要的数据</h3><div class="table-wrap"><table><thead><tr><th>数据</th><th>单位 / 口径</th><th>取得方式 / 来源</th></tr></thead><tbody><tr><td>场景及概率 wₛ</td><td>0–1；互斥、穷尽、总和1</td><td>当时资料、实测频率或有说明的压力情景；未知不得填零</td></tr><tr><td>各场景损失 Lₛ</td><td>同一币种、同一期间</td><td>账户及执行数据；区分损失种类，避免重复</td></tr><tr><td>订约时知识 t₀</td><td>日期/版本</td><td>服务协议、风险说明、已告知的特殊目的</td></tr><tr><td>损失种类K与风险分配</td><td>分类</td><td>本平台本金、跨平台机会、特殊利润分别归类</td></tr></tbody></table></div></section><section><h3>计算边界与法律前提</h3><ul><li>预期损失不是可赔额，概率低不自动过远。</li><li>基于合同承担责任的并行侵权请求，可能仍适用合同遥远性标准；不能任选宽松路线。</li></ul></section><section class=""><h3>示例实现范围</h3><p>selected由损失类型分类得到；示例5%和14,000仅描述订约时风险，不裁定过远性。</p></section><section class="example"><h3>合成数据示例 · 非本案估值</h3><p class="muted">以下数字仅用于展示运算，不代表案卷事实、司法认定或胜诉率。</p><h4>运算类型与输入</h4><pre>{
+  &quot;kind&quot;: &quot;risk_distribution&quot;,
+  &quot;inputs&quot;: {
+    &quot;rows&quot;: [
+      {
+        &quot;p&quot;: 0.95,
+        &quot;loss&quot;: 0,
+        &quot;selected&quot;: false
+      },
+      {
+        &quot;p&quot;: 0.04,
+        &quot;loss&quot;: 100000,
+        &quot;selected&quot;: true
+      },
+      {
+        &quot;p&quot;: 0.01,
+        &quot;loss&quot;: 1000000,
+        &quot;selected&quot;: true
+      }
+    ]
+  }
+}</pre><h4>计算输出</h4><pre>{
+  &quot;kind&quot;: &quot;risk_distribution&quot;,
+  &quot;input_basis&quot;: &quot;explicit_scenarios_not_case_findings&quot;,
+  &quot;description&quot;: &quot;Arithmetic over the supplied scenarios; probabilities, legal scope, coverage and feasibility are input assumptions, not established case facts. No legal threshold or legal conclusion is inferred.&quot;,
+  &quot;results&quot;: {
+    &quot;expected_loss&quot;: 14000.0,
+    &quot;selected_probability&quot;: 0.05,
+    &quot;selected_expected_loss&quot;: 14000.0
+  },
+  &quot;legal_conclusion&quot;: null
+}</pre></section><section><h3>法律依据与核实状态</h3><ul class="sources"><li class="source"><strong><a href="https://publications.parliament.uk/pa/ld200708/ldjudgmt/jd080709/trans-3.htm" target="_blank" rel="noopener noreferrer">Transfield Shipping Inc v Mercator Shipping Inc (The Achilleas) [2008] UKHL 48</a></strong><p class="source-meta">England and Wales · Lord Walker, paras 69-78, especially 73, 76-77 · primary</p><p>合同损失的遥远性审查着眼于订约时可归责的知识、损失种类及风险承担。损失发生的可能性属于评价内容，但不得将 not unlikely 换成统一的 50% 或其他数值门槛。 已读所列原文；英国权威的香港适用性须另核。</p></li><li class="source"><strong><a href="https://supremecourt.uk/cases/judgments/uksc-2023-0110" target="_blank" rel="noopener noreferrer">URS Corporation Ltd v BDW Trading Ltd [2025] UKSC 21</a></strong><p class="source-meta">England and Wales · paras 27, 32-33 · primary</p><p>基于合同承担责任的过失请求采用较严格的合同遥远性标准：承担责任时是否合理预见该类损失为重大可能性。义务范围另取决于义务目的，不能用可预见性替代。 已读所列原文；英国权威的香港适用性须另核。</p></li></ul></section></div></details>
+<details class="entry" data-status="support" data-search="事实因果：合规履行时是否仍发生损失 即使系统正常，用户是否仍会被同一市场下跌强平？ 通常须比较实际损失与合规履行反事实。概率情景用于反事实未能精确确定的部分；风险增加本身不等于个案因果成立。 δel = σ wₛ[l实际(s)−l合规(s)]；p强平(m)=σ wₛ·1{m下强平} 同一外部市场路径上，合法且可执行方案下的强平/损失结果分布。 " id="causation"><summary><span><span class="entry-id">causation</span><span class="entry-title">事实因果：合规履行时是否仍发生损失</span></span><span class="badge">概率辅助法律判断</span></summary><div class="entry-body"><section class=""><h3>实体法律问题</h3><p>即使系统正常，用户是否仍会被同一市场下跌强平？</p></section><section class=""><h3>法律标准</h3><p>通常须比较实际损失与合规履行反事实。概率情景用于反事实未能精确确定的部分；风险增加本身不等于个案因果成立。</p></section><section class=""><h3>概率指什么</h3><p>同一外部市场路径上，合法且可执行方案下的强平/损失结果分布。</p></section><section class="formula"><h3>计算表达</h3><pre>ΔEL = Σ wₛ[L实际(s)−L合规(s)]；p强平(m)=Σ wₛ·1{m下强平}</pre></section><section class=""><h3>公式地位</h3><p>项目分析算式；法源支持法律标准，未规定这个统一公式或概率门槛。</p></section><section><h3>需要的数据</h3><div class="table-wrap"><table><thead><tr><th>数据</th><th>单位 / 口径</th><th>取得方式 / 来源</th></tr></thead><tbody><tr><td>场景及概率 wₛ</td><td>0–1；互斥、穷尽、总和1</td><td>当时资料、实测频率或有说明的压力情景；未知不得填零</td></tr><tr><td>各场景损失 Lₛ</td><td>同一币种、同一期间</td><td>账户及执行数据；区分损失种类，避免重复</td></tr><tr><td>共同市场路径与合规干预</td><td>毫秒/价格/深度</td><td>同期订单簿、mark/index/last价格及模型版本</td></tr><tr><td>用户本会采取且能够采取的行动</td><td>数量/资金/时间</td><td>原始指令、资金可用时点、转入到账与实际交易能力</td></tr></tbody></table></div></section><section><h3>计算边界与法律前提</h3><ul><li>不能把Δ概率乘实际损失直接判成比例责任。</li><li>引擎的正损失概率只是简化指标；真正强平概率须以保证金路径重建，不能用损失&gt;0替代清算阈值。</li><li>负差额也保留；不能逐情景只取正数来夸大赔偿。</li></ul></section><section class=""><h3>示例实现范围</h3><p>简化的合成情景，用于验证所列算术。真实输入需先完成本项法律前提及数据口径审查。</p></section><section class="example"><h3>合成数据示例 · 非本案估值</h3><p class="muted">以下数字仅用于展示运算，不代表案卷事实、司法认定或胜诉率。</p><h4>运算类型与输入</h4><pre>{
+  &quot;kind&quot;: &quot;paired_counterfactual&quot;,
+  &quot;inputs&quot;: {
+    &quot;rows&quot;: [
+      {
+        &quot;p&quot;: 0.7,
+        &quot;actual_loss&quot;: 100000,
+        &quot;compliant_loss&quot;: 80000,
+        &quot;in_scope&quot;: true
+      },
+      {
+        &quot;p&quot;: 0.3,
+        &quot;actual_loss&quot;: 100000,
+        &quot;compliant_loss&quot;: 0,
+        &quot;in_scope&quot;: true
+      }
+    ]
+  }
+}</pre><h4>计算输出</h4><pre>{
+  &quot;kind&quot;: &quot;paired_counterfactual&quot;,
+  &quot;input_basis&quot;: &quot;explicit_scenarios_not_case_findings&quot;,
+  &quot;description&quot;: &quot;Arithmetic over the supplied scenarios; probabilities, legal scope, coverage and feasibility are input assumptions, not established case facts. No legal threshold or legal conclusion is inferred.&quot;,
+  &quot;results&quot;: {
+    &quot;actual_expected_loss&quot;: 100000.0,
+    &quot;compliant_expected_loss&quot;: 56000.0,
+    &quot;signed_difference&quot;: 44000.0,
+    &quot;in_scope_signed_difference&quot;: 44000.0,
+    &quot;actual_harm_probability&quot;: 1.0,
+    &quot;compliant_harm_probability&quot;: 0.7
+  },
+  &quot;legal_conclusion&quot;: null
+}</pre></section><section><h3>法律依据与核实状态</h3><ul class="sources"><li class="source"><strong><a href="https://supremecourt.uk/uploads/uksc_2019_0011_judgment_e6bc49cde9.pdf" target="_blank" rel="noopener noreferrer">Khan v Meadows [2021] UKSC 21</a></strong><p class="source-meta">England and Wales · majority, paras 44-46, 52, 64-65 · primary</p><p>but-for反事实是通常的事实因果起点而非责任充分条件；多重充分原因时存在局限。事实因果、可预见性和义务范围必须分开，不应以总体风险增加直接判定个体因果。 已读所列原文；英国权威的香港适用性须另核。</p></li></ul></section></div></details>
+<details class="entry" data-status="extension" data-search="义务保护范围：隔离平台风险与普通市场风险 即使没有违约就没有此损失，这类损失是否仍在该义务保护目的内？ 义务目的与所防范的风险是独立问题。先由法律分析确认损失类型是否在范围内，再量化各部分。 δel范围内 = σ wₛ·gₛ·[l实际(s)−l合规(s)]，gₛ∈{0,1} wₛ描述场景；gₛ是外部法律分类，不是概率、模型猜测或置信度。 " id="scope_of_duty"><summary><span><span class="entry-id">scope_of_duty</span><span class="entry-title">义务保护范围：隔离平台风险与普通市场风险</span></span><span class="badge">有前提的扩展</span></summary><div class="entry-body"><section class=""><h3>实体法律问题</h3><p>即使没有违约就没有此损失，这类损失是否仍在该义务保护目的内？</p></section><section class=""><h3>法律标准</h3><p>义务目的与所防范的风险是独立问题。先由法律分析确认损失类型是否在范围内，再量化各部分。</p></section><section class=""><h3>概率指什么</h3><p>wₛ描述场景；gₛ是外部法律分类，不是概率、模型猜测或置信度。</p></section><section class="formula"><h3>计算表达</h3><pre>ΔEL范围内 = Σ wₛ·gₛ·[L实际(s)−L合规(s)]，gₛ∈{0,1}</pre></section><section class=""><h3>公式地位</h3><p>项目分析算式；法源支持法律标准，未规定这个统一公式或概率门槛。</p></section><section><h3>需要的数据</h3><div class="table-wrap"><table><thead><tr><th>数据</th><th>单位 / 口径</th><th>取得方式 / 来源</th></tr></thead><tbody><tr><td>场景及概率 wₛ</td><td>0–1；互斥、穷尽、总和1</td><td>当时资料、实测频率或有说明的压力情景；未知不得填零</td></tr><tr><td>各场景损失 Lₛ</td><td>同一币种、同一期间</td><td>账户及执行数据；区分损失种类，避免重复</td></tr><tr><td>各项义务的保护目的</td><td>文字/类别</td><td>服务约定、风险声明及交易背景</td></tr><tr><td>范围标记gₛ</td><td>人工0/1；未决不得强填</td><td>逐损失类别的独立法律分析</td></tr></tbody></table></div></section><section><h3>计算边界与法律前提</h3><ul><li>SAAMCO反事实只可交叉检验，不是所有案件的统一上限公式。</li><li>本项是对现有因果争议的进一步研究框架，不能描述成诉状已明确主张此判例。</li></ul></section><section class=""><h3>示例实现范围</h3><p>简化的合成情景，用于验证所列算术。真实输入需先完成本项法律前提及数据口径审查。</p></section><section class="example"><h3>合成数据示例 · 非本案估值</h3><p class="muted">以下数字仅用于展示运算，不代表案卷事实、司法认定或胜诉率。</p><h4>运算类型与输入</h4><pre>{
+  &quot;kind&quot;: &quot;paired_counterfactual&quot;,
+  &quot;inputs&quot;: {
+    &quot;rows&quot;: [
+      {
+        &quot;p&quot;: 0.7,
+        &quot;actual_loss&quot;: 100000,
+        &quot;compliant_loss&quot;: 80000,
+        &quot;in_scope&quot;: false
+      },
+      {
+        &quot;p&quot;: 0.3,
+        &quot;actual_loss&quot;: 100000,
+        &quot;compliant_loss&quot;: 0,
+        &quot;in_scope&quot;: true
+      }
+    ]
+  }
+}</pre><h4>计算输出</h4><pre>{
+  &quot;kind&quot;: &quot;paired_counterfactual&quot;,
+  &quot;input_basis&quot;: &quot;explicit_scenarios_not_case_findings&quot;,
+  &quot;description&quot;: &quot;Arithmetic over the supplied scenarios; probabilities, legal scope, coverage and feasibility are input assumptions, not established case facts. No legal threshold or legal conclusion is inferred.&quot;,
+  &quot;results&quot;: {
+    &quot;actual_expected_loss&quot;: 100000.0,
+    &quot;compliant_expected_loss&quot;: 56000.0,
+    &quot;signed_difference&quot;: 44000.0,
+    &quot;in_scope_signed_difference&quot;: 30000.0,
+    &quot;actual_harm_probability&quot;: 1.0,
+    &quot;compliant_harm_probability&quot;: 0.7
+  },
+  &quot;legal_conclusion&quot;: null
+}</pre></section><section><h3>法律依据与核实状态</h3><ul class="sources"><li class="source"><strong><a href="https://supremecourt.uk/uploads/uksc_2019_0040_judgment_2b04c84658.pdf" target="_blank" rel="noopener noreferrer">Manchester Building Society v Grant Thornton UK LLP [2021] UKSC 20</a></strong><p class="source-meta">England and Wales · majority, paras 4, 13, 17, 23-24 · primary</p><p>先确定专业服务义务的目的及其防范风险，再识别损失是否为该风险实现。SAAMCO反事实只作交叉检验，不能取代义务范围判断，也不是普遍赔偿上限公式。 已读所列原文；英国权威的香港适用性须另核。</p></li><li class="source"><strong><a href="https://supremecourt.uk/cases/judgments/uksc-2022-0100" target="_blank" rel="noopener noreferrer">Armstead v Royal &amp; Sun Alliance Insurance Company Ltd [2024] UKSC 6</a></strong><p class="source-meta">England and Wales · paras 47(i), 55, 73 · primary</p><p>侵权遥远性通常考察违约义务时可合理预见的损失种类，不要求预见精确发生机制；第73段警示专业服务义务范围案件的六问题框架并非一切侵权案件的通用清单。 已读所列原文；英国权威的香港适用性须另核。</p></li></ul></section></div></details>
+<details class="entry" data-status="support" data-search="免责及责任上限：资源、保险与风险转移 12个月费用上限是否把可控制、可承受的风险过度留给用户？ cap.71 s.3(1)要求订约时公平合理；金额上限还须考虑s.3(5)可用资源及可保险性。适用范围和条款性质先确认。 tₛ=max(lₛ−k,0)；iₛ=cₛ·min(max(min(lₛ,k)−d,0),u)，cₛ为是否承保的0/1标记；rₛ=min(lₛ,k)−iₛ；p缺口=σwₛ1{rₛ&gt;a} 订约时损失分布及资源不足概率；保险给付按实际覆盖条件建模。 " id="cap_reasonableness"><summary><span><span class="entry-id">cap_reasonableness</span><span class="entry-title">免责及责任上限：资源、保险与风险转移</span></span><span class="badge">概率辅助法律判断</span></summary><div class="entry-body"><section class=""><h3>实体法律问题</h3><p>12个月费用上限是否把可控制、可承受的风险过度留给用户？</p></section><section class=""><h3>法律标准</h3><p>Cap.71 s.3(1)要求订约时公平合理；金额上限还须考虑s.3(5)可用资源及可保险性。适用范围和条款性质先确认。</p></section><section class=""><h3>概率指什么</h3><p>订约时损失分布及资源不足概率；保险给付按实际覆盖条件建模。</p></section><section class="formula"><h3>计算表达</h3><pre>Tₛ=max(Lₛ−K,0)；Iₛ=cₛ·min(max(min(Lₛ,K)−d,0),U)，cₛ为是否承保的0/1标记；Rₛ=min(Lₛ,K)−Iₛ；P缺口=Σwₛ1{Rₛ&gt;A}</pre></section><section class=""><h3>公式地位</h3><p>项目分析算式；法源支持法律标准，未规定这个统一公式或概率门槛。</p></section><section><h3>需要的数据</h3><div class="table-wrap"><table><thead><tr><th>数据</th><th>单位 / 口径</th><th>取得方式 / 来源</th></tr></thead><tbody><tr><td>场景及概率 wₛ</td><td>0–1；互斥、穷尽、总和1</td><td>当时资料、实测频率或有说明的压力情景；未知不得填零</td></tr><tr><td>各场景损失 Lₛ</td><td>同一币种、同一期间</td><td>账户及执行数据；区分损失种类，避免重复</td></tr><tr><td>上限K、可用资源A</td><td>同币种/同一责任集合</td><td>适用条款、同一被告资产及流动性；集团收入不等于可用资源</td></tr><tr><td>保额U、免赔额d、覆盖状态</td><td>货币/布尔</td><td>真实可购买保单、排除项、聚合上限、保费</td></tr><tr><td>风险聚合范围</td><td>单账户或全平台，必须一致</td><td>多用户损失相关性、保单每次事故及累计限额</td></tr></tbody></table></div></section><section><h3>计算边界与法律前提</h3><ul><li>本例只有一层免赔额/保额；真实保险塔、除外项和聚合限额须扩展，基金不能默认为保险。</li><li>K必须与L属于相同责任集合；逐户上限须逐户计算后聚合，不能拿一户上限套全平台。</li><li>可把K改为同一场景最大损失，比较没有该上限的资源压力；不生成条款有效/无效。</li><li>先核Cap.457 s.8(1)等禁止性规则及Cap.71适用范围；依法不可排除的责任不会因保险或成本比率而变得可排除。</li></ul></section><section class=""><h3>示例实现范围</h3><p>简化的合成情景，用于验证所列算术。真实输入需先完成本项法律前提及数据口径审查。</p></section><section class="example"><h3>合成数据示例 · 非本案估值</h3><p class="muted">以下数字仅用于展示运算，不代表案卷事实、司法认定或胜诉率。</p><h4>运算类型与输入</h4><pre>{
+  &quot;kind&quot;: &quot;liability_cap&quot;,
+  &quot;inputs&quot;: {
+    &quot;rows&quot;: [
+      {
+        &quot;p&quot;: 0.9,
+        &quot;loss&quot;: 0,
+        &quot;insurable&quot;: true
+      },
+      {
+        &quot;p&quot;: 0.08,
+        &quot;loss&quot;: 100000,
+        &quot;insurable&quot;: true
+      },
+      {
+        &quot;p&quot;: 0.02,
+        &quot;loss&quot;: 1000000,
+        &quot;insurable&quot;: false
+      }
+    ],
+    &quot;cap&quot;: 50000,
+    &quot;insurance_limit&quot;: 30000,
+    &quot;insurance_deductible&quot;: 10000,
+    &quot;resources&quot;: 20000
+  }
+}</pre><h4>计算输出</h4><pre>{
+  &quot;kind&quot;: &quot;liability_cap&quot;,
+  &quot;input_basis&quot;: &quot;explicit_scenarios_not_case_findings&quot;,
+  &quot;description&quot;: &quot;Arithmetic over the supplied scenarios; probabilities, legal scope, coverage and feasibility are input assumptions, not established case facts. No legal threshold or legal conclusion is inferred.&quot;,
+  &quot;results&quot;: {
+    &quot;expected_uncapped_liability&quot;: 28000.0,
+    &quot;expected_capped_liability&quot;: 5000.0,
+    &quot;expected_transferred_to_claimant&quot;: 23000.0,
+    &quot;expected_insurer_payment&quot;: 2400.0,
+    &quot;expected_provider_retained&quot;: 2600.0,
+    &quot;resource_shortfall_probability&quot;: 0.02
+  },
+  &quot;legal_conclusion&quot;: null
+}</pre></section><section><h3>法律依据与核实状态</h3><ul class="sources"><li class="source"><strong><a href="https://www.elegislation.gov.hk/hk/cap71" target="_blank" rel="noopener noreferrer">管制免责条款条例 Cap.71</a></strong><p class="source-meta">香港 · s.3(1),(4),(5)；附件CLA-1 PDF5–6，相关页标示2018-12-13 · primary_local_copy</p><p>已读案件法律附件中的香港法例 Verified Copy 原文；官方网页本次仅返回加载页。所列是附件版本核验，不声称完成事件时点及最新修订沿革核验。 s.3(5)要求考虑可用资源和可保险性；并未规定数值有效性门槛。</p></li></ul></section></div></details>
+<details class="entry" data-status="support" data-search="不合情理条款：保护合法利益是否合理必要 是否存在同样保护平台合法利益、而给用户负担更小的可行条件？ cap.458 s.6(1)(b)列明条件是否超出保护合法利益的合理必要程度；它只是多因素分析的一部分，消费者身份等先确认。 e成本(a)=σwₛlₐ(s)+cₐ；分别比较平台风险及用户负担，不合成法院评分 不同合法替代条款或措施下的损失情景概率。 " id="unconscionability"><summary><span><span class="entry-id">unconscionability</span><span class="entry-title">不合情理条款：保护合法利益是否合理必要</span></span><span class="badge">概率辅助法律判断</span></summary><div class="entry-body"><section class=""><h3>实体法律问题</h3><p>是否存在同样保护平台合法利益、而给用户负担更小的可行条件？</p></section><section class=""><h3>法律标准</h3><p>Cap.458 s.6(1)(b)列明条件是否超出保护合法利益的合理必要程度；它只是多因素分析的一部分，消费者身份等先确认。</p></section><section class=""><h3>概率指什么</h3><p>不同合法替代条款或措施下的损失情景概率。</p></section><section class="formula"><h3>计算表达</h3><pre>E成本(a)=ΣwₛLₐ(s)+Cₐ；分别比较平台风险及用户负担，不合成法院评分</pre></section><section class=""><h3>公式地位</h3><p>项目分析算式；法源支持法律标准，未规定这个统一公式或概率门槛。</p></section><section><h3>需要的数据</h3><div class="table-wrap"><table><thead><tr><th>数据</th><th>单位 / 口径</th><th>取得方式 / 来源</th></tr></thead><tbody><tr><td>场景及概率 wₛ</td><td>0–1；互斥、穷尽、总和1</td><td>当时资料、实测频率或有说明的压力情景；未知不得填零</td></tr><tr><td>各场景损失 Lₛ</td><td>同一币种、同一期间</td><td>账户及执行数据；区分损失种类，避免重复</td></tr><tr><td>替代方案及合法利益</td><td>具体条款/风险</td><td>限额分层、故障责任例外、保险方案及可取得条件</td></tr><tr><td>消费者负担与平台利益</td><td>分开货币及非货币指标</td><td>费用、保障缺口、合理可得替代交易</td></tr></tbody></table></div></section><section><h3>计算边界与法律前提</h3><ul><li>相同风险下更便宜并非自动构成法定不合情理；谈判地位、理解能力等仍是独立因素。</li><li>本例只展示一种损失口径；平台和用户必须分别计算，不能把风险转移当社会总损失减少。</li></ul></section><section class=""><h3>示例实现范围</h3><p>简化的合成情景，用于验证所列算术。真实输入需先完成本项法律前提及数据口径审查。</p></section><section class="example"><h3>合成数据示例 · 非本案估值</h3><p class="muted">以下数字仅用于展示运算，不代表案卷事实、司法认定或胜诉率。</p><h4>运算类型与输入</h4><pre>{
+  &quot;kind&quot;: &quot;precaution_comparison&quot;,
+  &quot;inputs&quot;: {
+    &quot;rows&quot;: [
+      {
+        &quot;p&quot;: 0.8,
+        &quot;current_loss&quot;: 100000,
+        &quot;alternative_loss&quot;: 20000
+      },
+      {
+        &quot;p&quot;: 0.2,
+        &quot;current_loss&quot;: 50000,
+        &quot;alternative_loss&quot;: 150000
+      }
+    ],
+    &quot;cost&quot;: 5000
+  }
+}</pre><h4>计算输出</h4><pre>{
+  &quot;kind&quot;: &quot;precaution_comparison&quot;,
+  &quot;input_basis&quot;: &quot;explicit_scenarios_not_case_findings&quot;,
+  &quot;description&quot;: &quot;Arithmetic over the supplied scenarios; probabilities, legal scope, coverage and feasibility are input assumptions, not established case facts. No legal threshold or legal conclusion is inferred.&quot;,
+  &quot;results&quot;: {
+    &quot;current_expected_loss&quot;: 90000.0,
+    &quot;alternative_expected_loss&quot;: 46000.0,
+    &quot;avoided_expected_loss&quot;: 44000.0,
+    &quot;net_benefit&quot;: 39000.0
+  },
+  &quot;legal_conclusion&quot;: null
+}</pre></section><section><h3>法律依据与核实状态</h3><ul class="sources"><li class="source"><strong><a href="https://www.elegislation.gov.hk/hk/cap458" target="_blank" rel="noopener noreferrer">不合情理合约条例 Cap.458</a></strong><p class="source-meta">香港 · ss.5、6(1)(b)、6(2)(a)；附件CLA-4 PDF5–6，版本标示2022-01-06 · primary_local_copy</p><p>已读案件法律附件中的香港法例 Verified Copy 原文；官方网页本次仅返回加载页。所列是附件版本核验，不声称完成事件时点及最新修订沿革核验。 消费者及适用范围先成立；合理必要性只是多因素之一。</p></li></ul></section></div></details>
+<details class="entry" data-status="support" data-search="失实陈述：合理相信保障陈述的根据 订约前声称基金足以保障时，有什么合理基础支持该陈述？ cap.284 s.3(1)涉及失实陈述、订约诱因及由此损失；陈述人免责须有实际相信及合理根据。压力测试可检验关于容量的事实基础。 p缺口=p(覆盖义务&gt;a)=σwₛ1{lₛ&gt;a}；es=σwₛmax(lₛ−a,0) 特定覆盖规则下基金资产不足以履行承诺的事件概率；不是陈述人说真话的概率。 " id="representation_belief"><summary><span><span class="entry-id">representation_belief</span><span class="entry-title">失实陈述：合理相信保障陈述的根据</span></span><span class="badge">概率辅助法律判断</span></summary><div class="entry-body"><section class=""><h3>实体法律问题</h3><p>订约前声称基金足以保障时，有什么合理基础支持该陈述？</p></section><section class=""><h3>法律标准</h3><p>Cap.284 s.3(1)涉及失实陈述、订约诱因及由此损失；陈述人免责须有实际相信及合理根据。压力测试可检验关于容量的事实基础。</p></section><section class=""><h3>概率指什么</h3><p>特定覆盖规则下基金资产不足以履行承诺的事件概率；不是陈述人说真话的概率。</p></section><section class="formula"><h3>计算表达</h3><pre>P缺口=P(覆盖义务&gt;A)=Σwₛ1{Lₛ&gt;A}；ES=Σwₛmax(Lₛ−A,0)</pre></section><section class=""><h3>公式地位</h3><p>项目分析算式；法源支持法律标准，未规定这个统一公式或概率门槛。</p></section><section><h3>需要的数据</h3><div class="table-wrap"><table><thead><tr><th>数据</th><th>单位 / 口径</th><th>取得方式 / 来源</th></tr></thead><tbody><tr><td>场景及概率 wₛ</td><td>0–1；互斥、穷尽、总和1</td><td>当时资料、实测频率或有说明的压力情景；未知不得填零</td></tr><tr><td>各场景损失 Lₛ</td><td>同一币种、同一期间</td><td>账户及执行数据；区分损失种类，避免重复</td></tr><tr><td>准确陈述及限定语</td><td>原文/日期</td><td>订约前版本、网站存档、用户所见内容</td></tr><tr><td>可用资产A与真正覆盖义务</td><td>同币种/同一时点</td><td>基金资产、负债、准入条件、相关损失压力测试</td></tr><tr><td>陈述人的当时认识</td><td>非数值</td><td>内部测试、审查及决策记录</td></tr></tbody></table></div></section><section><h3>计算边界与法律前提</h3><ul><li>必须先解释承诺覆盖什么；不能预设SAFU与期货保险基金功能相同。</li><li>一次拒赔不证明当初虚假；容量充分也不证明实际相信、合理根据及实际诱因均成立。</li></ul></section><section class=""><h3>示例实现范围</h3><p>输入loss是已按各场景覆盖义务减可用资产取正值后的缺口，不是总负债；selected标记确有缺口。示例得缺口概率2%、预期缺口6,000。</p></section><section class="example"><h3>合成数据示例 · 非本案估值</h3><p class="muted">以下数字仅用于展示运算，不代表案卷事实、司法认定或胜诉率。</p><h4>运算类型与输入</h4><pre>{
+  &quot;kind&quot;: &quot;risk_distribution&quot;,
+  &quot;inputs&quot;: {
+    &quot;rows&quot;: [
+      {
+        &quot;p&quot;: 0.9,
+        &quot;loss&quot;: 0,
+        &quot;selected&quot;: false
+      },
+      {
+        &quot;p&quot;: 0.08,
+        &quot;loss&quot;: 0,
+        &quot;selected&quot;: false
+      },
+      {
+        &quot;p&quot;: 0.02,
+        &quot;loss&quot;: 300000,
+        &quot;selected&quot;: true
+      }
+    ]
+  }
+}</pre><h4>计算输出</h4><pre>{
+  &quot;kind&quot;: &quot;risk_distribution&quot;,
+  &quot;input_basis&quot;: &quot;explicit_scenarios_not_case_findings&quot;,
+  &quot;description&quot;: &quot;Arithmetic over the supplied scenarios; probabilities, legal scope, coverage and feasibility are input assumptions, not established case facts. No legal threshold or legal conclusion is inferred.&quot;,
+  &quot;results&quot;: {
+    &quot;expected_loss&quot;: 6000.0,
+    &quot;selected_probability&quot;: 0.02,
+    &quot;selected_expected_loss&quot;: 6000.0
+  },
+  &quot;legal_conclusion&quot;: null
+}</pre></section><section><h3>法律依据与核实状态</h3><ul class="sources"><li class="source"><strong><a href="https://www.elegislation.gov.hk/hk/cap284" target="_blank" rel="noopener noreferrer">失实陈述条例 Cap.284</a></strong><p class="source-meta">香港 · s.3(1)，s.4；附件CLA-3 PDF2–3，版本标示2024-08-18 · primary_local_copy</p><p>已读案件法律附件中的香港法例 Verified Copy 原文；官方网页本次仅返回加载页。所列是附件版本核验，不声称完成事件时点及最新修订沿革核验。 s.3(1)须有实际相信和合理根据；基金充足概率本身不能证明这些要件。</p></li></ul></section></div></details>
+<details class="entry" data-status="support" data-search="失实陈述的经济重要性与实际诱因 保障陈述改变了交易的经济风险多少；用户是否因此入金或继续持仓？ 陈述的经济重要性可以量化，但实际传达、虚假、主观依赖及交易因果仍须分别成立。一般人会认为重要不等于此用户实际依赖。 δ保障价值=σwₛ[支付陈述所指(s)−支付实际规则(s)] 发生覆盖事故、满足条件并获得支付的联合/条件概率，不是依赖成立概率。 " id="inducement"><summary><span><span class="entry-id">inducement</span><span class="entry-title">失实陈述的经济重要性与实际诱因</span></span><span class="badge">概率辅助法律判断</span></summary><div class="entry-body"><section class=""><h3>实体法律问题</h3><p>保障陈述改变了交易的经济风险多少；用户是否因此入金或继续持仓？</p></section><section class=""><h3>法律标准</h3><p>陈述的经济重要性可以量化，但实际传达、虚假、主观依赖及交易因果仍须分别成立。一般人会认为重要不等于此用户实际依赖。</p></section><section class=""><h3>概率指什么</h3><p>发生覆盖事故、满足条件并获得支付的联合/条件概率，不是依赖成立概率。</p></section><section class="formula"><h3>计算表达</h3><pre>Δ保障价值=Σwₛ[支付陈述所指(s)−支付实际规则(s)]</pre></section><section class=""><h3>公式地位</h3><p>项目分析算式；法源支持法律标准，未规定这个统一公式或概率门槛。</p></section><section><h3>需要的数据</h3><div class="table-wrap"><table><thead><tr><th>数据</th><th>单位 / 口径</th><th>取得方式 / 来源</th></tr></thead><tbody><tr><td>场景及概率 wₛ</td><td>0–1；互斥、穷尽、总和1</td><td>当时资料、实测频率或有说明的压力情景；未知不得填零</td></tr><tr><td>各场景损失 Lₛ</td><td>同一币种、同一期间</td><td>账户及执行数据；区分损失种类，避免重复</td></tr><tr><td>合理解释后的承诺支付与实际支付</td><td>货币/按场景</td><td>准确宣传语、完整限制及事故类别</td></tr><tr><td>个人实际决定</td><td>金额/日期/原始资料</td><td>首次接触陈述、入金、持仓决定、可选择的替代平台</td></tr></tbody></table></div></section><section><h3>计算边界与法律前提</h3><ul><li>不能把宣传语机械设成100%赔付；条件概率相乘必须明确依赖。</li><li>保护价值差不能直接作为misrepresentation赔偿额；不得把实际依赖转换成总体调查比例。</li></ul></section><section class=""><h3>示例实现范围</h3><p>actual_loss是实际规则下未获保护损失，compliant_loss是合理解释后的陈述若兑现时残余损失；差额8,000仅说明经济重要性。</p></section><section class="example"><h3>合成数据示例 · 非本案估值</h3><p class="muted">以下数字仅用于展示运算，不代表案卷事实、司法认定或胜诉率。</p><h4>运算类型与输入</h4><pre>{
+  &quot;kind&quot;: &quot;paired_counterfactual&quot;,
+  &quot;inputs&quot;: {
+    &quot;rows&quot;: [
+      {
+        &quot;p&quot;: 0.9,
+        &quot;actual_loss&quot;: 0,
+        &quot;compliant_loss&quot;: 0,
+        &quot;in_scope&quot;: true
+      },
+      {
+        &quot;p&quot;: 0.1,
+        &quot;actual_loss&quot;: 100000,
+        &quot;compliant_loss&quot;: 20000,
+        &quot;in_scope&quot;: true
+      }
+    ]
+  }
+}</pre><h4>计算输出</h4><pre>{
+  &quot;kind&quot;: &quot;paired_counterfactual&quot;,
+  &quot;input_basis&quot;: &quot;explicit_scenarios_not_case_findings&quot;,
+  &quot;description&quot;: &quot;Arithmetic over the supplied scenarios; probabilities, legal scope, coverage and feasibility are input assumptions, not established case facts. No legal threshold or legal conclusion is inferred.&quot;,
+  &quot;results&quot;: {
+    &quot;actual_expected_loss&quot;: 10000.0,
+    &quot;compliant_expected_loss&quot;: 2000.0,
+    &quot;signed_difference&quot;: 8000.0,
+    &quot;in_scope_signed_difference&quot;: 8000.0,
+    &quot;actual_harm_probability&quot;: 0.1,
+    &quot;compliant_harm_probability&quot;: 0.1
+  },
+  &quot;legal_conclusion&quot;: null
+}</pre></section><section><h3>法律依据与核实状态</h3><ul class="sources"><li class="source"><strong><a href="https://www.elegislation.gov.hk/hk/cap284" target="_blank" rel="noopener noreferrer">失实陈述条例 Cap.284</a></strong><p class="source-meta">香港 · s.3(1)，s.4；附件CLA-3 PDF2–3，版本标示2024-08-18 · primary_local_copy</p><p>已读案件法律附件中的香港法例 Verified Copy 原文；官方网页本次仅返回加载页。所列是附件版本核验，不声称完成事件时点及最新修订沿革核验。 s.3(1)须有实际相信和合理根据；基金充足概率本身不能证明这些要件。</p></li></ul></section></div></details>
+<details class="entry" data-status="support" data-search="合同裁量：估值或清算决策的诚信与理性 价格方法选择是固定规则还是裁量；若属裁量，是否符合约定目的？ braganza限制取决于合同及情境。共同场景下的风险结果可揭示选择后果，但法院不以计算出的最优方案替代约定决策者。 p强平(m)=σwₛ1{m下强平}；比较e[l_m]及分布，而非生成理性分数 相同外生输入下，不同合法估值方法的结果概率。 " id="discretion"><summary><span><span class="entry-id">discretion</span><span class="entry-title">合同裁量：估值或清算决策的诚信与理性</span></span><span class="badge">概率辅助法律判断</span></summary><div class="entry-body"><section class=""><h3>实体法律问题</h3><p>价格方法选择是固定规则还是裁量；若属裁量，是否符合约定目的？</p></section><section class=""><h3>法律标准</h3><p>Braganza限制取决于合同及情境。共同场景下的风险结果可揭示选择后果，但法院不以计算出的最优方案替代约定决策者。</p></section><section class=""><h3>概率指什么</h3><p>相同外生输入下，不同合法估值方法的结果概率。</p></section><section class="formula"><h3>计算表达</h3><pre>p强平(m)=Σwₛ1{m下强平}；比较E[L_m]及分布，而非生成理性分数</pre></section><section class=""><h3>公式地位</h3><p>项目分析算式；法源支持法律标准，未规定这个统一公式或概率门槛。</p></section><section><h3>需要的数据</h3><div class="table-wrap"><table><thead><tr><th>数据</th><th>单位 / 口径</th><th>取得方式 / 来源</th></tr></thead><tbody><tr><td>场景及概率 wₛ</td><td>0–1；互斥、穷尽、总和1</td><td>当时资料、实测频率或有说明的压力情景；未知不得填零</td></tr><tr><td>各场景损失 Lₛ</td><td>同一币种、同一期间</td><td>账户及执行数据；区分损失种类，避免重复</td></tr><tr><td>方法版本及裁量条款</td><td>文本/版本</td><td>当时公布方法、修改权、输入取样与封顶规则</td></tr><tr><td>候选方法的目的及偏差</td><td>价格/基点/场景</td><td>同产品可执行价格、风险管理目的、利益冲突资料</td></tr></tbody></table></div></section><section><h3>计算边界与法律前提</h3><ul><li>固定公式的违约先按履约判断；不能稀释成有裁量。</li><li>较低强平概率或更高期望价值不自动证明其他方案不理性；合同目的及当时考虑事项另核。</li></ul></section><section class=""><h3>示例实现范围</h3><p>演示仅算两个候选政策的预期损失差；不由此判裁量不理性，也不直接计算真实清算概率。</p></section><section class="example"><h3>合成数据示例 · 非本案估值</h3><p class="muted">以下数字仅用于展示运算，不代表案卷事实、司法认定或胜诉率。</p><h4>运算类型与输入</h4><pre>{
+  &quot;kind&quot;: &quot;precaution_comparison&quot;,
+  &quot;inputs&quot;: {
+    &quot;rows&quot;: [
+      {
+        &quot;p&quot;: 0.8,
+        &quot;current_loss&quot;: 100000,
+        &quot;alternative_loss&quot;: 20000
+      },
+      {
+        &quot;p&quot;: 0.2,
+        &quot;current_loss&quot;: 50000,
+        &quot;alternative_loss&quot;: 150000
+      }
+    ],
+    &quot;cost&quot;: 5000
+  }
+}</pre><h4>计算输出</h4><pre>{
+  &quot;kind&quot;: &quot;precaution_comparison&quot;,
+  &quot;input_basis&quot;: &quot;explicit_scenarios_not_case_findings&quot;,
+  &quot;description&quot;: &quot;Arithmetic over the supplied scenarios; probabilities, legal scope, coverage and feasibility are input assumptions, not established case facts. No legal threshold or legal conclusion is inferred.&quot;,
+  &quot;results&quot;: {
+    &quot;current_expected_loss&quot;: 90000.0,
+    &quot;alternative_expected_loss&quot;: 46000.0,
+    &quot;avoided_expected_loss&quot;: 44000.0,
+    &quot;net_benefit&quot;: 39000.0
+  },
+  &quot;legal_conclusion&quot;: null
+}</pre></section><section><h3>法律依据与核实状态</h3><ul class="sources"><li class="source"><strong><a href="https://supremecourt.uk/uploads/uksc_2013_0099_judgment_e54ac2da65.pdf" target="_blank" rel="noopener noreferrer">Braganza v BP Shipping Ltd [2015] UKSC 17</a></strong><p class="source-meta">England and Wales · Lady Hale, paras 18, 27-31; Lord Hodge, para 52 · primary</p><p>合同授予的裁量权可能受默示诚信及理性限制，范围取决于合同文字和情境；须符合约定目的。法院不直接以自己认为最优的决策替代约定决策者。概率比较不能生成统一合理性评分。 已读所列原文；英国权威的香港适用性须另核。</p></li></ul></section></div></details>
+<details class="entry" data-status="support" data-search="担保变现：合理措施取得当时可得价格 若保证金强平构成担保变现，合理执行能取得什么价格分布？ 须先成立担保变现义务。标准着重采取合理措施取得当时合理可得价格，不保证事后最佳价；并无为等待更高价格而推迟出售的当然义务。 e[v合理变现]=σwₛ(q·p执行,ₛ−费用)；δv=e[v合理变现]−v实际 同一时点及可执行数量下的成交、深度、滑点与延迟情景概率。 " id="security_sale"><summary><span><span class="entry-id">security_sale</span><span class="entry-title">担保变现：合理措施取得当时可得价格</span></span><span class="badge">概率辅助法律判断</span></summary><div class="entry-body"><section class=""><h3>实体法律问题</h3><p>若保证金强平构成担保变现，合理执行能取得什么价格分布？</p></section><section class=""><h3>法律标准</h3><p>须先成立担保变现义务。标准着重采取合理措施取得当时合理可得价格，不保证事后最佳价；并无为等待更高价格而推迟出售的当然义务。</p></section><section class=""><h3>概率指什么</h3><p>同一时点及可执行数量下的成交、深度、滑点与延迟情景概率。</p></section><section class="formula"><h3>计算表达</h3><pre>E[V合理变现]=Σwₛ(q·p执行,ₛ−费用)；ΔV=E[V合理变现]−V实际</pre></section><section class=""><h3>公式地位</h3><p>项目分析算式；法源支持法律标准，未规定这个统一公式或概率门槛。</p></section><section><h3>需要的数据</h3><div class="table-wrap"><table><thead><tr><th>数据</th><th>单位 / 口径</th><th>取得方式 / 来源</th></tr></thead><tbody><tr><td>担保性质及权利</td><td>合同/法律分析</td><td>保证金产权、担保权及实际处置方式</td></tr><tr><td>数量q与实际净回款</td><td>单位/货币</td><td>强平、转仓记录及费用</td></tr><tr><td>执行价格分布与概率</td><td>同产品价格/0–1</td><td>同期可执行订单簿、市场冲击、下单与成交时差</td></tr><tr><td>合理措施成本</td><td>货币</td><td>费用、流动性成本；与价格避免重复计入</td></tr></tbody></table></div></section><section><h3>计算边界与法律前提</h3><ul><li>不能用其他交易所最高价、现货替代价或事后反弹价直接当true market value。</li><li>示例单一卖出资产；多头平仓、空头回购及期货权益须按现金流方向扩展。</li><li>SOD相关产权与清算抗辩不等于已经直接回答该法律论点。</li></ul></section><section class=""><h3>示例实现范围</h3><p>简化的合成情景，用于验证所列算术。真实输入需先完成本项法律前提及数据口径审查。</p></section><section class="example"><h3>合成数据示例 · 非本案估值</h3><p class="muted">以下数字仅用于展示运算，不代表案卷事实、司法认定或胜诉率。</p><h4>运算类型与输入</h4><pre>{
+  &quot;kind&quot;: &quot;execution_value&quot;,
+  &quot;inputs&quot;: {
+    &quot;rows&quot;: [
+      {
+        &quot;p&quot;: 0.6,
+        &quot;price&quot;: 10
+      },
+      {
+        &quot;p&quot;: 0.4,
+        &quot;price&quot;: 8
+      }
+    ],
+    &quot;quantity&quot;: 1000,
+    &quot;cost&quot;: 100,
+    &quot;actual_net_proceeds&quot;: 8500
+  }
+}</pre><h4>计算输出</h4><pre>{
+  &quot;kind&quot;: &quot;execution_value&quot;,
+  &quot;input_basis&quot;: &quot;explicit_scenarios_not_case_findings&quot;,
+  &quot;description&quot;: &quot;Arithmetic over the supplied scenarios; probabilities, legal scope, coverage and feasibility are input assumptions, not established case facts. No legal threshold or legal conclusion is inferred.&quot;,
+  &quot;results&quot;: {
+    &quot;expected_compliant_net_proceeds&quot;: 9100.0,
+    &quot;signed_gap&quot;: 600.0
+  },
+  &quot;legal_conclusion&quot;: null
+}</pre></section><section><h3>法律依据与核实状态</h3><ul class="sources"><li class="source"><strong><a href="https://jcpc.uk/cases/judgments/jcpc-2023-0115" target="_blank" rel="noopener noreferrer">Finlayson v Caterpillar Financial Services Corp [2025] UKPC 24</a></strong><p class="source-meta">巴哈马上诉；引述香港Tse Kwong Lam案 · ¶¶9、32–35；Tse Kwong Lam [1983] 1 WLR 1349,1355仅属quoted · primary</p><p>已读官方原文。合理措施争取当时合理可得价格；没有为等候更好价格而无限延期或改善资产的普遍义务。原香港案引文是后案转引，未将其标为已读原判。</p></li></ul></section></div></details>
+<details class="entry" data-status="support" data-search="不可抗力：履约障碍与合理可避免性 外部冲击之下，合规系统及合理可行措施能否继续依约履行？ 先解释实际不可抗力条款、免责义务及因果要求，再检验控制和合理措施。合理努力一般不当然要求接受非合同履行。 δ内部=p(失败|冲击,当前系统)−p(失败|冲击,合规系统)；同冲击路径比较损失差 给定冲击下具体履约失败的条件概率，不是宏观冲击罕见性或免责成功率。 " id="force_majeure"><summary><span><span class="entry-id">force_majeure</span><span class="entry-title">不可抗力：履约障碍与合理可避免性</span></span><span class="badge">概率辅助法律判断</span></summary><div class="entry-body"><section class=""><h3>实体法律问题</h3><p>外部冲击之下，合规系统及合理可行措施能否继续依约履行？</p></section><section class=""><h3>法律标准</h3><p>先解释实际不可抗力条款、免责义务及因果要求，再检验控制和合理措施。合理努力一般不当然要求接受非合同履行。</p></section><section class=""><h3>概率指什么</h3><p>给定冲击下具体履约失败的条件概率，不是宏观冲击罕见性或免责成功率。</p></section><section class="formula"><h3>计算表达</h3><pre>Δ内部=P(失败|冲击,当前系统)−P(失败|冲击,合规系统)；同冲击路径比较损失差</pre></section><section class=""><h3>公式地位</h3><p>项目分析算式；法源支持法律标准，未规定这个统一公式或概率门槛。</p></section><section><h3>需要的数据</h3><div class="table-wrap"><table><thead><tr><th>数据</th><th>单位 / 口径</th><th>取得方式 / 来源</th></tr></thead><tbody><tr><td>场景及概率 wₛ</td><td>0–1；互斥、穷尽、总和1</td><td>当时资料、实测频率或有说明的压力情景；未知不得填零</td></tr><tr><td>各场景损失 Lₛ</td><td>同一币种、同一期间</td><td>账户及执行数据；区分损失种类，避免重复</td></tr><tr><td>具体被免除的义务及条款</td><td>合同版本</td><td>ToU/FSA的因果、控制、合理努力及例外文字</td></tr><tr><td>有无冲击×有无措施四种组合</td><td>失败次数/可比测试</td><td>完整压力测试、组件日志、恢复时间及措施可行性</td></tr></tbody></table></div></section><section><h3>计算边界与法律前提</h3><ul><li>本Python例只计算给定冲击下两项政策；四格交互需要四组数据，不能把两项差额当责任分摊。</li><li>不是每条force-majeure条款都以不可预见为独立要件；通知等不在本实体模型计算范围。</li></ul></section><section class=""><h3>示例实现范围</h3><p>演示仅算同一外部冲击下两个操作政策的预期损失；完整四格失败概率须另输入测试结果。</p></section><section class="example"><h3>合成数据示例 · 非本案估值</h3><p class="muted">以下数字仅用于展示运算，不代表案卷事实、司法认定或胜诉率。</p><h4>运算类型与输入</h4><pre>{
+  &quot;kind&quot;: &quot;precaution_comparison&quot;,
+  &quot;inputs&quot;: {
+    &quot;rows&quot;: [
+      {
+        &quot;p&quot;: 0.8,
+        &quot;current_loss&quot;: 100000,
+        &quot;alternative_loss&quot;: 20000
+      },
+      {
+        &quot;p&quot;: 0.2,
+        &quot;current_loss&quot;: 50000,
+        &quot;alternative_loss&quot;: 150000
+      }
+    ],
+    &quot;cost&quot;: 5000
+  }
+}</pre><h4>计算输出</h4><pre>{
+  &quot;kind&quot;: &quot;precaution_comparison&quot;,
+  &quot;input_basis&quot;: &quot;explicit_scenarios_not_case_findings&quot;,
+  &quot;description&quot;: &quot;Arithmetic over the supplied scenarios; probabilities, legal scope, coverage and feasibility are input assumptions, not established case facts. No legal threshold or legal conclusion is inferred.&quot;,
+  &quot;results&quot;: {
+    &quot;current_expected_loss&quot;: 90000.0,
+    &quot;alternative_expected_loss&quot;: 46000.0,
+    &quot;avoided_expected_loss&quot;: 44000.0,
+    &quot;net_benefit&quot;: 39000.0
+  },
+  &quot;legal_conclusion&quot;: null
+}</pre></section><section><h3>法律依据与核实状态</h3><ul class="sources"><li class="source"><strong><a href="https://supremecourt.uk/cases/judgments/uksc-2022-0172" target="_blank" rel="noopener noreferrer">RTI Ltd v MUR Shipping BV [2024] UKSC 18</a></strong><p class="source-meta">England and Wales · paras 26, 36-40, 43-44 · primary</p><p>不可抗力及合理努力围绕障碍与不能依约履行的因果联系；应考察合理措施能否继续或恢复约定履行。没有清晰相反约定，不要求接受不符合合同的替代履行。 已读所列原文；英国权威的香港适用性须另核。</p></li></ul></section></div></details>
+<details class="entry" data-status="support" data-search="受托财产管理：合理谨慎与风险暴露 若相关资产确属信托，所采取的保管、投资或代理安排是否符合适用谨慎义务？ cap.29 s.3a及schedule3适用时，按环境及专业知识评价care and skill。概率可分析损失暴露、集中风险及保管安排，不创设信托。 el资产(a)=σwₛlₐ(s)；比较保管/投资安排的风险及成本 受托资产在市场、对手方及保管故障情景下受损概率。 " id="trustee_care"><summary><span><span class="entry-id">trustee_care</span><span class="entry-title">受托财产管理：合理谨慎与风险暴露</span></span><span class="badge">概率辅助法律判断</span></summary><div class="entry-body"><section class=""><h3>实体法律问题</h3><p>若相关资产确属信托，所采取的保管、投资或代理安排是否符合适用谨慎义务？</p></section><section class=""><h3>法律标准</h3><p>Cap.29 s.3A及Schedule3适用时，按环境及专业知识评价care and skill。概率可分析损失暴露、集中风险及保管安排，不创设信托。</p></section><section class=""><h3>概率指什么</h3><p>受托资产在市场、对手方及保管故障情景下受损概率。</p></section><section class="formula"><h3>计算表达</h3><pre>EL资产(a)=ΣwₛLₐ(s)；比较保管/投资安排的风险及成本</pre></section><section class=""><h3>公式地位</h3><p>项目分析算式；法源支持法律标准，未规定这个统一公式或概率门槛。</p></section><section><h3>需要的数据</h3><div class="table-wrap"><table><thead><tr><th>数据</th><th>单位 / 口径</th><th>取得方式 / 来源</th></tr></thead><tbody><tr><td>场景及概率 wₛ</td><td>0–1；互斥、穷尽、总和1</td><td>当时资料、实测频率或有说明的压力情景；未知不得填零</td></tr><tr><td>各场景损失 Lₛ</td><td>同一币种、同一期间</td><td>账户及执行数据；区分损失种类，避免重复</td></tr><tr><td>信托及相关权力</td><td>法律认定/文件</td><td>信托是否成立、资产范围、权力、s.3A排除及Schedule3适用</td></tr><tr><td>资产、集中度及对手方</td><td>金额/比例/相关性</td><td>资产台账、授权、保管与投资记录、代理监督</td></tr></tbody></table></div></section><section><h3>计算边界与法律前提</h3><ul><li>先区分保管/投资谨慎义务与no-profit/no-conflict；后两者不能用低风险或高期望收益正当化。</li><li>不能以资产波动或期望收益推定信托成立；法定谨慎义务并非适用于每个所谓信托行为。</li></ul></section><section class=""><h3>示例实现范围</h3><p>简化的合成情景，用于验证所列算术。真实输入需先完成本项法律前提及数据口径审查。</p></section><section class="example"><h3>合成数据示例 · 非本案估值</h3><p class="muted">以下数字仅用于展示运算，不代表案卷事实、司法认定或胜诉率。</p><h4>运算类型与输入</h4><pre>{
+  &quot;kind&quot;: &quot;precaution_comparison&quot;,
+  &quot;inputs&quot;: {
+    &quot;rows&quot;: [
+      {
+        &quot;p&quot;: 0.8,
+        &quot;current_loss&quot;: 100000,
+        &quot;alternative_loss&quot;: 20000
+      },
+      {
+        &quot;p&quot;: 0.2,
+        &quot;current_loss&quot;: 50000,
+        &quot;alternative_loss&quot;: 150000
+      }
+    ],
+    &quot;cost&quot;: 5000
+  }
+}</pre><h4>计算输出</h4><pre>{
+  &quot;kind&quot;: &quot;precaution_comparison&quot;,
+  &quot;input_basis&quot;: &quot;explicit_scenarios_not_case_findings&quot;,
+  &quot;description&quot;: &quot;Arithmetic over the supplied scenarios; probabilities, legal scope, coverage and feasibility are input assumptions, not established case facts. No legal threshold or legal conclusion is inferred.&quot;,
+  &quot;results&quot;: {
+    &quot;current_expected_loss&quot;: 90000.0,
+    &quot;alternative_expected_loss&quot;: 46000.0,
+    &quot;avoided_expected_loss&quot;: 44000.0,
+    &quot;net_benefit&quot;: 39000.0
+  },
+  &quot;legal_conclusion&quot;: null
+}</pre></section><section><h3>法律依据与核实状态</h3><ul class="sources"><li class="source"><strong><a href="https://www.elegislation.gov.hk/hk/cap29" target="_blank" rel="noopener noreferrer">受托人条例 Cap.29</a></strong><p class="source-meta">香港 · s.3A(1)–(3)，Schedule3 ss.1–4；附件CLA-6 PDF17–18、140–141 · primary_local_copy</p><p>已读案件法律附件中的香港法例 Verified Copy 原文；官方网页本次仅返回加载页。所列是附件版本核验，不声称完成事件时点及最新修订沿革核验。 总版本2025-05-23；所读相关条文页标示2014-04-10。先核信托、所行使权力、附表范围及排除。</p></li></ul></section></div></details>
+<details class="entry" data-status="direct" data-search="合理减损：及时可执行措施的成功概率 用户当时可以且合理应当采取哪些措施减少损失？ 合理减损以当时信息评价；不要求事后最优。要比较收到指令、及时执行、足以减损，而不只看能否登录。 p成功=p(收到)·p(及时执行|收到)·p(避免损失|及时执行)；nb=p成功·a−c 有明确条件的执行链成功概率；使用无条件概率相乘会错误假定独立。 " id="mitigation"><summary><span><span class="entry-id">mitigation</span><span class="entry-title">合理减损：及时可执行措施的成功概率</span></span><span class="badge">现有计算模块的深化</span></summary><div class="entry-body"><section class=""><h3>实体法律问题</h3><p>用户当时可以且合理应当采取哪些措施减少损失？</p></section><section class=""><h3>法律标准</h3><p>合理减损以当时信息评价；不要求事后最优。要比较收到指令、及时执行、足以减损，而不只看能否登录。</p></section><section class=""><h3>概率指什么</h3><p>有明确条件的执行链成功概率；使用无条件概率相乘会错误假定独立。</p></section><section class="formula"><h3>计算表达</h3><pre>p成功=P(收到)·P(及时执行|收到)·P(避免损失|及时执行)；NB=p成功·A−C</pre></section><section class=""><h3>公式地位</h3><p>项目分析算式；法源支持法律标准，未规定这个统一公式或概率门槛。</p></section><section><h3>需要的数据</h3><div class="table-wrap"><table><thead><tr><th>数据</th><th>单位 / 口径</th><th>取得方式 / 来源</th></tr></thead><tbody><tr><td>条件成功概率</td><td>0–1</td><td>原始客户端、网关、订单引擎及到账记录</td></tr><tr><td>成功/失败各路径损失</td><td>货币</td><td>同一行情下的仓位和保证金结果</td></tr><tr><td>成本、时间与资金约束</td><td>货币/毫秒</td><td>当时资金可得性、转账延迟、执行成本及新增风险</td></tr></tbody></table></div></section><section><h3>计算边界与法律前提</h3><ul><li>不能把手动平仓按钮可见等同于能够及时成交。</li><li>净收益为正不自动构成必须采取的义务；失败后的合理费用亦可能获赔。</li></ul></section><section class=""><h3>示例实现范围</h3><p>简化的合成情景，用于验证所列算术。真实输入需先完成本项法律前提及数据口径审查。</p></section><section class="example"><h3>合成数据示例 · 非本案估值</h3><p class="muted">以下数字仅用于展示运算，不代表案卷事实、司法认定或胜诉率。</p><h4>运算类型与输入</h4><pre>{
+  &quot;kind&quot;: &quot;precaution_comparison&quot;,
+  &quot;inputs&quot;: {
+    &quot;rows&quot;: [
+      {
+        &quot;p&quot;: 0.6,
+        &quot;current_loss&quot;: 100000,
+        &quot;alternative_loss&quot;: 0
+      },
+      {
+        &quot;p&quot;: 0.4,
+        &quot;current_loss&quot;: 100000,
+        &quot;alternative_loss&quot;: 100000
+      }
+    ],
+    &quot;cost&quot;: 20000
+  }
+}</pre><h4>计算输出</h4><pre>{
+  &quot;kind&quot;: &quot;precaution_comparison&quot;,
+  &quot;input_basis&quot;: &quot;explicit_scenarios_not_case_findings&quot;,
+  &quot;description&quot;: &quot;Arithmetic over the supplied scenarios; probabilities, legal scope, coverage and feasibility are input assumptions, not established case facts. No legal threshold or legal conclusion is inferred.&quot;,
+  &quot;results&quot;: {
+    &quot;current_expected_loss&quot;: 100000.0,
+    &quot;alternative_expected_loss&quot;: 40000.0,
+    &quot;avoided_expected_loss&quot;: 60000.0,
+    &quot;net_benefit&quot;: 40000.0
+  },
+  &quot;legal_conclusion&quot;: null
+}</pre></section><section><h3>法律依据与核实状态</h3><ul class="sources"><li class="source"><strong><a href="https://supremecourt.uk/cases/judgments/uksc-2023-0029" target="_blank" rel="noopener noreferrer">Sharp Corp Ltd v Viterra BV [2024] UKSC 14</a></strong><p class="source-meta">English contract damages · Paragraphs 83–86, particularly paragraph 85 · primary</p><p>Read the official judgment’s reasonable-mitigation principles, including recovery of loss from reasonable steps even when they increase loss. The expected-benefit calculation is our auxiliary ex ante comparison; neither positive net benefit nor hindsight success is the legal test. Hong Kong applicability has not been verified.</p></li></ul></section></div></details>
+<details class="entry" data-status="extension" data-search="机会丧失：第三方结果或合法机会的价值 如果适用法承认一项独立可赔机会，该机会减少了多少价值？ 须识别受法律承认的机会。perry强调原告自己的必要行动与第三方本会如何反应的区别；不能将所有不确定因果改成机会赔偿。 d机会=(p原有−p剩余)·v净收益 有关利益实现的概率；不是责任成立、可信度或诉讼胜率。 " id="loss_of_chance"><summary><span><span class="entry-id">loss_of_chance</span><span class="entry-title">机会丧失：第三方结果或合法机会的价值</span></span><span class="badge">有前提的扩展</span></summary><div class="entry-body"><section class=""><h3>实体法律问题</h3><p>如果适用法承认一项独立可赔机会，该机会减少了多少价值？</p></section><section class=""><h3>法律标准</h3><p>须识别受法律承认的机会。Perry强调原告自己的必要行动与第三方本会如何反应的区别；不能将所有不确定因果改成机会赔偿。</p></section><section class=""><h3>概率指什么</h3><p>有关利益实现的概率；不是责任成立、可信度或诉讼胜率。</p></section><section class="formula"><h3>计算表达</h3><pre>D机会=(p原有−p剩余)·V净收益</pre></section><section class=""><h3>公式地位</h3><p>法律承认机会后的估值结构；本例仅用30个百分点作为互斥情景演示，成立前提不能由计算得出。</p></section><section><h3>需要的数据</h3><div class="table-wrap"><table><thead><tr><th>数据</th><th>单位 / 口径</th><th>取得方式 / 来源</th></tr></thead><tbody><tr><td>原有与剩余机会</td><td>0–1，同一事件/期间</td><td>第三方行为及可执行路径，说明概率来源</td></tr><tr><td>成功净利益V</td><td>货币</td><td>扣除成本的机会收益</td></tr><tr><td>机会可赔及原告自身行为</td><td>先行法律/事实判断</td><td>适用法、机会性质及用户本会采取的行为</td></tr></tbody></table></div></section><section><h3>计算边界与法律前提</h3><ul><li>在当前SOC/SOD未找到独立机会丧失请求；标为有条件拓展，不改写诉状。</li><li>UNIDROIT是软法，Perry是英国专业过失判例，均非自动适用香港本案。</li><li>不能与同一强平损失的全额赔偿累计。</li></ul></section><section class=""><h3>示例实现范围</h3><p>30%场景只表示已减少的机会份额，用paired差额演示300,000价值；不替代Perry要求的先行事实认定。</p></section><section class="example"><h3>合成数据示例 · 非本案估值</h3><p class="muted">以下数字仅用于展示运算，不代表案卷事实、司法认定或胜诉率。</p><h4>运算类型与输入</h4><pre>{
+  &quot;kind&quot;: &quot;paired_counterfactual&quot;,
+  &quot;inputs&quot;: {
+    &quot;rows&quot;: [
+      {
+        &quot;p&quot;: 0.3,
+        &quot;actual_loss&quot;: 1000000,
+        &quot;compliant_loss&quot;: 0,
+        &quot;in_scope&quot;: true
+      },
+      {
+        &quot;p&quot;: 0.7,
+        &quot;actual_loss&quot;: 0,
+        &quot;compliant_loss&quot;: 0,
+        &quot;in_scope&quot;: true
+      }
+    ]
+  }
+}</pre><h4>计算输出</h4><pre>{
+  &quot;kind&quot;: &quot;paired_counterfactual&quot;,
+  &quot;input_basis&quot;: &quot;explicit_scenarios_not_case_findings&quot;,
+  &quot;description&quot;: &quot;Arithmetic over the supplied scenarios; probabilities, legal scope, coverage and feasibility are input assumptions, not established case facts. No legal threshold or legal conclusion is inferred.&quot;,
+  &quot;results&quot;: {
+    &quot;actual_expected_loss&quot;: 300000.0,
+    &quot;compliant_expected_loss&quot;: 0.0,
+    &quot;signed_difference&quot;: 300000.0,
+    &quot;in_scope_signed_difference&quot;: 300000.0,
+    &quot;actual_harm_probability&quot;: 0.3,
+    &quot;compliant_harm_probability&quot;: 0.0
+  },
+  &quot;legal_conclusion&quot;: null
+}</pre></section><section><h3>法律依据与核实状态</h3><ul class="sources"><li class="source"><strong><a href="https://supremecourt.uk/uploads/uksc_2017_0092_judgment_5aa95ec41f.pdf" target="_blank" rel="noopener noreferrer">Perry v Raleys Solicitors [2019] UKSC 5</a></strong><p class="source-meta">England and Wales · paras 19-22 · primary</p><p>专业过失中，原告自己本会采取的步骤须先成立；第三方本会怎样反应可以按失去机会估值。不能把原告本人的一切反事实行为都折算成概率赔偿。 已读所列原文；英国权威的香港适用性须另核。</p></li><li class="source"><strong><a href="https://www.unidroit.org/wp-content/uploads/2021/06/Unidroit-Principles-2016-English-bl.pdf" target="_blank" rel="noopener noreferrer">UNIDROIT Principles of International Commercial Contracts 2016, black-letter text</a></strong><p class="source-meta">International commercial contract soft law · Article 7.4.3(1)–(3), especially Article 7.4.3(2); PDF page 23 · primary</p><p>Read the official text on certainty of harm and compensation for loss of a chance in proportion to its probability. These Principles do not automatically apply as domestic legislation. The model values a reduced opportunity; it does not discount uncertain liability or resolve recognition of medical/personal-injury chance claims. Hong Kong applicability has not been verified.</p></li></ul></section></div></details>
+<details class="entry" data-status="extension" data-search="合理履行时间：可接受时限内完成的概率 时间未依合同固定时，转账/恢复服务的延迟是否与合理履行要求相符？ cap.457 s.6仅在时间未由合同、约定机制或既往交易确定时适用；合理时间属于事实判断。完成时间分布可提供量化材料。 f(τ)=p(t≤τ)=σwₛ1{tₛ≤τ}；e[t]=σwₛtₛ 在可比网络、负载和确认条件下的服务完成时间概率。τ是待审查的候选时限。 " id="reasonable_time"><summary><span><span class="entry-id">reasonable_time</span><span class="entry-title">合理履行时间：可接受时限内完成的概率</span></span><span class="badge">有前提的扩展</span></summary><div class="entry-body"><section class=""><h3>实体法律问题</h3><p>时间未依合同固定时，转账/恢复服务的延迟是否与合理履行要求相符？</p></section><section class=""><h3>法律标准</h3><p>Cap.457 s.6仅在时间未由合同、约定机制或既往交易确定时适用；合理时间属于事实判断。完成时间分布可提供量化材料。</p></section><section class=""><h3>概率指什么</h3><p>在可比网络、负载和确认条件下的服务完成时间概率。τ是待审查的候选时限。</p></section><section class="formula"><h3>计算表达</h3><pre>F(τ)=P(T≤τ)=Σwₛ1{Tₛ≤τ}；E[T]=ΣwₛTₛ</pre></section><section class=""><h3>公式地位</h3><p>项目分析算式；法源支持法律标准，未规定这个统一公式或概率门槛。</p></section><section><h3>需要的数据</h3><div class="table-wrap"><table><thead><tr><th>数据</th><th>单位 / 口径</th><th>取得方式 / 来源</th></tr></thead><tbody><tr><td>合同时间约定与历史交易</td><td>合同文本</td><td>先核s.6适用前提</td></tr><tr><td>完成时长T及场景概率</td><td>秒/0–1</td><td>申请、广播、确认、到账及故障窗口</td></tr><tr><td>候选时限τ</td><td>秒</td><td>合同目的、可比服务和当时技术条件</td></tr></tbody></table></div></section><section><h3>计算边界与法律前提</h3><ul><li>当前诉辩主要是s.5合理注意；s.6属于待核法律拓展，不能冒充已提出请求。</li><li>95%分位数不是法定合理时限；快于多数同行也不自动合理。</li><li>若构成条例对消费者产生的责任，s.8(1)的禁止排除规则先适用；非消费者另核s.8(2)–(3)与Cap.71。</li></ul></section><section class=""><h3>示例实现范围</h3><p>简化的合成情景，用于验证所列算术。真实输入需先完成本项法律前提及数据口径审查。</p></section><section class="example"><h3>合成数据示例 · 非本案估值</h3><p class="muted">以下数字仅用于展示运算，不代表案卷事实、司法认定或胜诉率。</p><h4>运算类型与输入</h4><pre>{
+  &quot;kind&quot;: &quot;timely_performance&quot;,
+  &quot;inputs&quot;: {
+    &quot;rows&quot;: [
+      {
+        &quot;p&quot;: 0.6,
+        &quot;duration&quot;: 30
+      },
+      {
+        &quot;p&quot;: 0.3,
+        &quot;duration&quot;: 90
+      },
+      {
+        &quot;p&quot;: 0.1,
+        &quot;duration&quot;: 300
+      }
+    ],
+    &quot;deadline&quot;: 120
+  }
+}</pre><h4>计算输出</h4><pre>{
+  &quot;kind&quot;: &quot;timely_performance&quot;,
+  &quot;input_basis&quot;: &quot;explicit_scenarios_not_case_findings&quot;,
+  &quot;description&quot;: &quot;Arithmetic over the supplied scenarios; probabilities, legal scope, coverage and feasibility are input assumptions, not established case facts. No legal threshold or legal conclusion is inferred.&quot;,
+  &quot;results&quot;: {
+    &quot;probability_by_deadline&quot;: 0.8999999999999999,
+    &quot;expected_duration&quot;: 75.0
+  },
+  &quot;legal_conclusion&quot;: null
+}</pre></section><section><h3>法律依据与核实状态</h3><ul class="sources"><li class="source"><strong><a href="https://www.elegislation.gov.hk/hk/cap457" target="_blank" rel="noopener noreferrer">服务提供（隐含条款）条例 Cap.457</a></strong><p class="source-meta">香港 · ss.5–6、8(1)–(3)；附件CLA-2 PDF4、6，版本标示2021-04-08 · primary_local_copy</p><p>已读案件法律附件中的香港法例 Verified Copy 原文；官方网页本次仅返回加载页。所列是附件版本核验，不声称完成事件时点及最新修订沿革核验。</p></li></ul></section></div></details>
+<details class="entry" data-status="support" data-search="重大过失／故意失当：风险显著性的有限辅助 已知危险、便宜可行措施及继续运行的风险，能支持怎样的定性评价？ nigeria v jpmorgan ¶¶335(ii),338认可风险可能性、减轻风险容易程度、后果严重性与合同重大过失有关。故意失当还涉及对义务的认识或漠视，必须分别分析。 p严重损害=σwₛ1{严重损害}；el=σwₛlₛ；δel=el无措施−el有措施；分别呈现成本、可行性和当时认识 当时资料所支持的严重损害可能性，而非当事人具有恶意的概率。 " id="serious_default"><summary><span><span class="entry-id">serious_default</span><span class="entry-title">重大过失／故意失当：风险显著性的有限辅助</span></span><span class="badge">概率辅助法律判断</span></summary><div class="entry-body"><section class=""><h3>实体法律问题</h3><p>已知危险、便宜可行措施及继续运行的风险，能支持怎样的定性评价？</p></section><section class=""><h3>法律标准</h3><p>Nigeria v JPMorgan ¶¶335(ii),338认可风险可能性、减轻风险容易程度、后果严重性与合同重大过失有关。故意失当还涉及对义务的认识或漠视，必须分别分析。</p></section><section class=""><h3>概率指什么</h3><p>当时资料所支持的严重损害可能性，而非当事人具有恶意的概率。</p></section><section class="formula"><h3>计算表达</h3><pre>p严重损害=Σwₛ1{严重损害}；EL=ΣwₛLₛ；ΔEL=EL无措施−EL有措施；分别呈现成本、可行性和当时认识</pre></section><section class=""><h3>公式地位</h3><p>项目分析算式；法源支持法律标准，未规定这个统一公式或概率门槛。</p></section><section><h3>需要的数据</h3><div class="table-wrap"><table><thead><tr><th>数据</th><th>单位 / 口径</th><th>取得方式 / 来源</th></tr></thead><tbody><tr><td>场景及概率 wₛ</td><td>0–1；互斥、穷尽、总和1</td><td>当时资料、实测频率或有说明的压力情景；未知不得填零</td></tr><tr><td>各场景损失 Lₛ</td><td>同一币种、同一期间</td><td>账户及执行数据；区分损失种类，避免重复</td></tr><tr><td>实际知识、警报及处理决定</td><td>时间戳/原文</td><td>告警、升级、决策及沟通记录</td></tr><tr><td>严重程度定义与预防方案</td><td>风险分类/成本</td><td>定义具体损害种类；与正常行情风险区别</td></tr></tbody></table></div></section><section><h3>计算边界与法律前提</h3><ul><li>不存在P&gt;某数即重大过失/故意的统一规则；本项不是分类器。</li><li>Nigeria讨论银行Quincecare背景，不能直接移植该银行义务。De Beers所解释的条款也不等于本案条款；重大过失例外仍须依香港法及本案文字核实。</li><li>Zhang Hong Li虽为香港终审法院判决，讨论的是泽西法信托及具体条款；其中明许承担的投机风险不能仅因高风险就推定重大过失。</li></ul></section><section class=""><h3>示例实现范围</h3><p>示例selected为事先定义的严重损害场景，概率5%、预期损失14,000；另用care的措施比较看预防效果，数字不能决定故意或重大过失。</p></section><section class="example"><h3>合成数据示例 · 非本案估值</h3><p class="muted">以下数字仅用于展示运算，不代表案卷事实、司法认定或胜诉率。</p><h4>运算类型与输入</h4><pre>{
+  &quot;kind&quot;: &quot;risk_distribution&quot;,
+  &quot;inputs&quot;: {
+    &quot;rows&quot;: [
+      {
+        &quot;p&quot;: 0.95,
+        &quot;loss&quot;: 0,
+        &quot;selected&quot;: false
+      },
+      {
+        &quot;p&quot;: 0.04,
+        &quot;loss&quot;: 100000,
+        &quot;selected&quot;: true
+      },
+      {
+        &quot;p&quot;: 0.01,
+        &quot;loss&quot;: 1000000,
+        &quot;selected&quot;: true
+      }
+    ]
+  }
+}</pre><h4>计算输出</h4><pre>{
+  &quot;kind&quot;: &quot;risk_distribution&quot;,
+  &quot;input_basis&quot;: &quot;explicit_scenarios_not_case_findings&quot;,
+  &quot;description&quot;: &quot;Arithmetic over the supplied scenarios; probabilities, legal scope, coverage and feasibility are input assumptions, not established case facts. No legal threshold or legal conclusion is inferred.&quot;,
+  &quot;results&quot;: {
+    &quot;expected_loss&quot;: 14000.0,
+    &quot;selected_probability&quot;: 0.05,
+    &quot;selected_expected_loss&quot;: 14000.0
+  },
+  &quot;legal_conclusion&quot;: null
+}</pre></section><section><h3>法律依据与核实状态</h3><ul class="sources"><li class="source"><strong><a href="https://www.hkcfa.hk/en/work/cases/index.html" target="_blank" rel="noopener noreferrer">Zhang Hong Li v DBS Bank (Hong Kong) Ltd [2019] HKCFA 45; (2019) 22 HKCFAR 392</a></strong><p class="source-meta">香港终审法院；具体信托适用泽西法 · paras 86-90, especially 90; also para 42；本地判决报告PDF40–41 · primary_local_copy</p><p>即使假设受托人负有相关监督义务，原判也未证明批准交易属严重及显著程度的过失。不能从存在违责直接推定重大过失。第87段另指出，集中、投机及流动性风险是信托文件明许承担的风险，批准高风险交易本身不当然构成重大过失。 香港终审法院判决，但该信托受泽西法律管辖，且涉及具体信托及服务协议免责条款；不是不加条件适用于所有香港合同的概率定义。 已读原判正文；链接为法院检索入口，私有核验清单保存准确附件路径。</p></li><li class="source"><strong><a href="https://www.judiciary.uk/wp-content/uploads/2022/06/Nigeria-v-JP-Morgan-Chase-judgment-140622.pdf" target="_blank" rel="noopener noreferrer">Federal Republic of Nigeria v JPMorgan Chase Bank NA [2022] EWHC 1447 (Comm)</a></strong><p class="source-meta">England and Wales, High Court; nonbinding foreign authority in Hong Kong · paras 326-338, especially 335(ii), 336-338 · primary</p><p>判决自身认可风险可能性、减轻风险的容易程度和后果严重性均与合同重大过失标准有关；严重过失要求超过普通不谨慎。不存在以固定概率、金额或倍数自动定性的规则。 这里只援引合同重大过失的分析，不把该案银行Quincecare义务直接移植到交易平台；须先解释本案免责条款和重大过失例外。 已读所列原文；香港适用性另核。</p></li><li class="source"><strong><a href="https://caselaw.nationalarchives.gov.uk/ewhc/tcc/2010/3276" target="_blank" rel="noopener noreferrer">De Beers UK Ltd v Atos Origin IT Services UK Ltd [2010] EWHC 3276 (TCC)</a></strong><p class="source-meta">英国；特定合同条款解释 · ¶¶206–207；附件CLA-22 PDF41 · primary_local_copy</p><p>已读本地判决报告。讨论wilful misconduct及deliberate default，不提供gross negligence的统一概率标准；不能把该案条款层级当本案条款定义。</p></li><li class="source"><strong><a href="https://caselaw.nationalarchives.gov.uk/" target="_blank" rel="noopener noreferrer">Re City Equitable Fire Insurance Co Ltd [1925] Ch 407</a></strong><p class="source-meta">英国；历史公司及免责条款语境 · 附件CLA-19 PDF12–14，报告[*499]–[*502] · primary_local_copy</p><p>已读本地报告对wilful neglect/default及recklessness的讨论；不能用事故概率代替当事人的认识、意图或对义务的漠视。链接为检索入口，非已核判决网页。</p></li></ul></section></div></details>
+<details class="entry" data-status="support" data-search="合同补偿：合规履行的条件净资产位置 赔偿尺度确定后，哪些损失原本仍会由正常市场变化造成？ 合同补偿原则以如约履行的位置为参照。只对法律允许的不确定未来/假设结果使用分布；历史事实的不确定性不能一律转成折扣。 δv=σwₛ[v合规,ₛ−v实际,ₛ]；逐项处理资金注入、残值和已获补偿 合法反事实中的未确定市场/执行结果；不是法院认定违约概率。 " id="contract_value"><summary><span><span class="entry-id">contract_value</span><span class="entry-title">合同补偿：合规履行的条件净资产位置</span></span><span class="badge">概率辅助法律判断</span></summary><div class="entry-body"><section class=""><h3>实体法律问题</h3><p>赔偿尺度确定后，哪些损失原本仍会由正常市场变化造成？</p></section><section class=""><h3>法律标准</h3><p>合同补偿原则以如约履行的位置为参照。只对法律允许的不确定未来/假设结果使用分布；历史事实的不确定性不能一律转成折扣。</p></section><section class=""><h3>概率指什么</h3><p>合法反事实中的未确定市场/执行结果；不是法院认定违约概率。</p></section><section class="formula"><h3>计算表达</h3><pre>ΔV=Σwₛ[V合规,ₛ−V实际,ₛ]；逐项处理资金注入、残值和已获补偿</pre></section><section class=""><h3>公式地位</h3><p>项目分析算式；法源支持法律标准，未规定这个统一公式或概率门槛。</p></section><section><h3>需要的数据</h3><div class="table-wrap"><table><thead><tr><th>数据</th><th>单位 / 口径</th><th>取得方式 / 来源</th></tr></thead><tbody><tr><td>场景及概率 wₛ</td><td>0–1；互斥、穷尽、总和1</td><td>当时资料、实测频率或有说明的压力情景；未知不得填零</td></tr><tr><td>各场景损失 Lₛ</td><td>同一币种、同一期间</td><td>账户及执行数据；区分损失种类，避免重复</td></tr><tr><td>估值日和损失项目</td><td>日期/货币</td><td>适用赔偿原则、合同、账户净值</td></tr><tr><td>现金流与抵扣</td><td>货币/时间</td><td>救援资金、已实现损益、残余资产与补偿；防止重复</td></tr></tbody></table></div></section><section><h3>计算边界与法律前提</h3><ul><li>本例用损失差展示同一价值恒等式；不决定法律估值日、赔偿尺度和可赔项目。</li><li>不把已发生财产损失乘所谓生存率；机会损失、合同赔偿及衡平补偿就同一损失不得相加。</li></ul></section><section class=""><h3>示例实现范围</h3><p>简化的合成情景，用于验证所列算术。真实输入需先完成本项法律前提及数据口径审查。</p></section><section class="example"><h3>合成数据示例 · 非本案估值</h3><p class="muted">以下数字仅用于展示运算，不代表案卷事实、司法认定或胜诉率。</p><h4>运算类型与输入</h4><pre>{
+  &quot;kind&quot;: &quot;paired_counterfactual&quot;,
+  &quot;inputs&quot;: {
+    &quot;rows&quot;: [
+      {
+        &quot;p&quot;: 0.7,
+        &quot;actual_loss&quot;: 100000,
+        &quot;compliant_loss&quot;: 80000,
+        &quot;in_scope&quot;: true
+      },
+      {
+        &quot;p&quot;: 0.3,
+        &quot;actual_loss&quot;: 100000,
+        &quot;compliant_loss&quot;: 0,
+        &quot;in_scope&quot;: true
+      }
+    ]
+  }
+}</pre><h4>计算输出</h4><pre>{
+  &quot;kind&quot;: &quot;paired_counterfactual&quot;,
+  &quot;input_basis&quot;: &quot;explicit_scenarios_not_case_findings&quot;,
+  &quot;description&quot;: &quot;Arithmetic over the supplied scenarios; probabilities, legal scope, coverage and feasibility are input assumptions, not established case facts. No legal threshold or legal conclusion is inferred.&quot;,
+  &quot;results&quot;: {
+    &quot;actual_expected_loss&quot;: 100000.0,
+    &quot;compliant_expected_loss&quot;: 56000.0,
+    &quot;signed_difference&quot;: 44000.0,
+    &quot;in_scope_signed_difference&quot;: 44000.0,
+    &quot;actual_harm_probability&quot;: 1.0,
+    &quot;compliant_harm_probability&quot;: 0.7
+  },
+  &quot;legal_conclusion&quot;: null
+}</pre></section><section><h3>法律依据与核实状态</h3><ul class="sources"><li class="source"><strong><a href="https://caselaw.nationalarchives.gov.uk/" target="_blank" rel="noopener noreferrer">Robinson v Harman (1848) 1 Ex 850</a></strong><p class="source-meta">英国；合同补偿原则 · Parke B，1 Ex850,855；已读附件CLA-50 PDF3所载判决 · primary_local_copy</p><p>已读本地判决报告；支持如约履行位置原则，不是对历史损失任意乘概率的授权。链接为检索入口。</p></li><li class="source"><strong><a href="https://supremecourt.uk/uploads/uksc_2017_0092_judgment_5aa95ec41f.pdf" target="_blank" rel="noopener noreferrer">Perry v Raleys Solicitors [2019] UKSC 5</a></strong><p class="source-meta">England and Wales · paras 19-22 · primary</p><p>专业过失中，原告自己本会采取的步骤须先成立；第三方本会怎样反应可以按失去机会估值。不能把原告本人的一切反事实行为都折算成概率赔偿。 已读所列原文；英国权威的香港适用性须另核。</p></li></ul></section></div></details>
+<details class="entry" data-status="support" data-search="衡平补偿：违信与合规管理之间的损失 信托义务若成立，哪些财产损失由违信而非本来市场变化造成？ aib强调依据具体信托义务识别违信所造成损失；衡平补偿通常可利用事后资料，并与返还特定财产、获利交出分开。 δv信托=σwₛ[v依信托履行,ₛ−v实际,ₛ] 法律确定评估方法后，仍未确定的财产结果情景；已经知道的事实不人为重新随机化。 " id="equitable_compensation"><summary><span><span class="entry-id">equitable_compensation</span><span class="entry-title">衡平补偿：违信与合规管理之间的损失</span></span><span class="badge">概率辅助法律判断</span></summary><div class="entry-body"><section class=""><h3>实体法律问题</h3><p>信托义务若成立，哪些财产损失由违信而非本来市场变化造成？</p></section><section class=""><h3>法律标准</h3><p>AIB强调依据具体信托义务识别违信所造成损失；衡平补偿通常可利用事后资料，并与返还特定财产、获利交出分开。</p></section><section class=""><h3>概率指什么</h3><p>法律确定评估方法后，仍未确定的财产结果情景；已经知道的事实不人为重新随机化。</p></section><section class="formula"><h3>计算表达</h3><pre>ΔV信托=Σwₛ[V依信托履行,ₛ−V实际,ₛ]</pre></section><section class=""><h3>公式地位</h3><p>项目分析算式；法源支持法律标准，未规定这个统一公式或概率门槛。</p></section><section><h3>需要的数据</h3><div class="table-wrap"><table><thead><tr><th>数据</th><th>单位 / 口径</th><th>取得方式 / 来源</th></tr></thead><tbody><tr><td>场景及概率 wₛ</td><td>0–1；互斥、穷尽、总和1</td><td>当时资料、实测频率或有说明的压力情景；未知不得填零</td></tr><tr><td>各场景损失 Lₛ</td><td>同一币种、同一期间</td><td>账户及执行数据；区分损失种类，避免重复</td></tr><tr><td>信托义务及资产范围</td><td>已认定法律基础</td><td>信托文件、账户归属、具体违信行为</td></tr><tr><td>合规管理现金流与估值资料</td><td>货币/估值日</td><td>资产、抵押/担保顺位、处置所得及市场本来损失</td></tr></tbody></table></div></section><section><h3>计算边界与法律前提</h3><ul><li>先成立信托及被违反的义务；不把普通合同账户余额直接当信托补偿。</li><li>不从AIB推导所有信托均适用同一计算；不能把补偿损失与被告获利混算。</li></ul></section><section class=""><h3>示例实现范围</h3><p>简化的合成情景，用于验证所列算术。真实输入需先完成本项法律前提及数据口径审查。</p></section><section class="example"><h3>合成数据示例 · 非本案估值</h3><p class="muted">以下数字仅用于展示运算，不代表案卷事实、司法认定或胜诉率。</p><h4>运算类型与输入</h4><pre>{
+  &quot;kind&quot;: &quot;paired_counterfactual&quot;,
+  &quot;inputs&quot;: {
+    &quot;rows&quot;: [
+      {
+        &quot;p&quot;: 0.7,
+        &quot;actual_loss&quot;: 100000,
+        &quot;compliant_loss&quot;: 80000,
+        &quot;in_scope&quot;: true
+      },
+      {
+        &quot;p&quot;: 0.3,
+        &quot;actual_loss&quot;: 100000,
+        &quot;compliant_loss&quot;: 0,
+        &quot;in_scope&quot;: true
+      }
+    ]
+  }
+}</pre><h4>计算输出</h4><pre>{
+  &quot;kind&quot;: &quot;paired_counterfactual&quot;,
+  &quot;input_basis&quot;: &quot;explicit_scenarios_not_case_findings&quot;,
+  &quot;description&quot;: &quot;Arithmetic over the supplied scenarios; probabilities, legal scope, coverage and feasibility are input assumptions, not established case facts. No legal threshold or legal conclusion is inferred.&quot;,
+  &quot;results&quot;: {
+    &quot;actual_expected_loss&quot;: 100000.0,
+    &quot;compliant_expected_loss&quot;: 56000.0,
+    &quot;signed_difference&quot;: 44000.0,
+    &quot;in_scope_signed_difference&quot;: 44000.0,
+    &quot;actual_harm_probability&quot;: 1.0,
+    &quot;compliant_harm_probability&quot;: 0.7
+  },
+  &quot;legal_conclusion&quot;: null
+}</pre></section><section><h3>法律依据与核实状态</h3><ul class="sources"><li class="source"><strong><a href="https://supremecourt.uk/uploads/uksc_2013_0052_judgment_1a74870f33.pdf" target="_blank" rel="noopener noreferrer">AIB Group (UK) plc v Mark Redler &amp; Co Solicitors [2014] UKSC 58</a></strong><p class="source-meta">England and Wales; Hong Kong adoption not established here · Lord Reed, paras 93-95, 135, 139-141 · primary</p><p>衡平补偿依据具体信托义务，通常补足违信与如约履行之间造成的损失；金额一般在审判时利用事后资料评估，可预见性通常不是限制，但仍需违信与损失的联系。 信托必须先成立；不能以AIB公式处理所有账户余额/债务关系。该标准也不是获利交出或返还特定财产的通用规则。 已读所列原文；香港适用性另核。</p></li></ul></section></div></details></div><p id="empty" class="empty" hidden>没有匹配结果。可清空搜索或切换到「全部」。</p>
+<footer>本页为离线生成的独立 HTML，不加载外部脚本或资产。法律来源链接仅在点击时打开。涉及同一风险的多个法律标准可共用计算，但不因此成为多条独立法定公式。</footer></main><script>
+const search = document.querySelector('#search');
+const entries = Array.from(document.querySelectorAll('.entry'));
+const buttons = Array.from(document.querySelectorAll('[data-filter]'));
+let filter = 'all';
+function refresh(){
+  const query = search.value.toLocaleLowerCase().trim();
+  let visible = 0;
+  for (const entry of entries){
+    const match = (filter === 'all' || entry.dataset.status === filter) && (!query || entry.dataset.search.includes(query));
+    entry.hidden = !match;
+    if(match) visible++;
+  }
+  document.querySelector('#count').textContent = `显示 ${visible} / ${entries.length} 项实体法律问题`;
+  document.querySelector('#empty').hidden = visible !== 0;
+}
+search.addEventListener('input',refresh);
+for(const button of buttons) button.addEventListener('click',()=>{
+  filter = button.dataset.filter;
+  for(const other of buttons) other.setAttribute('aria-pressed',String(other === button));
+  refresh();
+});
+document.querySelector('#expand').addEventListener('click',()=>{for(const entry of entries) if(!entry.hidden) entry.open = true;});
+document.querySelector('#collapse').addEventListener('click',()=>{for(const entry of entries) entry.open = false;});
+refresh();
+</script></body></html>

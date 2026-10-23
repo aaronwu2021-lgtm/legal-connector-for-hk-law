@@ -1,0 +1,618 @@
+{
+  "schema_version": "1",
+  "models": [
+    {
+      "id": "hand",
+      "version": "1",
+      "title": "汉德公式：预防成本与风险减少",
+      "category": "substantive_probability",
+      "question": "指定措施减少的预期损失，是否超过其同期间成本？",
+      "output_kind": "economic_comparison",
+      "formula_summary": "ΔEL = NpL(eₚ+eₗ−eₚeₗ)，等价于措施前后预期损失之差；净收益 = ΔEL − B",
+      "legal_status": "源自美国侵权判例的风险权衡；这里采用增量预期损失的经济扩展，不自动认定违反注意义务。",
+      "assumptions": [
+        "暴露次数、概率、损失与预防成本使用同一期间和一致货币口径。",
+        "L为事故发生后的条件平均损失；p为每次暴露事故概率。",
+        "两种措施效果分别作用于事故概率与条件损失，且未重复计入。",
+        "忽略风险厌恶、外部未计量利益及不可货币化限制。",
+        "p是每次暴露发生事故的概率，措施效力是风险或严重程度的减少比例；这些数值都不是胜诉概率或责任成立概率。"
+      ],
+      "limitations": [
+        "经济上有净收益不等于法律上负有采取措施义务。",
+        "p与措施效果必须有数据或明确假设；不能由结果反推当时可预见性。",
+        "等号只表示经济收支相等；此模型采用严格大于作为净收益为正条件。"
+      ],
+      "required_legal_findings": [
+        "相关注意义务及标准",
+        "风险可预见性与措施可行性",
+        "适用法是否及如何允许经济权衡"
+      ],
+      "source_ids": [
+        "hand-carroll"
+      ],
+      "fields": [
+        {
+          "id": "N",
+          "label": "同期间暴露次数",
+          "unit": "次",
+          "description": "",
+          "type": "number",
+          "min": 0
+        },
+        {
+          "id": "p",
+          "label": "每次暴露事故概率",
+          "unit": "0–1比例",
+          "description": "同期间每次暴露发生事故的概率；不是胜诉概率、责任成立概率或AI置信度。",
+          "type": "number",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "id": "L",
+          "label": "事故条件平均损失",
+          "unit": "同一货币单位",
+          "description": "",
+          "type": "number",
+          "min": 0
+        },
+        {
+          "id": "annual_B",
+          "label": "同期间预防成本",
+          "unit": "同一货币单位",
+          "description": "默认年度；更换期间时全部输入同步。",
+          "type": "number",
+          "min": 0
+        },
+        {
+          "id": "prob_reduction",
+          "label": "事故概率降低比例",
+          "unit": "0–1比例",
+          "description": "",
+          "type": "number",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "id": "severity_reduction",
+          "label": "条件损失降低比例",
+          "unit": "0–1比例",
+          "description": "",
+          "type": "number",
+          "min": 0,
+          "max": 1
+        }
+      ],
+      "outputs": [
+        {
+          "id": "expected_before",
+          "label": "措施前预期损失",
+          "unit": "货币/期间",
+          "formula": "NpL",
+          "expression": {
+            "op": "mul",
+            "args": [
+              {
+                "var": "input.N"
+              },
+              {
+                "var": "input.p"
+              },
+              {
+                "var": "input.L"
+              }
+            ]
+          }
+        },
+        {
+          "id": "expected_after",
+          "label": "措施后预期损失",
+          "unit": "货币/期间",
+          "formula": "Np(1−eₚ)L(1−eₗ)",
+          "expression": {
+            "op": "mul",
+            "args": [
+              {
+                "var": "input.N"
+              },
+              {
+                "var": "input.p"
+              },
+              {
+                "op": "sub",
+                "args": [
+                  1,
+                  {
+                    "var": "input.prob_reduction"
+                  }
+                ]
+              },
+              {
+                "var": "input.L"
+              },
+              {
+                "op": "sub",
+                "args": [
+                  1,
+                  {
+                    "var": "input.severity_reduction"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "avoided_expected_loss",
+          "label": "减少的预期损失",
+          "unit": "货币/期间",
+          "formula": "NpL(eₚ+eₗ−eₚeₗ)，等价于EL前−EL后",
+          "expression": {
+            "op": "mul",
+            "args": [
+              {
+                "var": "out.expected_before"
+              },
+              {
+                "op": "sub",
+                "args": [
+                  {
+                    "op": "add",
+                    "args": [
+                      {
+                        "var": "input.prob_reduction"
+                      },
+                      {
+                        "var": "input.severity_reduction"
+                      }
+                    ]
+                  },
+                  {
+                    "op": "mul",
+                    "args": [
+                      {
+                        "var": "input.prob_reduction"
+                      },
+                      {
+                        "var": "input.severity_reduction"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "net_benefit",
+          "label": "经济净收益",
+          "unit": "货币/期间",
+          "formula": "ΔEL−B",
+          "expression": {
+            "op": "sub",
+            "args": [
+              {
+                "var": "out.avoided_expected_loss"
+              },
+              {
+                "var": "input.annual_B"
+              }
+            ]
+          }
+        },
+        {
+          "id": "economically_favourable",
+          "label": "经济净收益是否为正",
+          "unit": "布尔值",
+          "formula": "ΔEL>B",
+          "expression": {
+            "op": "gt",
+            "args": [
+              {
+                "var": "out.avoided_expected_loss"
+              },
+              {
+                "var": "input.annual_B"
+              }
+            ]
+          }
+        }
+      ],
+      "constraints": [],
+      "example_inputs": {
+        "N": 100000,
+        "p": 8e-05,
+        "L": 104000,
+        "annual_B": 120000,
+        "prob_reduction": 0.6,
+        "severity_reduction": 0
+      },
+      "example_basis": "hypothetical",
+      "analysis_layer": "substantive_law",
+      "formula_authority": "judicial_heuristic"
+    },
+    {
+      "id": "alarp_probability",
+      "version": "1",
+      "title": "合理可行预防：概率风险减少与ALARP",
+      "category": "substantive_probability",
+      "analysis_layer": "substantive_law",
+      "formula_authority": "legal_test_formalisation",
+      "question": "措施降低事故概率后减少多少预期损失，其量化成本与该收益是什么比例？",
+      "output_kind": "bounded_standard_analysis",
+      "formula_summary": "ΔEL = (p前−p后)L；诊断比例 = C/ΔEL；ΔEL = 0 时比例未定义。",
+      "legal_status": "英国健康与安全语境中，合理可行标准要求控制风险，除非负担相对风险减少严重不成比例。概率风险减少及成本比值是本项目的数值形式化，不是法律规定的公式或统一倍数；不自动认定已满足ALARP。",
+      "assumptions": [
+        "p前、p后是同一风险在同一期间发生损害的概率，不是预期事故次数、胜诉概率或责任成立概率。",
+        "L为损害发生后的条件平均损失；本模型假定措施前后条件损失相同，仅比较发生概率下降。",
+        "C与L采用同一货币及估值口径；风险、措施和成本覆盖同一期间。",
+        "每个概率对应一个明确定义的损害事件；多次事故或多类后果应另建一致的期望损失模型，不能将至少一次事故概率直接当作事故次数。",
+        "概率、风险估值及措施可行性须有数据或明确假设；未货币化的风险、时间和努力仍须单独记录。"
+      ],
+      "limitations": [
+        "比例大于1不等于可免于采取措施；模型不设严重不成比例的固定倍数。",
+        "ΔEL为0时比例返回null，可能是没有量化到收益，不能据此推断没有安全义务。",
+        "当措施还改变事故严重程度或风险类型时，本模型的固定条件损失假设不成立。",
+        "此英国安全规范不自动成为香港私人合同或侵权案件的适用规则。"
+      ],
+      "required_legal_findings": [
+        "具体法定义务和适用的安全标准",
+        "严重不成比例的情境判断",
+        "可行性、非货币化风险及其他强制要求"
+      ],
+      "source_ids": [
+        "hse-reasonably-practicable"
+      ],
+      "fields": [
+        {
+          "id": "probability_before",
+          "label": "措施前损害发生概率 p前",
+          "unit": "0–1比例",
+          "description": "同一期间同一损害事件在未采取措施时的发生概率；不是胜诉概率。",
+          "type": "number",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "id": "probability_after",
+          "label": "措施后损害发生概率 p后",
+          "unit": "0–1比例",
+          "description": "采取措施后同一期间同一损害事件的剩余发生概率；不得高于措施前概率。",
+          "type": "number",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "id": "loss_if_harm",
+          "label": "损害发生时条件平均损失 L",
+          "unit": "同一货币单位",
+          "description": "损害发生后的条件平均损失；假定措施前后相同，未预先乘发生概率。",
+          "type": "number",
+          "min": 0
+        },
+        {
+          "id": "precaution_cost",
+          "label": "同期间预防措施量化成本 C",
+          "unit": "同一货币单位",
+          "description": "与风险概率使用同一期间的增量预防负担；未量化负担须另行记录。",
+          "type": "number",
+          "min": 0
+        }
+      ],
+      "outputs": [
+        {
+          "id": "avoided_expected_loss",
+          "label": "预期损失减少",
+          "unit": "同一货币单位",
+          "formula": "(p前−p后)L",
+          "expression": {
+            "op": "mul",
+            "args": [
+              {
+                "op": "sub",
+                "args": [
+                  {
+                    "var": "input.probability_before"
+                  },
+                  {
+                    "var": "input.probability_after"
+                  }
+                ]
+              },
+              {
+                "var": "input.loss_if_harm"
+              }
+            ]
+          }
+        },
+        {
+          "id": "cost_risk_ratio",
+          "label": "成本与预期损失减少之比",
+          "unit": "倍；null为未定义",
+          "formula": "C/ΔEL，ΔEL=0时为null",
+          "expression": {
+            "op": "if",
+            "condition": {
+              "op": "gt",
+              "args": [
+                {
+                  "var": "out.avoided_expected_loss"
+                },
+                0
+              ]
+            },
+            "then": {
+              "op": "div",
+              "args": [
+                {
+                  "var": "input.precaution_cost"
+                },
+                {
+                  "var": "out.avoided_expected_loss"
+                }
+              ]
+            },
+            "else": null
+          }
+        }
+      ],
+      "constraints": [
+        {
+          "expression": {
+            "op": "ge",
+            "args": [
+              {
+                "var": "input.probability_before"
+              },
+              {
+                "var": "input.probability_after"
+              }
+            ]
+          },
+          "message": "措施前损害概率不得小于措施后损害概率。"
+        }
+      ],
+      "example_inputs": {
+        "probability_before": 0.03,
+        "probability_after": 0.01,
+        "loss_if_harm": 1000000,
+        "precaution_cost": 60000
+      },
+      "example_basis": "全部数值和情景均为合成教学示例，不是个案证据、法院认定或法律阈值。"
+    },
+    {
+      "id": "reasonable_mitigation",
+      "version": "1",
+      "title": "合理减损：预期可避免损失与措施成本",
+      "category": "substantive_probability",
+      "analysis_layer": "substantive_law",
+      "formula_authority": "legal_test_formalisation",
+      "question": "从当时可知信息出发，减损措施的预期可避免损失是否覆盖量化成本？",
+      "output_kind": "bounded_standard_analysis",
+      "formula_summary": "预期可避免损失 = pA；量化净收益 = pA−C。",
+      "legal_status": "英国合同损害赔偿要求合理减损，合理采取但失败的措施仍可能获偿。此预期净收益是本项目的辅助经济比较，不是判决设定的合理性公式或收益最大化义务。",
+      "assumptions": [
+        "p和A采用作决定时可获得的信息；A为措施成功时可避免的损失。",
+        "C为措施增量成本，和A使用同一货币及期间；新增风险或负担应单独评估。",
+        "不把事后成功或失败直接当作当时合理与否的证明。",
+        "p仅表示指定减损措施成功避免所列损失的概率，不表示胜诉概率或责任成立概率。"
+      ],
+      "limitations": [
+        "净收益为正不自动要求采取措施；可行性、资金、时间、风险等仍重要。",
+        "净收益为负不自动排除合理减损成本的可赔偿性；无需选择事后最优方案。",
+        "本模型不直接扣减赔偿，也不决定举证责任或某项损失是否可赔。"
+      ],
+      "required_legal_findings": [
+        "具体适用法、合同与损失范围",
+        "当时条件下措施的合理性、可行性及新增风险",
+        "可合理避免的损失和合理减损费用",
+        "避免重复扣减损失或重复计入费用"
+      ],
+      "source_ids": [
+        "sharp-mitigation"
+      ],
+      "fields": [
+        {
+          "id": "success_probability",
+          "label": "假设减损成功概率 p",
+          "unit": "0–1比例",
+          "description": "作决定时指定减损措施取得所列避免损失效果的概率；不是胜诉概率或责任成立概率。",
+          "type": "number",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "id": "avoidable_loss_if_success",
+          "label": "成功时可避免的损失 A",
+          "unit": "同一货币单位",
+          "description": "",
+          "type": "number",
+          "min": 0
+        },
+        {
+          "id": "mitigation_cost",
+          "label": "减损措施增量成本 C",
+          "unit": "同一货币单位",
+          "description": "",
+          "type": "number",
+          "min": 0
+        }
+      ],
+      "outputs": [
+        {
+          "id": "expected_avoided_loss",
+          "label": "预期可避免损失",
+          "unit": "同一货币单位",
+          "formula": "pA",
+          "expression": {
+            "op": "mul",
+            "args": [
+              {
+                "var": "input.success_probability"
+              },
+              {
+                "var": "input.avoidable_loss_if_success"
+              }
+            ]
+          }
+        },
+        {
+          "id": "net_expected_benefit",
+          "label": "量化净收益",
+          "unit": "同一货币单位",
+          "formula": "pA−C",
+          "expression": {
+            "op": "sub",
+            "args": [
+              {
+                "var": "out.expected_avoided_loss"
+              },
+              {
+                "var": "input.mitigation_cost"
+              }
+            ]
+          }
+        },
+        {
+          "id": "positive_quantified_balance",
+          "label": "量化收益是否大于量化成本",
+          "unit": "布尔；不是减损合理性结论",
+          "formula": "pA > C",
+          "expression": {
+            "op": "gt",
+            "args": [
+              {
+                "var": "out.net_expected_benefit"
+              },
+              0
+            ]
+          }
+        }
+      ],
+      "constraints": [],
+      "example_inputs": {
+        "success_probability": 0.6,
+        "avoidable_loss_if_success": 100000,
+        "mitigation_cost": 20000
+      },
+      "example_basis": "全部数值和情景均为合成教学示例，不是个案证据、法院认定或法律阈值。"
+    },
+    {
+      "id": "loss_of_chance",
+      "version": "1",
+      "title": "机会丧失：依法承认机会的概率价值",
+      "category": "substantive_probability",
+      "question": "适用法承认该机会损失时，机会下降对应的期望净利益是多少？",
+      "output_kind": "conditional_chance_value",
+      "formula_summary": "D = (p前−p后)·V",
+      "legal_status": "实体损害赔偿中的机会价值评价。UNIDROIT通则第7.4.3(2)条规定按机会实现概率比例补偿；本项目的前后概率差值式是对机会减少情景的形式化。通则属于国际商事合同软法，不自动成为香港法或所有损害类型的规则。",
+      "assumptions": [
+        "前后概率针对同一明确机会，且成功时净价值V固定。",
+        "V已扣除取得收益所需成本；概率下降归因于有关行为的范围已外部评估。",
+        "本模型只计算机会下降，不适用于概率增加。",
+        "前后概率表示同一合法可赔机会实现的可能性，不是胜诉概率、责任成立概率或证据可信度。"
+      ],
+      "limitations": [
+        "计算依法承认机会的价值减少，不以胜诉概率折扣责任，也不表示按该百分比分担责任；不得与同一损失的其他赔偿重复计算。",
+        "须先确认该类机会损失在适用法下可赔，尤其不能自动移植到人身伤害。",
+        "概率与收益可能有关联；固定V假设不适用于所有机会分布。"
+      ],
+      "required_legal_findings": [
+        "机会损失是否获适用法承认",
+        "机会真实程度、因果关系与证明要求",
+        "净收益及概率依据"
+      ],
+      "source_ids": [
+        "unidroit-2016"
+      ],
+      "fields": [
+        {
+          "id": "probability_before",
+          "label": "原有成功概率",
+          "unit": "0–1比例",
+          "description": "有关行为前同一机会实现的概率；机会是否可赔和因果关系须另行认定，不是胜诉概率。",
+          "type": "number",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "id": "probability_after",
+          "label": "剩余成功概率",
+          "unit": "0–1比例",
+          "description": "有关行为后同一机会实现的剩余概率；与原有概率使用相同机会和期间，不是责任成立概率。",
+          "type": "number",
+          "min": 0,
+          "max": 1
+        },
+        {
+          "id": "net_value",
+          "label": "成功时净利益",
+          "unit": "同一货币单位",
+          "description": "",
+          "type": "number",
+          "min": 0
+        }
+      ],
+      "outputs": [
+        {
+          "id": "chance_reduction",
+          "label": "成功机会减少",
+          "unit": "概率百分点的0–1表达",
+          "formula": "p前−p后",
+          "expression": {
+            "op": "sub",
+            "args": [
+              {
+                "var": "input.probability_before"
+              },
+              {
+                "var": "input.probability_after"
+              }
+            ]
+          }
+        },
+        {
+          "id": "chance_value",
+          "label": "丧失机会的条件价值",
+          "unit": "货币",
+          "formula": "(p前−p后)·V",
+          "expression": {
+            "op": "mul",
+            "args": [
+              {
+                "var": "out.chance_reduction"
+              },
+              {
+                "var": "input.net_value"
+              }
+            ]
+          }
+        }
+      ],
+      "constraints": [
+        {
+          "expression": {
+            "op": "ge",
+            "args": [
+              {
+                "var": "input.probability_before"
+              },
+              {
+                "var": "input.probability_after"
+              }
+            ]
+          },
+          "message": "原有成功概率不得小于剩余成功概率。"
+        }
+      ],
+      "example_inputs": {
+        "probability_before": 0.4,
+        "probability_after": 0.1,
+        "net_value": 1000000
+      },
+      "example_basis": "hypothetical",
+      "analysis_layer": "substantive_law",
+      "formula_authority": "legal_rule_formalisation"
+    }
+  ]
+}
