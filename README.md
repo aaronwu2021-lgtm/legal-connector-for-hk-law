@@ -17,7 +17,7 @@ itself is not distributed here.
 |---|---|
 | `data/` | The element library: misrepresentation family (17 sub-tests × 4 jurisdictions), a 20-module typed registry of legal-test logic and two-axis litigation positions (numeric bands only inside multi-factor balancing stages), the drift/maintenance ledger, a 745-document Hong Kong land-law case-note corpus, and a 449-case England-and-Wales persuasive index (unverified, persuasive-only in HK). CC BY 4.0. |
 | `server/` | The connector itself — Netlify serverless functions implementing the REST API and MCP server, plus the browser UI. MIT. |
-| `legal_quant/` | Seven models of legal standards plus ten supporting quantitative tools, a shared formula catalogue, source ledger, and standard-library Python engine/CLI. |
+| `legal_quant/` | Four substantive-law probability models: reasonable care, reasonably practicable prevention, reasonable mitigation and legally recognised loss of chance; shared formulas, sources and Python CLI. |
 | `examples/negligence_quant/` | A synthetic negligence assessment with separate legal elements, observable evidence, uncertainty ranges, and prevention scenarios. |
 | `experiments/exp1-lab/` | In-benchmark pilot: 6 arbitration tasks, 2 conditions, blind paired judging over 59 legal-standard criteria. Null result. |
 | `experiments/exp2-probe/` | Jurisdiction-specific probe: 21 items, 2 conditions, blind judging against a pre-registered key. 16/21 → 21/21 as originally scored; **15/21 → 19/21 re-scored against the law** after two keys were found wrong (`rescore.py`, `probe_results_rescored.json`). |
@@ -114,18 +114,21 @@ curl -X POST https://doctrine-drift-atlas.netlify.app/api/score \
 ### Quantitative legal analysis
 
 Open `/quantitative.html` from the **量化分析 Quantitative** navigation link.
-The Chinese workspace opens with seven models of legal standards: reasonable
-care (Hand), ALARP, interim injunction balancing, procedural safeguards,
-necessity, reasonable mitigation, and penalty proportionality. Each distinguishes
-a judicial heuristic from this project's formalisation of a legal test. The
-underlying rules have jurisdiction-specific scopes; a calculation is not a
-finding that a rule applies or that all its requirements have been met.
+The Chinese workspace contains four substantive-law probability models:
+reasonable care (`hand`), reasonably practicable prevention (`alarp_probability`),
+reasonable mitigation (`reasonable_mitigation`) and legally recognised loss of
+chance (`loss_of_chance`). The first three assist with standards of conduct;
+loss of chance values a compensable opportunity. Risk, mitigation success and
+opportunity probabilities have distinct meanings, and none is a litigation win
+probability. Each model states its legal prerequisites, source jurisdiction,
+units, assumptions, formula provenance and limits.
 
-Ten supporting tools remain available in the other categories: Alexy balancing,
-Bayesian evidence updating, deterrence, cost alternatives, settlement, cover
-damages, loss of chance, discounted losses, counterfactual damages and HHI.
-Each model states the legal questions that require separate assessment, input
-units and sources, calculation steps, assumptions, and limits.
+Procedural, litigation, evidence-updating and general economic calculators have
+been removed from this quantitative catalogue, Python, REST and MCP surface.
+Removed model IDs are rejected, including old `alarp`: its former precomputed
+risk-benefit interface is replaced by `alarp_probability`, which derives the
+expected risk reduction explicitly from before/after probabilities and loss.
+The repository's separate doctrine registry is outside this calculator scope.
 
 The Python and JavaScript engines read the same versioned formula definitions
 in `legal_quant/models.json`. Neither engine turns its calculations into a
@@ -133,16 +136,16 @@ finding of liability. Missing inputs are rejected; case-data inputs require
 source notes. The jurisdiction and date are recorded context, not certification
 of applicable law. Hong Kong applicability must be independently checked;
 foreign rules and our mathematical proxies are not automatically Hong Kong law.
-Start with [法律标准本身如何计算](docs/legal-normative-standards.md), then see
-[the supporting model guide](docs/legal-quantitative-models.md) and
+Start with [实体法律中的概率标准](docs/legal-normative-standards.md), then see
+[the Python and interface guide](docs/legal-quantitative-models.md) and
 [source ledger](legal_quant/sources.json) for individual source-review levels.
 
 ```bash
 python -m legal_quant list
 python -m legal_quant example hand --output hand-input.json
 python -m legal_quant evaluate --input hand-input.json --output hand-result.json
-python -m legal_quant example interim_injunction --output injunction-input.json
-python -m legal_quant evaluate --input injunction-input.json --output injunction-result.json
+python -m legal_quant example alarp_probability --output prevention-input.json
+python -m legal_quant evaluate --input prevention-input.json --output prevention-result.json
 python -m unittest discover -s legal_quant/tests -v
 ```
 

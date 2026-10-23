@@ -8,33 +8,17 @@
     revision: 0, request: null, result: null,
   };
   const categoryLabels = {
-    legal_standard: '法律标准本身 · 合理性、必要性与比例',
-    money: '金额计算', monetary: '金额计算', damages: '金额计算', amount: '金额计算',
-    evidence: '事实与证据', action: '行动选择', decision: '行动选择',
-    principles: '原则权衡', principle: '原则权衡', balancing: '原则权衡',
-    market: '市场结构', policy: '执法与政策', enforcement: '执法与政策',
+    substantive_probability: '实体法律 · 行为要求与机会价值',
   };
   const authorityLabels = {
     judicial_heuristic: '公式地位：判决中的分析方法；本模型的扩展与未涵盖要件见下方。',
     legal_test_formalisation: '公式地位：法律规定了比较标准；这里的算式是该标准的分析模型，并非法院规定的统一数值门槛。',
+    legal_rule_formalisation: '公式地位：实体赔偿规则中的概率估值；本项目采用机会减少的情景扩展，须先确认规则适用及该机会可赔。',
   };
   const kindLabels = {
     bounded_standard_analysis: '法律标准中的有限量化比较',
-    monetary_calculation: '金额计算', judicial_calculation: '司法金额计算',
-    expert_evidence: '专家证据模型', theoretical_model: '理论模型',
-    decision_support: '行动决策工具', policy_model: '政策分析模型',
-    market_indicator: '市场结构指标', economic_model: '经济分析模型',
-    economic_comparison: '经济分析 · 预防措施比较',
-    theoretical_weight_ratio: '理论模型 · 原则权重',
-    conditional_hypothesis_probability: '证据分析 · 条件概率',
-    policy_benchmark: '理论模型 · 执法政策',
-    alternative_cost_comparison: '经济分析 · 方案成本',
-    reservation_value_range: '决策模型 · 诉讼与和解',
-    conditional_loss_amount: '条件金额计算 · 适用规则须审查',
+    economic_comparison: '合理注意 · 风险减少与预防负担',
     conditional_chance_value: '条件价值计算 · 机会损失须获法律承认',
-    conditional_present_value: '精算金额计算 · 参数须核对',
-    conditional_counterfactual_loss: '专家证据模型 · 反事实损失',
-    market_structure_indicator: '结构指标 · 市场集中度',
   };
 
   function element(tag, text, className) {
@@ -185,7 +169,7 @@
     $('model-kind').textContent = kindLabels[model.output_kind] || model.output_kind;
     $('model-status').textContent = readable(model.legal_status || '');
     $('formula-authority').textContent = authorityLabels[model.formula_authority]
-      || '模型定位：辅助金额、证据、经济或理论分析；公式本身不设定合理性等法律标准。';
+      || '公式依据尚未列明，须核对来源与适用范围。';
     $('formula').textContent = model.formula_summary;
     listInto($('assumptions'), model.assumptions);
     listInto($('limitations'), model.limitations);
@@ -329,8 +313,8 @@
     state.result = { ...result, input_record: data };
     $('result-context').textContent = `${state.model.title} · ${data.context.jurisdiction} · ${data.context.as_of || '未记录日期'} · ${data.context.input_basis === 'hypothetical' ? '教学假设' : '案件数据'}。显示数值经适度舍入，下载文件保留计算值。`;
     $('result-applicability').textContent = result.applicability_status === 'externally_assessed'
-      ? '使用者已记录程序外法律适用审查。此记录不代表程序认定；计算结果不构成法律结论。'
-      : '法律适用待独立审查。计算结果不认定责任、证明标准是否满足或具体规则可适用于香港。';
+      ? '使用者已记录独立法律适用审查。此记录不代表计算器认定；计算结果不构成法律结论。'
+      : '法律适用待独立审查。计算结果不认定责任、可赔范围或具体规则可适用于香港。';
     const outputMap = new Map((state.model.outputs || []).map(output => [output.id, output]));
     const steps = Array.isArray(result.steps) ? result.steps : [];
     const stepsMap = new Map(steps.map(step => [step.id, step]));
@@ -344,10 +328,6 @@
       const card = element('div', undefined, 'result-card');
       card.append(element('h3', output.label || key), element('p', displayValue(value), 'result-value'));
       if (output.unit) card.append(element('p', displayUnit(output.unit), 'result-unit'));
-      if (data.model_id === 'coase' && key === 'minimum_indices' && Array.isArray(value)) {
-        const names = value.map(index => data.inputs.alternatives[index]?.name).filter(Boolean);
-        card.append(element('p', `对应方案：${names.join('、')}`, 'result-unit'));
-      }
       return card;
     }));
     $('calculation-steps').replaceChildren(...steps.map(step => {

@@ -12,20 +12,28 @@ The root contains `schema_version: "1"` and a `models` array. Each model has:
 
 - Identity: `id`, `version` (a string), `title`, `category`, `output_kind`.
 - Purpose: `question`, `formula_summary`, `legal_status`.
-- Classification: `analysis_layer` (`legal_standard` or `supporting_analysis`)
+- Classification: `analysis_layer: "substantive_law"`
   and `formula_authority`. `judicial_heuristic` identifies reasoning explicitly
   found in a judgment (the model may include stated extensions);
   `legal_test_formalisation` identifies a project model of an actual legal test.
-  Supporting tools retain a separate classification. None of these labels
+  `legal_rule_formalisation` identifies a project model of a substantive
+  valuation rule, including the conditional loss-of-chance model. None of these labels
   certifies jurisdictional applicability or a binding numerical threshold.
 - Boundaries: `assumptions`, `limitations`, `required_legal_findings`.
 - Provenance: `source_ids`, resolved against the source ledger.
 - Computation: `fields`, `constraints`, and ordered `outputs`.
 - Demonstration: `example_inputs`, `example_basis: "hypothetical"`.
 
-Categories distinguish `legal_standard`, `amount`, `evidence`, `decision`, `balancing`, `market`
-and `policy`. These are not elements of a common legal score and must not be
-summed into one.
+The current category is `substantive_probability`. Exactly four model IDs are
+available: `hand`, `alarp_probability`, `reasonable_mitigation`, `loss_of_chance`.
+They express different substantive questions and must not be summed into one
+legal score. Procedural, litigation and generic supporting calculators are
+not exposed by this catalogue. Removed IDs fail lookup rather than silently
+mapping to a different legal question.
+
+`alarp_probability` is a new model identity, version `"1"`. It derives avoided
+expected loss from before/after probabilities and conditional harm. The old
+`alarp` request with precomputed monetary risk reduction is not reinterpreted.
 
 ## Inputs
 

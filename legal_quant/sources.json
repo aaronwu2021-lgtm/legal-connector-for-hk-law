@@ -13,116 +13,6 @@
       "note": "Read the hosted judgment excerpt stating B < PL and its factual application. This is an edited teaching reproduction, not a verified complete report. The module's before/after expected-loss calculation is an economic extension, not the judgment's own numerical calculation; Hong Kong applicability has not been verified."
     },
     {
-      "id": "alexy-2014",
-      "title": "Robert Alexy, Formal principles: Some replies to critics, International Journal of Constitutional Law 12(3) (2014), 511–524",
-      "url": "https://academic.oup.com/icon/article/12/3/511/763784",
-      "pin": "Publisher bibliographic metadata; operative passage not verified in this review",
-      "verification": "web",
-      "jurisdiction": "General legal theory; no governing jurisdiction asserted",
-      "source_kind": "scholarship",
-      "reviewed_on": "2026-10-20",
-      "note": "Publication title, author, date and page range were checked against the publisher's search result. Full text was inaccessible; the article's exact formula and section locator have not been verified here. The implementation is an illustrative six-variable balancing model, not a legislated formula or an empirically calibrated probability. Hong Kong applicability has not been verified."
-    },
-    {
-      "id": "nist-bayes",
-      "title": "NIST IR 8503, Forensic DNA Interpretation and Human Factors: Improving Practice Through a Systems Approach (2024)",
-      "url": "https://nvlpubs.nist.gov/nistpubs/ir/2024/NIST.IR.8503.pdf",
-      "pin": "Section 4.3.2, printed pp. 81–82, Equation 4.2 and Table 4.1",
-      "verification": "primary",
-      "jurisdiction": "US scientific guidance",
-      "source_kind": "guidance",
-      "reviewed_on": "2026-10-20",
-      "note": "Read the original NIST report's odds-form Bayes discussion, including the dependence on prior information and the separate roles of analyst and factfinder. It supports evidence updating, not a numerical legal standard of proof or a probability of liability. Hong Kong applicability has not been verified."
-    },
-    {
-      "id": "shavell-enforcement",
-      "title": "Louis Kaplow and Steven Shavell, Economic Analysis of Law (February 1999 author manuscript), enforcement analysis",
-      "url": "https://laweconcenter.law.harvard.edu/wp-content/uploads/2024/11/251.pdf",
-      "pin": "Section 6.2.1, printed p. 68: fixed detection probability, risk-neutral actors and monetary fines",
-      "verification": "primary",
-      "jurisdiction": "General economic theory; no governing jurisdiction asserted",
-      "source_kind": "scholarship",
-      "reviewed_on": "2026-10-20",
-      "note": "Read the original author manuscript's f = h/p result and its stated assumptions. The result is a conditional economic benchmark, not a legally authorized fine or sentencing rule. Hong Kong applicability has not been verified."
-    },
-    {
-      "id": "coase-1960",
-      "title": "R. H. Coase, The Problem of Social Cost, Journal of Law and Economics 3 (1960), 1–44",
-      "url": "https://www.journals.uchicago.edu/doi/10.1086/466560",
-      "pin": "Publisher Information & Authors metadata only",
-      "verification": "web",
-      "jurisdiction": "General economic theory; no governing jurisdiction asserted",
-      "source_kind": "scholarship",
-      "reviewed_on": "2026-10-20",
-      "note": "Only publisher bibliographic metadata was read. Full text was not read. The module's sum of prevention, residual harm and transaction costs is an explicitly constructed comparison inspired by the topic; it is not attributed as a verbatim Coase formula. It neither assigns rights nor authorizes interference with them. Hong Kong applicability has not been verified."
-    },
-    {
-      "id": "shavell-settlement",
-      "title": "Louis Kaplow and Steven Shavell, Economic Analysis of Law (February 1999 author manuscript), settlement analysis",
-      "url": "https://laweconcenter.law.harvard.edu/wp-content/uploads/2024/11/251.pdf",
-      "pin": "Section 5.2.1, printed p. 49: Exogenous beliefs model",
-      "verification": "primary",
-      "jurisdiction": "General litigation economics; own-cost baseline",
-      "source_kind": "scholarship",
-      "reviewed_on": "2026-10-20",
-      "note": "Read the original manuscript's settlement interval [p_P w - c_P, p_D w + c_D] and risk-neutral assumption. Fee shifting, settlement-offer consequences, enforcement risk and risk preferences require separate extensions; this is not a Hong Kong settlement recommendation."
-    },
-    {
-      "id": "ucc-cover",
-      "title": "Uniform Commercial Code § 2-712 — Cover; Buyer's Procurement of Substitute Goods",
-      "url": "https://www.law.cornell.edu/ucc/2/2-712",
-      "pin": "Subsections (1)–(3), especially subsection (2)",
-      "verification": "web",
-      "jurisdiction": "US uniform model text; state enactment not checked",
-      "source_kind": "model_text",
-      "reviewed_on": "2026-10-20",
-      "note": "Read Cornell LII's reproduction of the uniform model text, including good faith, reasonable purchase without unreasonable delay, cover-price difference, additional damages and saved expenses. No particular state's enactment was verified. Recoverability of each loss and applicable enacted law require separate verification. Hong Kong applicability has not been verified."
-    },
-    {
-      "id": "unidroit-2016",
-      "title": "UNIDROIT Principles of International Commercial Contracts 2016, black-letter text",
-      "url": "https://www.unidroit.org/wp-content/uploads/2021/06/Unidroit-Principles-2016-English-bl.pdf",
-      "pin": "Article 7.4.3(1)–(3), especially Article 7.4.3(2); PDF page 23",
-      "verification": "primary",
-      "jurisdiction": "International commercial contract soft law",
-      "source_kind": "guidance",
-      "reviewed_on": "2026-10-20",
-      "note": "Read the official text on certainty of harm and compensation for loss of a chance in proportion to its probability. These Principles do not automatically apply as domestic legislation. The model values a reduced opportunity; it does not discount uncertain liability or resolve recognition of medical/personal-injury chance claims. Hong Kong applicability has not been verified."
-    },
-    {
-      "id": "gad-ogden",
-      "title": "Government Actuary's Department — Ogden tables: actuarial compensation tables for injury and death",
-      "url": "https://www.gov.uk/government/publications/ogden-tables-actuarial-compensation-tables-for-injury-and-death",
-      "pin": "Official publication page, opening description and Details section",
-      "verification": "primary",
-      "jurisdiction": "UK actuarial guidance",
-      "source_kind": "guidance",
-      "reviewed_on": "2026-10-20",
-      "note": "Read the official description of actuarial multipliers for injury/death compensation. The complete tables and explanatory notes were not audited or implemented. The module performs generic discounted cash-flow arithmetic with user-supplied rates and contingencies; it supplies no current judicial discount rate, mortality table or Hong Kong multiplier."
-    },
-    {
-      "id": "ec-passing-on",
-      "title": "European Commission, Guidelines for national courts on estimating the share of overcharge passed on to indirect purchasers (2019/C 267/07)",
-      "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/PDF/?uri=CELEX:52019XC0809(01)",
-      "pin": "Paragraphs 2, 8, 15–16; Section 5.1, especially paragraphs 85–91",
-      "verification": "primary",
-      "jurisdiction": "EU competition damages; non-binding guidance",
-      "source_kind": "guidance",
-      "reviewed_on": "2026-10-20",
-      "note": "Read the official PDF on actual versus counterfactual prices, passing-on, volume effects and the non-binding status of the guidance; comparator discussion was also located in the official text's search extract. The model only aggregates supplied price gaps and quantities. It does not estimate a causal counterfactual, implement regression, or determine legally recoverable damages. Hong Kong applicability has not been verified."
-    },
-    {
-      "id": "cma-mergers",
-      "title": "Competition and Markets Authority — Merger assessment guidelines",
-      "url": "https://www.gov.uk/government/publications/merger-assessment-guidelines/merger-assessment-guidelines-html-version",
-      "pin": "Horizontal unilateral effects, concentration measures discussion and footnote 79",
-      "verification": "primary",
-      "jurisdiction": "UK merger guidance",
-      "source_kind": "guidance",
-      "reviewed_on": "2026-10-20",
-      "note": "Read the official discussion naming HHI as one possible concentration measure and emphasizing case context and remaining competitive alternatives. The module reports arithmetic concentration and change only; it imports no legal threshold and makes no merger-clearance or dominance decision. Hong Kong applicability has not been verified."
-    },
-    {
       "id": "hse-reasonably-practicable",
       "title": "HSE, Fairgrounds and amusement parks: Guidance on safe practice, HSG175 (3rd ed, 2017)",
       "url": "https://www.hse.gov.uk/pubns/priced/hsg175.pdf",
@@ -132,39 +22,6 @@
       "source_kind": "guidance",
       "reviewed_on": "2026-10-21",
       "note": "Read the regulator’s original paragraph explaining reasonably practicable through gross disproportion of cost (including time and effort) to risk reduction. The ratio is a constructed diagnostic; this passage prescribes no numerical multiplier. It does not establish applicability to Hong Kong or private commercial contracts."
-    },
-    {
-      "id": "american-hospital-injunction",
-      "title": "American Hospital Supply Corp. v Hospital Products Ltd., 780 F.2d 589 (7th Cir. 1986)",
-      "url": "https://law.justia.com/cases/federal/appellate-courts/F2/780/589/148335/",
-      "pin": "593–594: formula, express qualification and familiar injunction factors",
-      "verification": "primary",
-      "jurisdiction": "US federal, Seventh Circuit; historical judicial heuristic",
-      "source_kind": "judgment",
-      "reviewed_on": "2026-10-21",
-      "note": "Read the reproduced judgment’s weighted-error formula and express statement that it is not a new legal standard. Irreparable harm, adequacy of remedies, likelihood of success and public/third-party interests remain relevant. This review does not establish current universal US or Hong Kong injunction doctrine."
-    },
-    {
-      "id": "mathews-procedure",
-      "title": "Mathews v Eldridge, 424 U.S. 319 (1976)",
-      "url": "https://www.law.cornell.edu/supremecourt/text/424/319",
-      "pin": "335: three-factor procedural due-process analysis",
-      "verification": "primary",
-      "jurisdiction": "US constitutional law; governmental deprivation of protected interests",
-      "source_kind": "judgment",
-      "reviewed_on": "2026-10-21",
-      "note": "Read the opinion’s private-interest, error-risk/procedural-value and governmental-interest factors. The judgment does not prescribe the module’s multiplication or a monetary threshold. This is an auxiliary model of quantifiable factors, not a private-platform process rule or Hong Kong authority."
-    },
-    {
-      "id": "bank-mellat-necessity",
-      "title": "Bank Mellat v HM Treasury (No. 2) [2013] UKSC 39",
-      "url": "https://supremecourt.uk/uploads/uksc_2011_0040_judgment_32e27b53c6.pdf",
-      "pin": "No. 2, paragraph 20 (printed pp. 10–11) and paragraphs 74–75 (printed pp. 33–34); combined PDF indices 51–52 and 74–75",
-      "verification": "primary",
-      "jurisdiction": "United Kingdom public law; proportionality",
-      "source_kind": "judgment",
-      "reviewed_on": "2026-10-21",
-      "note": "Read the official judgment’s less-intrusive-means formulation and warning against strict least-restrictive optimisation. Lord Sumption at paragraph 20 agrees with Lord Reed’s formulation despite their different applications. The candidate comparison is our narrower diagnostic, not the court’s equation; absence of flagged candidates proves nothing about necessity or Hong Kong applicability."
     },
     {
       "id": "sharp-mitigation",
@@ -178,15 +35,15 @@
       "note": "Read the official judgment’s reasonable-mitigation principles, including recovery of loss from reasonable steps even when they increase loss. The expected-benefit calculation is our auxiliary ex ante comparison; neither positive net benefit nor hindsight success is the legal test. Hong Kong applicability has not been verified."
     },
     {
-      "id": "cavendish-penalties",
-      "title": "Cavendish Square Holding BV v Makdessi; ParkingEye Ltd v Beavis [2015] UKSC 67",
-      "url": "https://supremecourt.uk/uploads/uksc_2013_0280_judgment_c7f37dda32.pdf",
-      "pin": "Paragraph 32, printed p. 17 (PDF index 17)",
+      "id": "unidroit-2016",
+      "title": "UNIDROIT Principles of International Commercial Contracts 2016, black-letter text",
+      "url": "https://www.unidroit.org/wp-content/uploads/2021/06/Unidroit-Principles-2016-English-bl.pdf",
+      "pin": "Article 7.4.3(1)–(3), especially Article 7.4.3(2); PDF page 23",
       "verification": "primary",
-      "jurisdiction": "English contract law; penalty doctrine",
-      "source_kind": "judgment",
-      "reviewed_on": "2026-10-21",
-      "note": "Read the official judgment’s secondary-obligation gateway and detriment/legitimate-interest test, expressly allowing interests beyond compensation. The module’s compensatory-loss ratio is not the legal test and has no fixed invalidity threshold. Hong Kong applicability has not been verified."
+      "jurisdiction": "International commercial contract soft law",
+      "source_kind": "guidance",
+      "reviewed_on": "2026-10-20",
+      "note": "Read the official text on certainty of harm and compensation for loss of a chance in proportion to its probability. These Principles do not automatically apply as domestic legislation. The model values a reduced opportunity; it does not discount uncertain liability or resolve recognition of medical/personal-injury chance claims. Hong Kong applicability has not been verified."
     }
   ]
 }

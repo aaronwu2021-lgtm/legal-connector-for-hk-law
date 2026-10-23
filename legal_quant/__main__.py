@@ -22,7 +22,7 @@ def _unique_object(pairs):
 
 
 def main(argv=None):
-    parser = argparse.ArgumentParser(description="法律标准与辅助量化模型；区分公式依据，计算不认定法律责任。")
+    parser = argparse.ArgumentParser(description="实体法律概率模型：合理注意、合理可行预防、合理减损与机会丧失；计算不认定责任。")
     commands = parser.add_subparsers(dest="command", required=True)
     commands.add_parser("list", help="列出模型目录")
     show = commands.add_parser("show", help="查看完整模型定义、边界和示例")

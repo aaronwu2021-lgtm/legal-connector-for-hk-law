@@ -122,9 +122,9 @@ function inputRecord(modelId = 'hand') {
 test('all model examples produce valid typed requests from the generated form', async () => {
   const h = await harness();
   assert.equal(h.at('workspace').hidden, false);
-  assert.equal(catalogue.models.length, 17);
-  assert.equal(h.at('category').value, 'legal_standard');
-  assert.equal(h.at('model').children.length, 7);
+  assert.equal(catalogue.models.length, 4);
+  assert.equal(h.at('category').value, 'substantive_probability');
+  assert.equal(h.at('model').children.length, 4);
   assert.match(h.at('formula-authority').textContent, /判决/);
   for (const model of catalogue.models) {
     await h.choose(model.id);
@@ -146,7 +146,7 @@ test('navigation invalidates pending results even if the server ignores cancella
   await h.emit('load-example', 'click');
   const pending = h.emit('analysis-form', 'submit');
   const request = h.requests[0];
-  await h.choose('bayes');
+  await h.choose('reasonable_mitigation');
   assert.equal(request.signal.aborted, true);
   resolveResult(request, '已过期的结果');
   await pending;
@@ -198,7 +198,7 @@ test('case data require all provenance but source wording is not treated as proo
   await pending;
 });
 
-test('import validates versions, numeric types, dates and every array entry before replacing the form', async () => {
+test('import validates versions, numeric types and dates before replacing the form', async () => {
   const h = await harness();
   const invalid = [
     { ...inputRecord(), model_version: 1 },
@@ -206,8 +206,8 @@ test('import validates versions, numeric types, dates and every array entry befo
     { ...inputRecord(), inputs: { ...inputRecord().inputs, N: '100000' } },
     { ...inputRecord(), context: { ...inputRecord().context, as_of: '2026-02-30' } },
     { ...inputRecord(), context: { ...inputRecord().context, as_of: '0000-01-01' } },
-    { ...inputRecord('hhi'), inputs: { ...inputRecord('hhi').inputs, shares: [-1, 101] } },
-    { ...inputRecord('coase'), inputs: { alternatives: [{ name: '甲' }] } },
+    { ...inputRecord('loss_of_chance'), inputs: { ...inputRecord('loss_of_chance').inputs, probability_before: -1 } },
+    { ...inputRecord('alarp_probability'), inputs: { ...inputRecord('alarp_probability').inputs, probability_after: true } },
   ];
   for (const data of invalid) {
     await h.import(data);
@@ -216,11 +216,55 @@ test('import validates versions, numeric types, dates and every array entry befo
   }
 });
 
+test('removed model imports cannot restore a retired calculator', async () => {
+  const h = await harness();
+  for (const id of ['alexy', 'bayes', 'deterrence', 'coase', 'settlement', 'cover_damages',
+    'present_value', 'counterfactual_damage', 'hhi', 'alarp', 'interim_injunction',
+    'procedural_safeguards', 'necessity', 'penalty_proportionality']) {
+    await h.import({ model_id: id, model_version: '1', inputs: {} });
+    assert.equal(h.at('file-status').dataset.error, 'true', id);
+    assert.equal(h.at('model').value, 'hand');
+    assert.equal(h.requests.length, 0);
+  }
+});
+
+test('generic array imports validate every entry using a local synthetic schema', async () => {
+  const modelCatalogue = structuredClone(catalogue);
+  const model = modelCatalogue.models.find(model => model.id === 'hand');
+  model.fields = [
+    { id: 'values', label: 'Synthetic numeric array', type: 'number_array', min: 0, max: 1 },
+    { id: 'rows', label: 'Synthetic object array', type: 'object_array', items: [
+      { id: 'name', label: 'Name', type: 'string' },
+      { id: 'count', label: 'Count', type: 'integer', min: 0 },
+    ] },
+  ];
+  const valid = { model_id: 'hand', model_version: '1', inputs: { values: [0, 1], rows: [{ name: 'Synthetic', count: 1 }] } };
+  const h = await harness(modelCatalogue);
+  for (const inputs of [
+    { ...valid.inputs, values: [-1, 1] }, { ...valid.inputs, values: [false] },
+    { ...valid.inputs, values: [] }, { ...valid.inputs, values: Array(257).fill(0) },
+    { ...valid.inputs, rows: [{ name: 'Synthetic' }] },
+    { ...valid.inputs, rows: [{ name: 'Synthetic', count: 1, extra: 0 }] },
+    { ...valid.inputs, rows: [{ name: 'Synthetic', count: 0.5 }] },
+    { ...valid.inputs, rows: [{ name: '', count: 1 }] },
+  ]) {
+    await h.import({ ...valid, inputs });
+    assert.equal(h.at('file-status').dataset.error, 'true');
+    assert.equal(h.at('field-0').value, '');
+  }
+  await h.import(valid);
+  assert.match(h.at('file-status').textContent, /已导入/);
+  const pending = h.emit('analysis-form', 'submit');
+  assert.deepEqual(h.requests[0].payload.inputs, valid.inputs);
+  resolveResult(h.requests[0]);
+  await pending;
+});
+
 test('CLI null-date input and requests without context import, calculate and export with engine defaults', async () => {
   const defaults = { jurisdiction: 'HK', as_of: null, input_basis: 'hypothetical', sources: {}, applicability: 'unreviewed' };
   for (const context of [defaults, undefined, {}]) {
     const h = await harness();
-    const data = inputRecord('bayes');
+    const data = inputRecord('reasonable_mitigation');
     if (context === undefined) delete data.context;
     else data.context = context;
     await h.import(data);
@@ -274,6 +318,7 @@ test('provenance length limits match engine limits and explicitly empty source e
 test('integer safety and exclusive numeric bounds are validated on import', async () => {
   const modelCatalogue = structuredClone(catalogue);
   const field = modelCatalogue.models.find(model => model.id === 'hand').fields.find(field => field.id === 'N');
+  field.type = 'integer';
   field.exclusiveMinimum = 0;
   field.exclusiveMaximum = 1000000;
   const h = await harness(modelCatalogue);
@@ -284,22 +329,20 @@ test('integer safety and exclusive numeric bounds are validated on import', asyn
     assert.equal(h.at('file-status').dataset.error, 'true');
     assert.match(h.at('file-status').textContent, /须大于|须小于/);
   }
-  const integerModel = catalogue.models.find(model => model.fields.some(field => field.type === 'integer'));
-  const integerField = integerModel.fields.find(field => field.type === 'integer');
-  const unsafe = inputRecord(integerModel.id);
-  unsafe.inputs[integerField.id] = Number.MAX_SAFE_INTEGER + 1;
+  const unsafe = inputRecord();
+  unsafe.inputs.N = Number.MAX_SAFE_INTEGER + 1;
   await h.import(unsafe);
   assert.match(h.at('file-status').textContent, /安全整数/);
 });
 
 test('import round trip preserves explicit context and renders arbitrary strings only as text', async () => {
   const h = await harness();
-  const data = inputRecord('bayes');
+  const data = inputRecord('reasonable_mitigation');
   data.context.jurisdiction = '<img src=x onerror=alert(1)>';
   data.context.as_of = '2025-01-17';
   data.context.applicability = 'externally_assessed';
   await h.import(data);
-  assert.equal(h.at('model').value, 'bayes');
+  assert.equal(h.at('model').value, 'reasonable_mitigation');
   assert.equal(h.at('as-of').value, '2025-01-17');
   const pending = h.emit('analysis-form', 'submit');
   assert.deepEqual(h.requests[0].payload, data);
@@ -314,7 +357,7 @@ test('a response for a different model cannot display as the current result', as
   await h.emit('load-example', 'click');
   const pending = h.emit('analysis-form', 'submit');
   const result = resultFor(h.requests[0]);
-  result.model_id = 'bayes';
+  result.model_id = 'reasonable_mitigation';
   h.requests[0].resolve({ ok: true, json: async () => result });
   await pending;
   assert.equal(h.at('results').hidden, true);

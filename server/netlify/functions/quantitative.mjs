@@ -246,7 +246,7 @@ export function quantitativeRequest(request) {
 
 export const quantitativeTools = [
   { name: 'list_quantitative_models',
-    description: 'List legal-standard models and supporting quantitative analysis with typed inputs, formulas, source jurisdictions and formula authority. Distinguishes judicial heuristics from project formalisation; calculations are not legal findings.',
+    description: 'List four substantive-law probability models: reasonable care, reasonably practicable prevention, reasonable mitigation and legally recognised loss of chance. Includes probability meanings, legal prerequisites and source jurisdictions. Procedural and litigation models are excluded; calculations are not legal findings.',
     inputSchema: { type: 'object', additionalProperties: false, properties: {} } },
   { name: 'evaluate_quantitative_model',
     description: 'Calculate one fixed versioned model using explicit values and provenance. Missing values are rejected, never zero. Case data require source notes for every input; applicability is an external assertion, never certified by the calculation. Returns calculation steps and no legal conclusion.',

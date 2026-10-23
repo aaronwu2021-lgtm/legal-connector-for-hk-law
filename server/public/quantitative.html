@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="法律量化工作台：按问题选择模型，记录假设与证据来源，查看公式、计算步骤和适用边界。">
-  <title>法律量化工作台 · Doctrine Drift Atlas</title>
+  <meta name="description" content="实体法律中的概率模型：合理注意、合理可行预防、合理减损与机会丧失赔偿。">
+  <title>实体法律概率模型 · Doctrine Drift Atlas</title>
   <link rel="stylesheet" href="/quantitative.css">
   <script src="/quantitative.js" defer></script>
 </head>
@@ -15,9 +15,9 @@
     <a class="back-link" href="/">← 返回图谱</a>
   </header>
   <main id="main" class="wrap">
-    <div class="eyebrow">LEGAL QUANTIFICATION / 法律量化</div>
-    <h1>法律标准，哪些部分可以计算？</h1>
-    <p class="lede">从「应采取多少预防」「限制是否必要」「程序是否足够」开始。先看法律要求比较什么，再代入变量。默认展示法律标准；其他类别保留金额、证据与经济分析工具。</p>
+    <div class="eyebrow">SUBSTANTIVE LAW / 实体法律中的概率</div>
+    <h1>实体法律标准，如何使用概率？</h1>
+    <p class="lede">用风险发生概率、减损成功概率和机会实现概率，分析合理注意、合理可行预防、合理减损与可赔机会的价值。前三项评价行为要求，机会丧失评价损失价值。每项都说明法律依据、概率含义与计算边界。</p>
     <p id="load-status" class="notice" role="status">正在载入模型…</p>
     <div id="workspace" hidden>
       <section class="card selection" aria-label="选择分析模型">
@@ -71,9 +71,9 @@
               <label for="applicability">法律适用审查</label>
               <select id="applicability" name="applicability">
                 <option value="unreviewed">待独立审查</option>
-                <option value="externally_assessed">已由使用者在程序外审查</option>
+                <option value="externally_assessed">已由使用者独立审查</option>
               </select>
-              <span class="help">此处记录使用者的审查状态，程序不作法律认定。</span>
+              <span class="help">此处记录使用者的审查状态；计算器不作法律认定。</span>
             </div>
           </div>
         </section>
@@ -127,7 +127,7 @@
       </section>
       <section class="card" aria-labelledby="sources-title">
         <h2 id="sources-title">模型依据</h2>
-        <p class="muted">理论来源、外国法规则与香港适用性分别标注。案例输入的证据来源见上方各字段。</p>
+        <p class="muted">判决、监管解释及国际商事合同通则分别标注；来源法域与香港适用性须独立核对。输入来源见上方各字段。</p>
         <ul id="model-sources" class="source-list"></ul>
       </section>
       <p class="footer-note">计算值取决于输入与模型前提；法律结论始终保留给独立的要件分析。</p>
